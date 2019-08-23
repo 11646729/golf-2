@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// CORS settings from https://blog.jscrambler.com/setting-up-5-useful-middlewares-for-an-express-api/
+// cors settings from https://blog.jscrambler.com/setting-up-5-useful-middlewares-for-an-express-api/
 app.use(
   cors({
     origin: ["http://localhost:3000"],
