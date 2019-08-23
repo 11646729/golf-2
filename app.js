@@ -5,11 +5,16 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const favicon = require("serve-favicon");
+const mongoose = require("mongoose");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const golfRouter = require("./routes/golf");
 
+// Configure mongoose's promise to global promise
+mongoose.promise = global.Promise;
+
+// Initiate our server
 const app = express();
 
 // view engine setup
