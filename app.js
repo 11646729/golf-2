@@ -3,6 +3,8 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const cors = require("cors");
+const favicon = require("serve-favicon");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
@@ -13,12 +15,22 @@ const app = express();
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
+app.use(favicon(path.join(__dirname, "public/images", "Golf_Pin.ico")));
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+// CORS settings from https://blog.jscrambler.com/setting-up-5-useful-middlewares-for-an-express-api/
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+  })
+);
 
 // routes
 app.use("/", indexRouter);
