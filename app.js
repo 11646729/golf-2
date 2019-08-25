@@ -1,10 +1,11 @@
-const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
-const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+
+const createError = require("http-errors");
 const favicon = require("serve-favicon");
+const cors = require("cors");
 const mongoose = require("mongoose");
 
 const indexRouter = require("./routes/index");
@@ -20,6 +21,8 @@ const app = express();
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
+
+// Favicon setup
 app.use(favicon(path.join(__dirname, "public/images", "Golf_Pin.ico")));
 
 app.use(logger("dev"));
