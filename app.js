@@ -19,14 +19,14 @@ mongoose.promise = global.Promise;
 const app = express();
 
 // view engine setup
-// app.set("views", path.join(__dirname, "public/views"));
+// app.set("views", path.join(__dirname, "views"));
 // app.set("view engine", "hbs");
 
 // Favicon setup
 app.use(favicon(path.join(__dirname, "public/images", "Golf_Pin.ico")));
 
 // Static file location
-app.use(express.static(path.join(__dirname, "public/views")));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(logger("dev"));
 app.use(express.json());

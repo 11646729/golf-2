@@ -9,7 +9,8 @@ const router = express.Router();
 
 /* golf-1 Home Page */
 router.get("/", function(req, res) {
-  res.sendFile("index.html");
+  //  res.sendFile("index.html");
+  res.sendFile("index.html", { root: __dirname });
 });
 
 module.exports = router;
