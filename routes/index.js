@@ -7,10 +7,14 @@ const router = express.Router();
 //   res.render("home", data);
 // });
 
-/* golf-1 Home Page */
 router.get("/", function(req, res) {
-  //  res.sendFile("index.html");
-  res.sendFile("index.html", { root: __dirname });
+  res.redirect("/catalog");
+  // .sendFile("index.html", { root: __dirname });
 });
+
+/* golf-1 Home Page */
+// router.get("/", function(req, res) {
+//   res.sendFile("index.html", { root: __dirname });
+// });
 
 module.exports = router;
