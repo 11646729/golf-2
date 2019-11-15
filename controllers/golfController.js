@@ -1,6 +1,6 @@
-var Golf = require("../models/golf");
+var Golf = require("../models/golf")
 
 // Display list of all Golf Courses
-exports.Golf = function(req, res) {
-  res.send("NOT IMPLEMENTED: Author list");
-};
+exports.golf_courses = (req, res, next) => {
+  res.send("NOT IMPLEMENTED: Golf Courses")
+}

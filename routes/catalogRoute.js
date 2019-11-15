@@ -3,6 +3,7 @@ var router = express.Router()
 
 // Require controller modules
 var golf_controller = require("../controllers/golfController")
+var user_controller = require("../controllers/golfController")
 
 /// GOLF ROUTES ///
 
