@@ -39,10 +39,10 @@ app.use(
 )
 
 // use controllers as per Express Tutorial
-const indexRouter = require("./routes/index")
-const usersRouter = require("./routes/users")
-const golfRouter = require("./routes/golf")
-const screenScraperRouter = require("./routes/screenScraper")
+const indexRouter = require("./routes/indexRoute")
+const usersRouter = require("./routes/usersRoute")
+const golfRouter = require("./routes/golfRoute")
+const screenScraperRouter = require("./routes/screenScraperRoute")
 
 // routes
 app.use("/", indexRouter)
