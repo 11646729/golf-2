@@ -3,11 +3,12 @@ var mongoose = require("mongoose")
 var Schema = mongoose.Schema
 
 var VesselSchema = new Schema({
-  vessel_type: { type: String }, // CMV Magellan Review and Specifications
+  schema_version: { type: Integer }, // 1.0
+  ais_vessel_type: { type: String }, // Passenger ship
   vessel_photo: { type: binary }, // url
-  ais_name: { type: String }, // *** TODO ***
+  ais_name: { type: String }, // MAGELLAN
   vessel_name: { type: String }, // Magellan
-  vessel_flag: { type: String }, // Madeira
+  vessel_flag: { type: String }, // Bahamas
   short_operator: { type: String }, // CMV
   long_operator: { type: String }, // Cruise and Maritime Voyages
   year_built: { type: Integer }, // 1985
