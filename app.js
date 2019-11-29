@@ -8,6 +8,16 @@ const favicon = require("serve-favicon")
 const cors = require("cors")
 const mongoose = require("mongoose")
 
+const mongodb =
+  "mongodb+srv://brian:eI%2AhO%25%27a2%3FSyV%402@cluster0-t0dyi.mongodb.net/test?retryWrites=true&w=majority"
+
+mongoose.connect(mongodb, { useUnifiedTopology: true, useNewUrlParser: true })
+var db = mongoose.connection
+//db.on("error", console.error.bind(console, "Mongodb connection error:"))
+
+db.on("connected", console.error.bind(console, "Mongodb connected"))
+db.on("error", console.error.bind(console, "Mongodb connection error"))
+
 // Configure mongoose's promise to global promise
 mongoose.promise = global.Promise
 
