@@ -4,18 +4,18 @@ var Schema = mongoose.Schema
 
 // --------------------------------------------------------------
 // Original belfast cruise site web scraping
-// var VesselSchema = new Schema({
-//       databaseVersion: { type: Integer }, // 1.0
-//       pageUrl: { type: String }, // "https://www.cruisemapper.com/ports/belfast-port-114"
-//       timestamp: { type: Timestamp }, // 1570299561064
-//       day: { type: Integer }, // 25
-//       month: { type: Integer }, // 9
-//       year: { type: Integer }, // 2019
-//       eta: { type: String }, // "06:15"
-//       etd: { type: String }, // "19:00"
-//       company: { type: String }, // "Hapag Lloyd"
-//       vesselName: { type: String } // "Hanseatic Nature"
-// })
+// Remember that Timestamp is also saved by default
+var VesselSchema = new Schema({
+  databaseVersion: { type: Number }, // 1.0
+  pageUrl: { type: String }, // "https://www.cruisemapper.com/ports/belfast-port-114"
+  day: { type: Number }, // 25
+  month: { type: Number }, // 9
+  year: { type: Number }, // 2019
+  eta: { type: String }, // "06:15"
+  etd: { type: String }, // "19:00"
+  company: { type: String }, // "Hapag Lloyd"
+  vesselName: { type: String } // "Hanseatic Nature"
+})
 
 // --------------------------------------------------------------
 // var VesselSchema = new Schema({
@@ -62,4 +62,4 @@ var Schema = mongoose.Schema
 //
 
 // Export model
-module.exports = mongoose.model("Vessel", VesselSchema)
+module.exports = mongoose.model("vessel", VesselSchema)

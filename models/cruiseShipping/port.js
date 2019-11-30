@@ -9,4 +9,4 @@ var PortSchema = new Schema({
 })
 
 // Export model
-module.exports = mongoose.model("Port", PortSchema)
+module.exports = mongoose.model("port", PortSchema)

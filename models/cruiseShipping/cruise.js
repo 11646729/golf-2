@@ -9,4 +9,4 @@ var CruiseSchema = new Schema({
 })
 
 // Export model
-module.exports = mongoose.model("Cruise", CruiseSchema)
+module.exports = mongoose.model("cruise", CruiseSchema)
