@@ -3,6 +3,11 @@ var itinerary = require("../models/cruiseShipping/itinerary")
 var port = require("../models/cruiseShipping/port")
 var vessel = require("../models/cruiseShipping/vessel")
 
+// Display list of all Cruises
+exports.cruise = (req, res, next) => {
+  res.send("NOT IMPLEMENTED: Cruise")
+}
+
 // Display list of all Vessels
 exports.vessel = (req, res, next) => {
   res.send("NOT IMPLEMENTED: Vessel")
