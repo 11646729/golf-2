@@ -5,6 +5,6 @@ var router = express.Router()
 var cruise_controller = require("../controllers/cruiseController")
 
 // GET all vessels
-router.get("/cruises", cruise_controller.vessels)
+router.get("/cruise", cruise_controller.vessels)
 
 module.exports = router

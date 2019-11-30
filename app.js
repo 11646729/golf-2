@@ -11,12 +11,31 @@ const mongoose = require("mongoose")
 const mongodb =
   "mongodb+srv://brian:eI%2AhO%25%27a2%3FSyV%402@cluster0-t0dyi.mongodb.net/test?retryWrites=true&w=majority"
 
-mongoose.connect(mongodb, { useUnifiedTopology: true, useNewUrlParser: true })
-var db = mongoose.connection
-//db.on("error", console.error.bind(console, "Mongodb connection error:"))
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+  autoIndex: false, // Don't build indexes
+  reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
+  reconnectInterval: 500, // Reconnect every 500ms
+  poolSize: 10, // Maintain up to 10 socket connections
+  // If not connected, return errors immediately rather than waiting for reconnect
+  bufferMaxEntries: 0,
+  connectTimeoutMS: 10000, // Give up initial connection after 10 seconds
+  socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+  family: 4 // Use IPv4, skip trying IPv6
+}
 
-db.on("connected", console.error.bind(console, "Mongodb connected"))
-db.on("error", console.error.bind(console, "Mongodb connection error"))
+try {
+  mongoose.connect(mongodb, options)
+  mongoose.connection.on(
+    "connected",
+    console.error.bind(console, "Mongodb connected")
+  )
+} catch (error) {
+  console.log("Mongodb connection error")
+}
 
 // Configure mongoose's promise to global promise
 mongoose.promise = global.Promise
@@ -52,12 +71,16 @@ app.use(
 const indexRouter = require("./routes/indexRoute")
 const usersRouter = require("./routes/usersRoute")
 const golfRouter = require("./routes/golfRoute")
+const cruiseRouter = require("./routes/cruiseRoute")
+//const itineraryRouter = require("./routes/itineraryRoute")
 const screenScraperRouter = require("./routes/screenScraperRoute")
 
 // routes
 app.use("/", indexRouter)
 app.use("/users", usersRouter)
 app.use("/golf", golfRouter)
+app.use("/cruise", cruiseRouter)
+//app.use("/itinerary", itineraryRouter)
 app.use("/screenScraper", screenScraperRouter)
 
 // catch 404 and forward to error handler
