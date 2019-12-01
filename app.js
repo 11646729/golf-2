@@ -71,8 +71,7 @@ app.use(
 const indexRouter = require("./routes/indexRoute")
 const usersRouter = require("./routes/usersRoute")
 const golfRouter = require("./routes/golfRoute")
-const cruiseRouter = require("./routes/cruiseRoute")
-//const itineraryRouter = require("./routes/itineraryRoute")
+const cruiseRouter = require("./routes/cruiseShippingRoutes")
 const screenScraperRouter = require("./routes/screenScraperRoute")
 
 // routes
@@ -80,7 +79,6 @@ app.use("/", indexRouter)
 app.use("/users", usersRouter)
 app.use("/golf", golfRouter)
 app.use("/cruise", cruiseRouter)
-//app.use("/itinerary", itineraryRouter)
 app.use("/screenScraper", screenScraperRouter)
 
 // catch 404 and forward to error handler
