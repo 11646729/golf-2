@@ -68,18 +68,16 @@ app.use(
 )
 
 // use controllers as per Express Tutorial
-const indexRouter = require("./routes/indexRoute")
+//const indexRouter = require("./routes/indexRoute")
 const usersRouter = require("./routes/usersRoute")
 const golfRouter = require("./routes/golfRoute")
-const cruiseRouter = require("./routes/cruiseShippingRoutes")
-const screenScraperRouter = require("./routes/screenScraperRoute")
+const cruiseRouter = require("./routes/cruiseCatalogRoute")
 
 // routes
-app.use("/", indexRouter)
+//app.use("/", indexRouter)
 app.use("/users", usersRouter)
 app.use("/golf", golfRouter)
 app.use("/cruise", cruiseRouter)
-app.use("/screenScraper", screenScraperRouter)
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
