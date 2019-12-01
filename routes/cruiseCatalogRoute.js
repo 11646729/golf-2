@@ -1,10 +1,13 @@
 var express = require("express")
 var router = express.Router()
 
-/* GET users listing. */
-router.get("/", (req, res, next) => {
-  res.send("respond with a resource")
-})
+// Require controller modules
+var cruise_controller = require("../controllers/cruiseController")
+
+/// CRUISE ROUTES ///
+
+// GET cruise home page
+router.get("/", cruise_controller.index)
 
 // To run puppetteer on a schedule taken from https://stackoverflow.com/questions/48957964/automatic-scheduled-javascript-on-website
 // const puppeteer = require('puppeteer');
