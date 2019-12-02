@@ -7,9 +7,10 @@ const createError = require("http-errors")
 const favicon = require("serve-favicon")
 const cors = require("cors")
 const mongoose = require("mongoose")
+require("dotenv").config()
 
-const mongodb =
-  "mongodb+srv://brian:eI%2AhO%25%27a2%3FSyV%402@cluster0-t0dyi.mongodb.net/test?retryWrites=true&w=majority"
+// const mongodb =
+//   "mongodb+srv://brian:eI%2AhO%25%27a2%3FSyV%402@cluster0-t0dyi.mongodb.net/test?retryWrites=true&w=majority"
 
 const options = {
   useNewUrlParser: true,
@@ -28,7 +29,8 @@ const options = {
 }
 
 try {
-  mongoose.connect(mongodb, options)
+  // mongoose.connect(mongodb, options)
+  mongoose.connect(process.env.DB, options)
   mongoose.connection.on(
     "connected",
     console.error.bind(console, "Mongodb connected")
