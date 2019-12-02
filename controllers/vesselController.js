@@ -1,4 +1,4 @@
-var vessel = require("../models/cruiseShipping/vessel")
+var vessel = require("../models/cruiseShippingModels/vessel")
 
 // Display list of all Vessels
 exports.vessel = (req, res, next) => {

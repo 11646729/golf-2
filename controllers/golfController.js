@@ -1,4 +1,4 @@
-var Golf = require("../models/golf")
+var Golf = require("../models/golfModels/golf")
 
 // Display list of all Golf Courses
 exports.golf_courses = (req, res, next) => {

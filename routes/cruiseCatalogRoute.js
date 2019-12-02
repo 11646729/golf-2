@@ -9,7 +9,7 @@ var vessel_controller = require("../controllers/vesselController")
 
 /// CRUISE ROUTES ///
 
-// GET cruise home page
+// GET catalogue home page
 router.get("/", cruise_controller.index)
 
 // To run puppetteer on a schedule taken from https://stackoverflow.com/questions/48957964/automatic-scheduled-javascript-on-website
