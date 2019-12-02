@@ -63,7 +63,7 @@ app.use(cookieParser())
 // cors settings from https://blog.jscrambler.com/setting-up-5-useful-middlewares-for-an-express-api/
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:"] + process.env.PORT,
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"]
   })
