@@ -7,10 +7,8 @@ const createError = require("http-errors")
 const favicon = require("serve-favicon")
 const cors = require("cors")
 const mongoose = require("mongoose")
-require("dotenv").config()
 
-// const mongodb =
-//   "mongodb+srv://brian:eI%2AhO%25%27a2%3FSyV%402@cluster0-t0dyi.mongodb.net/test?retryWrites=true&w=majority"
+require("dotenv").config()
 
 const options = {
   useNewUrlParser: true,
