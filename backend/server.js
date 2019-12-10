@@ -21,9 +21,9 @@ app.use(favicon(path.join(__dirname, "../public", "Golf_Pin.ico")))
 
 // use controllers as per Express Tutorial
 // const indexRouter = require("./routes/indexRoute")
-const usersRouter = require("./routes/usersRoute")
-const golfRouter = require("./routes/golfRoute")
-const cruiseRouter = require("./routes/cruiseCatalogRoute")
+const usersRouter = require("./routes/cruiseRoutes/v1/usersRoute")
+const golfRouter = require("./routes/golfRoutes/v1/golfRoute")
+const cruiseRouter = require("./routes/cruiseRoutes/v1/cruiseCatalogRoute")
 
 // routes
 //app.use("/", indexRouter)

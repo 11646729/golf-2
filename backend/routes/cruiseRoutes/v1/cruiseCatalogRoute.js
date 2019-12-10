@@ -4,7 +4,7 @@ var router = express.Router()
 // Require controller modules
 var cruise_controller = require("../controllers/cruiseController")
 var itinerary_controller = require("../controllers/itineraryController")
-var port_controller = require("../controllers/portController")
+var port_controller = require("../../../controllers/cruiseShippingControllers/portController")
 var vessel_controller = require("../controllers/vesselController")
 
 /// CRUISE ROUTES ///
