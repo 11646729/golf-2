@@ -10,6 +10,14 @@ const mongoose = require("mongoose")
 
 require("dotenv").config()
 
+const app = express()
+const port = process.env.PORT || 5000
+
+app.use(cors())
+app.use(express.json())
+
+const uri = process.env.DB
+
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -24,25 +32,19 @@ const options = {
   family: 4 // Use IPv4, skip trying IPv6
 }
 
-try {
-  // mongoose.connect(mongodb, options)
-  mongoose.connect(process.env.ATLAS_URI, options)
-  mongoose.connection.on(
-    "connected",
-    console.error.bind(console, "Mongodb connected")
-  )
-} catch (error) {
-  console.log("Mongodb connection error")
-}
+// try {
+//   // mongoose.connect(mongodb, options)
+//   mongoose.connect(process.env.ATLAS_URI, options)
+//   mongoose.connection.on(
+//     "connected",
+//     console.error.bind(console, "Mongodb connected")
+//   )
+// } catch (error) {
+//   console.log("Mongodb connection error")
+// }
 
 // Configure mongoose's promise to global promise
 mongoose.promise = global.Promise
-
-const app = express()
-const port = process.env.PORT || 5000
-
-app.use(cors())
-app.use(express.json())
 
 app.listen(port, () => {
   console.log("Server is running on port:" + port)
