@@ -16,6 +16,18 @@ const port = process.env.PORT || 5000
 app.use(cors())
 app.use(express.json())
 
+// use controllers as per Express Tutorial
+// const indexRouter = require("./routes/indexRoute")
+const usersRouter = require("./routes/usersRoute")
+const golfRouter = require("./routes/golfRoute")
+const cruiseRouter = require("./routes/cruiseCatalogRoute")
+
+// routes
+//app.use("/", indexRouter)
+app.use("/users", usersRouter)
+app.use("/golf", golfRouter)
+app.use("/cruise", cruiseRouter)
+
 const uri = process.env.ATLAS_URI
 
 const options = {
