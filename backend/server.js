@@ -16,6 +16,9 @@ const port = process.env.PORT || 5000
 app.use(cors())
 app.use(express.json())
 
+// Favicon setup
+app.use(favicon(path.join(__dirname, "../public", "Golf_Pin.ico")))
+
 // use controllers as per Express Tutorial
 // const indexRouter = require("./routes/indexRoute")
 const usersRouter = require("./routes/usersRoute")
