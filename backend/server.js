@@ -40,17 +40,6 @@ connection.once("open", () => {
   console.log("MongoDB database connection established successfully")
 })
 
-// try {
-//   mongoose.connect(mongodb, options)
-//   mongoose.connect(process.env.ATLAS_URI, options)
-//   mongoose.connection.on(
-//     "connected",
-//     console.error.bind(console, "Mongodb connected")
-//   )
-// } catch (error) {
-//   console.log("Mongodb connection error")
-// }
-
 // Configure mongoose's promise to global promise
 mongoose.promise = global.Promise
 
