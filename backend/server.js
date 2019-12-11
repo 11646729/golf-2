@@ -46,11 +46,13 @@ const options = {
 }
 
 mongoose.connect(uri, options)
-
 const connection = mongoose.connection
 
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully")
+  // DO STUFF
+  connection.close()
+  console.log("MongoDB database connection closed successfully")
 })
 
 // Configure mongoose's promise to global promise
