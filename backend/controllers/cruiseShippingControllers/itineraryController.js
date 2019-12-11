@@ -1,4 +1,4 @@
-var itinerary = require("../models/cruiseShippingModels/itinerary")
+var itinerary = require("../../models/cruiseShippingModels/itinerary")
 
 // Display list of Itineraries
 exports.itinerary = (req, res, next) => {
