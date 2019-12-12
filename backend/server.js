@@ -2,9 +2,7 @@ const express = require("express")
 const path = require("path")
 const cookieParser = require("cookie-parser")
 const logger = require("morgan")
-
 const createError = require("http-errors")
-// const favicon = require("serve-favicon")
 const cors = require("cors")
 const mongoose = require("mongoose")
 
@@ -25,9 +23,6 @@ app.use(
 )
 
 app.use(express.json())
-
-// Favicon setup
-//app.use(favicon(path.join(__dirname, "../public", "Golf_Pin.ico")))
 
 const uri = process.env.ATLAS_URI
 
