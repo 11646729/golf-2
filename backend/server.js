@@ -4,7 +4,7 @@ const cookieParser = require("cookie-parser")
 const logger = require("morgan")
 
 const createError = require("http-errors")
-const favicon = require("serve-favicon")
+// const favicon = require("serve-favicon")
 const cors = require("cors")
 const mongoose = require("mongoose")
 
