@@ -27,7 +27,7 @@ app.use(
 app.use(express.json())
 
 // Favicon setup
-app.use(favicon(path.join(__dirname, "../public", "Golf_Pin.ico")))
+//app.use(favicon(path.join(__dirname, "../public", "Golf_Pin.ico")))
 
 const uri = process.env.ATLAS_URI
 
