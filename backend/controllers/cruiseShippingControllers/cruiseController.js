@@ -1,4 +1,4 @@
-var cruise = require("../../models/cruiseShippingModels/cruise")
+var cruise = require("../../models/cruiseShippingModels/v1/cruise")
 
 // Site Home Page
 exports.index = (req, res, next) => {
