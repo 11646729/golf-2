@@ -1,11 +1,11 @@
-//import React, { Component } from 'react';
+import React, { Component } from "react"
 import GoogleMapReact from "google-map-react"
 // import MapAutoComplete from '../components/MapAutoComplete';
 // import MapMarker from '../components/MapMarker';
 // import PlaceCard from '../components/PlaceCard';
 // import ConstraintSlider from '../components/ConstraintSlider';
 
-// import { Button, Input, Divider, message } from 'antd';
+//import { Button, Input, Divider, message } from "antd"
 
 const SG_COOR = { lat: 1.3521, lng: 103.8198 }
 
