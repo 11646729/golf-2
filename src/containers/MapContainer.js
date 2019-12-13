@@ -69,20 +69,20 @@ class MapsContainer extends Component {
   //   this.setState({ markers });
   // });
 
-  // // Runs once when the Google Maps library is ready
-  // // Initializes all services that we need
-  // apiHasLoaded = ((map, mapsApi) => {
-  //   this.setState({
-  //     mapsLoaded: true,
-  //     map,
-  //     mapsApi,
-  //     singaporeLatLng: new mapsApi.LatLng(SG_COOR.lat, SG_COOR.lng),
-  //     autoCompleteService: new mapsApi.places.AutocompleteService(),
-  //     placesService: new mapsApi.places.PlacesService(map),
-  //     geoCoderService: new mapsApi.Geocoder(),
-  //     directionService: new mapsApi.DirectionsService(),
-  //   });
-  // });
+  // Runs once when the Google Maps library is ready
+  // Initializes all services that we need
+  apiHasLoaded = (map, mapsApi) => {
+    this.setState({
+      mapsLoaded: true,
+      map,
+      mapsApi,
+      singaporeLatLng: new mapsApi.LatLng(SG_COOR.lat, SG_COOR.lng)
+      // autoCompleteService: new mapsApi.places.AutocompleteService(),
+      // placesService: new mapsApi.places.PlacesService(map),
+      // geoCoderService: new mapsApi.Geocoder(),
+      // directionService: new mapsApi.DirectionsService(),
+    })
+  }
 
   // // With the constraints, find some places serving ice-cream
   // handleSearch = (() => {
@@ -196,7 +196,7 @@ class MapsContainer extends Component {
       <section className="col-8 h-lg">
         <GoogleMapReact
           bootstrapURLKeys={{
-            key: "YOUR_API_KEY",
+            key: "AIzaSyDBfD68OiYf_mqSh9tK2N85VQSG5iF43yI",
             libraries: ["places", "directions"]
           }}
           defaultZoom={11}
