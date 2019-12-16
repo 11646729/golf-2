@@ -7,7 +7,7 @@ let scrape = async () => {
   try {
     // create a new browser instance
     const browser = await puppeteer.launch({
-      headless: false
+      headless: true
     })
 
     // create a page inside the browser

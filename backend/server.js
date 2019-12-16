@@ -26,8 +26,10 @@ app.use(
 
 app.use(express.json())
 
+// MongoDB connection string
 const uri = process.env.ATLAS_URI
 
+// Mongoose connection optional arguements
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
