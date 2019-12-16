@@ -1,15 +1,17 @@
 const express = require("express")
-const path = require("path")
-const cookieParser = require("cookie-parser")
-const logger = require("morgan")
-const createError = require("http-errors")
+// const path = require("path")
+// const cookieParser = require("cookie-parser")
+// const logger = require("morgan")
+// const createError = require("http-errors")
 const cors = require("cors")
 const mongoose = require("mongoose")
+const scrapeArrivals = require("./scrapeArrivals")
+//const scrapeVessels = require("./scrapeCMvessel")
 
 require("dotenv").config()
 
 const app = express()
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 3000
 
 app.use(cors())
 
@@ -68,3 +70,18 @@ app.use("/cruise", cruiseRouter)
 app.listen(port, () => {
   console.log("Server is running on port:" + port)
 })
+
+// This is a routine to test the scraping then storing function
+try {
+  // Run Scrape Arrivals function then store data
+  scrapeArrivals.scrape().then(value => {
+    // Save data here
+
+    console.log(value)
+  })
+
+  // Now scrape the vessel data
+  //  scrapeVessel.scrapeCMvessel(vessel_name_url)
+} catch (e) {
+  console.log("our error", e)
+}
