@@ -6,7 +6,7 @@ const express = require("express")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const scrapeArrivals = require("./scrapeCMArrivals")
-//const scrapeVessels = require("./scrapeCMvessel")
+const scrapeVessel = require("./scrapeCMvessel")
 
 require("dotenv").config()
 
@@ -74,14 +74,21 @@ app.listen(port, () => {
 // This is a routine to test the scraping then storing function
 try {
   // Run Scrape Arrivals function then store data
-  scrapeArrivals.scrape().then(value => {
+  scrapeArrivals.scrape().then(arrivalValue => {
     // Save data here
 
-    console.log(value)
-  })
+    // Now scrape the vessel data
+    vesselValue = arrivalValue[0].vessel_name_url
 
-  // Now scrape the vessel data
-  //  scrapeVessel.scrapeCMvessel(vessel_name_url)
+    console.log(arrivalValue)
+    try {
+      scrapeVessel.scrape(arrivalValue).then(vesselValue => {
+        console.log(vesselValue)
+      })
+    } catch (e) {
+      console.log("our error", e)
+    }
+  })
 } catch (e) {
   console.log("our error", e)
 }
