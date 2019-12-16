@@ -5,7 +5,7 @@ const express = require("express")
 // const createError = require("http-errors")
 const cors = require("cors")
 const mongoose = require("mongoose")
-const scrapeArrivals = require("./scrapeArrivals")
+const scrapeArrivals = require("./scrapeCMArrivals")
 //const scrapeVessels = require("./scrapeCMvessel")
 
 require("dotenv").config()
