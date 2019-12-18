@@ -56,20 +56,20 @@ let scrape = async () => {
         })
       })
 
-      let vessel_name = results[0].text
+      let vessel_shortcruise_name = results[0].text
 
       // Url of Vessel Web Page
       let vessel_name_url = results[0].url
 
       // Expected Time of Arrival
-      let eta = document
+      let vessel_eta = document
         .querySelector(
           "#schedule > div.table-responsive > table > tbody > tr > td:nth-child(3)"
         )
         .textContent.trim()
 
       // Expected Time of Departure
-      let etd = document
+      let vessel_etd = document
         .querySelector(
           "#schedule > div.table-responsive > table > tbody > tr > td:nth-child(4)"
         )
@@ -79,9 +79,9 @@ let scrape = async () => {
       tempScrapedData.push({
         arrival_date,
         arrival_day,
-        vessel_name,
-        eta,
-        etd,
+        vessel_shortcruise_name,
+        vessel_eta,
+        vessel_etd,
         vessel_name_url
       })
 

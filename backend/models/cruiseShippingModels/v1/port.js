@@ -9,8 +9,7 @@ var PortSchema = new Schema({
   coordinates: {
     type: [Number],
     required: true
-  },
-  timestamps: true
+  }
 })
 
 // Export model

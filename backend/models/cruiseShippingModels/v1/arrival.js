@@ -3,28 +3,34 @@ var mongoose = require("mongoose")
 var Schema = mongoose.Schema
 
 var ArrivalSchema = new Schema({
-  port_url: {
-    type: String,
-    default: "https://www.cruisemapper.com/ports/belfast-port-114"
-  },
-  port_name: { type: String, default: "Belfast" },
-  port_locode: { type: String, default: "GBBEL" },
-  port_location: { type: String, enum: ["Point"], required: true },
-  coordinates: {
-    type: [Number],
-    required: true
-  }, // Longitude is first coordinate in GeoJson
-  arrival_date: { type: String, default: "14 March, 2020" },
-  arrival_day: { type: String, default: "Saturday" },
-  vessel_shortcruise_name: { type: String, default: "CMV Astoria" },
-  vessel_eta: { type: Number, default: "03:00" },
-  vessel_etd: { type: Number, default: "14:00" },
+  arrival_date: { type: String, default: "" },
+  arrival_day: { type: String, default: "" },
+  vessel_shortcruise_name: { type: String, default: "" },
+  vessel_eta: { type: Number, default: "" },
+  vessel_etd: { type: Number, default: "" },
   vessel_name_url: {
     type: String,
-    default: "https://www.cruisemapper.com/ships/CMV-Astoria-821"
-  },
-  timestamps: true
+    default: ""
+  }
 })
+
+// ArrivalSchema.virtual("url").get(function() {
+//   var str = this.arrival_date
+//   var n = str.length
+
+//   //  return this.arrival_date.substr(this.arrival_date)
+// })
+
+// var year = '2013';
+// var month = '04';
+// var day = '18';
+
+// var hour = '12';
+// var min = '35';
+
+// var reserv = new Date(year,month,day,hour,min)
+
+// console.log(reserv);
 
 // Export model
 module.exports = mongoose.model("arrival", ArrivalSchema)
