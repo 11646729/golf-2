@@ -28,3 +28,9 @@ var ArrivalSchema = new Schema(
 
 // Export model
 module.exports = mongoose.model("arrival", ArrivalSchema)
+
+// * Date of the Month
+// * Day of Week
+// * Arrival Time
+// * Departure Time
+// * Name of Ship - including - Short Cruise Line
