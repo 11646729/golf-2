@@ -13,7 +13,7 @@ var ArrivalSchema = new Schema({
   coordinates: {
     type: [Number],
     required: true
-  },
+  }, // Longitude is first coordinate in GeoJson
   arrival_date: { type: String, default: "14 March, 2020" },
   arrival_day: { type: String, default: "Saturday" },
   vessel_shortcruise_name: { type: String, default: "CMV Astoria" },
