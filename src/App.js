@@ -23,8 +23,6 @@ export class MapContainer extends Component {
   }
 }
 
-let google_maps_api_val = google_maps_api()
-
 export default GoogleApiWrapper({
-  apiKey: google_maps_api_val
+  apiKey: google_maps_api()
 })(MapContainer)
