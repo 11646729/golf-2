@@ -120,8 +120,6 @@ CurrentLocation.defaultProps = {
   initialCenter: {
     lat: 54.626792,
     lng: -5.884438
-    // lat: -1.2884,
-    // lng: 36.8233
   },
   centerAroundCurrentLocation: false,
   visible: true
