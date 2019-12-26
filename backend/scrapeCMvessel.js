@@ -30,6 +30,10 @@ let scrape = async () => {
 
       let title = document.querySelector("#review > h2").textContent.trim()
 
+      // Database version
+      let databaseVersion = "1.0"
+
+      // Vessel Type
       let vessel_type = "Cruise Ship"
 
       //      let vessel_photo = ""
@@ -87,11 +91,12 @@ let scrape = async () => {
 
       // Push an object with the data onto our array
       tempScrapedData.push({
-        //        vessel_name_url,
+        // vessel_name_url,
         // pageUrl,
         // databaseVersion,
         // timestamp
         title,
+        databaseVersion,
         vessel_type,
         // vessel_photo,
         // vessel_ais_name,

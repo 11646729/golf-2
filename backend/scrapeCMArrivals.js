@@ -29,6 +29,15 @@ let scrape = async () => {
       // Create an empty array that will store our data
       const tempScrapedData = []
 
+      // Database version
+      let databaseVersion = "1.0"
+
+      // Port Name
+      let port_name = "Belfast"
+
+      // Port UN Locode
+      let port_un_locode = "GBBEL"
+
       //  Date of Arrival
       let arrival_date = document
         .querySelector(
@@ -77,6 +86,9 @@ let scrape = async () => {
 
       // Push an object with the data onto our array
       tempScrapedData.push({
+        databaseVersion,
+        port_name,
+        port_un_locode,
         arrival_date,
         arrival_day,
         vessel_shortcruise_name,
