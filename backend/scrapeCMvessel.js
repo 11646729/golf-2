@@ -93,8 +93,6 @@ let scrape = async () => {
       tempScrapedData.push({
         // vessel_name_url,
         // pageUrl,
-        // databaseVersion,
-        // timestamp
         title,
         databaseVersion,
         vessel_type,
