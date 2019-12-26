@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer")
 
 // Scrape function
 // this wrapper means immediately execute this code
-let scrape = async () => {
+async function scrape() {
   // Wrapper to catch errors
   try {
     // create a new browser instance
@@ -25,7 +25,7 @@ let scrape = async () => {
     await page.goto(pageUrl)
 
     // Now start Data Scraping
-    const scrapedData = await page.evaluate(() => {
+    const scrapedData = await page.evaluate(function() {
       // Create an empty array that will store our data
       const tempScrapedData = []
 
