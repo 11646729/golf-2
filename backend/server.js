@@ -75,27 +75,25 @@ app.listen(port, () => {
 
 // This is a routine to test the scraping then storing function
 try {
-  // const pageUrl =
-  // "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=2020-03#schedule"
+  // First set the page Url to scrape
+  scrapeArrivals.setUrl(
+    "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=2020-03#schedule"
+  )
 
   // Run Scrape Arrivals function then store data
   scrapeArrivals.scrape().then(arrivalValue => {
-    // Save data here
     console.log("Arrival data is:")
     console.log(arrivalValue)
 
-    // Now scrape the vessel data
-    vesselValue = arrivalValue[0].vessel_name_url
+    // Now set the Vessel Name
+    scrapeVessel.setUrl(arrivalValue[0].vessel_name_url)
 
-    // try {
-    //   scrapeVessel.scrape(arrivalValue).then(vesselValue => {
-    //     console.log("Vessel data is:")
-    //     console.log(vesselValue)
-    //   })
-    // } catch (e) {
-    //   console.log("our error", e)
-    // }
+    // Fetch the Vessel details
+    scrapeVessel.scrape().then(vesselValue => {
+      console.log("Vessel data is:")
+      console.log(vesselValue)
+    })
   })
-} catch (e) {
-  console.log("our error", e)
+} catch (error) {
+  console.log("An error has been thrown: " + error)
 }

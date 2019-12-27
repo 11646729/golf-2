@@ -1,11 +1,11 @@
 const puppeteer = require("puppeteer")
 
-// var add = async function(x) {
-//   // async function expression assigned to a variable
-//   var a = await resolveAfter2Seconds(20)
-//   var b = await resolveAfter2Seconds(30)
-//   return x + a + b
-//}
+let pageUrl = ""
+
+// Define and navigate to a web page
+async function setUrl(tempPageUrl) {
+  pageUrl = tempPageUrl
+}
 
 // Scrape function
 // this wrapper means immediately execute this code
@@ -28,10 +28,7 @@ let scrape = async function(arrivalValue) {
     page.setUserAgent(userAgent)
 
     // Define and navigate to a web page
-    //    const pageUrl = vessel_name_url
-    //    const pageUrl = "https:////www.cruisemapper.com/ships/CMV-Astoria-821"
-    //    await page.goto(pageUrl)
-    await page.goto(arrivalValue[0].vessel_name_url)
+    await page.goto(pageUrl)
 
     // Now start Data Scraping
     const scrapedData = await page.evaluate(() => {
@@ -139,5 +136,6 @@ let scrape = async function(arrivalValue) {
 }
 
 module.exports = {
+  setUrl,
   scrape
 }
