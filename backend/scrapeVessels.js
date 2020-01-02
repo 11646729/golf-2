@@ -1,12 +1,12 @@
-const axios = require("axios")
-const cheerio = require("cheerio")
+import axios from "axios"
+import cheerio from "cheerio"
 
-async function getVesselHTML(url) {
+export async function getVesselHTML(url) {
   const { data: html } = await axios.get(url)
   return html
 }
 
-async function getVesselDetails(html) {
+export async function getVesselDetails(html) {
   // load up cheerio
   const $ = cheerio.load(html)
 
@@ -108,9 +108,4 @@ async function getVesselDetails(html) {
 
   // Return our data array
   return vessel_details
-}
-
-module.exports = {
-  getVesselHTML,
-  getVesselDetails
 }

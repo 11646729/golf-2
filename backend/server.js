@@ -1,15 +1,13 @@
-//import { getArrivalsHTML, getMonthlyArrivalsSchedule } from "./scrapeArrivals"
-//import { getVesselHTML, getVesselDetails } from "./scrapeVessels"
-const scrapeArrivals = require("./scrapeArrivals")
-const scrapeVessels = require("./scrapeVessels")
+import { getArrivalsHTML, getMonthlyArrivalsSchedule } from "./scrapeArrivals"
+import { getVesselHTML, getVesselDetails } from "./scrapeVessels"
 
-const express = require("express")
+import express from "express"
+import cors from "cors"
+import mongoose from "mongoose"
 // const path = require("path")
 // const cookieParser = require("cookie-parser")
 // const logger = require("morgan")
 // const createError = require("http-errors")
-const cors = require("cors")
-const mongoose = require("mongoose")
 
 require("dotenv").config()
 
@@ -58,7 +56,7 @@ connection.once("open", () => {
 })
 
 // Configure mongoose's promise to global promise
-promise = global.Promise
+mongoose.promise = global.Promise
 
 // use controllers as per Express Tutorial
 // const indexRouter = require("./routes/cruiseRoutes/v1/indexRoute")
@@ -88,18 +86,16 @@ async function go(tempMonth, tempYear) {
     inputMonth.toString() +
     "#schedule"
 
-  const htmlData = await scrapeArrivals.getArrivalsHTML(arrival_url)
-  const vesselArrivals = await scrapeArrivals.getMonthlyArrivalsSchedule(
-    htmlData
-  )
+  const htmlData = await getArrivalsHTML(arrival_url)
+  const vesselArrivals = await getMonthlyArrivalsSchedule(htmlData)
 
   // Now fetch the vessel details for the arrivals
   // Firstly dig out Vessel Details url
   const vessel_url = vesselArrivals[0].vessel_name_url
 
   // Get Vessel Details
-  const htmlVesselData = await scrapeVessels.getVesselHTML(vessel_url)
-  const vesselDetails = await scrapeVessels.getVesselDetails(htmlVesselData)
+  const htmlVesselData = await getVesselHTML(vessel_url)
+  const vesselDetails = await getVesselDetails(htmlVesselData)
 
   // Store Vessel Detail url in vesselDetails vessel_url field
   vesselDetails[0].vessel_name_url = vessel_url
