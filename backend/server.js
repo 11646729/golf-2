@@ -1,3 +1,8 @@
+//import { getArrivalsHTML, getMonthlyArrivalsSchedule } from "./scrapeArrivals"
+//import { getVesselHTML, getVesselDetails } from "./scrapeVessels"
+const scrapeArrivals = require("./scrapeArrivals")
+const scrapeVessels = require("./scrapeVessels")
+
 const express = require("express")
 // const path = require("path")
 // const cookieParser = require("cookie-parser")
@@ -5,8 +10,6 @@ const express = require("express")
 // const createError = require("http-errors")
 const cors = require("cors")
 const mongoose = require("mongoose")
-const scrapeArrivals = require("./scrapeCMArrivals")
-const scrapeVessel = require("./scrapeCMvessel")
 
 require("dotenv").config()
 
@@ -73,27 +76,36 @@ app.listen(port, () => {
   console.log("Server is running on port:" + port)
 })
 
-// This is a routine to test the scraping then storing function
-try {
-  // First set the page Url to scrape
-  scrapeArrivals.setUrl(
-    "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=2020-03#schedule"
+async function go(tempMonth, tempYear) {
+  // A way to increment year & month to fetch arrival data
+  let inputMonth = tempMonth
+  let inputYear = tempYear
+
+  let arrival_url =
+    "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=" +
+    inputYear.toString() +
+    "-" +
+    inputMonth.toString() +
+    "#schedule"
+
+  const htmlData = await scrapeArrivals.getArrivalsHTML(arrival_url)
+  const vesselArrivals = await scrapeArrivals.getMonthlyArrivalsSchedule(
+    htmlData
   )
 
-  // Run Scrape Arrivals function then store data
-  scrapeArrivals.scrape().then(arrivalValue => {
-    console.log("Arrival data is:")
-    console.log(arrivalValue)
+  // Now fetch the vessel details for the arrivals
+  // Firstly dig out Vessel Details url
+  const vessel_url = vesselArrivals[0].vessel_name_url
 
-    // Now set the Vessel Name
-    scrapeVessel.setUrl(arrivalValue[0].vessel_name_url)
+  // Get Vessel Details
+  const htmlVesselData = await scrapeVessels.getVesselHTML(vessel_url)
+  const vesselDetails = await scrapeVessels.getVesselDetails(htmlVesselData)
 
-    // Fetch the Vessel details
-    scrapeVessel.scrape().then(vesselValue => {
-      console.log("Vessel data is:")
-      console.log(vesselValue)
-    })
-  })
-} catch (error) {
-  console.log("An error has been thrown: " + error)
+  // Store Vessel Detail url in vesselDetails vessel_url field
+  vesselDetails[0].vessel_name_url = vessel_url
+
+  console.log(vesselArrivals)
+  console.log(vesselDetails)
 }
+
+go(4, 2020)
