@@ -27,7 +27,7 @@ app.use(
   })
 )
 
-app.use(express.json())
+app.use(cors())
 
 // MongoDB connection string
 const uri = process.env.ATLAS_URI
@@ -58,7 +58,7 @@ connection.once("open", () => {
 })
 
 // Configure mongoose's promise to global promise
-mongoose.promise = global.Promise
+promise = global.Promise
 
 // use controllers as per Express Tutorial
 // const indexRouter = require("./routes/cruiseRoutes/v1/indexRoute")
