@@ -84,15 +84,17 @@ async function go(tempMonth, tempYear) {
     "#schedule"
 
   const vesselArrivals = await getSingleArrivalsSchedule(arrival_url)
+  console.log(vesselArrivals)
 
   // Now fetch the vessel details for the arrivals
-  // Firstly dig out Vessel Details url
-  const vessel_url = vesselArrivals[0].vessel_name_url
+  let vessel_url
+  let vesselDetails
 
-  const vesselDetails = await getSingleVesselDetails(vessel_url)
-
-  console.log(vesselArrivals)
-  console.log(vesselDetails)
+  for (let i = 0; i < vesselArrivals.length; i++) {
+    vessel_url = vesselArrivals[i].vessel_name_url
+    vesselDetails = await getSingleVesselDetails(vessel_url)
+    //    console.log(vesselDetails)
+  }
 }
 
 go(4, 2020)
