@@ -1,5 +1,9 @@
 import { getArrivalsHTML, getMonthlyArrivalsSchedule } from "./scrapeArrivals"
-import { getVesselHTML, getVesselDetails } from "./scrapeVessels"
+import {
+  // getVesselHTML,
+  // getVesselDetails,
+  getSingleVesselDetails
+} from "./scrapeVessels"
 
 import express from "express"
 import cors from "cors"
@@ -93,12 +97,7 @@ async function go(tempMonth, tempYear) {
   // Firstly dig out Vessel Details url
   const vessel_url = vesselArrivals[0].vessel_name_url
 
-  // Get Vessel Details
-  const htmlVesselData = await getVesselHTML(vessel_url)
-  const vesselDetails = await getVesselDetails(htmlVesselData)
-
-  // Store Vessel Detail url in vesselDetails vessel_url field
-  vesselDetails[0].vessel_name_url = vessel_url
+  const vesselDetails = await getSingleVesselDetails(vessel_url)
 
   console.log(vesselArrivals)
   console.log(vesselDetails)

@@ -109,3 +109,15 @@ export async function getVesselDetails(html) {
   // Return our data array
   return vessel_details
 }
+
+export async function getSingleVesselDetails(vessel_url) {
+  // Get Vessel Details
+  const htmlVesselData = await getVesselHTML(vessel_url)
+  const vesselDetails = await getVesselDetails(htmlVesselData)
+
+  // Store Vessel Detail url in vesselDetails vessel_url field
+  vesselDetails[0].vessel_name_url = vessel_url
+
+  // Return our data array
+  return vesselDetails
+}
