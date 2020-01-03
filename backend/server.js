@@ -1,9 +1,5 @@
-import { getArrivalsHTML, getMonthlyArrivalsSchedule } from "./scrapeArrivals"
-import {
-  // getVesselHTML,
-  // getVesselDetails,
-  getSingleVesselDetails
-} from "./scrapeVessels"
+import { getSingleArrivalsSchedule } from "./scrapeArrivals"
+import { getSingleVesselDetails } from "./scrapeVessels"
 
 import express from "express"
 import cors from "cors"
@@ -80,18 +76,14 @@ app.listen(port, () => {
 
 async function go(tempMonth, tempYear) {
   // A way to increment year & month to fetch arrival data
-  let inputMonth = tempMonth
-  let inputYear = tempYear
-
   let arrival_url =
     "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=" +
-    inputYear.toString() +
+    tempYear.toString() +
     "-" +
-    inputMonth.toString() +
+    tempMonth.toString() +
     "#schedule"
 
-  const htmlData = await getArrivalsHTML(arrival_url)
-  const vesselArrivals = await getMonthlyArrivalsSchedule(htmlData)
+  const vesselArrivals = await getSingleArrivalsSchedule(arrival_url)
 
   // Now fetch the vessel details for the arrivals
   // Firstly dig out Vessel Details url

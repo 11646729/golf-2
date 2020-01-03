@@ -6,7 +6,7 @@ export async function getArrivalsHTML(url) {
   return html
 }
 
-export async function getMonthlyArrivalsSchedule(html) {
+export async function getArrivalsSchedule(html) {
   // load up cheerio
   const $ = cheerio.load(html)
 
@@ -115,4 +115,11 @@ export async function getMonthlyArrivalsSchedule(html) {
   })
 
   return vessel_arrival
+}
+
+export async function getSingleArrivalsSchedule(arrival_url) {
+  const htmlData = await getArrivalsHTML(arrival_url)
+  const vesselArrivals = await getArrivalsSchedule(htmlData)
+
+  return vesselArrivals
 }
