@@ -117,7 +117,15 @@ export async function getArrivalsSchedule(html) {
   return vessel_arrival
 }
 
-export async function getSingleArrivalsSchedule(arrival_url) {
+export async function getSingleArrivalsSchedule(Month, Year) {
+  // A way to increment year & month to fetch arrival data
+  let arrival_url =
+    "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=" +
+    Year.toString() +
+    "-" +
+    Month.toString() +
+    "#schedule"
+
   const htmlData = await getArrivalsHTML(arrival_url)
   const vesselArrivals = await getArrivalsSchedule(htmlData)
 

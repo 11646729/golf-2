@@ -74,25 +74,22 @@ app.listen(port, () => {
   console.log("Server is running on port:" + port)
 })
 
-async function go(tempMonth, tempYear) {
-  // A way to increment year & month to fetch arrival data
-  let arrival_url =
-    "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=" +
-    tempYear.toString() +
-    "-" +
-    tempMonth.toString() +
-    "#schedule"
+async function go(Month, Year) {
+  const vesselArrivals = await getSingleArrivalsSchedule(Month, Year)
 
-  const vesselArrivals = await getSingleArrivalsSchedule(arrival_url)
   console.log(vesselArrivals)
 
   // Now fetch the vessel details for the arrivals
+  // TODO - Check if vessel already exists & hasn't been updated first
+  // -----------------------------------------------------------------
   let vessel_url
   let vesselDetails
 
   for (let i = 0; i < vesselArrivals.length; i++) {
     vessel_url = vesselArrivals[i].vessel_name_url
+
     vesselDetails = await getSingleVesselDetails(vessel_url)
+
     //    console.log(vesselDetails)
   }
 }
