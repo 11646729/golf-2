@@ -1,8 +1,26 @@
 import axios from "axios"
 import cheerio from "cheerio"
+import dotenv from "dotenv"
 
-export async function getArrivalsHTML(url) {
-  const { data: html } = await axios.get(url)
+dotenv.config()
+
+export async function getArrivalsHTML() {
+  let startYear = process.env.START_YEAR
+  let startMonth = process.env.START_MONTH
+  let endYear = process.env.END_YEAR
+  let endMonth = process.env.END_MONTH
+
+  console.log(endYear)
+
+  // A way to increment year & month to fetch arrival data
+  let arrival_url =
+    "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=" +
+    startYear.toString() +
+    "-" +
+    startMonth.toString() +
+    "#schedule"
+
+  const { data: html } = await axios.get(arrival_url)
   return html
 }
 
@@ -117,16 +135,8 @@ export async function getArrivalsSchedule(html) {
   return vessel_arrival
 }
 
-export async function getSingleArrivalsSchedule(Month, Year) {
-  // A way to increment year & month to fetch arrival data
-  let arrival_url =
-    "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=" +
-    Year.toString() +
-    "-" +
-    Month.toString() +
-    "#schedule"
-
-  const htmlData = await getArrivalsHTML(arrival_url)
+export async function getSingleArrivalsSchedule() {
+  const htmlData = await getArrivalsHTML()
   const vesselArrivals = await getArrivalsSchedule(htmlData)
 
   return vesselArrivals

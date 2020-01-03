@@ -1,15 +1,15 @@
-import { getSingleArrivalsSchedule } from "./scrapeArrivals"
-import { getSingleVesselDetails } from "./scrapeVessels"
+import { getMonthAndVesselArrivals } from "./utilities"
 
 import express from "express"
 import cors from "cors"
 import mongoose from "mongoose"
+import dotenv from "dotenv"
 // const path = require("path")
 // const cookieParser = require("cookie-parser")
 // const logger = require("morgan")
 // const createError = require("http-errors")
 
-require("dotenv").config()
+dotenv.config()
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -74,24 +74,4 @@ app.listen(port, () => {
   console.log("Server is running on port:" + port)
 })
 
-async function go(Month, Year) {
-  const vesselArrivals = await getSingleArrivalsSchedule(Month, Year)
-
-  console.log(vesselArrivals)
-
-  // Now fetch the vessel details for the arrivals
-  // TODO - Check if vessel already exists & hasn't been updated first
-  // -----------------------------------------------------------------
-  let vessel_url
-  let vesselDetails
-
-  for (let i = 0; i < vesselArrivals.length; i++) {
-    vessel_url = vesselArrivals[i].vessel_name_url
-
-    vesselDetails = await getSingleVesselDetails(vessel_url)
-
-    //    console.log(vesselDetails)
-  }
-}
-
-go(4, 2020)
+getMonthAndVesselArrivals()
