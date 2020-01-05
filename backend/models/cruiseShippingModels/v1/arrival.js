@@ -3,34 +3,25 @@ var mongoose = require("mongoose")
 var Schema = mongoose.Schema
 
 var ArrivalSchema = new Schema({
-  arrival_date: { type: String, default: "" },
-  arrival_day: { type: String, default: "" },
+  database_version: { type: Number, default: 1.0, required: true },
+  port_name: { type: String, default: "Belfast", required: true },
+  port_un_locode: { type: String, default: "GBBEL", required: true },
   vessel_shortcruise_name: { type: String, default: "" },
-  vessel_eta: { type: Number, default: "" },
-  vessel_etd: { type: Number, default: "" },
+  vessel_eta: { type: Date },
+  vessel_etd: { type: Date },
   vessel_name_url: {
     type: String,
-    default: ""
+    required: true
   }
 })
 
-// ArrivalSchema.virtual("url").get(function() {
-//   var str = this.arrival_date
-//   var n = str.length
-
-//   //  return this.arrival_date.substr(this.arrival_date)
-// })
-
-// var year = '2013';
-// var month = '04';
-// var day = '18';
-
-// var hour = '12';
-// var min = '35';
-
-// var reserv = new Date(year,month,day,hour,min)
-
-// console.log(reserv);
+// databaseVersion: '1.0',
+//     port_name: 'Belfast',
+//     port_un_locode: 'GBBEL',
+//     vessel_shortcruise_name: 'L\'Austral',
+//     vessel_eta: 'Invalid Date',
+//     vessel_etd: 'Invalid Date',
+//vessel_name_url: "https://www.cruisemapper.com/ships/LAustral-756"
 
 // Export model
 module.exports = mongoose.model("arrival", ArrivalSchema)

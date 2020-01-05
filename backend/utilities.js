@@ -15,6 +15,6 @@ export async function getMonthAndVesselArrivals() {
     vessel_url = vesselArrivals[i].vessel_name_url
 
     vesselDetails = await getSingleVesselDetails(vessel_url)
-    console.log(vesselDetails)
+    //    console.log(vesselDetails)
   }
 }

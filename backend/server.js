@@ -1,9 +1,9 @@
-import { getMonthAndVesselArrivals } from "./utilities"
-
 import express from "express"
 import cors from "cors"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
+import { getMonthAndVesselArrivals } from "./utilities"
+
 // const path = require("path")
 // const cookieParser = require("cookie-parser")
 // const logger = require("morgan")

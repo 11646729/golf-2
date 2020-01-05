@@ -4,13 +4,24 @@ import dotenv from "dotenv"
 
 dotenv.config()
 
-export async function getArrivalsHTML() {
-  let startYear = process.env.START_YEAR
-  let startMonth = process.env.START_MONTH
-  let endYear = process.env.END_YEAR
-  let endMonth = process.env.END_MONTH
+let startYear = parseInt(process.env.START_YEAR)
+let startMonth = parseInt(process.env.START_MONTH)
+let endYear = process.env.END_YEAR
+let endMonth = process.env.END_MONTH
 
-  console.log(endYear)
+export async function getArrivalsHTML() {
+  // let day = parseInt("1")
+
+  // console.log(startMonth)
+  // console.log(startYear)
+
+  // var d = new Date()
+  // d.setFullYear(startYear, startMonth)
+
+  // //var startOfMonth = new Date(startYear, startMonth, day)
+
+  // //  startOfMonth.setMonth(0)
+  // console.log(d)
 
   // A way to increment year & month to fetch arrival data
   let arrival_url =
@@ -40,38 +51,20 @@ export async function getArrivalsSchedule(html) {
     // Port UN Locode
     const port_un_locode = "GBBEL"
 
-    //  Date of Arrival
-    let temp_arrival_date = $(item)
-      .children("td")
-      .html()
-      .replace(/,/, "") // Removes the comma
-    // Returns: <span>29 April 2020</span><br><span class="bold">Wednesday</span><br>
-
-    // Now extract the date string
-    let str = temp_arrival_date
-    let n = str.indexOf("2020")
-
-    // Use ParseInt()
-
-    const arrival_date = str.substr(6, n - 2) // 6 = after <span>, 4 = length of 2020, 2 = 6 - 4
-    // const arrival_date = Date.parse(str.substr(6, n - 2))
-    // TODO FOR YEARS OTHER THAN 2020
-
-    // Day of the Week
-    const arrival_day = $(item)
-      .children("td")
-      .find(".bold")
-      .text()
-
     // Name of Vessel
     const vessel_shortcruise_name = $(item)
       .find("a")
       .text()
 
-    // Url of Vessel Web Page
-    const vessel_name_url = $(item)
-      .find("a")
-      .attr("href")
+    //  Date of Arrival
+    let temp_arrival_date = $(item)
+      .children("td")
+      .html()
+      .replace(/,/, "") // Removes the comma
+
+    // Now extract the date string
+    let n = temp_arrival_date.indexOf(startYear)
+    const arrival_date = temp_arrival_date.substr(6, n - 2)
 
     // // Expected Time of Arrival
     let vessel_eta = $(item)
@@ -79,13 +72,6 @@ export async function getArrivalsSchedule(html) {
       .next("td")
       .next("td")
       .html() // 03:00
-
-    // Expected Time of Arrival
-    // let vessel_eta = $(
-    //   "#schedule > div.table-responsive > table > tbody > tr > td:nth-child(3)"
-    // )
-    //   .text()
-    //   .trim()
 
     // If No Arrival Time Given
     if (vessel_eta == "") {
@@ -102,13 +88,6 @@ export async function getArrivalsSchedule(html) {
       .last("td")
       .html() // 14:00
 
-    // Expected Time of Departure
-    // let vessel_etd = $(
-    //   "#schedule > div.table-responsive > table > tbody > tr > td:nth-child(4)"
-    // )
-    //   .text()
-    //   .trim()
-
     // If No Departure Time Given
     if (vessel_etd == "") {
       vessel_etd = "Not Known"
@@ -118,13 +97,16 @@ export async function getArrivalsSchedule(html) {
       vessel_etd = d.toUTCString()
     }
 
+    // Url of Vessel Web Page
+    const vessel_name_url = $(item)
+      .find("a")
+      .attr("href")
+
     // Push an object with the data onto our array
     vessel_arrival.push({
       databaseVersion,
       port_name,
       port_un_locode,
-      //      arrival_date,
-      //      arrival_day,
       vessel_shortcruise_name,
       vessel_eta,
       vessel_etd,
