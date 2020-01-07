@@ -1,4 +1,4 @@
-var mongoose = require("mongoose")
+import mongoose from "mongoose"
 
 var Schema = mongoose.Schema
 
@@ -14,14 +14,3 @@ var PortSchema = new Schema({
 
 // Export model
 module.exports = mongoose.model("port", PortSchema)
-
-// * An id
-// * Name
-// * A set of Coordinates
-// * A Description
-// * A Time & Date of Arrival
-// * A Time & Date of Departure
-// * A Port (Location)
-// * A Berthing Location
-// * A Shipping Agent
-// * A set of Excursions
