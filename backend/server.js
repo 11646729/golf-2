@@ -2,7 +2,7 @@ import express from "express"
 import cors from "cors"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
-import { getVesselArrivalsAndVesselDetails } from "./utilities"
+import { getAllVesselArrivalsAndVesselDetails } from "./utilities"
 
 // const path = require("path")
 // const cookieParser = require("cookie-parser")
@@ -74,4 +74,4 @@ app.listen(port, () => {
   console.log("Server is running on port:" + port)
 })
 
-getVesselArrivalsAndVesselDetails()
+getAllVesselArrivalsAndVesselDetails()

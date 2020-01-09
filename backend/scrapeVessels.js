@@ -1,8 +1,8 @@
 import axios from "axios"
 import cheerio from "cheerio"
 
-export async function getVesselDetailsHTML(url) {
-  const { data: html } = await axios.get(url)
+export async function getVesselDetailsHTML(vessel_url) {
+  const { data: html } = await axios.get(vessel_url)
   return html
 }
 

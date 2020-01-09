@@ -1,68 +1,64 @@
-import { getVesselArrivalsHTML, getArrivalsSchedule } from "./scrapeArrivals"
+import { getVesselArrivals } from "./scrapeArrivals"
 import { getVesselDetailsHTML, getSingleVesselDetails } from "./scrapeVessels"
 import dotenv from "dotenv"
+import moment from "moment"
 
 dotenv.config()
 
-let startYear = parseInt(process.env.START_YEAR)
-let startMonth = parseInt(process.env.START_MONTH)
-let endYear = parseInt(process.env.END_YEAR)
-let endMonth = parseInt(process.env.END_MONTH)
-let day = parseInt("1")
+export async function getAllVesselArrivalsAndVesselDetails() {
+  // Fetch vessel arrivals first so calculate all URLs then loop through the URLs
 
-// var d = new Date()
-// d.setFullYear(startYear, startMonth)
+  let day = parseInt("1")
 
-// var startOfMonth = new Date(startYear, startMonth, day)
+  let sd = day + "/" + process.env.START_MONTH + "/" + process.env.START_YEAR
+  let startDate = moment(sd, "DD-MM-YYYY").toISOString(true)
 
-// startOfMonth.setMonth(0)
-// console.log(d)
+  let ed = day + "/" + process.env.END_MONTH + "/" + process.env.END_YEAR
+  let endDate = moment(ed, "DD-MM-YYYY").toISOString(true)
 
-let loopStart = process.env.START_MONTH + process.env.START_YEAR
-let loopEnd = process.env.END_MONTH + process.env.END_YEAR
-console.log(loopStart) // 42019
-console.log(loopEnd) // 52020
+  const NoOfMonths = moment(endDate).diff(
+    moment(startDate).subtract(1, "month"),
+    "months",
+    true
+  )
 
-// TODO - Increment Month & Year
+  let i = 0
+  do {
+    let newDate = moment(startDate).add(i, "month")
 
-export async function getVesselArrivalsAndVesselDetails() {
-  let selectedMonth = "4"
-  let selectedYear = "2019"
+    let selectedMonth = newDate.format("MM")
+    let selectedYear = newDate.format("YYYY")
 
-  const vesselArrivals = await getVesselArrival(selectedMonth, selectedYear)
-  console.log(vesselArrivals)
+    const vesselArrivals = await getVesselArrivals(selectedMonth, selectedYear)
 
-  // Now fetch the vessel details for the arrivals
-  // TODO - Check if vessel already exists & hasn't been updated first
-  // -----------------------------------------------------------------
-  let vessel_url = ""
-  let vesselDetails = ""
+    console.log(vesselArrivals)
 
-  for (let i = 0; i < vesselArrivals.length; i++) {
-    vessel_url = vesselArrivals[i].vessel_name_url
-
-    vesselDetails = await getVesselDetails(vessel_url)
-    //    console.log(vesselDetails)
-  }
+    i++
+  } while (i < NoOfMonths)
 }
 
-export async function getVesselArrival(Month, Year) {
-  // Get Vessel Arrivals in a Specific Month
-  const htmlData = await getVesselArrivalsHTML(Month, Year)
-  const vesselArrivals = await getArrivalsSchedule(htmlData)
+//   // Now fetch the vessel details for the arrivals
+//   // TODO - Check if vessel already exists & hasn't been updated first
+//   // -----------------------------------------------------------------
+//   let vessel_url = ""
+//   let vesselDetails = ""
 
-  // Return our data array
-  return vesselArrivals
-}
+//   for (let i = 0; i < vesselArrivals.length; i++) {
+//     vessel_url = vesselArrivals[i].vessel_name_url
 
-export async function getVesselDetails(VesselUrl) {
-  // Get a Specific Vessel Details
-  const htmlVesselData = await getVesselDetailsHTML(VesselUrl)
-  const vesselDetails = await getSingleVesselDetails(htmlVesselData)
+//     vesselDetails = await getVesselDetails(vessel_url)
+//     //    console.log(vesselDetails)
+//   }
+// }
 
-  // Store Vessel Detail url in vesselDetails vessel_url field
-  vesselDetails[0].vessel_name_url = VesselUrl
+// async function getVesselDetails(VesselUrl) {
+//   // Get a Specific Vessel Details
+//   const htmlVesselData = await getVesselDetailsHTML(VesselUrl)
+//   const vesselDetails = await getSingleVesselDetails(htmlVesselData)
 
-  // Return our data array
-  return vesselDetails
-}
+//   // Store Vessel Detail url in vesselDetails vessel_url field
+//   vesselDetails[0].vessel_name_url = VesselUrl
+
+//   // Return our data array
+//   return vesselDetails
+// }

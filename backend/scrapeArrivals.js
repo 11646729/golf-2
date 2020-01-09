@@ -1,7 +1,7 @@
 import axios from "axios"
 import cheerio from "cheerio"
 
-export async function getVesselArrivalsHTML(selectedMonth, selectedYear) {
+export async function getVesselArrivals(selectedMonth, selectedYear) {
   let arrival_url =
     "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=" +
     selectedYear +
@@ -10,10 +10,7 @@ export async function getVesselArrivalsHTML(selectedMonth, selectedYear) {
     "#schedule"
 
   const { data: html } = await axios.get(arrival_url)
-  return html
-}
 
-export async function getArrivalsSchedule(html) {
   // load up cheerio
   const $ = cheerio.load(html)
 
