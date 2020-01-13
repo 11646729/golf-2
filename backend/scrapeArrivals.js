@@ -28,10 +28,8 @@ export async function getScheduleMonths() {
 export async function getVesselArrivals(period) {
   let arrival_url =
     "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=" +
-    String(period) +
+    period +
     "#schedule"
-
-  //  console.log(String(period))
 
   const { data: html } = await axios.get(arrival_url)
 
@@ -63,10 +61,6 @@ export async function getVesselArrivals(period) {
         .children("span")
         .html()
         .replace(/,/, "") // Removes the comma
-
-      // // Now extract the date string
-      //      let n = temp_arrival_date.indexOf(selectedYear)
-      //      const arrival_date = temp_arrival_date.substr(6, n - 2)
 
       // // Expected Time of Arrival
       let vessel_eta = $(item)
