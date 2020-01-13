@@ -1,4 +1,4 @@
-import { getVesselArrivals } from "./scrapeArrivals"
+import { getVesselArrivals, getScheduleMonths } from "./scrapeArrivals"
 import { getVesselDetailsHTML, getSingleVesselDetails } from "./scrapeVessels"
 import dotenv from "dotenv"
 import moment from "moment"
@@ -6,6 +6,10 @@ import moment from "moment"
 dotenv.config()
 
 export async function getAllVesselArrivalsAndVesselDetails() {
+  const scheduleMonths = await getScheduleMonths()
+
+  console.log(scheduleMonths)
+
   // Fetch vessel arrivals first so calculate all URLs then loop through the URLs
 
   let day = parseInt("1")
@@ -31,7 +35,7 @@ export async function getAllVesselArrivalsAndVesselDetails() {
 
     const vesselArrivals = await getVesselArrivals(selectedMonth, selectedYear)
 
-    console.log(vesselArrivals)
+    //    console.log(vesselArrivals)
 
     i++
   } while (i < NoOfMonths)
