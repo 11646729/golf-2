@@ -6,39 +6,19 @@ import moment from "moment"
 dotenv.config()
 
 export async function getAllVesselArrivalsAndVesselDetails() {
-  const scheduleMonths = await getScheduleMonths()
-
-  console.log(scheduleMonths)
-
-  // Fetch vessel arrivals first so calculate all URLs then loop through the URLs
-
-  let day = parseInt("1")
-
-  let sd = day + "/" + process.env.START_MONTH + "/" + process.env.START_YEAR
-  let startDate = moment(sd, "DD-MM-YYYY").toISOString(true)
-
-  let ed = day + "/" + process.env.END_MONTH + "/" + process.env.END_YEAR
-  let endDate = moment(ed, "DD-MM-YYYY").toISOString(true)
-
-  const NoOfMonths = moment(endDate).diff(
-    moment(startDate).subtract(1, "month"),
-    "months",
-    true
-  )
+  const scheduledPeriod = await getScheduleMonths()
 
   let i = 0
+
   do {
-    let newDate = moment(startDate).add(i, "month")
+    const period = scheduledPeriod[i].monthYearString
+    const vesselArrivals = await getVesselArrivals(period)
 
-    let selectedMonth = newDate.format("MM")
-    let selectedYear = newDate.format("YYYY")
-
-    const vesselArrivals = await getVesselArrivals(selectedMonth, selectedYear)
-
-    //    console.log(vesselArrivals)
+    console.log(period)
+    console.log(vesselArrivals)
 
     i++
-  } while (i < NoOfMonths)
+  } while (i < scheduledPeriod.length)
 }
 
 //   // Now fetch the vessel details for the arrivals

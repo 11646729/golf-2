@@ -12,53 +12,26 @@ export async function getScheduleMonths() {
 
   let monthYearStringArray = []
 
-  $(".portMonthSelect option").each((i, item) => {
-    const monthYearString = $(item).attr("value")
+  $("#schedule > div:nth-child(2) > div.col-xs-8.thisMonth option").each(
+    (i, item) => {
+      const monthYearString = $(item).attr("value")
 
-    monthYearStringArray.push({
-      monthYearString
-    })
-  })
-
-  /* <select class="form-control portMonthSelect" name="calendar">
-    <option value="2019-04">2019 April</option>
-    <option value="2019-05" selected="">
-      2019 May
-    </option>
-    <option value="2019-06">2019 June</option>
-    <option value="2019-07">2019 July</option>
-    <option value="2019-08">2019 August</option>
-    <option value="2019-09">2019 September</option>
-    <option value="2019-10">2019 October</option>
-    <option value="2020-03">2020 March</option>
-    <option value="2020-04">2020 April</option>
-    <option value="2020-05">2020 May</option>
-    <option value="2020-06">2020 June</option>
-    <option value="2020-07">2020 July</option>
-    <option value="2020-08">2020 August</option>
-    <option value="2020-09">2020 September</option>
-    <option value="2020-10">2020 October</option>
-    <option value="2021-03">2021 March</option>
-    <option value="2021-04">2021 April</option>
-    <option value="2021-05">2021 May</option>
-    <option value="2021-06">2021 June</option>
-    <option value="2021-07">2021 July</option>
-    <option value="2021-08">2021 August</option>
-    <option value="2021-09">2021 September</option>
-    <option value="2021-10">2021 October</option>
-    <option value="2022-08">2022 August</option>
-  </select> */
+      monthYearStringArray.push({
+        monthYearString
+      })
+    }
+  )
 
   return monthYearStringArray
 }
 
-export async function getVesselArrivals(selectedMonth, selectedYear) {
+export async function getVesselArrivals(period) {
   let arrival_url =
     "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=" +
-    selectedYear +
-    "-" +
-    selectedMonth +
+    String(period) +
     "#schedule"
+
+  //  console.log(String(period))
 
   const { data: html } = await axios.get(arrival_url)
 
