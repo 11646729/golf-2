@@ -1,11 +1,39 @@
 import axios from "axios"
 import cheerio from "cheerio"
+import dotenv from "dotenv"
 
-export async function getScheduleMonths() {
-  let arrival_url =
-    "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=2019-05#schedule"
+dotenv.config()
 
-  const { data: html } = await axios.get(arrival_url)
+let allVesselMovements = []
+
+export async function getAllVesselArrivals() {
+  const scheduledPeriod = await getScheduleMonths()
+
+  let i = 0
+
+  do {
+    const period = String(scheduledPeriod[i].monthYearString)
+    let vesselArrivals = await getVesselArrivals(period)
+
+    let j = 0
+
+    do {
+      allVesselMovements.push(vesselArrivals[j])
+
+      j++
+    } while (j < vesselArrivals.length)
+
+    i++
+  } while (i < scheduledPeriod.length)
+
+  console.log(allVesselMovements)
+
+  return allVesselMovements
+}
+
+async function getScheduleMonths() {
+  // Fetch the initial data
+  const { data: html } = await axios.get(process.env.INITIAL_URL)
 
   // load up cheerio
   const $ = cheerio.load(html)
@@ -25,7 +53,7 @@ export async function getScheduleMonths() {
   return monthYearStringArray
 }
 
-export async function getVesselArrivals(period) {
+async function getVesselArrivals(period) {
   let arrival_url =
     "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=" +
     period +
