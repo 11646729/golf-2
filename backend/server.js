@@ -74,4 +74,10 @@ app.listen(port, () => {
   console.log("Server is running on port:" + port)
 })
 
-getAllVesselArrivals()
+async function go() {
+  const allArrivals = await getAllVesselArrivals()
+
+  console.log(allArrivals)
+}
+
+go()

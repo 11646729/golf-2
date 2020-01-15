@@ -26,8 +26,6 @@ export async function getAllVesselArrivals() {
     i++
   } while (i < scheduledPeriod.length)
 
-  console.log(allVesselMovements)
-
   return allVesselMovements
 }
 
