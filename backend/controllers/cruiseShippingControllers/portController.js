@@ -3,9 +3,9 @@ var router = express.Router()
 //import { getAllVesselArrivals } from "../../scrapeArrivals"
 
 // Site Home Page
-router.get("/", async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: portController Index path")
-})
+// router.get("/", async (req, res, next) => {
+//   res.send("NOT IMPLEMENTED: portController Index path")
+// })
 
 // router.get("/cruise", async (req, res, next) => {
 //   console.log("Scraping!")

@@ -61,13 +61,13 @@ mongoose.promise = global.Promise
 // const indexRouter = require("./routes/cruiseRoutes/v1/indexRoute")
 // const usersRouter = require("./routes/cruiseRoutes/v1/usersRoute")
 // const golfRouter = require("./routes/golfRoutes/v1/golfRoute")
-const cruiseRouter = require("./routes/cruiseRoutes/v1/cruiseCatalogRoute")
+const cruiseShipsRouter = require("./routes/cruiseRoutes/v1/cruiseShipsCatalogRoute")
 
 // routes
 // app.use("/", indexRouter)
 // app.use("/users", usersRouter)
 // app.use("/golf", golfRouter)
-app.use("/cruiseShips", cruiseRouter)
+app.use("/cruiseShips", cruiseShipsRouter)
 
 app.listen(port, () => {
   console.log("Server is running on port:" + port)
