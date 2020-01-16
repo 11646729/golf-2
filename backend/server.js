@@ -2,7 +2,6 @@ import express from "express"
 import cors from "cors"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
-import { getAllVesselArrivals } from "./scrapeArrivals"
 
 // const path = require("path")
 // const cookieParser = require("cookie-parser")
@@ -60,24 +59,16 @@ mongoose.promise = global.Promise
 
 // use controllers as per Express Tutorial
 // const indexRouter = require("./routes/cruiseRoutes/v1/indexRoute")
-const usersRouter = require("./routes/cruiseRoutes/v1/usersRoute")
-const golfRouter = require("./routes/golfRoutes/v1/golfRoute")
+// const usersRouter = require("./routes/cruiseRoutes/v1/usersRoute")
+// const golfRouter = require("./routes/golfRoutes/v1/golfRoute")
 const cruiseRouter = require("./routes/cruiseRoutes/v1/cruiseCatalogRoute")
 
 // routes
-//app.use("/", indexRouter)
-app.use("/users", usersRouter)
-app.use("/golf", golfRouter)
-app.use("/cruise", cruiseRouter)
+// app.use("/", indexRouter)
+// app.use("/users", usersRouter)
+// app.use("/golf", golfRouter)
+app.use("/cruiseShips", cruiseRouter)
 
 app.listen(port, () => {
   console.log("Server is running on port:" + port)
 })
-
-async function go() {
-  const allArrivals = await getAllVesselArrivals()
-
-  console.log(allArrivals)
-}
-
-go()

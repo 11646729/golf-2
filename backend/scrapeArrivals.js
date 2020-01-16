@@ -29,7 +29,7 @@ export async function getAllVesselArrivals() {
   return allVesselMovements
 }
 
-async function getScheduleMonths() {
+export async function getScheduleMonths() {
   // Fetch the initial data
   const { data: html } = await axios.get(process.env.INITIAL_URL)
 
@@ -51,7 +51,7 @@ async function getScheduleMonths() {
   return monthYearStringArray
 }
 
-async function getVesselArrivals(period) {
+export async function getVesselArrivals(period) {
   let arrival_url =
     "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=" +
     period +

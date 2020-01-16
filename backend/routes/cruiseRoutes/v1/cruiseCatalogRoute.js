@@ -1,28 +1,25 @@
-var express = require("express")
+import express from "express"
 var router = express.Router()
+import { getAllVesselArrivals } from "../../../scrapeArrivals"
 
 // Require controller modules
-var cruise_controller = require("../../../controllers/cruiseShippingControllers/cruiseController")
-var itinerary_controller = require("../../../controllers/cruiseShippingControllers/itineraryController")
-var port_controller = require("../../../controllers/cruiseShippingControllers/portController")
-var vessel_controller = require("../../../controllers/cruiseShippingControllers/vesselController")
+// var cruise_controller = require("../../../controllers/cruiseShippingControllers/cruiseController")
+// var itinerary_controller = require("../../../controllers/cruiseShippingControllers/itineraryController")
+// import port_controller from "../../../controllers/cruiseShippingControllers/portController"
+// var vessel_controller = require("../../../controllers/cruiseShippingControllers/vesselController")
 
 /// CRUISE ROUTES ///
 
 // GET catalogue home page
-router.get("/", cruise_controller.index)
+// router.get("/", port_controller.index)
 
-// To run puppetteer on a schedule taken from https://stackoverflow.com/questions/48957964/automatic-scheduled-javascript-on-website
-// const puppeteer = require('puppeteer');
-// setInterval(async () => {
-//     const browser = await puppeteer.launch();
-//     const page = await browser.newPage();
-//     await page.goto('https://example.com');
-//     await page.evaluate(() => {
-//         // your snippet
-//     });
-//     await browser.close();
+router.get("/port", async (req, res, next) => {
+  console.log("Scraping!")
 
-// }, 1 * 60 * 60 * 1000); // every 1 hour
+  const allArrivals = await getAllVesselArrivals()
+
+  //  console.log(allArrivals)
+  res.json(allArrivals)
+})
 
 module.exports = router
