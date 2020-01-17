@@ -13,6 +13,6 @@ const port_controller = require("../../../controllers/cruiseShippingControllers/
 router.get("/", port_controller.index)
 
 // Get all port arrivals - only Belfast at present
-router.get("/port", port_controller.port_arrivals)
+router.get("/portArrivals", port_controller.port_arrivals)
 
 module.exports = router

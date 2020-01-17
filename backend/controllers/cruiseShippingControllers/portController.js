@@ -5,7 +5,7 @@ export function index(req, res, next) {
   res.send("NOT IMPLEMENTED: portController Index path")
 }
 
-// Path localhost:3000/cruiseShips/port
+// Path localhost:3000/cruiseShips/portArrivals
 export async function port_arrivals(req, res) {
   console.log("Scraping!")
 
