@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -r esm server.js"
+    "start": "nodemon -r esm server.js --ignore db.json"
   },
   "keywords": [],
   "author": "Brian Smith",
@@ -17,6 +17,7 @@
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
+    "lowdb": "^1.0.0",
     "moment": "^2.24.0",
     "mongoose": "^5.8.0",
     "morgan": "^1.9.1",

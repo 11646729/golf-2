@@ -1,4 +1,5 @@
 import { getAllVesselArrivals } from "../../scrapeArrivals"
+import db from "../../db"
 
 // Site Home Page
 export function index(req, res, next) {
@@ -11,6 +12,14 @@ export async function port_arrivals(req, res) {
 
   const allArrivals = await getAllVesselArrivals()
 
-  console.log(allArrivals)
   res.json(allArrivals)
+
+  db.get("arrivals")
+    .push({
+      date: Date.now(),
+      arrivals: allArrivals
+    })
+    .write()
+
+  console.log("Scraping done at " + Date.now())
 }
