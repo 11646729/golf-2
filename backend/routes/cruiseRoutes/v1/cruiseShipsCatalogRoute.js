@@ -1,26 +1,18 @@
 import express from "express"
 var router = express.Router()
-import { getAllVesselArrivals } from "../../../scrapeArrivals"
 
 // Require controller modules
-// var cruise_controller = require("../../../controllers/cruiseShippingControllers/cruiseController")
-// var itinerary_controller = require("../../../controllers/cruiseShippingControllers/itineraryController")
-//import port_controller from "../../../controllers/cruiseShippingControllers/portController"
-//"../../../controllers/cruiseShippingControllers/portController"
-// var vessel_controller = require("../../../controllers/cruiseShippingControllers/vesselController")
+// const cruise_controller = require("../../../controllers/cruiseShippingControllers/cruiseController")
+// const itinerary_controller = require("../../../controllers/cruiseShippingControllers/itineraryController")
+const port_controller = require("../../../controllers/cruiseShippingControllers/portController")
+// const vessel_controller = require("../../../controllers/cruiseShippingControllers/vesselController")
 
 /// CRUISE ROUTES ///
 
-// GET catalogue home page
-// router.get("/", port_controller.index)
+// Get catalogue home page
+router.get("/", port_controller.index)
 
-router.get("/port", async (req, res, next) => {
-  console.log("Scraping!")
-
-  const allArrivals = await getAllVesselArrivals()
-
-  //  console.log(allArrivals)
-  res.json(allArrivals)
-})
+// Get all port arrivals - only Belfast at present
+router.get("/port", port_controller.port_arrivals)
 
 module.exports = router
