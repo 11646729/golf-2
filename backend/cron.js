@@ -3,22 +3,29 @@ import db from "./db"
 import { getAllVesselArrivals } from "./scrapeArrivals"
 
 cron.schedule("* * * * *", () => {
-  console.log("running a task every minute")
-
+  console.log("Started Scraping!")
+  emptyFile()
   runCron()
+  console.log("Scraping done at " + Date.now())
 })
 
-export async function runCron() {
-  console.log("Started Scraping!")
+export async function emptyFile() {
+  //  First delete previous data
+  db.get("arrivals")
+    .remove()
+    .write()
+}
 
-  const allArrivals = await getAllVesselArrivals()
+export async function runCron() {
+  // Now add new data
+  let allArrivals = []
+
+  allArrivals = await getAllVesselArrivals()
 
   db.get("arrivals")
     .push({
       date: Date.now(),
-      allArrivals
+      arrivals: allArrivals
     })
     .write()
-
-  console.log("Scraping done at " + Date.now())
 }

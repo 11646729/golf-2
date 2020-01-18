@@ -4,16 +4,17 @@ import dotenv from "dotenv"
 
 dotenv.config()
 
-let allVesselMovements = []
-
 export async function getAllVesselArrivals() {
+  let allVesselMovements = []
+  let vesselArrivals = []
+
   const scheduledPeriod = await getScheduleMonths()
 
   let i = 0
 
   do {
     const period = String(scheduledPeriod[i].monthYearString)
-    let vesselArrivals = await getVesselArrivals(period)
+    vesselArrivals = await getVesselArrivals(period)
 
     let j = 0
 

@@ -1,5 +1,5 @@
-import { getAllVesselArrivals } from "../../scrapeArrivals"
-import db from "../../db"
+// import { getAllVesselArrivals } from "../../scrapeArrivals"
+// import db from "../../db"
 
 // Site Home Page
 export function index(req, res, next) {
