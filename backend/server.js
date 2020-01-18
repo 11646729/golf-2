@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
+import { runCron } from "../backend/cron"
 
 // const path = require("path")
 // const cookieParser = require("cookie-parser")

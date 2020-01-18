@@ -8,18 +8,14 @@ export function index(req, res, next) {
 
 // Path localhost:3000/cruiseShips/portArrivals
 export async function port_arrivals(req, res) {
-  console.log("Scraping!")
-
-  const allArrivals = await getAllVesselArrivals()
-
-  res.json(allArrivals)
-
-  db.get("arrivals")
-    .push({
-      date: Date.now(),
-      arrivals: allArrivals
-    })
-    .write()
-
-  console.log("Scraping done at " + Date.now())
+  //   console.log("Scraping!")
+  //   const allArrivals = await getAllVesselArrivals()
+  //   res.json(allArrivals)
+  //   db.get("arrivals")
+  //     .push({
+  //       date: Date.now(),
+  //       allArrivals
+  //     })
+  //     .write()
+  //   console.log("Scraping done at " + Date.now())
 }
