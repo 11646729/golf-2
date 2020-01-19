@@ -1,6 +1,6 @@
 import { getVesselDetailsHTML, getSingleVesselDetails } from "./scrapeVessels"
 
-async function getVesselDetails(VesselUrl) {
+export async function getVesselDetails(VesselUrl) {
   // Get a Specific Vessel Details
   const htmlVesselData = await getVesselDetailsHTML(VesselUrl)
   const vesselDetails = await getSingleVesselDetails(htmlVesselData)

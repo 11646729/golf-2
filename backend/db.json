@@ -1,7 +1,7 @@
 {
   "arrivals": [
     {
-      "date": 1579355528277,
+      "date": 1579438746491,
       "arrivals": [
         {
           "databaseVersion": "1.0",
@@ -2661,5 +2661,5 @@
       ]
     }
   ],
-  "vessel": []
+  "vessels": []
 }

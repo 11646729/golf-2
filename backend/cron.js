@@ -1,6 +1,7 @@
 import cron from "node-cron"
 import db from "./db"
 import { getAllVesselArrivals } from "./scrapeArrivals"
+import { getVesselDetails } from "./utilities"
 
 cron.schedule("* * * * *", () => {
   console.log("Started Scraping!")
@@ -14,13 +15,18 @@ export async function emptyFile() {
   db.get("arrivals")
     .remove()
     .write()
+
+  db.get("vessels")
+    .remove()
+    .write()
 }
 
 export async function runCron() {
   // Now add new data
-  let allArrivals = []
+  let vesselUrls = []
+  let vesselDetails = []
 
-  allArrivals = await getAllVesselArrivals()
+  let allArrivals = await getAllVesselArrivals()
 
   db.get("arrivals")
     .push({
@@ -28,4 +34,33 @@ export async function runCron() {
       arrivals: allArrivals
     })
     .write()
+
+  // Now extract vessel details urls
+  let i = 0
+  do {
+    // Extract urls for vessels & store in newVessel array
+    vesselUrls.push(allArrivals[i].vessel_name_url)
+    i++
+  } while (i < allArrivals.length)
+
+  // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
+  const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
+
+  console.log(DeduplicatedVesselUrlArray.length)
+
+  let j = 0
+  do {
+    // Extract urls for vessels & store in newVessel array
+    vesselDetails.push(await getVesselDetails(DeduplicatedVesselUrlArray[j]))
+    j++
+  } while (j < DeduplicatedVesselUrlArray.length)
+
+  db.get("vessels")
+    .push({
+      date: Date.now(),
+      vessels: vesselDetails
+    })
+    .write()
+
+  console.log(vesselDetails.length)
 }
