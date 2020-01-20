@@ -1,7 +1,7 @@
 import cron from "node-cron"
 import db from "./db"
 import { getAllVesselArrivals } from "./scrapeArrivals"
-import { getVesselDetails } from "./utilities"
+import { getVesselDetails } from "./scrapeVessels"
 
 cron.schedule("* * * * *", () => {
   console.log("Started Scraping!")
@@ -45,6 +45,8 @@ export async function runCron() {
 
   // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
   const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
+
+  DeduplicatedVesselUrlArray.sort()
 
   console.log(DeduplicatedVesselUrlArray.length)
 
