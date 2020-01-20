@@ -29,6 +29,7 @@ export async function getSingleVesselDetails(html) {
   // let vessel_photo = ""
   // let vessel_ais_name = ""
 
+  // Remove " Review and Specifications" from title to get vessel_name
   var vessel_name = title.substring(0, title.length - 26)
 
   const vessel_flag = $(
