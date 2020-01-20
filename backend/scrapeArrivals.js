@@ -77,8 +77,10 @@ export async function getVesselArrivals(period) {
       // Port UN Locode
       const port_un_locode = "GBBEL"
 
+      // Port Longitude
       const port_longitude = "-5.89831"
 
+      // Port Latitude
       const port_latitude = "54.61750"
 
       // Name of Vessel

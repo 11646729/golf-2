@@ -28,7 +28,8 @@ export async function getSingleVesselDetails(html) {
 
   // let vessel_photo = ""
   // let vessel_ais_name = ""
-  // let vessel_name = title.substr(4, 8)
+
+  var vessel_name = title.substring(0, title.length - 26)
 
   const vessel_flag = $(
     "#review > div:nth-child(2) > div.col-md-6.specificationTable.pull-left > table > tbody > tr:nth-child(2) > td:nth-child(2)"
@@ -38,6 +39,7 @@ export async function getSingleVesselDetails(html) {
 
   const vessel_short_operator = title.substr(0, 3)
 
+  // TODO - Problem with this line - not always getting correct value
   const vessel_long_operator = $(
     "#review > div:nth-child(2) > div.col-md-6.specificationTable.pull-left > table > tbody > tr:nth-child(5) > td:nth-child(2)"
   )
@@ -86,7 +88,7 @@ export async function getSingleVesselDetails(html) {
     vessel_type,
     // vessel_photo,
     // vessel_ais_name,
-    // vessel_name,
+    vessel_name,
     vessel_flag,
     vessel_short_operator,
     vessel_long_operator,
