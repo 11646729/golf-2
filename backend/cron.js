@@ -35,6 +35,8 @@ export async function runCron() {
     })
     .write()
 
+  console.log("Vessel arrivals added")
+
   // Now extract vessel details urls
   let i = 0
   do {
@@ -46,9 +48,8 @@ export async function runCron() {
   // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
   const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
 
+  // Sort array ascending
   DeduplicatedVesselUrlArray.sort()
-
-  console.log(DeduplicatedVesselUrlArray.length)
 
   let j = 0
   do {
@@ -64,5 +65,5 @@ export async function runCron() {
     })
     .write()
 
-  console.log(vesselDetails.length)
+  console.log("Vessel details added")
 }
