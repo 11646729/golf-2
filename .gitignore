@@ -24,5 +24,6 @@ yarn-error.log*
 
 # Added by BDS 12-12-19
 /backend/node_modules
+/frontend/node_modules
 .env
 google_maps.js
