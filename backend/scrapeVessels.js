@@ -15,80 +15,227 @@ export async function getSingleVesselDetails(html) {
 
   // Scrape Cruise Ship Data Here
   // ----------------------------
-  const vessel_name_url = ""
+  let vessel_name_url = ""
 
   // Database version
-  const databaseVersion = "1.0"
+  let databaseVersion = "1.0"
 
-  const title = $("#review > h2")
+  // Title
+  let title = $("#review .title")
     .text()
     .trim()
 
-  const vessel_type = "Cruise Ship"
-
-  // let vessel_photo = ""
-  // let vessel_ais_name = ""
+  let vessel_type = "Cruise Ship"
 
   // Remove " Review and Specifications" from title to get vessel_name
-  var vessel_name = title.substring(0, title.length - 26)
+  let vessel_name = title.substring(0, title.length - 26)
 
-  const vessel_flag = $(
-    "#review > div:nth-child(2) > div.col-md-6.specificationTable.pull-left > table > tbody > tr:nth-child(2) > td:nth-child(2)"
-  )
+  // Vessel Flag
+  let vessel_flag = $("td")
+    .filter(function() {
+      return (
+        $(this)
+          .text()
+          .trim() === "Flag state"
+      )
+    })
+    .next()
     .text()
-    .trim()
 
-  const vessel_short_operator = title.substr(0, 3)
+  // If No Vessel Flag Available
+  if (vessel_flag == "") {
+    vessel_flag = "Not Known"
+  }
 
-  // TODO - Problem with this line - not always getting correct value
-  const vessel_long_operator = $(
-    "#review > div:nth-child(2) > div.col-md-6.specificationTable.pull-left > table > tbody > tr:nth-child(5) > td:nth-child(2)"
-  )
+  // Short Name of Vessel Operator
+  let vessel_short_operator = title.substr(0, title.indexOf(" "))
+
+  // Long Name of Vessel Operator
+  let vessel_long_operator = $("td")
+    .filter(function() {
+      return (
+        $(this)
+          .text()
+          .trim() === "Operator"
+      )
+    })
+    .next()
     .text()
-    .trim()
 
-  const vessel_year_built = $(
-    "#review > div:nth-child(2) > div.col-md-6.specificationTable.pull-left > table > tbody > tr:nth-child(1) > td:nth-child(2)"
-  )
-    .text()
-    .substr(0, 4)
+  // If No Vessel Operator Available
+  if (vessel_long_operator == "") {
+    vessel_long_operator = "Not Known"
+  }
 
-  const vessel_length_metres = $(
-    "#review > div:nth-child(2) > div.col-md-6.specificationTable.pull-left > table > tbody > tr:nth-child(7) > td:nth-child(2)"
-  )
+  // Year of Build
+  const vessel_year_built_temp = $("td")
+    .filter(function() {
+      return (
+        $(this)
+          .text()
+          .trim() === "Year built"
+      )
+    })
+    .next()
     .text()
-    .trim()
 
-  const vessel_width_metres = $(
-    "#review > div:nth-child(2) > div.col-md-6.specificationTable.pull-left > table > tbody > tr:nth-child(8) > td:nth-child(2)"
+  let vessel_year_built = vessel_year_built_temp.substr(
+    0,
+    vessel_year_built_temp.indexOf("/") - 2
   )
+
+  // If No Year of Build Available
+  if (vessel_year_built == "") {
+    vessel_year_built = "Not Known"
+  }
+
+  // Length of Vessel in metres
+  const vessel_length_metres_temp = $("td")
+    .filter(function() {
+      return (
+        $(this)
+          .text()
+          .trim() === "Length (LOA)"
+      )
+    })
+    .next()
     .text()
-    .trim()
+
+  let vessel_length_metres = vessel_length_metres_temp.substr(
+    0,
+    vessel_length_metres_temp.indexOf("/") - 1
+  )
+
+  // If No Length of Vessel in metres Available
+  if (vessel_length_metres == "") {
+    vessel_length_metres = "Not Known"
+  }
+
+  // Width of Vessel in metres
+  const vessel_width_metres_temp = $("td")
+    .filter(function() {
+      return (
+        $(this)
+          .text()
+          .trim() === "Beam (width)"
+      )
+    })
+    .next()
+    .text()
+
+  let vessel_width_metres = vessel_width_metres_temp.substr(
+    0,
+    vessel_width_metres_temp.indexOf("/") - 1
+  )
+
+  // If No Width of Vessel in metres Available
+  if (vessel_width_metres == "") {
+    vessel_width_metres = "Not Known"
+  }
+
+  // Gross Tonnage of Vessel
+  const vessel_gross_tonnage = $("td")
+    .filter(function() {
+      return (
+        $(this)
+          .text()
+          .trim() === "Gross Tonnage"
+      )
+    })
+    .next()
+    .text()
+
+  // If No Gross Tonnage of Vessel Available
+  if (vessel_gross_tonnage == "") {
+    vessel_gross_tonnage = "Not Known"
+  }
+
+  // Vessel Average Speed
+  const vessel_average_speed_knots_temp = $("td")
+    .filter(function() {
+      return (
+        $(this)
+          .text()
+          .trim() === "Speed"
+      )
+    })
+    .next()
+    .text()
+
+  let vessel_average_speed_knots = vessel_average_speed_knots_temp.substr(
+    0,
+    vessel_average_speed_knots_temp.indexOf("/") - 1
+  )
+
+  // If No Vessel Average Speed Available
+  if (vessel_average_speed_knots == "") {
+    vessel_average_speed_knots = "Not Known"
+  }
+
+  // Vessel Maximum Speed
+  const vessel_max_speed_knots_temp = $("td")
+    .filter(function() {
+      return (
+        $(this)
+          .text()
+          .trim() === "Speed"
+      )
+    })
+    .next()
+    .text()
+
+  let vessel_max_speed_knots = vessel_max_speed_knots_temp.substr(
+    0,
+    vessel_max_speed_knots_temp.indexOf("/") - 1
+  )
+
+  // If No Vessel Maximum Speed Available
+  if (vessel_max_speed_knots == "") {
+    vessel_max_speed_knots = "Not Known"
+  }
+
+  // Typical Number of Passengers
+  const vessel_typical_passengers = $("td")
+    .filter(function() {
+      return (
+        $(this)
+          .text()
+          .trim() === "Passengers"
+      )
+    })
+    .next()
+    .text()
+
+  // If No Typical Number of Passengers Available
+  if (vessel_typical_passengers == "") {
+    vessel_typical_passengers = "Not Known"
+  }
+
+  // Typical Number of Crew
+  const vessel_typical_crew = $("td")
+    .filter(function() {
+      return (
+        $(this)
+          .text()
+          .trim() === "Crew"
+      )
+    })
+    .next()
+    .text()
 
   const vessel_average_draught_metres = "7.9"
-
-  const vessel_gross_tonnage = $(
-    "#review > div:nth-child(2) > div.col-md-6.specificationTable.pull-left > table > tbody > tr:nth-child(9) > td:nth-child(2)"
-  )
-    .text()
-    .trim()
-
-  const vessel_average_speed_knots = "13.5"
-  const vessel_max_speed_knots = "21.7"
   const vessel_imo_number = "8217881"
   const vessel_mmsi_number = "311000343"
   const vessel_callsign = "C6BR5"
-  const vessel_typical_passengers = "1250"
-  const vessel_typical_crew = "660"
 
   // Push an object with the data onto our array
   vessel_details.push({
-    databaseVersion,
     vessel_name_url,
+    databaseVersion,
     title,
     vessel_type,
-    // vessel_photo,
-    // vessel_ais_name,
+    // // vessel_photo,
+    // // vessel_ais_name,
     vessel_name,
     vessel_flag,
     vessel_short_operator,
@@ -96,16 +243,31 @@ export async function getSingleVesselDetails(html) {
     vessel_year_built,
     vessel_length_metres,
     vessel_width_metres,
-    vessel_average_draught_metres,
     vessel_gross_tonnage,
     vessel_average_speed_knots,
     vessel_max_speed_knots,
+    vessel_average_draught_metres,
     vessel_imo_number,
     vessel_mmsi_number,
     vessel_callsign,
     vessel_typical_passengers,
     vessel_typical_crew
   })
+
+  console.log("Title : " + title)
+  console.log("Vessel Name : " + vessel_name)
+  console.log("Flag state : " + vessel_flag)
+  console.log("Short Operator : " + vessel_short_operator)
+  console.log("Long Operator : " + vessel_long_operator)
+  console.log("Year Built : " + vessel_year_built)
+  console.log("Length : " + vessel_length_metres)
+  console.log("Width : " + vessel_width_metres)
+  console.log("Gross Tonnage : " + vessel_gross_tonnage)
+  console.log("Average Speed : " + vessel_average_speed_knots)
+  console.log("Maximum Speed : " + vessel_max_speed_knots)
+
+  console.log("Typical Number of Passengers : " + vessel_typical_passengers)
+  console.log("Typical Number of Crew : " + vessel_typical_crew)
 
   // Return our data array
   return vessel_details
