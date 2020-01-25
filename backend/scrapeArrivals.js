@@ -146,7 +146,7 @@ export async function getVesselArrivals(period) {
     }
   })
 
-  console.log(vessel_arrival)
+  //  console.log(vessel_arrival)
 
   // Return our data array
   return vessel_arrival

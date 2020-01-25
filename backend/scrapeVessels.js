@@ -152,26 +152,26 @@ export async function getSingleVesselDetails(html) {
   }
 
   // Vessel Average Speed
-  const vessel_average_speed_knots_temp = $("td")
-    .filter(function() {
-      return (
-        $(this)
-          .text()
-          .trim() === "Speed"
-      )
-    })
-    .next()
-    .text()
+  // const vessel_average_speed_knots_temp = $("td")
+  //   .filter(function() {
+  //     return (
+  //       $(this)
+  //         .text()
+  //         .trim() === "Speed"
+  //     )
+  //   })
+  //   .next()
+  //   .text()
 
-  let vessel_average_speed_knots = vessel_average_speed_knots_temp.substr(
-    0,
-    vessel_average_speed_knots_temp.indexOf("/") - 1
-  )
+  // let vessel_average_speed_knots = vessel_average_speed_knots_temp.substr(
+  //   0,
+  //   vessel_average_speed_knots_temp.indexOf("/") - 1
+  // )
 
   // If No Vessel Average Speed Available
-  if (vessel_average_speed_knots == "") {
-    vessel_average_speed_knots = "Not Known"
-  }
+  // if (vessel_average_speed_knots == "") {
+  //   vessel_average_speed_knots = "Not Known"
+  // }
 
   // Vessel Maximum Speed
   const vessel_max_speed_knots_temp = $("td")
@@ -224,6 +224,7 @@ export async function getSingleVesselDetails(html) {
     .next()
     .text()
 
+  const vessel_average_speed_knots = "Not Known"
   const vessel_average_draught_metres = "7.9"
   const vessel_imo_number = "8217881"
   const vessel_mmsi_number = "311000343"
