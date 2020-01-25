@@ -1,7 +1,7 @@
 {
-  "arrivals": [
+  "arrivalScrapes": [
     {
-      "date": 1579889046842,
+      "date": 1579948866542,
       "arrivals": [
         {
           "databaseVersion": "1.0",
@@ -3251,18 +3251,18 @@
       ]
     }
   ],
-  "vessels": [
+  "vesselScrapes": [
     {
-      "date": 1579889082089,
+      "date": 1579948897658,
       "vessels": [
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/AIDAaura-578",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/AIDAaura-578",
             "title": "AIDAaura Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "AIDAaura",
-            "vessel_flag": " Italy",
+            "vessel_flag": "Italy",
             "vessel_short_operator": "AIDAaura",
             "vessel_long_operator": "AIDA Kreuzfahrten (AIDA Cruises)",
             "vessel_year_built": "2003",
@@ -3281,12 +3281,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/AIDAbella-653",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/AIDAbella-653",
             "title": "AIDAbella Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "AIDAbella",
-            "vessel_flag": " Italy",
+            "vessel_flag": "Italy",
             "vessel_short_operator": "AIDAbella",
             "vessel_long_operator": "AIDA Kreuzfahrten (AIDA Cruises)",
             "vessel_year_built": "2008",
@@ -3305,12 +3305,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/AIDAvita-656",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/AIDAvita-656",
             "title": "AIDAvita Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "AIDAvita",
-            "vessel_flag": " Italy",
+            "vessel_flag": "Italy",
             "vessel_short_operator": "AIDAvita",
             "vessel_long_operator": "AIDA Kreuzfahrten (AIDA Cruises)",
             "vessel_year_built": "2002",
@@ -3329,12 +3329,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Albatros-672",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Albatros-672",
             "title": "Albatros Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Albatros",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Albatros",
             "vessel_long_operator": "Phoenix Reisen GmbH",
             "vessel_year_built": "1973",
@@ -3353,12 +3353,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Amadea-555",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Amadea-555",
             "title": "Amadea Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Amadea",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Amadea",
             "vessel_long_operator": "Phoenix Reisen GmbH",
             "vessel_year_built": "1991",
@@ -3377,12 +3377,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Amera-742",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Amera-742",
             "title": "Amera Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Amera",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Amera",
             "vessel_long_operator": "Phoenix Reisen",
             "vessel_year_built": "1988",
@@ -3401,12 +3401,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Arcadia-626",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Arcadia-626",
             "title": "Arcadia Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Arcadia",
-            "vessel_flag": " Bermuda",
+            "vessel_flag": "Bermuda",
             "vessel_short_operator": "Arcadia",
             "vessel_long_operator": "P&O Cruises UK",
             "vessel_year_built": "2005",
@@ -3425,12 +3425,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Artania-554",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Artania-554",
             "title": "Artania Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Artania",
-            "vessel_flag": " Bermuda",
+            "vessel_flag": "Bermuda",
             "vessel_short_operator": "Artania",
             "vessel_long_operator": "Phoenix Reisen GmbH",
             "vessel_year_built": "1984",
@@ -3449,12 +3449,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Azamara-Journey-566",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Azamara-Journey-566",
             "title": "Azamara Journey Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Azamara Journey",
-            "vessel_flag": " Malta",
+            "vessel_flag": "Malta",
             "vessel_short_operator": "Azamara",
             "vessel_long_operator": "Azamara Club Cruises",
             "vessel_year_built": "2000",
@@ -3473,12 +3473,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Azamara-Pursuit-666",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Azamara-Pursuit-666",
             "title": "Azamara Pursuit Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Azamara Pursuit",
-            "vessel_flag": " Malta",
+            "vessel_flag": "Malta",
             "vessel_short_operator": "Azamara",
             "vessel_long_operator": "Azamara Club Cruises",
             "vessel_year_built": "2001",
@@ -3497,12 +3497,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Azamara-Quest-539",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Azamara-Quest-539",
             "title": "Azamara Quest Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Azamara Quest",
-            "vessel_flag": " Malta",
+            "vessel_flag": "Malta",
             "vessel_short_operator": "Azamara",
             "vessel_long_operator": "Azamara Club Cruises",
             "vessel_year_built": "2000",
@@ -3521,12 +3521,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Black-Watch-726",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Black-Watch-726",
             "title": "Black Watch Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Black Watch",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Black",
             "vessel_long_operator": "Fred Olsen Cruise Lines",
             "vessel_year_built": "1972",
@@ -3545,12 +3545,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Brilliance-Of-The-Seas-720",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Brilliance-Of-The-Seas-720",
             "title": "Brilliance Of The Seas Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Brilliance Of The Seas",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Brilliance",
             "vessel_long_operator": "Royal Caribbean International",
             "vessel_year_built": "2002",
@@ -3569,12 +3569,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/CMV-Astoria-821",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/CMV-Astoria-821",
             "title": "CMV Astoria Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "CMV Astoria",
-            "vessel_flag": " Madeira",
+            "vessel_flag": "Madeira",
             "vessel_short_operator": "CMV",
             "vessel_long_operator": "CMV (Cruise and Maritime Voyages)",
             "vessel_year_built": "1948",
@@ -3593,12 +3593,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/CMV-Columbus-724",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/CMV-Columbus-724",
             "title": "CMV Columbus Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "CMV Columbus",
-            "vessel_flag": " United Kingdom",
+            "vessel_flag": "United Kingdom",
             "vessel_short_operator": "CMV",
             "vessel_long_operator": "CMV (Cruise and Maritime Voyages)",
             "vessel_year_built": "1989",
@@ -3617,12 +3617,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/CMV-Magellan-782",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/CMV-Magellan-782",
             "title": "CMV Magellan Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "CMV Magellan",
-            "vessel_flag": " Madeira",
+            "vessel_flag": "Madeira",
             "vessel_short_operator": "CMV",
             "vessel_long_operator": "CMV (Cruise and Maritime Voyages) via Cruceros Marítimos Vacacionales",
             "vessel_year_built": "1985",
@@ -3641,12 +3641,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/CMV-Marco-Polo-557",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/CMV-Marco-Polo-557",
             "title": "CMV Marco Polo Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "CMV Marco Polo",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "CMV",
             "vessel_long_operator": "CMV (Cruise and Maritime Voyages)",
             "vessel_year_built": "1965",
@@ -3665,12 +3665,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/CMV-Vasco-da-Gama-575",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/CMV-Vasco-da-Gama-575",
             "title": "CMV Vasco da Gama Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "CMV Vasco da Gama",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "CMV",
             "vessel_long_operator": "CMV (Cruise and Maritime Voyages) via Transocean Tours",
             "vessel_year_built": "1993",
@@ -3689,8 +3689,8 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Carnival-Legend-551",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Carnival-Legend-551",
             "title": "Carnival Legend Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Carnival Legend",
@@ -3713,8 +3713,8 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Celebrity-Reflection-685",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Celebrity-Reflection-685",
             "title": "Celebrity Reflection Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Celebrity Reflection",
@@ -3737,12 +3737,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Celebrity-Silhouette-537",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Celebrity-Silhouette-537",
             "title": "Celebrity Silhouette Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Celebrity Silhouette",
-            "vessel_flag": " Malta",
+            "vessel_flag": "Malta",
             "vessel_short_operator": "Celebrity",
             "vessel_long_operator": "Celebrity Cruises",
             "vessel_year_built": "2011",
@@ -3761,12 +3761,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Costa-Fortuna-723",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Costa-Fortuna-723",
             "title": "Costa Fortuna Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Costa Fortuna",
-            "vessel_flag": " Italy",
+            "vessel_flag": "Italy",
             "vessel_short_operator": "Costa",
             "vessel_long_operator": "Costa Cruises",
             "vessel_year_built": "2003",
@@ -3785,12 +3785,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Costa-Mediterranea-719",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Costa-Mediterranea-719",
             "title": "Costa Mediterranea Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Costa Mediterranea",
-            "vessel_flag": " Italy",
+            "vessel_flag": "Italy",
             "vessel_short_operator": "Costa",
             "vessel_long_operator": "CSSC Carnival China Cruise Shipping",
             "vessel_year_built": "2003",
@@ -3809,12 +3809,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Crown-Princess-660",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Crown-Princess-660",
             "title": "Crown Princess Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Crown Princess",
-            "vessel_flag": " Bermuda",
+            "vessel_flag": "Bermuda",
             "vessel_short_operator": "Crown",
             "vessel_long_operator": "Princess Cruises",
             "vessel_year_built": "2006",
@@ -3833,12 +3833,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Crystal-Serenity-556",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Crystal-Serenity-556",
             "title": "Crystal Serenity Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Crystal Serenity",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Crystal",
             "vessel_long_operator": "Crystal Ocean Cruises",
             "vessel_year_built": "2003",
@@ -3857,12 +3857,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Crystal-Symphony-603",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Crystal-Symphony-603",
             "title": "Crystal Symphony Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Crystal Symphony",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Crystal",
             "vessel_long_operator": "Crystal Ocean Cruises",
             "vessel_year_built": "1995",
@@ -3881,12 +3881,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Disney-Magic-684",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Disney-Magic-684",
             "title": "Disney Magic Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Disney Magic",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Disney",
             "vessel_long_operator": "Disney Cruise Line",
             "vessel_year_built": "1998",
@@ -3905,12 +3905,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Hanseatic-Nature-1736",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Hanseatic-Nature-1736",
             "title": "Hanseatic Nature Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Hanseatic Nature",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Hanseatic",
             "vessel_long_operator": "Hapag-Lloyd Cruises",
             "vessel_year_built": "2019",
@@ -3929,12 +3929,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Hebridean-Princess-767",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Hebridean-Princess-767",
             "title": "Hebridean Princess Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Hebridean Princess",
-            "vessel_flag": " United Kingdom",
+            "vessel_flag": "United Kingdom",
             "vessel_short_operator": "Hebridean",
             "vessel_long_operator": "Not Known",
             "vessel_year_built": "1964",
@@ -3953,12 +3953,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Island-Princess-727",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Island-Princess-727",
             "title": "Island Princess Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Island Princess",
-            "vessel_flag": " Bermuda",
+            "vessel_flag": "Bermuda",
             "vessel_short_operator": "Island",
             "vessel_long_operator": "Princess Cruises",
             "vessel_year_built": "2003",
@@ -3977,12 +3977,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Jewel-Of-The-Seas-569",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Jewel-Of-The-Seas-569",
             "title": "Jewel Of The Seas Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Jewel Of The Seas",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Jewel",
             "vessel_long_operator": "Royal Caribbean International",
             "vessel_year_built": "2004",
@@ -4001,12 +4001,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/LAustral-756",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/LAustral-756",
             "title": "L'Austral Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "L'Austral",
-            "vessel_flag": " Wallis and Futuna",
+            "vessel_flag": "Wallis and Futuna",
             "vessel_short_operator": "L'Austral",
             "vessel_long_operator": "Compagnie du Ponant Cruises",
             "vessel_year_built": "2011",
@@ -4025,12 +4025,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/MS-Deutschland-764",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/MS-Deutschland-764",
             "title": "MS Deutschland Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "MS Deutschland",
-            "vessel_flag": " Germany",
+            "vessel_flag": "Germany",
             "vessel_short_operator": "MS",
             "vessel_long_operator": "Phoenix Reisen GmbH",
             "vessel_year_built": "1998",
@@ -4049,12 +4049,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/MSC-Meraviglia-1187",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/MSC-Meraviglia-1187",
             "title": "MSC Meraviglia Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "MSC Meraviglia",
-            "vessel_flag": " Malta",
+            "vessel_flag": "Malta",
             "vessel_short_operator": "MSC",
             "vessel_long_operator": "MSC Cruises",
             "vessel_year_built": "2017",
@@ -4073,12 +4073,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/MSC-Orchestra-619",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/MSC-Orchestra-619",
             "title": "MSC Orchestra Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "MSC Orchestra",
-            "vessel_flag": " Panama",
+            "vessel_flag": "Panama",
             "vessel_short_operator": "MSC",
             "vessel_long_operator": "MSC Cruises",
             "vessel_year_built": "2007",
@@ -4097,12 +4097,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/MSC-Preziosa-788",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/MSC-Preziosa-788",
             "title": "MSC Preziosa Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "MSC Preziosa",
-            "vessel_flag": " Panama",
+            "vessel_flag": "Panama",
             "vessel_short_operator": "MSC",
             "vessel_long_operator": "MSC Cruises",
             "vessel_year_built": "2013",
@@ -4121,12 +4121,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/MSC-Splendida-675",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/MSC-Splendida-675",
             "title": "MSC Splendida Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "MSC Splendida",
-            "vessel_flag": " Panama",
+            "vessel_flag": "Panama",
             "vessel_short_operator": "MSC",
             "vessel_long_operator": "MSC Cruises",
             "vessel_year_built": "2009",
@@ -4145,8 +4145,8 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Mein-Schiff-3-816",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Mein-Schiff-3-816",
             "title": "Mein Schiff 3 Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Mein Schiff 3",
@@ -4169,8 +4169,8 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Mein-Schiff-4-1031",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Mein-Schiff-4-1031",
             "title": "Mein Schiff 4 Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Mein Schiff 4",
@@ -4193,12 +4193,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Mein-Schiff-5-1070",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Mein-Schiff-5-1070",
             "title": "Mein Schiff 5 Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Mein Schiff 5",
-            "vessel_flag": " Malta",
+            "vessel_flag": "Malta",
             "vessel_short_operator": "Mein",
             "vessel_long_operator": "TUI Cruises",
             "vessel_year_built": "2016",
@@ -4217,12 +4217,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Norwegian-Jade-639",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Norwegian-Jade-639",
             "title": "Norwegian Jade Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Norwegian Jade",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Norwegian",
             "vessel_long_operator": "(NCL) Norwegian Cruise Line",
             "vessel_year_built": "2006",
@@ -4241,12 +4241,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Norwegian-Pearl-693",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Norwegian-Pearl-693",
             "title": "Norwegian Pearl Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Norwegian Pearl",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Norwegian",
             "vessel_long_operator": "(NCL) Norwegian Cruise Line",
             "vessel_year_built": "2006",
@@ -4265,12 +4265,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Norwegian-Spirit-702",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Norwegian-Spirit-702",
             "title": "Norwegian Spirit Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Norwegian Spirit",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Norwegian",
             "vessel_long_operator": "(NCL) Norwegian Cruise Line",
             "vessel_year_built": "1998",
@@ -4289,12 +4289,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Norwegian-Star-706",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Norwegian-Star-706",
             "title": "Norwegian Star Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Norwegian Star",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Norwegian",
             "vessel_long_operator": "(NCL) Norwegian Cruise Line",
             "vessel_year_built": "2001",
@@ -4313,12 +4313,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Oceania-Insignia-640",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Oceania-Insignia-640",
             "title": "Oceania Insignia Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Oceania Insignia",
-            "vessel_flag": " Marshall Islands",
+            "vessel_flag": "Marshall Islands",
             "vessel_short_operator": "Oceania",
             "vessel_long_operator": "Oceania Cruises",
             "vessel_year_built": "1998",
@@ -4337,12 +4337,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Oceania-Marina-606",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Oceania-Marina-606",
             "title": "Oceania Marina Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Oceania Marina",
-            "vessel_flag": " Marshall Islands",
+            "vessel_flag": "Marshall Islands",
             "vessel_short_operator": "Oceania",
             "vessel_long_operator": "Oceania Cruises",
             "vessel_year_built": "2011",
@@ -4361,12 +4361,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Oceania-Nautica-664",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Oceania-Nautica-664",
             "title": "Oceania Nautica Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Oceania Nautica",
-            "vessel_flag": " Marshall Islands",
+            "vessel_flag": "Marshall Islands",
             "vessel_short_operator": "Oceania",
             "vessel_long_operator": "Oceania Cruises",
             "vessel_year_built": "2000",
@@ -4385,12 +4385,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Oceania-Sirena-591",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Oceania-Sirena-591",
             "title": "Oceania Sirena Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Oceania Sirena",
-            "vessel_flag": " Bermuda",
+            "vessel_flag": "Bermuda",
             "vessel_short_operator": "Oceania",
             "vessel_long_operator": "Oceania Cruises",
             "vessel_year_built": "1999",
@@ -4409,12 +4409,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Pacific-Princess-589",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Pacific-Princess-589",
             "title": "Pacific Princess Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Pacific Princess",
-            "vessel_flag": " Bermuda",
+            "vessel_flag": "Bermuda",
             "vessel_short_operator": "Pacific",
             "vessel_long_operator": "Princess Cruises",
             "vessel_year_built": "1999",
@@ -4433,12 +4433,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Piano-Land-671",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Piano-Land-671",
             "title": "Piano Land Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Piano Land",
-            "vessel_flag": " Bermuda",
+            "vessel_flag": "Bermuda",
             "vessel_short_operator": "Piano",
             "vessel_long_operator": "Twinkle Travel Cruise International Co (via Well Star Travel Cruise Line China)",
             "vessel_year_built": "1995",
@@ -4457,12 +4457,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Pullmantur-Zenith-737",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Pullmantur-Zenith-737",
             "title": "Pullmantur Zenith Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Pullmantur Zenith",
-            "vessel_flag": " Malta",
+            "vessel_flag": "Malta",
             "vessel_short_operator": "Pullmantur",
             "vessel_long_operator": "Peace Boat",
             "vessel_year_built": "1992",
@@ -4481,12 +4481,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Queen-Victoria-630",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Queen-Victoria-630",
             "title": "Queen Victoria Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Queen Victoria",
-            "vessel_flag": " United Kingdom",
+            "vessel_flag": "United Kingdom",
             "vessel_short_operator": "Queen",
             "vessel_long_operator": "Cunard Line",
             "vessel_year_built": "2007",
@@ -4505,12 +4505,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Regal-Princess-798",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Regal-Princess-798",
             "title": "Regal Princess Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Regal Princess",
-            "vessel_flag": " Italy",
+            "vessel_flag": "Italy",
             "vessel_short_operator": "Regal",
             "vessel_long_operator": "Princess Cruises",
             "vessel_year_built": "2014",
@@ -4529,12 +4529,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Saga-Sapphire-592",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Saga-Sapphire-592",
             "title": "Saga Sapphire Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Saga Sapphire",
-            "vessel_flag": " Malta",
+            "vessel_flag": "Malta",
             "vessel_short_operator": "Saga",
             "vessel_long_operator": "Saga Cruises",
             "vessel_year_built": "1981",
@@ -4553,12 +4553,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Scenic-Eclipse-1239",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Scenic-Eclipse-1239",
             "title": "Scenic Eclipse Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Scenic Eclipse",
-            "vessel_flag": " Malta",
+            "vessel_flag": "Malta",
             "vessel_short_operator": "Scenic",
             "vessel_long_operator": "Scenic Cruises",
             "vessel_year_built": "2019",
@@ -4577,12 +4577,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Seabourn-Ovation-1165",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Seabourn-Ovation-1165",
             "title": "Seabourn Ovation Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Seabourn Ovation",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Seabourn",
             "vessel_long_operator": "Seabourn Cruises",
             "vessel_year_built": "2018",
@@ -4601,12 +4601,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Seabourn-Quest-581",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Seabourn-Quest-581",
             "title": "Seabourn Quest Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Seabourn Quest",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Seabourn",
             "vessel_long_operator": "Seabourn Cruises",
             "vessel_year_built": "2011",
@@ -4625,12 +4625,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Seabourn-Sojourn-637",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Seabourn-Sojourn-637",
             "title": "Seabourn Sojourn Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Seabourn Sojourn",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Seabourn",
             "vessel_long_operator": "Seabourn Cruises",
             "vessel_year_built": "2010",
@@ -4649,12 +4649,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Seven-Seas-Explorer-1038",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Seven-Seas-Explorer-1038",
             "title": "Seven Seas Explorer Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Seven Seas Explorer",
-            "vessel_flag": " Marshall Islands",
+            "vessel_flag": "Marshall Islands",
             "vessel_short_operator": "Seven",
             "vessel_long_operator": "(RSSC) Regent Seven Seas Cruises",
             "vessel_year_built": "2016",
@@ -4673,12 +4673,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Seven-Seas-Navigator-633",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Seven-Seas-Navigator-633",
             "title": "Seven Seas Navigator Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Seven Seas Navigator",
-            "vessel_flag": " Bermuda",
+            "vessel_flag": "Bermuda",
             "vessel_short_operator": "Seven",
             "vessel_long_operator": "(RSSC) Regent Seven Seas Cruises",
             "vessel_year_built": "1999",
@@ -4697,8 +4697,8 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Seven-Seas-Splendor-2153",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Seven-Seas-Splendor-2153",
             "title": "Seven Seas Splendor Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Seven Seas Splendor",
@@ -4721,12 +4721,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Seven-Seas-Voyager-695",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Seven-Seas-Voyager-695",
             "title": "Seven Seas Voyager Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Seven Seas Voyager",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Seven",
             "vessel_long_operator": "(RSSC) Regent Seven Seas Cruises",
             "vessel_year_built": "2003",
@@ -4745,12 +4745,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Silver-Spirit-722",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Silver-Spirit-722",
             "title": "Silver Spirit Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Silver Spirit",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Silver",
             "vessel_long_operator": "Silversea Cruises",
             "vessel_year_built": "2009",
@@ -4769,12 +4769,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Silver-Whisper-561",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Silver-Whisper-561",
             "title": "Silver Whisper Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Silver Whisper",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Silver",
             "vessel_long_operator": "Silversea Cruises",
             "vessel_year_built": "2001",
@@ -4793,12 +4793,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Silver-Wind-696",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Silver-Wind-696",
             "title": "Silver Wind Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Silver Wind",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Silver",
             "vessel_long_operator": "Silversea Cruises",
             "vessel_year_built": "1995",
@@ -4817,12 +4817,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Sky-Princess-2154",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Sky-Princess-2154",
             "title": "Sky Princess Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Sky Princess",
-            "vessel_flag": " Bermuda",
+            "vessel_flag": "Bermuda",
             "vessel_short_operator": "Sky",
             "vessel_long_operator": "Princess Cruises",
             "vessel_year_built": "2019",
@@ -4841,12 +4841,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Spirit-of-Discovery-1829",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Spirit-of-Discovery-1829",
             "title": "Spirit of Discovery Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Spirit of Discovery",
-            "vessel_flag": " United Kingdom",
+            "vessel_flag": "United Kingdom",
             "vessel_short_operator": "Spirit",
             "vessel_long_operator": "Saga Cruises",
             "vessel_year_built": "2019",
@@ -4865,12 +4865,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Star-Breeze-532",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Star-Breeze-532",
             "title": "Star Breeze Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Star Breeze",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Star",
             "vessel_long_operator": "Windstar Cruises",
             "vessel_year_built": "1989",
@@ -4889,12 +4889,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Star-Legend-564",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Star-Legend-564",
             "title": "Star Legend Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Star Legend",
-            "vessel_flag": " Bahamas",
+            "vessel_flag": "Bahamas",
             "vessel_short_operator": "Star",
             "vessel_long_operator": "Windstar Cruises",
             "vessel_year_built": "1992",
@@ -4913,12 +4913,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Ventura-669",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Ventura-669",
             "title": "Ventura Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Ventura",
-            "vessel_flag": " Bermuda",
+            "vessel_flag": "Bermuda",
             "vessel_short_operator": "Ventura",
             "vessel_long_operator": "P&O Cruises UK",
             "vessel_year_built": "2008",
@@ -4937,12 +4937,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Viking-Jupiter-1980",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Viking-Jupiter-1980",
             "title": "Viking Jupiter Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Viking Jupiter",
-            "vessel_flag": " Norway",
+            "vessel_flag": "Norway",
             "vessel_short_operator": "Viking",
             "vessel_long_operator": "Viking Ocean Cruises",
             "vessel_year_built": "2019",
@@ -4961,12 +4961,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Viking-Sea-1032",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Viking-Sea-1032",
             "title": "Viking Sea Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Viking Sea",
-            "vessel_flag": " Norway",
+            "vessel_flag": "Norway",
             "vessel_short_operator": "Viking",
             "vessel_long_operator": "Viking Ocean Cruises",
             "vessel_year_built": "2016",
@@ -4985,12 +4985,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Viking-Star-974",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Viking-Star-974",
             "title": "Viking Star Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Viking Star",
-            "vessel_flag": " Norway",
+            "vessel_flag": "Norway",
             "vessel_short_operator": "Viking",
             "vessel_long_operator": "Viking Ocean Cruises",
             "vessel_year_built": "2015",
@@ -5009,12 +5009,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Viking-Sun-975",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Viking-Sun-975",
             "title": "Viking Sun Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Viking Sun",
-            "vessel_flag": " Norway",
+            "vessel_flag": "Norway",
             "vessel_short_operator": "Viking",
             "vessel_long_operator": "Viking Ocean Cruises",
             "vessel_year_built": "2017",
@@ -5033,8 +5033,8 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/Viking-Venus-1967",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/Viking-Venus-1967",
             "title": "Viking Venus Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "Viking Venus",
@@ -5057,12 +5057,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/ms-Amsterdam-544",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/ms-Amsterdam-544",
             "title": "ms Amsterdam Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "ms Amsterdam",
-            "vessel_flag": " Netherlands",
+            "vessel_flag": "Netherlands",
             "vessel_short_operator": "ms",
             "vessel_long_operator": "Holland America Line",
             "vessel_year_built": "2000",
@@ -5081,8 +5081,8 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/ms-Europa-2-571",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/ms-Europa-2-571",
             "title": "ms Europa 2 Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "ms Europa 2",
@@ -5105,12 +5105,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/ms-Rotterdam-717",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/ms-Rotterdam-717",
             "title": "ms Rotterdam Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "ms Rotterdam",
-            "vessel_flag": " Netherlands",
+            "vessel_flag": "Netherlands",
             "vessel_short_operator": "ms",
             "vessel_long_operator": "Holland America Line",
             "vessel_year_built": "1997",
@@ -5129,12 +5129,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/ms-Veendam-615",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/ms-Veendam-615",
             "title": "ms Veendam Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "ms Veendam",
-            "vessel_flag": " Netherlands",
+            "vessel_flag": "Netherlands",
             "vessel_short_operator": "ms",
             "vessel_long_operator": "Holland America Line",
             "vessel_year_built": "1996",
@@ -5153,12 +5153,12 @@
         ],
         [
           {
-            "vessel_name_url": "https://www.cruisemapper.com/ships/ms-Zuiderdam-647",
             "databaseVersion": "1.0",
+            "vessel_name_url": "https://www.cruisemapper.com/ships/ms-Zuiderdam-647",
             "title": "ms Zuiderdam Review and Specifications",
             "vessel_type": "Cruise Ship",
             "vessel_name": "ms Zuiderdam",
-            "vessel_flag": " Netherlands",
+            "vessel_flag": "Netherlands",
             "vessel_short_operator": "ms",
             "vessel_long_operator": "Holland America Line",
             "vessel_year_built": "2002",

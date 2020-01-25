@@ -12,11 +12,11 @@ cron.schedule("* * * * *", () => {
 
 export async function emptyFile() {
   //  First delete previous data
-  db.get("arrivals")
+  db.get("arrivalScrapes")
     .remove()
     .write()
 
-  db.get("vessels")
+  db.get("vesselScrapes")
     .remove()
     .write()
 }
@@ -28,7 +28,7 @@ export async function runCron() {
 
   let allArrivals = await getAllVesselArrivals()
 
-  db.get("arrivals")
+  db.get("arrivalScrapes")
     .push({
       date: Date.now(),
       arrivals: allArrivals
@@ -58,7 +58,9 @@ export async function runCron() {
     j++
   } while (j < DeduplicatedVesselUrlArray.length)
 
-  db.get("vessels")
+  console.log(vesselDetails)
+
+  db.get("vesselScrapes")
     .push({
       date: Date.now(),
       vessels: vesselDetails

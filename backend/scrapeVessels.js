@@ -41,6 +41,7 @@ export async function getSingleVesselDetails(html) {
     })
     .next()
     .text()
+    .trim()
 
   // If No Vessel Flag Available
   if (vessel_flag == "") {
@@ -230,12 +231,12 @@ export async function getSingleVesselDetails(html) {
 
   // Push an object with the data onto our array
   vessel_details.push({
-    vessel_name_url,
     databaseVersion,
+    vessel_name_url,
     title,
     vessel_type,
-    // // vessel_photo,
-    // // vessel_ais_name,
+    // vessel_photo,
+    // vessel_ais_name,
     vessel_name,
     vessel_flag,
     vessel_short_operator,
@@ -253,21 +254,6 @@ export async function getSingleVesselDetails(html) {
     vessel_typical_passengers,
     vessel_typical_crew
   })
-
-  console.log("Title : " + title)
-  console.log("Vessel Name : " + vessel_name)
-  console.log("Flag state : " + vessel_flag)
-  console.log("Short Operator : " + vessel_short_operator)
-  console.log("Long Operator : " + vessel_long_operator)
-  console.log("Year Built : " + vessel_year_built)
-  console.log("Length : " + vessel_length_metres)
-  console.log("Width : " + vessel_width_metres)
-  console.log("Gross Tonnage : " + vessel_gross_tonnage)
-  console.log("Average Speed : " + vessel_average_speed_knots)
-  console.log("Maximum Speed : " + vessel_max_speed_knots)
-
-  console.log("Typical Number of Passengers : " + vessel_typical_passengers)
-  console.log("Typical Number of Crew : " + vessel_typical_crew)
 
   // Return our data array
   return vessel_details
