@@ -54,11 +54,13 @@ export async function runCron() {
   let j = 0
   do {
     // Extract urls for vessels & store in newVessel array
-    vesselDetails.push(await getVesselDetails(DeduplicatedVesselUrlArray[j]))
+    let ret = await getVesselDetails(DeduplicatedVesselUrlArray[j])
+    vesselDetails.push(ret)
+    console.log(ret)
     j++
   } while (j < DeduplicatedVesselUrlArray.length)
 
-  console.log(vesselDetails)
+  //  console.log(vesselDetails)
 
   db.get("vesselScrapes")
     .push({
