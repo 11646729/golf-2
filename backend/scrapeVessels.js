@@ -255,6 +255,8 @@ export async function getSingleVesselDetails(html) {
     vessel_typical_crew
   })
 
+  //  console.log(vessel_details)
+
   // Return our data array
   return vessel_details
 }
