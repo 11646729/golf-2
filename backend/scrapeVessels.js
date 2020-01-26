@@ -104,7 +104,7 @@ export async function getSingleVesselDetails(html) {
 
   let vessel_length_metres = vessel_length_metres_temp.substr(
     0,
-    vessel_length_metres_temp.indexOf("/") - 1
+    vessel_length_metres_temp.indexOf("/") - 3
   )
 
   // If No Length of Vessel in metres Available
@@ -126,7 +126,7 @@ export async function getSingleVesselDetails(html) {
 
   let vessel_width_metres = vessel_width_metres_temp.substr(
     0,
-    vessel_width_metres_temp.indexOf("/") - 1
+    vessel_width_metres_temp.indexOf("/") - 3
   )
 
   // If No Width of Vessel in metres Available
@@ -135,7 +135,7 @@ export async function getSingleVesselDetails(html) {
   }
 
   // Gross Tonnage of Vessel
-  const vessel_gross_tonnage = $("td")
+  const vessel_gross_tonnage_temp = $("td")
     .filter(function() {
       return (
         $(this)
@@ -145,6 +145,11 @@ export async function getSingleVesselDetails(html) {
     })
     .next()
     .text()
+
+  let vessel_gross_tonnage = vessel_gross_tonnage_temp.substr(
+    0,
+    vessel_gross_tonnage_temp.indexOf(" ")
+  )
 
   // If No Gross Tonnage of Vessel Available
   if (vessel_gross_tonnage == "") {
@@ -165,7 +170,7 @@ export async function getSingleVesselDetails(html) {
 
   // let vessel_average_speed_knots = vessel_average_speed_knots_temp.substr(
   //   0,
-  //   vessel_average_speed_knots_temp.indexOf("/") - 1
+  //   vessel_average_speed_knots_temp.indexOf("/") - 4
   // )
 
   // If No Vessel Average Speed Available
@@ -187,7 +192,7 @@ export async function getSingleVesselDetails(html) {
 
   let vessel_max_speed_knots = vessel_max_speed_knots_temp.substr(
     0,
-    vessel_max_speed_knots_temp.indexOf("/") - 1
+    vessel_max_speed_knots_temp.indexOf("/") - 4
   )
 
   // If No Vessel Maximum Speed Available
@@ -267,8 +272,6 @@ export async function getVesselDetails(VesselUrl) {
 
   // Store Vessel Detail url in vesselDetails vessel_url field
   vesselDetails.vessel_name_url = VesselUrl
-
-  console.log(vesselDetails)
 
   // Return our data array
   return vesselDetails
