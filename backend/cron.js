@@ -58,11 +58,6 @@ export async function runCron() {
     j++
   } while (j < DeduplicatedVesselUrlArray.length)
 
-  //  let ret = await getVesselDetails(DeduplicatedVesselUrlArray[0])
-  //  console.log(ret)
-
-  //  console.log(vesselDetails)
-
   db.get("vesselScrapes")
     .push({
       date: Date.now(),

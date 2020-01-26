@@ -15,6 +15,7 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app.use(cors())
+app.use(express.json())
 
 // cors settings from https://blog.jscrambler.com/setting-up-5-useful-middlewares-for-an-express-api/
 app.use(
@@ -24,8 +25,6 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"]
   })
 )
-
-app.use(cors())
 
 // MongoDB connection string
 const uri = process.env.ATLAS_URI
@@ -51,8 +50,8 @@ const connection = mongoose.connection
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully")
   // DO STUFF
-  connection.close()
-  console.log("MongoDB database connection closed successfully")
+  //  connection.close()
+  //  console.log("MongoDB database connection closed successfully")
 })
 
 // Configure mongoose's promise to global promise
