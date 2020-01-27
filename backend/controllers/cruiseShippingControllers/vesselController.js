@@ -1,14 +1,14 @@
 import { Vessel } from "../../models/cruiseShippingModels/v1/vessel"
 
 // Path localhost:3000/cruiseShips/vessels
-export function vessel_get(req, res, next) {
+export function vessel_get(req, res) {
   Vessel.find()
     .then(vessel => res.json(vessel))
     .catch(err => res.status(400).json("Error " + err))
 }
 
 // Path localhost:3000/cruiseShips/vessels/add
-export function vessel_add(req, res, next) {
+export function vessel_add(req, res) {
   const databaseVersion = req.body.databaseVersion
   const vessel_name_url = req.body.vessel_name_url
   const title = req.body.title

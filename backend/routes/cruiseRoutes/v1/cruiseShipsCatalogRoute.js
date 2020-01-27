@@ -15,10 +15,13 @@ router.get("/", port_arrivals_controller.index_get)
 // Get all port arrivals - only Belfast at present
 router.get("/portArrivals", port_arrivals_controller.port_arrivals_get)
 
-// Get all vessels on the arrivals list
+// Post a single arrival to the database
+router.post("/portArrivals/add", port_arrivals_controller.port_arrivals_add)
+
+// Get all vessels from the database
 router.get("/vessels", vessel_controller.vessel_get)
 
-// Get all vessels on the arrivals list
+// Post a single vessel to the database
 router.post("/vessels/add", vessel_controller.vessel_add)
 
 module.exports = router
