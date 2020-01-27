@@ -2,6 +2,8 @@ import express from "express"
 import cors from "cors"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
+
+// This line is required to run cron
 import { emptyFile, runCron } from "../backend/cron"
 
 // const path = require("path")
@@ -14,9 +16,6 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT || 3000
 
-app.use(cors())
-app.use(express.json())
-
 // cors settings from https://blog.jscrambler.com/setting-up-5-useful-middlewares-for-an-express-api/
 app.use(
   cors({
@@ -25,6 +24,7 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"]
   })
 )
+app.use(express.json())
 
 // MongoDB connection string
 const uri = process.env.ATLAS_URI

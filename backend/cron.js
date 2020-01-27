@@ -22,20 +22,19 @@ export async function emptyFile() {
 }
 
 export async function runCron() {
-  // Now add new data
-  let vesselUrls = []
-  let vesselDetails = []
-
   let allArrivals = await getAllVesselArrivals()
 
   db.get("arrivalScrapes")
     .push({
-      date: Date.now(),
-      arrivals: allArrivals
+      // date: Date.now(),
+      // arrivals: allArrivals
+      allArrivals
     })
     .write()
 
   console.log("Vessel arrivals added")
+
+  let vesselUrls = []
 
   // Now extract vessel details urls
   let i = 0
@@ -51,6 +50,8 @@ export async function runCron() {
   // Sort array ascending
   DeduplicatedVesselUrlArray.sort()
 
+  let vesselDetails = []
+
   let j = 0
   do {
     // Extract urls for vessels & store in newVessel array
@@ -60,8 +61,9 @@ export async function runCron() {
 
   db.get("vesselScrapes")
     .push({
-      date: Date.now(),
-      vessels: vesselDetails
+      // date: Date.now(),
+      // vessels: vesselDetails
+      vesselDetails
     })
     .write()
 
