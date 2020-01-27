@@ -16,6 +16,9 @@ router.get("/", port_arrivals_controller.index_get)
 router.get("/portArrivals", port_arrivals_controller.port_arrivals_get)
 
 // Get all vessels on the arrivals list
-router.get("/vessel", vessel_controller.vessel_get)
+router.get("/vessels", vessel_controller.vessel_get)
+
+// Get all vessels on the arrivals list
+router.post("/vessels/add", vessel_controller.vessel_add)
 
 module.exports = router
