@@ -1,6 +1,4 @@
-import mongoose from "mongoose"
-
-const Schema = mongoose.Schema
+import mongoose, { Schema } from "mongoose"
 
 const PortArrivalSchema = new Schema(
   {
@@ -23,4 +21,4 @@ const PortArrivalSchema = new Schema(
 )
 
 // Export model
-module.exports = mongoose.model("arrival", PortArrivalSchema)
+export const PortArrival = mongoose.model("portArrival", PortArrivalSchema)

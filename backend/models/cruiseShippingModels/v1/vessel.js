@@ -1,10 +1,5 @@
-import mongoose from "mongoose"
+import mongoose, { Schema } from "mongoose"
 
-var Schema = mongoose.Schema
-
-// --------------------------------------------------------------
-// Original belfast cruise site web scraping
-// Remember that Timestamp is also saved by default
 var VesselSchema = new Schema(
   {
     databaseVersion: { type: Number, default: 1.0 },
@@ -40,4 +35,4 @@ var VesselSchema = new Schema(
 )
 
 // Export model
-module.exports = mongoose.model("vessel", VesselSchema)
+export const Vessel = mongoose.model("vessel", VesselSchema)
