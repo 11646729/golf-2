@@ -24,13 +24,15 @@ export async function emptyFile() {
 export async function runCron() {
   let allArrivals = await getAllVesselArrivals()
 
-  db.get("arrivalScrapes")
-    .push({
-      // date: Date.now(),
-      // arrivals: allArrivals
-      allArrivals
-    })
-    .write()
+  // db.get("arrivalScrapes")
+  //   .push({
+  //     // date: Date.now(),
+  //     // arrivals: allArrivals
+  //     allArrivals
+  //   })
+  //   .write()
+
+  // TODO - Move mongoDB save to here
 
   console.log("Vessel arrivals added")
 
