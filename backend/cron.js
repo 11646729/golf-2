@@ -1,5 +1,4 @@
 import cron from "node-cron"
-import db from "./db"
 import mongoose from "mongoose"
 import { getAllVesselArrivals } from "./scrapeArrivals"
 import { getVesselDetails } from "./scrapeVessels"
