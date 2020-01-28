@@ -1,7 +1,10 @@
 import cron from "node-cron"
 import db from "./db"
+import mongoose from "mongoose"
 import { getAllVesselArrivals } from "./scrapeArrivals"
 import { getVesselDetails } from "./scrapeVessels"
+import { PortArrival } from "./models/cruiseShippingModels/v1/portArrival"
+import { Vessel } from "./models/cruiseShippingModels/v1/vessel"
 
 cron.schedule("* * * * *", () => {
   console.log("Started Scraping!")
@@ -11,26 +14,26 @@ cron.schedule("* * * * *", () => {
 })
 
 export async function emptyFile() {
-  //  First delete previous data
-  db.get("arrivalScrapes")
-    .remove()
-    .write()
+  // First delete all previous data
+  PortArrival.deleteMany({}, function(err) {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log("PortArrival collection emptied")
+    }
+  })
 
-  db.get("vesselScrapes")
-    .remove()
-    .write()
+  Vessel.deleteMany({}, function(err) {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log("Vessel collection emptied")
+    }
+  })
 }
 
 export async function runCron() {
   let allArrivals = await getAllVesselArrivals()
-
-  // db.get("arrivalScrapes")
-  //   .push({
-  //     // date: Date.now(),
-  //     // arrivals: allArrivals
-  //     allArrivals
-  //   })
-  //   .write()
 
   // TODO - Move mongoDB save to here
 
@@ -60,14 +63,6 @@ export async function runCron() {
     vesselDetails.push(await getVesselDetails(DeduplicatedVesselUrlArray[j]))
     j++
   } while (j < DeduplicatedVesselUrlArray.length)
-
-  db.get("vesselScrapes")
-    .push({
-      // date: Date.now(),
-      // vessels: vesselDetails
-      vesselDetails
-    })
-    .write()
 
   console.log("Vessel details added")
 }
