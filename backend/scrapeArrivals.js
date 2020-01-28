@@ -145,20 +145,20 @@ export async function getVesselArrivals(period) {
         vessel_name_url
       })
 
-      // Now save in mongoDB
-      const newPortArrival = new PortArrival({
-        database_version,
-        port_name,
-        port_un_locode,
-        port_longitude,
-        port_latitude,
-        vessel_shortcruise_name,
-        vessel_eta,
-        vessel_etd,
-        vessel_name_url
-      })
+      // // Now save in mongoDB
+      // const newPortArrival = new PortArrival({
+      //   database_version,
+      //   port_name,
+      //   port_un_locode,
+      //   port_longitude,
+      //   port_latitude,
+      //   vessel_shortcruise_name,
+      //   vessel_eta,
+      //   vessel_etd,
+      //   vessel_name_url
+      // })
 
-      newPortArrival.save()
+      // newPortArrival.save()
     }
   })
 
