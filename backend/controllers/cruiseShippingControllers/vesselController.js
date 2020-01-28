@@ -9,7 +9,7 @@ export function vessel_get(req, res) {
 
 // Path localhost:3000/cruiseShips/vessels/add
 export function vessel_add(req, res) {
-  const databaseVersion = req.body.databaseVersion
+  const database_version = req.body.databaseVersion
   const vessel_name_url = req.body.vessel_name_url
   const title = req.body.title
   const vessel_type = req.body.vessel_type
@@ -31,7 +31,7 @@ export function vessel_add(req, res) {
   const vessel_typical_crew = req.body.vessel_typical_crew
 
   const newVessel = new Vessel({
-    databaseVersion,
+    database_version,
     vessel_name_url,
     title,
     vessel_type,
