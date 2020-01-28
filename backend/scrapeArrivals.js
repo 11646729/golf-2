@@ -1,6 +1,7 @@
 import axios from "axios"
 import cheerio from "cheerio"
 import dotenv from "dotenv"
+import { PortArrival } from "./models/cruiseShippingModels/v1/portArrival"
 
 dotenv.config()
 
@@ -69,7 +70,7 @@ export async function getVesselArrivals(period) {
     // Ignore the table heading
     if (i > 0) {
       // Database version
-      const databaseVersion = "1.0"
+      const database_version = "1.0"
 
       // Port Name
       const port_name = "Belfast"
@@ -133,7 +134,7 @@ export async function getVesselArrivals(period) {
 
       // Push an object with the data onto our array
       vessel_arrival.push({
-        databaseVersion,
+        database_version,
         port_name,
         port_un_locode,
         port_longitude,
@@ -143,10 +144,23 @@ export async function getVesselArrivals(period) {
         vessel_etd,
         vessel_name_url
       })
+
+      // Now save in mongoDB
+      const newPortArrival = new PortArrival({
+        database_version,
+        port_name,
+        port_un_locode,
+        port_longitude,
+        port_latitude,
+        vessel_shortcruise_name,
+        vessel_eta,
+        vessel_etd,
+        vessel_name_url
+      })
+
+      newPortArrival.save()
     }
   })
-
-  //  console.log(vessel_arrival)
 
   // Return our data array
   return vessel_arrival

@@ -8,8 +8,8 @@ const PortArrivalSchema = new Schema(
     port_longitude: { type: Number, default: "-5.89831" },
     port_latitude: { type: Number, default: "54.61750" },
     vessel_shortcruise_name: { type: String, default: "" },
-    vessel_eta: { type: Date },
-    vessel_etd: { type: Date },
+    vessel_eta: { type: String },
+    vessel_etd: { type: String },
     vessel_name_url: {
       type: String,
       required: true
