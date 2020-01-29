@@ -1,22 +1,18 @@
 import axios from "axios"
 import cheerio from "cheerio"
-import { Vessel } from "./models/cruiseShippingModels/v1/vessel"
 
-export async function getVesselDetailsHTML(vessel_url) {
-  const { data: html } = await axios.get(vessel_url)
-  return html
-}
+export async function getSingleVesselDetails(VesselUrl) {
+  // Fetch the initial data
+  const { data: html } = await axios.get(VesselUrl)
 
-export async function getSingleVesselDetails(html) {
   // load up cheerio
   const $ = cheerio.load(html)
 
   // Create an empty array that will store our data
   const vessel_details = []
 
-  // Scrape Cruise Ship Data Here
-  // ----------------------------
-  let vessel_name_url = ""
+  // Cruise Ship Data url
+  let vessel_name_url = VesselUrl
 
   // Database version
   let database_version = "1.0"
@@ -262,43 +258,6 @@ export async function getSingleVesselDetails(html) {
     vessel_typical_crew
   })
 
-  const newVessel = new Vessel({
-    database_version,
-    vessel_name_url,
-    title,
-    vessel_type,
-    vessel_name,
-    vessel_flag,
-    vessel_short_operator,
-    vessel_long_operator,
-    vessel_year_built,
-    vessel_length_metres,
-    vessel_width_metres,
-    vessel_gross_tonnage,
-    vessel_average_speed_knots,
-    vessel_max_speed_knots,
-    vessel_average_draught_metres,
-    vessel_imo_number,
-    vessel_mmsi_number,
-    vessel_callsign,
-    vessel_typical_passengers,
-    vessel_typical_crew
-  })
-
-  newVessel.save()
-
   // Return our data array
-  return vessel_details[0]
-}
-
-export async function getVesselDetails(VesselUrl) {
-  // Get a Specific Vessel Details
-  const htmlVesselData = await getVesselDetailsHTML(VesselUrl)
-  const vesselDetails = await getSingleVesselDetails(htmlVesselData)
-
-  // Store Vessel Detail url in vesselDetails vessel_url field
-  vesselDetails.vessel_name_url = VesselUrl
-
-  // Return our data array
-  return vesselDetails
+  return vessel_details
 }

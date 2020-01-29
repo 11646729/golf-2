@@ -1,6 +1,6 @@
 import cron from "node-cron"
 import { getAllVesselArrivals } from "./scrapeArrivals"
-import { getVesselDetails } from "./scrapeVessels"
+import { getSingleVesselDetails } from "./scrapeVessels"
 import { PortArrival } from "./models/cruiseShippingModels/v1/portArrival"
 import { Vessel } from "./models/cruiseShippingModels/v1/vessel"
 
@@ -81,11 +81,60 @@ export async function runCron() {
   // Sort array ascending
   DeduplicatedVesselUrlArray.sort()
 
-  let vesselDetails = []
   let k = 0
   do {
+    let vesselDetails = []
+
     // Extract urls for vessels & store in newVessel array
-    vesselDetails.push(await getVesselDetails(DeduplicatedVesselUrlArray[k]))
+    vesselDetails = await getSingleVesselDetails(DeduplicatedVesselUrlArray[k])
+
+    let database_version = vesselDetails[0].database_version
+    let vessel_name_url = vesselDetails[0].vessel_name_url
+    let title = vesselDetails[0].title
+    let vessel_type = vesselDetails[0].vessel_type
+    let vessel_name = vesselDetails[0].vessel_name
+    let vessel_flag = vesselDetails[0].vessel_flag
+    let vessel_short_operator = vesselDetails[0].vessel_short_operator
+    let vessel_long_operator = vesselDetails[0].vessel_long_operator
+    let vessel_year_built = vesselDetails[0].vessel_year_built
+    let vessel_length_metres = vesselDetails[0].vessel_length_metres
+    let vessel_width_metres = vesselDetails[0].vessel_width_metres
+    let vessel_gross_tonnage = vesselDetails[0].vessel_gross_tonnage
+    let vessel_average_speed_knots = vesselDetails[0].vessel_average_speed_knots
+    let vessel_max_speed_knots = vesselDetails[0].vessel_max_speed_knots
+    let vessel_average_draught_metres =
+      vesselDetails[0].vessel_average_draught_metres
+    let vessel_imo_number = vesselDetails[0].vessel_imo_number
+    let vessel_mmsi_number = vesselDetails[0].vessel_mmsi_number
+    let vessel_callsign = vesselDetails[0].vessel_callsign
+    let vessel_typical_passengers = vesselDetails[0].vessel_typical_passengers
+    let vessel_typical_crew = vesselDetails[0].vessel_typical_crew
+
+    const newVessel = new Vessel({
+      database_version,
+      vessel_name_url,
+      title,
+      vessel_type,
+      vessel_name,
+      vessel_flag,
+      vessel_short_operator,
+      vessel_long_operator,
+      vessel_year_built,
+      vessel_length_metres,
+      vessel_width_metres,
+      vessel_gross_tonnage,
+      vessel_average_speed_knots,
+      vessel_max_speed_knots,
+      vessel_average_draught_metres,
+      vessel_imo_number,
+      vessel_mmsi_number,
+      vessel_callsign,
+      vessel_typical_passengers,
+      vessel_typical_crew
+    })
+
+    newVessel.save()
+
     k++
   } while (k < DeduplicatedVesselUrlArray.length)
 
