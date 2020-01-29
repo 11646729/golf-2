@@ -1,5 +1,4 @@
 import cron from "node-cron"
-import mongoose from "mongoose"
 import { getAllVesselArrivals } from "./scrapeArrivals"
 import { getVesselDetails } from "./scrapeVessels"
 import { PortArrival } from "./models/cruiseShippingModels/v1/portArrival"
@@ -8,7 +7,6 @@ import { Vessel } from "./models/cruiseShippingModels/v1/vessel"
 cron.schedule("* * * * *", () => {
   console.log("Started Scraping!")
   emptyFile()
-  //  getPortArrivals()
   runCron()
   console.log("Scraping done at " + Date.now())
 })
@@ -84,7 +82,6 @@ export async function runCron() {
   DeduplicatedVesselUrlArray.sort()
 
   let vesselDetails = []
-
   let k = 0
   do {
     // Extract urls for vessels & store in newVessel array

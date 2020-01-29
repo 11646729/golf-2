@@ -1,7 +1,6 @@
 import axios from "axios"
 import cheerio from "cheerio"
 import dotenv from "dotenv"
-import { PortArrival } from "./models/cruiseShippingModels/v1/portArrival"
 
 dotenv.config()
 
@@ -144,21 +143,6 @@ export async function getVesselArrivals(period) {
         vessel_etd,
         vessel_name_url
       })
-
-      // // Now save in mongoDB
-      // const newPortArrival = new PortArrival({
-      //   database_version,
-      //   port_name,
-      //   port_un_locode,
-      //   port_longitude,
-      //   port_latitude,
-      //   vessel_shortcruise_name,
-      //   vessel_eta,
-      //   vessel_etd,
-      //   vessel_name_url
-      // })
-
-      // newPortArrival.save()
     }
   })
 
