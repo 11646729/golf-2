@@ -108,7 +108,7 @@ export async function getVesselArrivals(period) {
       } else {
         vessel_eta = Date.parse(arrival_date + " " + vessel_eta + " GMT")
         var d = new Date(vessel_eta)
-        vessel_eta = d.toUTCString()
+        vessel_eta = d.toISOString()
       }
 
       // // Expected Time of Departure
@@ -123,7 +123,7 @@ export async function getVesselArrivals(period) {
       } else {
         vessel_etd = Date.parse(arrival_date + " " + vessel_etd + " GMT")
         var d = new Date(vessel_etd)
-        vessel_etd = d.toUTCString()
+        vessel_etd = d.toISOString()
       }
 
       // Url of Vessel Web Page
