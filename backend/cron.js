@@ -43,6 +43,7 @@ export async function getAndSavePortArrivals() {
     let port_un_locode = allArrivals[i].port_un_locode
     let port_longitude = allArrivals[i].port_longitude
     let port_latitude = allArrivals[i].port_latitude
+    let port_coords = allArrivals[i].port_coords
     let vessel_shortcruise_name = allArrivals[i].vessel_shortcruise_name
     let vessel_eta = allArrivals[i].vessel_eta
     let vessel_etd = allArrivals[i].vessel_etd
@@ -57,6 +58,7 @@ export async function getAndSavePortArrivals() {
       port_un_locode,
       port_longitude,
       port_latitude,
+      port_coords,
       vessel_shortcruise_name,
       vessel_eta,
       vessel_etd,

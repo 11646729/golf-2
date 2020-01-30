@@ -24,6 +24,8 @@ export function port_arrivals_add(req, res) {
   const vessel_etd = req.body.vessel_etd
   const vessel_name_url = req.body.vessel_name_url
 
+  //  { type: "Point", coordinates: [ 40, 5 ] }
+
   const newPortArrival = new PortArrival({
     database_version,
     port_name,

@@ -83,6 +83,12 @@ export async function getVesselArrivals(period) {
       // Port Latitude
       const port_latitude = "54.61750"
 
+      // Port Coordinates in GeoJSON
+      const port_coords = {
+        type: "Point",
+        coordinates: [port_longitude, port_latitude]
+      }
+
       // Name of Vessel
       const vessel_shortcruise_name = $(item)
         .find("a")
@@ -138,6 +144,7 @@ export async function getVesselArrivals(period) {
         port_un_locode,
         port_longitude,
         port_latitude,
+        port_coords,
         vessel_shortcruise_name,
         vessel_eta,
         vessel_etd,

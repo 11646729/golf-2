@@ -7,6 +7,17 @@ const PortArrivalSchema = new Schema(
     port_un_locode: { type: String, default: "GBBEL" },
     port_longitude: { type: Number, default: "-5.89831" },
     port_latitude: { type: Number, default: "54.61750" },
+    port_coords: {
+      type: {
+        type: String,
+        enum: ["Point"],
+        required: true
+      },
+      coordinates: {
+        type: [Number],
+        required: true
+      }
+    },
     vessel_shortcruise_name: { type: String, default: "" },
     vessel_eta: { type: String },
     vessel_etd: { type: String },
