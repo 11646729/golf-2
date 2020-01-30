@@ -100,7 +100,7 @@ export async function getVesselArrivals(period) {
         .children("td")
         .next("td")
         .next("td")
-        .html() // 03:00
+        .html()
 
       // If No Arrival Time Given
       if (vessel_eta == "") {
@@ -115,7 +115,7 @@ export async function getVesselArrivals(period) {
       let vessel_etd = $(item)
         .children("td")
         .last("td")
-        .html() // 14:00
+        .html()
 
       // If No Departure Time Given
       if (vessel_etd == "") {
