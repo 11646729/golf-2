@@ -22,7 +22,7 @@ export async function getSingleVesselDetails(VesselUrl) {
     .text()
     .trim()
 
-  let vessel_type = "Cruise Ship"
+  let vessel_type = "Passenger Ship"
 
   // Remove " Review and Specifications" from title to get vessel_name
   let vessel_name = title.substring(0, title.length - 26)

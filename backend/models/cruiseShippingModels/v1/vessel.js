@@ -4,30 +4,28 @@ var VesselSchema = new Schema(
   {
     databaseVersion: { type: Number, default: 1.0 },
     vessel_name_url: {
-      type: String,
-      default: "https://www.cruisemapper.com/ships/Spirit-of-Discovery-1829"
+      type: String
     },
     title: {
-      type: String,
-      default: "Spirit of Discovery Review and Specifications"
+      type: String
     },
-    vessel_type: { type: String, default: "Cruise Ship" },
-    vessel_name: { type: String, default: "Spirit of Discovery" },
-    vessel_flag: { type: String, default: " United Kingdom" },
-    vessel_short_operator: { type: String, default: "Spirit" },
-    vessel_long_operator: { type: String, default: "Saga Cruises" },
-    vessel_year_built: { type: String, default: "2019" },
-    vessel_length_metres: { type: Number, default: "236" },
-    vessel_width_metres: { type: Number, default: "31" },
-    vessel_gross_tonnage: { type: Number, default: "58250" },
-    vessel_average_speed_knots: { type: String, default: "23" },
-    vessel_max_speed_knots: { type: Number, default: "23" },
-    vessel_average_draught_metres: { type: Number, default: "7.9" },
-    vessel_imo_number: { type: Number, default: "8217881" },
-    vessel_mmsi_number: { type: Number, default: "311000343" },
-    vessel_callsign: { type: String, default: "C6BR5" },
-    vessel_typical_passengers: { type: String, default: "1000" },
-    vessel_typical_crew: { type: String, default: "530" }
+    vessel_type: { type: String },
+    vessel_name: { type: String },
+    vessel_flag: { type: String },
+    vessel_short_operator: { type: String },
+    vessel_long_operator: { type: String },
+    vessel_year_built: { type: String },
+    vessel_length_metres: { type: Number },
+    vessel_width_metres: { type: Number },
+    vessel_gross_tonnage: { type: Number },
+    vessel_average_speed_knots: { type: String },
+    vessel_max_speed_knots: { type: Number },
+    vessel_average_draught_metres: { type: Number },
+    vessel_imo_number: { type: Number },
+    vessel_mmsi_number: { type: Number },
+    vessel_callsign: { type: String },
+    vessel_typical_passengers: { type: String },
+    vessel_typical_crew: { type: String }
   },
   {
     timestamps: true
