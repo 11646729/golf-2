@@ -5,8 +5,6 @@ const PortArrivalSchema = new Schema(
     database_version: { type: Number, default: 1.0 },
     port_name: { type: String, default: "Belfast" },
     port_un_locode: { type: String, default: "GBBEL" },
-    port_longitude: { type: Number, default: "-5.89831" },
-    port_latitude: { type: Number, default: "54.61750" },
     port_coords: {
       type: {
         type: String,

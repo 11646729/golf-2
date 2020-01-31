@@ -77,16 +77,10 @@ export async function getVesselArrivals(period) {
       // Port UN Locode
       const port_un_locode = "GBBEL"
 
-      // Port Longitude
-      const port_longitude = "-5.89831"
-
-      // Port Latitude
-      const port_latitude = "54.61750"
-
-      // Port Coordinates in GeoJSON
+      // Belfast Port Coordinates in GeoJSON
       const port_coords = {
         type: "Point",
-        coordinates: [port_longitude, port_latitude]
+        coordinates: [-5.89831, 54.6175]
       }
 
       // Name of Vessel
@@ -142,8 +136,6 @@ export async function getVesselArrivals(period) {
         database_version,
         port_name,
         port_un_locode,
-        port_longitude,
-        port_latitude,
         port_coords,
         vessel_shortcruise_name,
         vessel_eta,
