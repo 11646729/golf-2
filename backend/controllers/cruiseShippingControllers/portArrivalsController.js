@@ -19,6 +19,7 @@ export function port_arrivals_add(req, res) {
   const port_un_locode = req.body.port_un_locode
   //  const port_longitude = req.body.port_longitude
   //  const port_latitude = req.body.port_latitude
+  const port_coords = req.body.port_coords
   const vessel_shortcruise_name = req.body.vessel_shortcruise_name
   const vessel_eta = req.body.vessel_eta
   const vessel_etd = req.body.vessel_etd
@@ -30,6 +31,7 @@ export function port_arrivals_add(req, res) {
     port_un_locode,
     //    port_longitude,
     //    port_latitude,
+    port_coords,
     vessel_shortcruise_name,
     vessel_eta,
     vessel_etd,
