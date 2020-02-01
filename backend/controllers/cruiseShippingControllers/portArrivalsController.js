@@ -7,7 +7,7 @@ export function index_get(req, res, next) {
 
 // Path localhost:3000/cruiseShips/portArrivals
 export function port_arrivals_get(req, res) {
-  PortArrival.find()
+  PortArrival.find({})
     .then(portArrival => res.json(portArrival))
     .catch(err => res.status(400).json("Error " + err))
 }
