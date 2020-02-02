@@ -1,3 +1,5 @@
+"use strict"
+
 import express from "express"
 import http from "http"
 import socketIo from "socket.io"
@@ -77,4 +79,4 @@ server.listen(port, err => {
   }
 })
 
-console.log("Server is running on port:" + port)
+console.log("Server is running on port: " + port)
