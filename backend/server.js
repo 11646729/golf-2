@@ -1,4 +1,5 @@
 import express from "express"
+import http from "http"
 import cors from "cors"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
@@ -14,6 +15,9 @@ import { emptyFile, runCron } from "../backend/cron"
 dotenv.config()
 
 const app = express()
+const server = http.createServer(app)
+const io = socketIo(server)
+
 const port = process.env.PORT || 3000
 
 // cors settings from https://blog.jscrambler.com/setting-up-5-useful-middlewares-for-an-express-api/
@@ -49,9 +53,6 @@ const connection = mongoose.connection
 
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully")
-  // DO STUFF
-  //  connection.close()
-  //  console.log("MongoDB database connection closed successfully")
 })
 
 // Configure mongoose's promise to global promise
@@ -69,6 +70,6 @@ const cruiseShipsRouter = require("./routes/cruiseRoutes/v1/cruiseShipsCatalogRo
 // app.use("/golf", golfRouter)
 app.use("/cruiseShips", cruiseShipsRouter)
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log("Server is running on port:" + port)
 })
