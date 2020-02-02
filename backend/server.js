@@ -70,6 +70,10 @@ const cruiseShipsRouter = require("./routes/cruiseRoutes/v1/cruiseShipsCatalogRo
 // app.use("/golf", golfRouter)
 app.use("/cruiseShips", cruiseShipsRouter)
 
-server.listen(port, () => {
-  console.log("Server is running on port:" + port)
+server.listen(port, err => {
+  if (err) {
+    throw err
+  }
 })
+
+console.log("Server is running on port:" + port)
