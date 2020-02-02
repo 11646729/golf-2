@@ -1,5 +1,6 @@
 import express from "express"
 import http from "http"
+import socketIo from "socket.io"
 import cors from "cors"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
