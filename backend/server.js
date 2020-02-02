@@ -2,6 +2,7 @@
 
 import express from "express"
 import http from "http"
+import path from "path"
 import socketIo from "socket.io"
 import cors from "cors"
 import mongoose from "mongoose"
@@ -10,7 +11,6 @@ import dotenv from "dotenv"
 // This line is required to run cron
 import { emptyFile, runCron } from "../backend/cron"
 
-// const path = require("path")
 // const cookieParser = require("cookie-parser")
 // const logger = require("morgan")
 // const createError = require("http-errors")
@@ -32,6 +32,8 @@ app.use(
   })
 )
 app.use(express.json())
+
+app.use(express.static(path.join(__dirname, "static")))
 
 // MongoDB connection string
 const uri = process.env.ATLAS_URI
