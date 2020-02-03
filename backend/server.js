@@ -33,7 +33,7 @@ app.use(
 )
 app.use(express.json())
 
-app.use(express.static(path.join(__dirname, "static")))
+app.use(express.static(path.join(__dirname, "public")))
 
 // MongoDB connection string
 const uri = process.env.ATLAS_URI
@@ -74,6 +74,16 @@ const cruiseShipsRouter = require("./routes/cruiseRoutes/v1/cruiseShipsCatalogRo
 // app.use("/users", usersRouter)
 // app.use("/golf", golfRouter)
 app.use("/cruiseShips", cruiseShipsRouter)
+
+// Using socket.io for realtime
+io.on("connection", socket => {
+  // Server listens for ping
+  socket.on("_ping", () => {
+    console.log("got ping")
+    // Server emits pong
+    socket.emit("_pong")
+  })
+})
 
 server.listen(port, err => {
   if (err) {
