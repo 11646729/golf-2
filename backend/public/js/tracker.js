@@ -14,13 +14,15 @@ document.addEventListener("DOMContentLoaded", () => {
     maximumAge: 0
   }
 
-  navigator.geolocation.getCurrentPosition(
-    pos => {
-      console.log(pos.coords)
-    },
-    err => {
-      console.error("err")
-    },
-    positionOptions
-  )
+  setInterval(() => {
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        console.log(pos.coords)
+      },
+      err => {
+        console.error("err")
+      },
+      positionOptions
+    )
+  }, 5000)
 })
