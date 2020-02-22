@@ -2,13 +2,13 @@ import cron from "node-cron"
 import { getAllVesselArrivals } from "./scrapeArrivals"
 import { getSingleVesselDetails } from "./scrapeVessels"
 import { PortArrival } from "./models/cruiseShippingModels/v1/portArrival"
-import { Vessel } from "./models/cruiseShippingModels/v1/vessel"
+import { VesselDetails } from "./models/cruiseShippingModels/v1/vesselDetails"
 
 cron.schedule("* * * * *", () => {
-  console.log("Started Scraping!")
+  console.log("Vessel Arrivals & Details Scraping started!")
   emptyFile()
   runCron()
-  console.log("Scraping done at " + Date.now())
+  console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
 })
 
 export async function emptyFile() {
@@ -21,11 +21,11 @@ export async function emptyFile() {
     }
   })
 
-  Vessel.deleteMany({}, function(err) {
+  VesselDetails.deleteMany({}, function(err) {
     if (err) {
       console.log(err)
     } else {
-      console.log("Vessel collection emptied")
+      console.log("VesselDetails collection emptied")
     }
   })
 }
@@ -65,7 +65,7 @@ export async function getAndSavePortArrivals() {
     i++
   } while (i < allArrivals.length)
 
-  console.log(allArrivals.length + " Vessel arrivals added")
+  console.log(allArrivals.length + " Port Arrivals added")
 
   return allArrivalsVesselUrls
 }
@@ -108,7 +108,7 @@ export async function runCron() {
     let vessel_typical_passengers = vesselDetails[0].vessel_typical_passengers
     let vessel_typical_crew = vesselDetails[0].vessel_typical_crew
 
-    const newVessel = new Vessel({
+    const newVessel = new VesselDetails({
       database_version,
       vessel_name_url,
       title,
@@ -136,5 +136,5 @@ export async function runCron() {
     k++
   } while (k < DeduplicatedVesselUrlArray.length)
 
-  console.log(DeduplicatedVesselUrlArray.length + " Vessel details added")
+  console.log(DeduplicatedVesselUrlArray.length + " Vessel Details added")
 }

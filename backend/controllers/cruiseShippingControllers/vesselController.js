@@ -1,8 +1,8 @@
-import { Vessel } from "../../models/cruiseShippingModels/v1/vessel"
+import { VesselDetails } from "../../models/cruiseShippingModels/v1/vesselDetails"
 
 // Path localhost:3000/cruiseShips/vessels
 export function vessel_get(req, res) {
-  Vessel.find()
+  VesselDetails.find()
     .then(vessel => res.json(vessel))
     .catch(err => res.status(400).json("Error " + err))
 }

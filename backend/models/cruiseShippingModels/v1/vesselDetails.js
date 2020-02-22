@@ -33,4 +33,4 @@ var VesselSchema = new Schema(
 )
 
 // Export model
-export const Vessel = mongoose.model("vessel", VesselSchema)
+export const VesselDetails = mongoose.model("vessel", VesselSchema)
