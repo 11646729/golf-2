@@ -4,7 +4,7 @@ var router = express.Router()
 // Require controller modules
 // const itinerary_controller = require("../../../controllers/cruiseShippingControllers/itineraryController")
 const port_arrivals_controller = require("../../../controllers/cruiseShippingControllers/portArrivalsController")
-const vessel_controller = require("../../../controllers/cruiseShippingControllers/vesselController")
+const vessel_details_controller = require("../../../controllers/cruiseShippingControllers/vesselDetailsController")
 
 /// PortArrivals Routes ///
 
@@ -20,9 +20,9 @@ router.post("/portArrivals/add", port_arrivals_controller.port_arrivals_add)
 /// Vessels Routes ///
 
 // Get all vessels from the database
-router.get("/vessels", vessel_controller.vessel_get)
+router.get("/vessels", vessel_details_controller.vessel_get)
 
 // Post a single vessel to the database
-router.post("/vessels/add", vessel_controller.vessel_add)
+router.post("/vessels/add", vessel_details_controller.vessel_add)
 
 module.exports = router
