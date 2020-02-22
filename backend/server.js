@@ -69,6 +69,8 @@ mongoose.promise = global.Promise
 // const golfRouter = require("./routes/golfRoutes/v1/golfRoute")
 const cruiseShipsRouter = require("./routes/cruiseRoutes/v1/cruiseShipsCatalogRoute")
 
+const locationMap = new Map()
+
 // routes
 // app.use("/", indexRouter)
 // app.use("/users", usersRouter)
@@ -77,11 +79,17 @@ app.use("/cruiseShips", cruiseShipsRouter)
 
 // Using socket.io for realtime
 io.on("connection", socket => {
-  // Server listens for ping
-  socket.on("_ping", () => {
-    console.log("got ping")
-    // Server emits pong
-    socket.emit("_pong")
+  locationMap.set(socket.id, { lat: null, lng: null })
+
+  socket.on("updateLocation", pos => {
+    if (locationMap.has(socket.id)) {
+      locationMap.set(socket.id, pos)
+      console.log(socket.id, pos)
+    }
+  })
+
+  socket.on("disconnect", () => {
+    locationMap.delete(socket.id)
   })
 })
 
