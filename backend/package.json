@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -r esm server.js --ignore db.json"
+    "start": "nodemon -r esm server.js"
   },
   "keywords": [],
   "author": "Brian Smith",
@@ -20,7 +20,9 @@
     "mongoose": "^5.8.0",
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",
-    "nodemon": "^2.0.1",
     "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
   }
 }
