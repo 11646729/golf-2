@@ -21,7 +21,7 @@ const app = express()
 const server = http.createServer(app)
 const io = socketIo(server)
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000
 
 // cors settings from https://blog.jscrambler.com/setting-up-5-useful-middlewares-for-an-express-api/
 app.use(
