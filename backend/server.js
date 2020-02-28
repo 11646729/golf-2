@@ -9,7 +9,7 @@ import mongoose from "mongoose"
 import dotenv from "dotenv"
 
 // This line is required to run cron
-import { emptyFile, runCron } from "../backend/cron"
+import { emptyFile, runCron, getAndSavePortArrivals } from "../backend/cron"
 
 // const cookieParser = require("cookie-parser")
 // const logger = require("morgan")
@@ -71,6 +71,13 @@ const cruiseShipsRouter = require("./routes/cruiseRoutes/v1/cruiseShipsCatalogRo
 
 const locationMap = new Map()
 
+let intervalCounter = 0
+
+const getPositionData = async socket => {
+  socket.emit("transmitCount", intervalCounter)
+  intervalCounter++
+}
+
 // routes
 // app.use("/", indexRouter)
 // app.use("/users", usersRouter)
@@ -79,17 +86,21 @@ app.use("/cruiseShips", cruiseShipsRouter)
 
 // Using socket.io for realtime
 io.on("connection", socket => {
-  locationMap.set(socket.id, { lat: null, lng: null })
+  //  locationMap.set(socket.id, { lat: null, lng: null })
+  console.log("New client connected"),
+    setInterval(() => getPositionData(socket), 2000)
 
   socket.on("updateLocation", pos => {
-    if (locationMap.has(socket.id)) {
-      locationMap.set(socket.id, pos)
-      console.log(socket.id, pos)
-    }
+    // if (locationMap.has(socket.id)) {
+    //   locationMap.set(socket.id, pos)
+    console.log("Socket id : " + socket.id, pos)
+    //    socket.emit("transmitCount", pos)
+    // }
   })
 
   socket.on("disconnect", () => {
-    locationMap.delete(socket.id)
+    //    locationMap.delete(socket.id)
+    console.log("Disconnected")
   })
 })
 

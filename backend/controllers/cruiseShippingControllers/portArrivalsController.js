@@ -1,8 +1,8 @@
 import { PortArrival } from "../../models/cruiseShippingModels/v1/portArrival"
 
 // Path localhost:3000/cruiseShips/
-export function index_get(req, res, next) {
-  res.send("NOT IMPLEMENTED: root path in the portArrivalsController path")
+export function index_get(req, res) {
+  res.send({ response: "I am alive" }).status(200)
 }
 
 // Path localhost:3000/cruiseShips/portArrivals
