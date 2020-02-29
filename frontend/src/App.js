@@ -48,48 +48,95 @@
 //   apiKey: process.env.REACT_APP_GOOGLE_KEY
 // })(MapContainer)
 
+// import React, { Component } from "react"
+// import socketIOClient from "socket.io-client"
+
+// class App extends Component {
+//   constructor() {
+//     super()
+//     this.state = {
+//       response: false,
+//       endpoint: "http://127.0.0.1:5000"
+//     }
+//   }
+
+//   componentDidMount() {
+//     const { endpoint } = this.state
+//     const socket = socketIOClient(endpoint)
+
+//     socket.on("transmitCount", data => this.setState({ response: data }))
+//   }
+
+//   //    socket.on("transmitPosition", data => this.setState({ position: data }))
+
+//   render() {
+//     return (
+//       <div style={{ textAlign: "center" }}>
+//         {this.state.response ? (
+//           <p>The temperature in Seahill is: {this.state.response} °F</p>
+//         ) : (
+//           <p>Loading...</p>
+//         )}
+//       </div>
+//     )
+//   }
+// }
+
 import React, { Component } from "react"
-import socketIOClient from "socket.io-client"
+
+let api = "https://fcc-weather-api.glitch.me/api/current?"
 
 class App extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      response: false,
-      endpoint: "http://127.0.0.1:5000"
+      isLoaded: false,
+      items: {}
     }
+
+    this.fetchWeather = this.fetchWeather.bind(this)
+  }
+
+  fetchWeather(apiStr) {
+    fetch(apiStr)
+      .then(res => res.json())
+      .then(
+        result => {
+          console.log(result)
+          this.setState({
+            isLoaded: true,
+            items: result.main
+          })
+          console.log(this.state)
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        error => {
+          this.setState({
+            isLoaded: true,
+            error
+          })
+        }
+      )
   }
 
   componentDidMount() {
-    const { endpoint } = this.state
-    const socket = socketIOClient(endpoint)
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        api += `lat=${position.coords.latitude}&lon=${position.coords.longitude}`
+        console.log(api)
 
-    const positionOptions = {
-      enableHighAccuracy: true,
-      maximumAge: 0
+        this.fetchWeather(api)
+      })
     }
-
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        const { latitude: lat, longitude: lng } = pos.coords
-        socket.emit("updateLocation", { lat, lng })
-        console.log({ lat, lng })
-      },
-      error => {
-        console.error("Error")
-      },
-      positionOptions
-    )
-
-    socket.on("transmitCount", data => this.setState({ response: data }))
   }
 
   render() {
-    const { response } = this.state
     return (
       <div style={{ textAlign: "center" }}>
-        {response ? (
-          <p>The temperature in Seahill is: {response} °F</p>
+        {this.state.items ? (
+          <p>The temperature in Seahill is: {this.state.items.main} °F</p>
         ) : (
           <p>Loading...</p>
         )}

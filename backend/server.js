@@ -87,14 +87,14 @@ app.use("/cruiseShips", cruiseShipsRouter)
 // Using socket.io for realtime
 io.on("connection", socket => {
   //  locationMap.set(socket.id, { lat: null, lng: null })
-  console.log("New client connected"),
-    setInterval(() => getPositionData(socket), 2000)
+  console.log("New client connected")
+  setInterval(() => getPositionData(socket), 2000)
 
   socket.on("updateLocation", pos => {
     // if (locationMap.has(socket.id)) {
     //   locationMap.set(socket.id, pos)
     console.log("Socket id : " + socket.id, pos)
-    //    socket.emit("transmitCount", pos)
+    socket.emit("transmitPosition", pos)
     // }
   })
 
