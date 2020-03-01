@@ -73,13 +73,6 @@ const cruiseShipsRouter = require("./routes/cruiseRoutes/v1/cruiseShipsCatalogRo
 
 const locationMap = new Map()
 
-let intervalCounter = 0
-
-const getPositionData = async socket => {
-  socket.emit("transmitCount", intervalCounter)
-  intervalCounter++
-}
-
 // routes
 // app.use("/", indexRouter)
 // app.use("/users", usersRouter)
@@ -87,26 +80,6 @@ const getPositionData = async socket => {
 app.use("/cruiseShips", cruiseShipsRouter)
 
 runSwitchboard(io)
-
-// // Using socket.io for realtime
-// io.on("connection", socket => {
-//   //  locationMap.set(socket.id, { lat: null, lng: null })
-//   console.log("New Client connected")
-//   setInterval(() => getPositionData(socket), 2000)
-
-//   socket.on("updateLocation", pos => {
-//     // if (locationMap.has(socket.id)) {
-//     //   locationMap.set(socket.id, pos)
-//     console.log("Socket id : " + socket.id, pos)
-//     socket.emit("transmitPosition", pos)
-//     // }
-//   })
-
-//   socket.on("Client Disconnected", () => {
-//     //    locationMap.delete(socket.id)
-//     console.log("Disconnected")
-//   })
-// })
 
 server.listen(port, err => {
   if (err) {

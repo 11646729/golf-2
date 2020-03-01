@@ -1,5 +1,12 @@
 "use strict"
 
+let intervalCounter = 0
+
+const getPositionData = async socket => {
+  socket.emit("transmitCount", intervalCounter)
+  intervalCounter++
+}
+
 export async function runSwitchboard(io) {
   console.log("In the switchBoard file")
 

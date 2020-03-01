@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react"
 
 import CurrentLocation from "./Map"
+import Weather1 from "./Weather1"
 
 export class MapContainer extends Component {
   state = {
@@ -39,6 +40,7 @@ export class MapContainer extends Component {
             <h4>{this.state.selectedPlace.name}</h4>
           </div>
         </InfoWindow>
+        <Weather1></Weather1>
       </CurrentLocation>
     )
   }

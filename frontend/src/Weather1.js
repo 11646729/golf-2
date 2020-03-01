@@ -3,7 +3,7 @@ import socketIOClient from "socket.io-client"
 
 let api = "https://fcc-weather-api.glitch.me/api/current?"
 
-class App extends Component {
+class Weather1 extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -84,4 +84,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Weather1
