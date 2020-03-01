@@ -11,6 +11,8 @@ import dotenv from "dotenv"
 // This line is required to run cron
 import { emptyFile, runCron, getAndSavePortArrivals } from "../backend/cron"
 
+import { runSwitchboard } from "./switchBoard"
+
 // const cookieParser = require("cookie-parser")
 // const logger = require("morgan")
 // const createError = require("http-errors")
@@ -84,25 +86,27 @@ const getPositionData = async socket => {
 // app.use("/golf", golfRouter)
 app.use("/cruiseShips", cruiseShipsRouter)
 
-// Using socket.io for realtime
-io.on("connection", socket => {
-  //  locationMap.set(socket.id, { lat: null, lng: null })
-  console.log("New client connected")
-  setInterval(() => getPositionData(socket), 2000)
+runSwitchboard(io)
 
-  socket.on("updateLocation", pos => {
-    // if (locationMap.has(socket.id)) {
-    //   locationMap.set(socket.id, pos)
-    console.log("Socket id : " + socket.id, pos)
-    socket.emit("transmitPosition", pos)
-    // }
-  })
+// // Using socket.io for realtime
+// io.on("connection", socket => {
+//   //  locationMap.set(socket.id, { lat: null, lng: null })
+//   console.log("New Client connected")
+//   setInterval(() => getPositionData(socket), 2000)
 
-  socket.on("disconnect", () => {
-    //    locationMap.delete(socket.id)
-    console.log("Disconnected")
-  })
-})
+//   socket.on("updateLocation", pos => {
+//     // if (locationMap.has(socket.id)) {
+//     //   locationMap.set(socket.id, pos)
+//     console.log("Socket id : " + socket.id, pos)
+//     socket.emit("transmitPosition", pos)
+//     // }
+//   })
+
+//   socket.on("Client Disconnected", () => {
+//     //    locationMap.delete(socket.id)
+//     console.log("Disconnected")
+//   })
+// })
 
 server.listen(port, err => {
   if (err) {
