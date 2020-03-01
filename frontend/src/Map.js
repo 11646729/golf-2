@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 import ReactDOM from "react-dom"
 
 const mapStyles = {
@@ -8,7 +8,8 @@ const mapStyles = {
     height: "90%"
   }
 }
-export class CurrentLocation extends React.Component {
+
+export class CurrentLocation extends Component {
   constructor(props) {
     super(props)
 
@@ -20,6 +21,7 @@ export class CurrentLocation extends React.Component {
       }
     }
   }
+
   componentDidMount() {
     if (this.props.centerAroundCurrentLocation) {
       if (navigator && navigator.geolocation) {
@@ -113,6 +115,7 @@ export class CurrentLocation extends React.Component {
     )
   }
 }
+
 export default CurrentLocation
 
 CurrentLocation.defaultProps = {
