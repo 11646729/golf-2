@@ -71,8 +71,6 @@ mongoose.promise = global.Promise
 // const golfRouter = require("./routes/golfRoutes/v1/golfRoute")
 const cruiseShipsRouter = require("./routes/cruiseRoutes/v1/cruiseShipsCatalogRoute")
 
-const locationMap = new Map()
-
 // routes
 // app.use("/", indexRouter)
 // app.use("/users", usersRouter)

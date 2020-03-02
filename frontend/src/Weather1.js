@@ -57,7 +57,7 @@ class Weather1 extends Component {
           const { latitude: lat, longitude: lng } = position.coords
           api += `lat=${lat}&lon=${lng}`
 
-          socket.emit("updateLocation", { lat, lng })
+          socket.emit("fetchLocation", { lat, lng })
 
           console.log(api)
 
