@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react"
 
 import CurrentLocation from "./Map"
-import Weather1 from "./Weather1"
+import Weather1a from "./Weather1a"
 
 export class MapContainer extends Component {
   state = {
@@ -29,19 +29,19 @@ export class MapContainer extends Component {
 
   render() {
     return (
-      <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
-        <Marker onClick={this.onMarkerClick} name={"current location"} />
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
-        >
-          <div>
-            <h4>{this.state.selectedPlace.name}</h4>
-          </div>
-        </InfoWindow>
-        <Weather1></Weather1>
-      </CurrentLocation>
+      // <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
+      //   <Marker onClick={this.onMarkerClick} name={"current location"} />
+      //   <InfoWindow
+      //     marker={this.state.activeMarker}
+      //     visible={this.state.showingInfoWindow}
+      //     onClose={this.onClose}
+      //   >
+      //     <div>
+      //       <h4>{this.state.selectedPlace.name}</h4>
+      //     </div>
+      //   </InfoWindow>
+      <Weather1a></Weather1a>
+      // </CurrentLocation>
     )
   }
 }

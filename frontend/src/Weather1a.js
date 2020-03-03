@@ -3,7 +3,7 @@ import socketIOClient from "socket.io-client"
 
 let api = "https://fcc-weather-api.glitch.me/api/current?"
 
-class Weather1 extends Component {
+class Weather1a extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -21,7 +21,7 @@ class Weather1 extends Component {
       .then(res => res.json())
       .then(
         result => {
-          //          console.log(result)
+          console.log(result)
           this.setState({
             isLoaded: true,
             items: result
@@ -44,6 +44,8 @@ class Weather1 extends Component {
     const { endpoint } = this.state
     const socket = socketIOClient(endpoint)
 
+    //    socket.on("DataFromDarkSkiesAPI", data => this.setState({ response: data }))
+
     socket.on("transmitCount", data => this.setState({ response: data }))
 
     const positionOptions = {
@@ -57,9 +59,9 @@ class Weather1 extends Component {
           const { latitude: lat, longitude: lng } = position.coords
           api += `lat=${lat}&lon=${lng}`
 
-          socket.emit("updateLocation", { lat, lng })
+          socket.emit("fetchLocation", { lat, lng })
 
-          console.log(api)
+          console.log("The api is: " + api)
 
           this.fetchWeather(api)
         },
@@ -84,4 +86,4 @@ class Weather1 extends Component {
   }
 }
 
-export default Weather1
+export default Weather1a
