@@ -2,30 +2,24 @@
 
 import axios from "axios"
 
-const locationMap = new Map()
+let api = "https://api.darksky.net/forecast/"
+let key = "2a14ddef58529b52c0117b751e15c078"
 
-let intervalCounter = 0
+// const locationMap = new Map()
 
-// const getPositionData = async socket => {
-//   socket.emit("transmitCount", intervalCounter)
-//   intervalCounter++
+// const getApiAndEmit = async socket => {
+//   try {
+//     // Getting the data from DarkSky
+//     const res = await axios.get(
+//       "https://api.darksky.net/forecast/2a14ddef58529b52c0117b751e15c078/54.659,-5.772"
+//     )
+
+//     socket.emit("DataFromDarkSkiesAPI", res.data.currently.temperature)
+//     // Emitting a new message. It will be consumed by the client
+//   } catch (error) {
+//     console.error(`Error: ${error.code}`)
+//   }
 // }
-
-const getApiAndEmit = async socket => {
-  try {
-    // Getting the data from DarkSky
-    const res = await axios.get(
-      "https://api.darksky.net/forecast/2a14ddef58529b52c0117b751e15c078/54.659,-5.772"
-    )
-
-    console.log(res.data.currently)
-
-    socket.emit("DataFromDarkSkiesAPI", res.data.currently.temperature)
-    // Emitting a new message. It will be consumed by the client
-  } catch (error) {
-    console.error(`Error: ${error.code}`)
-  }
-}
 
 let interval
 
@@ -40,15 +34,28 @@ export async function runSwitchboard(io) {
     if (interval) {
       clearInterval(interval)
     }
-    interval = setInterval(() => getApiAndEmit(socket), 10000)
+
+    interval = setInterval(async () => {
+      // getApiAndEmit(socket)
+      try {
+        // Getting the data from DarkSky
+        const res = await axios.get(
+          "https://api.darksky.net/forecast/2a14ddef58529b52c0117b751e15c078/54.659,-5.772"
+        )
+
+        socket.emit("DataFromDarkSkiesAPI", res.data.currently.temperature)
+        // Emitting a new message. It will be consumed by the client
+      } catch (error) {
+        console.error(`Error: ${error.code}`)
+      }
+    }, 10000)
 
     // Fetch Position Data
-    // setInterval(() => getPositionData(socket), 2000)
-
     socket.on("fetchLocation", pos => {
       // if (locationMap.has(socket.id)) {
       //   locationMap.set(socket.id, pos)
-      console.log("Socket id : " + socket.id, pos)
+      console.log("Socket id : " + socket.id, pos.lat)
+      api += key + "/" + pos.lat + "," + pos.lng
 
       socket.emit("transmitPosition", pos)
       // }
