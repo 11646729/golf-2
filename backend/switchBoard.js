@@ -11,7 +11,7 @@ let darkSkiesUrl = ""
 
 // const locationMap = new Map()
 
-const getApiAndEmit = async socket => {
+const getDarkSkiesApiAndEmit = async socket => {
   try {
     // Dark Skies Url is "https://api.darksky.net/forecast/2a14ddef58529b52c0117b751e15c078/54.659,-5.772"
     // Getting the data from DarkSky
@@ -50,7 +50,7 @@ export async function runSwitchboard(io) {
     }
 
     interval = setInterval(async () => {
-      getApiAndEmit(socket)
+      getDarkSkiesApiAndEmit(socket)
     }, 10000)
 
     socket.on("Client Disconnected", () => {

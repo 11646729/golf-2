@@ -20,8 +20,6 @@ class Weather1a extends Component {
       this.setState({ darkSkiesdata: data })
     )
 
-    console.log(this.state.darkSkiesdata)
-
     const positionOptions = {
       enableHighAccuracy: true,
       maximumAge: 0
@@ -42,6 +40,10 @@ class Weather1a extends Component {
   }
 
   render() {
+    // if (this.state.darkSkiesdata) {
+    //   console.log(this.state.darkSkiesdata)
+    // }
+
     return (
       <div style={{ textAlign: "center" }}>
         {this.state.darkSkiesdata ? (
