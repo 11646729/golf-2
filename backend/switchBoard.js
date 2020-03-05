@@ -13,18 +13,16 @@ let darkSkiesUrl = ""
 
 const getApiAndEmit = async socket => {
   try {
+    // Dark Skies Url is "https://api.darksky.net/forecast/2a14ddef58529b52c0117b751e15c078/54.659,-5.772"
     // Getting the data from DarkSky
-    const res = await axios.get(
-      darkSkiesUrl
-      // Dark Skies Url is "https://api.darksky.net/forecast/2a14ddef58529b52c0117b751e15c078/54.659,-5.772"
-    )
+    const res = await axios.get(darkSkiesUrl)
 
     // Emitting a new message. It will be consumed by the client
-    socket.emit("DataFromDarkSkiesAPI", res.data.currently.temperature)
+    socket.emit("DataFromDarkSkiesAPI", res.data.currently)
 
-    console.log(res.data.currently.temperature)
+    // console.log(res.data.currently)
   } catch (error) {
-    console.error(`Error: ${error.code}`)
+    console.error("Error in getApiAndEmit: ${error.code}")
   }
 }
 

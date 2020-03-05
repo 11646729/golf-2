@@ -6,7 +6,7 @@ class Weather1a extends Component {
     super(props)
     this.state = {
       isLoaded: false,
-      items: {},
+      //      items: {},
       darkSkiesdata: false,
       endpoint: "http://127.0.0.1:5000"
     }
@@ -19,6 +19,8 @@ class Weather1a extends Component {
     socket.on("DataFromDarkSkiesAPI", data =>
       this.setState({ darkSkiesdata: data })
     )
+
+    console.log(this.state.darkSkiesdata)
 
     const positionOptions = {
       enableHighAccuracy: true,
@@ -43,7 +45,10 @@ class Weather1a extends Component {
     return (
       <div style={{ textAlign: "center" }}>
         {this.state.darkSkiesdata ? (
-          <p>The temperature in Seahill is: {this.state.darkSkiesdata} °F</p>
+          <p>
+            The temperature in Seahill is:{" "}
+            {this.state.darkSkiesdata.temperature} °F
+          </p>
         ) : (
           <p>Loading...</p>
         )}
