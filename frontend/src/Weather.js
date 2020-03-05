@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import socketIOClient from "socket.io-client"
 
-class Weather1a extends Component {
+class Weather extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -59,4 +59,4 @@ class Weather1a extends Component {
   }
 }
 
-export default Weather1a
+export default Weather
