@@ -4,7 +4,7 @@ import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react"
 import CurrentLocation from "./Map"
 import Weather from "./Weather"
 
-export class MapContainer extends Component {
+export class App extends Component {
   state = {
     showingInfoWindow: false,
     activeMarker: {},
@@ -29,23 +29,23 @@ export class MapContainer extends Component {
 
   render() {
     return (
-      // <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
-      //   <Marker onClick={this.onMarkerClick} name={"current location"} />
-      //   <InfoWindow
-      //     marker={this.state.activeMarker}
-      //     visible={this.state.showingInfoWindow}
-      //     onClose={this.onClose}
-      //   >
-      //     <div>
-      //       <h4>{this.state.selectedPlace.name}</h4>
-      //     </div>
-      //   </InfoWindow>
-      <Weather></Weather>
-      // </CurrentLocation>
+      <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
+        <Marker onClick={this.onMarkerClick} name={"current location"} />
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+        >
+          <div>
+            <h4>{this.state.selectedPlace.name}</h4>
+          </div>
+        </InfoWindow>
+        {/* <Weather></Weather> */}
+      </CurrentLocation>
     )
   }
 }
 
 export default GoogleApiWrapper({
   apiKey: process.env.REACT_APP_GOOGLE_KEY
-})(MapContainer)
+})(App)
