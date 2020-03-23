@@ -47,6 +47,9 @@ export default function Card1() {
         <Button size="small" color="primary">
           View
         </Button>
+        <Button size="small" color="primary">
+          Edit
+        </Button>
       </CardActions>
     </Card>
   )
