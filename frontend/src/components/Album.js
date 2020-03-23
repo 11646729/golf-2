@@ -6,7 +6,6 @@ import Card from "@material-ui/core/Card"
 import CardActions from "@material-ui/core/CardActions"
 import CardContent from "@material-ui/core/CardContent"
 import CardMedia from "@material-ui/core/CardMedia"
-import Chart from "./Chart"
 import clsx from "clsx"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Grid from "@material-ui/core/Grid"
@@ -18,6 +17,8 @@ import Link from "@material-ui/core/Link"
 import Paper from "@material-ui/core/paper"
 
 import Card1 from "./Card1"
+import Card2 from "./Card2"
+import Chart from "./Chart"
 
 function Copyright() {
   return (
@@ -141,7 +142,7 @@ export default function Album() {
               <Card1 />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
-              <Card1 />
+              <Card2 />
             </Grid>
 
             {/* {cards.map(card => (
