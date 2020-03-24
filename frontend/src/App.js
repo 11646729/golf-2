@@ -41,7 +41,6 @@ export class App extends Component {
       //       <h4>{this.state.selectedPlace.name}</h4>
       //     </div>
       //   </InfoWindow>
-      //   {/* <Weather></Weather> */}
       // </CurrentLocation>
       <Album></Album>
     )

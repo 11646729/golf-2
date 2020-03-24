@@ -9,6 +9,7 @@ import {
   ResponsiveContainer
 } from "recharts"
 import Title from "./Title"
+import Weather from "./Weather"
 
 // Generate Sales Data
 function createData(time, amount) {
@@ -33,6 +34,7 @@ export default function Chart() {
   return (
     <React.Fragment>
       <Title>Realtime Temperature</Title>
+      <Weather></Weather>
       <ResponsiveContainer>
         <LineChart
           data={data}
