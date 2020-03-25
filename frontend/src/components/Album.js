@@ -2,10 +2,6 @@ import React from "react"
 import AppBar from "@material-ui/core/AppBar"
 import Button from "@material-ui/core/Button"
 import CameraIcon from "@material-ui/icons/PhotoCamera"
-// import Card from "@material-ui/core/Card"
-// import CardActions from "@material-ui/core/CardActions"
-// import CardContent from "@material-ui/core/CardContent"
-// import CardMedia from "@material-ui/core/CardMedia"
 import clsx from "clsx"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Grid from "@material-ui/core/Grid"
@@ -18,7 +14,7 @@ import Paper from "@material-ui/core/paper"
 
 import Card1 from "./Card1"
 import Card2 from "./Card2"
-import Card3 from "./Card3"
+import CardMap from "./CardMap"
 import Chart from "./Chart"
 
 function Copyright() {
@@ -75,8 +71,6 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
 export default function Album() {
   const classes = useStyles()
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
@@ -88,7 +82,7 @@ export default function Album() {
         <Toolbar>
           <CameraIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
-            Album layout
+            My Album layout
           </Typography>
         </Toolbar>
       </AppBar>
@@ -146,37 +140,8 @@ export default function Album() {
               <Card2 />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
-              <Card3 />
+              <CardMap />
             </Grid>
-
-            {/* {cards.map(card => (
-              <Grid item key={card} xs={12} sm={6} md={3}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe
-                      the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Edit
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))} */}
           </Grid>
         </Container>
       </main>

@@ -1,32 +1,32 @@
 import React, { Component } from "react"
-import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react"
+// import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react"
 
-import CurrentLocation from "./components/Map"
-import Weather from "./components/Weather"
+// import CurrentLocation from "./components/GoogleMap"
+// import Weather from "./components/Weather"
 import Album from "./components/Album"
 
-export class App extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
-  }
+export default class App extends Component {
+  // state = {
+  //   showingInfoWindow: false,
+  //   activeMarker: {},
+  //   selectedPlace: {}
+  // }
 
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true
-    })
+  // onMarkerClick = (props, marker, e) =>
+  //   this.setState({
+  //     selectedPlace: props,
+  //     activeMarker: marker,
+  //     showingInfoWindow: true
+  //   })
 
-  onClose = props => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null
-      })
-    }
-  }
+  // onClose = props => {
+  //   if (this.state.showingInfoWindow) {
+  //     this.setState({
+  //       showingInfoWindow: false,
+  //       activeMarker: null
+  //     })
+  //   }
+  // }
 
   render() {
     return (
@@ -47,6 +47,6 @@ export class App extends Component {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_GOOGLE_KEY
-})(App)
+// export default GoogleApiWrapper({
+//   apiKey: process.env.REACT_APP_GOOGLE_KEY
+// })(App)
