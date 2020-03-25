@@ -2,10 +2,10 @@ import React from "react"
 import AppBar from "@material-ui/core/AppBar"
 import Button from "@material-ui/core/Button"
 import CameraIcon from "@material-ui/icons/PhotoCamera"
-import Card from "@material-ui/core/Card"
-import CardActions from "@material-ui/core/CardActions"
-import CardContent from "@material-ui/core/CardContent"
-import CardMedia from "@material-ui/core/CardMedia"
+// import Card from "@material-ui/core/Card"
+// import CardActions from "@material-ui/core/CardActions"
+// import CardContent from "@material-ui/core/CardContent"
+// import CardMedia from "@material-ui/core/CardMedia"
 import clsx from "clsx"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Grid from "@material-ui/core/Grid"
@@ -18,6 +18,7 @@ import Paper from "@material-ui/core/paper"
 
 import Card1 from "./Card1"
 import Card2 from "./Card2"
+import Card3 from "./Card3"
 import Chart from "./Chart"
 
 function Copyright() {
@@ -25,7 +26,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        My Website
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -143,6 +144,9 @@ export default function Album() {
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <Card2 />
+            </Grid>
+            <Grid item sm={4} style={{ padding: 20 }}>
+              <Card3 />
             </Grid>
 
             {/* {cards.map(card => (
