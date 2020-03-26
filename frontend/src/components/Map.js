@@ -18,7 +18,9 @@ class Map extends Component {
     if (!window.google) {
       var s = document.createElement("script")
       s.type = "text/javascript"
-      s.src = `https://maps.google.com/maps/api/js?key=AIzaSyDGo8SPcAF8hOBnNhqR1398qUYQrtkgIHQ`
+      s.src =
+        "https://maps.google.com/maps/api/js?key=" +
+        process.env.REACT_APP_GOOGLE_KEY
       var x = document.getElementsByTagName("script")[0]
       x.parentNode.insertBefore(s, x)
       // Below is important.
