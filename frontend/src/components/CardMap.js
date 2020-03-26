@@ -7,6 +7,14 @@ class CardMap extends Component {
   constructor() {
     super()
     this.createInfoWindow = this.createInfoWindow.bind(this)
+
+    this.state = {
+      initialCenter: {
+        lat: 54.626792,
+        lng: -5.884438
+      },
+      zoom: 12
+    }
   }
 
   createInfoWindow(e, map) {
@@ -26,12 +34,18 @@ class CardMap extends Component {
         <Map
           id="myMap"
           options={{
-            center: { lat: 54.626792, lng: -5.884438 },
-            zoom: 14
+            center: {
+              lat: this.state.initialCenter.lat,
+              lng: this.state.initialCenter.lng
+            },
+            zoom: this.state.zoom
           }}
           onMapLoad={map => {
             var marker = new window.google.maps.Marker({
-              position: { lat: 54.626792, lng: -5.884438 },
+              position: {
+                lat: this.state.initialCenter.lat,
+                lng: this.state.initialCenter.lng
+              },
               map: map,
               title: "Hello Cruise Terminal!"
             })
@@ -46,3 +60,11 @@ class CardMap extends Component {
 }
 
 export default CardMap
+
+// CardMap.defaultProps = {
+//   zoom: 12,
+//   initialCenter: {
+//     lat: 54.626792,
+//     lng: -5.884438
+//   }
+// }
