@@ -1,7 +1,19 @@
 import React, { Component } from "react"
 import { render } from "react-dom"
+import Card from "@material-ui/core/Card"
+import CardMedia from "@material-ui/core/CardMedia"
+import { makeStyles } from "@material-ui/core/styles"
+
 import Map from "./Map"
 import InfoWindow from "./InfoWindow"
+
+const divStyle = {
+  card: {
+    height: "100%",
+    display: "flex",
+    flexDirection: "column"
+  }
+}
 
 class CardMap extends Component {
   constructor() {
@@ -31,29 +43,33 @@ class CardMap extends Component {
   render() {
     return (
       <div>
-        <Map
-          id="myMap"
-          options={{
-            center: {
-              lat: this.state.initialCenter.lat,
-              lng: this.state.initialCenter.lng
-            },
-            zoom: this.state.zoom
-          }}
-          onMapLoad={map => {
-            var marker = new window.google.maps.Marker({
-              position: {
-                lat: this.state.initialCenter.lat,
-                lng: this.state.initialCenter.lng
-              },
-              map: map,
-              title: "Hello Cruise Terminal!"
-            })
-            marker.addListener("click", e => {
-              this.createInfoWindow(e, map)
-            })
-          }}
-        />
+        <Card style={divStyle}>
+          <CardMedia>
+            {/* <Map
+              id="myMap"
+              options={{
+                center: {
+                  lat: this.state.initialCenter.lat,
+                  lng: this.state.initialCenter.lng
+                },
+                zoom: this.state.zoom
+              }}
+              onMapLoad={map => {
+                var marker = new window.google.maps.Marker({
+                  position: {
+                    lat: this.state.initialCenter.lat,
+                    lng: this.state.initialCenter.lng
+                  },
+                  map: map,
+                  title: "Hello Cruise Terminal!"
+                })
+                marker.addListener("click", e => {
+                  this.createInfoWindow(e, map)
+                })
+              }}
+            /> */}
+          </CardMedia>
+        </Card>
       </div>
     )
   }

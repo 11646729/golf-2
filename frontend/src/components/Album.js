@@ -14,6 +14,7 @@ import Paper from "@material-ui/core/paper"
 
 import Card1 from "./Card1"
 import Card2 from "./Card2"
+import Card3 from "./Card3"
 import CardMap from "./CardMap"
 import Chart from "./Chart"
 
@@ -141,6 +142,9 @@ export default function Album() {
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <CardMap />
+            </Grid>
+            <Grid item sm={4} style={{ padding: 20 }}>
+              <Card3 />
             </Grid>
           </Grid>
         </Container>
