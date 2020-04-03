@@ -1,61 +1,81 @@
 "use strict"
-
 import axios from "axios"
 
-let api = "https://api.darksky.net/forecast/"
-let key = "2a14ddef58529b52c0117b751e15c078"
-let interval
-let darkSkiesUrl = ""
+let tick = 0
+let position
 
-// console.log("Socket id : " + socket.id, pos.lat)
-
-// const locationMap = new Map()
-
-const getDarkSkiesApiAndEmit = async socket => {
-  try {
-    // Dark Skies Url is "https://api.darksky.net/forecast/2a14ddef58529b52c0117b751e15c078/54.659,-5.772"
-    // Getting the data from DarkSky
-    const res = await axios.get(darkSkiesUrl)
-
-    // Emitting a new message. It will be consumed by the client
-    socket.emit("DataFromDarkSkiesAPI", res.data.currently)
-
-    // console.log(res.data.currently)
-  } catch (error) {
-    console.error("Error in getApiAndEmit: ${error.code}")
-  }
-}
-
-export async function runSwitchboard(io) {
+export const runSwitchboard = io => {
   console.log("In the switchBoard file")
 
   // Using socket.io for realtime
   io.on("connection", socket => {
-    //  locationMap.set(socket.id, { lat: null, lng: null })
     console.log("Client Connected")
 
-    // Fetch Position Data
+    // Start listening for browser position data
     socket.on("fetchLocation", pos => {
-      // if (locationMap.has(socket.id)) {
-      //   locationMap.set(socket.id, pos)
+      console.log("In the fetchLocation function in the switchboard file")
 
-      darkSkiesUrl = api += key + "/" + pos.lat + "," + pos.lng
+      position = pos
 
-      socket.emit("transmitPosition", pos)
-      // }
+      // Now store browser position data
+      console.log("Browser position: " + position.latitude)
+
+      // socket.emit("transmitPosition", pos)
     })
 
-    if (interval) {
-      clearInterval(interval)
-    }
-
-    interval = setInterval(async () => {
+    let interval = setInterval(() => {
       getDarkSkiesApiAndEmit(socket)
+      console.log("Interval Timer started")
+
+      console.log("tick is: " + tick++)
     }, 10000)
 
-    socket.on("Client Disconnected", () => {
-      //    locationMap.delete(socket.id)
-      console.log("Disconnected")
+    socket.on("disconnect", () => {
+      console.log("Client Disconnected")
+
+      if (interval) {
+        clearInterval(interval)
+        tick = 0
+        console.log("Interval Timer stopped")
+      }
     })
   })
+}
+
+const getDarkSkiesApiAndEmit = async socket => {
+  // Dark Skies Url is "https://api.darksky.net/forecast/2a14ddef58529b52c0117b751e15c078/54.659,-5.772"
+
+  console.log("Position is: " + position)
+
+  let darkSkiesUrl =
+    process.env.REACT_APP_DARK_SKY_URL +
+    process.env.REACT_APP_DARK_SKY_WEATHER_API +
+    "/" +
+    position.latitude +
+    "," +
+    position.longitude
+
+  console.log(darkSkiesUrl)
+
+  // Getting the data from DarkSky
+  await axios
+    .get(darkSkiesUrl)
+    .then(function(response) {
+      // handle success
+      // Emitting a new message to be consumed by the client
+      socket.emit("DataFromDarkSkiesAPI", {
+        name: tick++,
+        value: response.data.currently.temperature
+      })
+      // console.log("Temperature is: " + res.data.currently.temperature)
+      // console.log("tick is: " + tick)
+      // console.log("Socket id : " + socket.id)
+    })
+    .catch(function(error) {
+      // handle error
+      console.log("Error in getApiAndEmit: ", error)
+    })
+    .finally(function() {
+      // always executed
+    })
 }

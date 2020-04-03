@@ -5,51 +5,46 @@ class Weather extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isLoaded: false,
-      //      items: {},
-      darkSkiesdata: false,
-      endpoint: "http://127.0.0.1:5000"
+      darkSkiesdata: false
     }
   }
 
   componentDidMount() {
-    const { endpoint } = this.state
-    const socket = socketIOClient(endpoint)
+    const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
     socket.on("DataFromDarkSkiesAPI", data =>
       this.setState({ darkSkiesdata: data })
     )
 
-    const positionOptions = {
-      enableHighAccuracy: true,
-      maximumAge: 0
-    }
+    // const positionOptions = {
+    //   enableHighAccuracy: true,
+    //   maximumAge: 0
+    // }
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          const { latitude: lat, longitude: lng } = position.coords
-          socket.emit("fetchLocation", { lat, lng })
-        },
-        err => {
-          console.error("Navigator error")
-        },
-        positionOptions
-      )
-    }
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.getCurrentPosition(
+    //     position => {
+    //       const { latitude: lat, longitude: lng } = position.coords
+    //       socket.emit("fetchLocation", { lat, lng })
+    //     },
+    //     err => {
+    //       console.error("Navigator error")
+    //     },
+    //     positionOptions
+    //   )
+    // }
   }
 
   render() {
     // if (this.state.darkSkiesdata) {
-    //   console.log(this.state.darkSkiesdata)
+    //   console.log(this.state.darkSkiesdata.value)
     // }
 
     return (
       <div style={{ textAlign: "center" }}>
         {this.state.darkSkiesdata ? (
           <p>
-            The temperature in Seahill is:{" "}
-            {this.state.darkSkiesdata.temperature} °F
+            The temperature in Seahill is: {this.state.darkSkiesdata.value} °F
           </p>
         ) : (
           <p>Loading...</p>
