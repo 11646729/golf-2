@@ -9,7 +9,7 @@ import mongoose from "mongoose"
 import dotenv from "dotenv"
 
 // This line is required to run cron
-import { emptyFile, runCron, getAndSavePortArrivals } from "../backend/cron"
+import { getAndSavePortArrivals } from "../backend/cron"
 
 import { runSwitchboard } from "./switchBoard"
 
@@ -30,7 +30,7 @@ app.use(
   cors({
     origin: ["http://localhost:" + process.env.PORT],
     methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 )
 app.use(express.json())
@@ -52,7 +52,7 @@ const options = {
   bufferMaxEntries: 0,
   connectTimeoutMS: 10000, // Give up initial connection after 10 seconds
   socketTimeoutMS: 360000, // Close sockets after 45 seconds of inactivity
-  family: 4 // Use IPv4, skip trying IPv6
+  family: 4, // Use IPv4, skip trying IPv6
 }
 
 mongoose.connect(uri, options)
@@ -79,7 +79,7 @@ app.use("/cruiseShips", cruiseShipsRouter)
 
 runSwitchboard(io)
 
-server.listen(port, err => {
+server.listen(port, (err) => {
   if (err) {
     throw err
   }

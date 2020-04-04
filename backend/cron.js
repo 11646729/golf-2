@@ -13,17 +13,17 @@ cron.schedule("* * * * *", () => {
 
 export async function emptyFile() {
   // First delete all previous data
-  PortArrival.deleteMany({}, function(err) {
-    if (err) {
-      console.log(err)
+  PortArrival.deleteMany({}, function (error) {
+    if (error) {
+      console.log("Error in PortArrival.deleteMany() : ", error)
     } else {
       console.log("PortArrival collection emptied")
     }
   })
 
-  VesselDetails.deleteMany({}, function(err) {
-    if (err) {
-      console.log(err)
+  VesselDetails.deleteMany({}, function (error) {
+    if (error) {
+      console.log("Error in VesselDetails.deleteMany() : ", error)
     } else {
       console.log("VesselDetails collection emptied")
     }
@@ -58,7 +58,7 @@ export async function getAndSavePortArrivals() {
       vessel_shortcruise_name,
       vessel_eta,
       vessel_etd,
-      vessel_name_url
+      vessel_name_url,
     })
 
     newPortArrival.save()
@@ -128,7 +128,7 @@ export async function runCron() {
       vessel_mmsi_number,
       vessel_callsign,
       vessel_typical_passengers,
-      vessel_typical_crew
+      vessel_typical_crew,
     })
 
     newVessel.save()

@@ -1,33 +1,34 @@
 "use strict"
 import axios from "axios"
+// import cron from "node-cron"
 
 let tick = 0
+let interval
 let position
 
-export const runSwitchboard = io => {
+export const runSwitchboard = (io) => {
   console.log("In the switchBoard file")
 
   // Using socket.io for realtime
-  io.on("connection", socket => {
+  io.on("connection", (socket) => {
     console.log("Client Connected")
 
     // Start listening for browser position data
-    socket.on("fetchLocation", pos => {
+    socket.on("fetchLocation", (pos) => {
       console.log("In the fetchLocation function in the switchboard file")
 
-      position = pos
-
       // Now store browser position data
-      console.log("Browser position: " + position.latitude)
+      position = pos
 
       // socket.emit("transmitPosition", pos)
     })
 
-    let interval = setInterval(() => {
-      getDarkSkiesApiAndEmit(socket)
-      console.log("Interval Timer started")
+    if (!interval) {
+      console.log("Starting Interval Timer...")
+    }
 
-      console.log("tick is: " + tick++)
+    interval = setInterval(() => {
+      getDarkSkiesApiAndEmit(socket)
     }, 10000)
 
     socket.on("disconnect", () => {
@@ -42,40 +43,38 @@ export const runSwitchboard = io => {
   })
 }
 
-const getDarkSkiesApiAndEmit = async socket => {
+const getDarkSkiesApiAndEmit = async (socket) => {
   // Dark Skies Url is "https://api.darksky.net/forecast/2a14ddef58529b52c0117b751e15c078/54.659,-5.772"
-
-  console.log("Position is: " + position)
 
   let darkSkiesUrl =
     process.env.REACT_APP_DARK_SKY_URL +
     process.env.REACT_APP_DARK_SKY_WEATHER_API +
-    "/" +
-    position.latitude +
-    "," +
-    position.longitude
+    "/54.659,-5.772"
+  // "/" +
+  // position.latitude +
+  // "," +
+  // position.longitude
 
-  console.log(darkSkiesUrl)
+  // console.log(darkSkiesUrl)
 
   // Getting the data from DarkSky
   await axios
     .get(darkSkiesUrl)
-    .then(function(response) {
+    .then(function (response) {
       // handle success
       // Emitting a new message to be consumed by the client
       socket.emit("DataFromDarkSkiesAPI", {
         name: tick++,
-        value: response.data.currently.temperature
+        value: response.data.currently.temperature,
       })
-      // console.log("Temperature is: " + res.data.currently.temperature)
+      // console.log("Temperature is: " + response.data.currently.temperature)
       // console.log("tick is: " + tick)
-      // console.log("Socket id : " + socket.id)
     })
-    .catch(function(error) {
+    .catch(function (error) {
       // handle error
       console.log("Error in getApiAndEmit: ", error)
     })
-    .finally(function() {
+    .finally(function () {
       // always executed
     })
 }
