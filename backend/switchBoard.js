@@ -1,10 +1,12 @@
 "use strict"
 import axios from "axios"
-// import cron from "node-cron"
+import cron from "node-cron"
+import { emptyFile, runCron } from "./cron"
 
 let tick = 0
-let interval
 let position
+
+let loopcount = 0
 
 export const runSwitchboard = (io) => {
   console.log("In the switchBoard file")
@@ -12,6 +14,10 @@ export const runSwitchboard = (io) => {
   // Using socket.io for realtime
   io.on("connection", (socket) => {
     console.log("Client Connected")
+
+    console.log("Loopcount = " + loopcount)
+    loopcount++
+    console.log(socket.id)
 
     // Start listening for browser position data
     socket.on("fetchLocation", (pos) => {
@@ -23,22 +29,20 @@ export const runSwitchboard = (io) => {
       // socket.emit("transmitPosition", pos)
     })
 
-    if (!interval) {
-      console.log("Starting Interval Timer...")
-    }
+    cron.schedule("* * * * *", () => {
+      console.log("Started getting Vessel Arrivals & Details Scraping!")
+      emptyFile()
+      runCron()
+      console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
+    })
 
-    interval = setInterval(() => {
+    cron.schedule("* * * * *", () => {
+      console.log("Started getting Dark Skies Weather data!")
       getDarkSkiesApiAndEmit(socket)
-    }, 10000)
+    })
 
     socket.on("disconnect", () => {
       console.log("Client Disconnected")
-
-      if (interval) {
-        clearInterval(interval)
-        tick = 0
-        console.log("Interval Timer stopped")
-      }
     })
   })
 }

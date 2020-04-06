@@ -8,9 +8,6 @@ import cors from "cors"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 
-// This line is required to run cron
-import { getAndSavePortArrivals } from "../backend/cron"
-
 import { runSwitchboard } from "./switchBoard"
 
 // const cookieParser = require("cookie-parser")

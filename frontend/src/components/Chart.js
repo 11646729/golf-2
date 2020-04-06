@@ -9,7 +9,7 @@ import React from "react"
 //   ResponsiveContainer
 // } from "recharts"
 import Title from "./Title"
-import Weather from "./Weather"
+import Weather1 from "./Weather1"
 
 // Generate Sales Data
 // function createData(time, amount) {
@@ -34,7 +34,7 @@ export default function Chart() {
   return (
     <React.Fragment>
       <Title>Realtime Temperature</Title>
-      <Weather></Weather>
+      <Weather1></Weather1>
       {/* <ResponsiveContainer>
         <LineChart
           data={data}

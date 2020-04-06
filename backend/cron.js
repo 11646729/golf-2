@@ -1,15 +1,7 @@
-import cron from "node-cron"
 import { getAllVesselArrivals } from "./scrapeArrivals"
 import { getSingleVesselDetails } from "./scrapeVessels"
 import { PortArrival } from "./models/cruiseShippingModels/v1/portArrival"
 import { VesselDetails } from "./models/cruiseShippingModels/v1/vesselDetails"
-
-cron.schedule("* * * * *", () => {
-  console.log("Vessel Arrivals & Details Scraping started!")
-  emptyFile()
-  runCron()
-  console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
-})
 
 export async function emptyFile() {
   // First delete all previous data
