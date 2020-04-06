@@ -1,57 +1,79 @@
-import React, { Component } from "react"
+import React from "react"
 import socketIOClient from "socket.io-client"
+import { useEffect, useState } from "react"
+import { useTheme } from "@material-ui/core/styles"
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Label,
+  ResponsiveContainer,
+} from "recharts"
 
-class Weather extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      darkSkiesdata: false
-    }
-  }
+const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
-  componentDidMount() {
-    const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
+const Weather = () => {
+  const theme = useTheme()
 
-    socket.on("DataFromDarkSkiesAPI", data =>
-      this.setState({ darkSkiesdata: data })
-    )
+  const [data, setData] = useState([])
 
-    // const positionOptions = {
-    //   enableHighAccuracy: true,
-    //   maximumAge: 0
-    // }
+  // Listen for weather data and update the state
+  useEffect(() => {
+    socket.on("DataFromDarkSkiesAPI", (data) => {
+      setData((currentData) => [...currentData, data])
+    })
+  }, [])
 
-    // if (navigator.geolocation) {
-    //   navigator.geolocation.getCurrentPosition(
-    //     position => {
-    //       const { latitude: lat, longitude: lng } = position.coords
-    //       socket.emit("fetchLocation", { lat, lng })
-    //     },
-    //     err => {
-    //       console.error("Navigator error")
-    //     },
-    //     positionOptions
-    //   )
-    // }
-  }
+  let uniqueValues = [...new Set(data.map((item) => item.value))]
 
-  render() {
-    // if (this.state.darkSkiesdata) {
-    //   console.log(this.state.darkSkiesdata.value)
-    // }
-
-    return (
-      <div style={{ textAlign: "center" }}>
-        {this.state.darkSkiesdata ? (
-          <p>
-            The temperature in Seahill is: {this.state.darkSkiesdata.value} °F
-          </p>
-        ) : (
-          <p>Loading...</p>
-        )}
-      </div>
-    )
-  }
+  return (
+    <div>
+      {data ? (
+        <h3>
+          The temperature now at Home is:
+          {uniqueValues[uniqueValues.length - 1]} °F
+        </h3>
+      ) : (
+        <h3>Loading...</h3>
+      )}
+      {/* <ResponsiveContainer> */}
+      <LineChart
+        data={data}
+        width={400}
+        height={300}
+        // margin={{
+        //   top: 16,
+        //   right: 16,
+        //   bottom: 0,
+        //   left: 24,
+        // }}
+      >
+        <XAxis dataKey="name" stroke={theme.palette.text.secondary} />
+        <YAxis stroke={theme.palette.text.secondary}>
+          <Label
+            angle={270}
+            position="centre"
+            style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
+          >
+            Temperature &deg;F
+          </Label>
+        </YAxis>
+        <Line
+          type="monotone"
+          dataKey="value"
+          stroke={theme.palette.primary.main}
+          // dot={false}
+        />
+      </LineChart>
+      {/* </ResponsiveContainer> */}
+      {/* <LineChart width={500} height={300} data={data}>
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Line dataKey="value" />
+      </LineChart> */}
+    </div>
+  )
 }
 
 export default Weather

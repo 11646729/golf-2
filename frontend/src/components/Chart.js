@@ -6,35 +6,18 @@ import React from "react"
 //   XAxis,
 //   YAxis,
 //   Label,
-//   ResponsiveContainer
+//   ResponsiveContainer,
 // } from "recharts"
 import Title from "./Title"
-import Weather1 from "./Weather1"
-
-// Generate Sales Data
-// function createData(time, amount) {
-//   return { time, amount }
-// }
-
-// const data = [
-//   createData("00:00", 0),
-//   createData("03:00", 300),
-//   createData("06:00", 600),
-//   createData("09:00", 800),
-//   createData("12:00", 1500),
-//   createData("15:00", 2000),
-//   createData("18:00", 2400),
-//   createData("21:00", 2400),
-//   createData("24:00", undefined)
-// ]
+import Weather from "./Weather"
 
 export default function Chart() {
   // const theme = useTheme()
 
   return (
     <React.Fragment>
-      <Title>Realtime Temperature</Title>
-      <Weather1></Weather1>
+      {/* <Title>Realtime Temperature</Title> */}
+      <Weather></Weather>
       {/* <ResponsiveContainer>
         <LineChart
           data={data}
@@ -42,7 +25,7 @@ export default function Chart() {
             top: 16,
             right: 16,
             bottom: 0,
-            left: 24
+            left: 24,
           }}
         >
           <XAxis dataKey="time" stroke={theme.palette.text.secondary} />
