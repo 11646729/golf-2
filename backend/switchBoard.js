@@ -1,7 +1,7 @@
 "use strict"
 
 import cron from "node-cron"
-import { emptyFile, runCron } from "./cron"
+import { emptyFile, runCron } from "./cronRoutines"
 import { getDarkSkiesDataAndEmit } from "./getDarkSkiesDataAndEmit"
 
 export const runSwitchboard = (io) => {
