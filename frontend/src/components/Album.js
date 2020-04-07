@@ -98,7 +98,7 @@ export default function Album() {
               color="textPrimary"
               gutterBottom
             >
-              Album layout
+              My Dashboard
             </Typography>
             <Typography
               variant="h5"
@@ -129,7 +129,7 @@ export default function Album() {
         <Container className={classes.cardGrid} maxWidth="xl">
           {/* End hero unit */}
           <Grid container>
-            <Grid item sm={4} style={{ padding: 20 }}>
+            <Grid item sm={8} style={{ padding: 20 }}>
               <Paper className={fixedHeightPaper}>
                 <WeatherChart />
               </Paper>
@@ -141,7 +141,10 @@ export default function Album() {
               <Card2 />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
-              <CardMap />
+              <Card2 />
+            </Grid>
+            <Grid item sm={4} style={{ padding: 20 }}>
+              <Card3 />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <Card3 />
