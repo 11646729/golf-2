@@ -27,30 +27,21 @@ const WeatherChart = () => {
   }, [])
 
   let uniqueValues = [...new Set(data.map((item) => item.value))]
+  console.log(data)
 
   return (
     <React.Fragment>
       {/* <ResponsiveContainer> */}
       <Title>Realtime Temperature</Title>
-      {uniqueValues ? (
+      {data.length < 1 ? (
+        <h3>Loading...</h3>
+      ) : (
         <h3>
           The temperature now at Home is:
           {uniqueValues[uniqueValues.length - 1]} °F
         </h3>
-      ) : (
-        <h3>Loading...</h3>
       )}
-      <LineChart
-        data={data}
-        width={400}
-        height={300}
-        // margin={{
-        //   top: 16,
-        //   right: 16,
-        //   bottom: 0,
-        //   left: 24,
-        // }}
-      >
+      <LineChart data={data} width={400} height={300}>
         <XAxis dataKey="name" stroke={theme.palette.text.secondary} />
         <YAxis stroke={theme.palette.text.secondary}>
           <Label
