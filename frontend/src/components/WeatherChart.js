@@ -10,10 +10,11 @@ import {
   Label,
   ResponsiveContainer,
 } from "recharts"
+import Title from "./Title"
 
 const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
-const Weather = () => {
+const WeatherChart = () => {
   const theme = useTheme()
 
   const [data, setData] = useState([])
@@ -28,8 +29,10 @@ const Weather = () => {
   let uniqueValues = [...new Set(data.map((item) => item.value))]
 
   return (
-    <div>
-      {data ? (
+    <React.Fragment>
+      {/* <ResponsiveContainer> */}
+      <Title>Realtime Temperature</Title>
+      {uniqueValues ? (
         <h3>
           The temperature now at Home is:
           {uniqueValues[uniqueValues.length - 1]} °F
@@ -37,7 +40,6 @@ const Weather = () => {
       ) : (
         <h3>Loading...</h3>
       )}
-      {/* <ResponsiveContainer> */}
       <LineChart
         data={data}
         width={400}
@@ -63,17 +65,11 @@ const Weather = () => {
           type="monotone"
           dataKey="value"
           stroke={theme.palette.primary.main}
-          // dot={false}
         />
       </LineChart>
       {/* </ResponsiveContainer> */}
-      {/* <LineChart width={500} height={300} data={data}>
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Line dataKey="value" />
-      </LineChart> */}
-    </div>
+    </React.Fragment>
   )
 }
 
-export default Weather
+export default WeatherChart

@@ -16,7 +16,7 @@ import Card1 from "./Card1"
 import Card2 from "./Card2"
 import Card3 from "./Card3"
 import CardMap from "./CardMap"
-import Chart from "./Chart"
+import WeatherChart from "./WeatherChart"
 
 function Copyright() {
   return (
@@ -31,45 +31,45 @@ function Copyright() {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   icon: {
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6)
+    padding: theme.spacing(8, 0, 6),
   },
   heroButtons: {
-    marginTop: theme.spacing(4)
+    marginTop: theme.spacing(4),
   },
   cardGrid: {
     paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8)
+    paddingBottom: theme.spacing(8),
   },
   card: {
     height: "100%",
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   cardMedia: {
-    paddingTop: "56.25%" // 16:9
+    paddingTop: "56.25%", // 16:9
   },
   cardContent: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   footer: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6)
+    padding: theme.spacing(6),
   },
   paper: {
     padding: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   fixedHeight: {
-    height: "100%"
-  }
+    height: "100%",
+  },
 }))
 
 export default function Album() {
@@ -131,7 +131,7 @@ export default function Album() {
           <Grid container>
             <Grid item sm={4} style={{ padding: 20 }}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+                <WeatherChart />
               </Paper>
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
