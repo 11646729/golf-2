@@ -8,6 +8,7 @@ import {
   XAxis,
   YAxis,
   Label,
+  Legend,
   ResponsiveContainer,
 } from "recharts"
 import Title from "./Title"
@@ -40,7 +41,7 @@ export default function WeatherChart() {
         </h3>
       )}
       <LineChart data={data} width={900} height={300}>
-        <XAxis dataKey="time" stroke={theme.palette.text.secondary} />
+        <XAxis dataKey="Time" stroke={theme.palette.text.secondary} />
         <YAxis stroke={theme.palette.text.secondary}>
           <Label
             angle={270}
@@ -50,9 +51,10 @@ export default function WeatherChart() {
             Temperature &deg;F
           </Label>
         </YAxis>
+        <Legend />
         <Line
           type="monotone"
-          dataKey="value"
+          dataKey="Temperature"
           stroke={theme.palette.primary.main}
         />
       </LineChart>
@@ -60,5 +62,3 @@ export default function WeatherChart() {
     </React.Fragment>
   )
 }
-
-// export default WeatherChart

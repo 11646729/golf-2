@@ -15,8 +15,8 @@ export const getDarkSkiesDataAndEmit = async (socket) => {
     .then(function (response) {
       // handle success - Emitting a new message to be consumed by the client
       socket.emit("DataFromDarkSkiesAPI", {
-        time: response.data.currently.time,
-        value: response.data.currently.temperature,
+        Time: response.data.currently.time,
+        Temperature: response.data.currently.temperature,
       })
       // console.log(response.data.currently.time)
     })
