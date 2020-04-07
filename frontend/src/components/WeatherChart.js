@@ -16,8 +16,7 @@ const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
 const WeatherChart = () => {
   const theme = useTheme()
-
-  const [data, setData] = useState([])
+  const [data, setData] = useState([0])
 
   // Listen for weather data and update the state
   useEffect(() => {
@@ -27,7 +26,7 @@ const WeatherChart = () => {
   }, [])
 
   let uniqueValues = [...new Set(data.map((item) => item.value))]
-  console.log(data)
+  //  console.log(data)
 
   return (
     <React.Fragment>
@@ -42,7 +41,7 @@ const WeatherChart = () => {
         </h3>
       )}
       <LineChart data={data} width={400} height={300}>
-        <XAxis dataKey="name" stroke={theme.palette.text.secondary} />
+        <XAxis dataKey="time" stroke={theme.palette.text.secondary} />
         <YAxis stroke={theme.palette.text.secondary}>
           <Label
             angle={270}
