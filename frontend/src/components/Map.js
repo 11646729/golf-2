@@ -1,46 +1,130 @@
-import React, { Component } from "react"
+import React from "react"
+import ReactDOM from "react-dom"
 
-class Map extends Component {
+const mapStyles = {
+  map: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+  },
+}
+
+export class CurrentLocation extends React.Component {
   constructor(props) {
     super(props)
-    this.onScriptLoad = this.onScriptLoad.bind(this)
-  }
 
-  onScriptLoad() {
-    const map = new window.google.maps.Map(
-      document.getElementById(this.props.id),
-      this.props.options
-    )
-    this.props.onMapLoad(map)
-  }
-
-  componentDidMount() {
-    if (!window.google) {
-      var s = document.createElement("script")
-      s.type = "text/javascript"
-      s.src =
-        "https://maps.google.com/maps/api/js?key=" +
-        process.env.REACT_APP_GOOGLE_KEY
-      var x = document.getElementsByTagName("script")[0]
-      x.parentNode.insertBefore(s, x)
-      // Below is important.
-      //We cannot access google.maps until it's finished loading
-      s.addEventListener("load", e => {
-        this.onScriptLoad()
-      })
-    } else {
-      this.onScriptLoad()
+    const { lat, lng } = this.props.initialCenter
+    this.state = {
+      currentLocation: {
+        lat: lat,
+        lng: lng,
+        // lat: 54.626792,
+        // lng: -5.884438,
+      },
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.google !== this.props.google) {
+      this.loadMap()
+    }
+    if (prevState.currentLocation !== this.state.currentLocation) {
+      this.recenterMap()
+    }
+  }
+
+  recenterMap() {
+    const map = this.map
+    const current = this.state.currentLocation
+
+    const google = this.props.google
+    const maps = google.maps
+
+    if (map) {
+      let center = new maps.LatLng(current.lat, current.lng)
+      map.panTo(center)
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.centerAroundCurrentLocation) {
+      if (navigator && navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((pos) => {
+          const coords = pos.coords
+          this.setState({
+            currentLocation: {
+              lat: coords.latitude,
+              lng: coords.longitude,
+            },
+          })
+        })
+      }
+    }
+    this.loadMap()
+  }
+
+  loadMap() {
+    if (this.props && this.props.google) {
+      // checks if google is available
+      const { google } = this.props
+      const maps = google.maps
+
+      const mapRef = this.refs.map
+
+      // reference to the actual DOM element
+      const node = ReactDOM.findDOMNode(mapRef)
+
+      let { zoom } = this.props
+      const { lat, lng } = this.state.currentLocation
+      const center = new maps.LatLng(lat, lng)
+      const mapConfig = Object.assign(
+        {},
+        {
+          center: center,
+          zoom: zoom,
+        }
+      )
+
+      // maps.Map() is constructor that instantiates the map
+      this.map = new maps.Map(node, mapConfig)
+    }
+  }
+  renderChildren() {
+    const { children } = this.props
+
+    if (!children) return
+
+    return React.Children.map(children, (c) => {
+      if (!c) return
+      return React.cloneElement(c, {
+        map: this.map,
+        google: this.props.google,
+        mapCenter: this.state.currentLocation,
+      })
+    })
+  }
+
   render() {
+    const style = Object.assign({}, mapStyles.map)
     return (
-      <div
-        style={{ position: "absolute", width: "90%", height: "90%" }}
-        id={this.props.id}
-      />
+      <div>
+        <div style={style} ref="map">
+          Loading map...
+        </div>
+        {this.renderChildren()}
+      </div>
     )
   }
 }
 
-export default Map
+export default CurrentLocation
+
+CurrentLocation.defaultProps = {
+  zoom: 14,
+  initialCenter: {
+    lat: 54.626792,
+    lng: -5.884438,
+  },
+  centerAroundCurrentLocation: false,
+  visible: true,
+}

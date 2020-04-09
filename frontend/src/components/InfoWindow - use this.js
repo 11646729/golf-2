@@ -7,17 +7,17 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Typography
+  Typography,
 } from "@material-ui/core"
 
 const styles = {
   card: {
-    maxWidth: 345
+    maxWidth: 345,
   },
   media: {
     height: 0,
-    paddingTop: "56.25%"
-  }
+    paddingTop: "56.25%",
+  },
 }
 
 function InfoWindow(props) {
