@@ -1,6 +1,5 @@
 import React, { Component } from "react"
-import Card from "@material-ui/core/Card"
-import CardMedia from "@material-ui/core/CardMedia"
+import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
 import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react"
 
 import CurrentLocation from "./Map"
@@ -30,20 +29,33 @@ export class MapContainer extends Component {
 
   render() {
     return (
-      <Card>
-        <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
-          <Marker onClick={this.onMarkerClick} name={"current location"} />
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
-            onClose={this.onClose}
-          >
-            <div>
-              <h4>{this.state.selectedPlace.name}</h4>
-            </div>
-          </InfoWindow>
-        </CurrentLocation>
-      </Card>
+      <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
+        <Marker onClick={this.onMarkerClick} name={"current location"} />
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+        >
+          <Card maxwidth="345">
+            <CardMedia
+              height="0"
+              paddingtop="56.25%"
+              image="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Bosphorus.jpg/397px-Bosphorus.jpg"
+              title="Contemplative Reptile"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                Istanbul
+              </Typography>
+              <Typography component="p">
+                Istanbul is a major city in Turkey that straddles Europe and
+                Asia across the Bosphorus Strait. Its Old City reflects cultural
+                influences of the many empires that once ruled here.
+              </Typography>
+            </CardContent>
+          </Card>
+        </InfoWindow>
+      </CurrentLocation>
     )
   }
 }
