@@ -4,8 +4,8 @@ import ReactDOM from "react-dom"
 const mapStyles = {
   map: {
     position: "absolute",
-    width: "100%",
-    height: "100%",
+    width: "50%",
+    height: "50%",
   },
 }
 
@@ -18,8 +18,6 @@ export class CurrentLocation extends React.Component {
       currentLocation: {
         lat: lat,
         lng: lng,
-        // lat: 54.626792,
-        // lng: -5.884438,
       },
     }
   }
@@ -47,19 +45,21 @@ export class CurrentLocation extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.centerAroundCurrentLocation) {
-      if (navigator && navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((pos) => {
-          const coords = pos.coords
-          this.setState({
-            currentLocation: {
-              lat: coords.latitude,
-              lng: coords.longitude,
-            },
-          })
-        })
-      }
-    }
+    // if (this.props.centerAroundCurrentLocation) {
+    //   if (navigator && navigator.geolocation) {
+    //     navigator.geolocation.getCurrentPosition((pos) => {
+    //       const coords = pos.coords
+    this.setState({
+      currentLocation: {
+        // lat: coords.latitude,
+        // lng: coords.longitude,
+        lat: 54.626792,
+        lng: -5.884438,
+      },
+    })
+    //     })
+    //   }
+    // }
     this.loadMap()
   }
 

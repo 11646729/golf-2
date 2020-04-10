@@ -142,7 +142,9 @@ export default function Album() {
               <Card2 />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
-              <GoogleMapCard />
+              <Paper className={fixedHeightPaper}>
+                <GoogleMapCard />
+              </Paper>
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <Card3 />

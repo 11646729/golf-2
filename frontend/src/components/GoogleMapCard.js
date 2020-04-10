@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import Card from "@material-ui/core/Card"
+import CardMedia from "@material-ui/core/CardMedia"
 import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react"
 
 import CurrentLocation from "./Map"
@@ -28,18 +30,20 @@ export class MapContainer extends Component {
 
   render() {
     return (
-      <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
-        <Marker onClick={this.onMarkerClick} name={"current location"} />
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
-        >
-          <div>
-            <h4>{this.state.selectedPlace.name}</h4>
-          </div>
-        </InfoWindow>
-      </CurrentLocation>
+      <Card>
+        <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
+          <Marker onClick={this.onMarkerClick} name={"current location"} />
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+            onClose={this.onClose}
+          >
+            <div>
+              <h4>{this.state.selectedPlace.name}</h4>
+            </div>
+          </InfoWindow>
+        </CurrentLocation>
+      </Card>
     )
   }
 }

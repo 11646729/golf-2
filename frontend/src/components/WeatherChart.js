@@ -17,7 +17,7 @@ const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
 export default function WeatherChart() {
   const theme = useTheme()
-  const [data, setData] = useState([0])
+  const [data, setData] = useState([])
 
   // Listen for weather data and update the state
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function WeatherChart() {
         <YAxis stroke={theme.palette.text.secondary}>
           <Label
             angle={270}
-            position="centre"
+            position="center"
             style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
           >
             Temperature &deg;F
