@@ -4,6 +4,14 @@ import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react"
 
 import CurrentLocation from "./Map"
 
+const styles = {
+  media: {
+    height: 0,
+    paddingTop: "56.25%", // 16:9,
+    marginTop: "30",
+  },
+}
+
 export class MapContainer extends Component {
   state = {
     showingInfoWindow: false,
@@ -36,12 +44,11 @@ export class MapContainer extends Component {
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
         >
-          <Card maxwidth="345">
+          <Card>
             <CardMedia
-              height="0"
-              paddingtop="56.25%"
-              image="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Bosphorus.jpg/397px-Bosphorus.jpg"
-              title="Contemplative Reptile"
+              style={styles.media}
+              image="static/images/Bosphorus.jpg"
+              title="Istanbul Bridge Photo"
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
