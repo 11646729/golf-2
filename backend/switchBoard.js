@@ -5,7 +5,7 @@ import { emptyFile, runCron } from "./cronRoutines"
 import { getDarkSkiesDataAndEmit } from "./getDarkSkiesDataAndEmit"
 
 export const runSwitchboard = (io) => {
-  console.log("In the switchBoard file")
+  //  console.log("In the switchBoard file")
 
   // Using socket.io for realtime
   io.on("connection", (socket) => {

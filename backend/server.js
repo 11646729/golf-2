@@ -56,7 +56,7 @@ mongoose.connect(uri, options)
 
 const connection = mongoose.connection
 connection.once("open", () => {
-  console.log("MongoDB database connection established successfully")
+  console.log("Connected to MongoDB database")
 })
 
 // Configure mongoose's promise to global promise
@@ -82,4 +82,4 @@ server.listen(port, (err) => {
   }
 })
 
-console.log("Server is running on port: " + port)
+console.log("Server running on port: " + port)

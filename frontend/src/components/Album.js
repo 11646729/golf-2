@@ -18,6 +18,7 @@ import Card3 from "./Card3"
 //import Map from "./CardMap"
 import GoogleMapCard from "./GoogleMapCard"
 import WeatherChart from "./WeatherChart"
+import Mapp from "./Leaflet"
 
 function Copyright() {
   return (
@@ -130,13 +131,14 @@ export default function Album() {
         <Container className={classes.cardGrid} maxWidth="xl">
           {/* End hero unit */}
           <Grid container>
-            <Grid item sm={8} style={{ padding: 20 }}>
+            <Grid item sm={4} style={{ padding: 20 }}>
               <Paper className={fixedHeightPaper}>
                 <WeatherChart />
               </Paper>
             </Grid>
-            <Grid item sm={4} style={{ padding: 20 }}>
-              <Card1 />
+            <Grid item sm={8} style={{ padding: 20 }}>
+              <Mapp />
+              {/* <Card1 /> */}
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <Card2 />
