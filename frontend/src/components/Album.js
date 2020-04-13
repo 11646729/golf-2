@@ -2,6 +2,7 @@ import React from "react"
 import AppBar from "@material-ui/core/AppBar"
 import Button from "@material-ui/core/Button"
 import CameraIcon from "@material-ui/icons/PhotoCamera"
+import HomeIcon from "@material-ui/icons/Home"
 import clsx from "clsx"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Grid from "@material-ui/core/Grid"
@@ -11,14 +12,14 @@ import { makeStyles } from "@material-ui/core/styles"
 import Container from "@material-ui/core/Container"
 import Link from "@material-ui/core/Link"
 import Paper from "@material-ui/core/paper"
+//import { Link } from "react-router-dom"
 
 import Card1 from "./Card1"
 import Card2 from "./Card2"
 import Card3 from "./Card3"
-//import Map from "./CardMap"
-import GoogleMapCard from "./GoogleMapCard"
+// import Map from "./CardMap"
 import WeatherChart from "./WeatherChart"
-import Mapp from "./Leaflet"
+// import Mapp from "./Leaflet"
 
 function Copyright() {
   return (
@@ -83,9 +84,9 @@ export default function Album() {
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
-          <CameraIcon className={classes.icon} />
+          <HomeIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
-            My Album layout
+            My Album
           </Typography>
         </Toolbar>
       </AppBar>
@@ -131,22 +132,17 @@ export default function Album() {
         <Container className={classes.cardGrid} maxWidth="xl">
           {/* End hero unit */}
           <Grid container>
-            <Grid item sm={4} style={{ padding: 20 }}>
+            <Grid item sm={8} style={{ padding: 20 }}>
               <Paper className={fixedHeightPaper}>
                 <WeatherChart />
               </Paper>
             </Grid>
-            <Grid item sm={8} style={{ padding: 20 }}>
-              <Mapp />
-              {/* <Card1 /> */}
+            <Grid item sm={4} style={{ padding: 20 }}>
+              {/* <Mapp /> */}
+              <Card1 />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <Card2 />
-            </Grid>
-            <Grid item sm={4} style={{ padding: 20 }}>
-              <Paper className={fixedHeightPaper}>
-                <GoogleMapCard />
-              </Paper>
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <Card3 />
