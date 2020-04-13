@@ -77,7 +77,7 @@ class Mapp extends Component {
         /> */}
         <Map
           center={[51.9194, 19.1451]}
-          style={{ height: "100vh", width: "auto" }}
+          style={{ height: "50vh", width: "auto" }}
           zoom={6}
           ref={this.mapRef}
           bounceAtZoomLimits={true}
