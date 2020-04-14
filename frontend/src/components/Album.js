@@ -12,9 +12,8 @@ import Paper from "@material-ui/core/paper"
 import Card1 from "./Card1"
 import Card2 from "./Card2"
 import Card3 from "./Card3"
-// import Map from "./CardMap"
+import Card4 from "./Card4"
 import WeatherChart from "./WeatherChart"
-// import Mapp from "./Leaflet"
 
 function Copyright() {
   return (
@@ -126,7 +125,6 @@ export default function Album() {
               </Paper>
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
-              {/* <Mapp /> */}
               <Card1 />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
@@ -134,6 +132,9 @@ export default function Album() {
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <Card3 />
+            </Grid>
+            <Grid item sm={4} style={{ padding: 20 }}>
+              <Card4 />
             </Grid>
           </Grid>
         </Container>

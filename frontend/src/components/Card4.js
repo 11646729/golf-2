@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "react-router-dom"
 import Button from "@material-ui/core/Button"
 import Card from "@material-ui/core/Card"
 import CardActions from "@material-ui/core/CardActions"
@@ -26,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function Card3() {
+export default function Card4() {
   const classes = useStyles()
 
   return (
@@ -38,14 +37,12 @@ export default function Card3() {
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          Cruise Ship Arivals
+          Nearby Golf Courses
         </Typography>
-        <Typography>
-          This shows details of the Cruise Ships arriving soon in Belfast
-        </Typography>
+        <Typography>This shows nearby Golf Courses to my home</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" component={Link} to="/cruisetable">
+        <Button size="small" color="primary">
           View
         </Button>
       </CardActions>

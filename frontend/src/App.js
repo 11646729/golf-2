@@ -17,6 +17,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 
 import GoogleMapCard from "./components/GoogleMapCard"
 import LeafletMapCard from "./components/LeafletMapCard"
+import CruiseTableCard from "./components/CruiseTableCard"
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -76,6 +77,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="googlemap" element={<GoogleMap />} />
         <Route path="leaflet" element={<LeafletMap />} />
+        <Route path="cruisetable" element={<CruiseTable />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
@@ -92,6 +94,10 @@ function GoogleMap() {
 
 function LeafletMap() {
   return <LeafletMapCard />
+}
+
+function CruiseTable() {
+  return <CruiseTableCard />
 }
 
 function NotFound() {

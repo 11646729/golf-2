@@ -9,7 +9,7 @@ import {
   YAxis,
   Label,
   Legend,
-  ResponsiveContainer,
+  // ResponsiveContainer,
 } from "recharts"
 import Title from "./Title"
 
@@ -21,8 +21,8 @@ export default function WeatherChart() {
 
   // Listen for weather data and update the state
   useEffect(() => {
-    socket.on("DataFromDarkSkiesAPI", (data) => {
-      setData((currentData) => [...currentData, data])
+    socket.on("DataFromDarkSkiesAPI", (currentData) => {
+      setData((data) => [...data, currentData])
     })
   }, [])
 
