@@ -46,10 +46,7 @@ export default function Card1() {
       </CardContent>
       <CardActions>
         <Button size="small" color="primary" component={Link} to="/googlemap">
-          View - Try Me
-        </Button>
-        <Button size="small" color="primary">
-          Edit
+          View - Working
         </Button>
       </CardActions>
     </Card>

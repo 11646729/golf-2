@@ -4,8 +4,8 @@ import ReactDOM from "react-dom"
 const mapStyles = {
   map: {
     position: "absolute",
-    width: "70%",
-    height: "70%",
+    width: "100%",
+    height: "100%",
   },
 }
 
@@ -74,7 +74,7 @@ export class CurrentLocation extends React.Component {
       // reference to the actual DOM element
       const node = ReactDOM.findDOMNode(mapRef)
 
-      let { zoom } = this.props
+      let { zoom, mapTypeId } = this.props
       const { lat, lng } = this.state.currentLocation
       const center = new maps.LatLng(lat, lng)
       const mapConfig = Object.assign(
@@ -82,6 +82,7 @@ export class CurrentLocation extends React.Component {
         {
           center: center,
           zoom: zoom,
+          mapTypeId: mapTypeId,
         }
       )
 
@@ -127,4 +128,5 @@ CurrentLocation.defaultProps = {
   },
   centerAroundCurrentLocation: false,
   visible: true,
+  mapTypeId: "satellite",
 }
