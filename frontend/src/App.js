@@ -1,17 +1,34 @@
 import React from "react"
 import Album from "./components/Album"
-import AppBar from "@material-ui/core/AppBar"
-import CameraAltIcon from "@material-ui/icons/CameraAlt"
-import CssBaseline from "@material-ui/core/CssBaseline"
-import Typography from "@material-ui/core/Typography"
-import Toolbar from "@material-ui/core/Toolbar"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { makeStyles } from "@material-ui/core/styles"
 import GoogleMapCard from "./components/GoogleMapCard"
+import {
+  AppBar,
+  CssBaseline,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@material-ui/core"
+
+import MoreVertIcon from "@material-ui/icons/MoreVert"
+import SaveIcon from "@material-ui/icons/Save"
+import EditIcon from "@material-ui/icons/Edit"
+import HomeIcon from "@material-ui/icons/Home"
+import MenuIcon from "@material-ui/icons/Menu"
 
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
+  },
+  // This group of buttons will be aligned to the right
+  rightToolbar: {
+    marginLeft: "auto",
+    marginRight: -12,
+  },
+  menuButton: {
+    marginRight: 16,
+    marginLeft: -12,
   },
 }))
 
@@ -22,10 +39,30 @@ export default function App() {
       <CssBaseline />
       <AppBar position="sticky">
         <Toolbar>
-          <CameraAltIcon className={classes.icon} color="white" />
+          <IconButton
+            className={classes.menuButton}
+            aria-label="Menu"
+            color="inherit"
+          >
+            <MenuIcon />
+          </IconButton>
+          <IconButton color="inherit" aria-label="Home">
+            {<HomeIcon />}
+          </IconButton>
           <Typography variant="h6" color="inherit" noWrap>
-            My Album
+            My Website
           </Typography>
+          <section className={classes.rightToolbar}>
+            <IconButton color="inherit" aria-label="Edit">
+              <EditIcon />
+            </IconButton>
+            <IconButton color="inherit" aria-label="Save">
+              <SaveIcon />
+            </IconButton>
+            <IconButton color="inherit" aria-label="More Options">
+              <MoreVertIcon />
+            </IconButton>
+          </section>
         </Toolbar>
       </AppBar>
       <Routes>
