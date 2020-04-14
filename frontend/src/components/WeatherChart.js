@@ -26,8 +26,6 @@ export default function WeatherChart() {
     })
   }, [])
 
-  let uniqueValues = [...new Set(data.map((item) => item.value))]
-
   return (
     <React.Fragment>
       {/* <ResponsiveContainer width="95%" height={400}> */}
@@ -37,7 +35,7 @@ export default function WeatherChart() {
       ) : (
         <h3>
           The temperature now at Home is:
-          {uniqueValues[uniqueValues.length - 1]} °F
+          {Object.values(data[0])[1]} °F
         </h3>
       )}
       <LineChart data={data} width={900} height={300}>

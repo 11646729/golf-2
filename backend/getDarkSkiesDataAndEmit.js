@@ -18,7 +18,7 @@ export const getDarkSkiesDataAndEmit = async (socket) => {
         Time: response.data.currently.time,
         Temperature: response.data.currently.temperature,
       })
-      // console.log(response.data.currently.time)
+      //      console.log(response.data.currently.temperature)
     })
     .catch(function (error) {
       // handle error
