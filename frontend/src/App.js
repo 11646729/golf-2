@@ -46,7 +46,13 @@ export default function App() {
           >
             <MenuIcon />
           </IconButton>
-          <IconButton color="inherit" aria-label="Home">
+          <IconButton
+            color="inherit"
+            aria-label="Home"
+            // tooltip="Home"
+            // linkButton="true"
+            href="/"
+          >
             {<HomeIcon />}
           </IconButton>
           <Typography variant="h6" color="inherit" noWrap>
