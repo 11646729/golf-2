@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import Button from "@material-ui/core/Button"
 import Card from "@material-ui/core/Card"
 import CardActions from "@material-ui/core/CardActions"
@@ -37,14 +38,12 @@ export default function Card2() {
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          Cruise Ship Arrivals
+          Leaflet Map
         </Typography>
-        <Typography>
-          This shows the forthcoming Cruise Ship Arrivals at Belfast
-        </Typography>
+        <Typography>This shows the Leaflet Map</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button size="small" color="primary" component={Link} to="/leaflet">
           View
         </Button>
       </CardActions>
