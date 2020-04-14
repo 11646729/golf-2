@@ -1,18 +1,13 @@
 import React from "react"
-import AppBar from "@material-ui/core/AppBar"
 import Button from "@material-ui/core/Button"
-import CameraIcon from "@material-ui/icons/PhotoCamera"
-import HomeIcon from "@material-ui/icons/Home"
 import clsx from "clsx"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import Grid from "@material-ui/core/Grid"
-import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 import Container from "@material-ui/core/Container"
 import Link from "@material-ui/core/Link"
 import Paper from "@material-ui/core/paper"
-//import { Link } from "react-router-dom"
 
 import Card1 from "./Card1"
 import Card2 from "./Card2"
@@ -27,7 +22,8 @@ function Copyright() {
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
         My Website
-      </Link>{" "}
+      </Link>
+      {"/"}
       {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -82,14 +78,6 @@ export default function Album() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <HomeIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            My Album
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
