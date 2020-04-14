@@ -128,5 +128,5 @@ CurrentLocation.defaultProps = {
   },
   centerAroundCurrentLocation: false,
   visible: true,
-  mapTypeId: "satellite",
+  mapTypeId: "hybrid",
 }
