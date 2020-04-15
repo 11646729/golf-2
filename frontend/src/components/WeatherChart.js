@@ -40,7 +40,11 @@ export default function WeatherChart() {
       )}
       <LineChart data={data} width={900} height={300}>
         <XAxis dataKey="Time" stroke={theme.palette.text.secondary} />
-        <YAxis stroke={theme.palette.text.secondary}>
+        <YAxis
+          stroke={theme.palette.text.secondary}
+          type="number"
+          domain={["dataMin", "dataMax"]}
+        >
           <Label
             angle={270}
             position="center"
