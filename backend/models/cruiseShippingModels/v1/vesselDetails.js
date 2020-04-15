@@ -4,10 +4,10 @@ var VesselSchema = new Schema(
   {
     databaseVersion: { type: Number, default: 1.0 },
     vessel_name_url: {
-      type: String
+      type: String,
     },
     title: {
-      type: String
+      type: String,
     },
     vessel_type: { type: String },
     vessel_name: { type: String },
@@ -25,10 +25,10 @@ var VesselSchema = new Schema(
     vessel_mmsi_number: { type: Number },
     vessel_callsign: { type: String },
     vessel_typical_passengers: { type: String },
-    vessel_typical_crew: { type: String }
+    vessel_typical_crew: { type: String },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 )
 

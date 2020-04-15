@@ -3,17 +3,17 @@ import mongoose, { Schema } from "mongoose"
 const GeoSchema = new Schema({
   type: {
     type: String,
-    default: "Point"
+    default: "Point",
   },
   coordinates: {
     type: [Number],
-    index: "2dsphere"
-  }
+    index: "2dsphere",
+  },
 })
 
 const PortArrivalSchema = new Schema(
   {
-    database_version: { type: Number },
+    database_version: { type: Number, default: 1.0 },
     port_name: { type: String },
     port_un_locode: { type: String },
     port_coords: { type: GeoSchema },
@@ -22,11 +22,11 @@ const PortArrivalSchema = new Schema(
     vessel_etd: { type: String },
     vessel_name_url: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 )
 
