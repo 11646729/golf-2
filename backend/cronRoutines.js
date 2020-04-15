@@ -41,7 +41,7 @@ export async function getAndSavePortArrivals() {
 
     allArrivalsVesselUrls.push(vessel_name_url)
 
-    // Now save in mongoDB
+    // Now create a model instance
     const newPortArrival = new PortArrival({
       database_version,
       port_name,
@@ -53,6 +53,7 @@ export async function getAndSavePortArrivals() {
       vessel_name_url,
     })
 
+    // Now save in mongoDB
     newPortArrival.save()
     i++
   } while (i < allArrivals.length)
@@ -100,6 +101,7 @@ export async function runCron() {
     let vessel_typical_passengers = vesselDetails[0].vessel_typical_passengers
     let vessel_typical_crew = vesselDetails[0].vessel_typical_crew
 
+    // Now create a model instance
     const newVessel = new VesselDetails({
       database_version,
       vessel_name_url,
@@ -123,6 +125,7 @@ export async function runCron() {
       vessel_typical_crew,
     })
 
+    // Now save in mongoDB
     newVessel.save()
 
     k++
