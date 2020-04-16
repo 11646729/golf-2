@@ -49,6 +49,14 @@ export default function WeatherChart() {
           stroke={theme.palette.text.secondary}
           dataKey="Time"
           tickFormatter={formatXAxis}
+        >
+          <Label
+            position="middle"
+            style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
+          >
+            Time and Date
+          </Label>
+        </XAxis>
         />
         <YAxis
           stroke={theme.palette.text.secondary}
@@ -58,14 +66,14 @@ export default function WeatherChart() {
         >
           <Label
             angle={270}
-            position="left"
+            position="insideleft"
             style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
           >
             Temperature &deg;F
           </Label>
         </YAxis>
-        <Tooltip />
-        <Legend />
+        <Tooltip labelFormatter={formatXAxis} />
+        {/* <Legend /> */}
         <Line
           type="monotone"
           dataKey="Temperature"
