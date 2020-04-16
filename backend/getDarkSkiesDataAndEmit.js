@@ -36,7 +36,7 @@ export const getDarkSkiesDataAndEmit = async (socket) => {
 
 // Function to save weather data to mongodb
 export async function getAndSaveWeather(response) {
-  console.log(response.data.currently)
+  //  console.log(response.data.currently.temperature)
 
   return true
 }

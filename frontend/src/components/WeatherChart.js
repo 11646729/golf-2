@@ -1,4 +1,5 @@
 import React from "react"
+import moment from "moment"
 import socketIOClient from "socket.io-client"
 import { useEffect, useState } from "react"
 import { useTheme } from "@material-ui/core/styles"
@@ -9,7 +10,7 @@ import {
   YAxis,
   Label,
   Legend,
-  // ResponsiveContainer,
+  ResponsiveContainer,
 } from "recharts"
 import Title from "./Title"
 
@@ -39,9 +40,15 @@ export default function WeatherChart() {
         </h3>
       )}
       <LineChart data={data} width={900} height={300}>
-        <XAxis dataKey="Time" stroke={theme.palette.text.secondary} />
+        <XAxis
+          stroke={theme.palette.text.secondary}
+          dataKey="Time"
+          tickFormatter={(unixTime) => moment(unixTime).format("mm:HH")}
+          //          type="number"
+        />
         <YAxis
           stroke={theme.palette.text.secondary}
+          dataKey="Temperature"
           type="number"
           domain={["dataMin", "dataMax"]}
         >
