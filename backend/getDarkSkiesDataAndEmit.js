@@ -22,15 +22,19 @@ export const getDarkSkiesDataAndEmit = async (socket) => {
         Time: response.data.currently.time,
         Temperature: response.data.currently.temperature,
       })
-      //      console.log(response.data.currently.temperature)
+
+      // return response.data.currently
     })
     .catch(function (error) {
       // handle error
       console.log("Error in getApiAndEmit: ", error)
+      // return "Error"
     })
     .finally(function () {
       // always executed
       console.log("In Finally option in getApiAndEmit")
+
+      // return "Error"
     })
 }
 

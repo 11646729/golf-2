@@ -10,11 +10,16 @@ import {
   YAxis,
   Label,
   Legend,
+  Tooltip,
   ResponsiveContainer,
 } from "recharts"
 import Title from "./Title"
 
 const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
+
+export const formatXAxis = (tickItem) => {
+  return moment.unix(tickItem).format("HH:mm MMM Do")
+}
 
 export default function WeatherChart() {
   const theme = useTheme()
@@ -43,8 +48,7 @@ export default function WeatherChart() {
         <XAxis
           stroke={theme.palette.text.secondary}
           dataKey="Time"
-          tickFormatter={(unixTime) => moment(unixTime).format("mm:HH")}
-          //          type="number"
+          tickFormatter={formatXAxis}
         />
         <YAxis
           stroke={theme.palette.text.secondary}
@@ -54,12 +58,13 @@ export default function WeatherChart() {
         >
           <Label
             angle={270}
-            position="center"
+            position="left"
             style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
           >
             Temperature &deg;F
           </Label>
         </YAxis>
+        <Tooltip />
         <Legend />
         <Line
           type="monotone"

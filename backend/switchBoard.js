@@ -25,7 +25,9 @@ export const runSwitchboard = (io) => {
 
     cron.schedule("* * * * *", () => {
       console.log("Started getting Dark Skies Weather data!")
-      getDarkSkiesDataAndEmit(socket)
+      let response = getDarkSkiesDataAndEmit(socket)
+
+      console.log(response)
     })
 
     socket.on("disconnect", () => {
