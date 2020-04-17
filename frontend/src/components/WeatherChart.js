@@ -9,9 +9,9 @@ import {
   XAxis,
   YAxis,
   Label,
-  Legend,
+  // Legend,
   Tooltip,
-  ResponsiveContainer,
+  // ResponsiveContainer,
 } from "recharts"
 import Title from "./Title"
 
@@ -19,6 +19,10 @@ const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
 export const formatXAxis = (tickItem) => {
   return moment.unix(tickItem).format("HH:mm MMM Do")
+}
+
+export const formatYAxis = (tickItem) => {
+  return +tickItem.toFixed(1)
 }
 
 export default function WeatherChart() {
@@ -35,12 +39,12 @@ export default function WeatherChart() {
   return (
     <React.Fragment>
       {/* <ResponsiveContainer width="95%" height={400}> */}
-      <Title>Realtime Temperature</Title>
+      <Title>Realtime Temperature at Home</Title>
       {data.length < 1 ? (
         <h3>Loading...</h3>
       ) : (
         <h3>
-          The temperature now at Home is:
+          The temperature now at home is: &nbsp;
           {Object.values(data[0])[1]} °F
         </h3>
       )}
@@ -51,7 +55,8 @@ export default function WeatherChart() {
           tickFormatter={formatXAxis}
         >
           <Label
-            position="middle"
+            position="insideBottom"
+            offset={-5}
             style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
           >
             Time and Date
@@ -61,12 +66,14 @@ export default function WeatherChart() {
         <YAxis
           stroke={theme.palette.text.secondary}
           dataKey="Temperature"
+          tickFormatter={formatYAxis}
           type="number"
           domain={["dataMin", "dataMax"]}
         >
           <Label
             angle={270}
-            position="insideleft"
+            position="left"
+            offset={-10}
             style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
           >
             Temperature &deg;F
