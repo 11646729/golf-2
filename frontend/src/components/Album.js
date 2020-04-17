@@ -14,6 +14,7 @@ import Card2 from "./Card2"
 import Card3 from "./Card3"
 import Card4 from "./Card4"
 import WeatherChart from "./WeatherChart"
+import Example from "./ResponsiveExample"
 
 function Copyright() {
   return (
@@ -121,7 +122,8 @@ export default function Album() {
           <Grid container>
             <Grid item sm={8} style={{ padding: 20 }}>
               <Paper className={fixedHeightPaper}>
-                <WeatherChart />
+                <Example />
+                {/* <WeatherChart /> */}
               </Paper>
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>

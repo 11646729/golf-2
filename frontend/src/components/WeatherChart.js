@@ -11,7 +11,7 @@ import {
   Label,
   // Legend,
   Tooltip,
-  // ResponsiveContainer,
+  ResponsiveContainer,
 } from "recharts"
 import Title from "./Title"
 
@@ -37,57 +37,57 @@ export default function WeatherChart() {
   }, [])
 
   return (
-    <React.Fragment>
-      {/* <ResponsiveContainer width="95%" height={400}> */}
-      <Title>Realtime Temperature at Home</Title>
-      {data.length < 1 ? (
-        <h3>Loading...</h3>
-      ) : (
-        <h3>
-          The temperature now at home is: &nbsp;
-          {Object.values(data[0])[1]} °F
-        </h3>
-      )}
-      <LineChart data={data} width={900} height={300}>
-        <XAxis
-          stroke={theme.palette.text.secondary}
-          dataKey="Time"
-          tickFormatter={formatXAxis}
-        >
-          <Label
-            position="insideBottom"
-            offset={-5}
-            style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
+    // <React.Fragment>
+    <ResponsiveContainer width="100%" height={400}>
+      {/* <Title>Realtime Temperature at Home</Title>
+        {data.length < 1 ? (
+          <h3>Loading...</h3>
+        ) : (
+          <h3>
+            The temperature now at home is: &nbsp;
+            {Object.values(data[0])[1]} °F
+          </h3>
+        )}
+        <LineChart data={data} width={900} height={300}>
+          <XAxis
+            stroke={theme.palette.text.secondary}
+            dataKey="Time"
+            tickFormatter={formatXAxis}
           >
-            Time and Date
-          </Label>
-        </XAxis>
-        />
-        <YAxis
-          stroke={theme.palette.text.secondary}
-          dataKey="Temperature"
-          tickFormatter={formatYAxis}
-          type="number"
-          domain={["dataMin", "dataMax"]}
-        >
-          <Label
-            angle={270}
-            position="left"
-            offset={-10}
-            style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
+            <Label
+              position="insideBottom"
+              offset={-5}
+              style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
+            >
+              Time and Date
+            </Label>
+          </XAxis>
+          />
+          <YAxis
+            stroke={theme.palette.text.secondary}
+            dataKey="Temperature"
+            tickFormatter={formatYAxis}
+            type="number"
+            domain={["dataMin", "dataMax"]}
           >
-            Temperature &deg;F
-          </Label>
-        </YAxis>
-        <Tooltip labelFormatter={formatXAxis} />
-        {/* <Legend /> */}
-        <Line
-          type="monotone"
-          dataKey="Temperature"
-          stroke={theme.palette.primary.main}
-        />
-      </LineChart>
-      {/* </ResponsiveContainer> */}
-    </React.Fragment>
+            <Label
+              angle={270}
+              position="left"
+              offset={-10}
+              style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
+            >
+              Temperature &deg;F
+            </Label>
+          </YAxis>
+          <Tooltip labelFormatter={formatXAxis} />
+          <Legend />
+          <Line
+            type="monotone"
+            dataKey="Temperature"
+            stroke={theme.palette.primary.main}
+          />
+        </LineChart> */}
+    </ResponsiveContainer>
+    // </React.Fragment>
   )
 }
