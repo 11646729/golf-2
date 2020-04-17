@@ -4,12 +4,12 @@ import socketIOClient from "socket.io-client"
 import { useEffect, useState } from "react"
 import { useTheme } from "@material-ui/core/styles"
 import {
+  CartesianGrid,
   LineChart,
   Line,
   XAxis,
   YAxis,
   Label,
-  // Legend,
   Tooltip,
   ResponsiveContainer,
 } from "recharts"
@@ -37,18 +37,27 @@ export default function WeatherChart() {
   }, [])
 
   return (
-    // <React.Fragment>
-    <ResponsiveContainer width="100%" height={400}>
-      {/* <Title>Realtime Temperature at Home</Title>
-        {data.length < 1 ? (
-          <h3>Loading...</h3>
-        ) : (
-          <h3>
-            The temperature now at home is: &nbsp;
-            {Object.values(data[0])[1]} °F
-          </h3>
-        )}
-        <LineChart data={data} width={900} height={300}>
+    <div style={{ width: "100%", height: 260 }}>
+      <Title>Realtime Temperature at Home</Title>
+      {data.length < 1 ? (
+        <h3>Loading...</h3>
+      ) : (
+        <h3>
+          The temperature now at home is: &nbsp;
+          {Object.values(data[0])[1]} °F
+        </h3>
+      )}
+      <ResponsiveContainer>
+        <LineChart
+          data={data}
+          margins={{
+            top: 0,
+            right: 30,
+            left: 0,
+            bottom: 0,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             stroke={theme.palette.text.secondary}
             dataKey="Time"
@@ -56,10 +65,10 @@ export default function WeatherChart() {
           >
             <Label
               position="insideBottom"
-              offset={-5}
+              offset={-10}
               style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
             >
-              Time and Date
+              Time &amp; Date
             </Label>
           </XAxis>
           />
@@ -80,14 +89,13 @@ export default function WeatherChart() {
             </Label>
           </YAxis>
           <Tooltip labelFormatter={formatXAxis} />
-          <Legend />
           <Line
             type="monotone"
             dataKey="Temperature"
             stroke={theme.palette.primary.main}
           />
-        </LineChart> */}
-    </ResponsiveContainer>
-    // </React.Fragment>
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   )
 }
