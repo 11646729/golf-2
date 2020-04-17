@@ -37,20 +37,19 @@ export default function WeatherChart() {
   }, [])
 
   return (
-    <div style={{ width: "100%", height: 260 }}>
-      <Title>Realtime Temperature at Home</Title>
+    <div style={{ width: "100%", height: 300 }}>
       {data.length < 1 ? (
-        <h3>Loading...</h3>
+        <Title>Home Temperature is loading...</Title>
       ) : (
-        <h3>
-          The temperature now at home is: &nbsp;
+        <Title>
+          Home Temperature is: &nbsp;
           {Object.values(data[0])[1]} °F
-        </h3>
+        </Title>
       )}
       <ResponsiveContainer>
         <LineChart
           data={data}
-          margins={{
+          padding={{
             top: 0,
             right: 30,
             left: 0,
@@ -65,7 +64,7 @@ export default function WeatherChart() {
           >
             <Label
               position="insideBottom"
-              offset={-10}
+              offset={-3}
               style={{ textAnchor: "middle", fill: theme.palette.text.primary }}
             >
               Time &amp; Date
