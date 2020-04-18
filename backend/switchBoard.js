@@ -5,8 +5,6 @@ import { emptyFile, runCron } from "./cronRoutines"
 import { getDarkSkiesDataAndEmit } from "./getDarkSkiesDataAndEmit"
 
 export const runSwitchboard = (io) => {
-  //  console.log("In the switchBoard file")
-
   // Using socket.io for realtime
   io.on("connection", (socket) => {
     console.log("Client Connected")
@@ -25,9 +23,10 @@ export const runSwitchboard = (io) => {
 
     cron.schedule("* * * * *", () => {
       console.log("Started getting Dark Skies Weather data!")
-      let response = getDarkSkiesDataAndEmit(socket)
 
-      console.log(response)
+      getDarkSkiesDataAndEmit(socket).then((result) =>
+        console.log("In switchboard function : " + result)
+      )
     })
 
     socket.on("disconnect", () => {
