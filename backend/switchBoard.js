@@ -2,7 +2,13 @@
 
 import cron from "node-cron"
 import { emptyFile, runCron } from "./cronRoutines"
-import { getDarkSkiesDataAndEmit } from "./getDarkSkiesDataAndEmit"
+import {
+  getDarkSkiesData,
+  emitDarkSkiesData,
+  saveDarkSkiesDataToDatabase,
+} from "./getDarkSkiesDataAndEmit"
+
+let darkSkiesData
 
 export const runSwitchboard = (io) => {
   // Using socket.io for realtime
@@ -24,9 +30,12 @@ export const runSwitchboard = (io) => {
     cron.schedule("* * * * *", () => {
       console.log("Started getting Dark Skies Weather data!")
 
-      getDarkSkiesDataAndEmit(socket).then((result) =>
-        console.log("In switchboard function : " + result)
-      )
+      getDarkSkiesData().then((result) => {
+        emitDarkSkiesData(socket, result).then((result) => {
+          // saveDarkSkiesDataToDatabase(socket, result)
+          //        console.log("In switchboard function : " + result)
+        })
+      })
     })
 
     socket.on("disconnect", () => {
