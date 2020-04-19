@@ -76,7 +76,7 @@ export const saveDarkSkiesDataToDatabase = async (darkSkiesData) => {
     // console.log(homeTemperature)
 
     // Now save in mongoDB
-    // homeTemperature.save()
+    homeTemperature.save()
 
     // return darkSkiesData.data.currently.temperature
   } catch (error) {
