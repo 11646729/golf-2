@@ -8,8 +8,6 @@ import {
   saveDarkSkiesDataToDatabase,
 } from "./getDarkSkiesDataAndEmit"
 
-let darkSkiesData
-
 export const runSwitchboard = (io) => {
   // Using socket.io for realtime
   io.on("connection", (socket) => {
@@ -31,10 +29,20 @@ export const runSwitchboard = (io) => {
       console.log("Started getting Dark Skies Weather data!")
 
       getDarkSkiesData().then((result) => {
-        emitDarkSkiesData(socket, result).then((result) => {
-          // saveDarkSkiesDataToDatabase(socket, result)
-          //        console.log("In switchboard function : " + result)
-        })
+        // console.log(
+        //   "In switchboard function (getDarkSkiesData): " +
+        //     result.data.currently.temperature
+        // )
+        emitDarkSkiesData(socket, result).then((result) => {})
+        // console.log(
+        //   "In switchboard function (emitDarkSkiesData): " +
+        //     result.data.currently.temperature
+        // )
+        saveDarkSkiesDataToDatabase(socket, result).then((result) => {})
+        // console.log(
+        //   "In switchboard function (saveDarkSkiesDataToDatabase): " +
+        //     result.data.currently.temperature
+        // )
       })
     })
 

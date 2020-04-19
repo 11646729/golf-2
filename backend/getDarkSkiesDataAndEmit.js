@@ -9,7 +9,10 @@ export const getDarkSkiesData = async () => {
     let darkSkiesUrl =
       process.env.REACT_APP_DARK_SKY_URL +
       process.env.REACT_APP_DARK_SKY_WEATHER_API +
-      "/54.659,-5.772"
+      "/" +
+      process.env.REACT_APP_HOME_LATITUDE +
+      "," +
+      process.env.REACT_APP_HOME_LONGITUDE
 
     // fetch data from a url endpoint
     const response = await axios.get(darkSkiesUrl)
@@ -21,8 +24,8 @@ export const getDarkSkiesData = async () => {
   }
 }
 
+// Function to emit weather data to be consumed by the client
 export const emitDarkSkiesData = async (socket, darkSkiesData) => {
-  // handle success - Emitting a new message to be consumed by the client
   socket.emit("DataFromDarkSkiesAPI", {
     Time: darkSkiesData.data.currently.time,
     Temperature: darkSkiesData.data.currently.temperature,
@@ -31,5 +34,10 @@ export const emitDarkSkiesData = async (socket, darkSkiesData) => {
 
 // Function to save weather data to mongodb
 export const saveDarkSkiesDataToDatabase = async (socket, darkSkiesData) => {
-  //  console.log(response.data.currently.temperature)
+  // console.log(
+  //   "In the saveDarkSkiesToDatabase function: " +
+  //     darkSkiesData.data.currently.temperature
+  // )
+
+  return darkSkiesData.data.currently.temperature
 }
