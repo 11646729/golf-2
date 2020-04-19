@@ -66,12 +66,14 @@ mongoose.promise = global.Promise
 // const indexRouter = require("./routes/cruiseRoutes/v1/indexRoute")
 // const usersRouter = require("./routes/cruiseRoutes/v1/usersRoute")
 // const golfRouter = require("./routes/golfRoutes/v1/golfRoute")
+const weatherRouter = require("./routes/weatherRoutes/v1/weatherCatalogRoute")
 const cruiseShipsRouter = require("./routes/cruiseRoutes/v1/cruiseShipsCatalogRoute")
 
 // routes
 // app.use("/", indexRouter)
 // app.use("/users", usersRouter)
 // app.use("/golf", golfRouter)
+app.use("/weather", weatherRouter)
 app.use("/cruiseShips", cruiseShipsRouter)
 
 runSwitchboard(io)
