@@ -39,7 +39,7 @@ export default function Card4() {
         <Typography gutterBottom variant="h5" component="h2">
           Nearby Golf Courses
         </Typography>
-        <Typography>This shows nearby Golf Courses to my home</Typography>
+        <Typography>This shows Golf Courses in Northern Ireland</Typography>
       </CardContent>
       <CardActions>
         <Button size="small" color="primary">

@@ -33,16 +33,14 @@ export default function Card1() {
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        image="https://source.unsplash.com/random"
-        title="Image title"
+        image="/static/images/NearbyClubs.jpg"
+        title="Nearby Golf Courses"
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          My Google Map
+          Nearby Golf Courses
         </Typography>
-        <Typography>
-          This shows all the golf courses in Northern Ireland
-        </Typography>
+        <Typography>This shows Golf Courses in Northern Ireland</Typography>
       </CardContent>
       <CardActions>
         <Button size="small" color="primary" component={Link} to="/googlemap">
