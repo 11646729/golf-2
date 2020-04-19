@@ -41,11 +41,6 @@ export const emitDarkSkiesData = async (socket, darkSkiesData) => {
 // Function to save weather data to mongodb
 export const saveDarkSkiesDataToDatabase = async (darkSkiesData) => {
   try {
-    console.log(
-      "In the saveDarkSkiesToDatabase function: " +
-        darkSkiesData.data.currently.temperature
-    )
-
     // Database version
     const database_version = process.env.DATABASE_VERSION
 
@@ -72,8 +67,6 @@ export const saveDarkSkiesDataToDatabase = async (darkSkiesData) => {
       location_coords,
       location_temperature,
     })
-
-    // console.log(homeTemperature)
 
     // Now save in mongoDB
     homeTemperature.save()

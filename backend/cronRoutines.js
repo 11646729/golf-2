@@ -2,6 +2,7 @@ import { getAllVesselArrivals } from "./scrapeArrivals"
 import { getSingleVesselDetails } from "./scrapeVessels"
 import { PortArrival } from "./models/cruiseShippingModels/v1/portArrival"
 import { VesselDetails } from "./models/cruiseShippingModels/v1/vesselDetails"
+import { HomeTemperature } from "./models/weatherModels/v1/rtTemperature"
 
 export async function emptyFile() {
   // First delete all previous data
@@ -18,6 +19,14 @@ export async function emptyFile() {
       console.log("Error in VesselDetails.deleteMany() : ", error)
     } else {
       console.log("VesselDetails collection emptied")
+    }
+  })
+
+  HomeTemperature.deleteMany({}, function (error) {
+    if (error) {
+      console.log("Error in HomeTemperature.deleteMany() : ", error)
+    } else {
+      console.log("HomeTemperature collection emptied")
     }
   })
 }
