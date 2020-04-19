@@ -1,6 +1,7 @@
 "use strict"
 
 import axios from "axios"
+import moment from "moment"
 import { HomeTemperature } from "./models/weatherModels/v1/rtTemperature"
 
 // Function to fetch weather data from the Dark Skies website
@@ -44,6 +45,38 @@ export const saveDarkSkiesDataToDatabase = async (darkSkiesData) => {
       "In the saveDarkSkiesToDatabase function: " +
         darkSkiesData.data.currently.temperature
     )
+
+    // Database version
+    const database_version = process.env.DATABASE_VERSION
+
+    // Converted From UNIX Time
+    const time_of_measurement = moment
+      .unix(darkSkiesData.data.currently.time)
+      .format()
+
+    const location_name = "Home"
+
+    // Home Coordinates in GeoJSON
+    const location_coords = {
+      type: "Point",
+      coordinates: [process.env.HOME_LONGITUDE, process.env.HOME_LATITUDE],
+    }
+
+    const location_temperature = darkSkiesData.data.currently.temperature
+
+    // // Now create a model instance
+    const homeTemperature = new HomeTemperature({
+      database_version,
+      time_of_measurement,
+      location_name,
+      location_coords,
+      location_temperature,
+    })
+
+    // console.log(homeTemperature)
+
+    // Now save in mongoDB
+    // homeTemperature.save()
 
     // return darkSkiesData.data.currently.temperature
   } catch (error) {

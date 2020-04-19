@@ -13,8 +13,8 @@ const GeoSchema = new Schema({
 
 var rtTemperatureSchema = new Schema(
   {
-    databaseVersion: { type: Number, default: 1.0 },
-    timeAndDate: {
+    database_version: { type: Number, default: 1.0 },
+    time_of_measurement: {
       type: String,
     },
     location_name: { type: String },
