@@ -7,12 +7,12 @@ export const getDarkSkiesData = async () => {
 
   try {
     let darkSkiesUrl =
-      process.env.REACT_APP_DARK_SKY_URL +
-      process.env.REACT_APP_DARK_SKY_WEATHER_API +
+      process.env.DARK_SKY_URL +
+      process.env.DARK_SKY_WEATHER_API +
       "/" +
-      process.env.REACT_APP_HOME_LATITUDE +
+      process.env.HOME_LATITUDE +
       "," +
-      process.env.REACT_APP_HOME_LONGITUDE
+      process.env.HOME_LONGITUDE
 
     // fetch data from a url endpoint
     const response = await axios.get(darkSkiesUrl)
