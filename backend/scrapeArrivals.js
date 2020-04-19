@@ -46,7 +46,7 @@ export async function getScheduleMonths() {
       const monthYearString = $(item).attr("value")
 
       monthYearStringArray.push({
-        monthYearString
+        monthYearString,
       })
     }
   )
@@ -74,21 +74,22 @@ export async function getVesselArrivals(period) {
       const database_version = "1.0"
 
       // Port Name
-      const port_name = "Belfast"
+      const port_name = REACT_APP_BELFAST_PORT_NAME
 
       // Port UN Locode
-      const port_un_locode = "GBBEL"
+      const port_un_locode = REACT_APP_BELFAST_PORT_UN_LOCODE
 
       // Belfast Port Coordinates in GeoJSON
       const port_coords = {
         type: "Point",
-        coordinates: [-5.89831, 54.6175]
+        coordinates: [
+          process.env.REACT_APP_BELFAST_PORT_LONGITUDE,
+          process.env.REACT_APP_BELFAST_PORT_LATITUDE,
+        ],
       }
 
       // Name of Vessel
-      const vessel_shortcruise_name = $(item)
-        .find("a")
-        .text()
+      const vessel_shortcruise_name = $(item).find("a").text()
 
       //  Date of Arrival
       let arrival_date = $(item)
@@ -98,11 +99,7 @@ export async function getVesselArrivals(period) {
         .replace(/,/, "") // Removes the comma
 
       // // Expected Time of Arrival
-      let vessel_eta = $(item)
-        .children("td")
-        .next("td")
-        .next("td")
-        .html()
+      let vessel_eta = $(item).children("td").next("td").next("td").html()
 
       // If No Arrival Time Given
       if (vessel_eta == "") {
@@ -114,10 +111,7 @@ export async function getVesselArrivals(period) {
       }
 
       // // Expected Time of Departure
-      let vessel_etd = $(item)
-        .children("td")
-        .last("td")
-        .html()
+      let vessel_etd = $(item).children("td").last("td").html()
 
       // If No Departure Time Given
       if (vessel_etd == "") {
@@ -129,9 +123,7 @@ export async function getVesselArrivals(period) {
       }
 
       // Url of Vessel Web Page
-      const vessel_name_url = $(item)
-        .find("a")
-        .attr("href")
+      const vessel_name_url = $(item).find("a").attr("href")
 
       // Push an object with the data onto our array
       vessel_arrival.push({
@@ -142,7 +134,7 @@ export async function getVesselArrivals(period) {
         vessel_shortcruise_name,
         vessel_eta,
         vessel_etd,
-        vessel_name_url
+        vessel_name_url,
       })
     }
   })
