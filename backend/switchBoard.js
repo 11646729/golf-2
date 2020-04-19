@@ -3,7 +3,7 @@
 import cron from "node-cron"
 import { emptyFile, runCron } from "./cronRoutines"
 import {
-  getDarkSkiesData,
+  fetchDarkSkiesData,
   emitDarkSkiesData,
   saveDarkSkiesDataToDatabase,
 } from "./getDarkSkiesDataAndEmit"
@@ -28,7 +28,7 @@ export const runSwitchboard = (io) => {
     cron.schedule("* * * * *", () => {
       console.log("Started getting Dark Skies Weather data!")
 
-      getDarkSkiesData().then((result) => {
+      fetchDarkSkiesData().then((result) => {
         // console.log(
         //   "In switchboard function (getDarkSkiesData): " +
         //     result.data.currently.temperature
@@ -38,7 +38,7 @@ export const runSwitchboard = (io) => {
         //   "In switchboard function (emitDarkSkiesData): " +
         //     result.data.currently.temperature
         // )
-        saveDarkSkiesDataToDatabase(socket, result).then((result) => {})
+        saveDarkSkiesDataToDatabase(result).then((result) => {})
         // console.log(
         //   "In switchboard function (saveDarkSkiesDataToDatabase): " +
         //     result.data.currently.temperature
