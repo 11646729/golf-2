@@ -56,7 +56,8 @@ export async function getScheduleMonths() {
 
 export async function getVesselArrivals(period) {
   let arrival_url =
-    "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=" +
+    process.env.REACT_APP_CRUISE_MAPPER_URL +
+    "?tab=schedule&month=" +
     period +
     "#schedule"
 
@@ -71,13 +72,13 @@ export async function getVesselArrivals(period) {
     // Ignore the table heading
     if (i > 0) {
       // Database version
-      const database_version = "1.0"
+      const database_version = process.env.REACT_APP_DATABASE_VERSION
 
       // Port Name
-      const port_name = REACT_APP_BELFAST_PORT_NAME
+      const port_name = process.env.REACT_APP_BELFAST_PORT_NAME
 
       // Port UN Locode
-      const port_un_locode = REACT_APP_BELFAST_PORT_UN_LOCODE
+      const port_un_locode = process.env.REACT_APP_BELFAST_PORT_UN_LOCODE
 
       // Belfast Port Coordinates in GeoJSON
       const port_coords = {
