@@ -53,8 +53,6 @@ export class CurrentLocation extends React.Component {
       currentLocation: {
         // lat: coords.latitude,
         // lng: coords.longitude,
-        // lat: 54.626792,
-        // lng: -5.884438,
         lat: process.env.REACT_APP_CGC_LATITUDE,
         lng: process.env.REACT_APP_CGC_LONGITUDE,
       },
