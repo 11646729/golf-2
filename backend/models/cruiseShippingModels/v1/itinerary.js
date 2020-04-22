@@ -1,6 +1,4 @@
-import mongoose from "mongoose"
-
-var Schema = mongoose.Schema
+import mongoose, { Schema } from "mongoose"
 
 var ItinerarySchema = new Schema({
   //
@@ -9,4 +7,4 @@ var ItinerarySchema = new Schema({
 })
 
 // Export model
-module.exports = mongoose.model("Itinerary", ItinerarySchema)
+export const CruiseItinerary = mongoose.model("Itinerary", ItinerarySchema)

@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose"
 const GeoSchema = new Schema({
   type: {
     type: String,
-    default: "Point",
+    default: "Golf Course",
   },
   coordinates: {
     type: [Number],
@@ -11,13 +11,17 @@ const GeoSchema = new Schema({
   },
 })
 
-// var Schema = mongoose.Schema
-
-const nearbyGolfCoursesSchema = new Schema({
-  //
-  // TODO - including Photo
-  //
-})
+const nearbyGolfCoursesSchema = new Schema(
+  {
+    database_version: { type: Number, default: 1.0 },
+    location_name: { type: String },
+    location_coords: { type: GeoSchema },
+    location_phone_number: { type: String },
+  },
+  {
+    timestamps: true,
+  }
+)
 
 // Export model
 export const NearbyGolfCourses = mongoose.model(

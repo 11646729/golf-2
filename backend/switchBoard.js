@@ -8,6 +8,7 @@ import {
   clearDarkSkiesData,
   saveDarkSkiesDataToDatabase,
 } from "./getDarkSkiesDataAndEmit"
+import { saveGolfCourseDataToDatabase } from "./getGolfCourseData"
 
 let count = 0
 
@@ -61,6 +62,12 @@ export const runSwitchboard = (io) => {
         //   "In switchboard function (saveDarkSkiesDataToDatabase): " +
         //     result.data.currently.temperature
         // )
+
+        saveGolfCourseDataToDatabase().then((result) => {
+          // console.log(
+          //   "In switchboard function (saveGolfCourseDataToDatabase)"
+          // )
+        })
       })
     })
 
