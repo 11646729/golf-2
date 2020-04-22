@@ -5,8 +5,11 @@ import { emptyFile, runCron } from "./cronRoutines"
 import {
   fetchDarkSkiesData,
   emitDarkSkiesData,
+  clearDarkSkiesData,
   saveDarkSkiesDataToDatabase,
 } from "./getDarkSkiesDataAndEmit"
+
+let count = 0
 
 export const runSwitchboard = (io) => {
   // Using socket.io for realtime
@@ -34,6 +37,18 @@ export const runSwitchboard = (io) => {
         //     result.data.currently.temperature
         // )
         emitDarkSkiesData(socket, result).then((result) => {})
+        // console.log(
+        //   "In switchboard function (emitDarkSkiesData): " +
+        //     result.data.currently.temperature
+        // )
+        if (count > 3) {
+          clearDarkSkiesData(socket).then((result) => {})
+          count = 0
+        } else {
+          count++
+          console.log("In counter loop " + count)
+        }
+
         // console.log(
         //   "In switchboard function (emitDarkSkiesData): " +
         //     result.data.currently.temperature

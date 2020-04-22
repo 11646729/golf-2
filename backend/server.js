@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, "public")))
 // MongoDB connection string
 const uri = process.env.ATLAS_URI
 
-// Mongoose connection optional arguements
+// Mongoose connection optional arguments
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -81,7 +81,7 @@ runSwitchboard(io)
 server.listen(port, (err) => {
   if (err) {
     throw err
+  } else {
+    console.log("Server running on port: " + port)
   }
 })
-
-console.log("Server running on port: " + port)

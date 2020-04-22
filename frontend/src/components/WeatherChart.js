@@ -32,9 +32,20 @@ export default function WeatherChart() {
   // Listen for weather data and update the state
   useEffect(() => {
     socket.on("DataFromDarkSkiesAPI", (currentData) => {
+      console.log(currentData)
       setData((data) => [...data, currentData])
     })
   }, [])
+
+  // This line clears the data array
+  useEffect(() => {
+    socket.on("clearDataFromDarkSkiesAPI", () => {
+      setData((data) => [])
+    })
+    console.log("In the useEffect clearDataFromDarkSkies function")
+  })
+
+  console.log(data)
 
   return (
     <div style={{ width: "100%", height: 300 }}>

@@ -38,6 +38,17 @@ export const emitDarkSkiesData = async (socket, darkSkiesData) => {
   }
 }
 
+// Function to clear weather data array on the client
+export const clearDarkSkiesData = async (socket) => {
+  try {
+    await socket.emit("clearDataFromDarkSkiesAPI")
+    console.log("In the clearDarkSkiesData function")
+  } catch (error) {
+    // handle error
+    console.log("Error in clearDataFromDarkSkiesAPI: ", error)
+  }
+}
+
 // Function to save weather data to mongodb
 export const saveDarkSkiesDataToDatabase = async (darkSkiesData) => {
   try {
