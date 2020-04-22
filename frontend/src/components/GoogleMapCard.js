@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
 import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react"
 
-import CurrentLocation from "./Map"
+import CurrentLocation from "./GoogleMap"
 
 const styles = {
   media: {

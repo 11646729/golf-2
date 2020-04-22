@@ -41,18 +41,21 @@ export const runSwitchboard = (io) => {
         //   "In switchboard function (emitDarkSkiesData): " +
         //     result.data.currently.temperature
         // )
+
         if (count > 3) {
           clearDarkSkiesData(socket).then((result) => {})
+          // console.log(
+          //   "In switchboard function (emitDarkSkiesData): " +
+          //     result.data.currently.temperature
+          // )
+
           count = 0
         } else {
           count++
+
           console.log("In counter loop " + count)
         }
 
-        // console.log(
-        //   "In switchboard function (emitDarkSkiesData): " +
-        //     result.data.currently.temperature
-        // )
         saveDarkSkiesDataToDatabase(result).then((result) => {})
         // console.log(
         //   "In switchboard function (saveDarkSkiesDataToDatabase): " +
