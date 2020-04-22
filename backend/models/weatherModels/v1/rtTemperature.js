@@ -11,7 +11,7 @@ const GeoSchema = new Schema({
   },
 })
 
-var rtTemperatureSchema = new Schema(
+const rtTemperatureSchema = new Schema(
   {
     database_version: { type: Number, default: 1.0 },
     time_of_measurement: {
