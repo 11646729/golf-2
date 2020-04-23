@@ -16,8 +16,8 @@ import HomeIcon from "@material-ui/icons/Home"
 import MenuIcon from "@material-ui/icons/Menu"
 
 import GoogleMapCard from "./components/GoogleMapCard"
-import LeafletMapCard from "./components/LeafletMapCard"
-import CruiseTableCard from "./components/CruiseTableCard"
+import LeafletMap from "./components/LeafletMap"
+import CruiseTable from "./components/CruiseTable"
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -76,8 +76,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="googlemap" element={<GoogleMap />} />
-        <Route path="leaflet" element={<LeafletMap />} />
-        <Route path="cruisetable" element={<CruiseTable />} />
+        <Route path="leaflet" element={<LeafletMapLink />} />
+        <Route path="cruisetable" element={<CruiseTableLink />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
@@ -92,12 +92,12 @@ function GoogleMap() {
   return <GoogleMapCard />
 }
 
-function LeafletMap() {
-  return <LeafletMapCard />
+function LeafletMapLink() {
+  return <LeafletMap />
 }
 
-function CruiseTable() {
-  return <CruiseTableCard />
+function CruiseTableLink() {
+  return <CruiseTable />
 }
 
 function NotFound() {

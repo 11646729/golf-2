@@ -26,25 +26,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function Card2() {
+export default function NearbyGolfCoursesCard() {
   const classes = useStyles()
 
   return (
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        image="https://source.unsplash.com/random"
-        title="Image title"
+        image="/static/images/NearbyClubs.jpg"
+        title="Nearby Golf Courses"
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          Leaflet Map
+          Nearby Golf Courses
         </Typography>
-        <Typography>This shows the Leaflet Map</Typography>
+        <Typography>This shows Golf Courses in Northern Ireland</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" component={Link} to="/leaflet">
-          View
+        <Button size="small" color="primary" component={Link} to="/googlemap">
+          View - Working
         </Button>
       </CardActions>
     </Card>

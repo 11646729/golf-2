@@ -9,11 +9,10 @@ import Container from "@material-ui/core/Container"
 import Link from "@material-ui/core/Link"
 import Paper from "@material-ui/core/paper"
 
-import Card1 from "./Card1"
-import Card2 from "./Card2"
-import Card3 from "./Card3"
-import Card4 from "./Card4"
 import WeatherChart from "./WeatherChart"
+import NearbyGolfCoursesCard from "./NearbyGolfCoursesCard"
+import LeafletMapCard from "./LeafletMapCard"
+import CruiseTableCard from "./CruiseTableCard"
 
 function Copyright() {
   return (
@@ -125,16 +124,13 @@ export default function Album() {
               </Paper>
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
-              <Card1 />
+              <NearbyGolfCoursesCard />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
-              <Card2 />
+              <LeafletMapCard />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
-              <Card3 />
-            </Grid>
-            <Grid item sm={4} style={{ padding: 20 }}>
-              <Card4 />
+              <CruiseTableCard />
             </Grid>
           </Grid>
         </Container>
