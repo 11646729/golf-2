@@ -15,7 +15,7 @@ import EditIcon from "@material-ui/icons/Edit"
 import HomeIcon from "@material-ui/icons/Home"
 import MenuIcon from "@material-ui/icons/Menu"
 
-import GoogleMapCard from "./components/GoogleMapCard"
+import GoogleMapContainer from "./components/GoogleMapContainer"
 import LeafletMap from "./components/LeafletMap"
 import CruiseTable from "./components/CruiseTable"
 
@@ -75,7 +75,7 @@ export default function App() {
       </AppBar>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="googlemap" element={<GoogleMap />} />
+        <Route path="googlemap" element={<GoogleMapLink />} />
         <Route path="leaflet" element={<LeafletMapLink />} />
         <Route path="cruisetable" element={<CruiseTableLink />} />
         <Route path="*" element={<NotFound />} />
@@ -88,8 +88,8 @@ function Home() {
   return <Album />
 }
 
-function GoogleMap() {
-  return <GoogleMapCard />
+function GoogleMapLink() {
+  return <GoogleMapContainer />
 }
 
 function LeafletMapLink() {

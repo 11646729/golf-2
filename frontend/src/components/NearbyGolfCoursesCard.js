@@ -44,7 +44,7 @@ export default function NearbyGolfCoursesCard() {
       </CardContent>
       <CardActions>
         <Button size="small" color="primary" component={Link} to="/googlemap">
-          View - Working
+          View
         </Button>
       </CardActions>
     </Card>
