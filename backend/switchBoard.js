@@ -8,7 +8,7 @@ import {
   clearDarkSkiesData,
   saveDarkSkiesDataToDatabase,
 } from "./getDarkSkiesDataAndEmit"
-import { saveGolfCourseDataToDatabase } from "./getGolfCourseData"
+import { saveNearbyGolfCourseDataToDatabase } from "./getNearbyGolfCourseData"
 
 let count = 0
 
@@ -37,33 +37,37 @@ export const runSwitchboard = (io) => {
         //   "In switchboard function (getDarkSkiesData): " +
         //     result.data.currently.temperature
         // )
-        emitDarkSkiesData(socket, result).then((result) => {})
-        // console.log(
-        //   "In switchboard function (emitDarkSkiesData): " +
-        //     result.data.currently.temperature
-        // )
 
-        if (count > 3) {
-          clearDarkSkiesData(socket).then((result) => {})
+        emitDarkSkiesData(socket, result).then((result) => {
           // console.log(
           //   "In switchboard function (emitDarkSkiesData): " +
           //     result.data.currently.temperature
           // )
+        })
 
-          count = 0
-        } else {
-          count++
+        // if (count > 3) {
+        clearDarkSkiesData(socket).then((result) => {
+          // console.log(
+          //   "In switchboard function (emitDarkSkiesData): " +
+          //     result.data.currently.temperature
+          // )
+        })
 
-          console.log("In counter loop " + count)
-        }
+        //   count = 0
+        // } else {
+        //   count++
 
-        saveDarkSkiesDataToDatabase(result).then((result) => {})
-        // console.log(
-        //   "In switchboard function (saveDarkSkiesDataToDatabase): " +
-        //     result.data.currently.temperature
-        // )
+        //   console.log("In counter loop " + count)
+        // }
 
-        saveGolfCourseDataToDatabase().then((result) => {
+        saveDarkSkiesDataToDatabase(result).then((result) => {
+          // console.log(
+          //   "In switchboard function (saveDarkSkiesDataToDatabase): " +
+          //     result.data.currently.temperature
+          // )
+        })
+
+        saveNearbyGolfCourseDataToDatabase().then((result) => {
           // console.log(
           //   "In switchboard function (saveGolfCourseDataToDatabase)"
           // )

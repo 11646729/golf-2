@@ -5,17 +5,16 @@ export function index_get(req, res) {
   res.send({ response: "I am alive" }).status(200)
 }
 
-// Path localhost:3000/homeWeather
+// Path localhost:3000/weather/homeWeather
 export function home_weather_get(req, res) {
   HomeTemperature.find({})
     .then((rtTemperature) => res.json(rtTemperature))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Path localhost:3000/homeWeather/add
+// Path localhost:3000/weather/homeWeather/add
 export function home_weather_add(req, res) {
   const database_version = req.body.database_version
-
   const time_of_measurement = req.body.time_of_measurement
   const location_name = req.body.location_name
   const location_coords = req.body.location_coords

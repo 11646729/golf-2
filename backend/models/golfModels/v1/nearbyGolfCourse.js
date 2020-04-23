@@ -11,7 +11,7 @@ const GeoSchema = new Schema({
   },
 })
 
-const nearbyGolfCoursesSchema = new Schema(
+const nearbyGolfCourseSchema = new Schema(
   {
     database_version: { type: Number, default: 1.0 },
     location_name: { type: String },
@@ -24,7 +24,7 @@ const nearbyGolfCoursesSchema = new Schema(
 )
 
 // Export model
-export const NearbyGolfCourses = mongoose.model(
-  "nearbyCourses",
-  nearbyGolfCoursesSchema
+export const NearbyGolfCourse = mongoose.model(
+  "nearbyGolfCourse",
+  nearbyGolfCourseSchema
 )

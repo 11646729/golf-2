@@ -1,16 +1,12 @@
 "use strict"
 
-// import axios from "axios"
-import moment from "moment"
-import { NearbyGolfCourses } from "./models/golfModels/v1/golfCourses"
+import { NearbyGolfCourse } from "./models/golfModels/v1/nearbyGolfCourse"
 
 const json = require("./nearbyGolfCourses.json")
 
 // Function to save weather data to mongodb
-export const saveGolfCourseDataToDatabase = async () => {
+export const saveNearbyGolfCourseDataToDatabase = async () => {
   try {
-    // First import json file
-
     // Database version
     const database_version = process.env.DATABASE_VERSION
 
@@ -29,22 +25,22 @@ export const saveGolfCourseDataToDatabase = async () => {
       }
 
       // Now create a model instance
-      const nearbyGolfCourses = new NearbyGolfCourses({
+      const nearbyGolfCourse = new NearbyGolfCourse({
         database_version,
         location_name,
         location_coords,
         location_phone_number,
       })
 
-      console.log(nearbyGolfCourses)
+      //      console.log(nearbyGolfCourse)
+
+      // Now save in mongoDB
+      nearbyGolfCourse.save()
 
       i++
     } while (i < json.features.length)
-
-    // Now save in mongoDB
-    // nearbyGolfCourses.save()
   } catch (error) {
     // handle error
-    console.log("Error in saveGolfCourseDataToDatabase ", error)
+    console.log("Error in saveNearbyGolfCourseDataToDatabase ", error)
   }
 }

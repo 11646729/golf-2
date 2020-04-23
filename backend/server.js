@@ -65,14 +65,14 @@ mongoose.promise = global.Promise
 // use controllers as per Express Tutorial
 // const indexRouter = require("./routes/cruiseRoutes/v1/indexRoute")
 // const usersRouter = require("./routes/cruiseRoutes/v1/usersRoute")
-// const golfRouter = require("./routes/golfRoutes/v1/golfRoute")
+const golfRouter = require("./routes/golfRoutes/v1/golfCatalogRoute")
 const weatherRouter = require("./routes/weatherRoutes/v1/weatherCatalogRoute")
 const cruiseShipsRouter = require("./routes/cruiseRoutes/v1/cruiseShipsCatalogRoute")
 
 // routes
 // app.use("/", indexRouter)
 // app.use("/users", usersRouter)
-// app.use("/golf", golfRouter)
+app.use("/golf", golfRouter)
 app.use("/weather", weatherRouter)
 app.use("/cruiseShips", cruiseShipsRouter)
 
