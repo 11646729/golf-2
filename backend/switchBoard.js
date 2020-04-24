@@ -46,12 +46,12 @@ export const runSwitchboard = (io) => {
         })
 
         // if (count > 3) {
-        clearDarkSkiesData(socket).then((result) => {
-          // console.log(
-          //   "In switchboard function (emitDarkSkiesData): " +
-          //     result.data.currently.temperature
-          // )
-        })
+        // clearDarkSkiesData(socket).then((result) => {
+        //   // console.log(
+        //   //   "In switchboard function (emitDarkSkiesData): " +
+        //   //     result.data.currently.temperature
+        //   // )
+        // })
 
         //   count = 0
         // } else {
