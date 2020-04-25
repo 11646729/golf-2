@@ -19,6 +19,24 @@ export class GoogleMapContainer extends Component {
     selectedPlace: {},
   }
 
+  displayMarkers() {
+    // displayMarkers(stores) {
+    // return stores.map((place, index) => {
+    return (
+      <Marker onClick={this.onMarkerClick} name={"current location"} />
+      // <Marker
+      //   key={index}
+      //   id={index}
+      //   position={{
+      //     lat: place.latitude,
+      //     lng: place.longitude,
+      //   }}
+      //   onClick={() => console.log("You clicked me!")}
+      // />
+    )
+    // })
+  }
+
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
@@ -38,7 +56,8 @@ export class GoogleMapContainer extends Component {
   render() {
     return (
       <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
-        <Marker onClick={this.onMarkerClick} name={"current location"} />
+        {this.displayMarkers()}
+        {/* <Marker onClick={this.onMarkerClick} name={"current location"} /> */}
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}

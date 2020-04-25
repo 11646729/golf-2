@@ -18,6 +18,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 import GoogleMapContainer from "./components/GoogleMapContainer"
 import LeafletMap from "./components/LeafletMap"
 import CruiseTable from "./components/CruiseTable"
+import Map from "./components/testGoogleMap"
 import MapContainer from "./components/test2GoogleMap"
 
 const useStyles = makeStyles((theme) => ({
@@ -90,8 +91,8 @@ function Home() {
 }
 
 function GoogleMapLink() {
-  // return <GoogleMapContainer />
-  return <MapContainer />
+  return <GoogleMapContainer />
+  // return <MapContainer />
   // return <Map />
 }
 
