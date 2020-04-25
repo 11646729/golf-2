@@ -1,3 +1,7 @@
+// This component is based on the Scotch.io article Build a React & Google Maps App
+// https://github.com/RayNjeri/GoogleMaps-React/blob/master/googlemap-react/src/App.js
+// But it has been modified
+
 import React, { Component } from "react"
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
 import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react"
@@ -20,21 +24,7 @@ export class GoogleMapContainer extends Component {
   }
 
   displayMarkers() {
-    // displayMarkers(stores) {
-    // return stores.map((place, index) => {
-    return (
-      <Marker onClick={this.onMarkerClick} name={"current location"} />
-      // <Marker
-      //   key={index}
-      //   id={index}
-      //   position={{
-      //     lat: place.latitude,
-      //     lng: place.longitude,
-      //   }}
-      //   onClick={() => console.log("You clicked me!")}
-      // />
-    )
-    // })
+    return <Marker onClick={this.onMarkerClick} name={"current location"} />
   }
 
   onMarkerClick = (props, marker, e) =>
@@ -57,7 +47,6 @@ export class GoogleMapContainer extends Component {
     return (
       <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
         {this.displayMarkers()}
-        {/* <Marker onClick={this.onMarkerClick} name={"current location"} /> */}
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
