@@ -4,7 +4,7 @@
 
 import React, { Component } from "react"
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
-import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react"
+import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react"
 
 import CurrentLocation from "./GoogleMap"
 
@@ -21,10 +21,24 @@ export class GoogleMapContainer extends Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
+    image: "static/images/Bosphorus.jpg",
+    photoTitle: "Istanbul Bridge Photo",
+    title: "Istanbul",
+    description:
+      "Istanbul is a major city in Turkey that straddles Europe and Asia across the Bosphorus Strait. Its Old City reflects cultural influences of the many empires that once ruled here.",
   }
 
   displayMarkers() {
-    return <Marker onClick={this.onMarkerClick} name={"current location"} />
+    return (
+      <Marker
+        onClick={this.onMarkerClick}
+        position={{
+          lat: process.env.REACT_APP_BELFAST_PORT_LATITUDE,
+          lng: process.env.REACT_APP_BELFAST_PORT_LONGITUDE,
+        }}
+        name={"current location"}
+      />
+    )
   }
 
   onMarkerClick = (props, marker, e) =>
@@ -55,18 +69,14 @@ export class GoogleMapContainer extends Component {
           <Card>
             <CardMedia
               style={styles.media}
-              image="static/images/Bosphorus.jpg"
-              title="Istanbul Bridge Photo"
+              image={this.state.image}
+              title={this.state.title}
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                Istanbul
+                {this.state.title}
               </Typography>
-              <Typography component="p">
-                Istanbul is a major city in Turkey that straddles Europe and
-                Asia across the Bosphorus Strait. Its Old City reflects cultural
-                influences of the many empires that once ruled here.
-              </Typography>
+              <Typography component="p">{this.state.description}</Typography>
             </CardContent>
           </Card>
         </InfoWindow>

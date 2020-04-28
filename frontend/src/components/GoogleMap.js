@@ -35,8 +35,8 @@ export class CurrentLocation extends React.Component {
       currentLocation: {
         // lat: coords.latitude,
         // lng: coords.longitude,
-        lat: process.env.REACT_APP_CGC_LATITUDE,
-        lng: process.env.REACT_APP_CGC_LONGITUDE,
+        lat: process.env.REACT_APP_HOME_LATITUDE,
+        lng: process.env.REACT_APP_HOME_LONGITUDE,
       },
     })
     //     })
@@ -49,6 +49,7 @@ export class CurrentLocation extends React.Component {
     if (prevProps.google !== this.props.google) {
       this.loadMap()
     }
+
     if (prevState.currentLocation !== this.state.currentLocation) {
       this.recenterMap()
     }
@@ -90,7 +91,11 @@ export class CurrentLocation extends React.Component {
     const maps = google.maps
 
     if (map) {
-      let center = new maps.LatLng(current.lat, current.lng)
+      let center = new maps.LatLng(
+        process.env.REACT_APP_BELFAST_PORT_LATITUDE,
+        process.env.REACT_APP_BELFAST_PORT_LONGITUDE
+      )
+
       map.panTo(center)
     }
   }
@@ -128,8 +133,8 @@ export default CurrentLocation
 CurrentLocation.defaultProps = {
   zoom: 14,
   initialCenter: {
-    lat: process.env.REACT_APP_CGC_LATITUDE,
-    lng: process.env.REACT_APP_CGC_LONGITUDE,
+    lat: process.env.REACT_APP_HOME_LATITUDE,
+    lng: process.env.REACT_APP_HOME_LONGITUDE,
   },
   centerAroundCurrentLocation: false,
   visible: true,
