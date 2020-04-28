@@ -21,24 +21,62 @@ export class GoogleMapContainer extends Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {},
-    image: "static/images/Bosphorus.jpg",
-    photoTitle: "Istanbul Bridge Photo",
-    title: "Istanbul",
-    description:
-      "Istanbul is a major city in Turkey that straddles Europe and Asia across the Bosphorus Strait. Its Old City reflects cultural influences of the many empires that once ruled here.",
+    locations: [
+      {
+        latitude: process.env.REACT_APP_BELFAST_PORT_LATITUDE,
+        longitude: process.env.REACT_APP_BELFAST_PORT_LONGITUDE,
+        image: "static/images/Bosphorus.jpg",
+        photoTitle: "Istanbul Bridge Photo",
+        title: "Istanbul",
+        description:
+          "Istanbul is a major city in Turkey that straddles Europe and Asia across the Bosphorus Strait. Its Old City reflects cultural influences of the many empires that once ruled here.",
+      },
+    ],
   }
 
-  displayMarkers() {
-    return (
-      <Marker
-        onClick={this.onMarkerClick}
-        position={{
-          lat: process.env.REACT_APP_BELFAST_PORT_LATITUDE,
-          lng: process.env.REACT_APP_BELFAST_PORT_LONGITUDE,
-        }}
-        name={"current location"}
-      />
-    )
+  displayMarkers(locations) {
+    return locations.map((place, index) => {
+      return (
+        <Marker
+          key={index}
+          id={index}
+          position={{
+            lat: place.latitude,
+            lng: place.longitude,
+          }}
+          onClick={this.onMarkerClick}
+          name={"current location"}
+        />
+      )
+    })
+  }
+
+  displayInfoWindows(locations) {
+    return locations.map((place, index) => {
+      return (
+        <InfoWindow
+          key={index}
+          id={index}
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+        >
+          <Card>
+            <CardMedia
+              style={styles.media}
+              image={place.image}
+              title={place.photoTitle}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {place.title}
+              </Typography>
+              <Typography component="p">{place.description}</Typography>
+            </CardContent>
+          </Card>
+        </InfoWindow>
+      )
+    })
   }
 
   onMarkerClick = (props, marker, e) =>
@@ -60,26 +98,8 @@ export class GoogleMapContainer extends Component {
   render() {
     return (
       <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
-        {this.displayMarkers()}
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
-        >
-          <Card>
-            <CardMedia
-              style={styles.media}
-              image={this.state.image}
-              title={this.state.title}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {this.state.title}
-              </Typography>
-              <Typography component="p">{this.state.description}</Typography>
-            </CardContent>
-          </Card>
-        </InfoWindow>
+        {this.displayMarkers(this.state.locations)}
+        {this.displayInfoWindows(this.state.locations)}
       </CurrentLocation>
     )
   }
