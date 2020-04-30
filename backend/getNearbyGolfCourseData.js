@@ -4,7 +4,23 @@ import { NearbyGolfCourse } from "./models/golfModels/v1/nearbyGolfCourse"
 
 const json = require("./nearbyGolfCourses.json")
 
-// Function to save weather data to mongodb
+// Function to emit nearby golf course data to be consumed by the client
+export const emitNearbyGolfCourseData = async (
+  socket,
+  nearbyGolfCourseData
+) => {
+  try {
+    await socket.emit("NearbyGolfCourseData", {
+      // Time: darkSkiesData.data.currently.time,
+      // Temperature: darkSkiesData.data.currently.temperature,
+    })
+  } catch (error) {
+    // handle error
+    console.log("Error in emitNearbyGolfCourseData: ", error)
+  }
+}
+
+// Function to save nearby golf course data to mongodb
 export const saveNearbyGolfCourseDataToDatabase = async () => {
   try {
     // Database version

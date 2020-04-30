@@ -32,7 +32,7 @@ export const runSwitchboard = (io) => {
     cron.schedule("* * * * *", () => {
       console.log("Started getting Dark Skies Weather data!")
 
-      fetchDarkSkiesData().then((result) => {
+      getDarkSkiesData().then((result) => {
         // console.log(
         //   "In switchboard function (getDarkSkiesData): " +
         //     result.data.currently.temperature

@@ -5,7 +5,7 @@ import moment from "moment"
 import { HomeTemperature } from "./models/weatherModels/v1/rtTemperature"
 
 // Function to fetch weather data from the Dark Skies website
-export const fetchDarkSkiesData = async () => {
+export const getDarkSkiesData = async () => {
   try {
     let darkSkiesUrl =
       process.env.DARK_SKY_URL +
