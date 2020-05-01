@@ -3,12 +3,15 @@
 import cron from "node-cron"
 import { emptyFile, runCron } from "./cronRoutines"
 import {
-  fetchDarkSkiesData,
+  getDarkSkiesData,
   emitDarkSkiesData,
   clearDarkSkiesData,
   saveDarkSkiesDataToDatabase,
 } from "./getDarkSkiesDataAndEmit"
-import { saveNearbyGolfCourseDataToDatabase } from "./getNearbyGolfCourseData"
+import {
+  emitNearbyGolfCourseData,
+  saveNearbyGolfCourseDataToDatabase,
+} from "./getNearbyGolfCourseData"
 
 let count = 0
 
@@ -64,6 +67,12 @@ export const runSwitchboard = (io) => {
           // console.log(
           //   "In switchboard function (saveDarkSkiesDataToDatabase): " +
           //     result.data.currently.temperature
+          // )
+        })
+
+        emitNearbyGolfCourseData(socket, result).then((result) => {
+          // console.log(
+          //   "In switchboard function (emitNearbyGolfCourseData)"
           // )
         })
 
