@@ -49,7 +49,7 @@ export class CurrentLocation extends React.Component {
     if (this.props && this.props.google) {
       // checks if google is available
       const { google } = this.props
-      const maps = google.maps
+      // const maps = google.maps
 
       const mapRef = this.refs.map
 
@@ -85,7 +85,7 @@ export class CurrentLocation extends React.Component {
       )
 
       // maps.Map() is constructor that instantiates the map
-      this.map = new maps.Map(node, mapConfig)
+      this.map = new google.maps.Map(node, mapConfig)
     }
   }
 
@@ -93,10 +93,10 @@ export class CurrentLocation extends React.Component {
     const map = this.map
 
     const google = this.props.google
-    const maps = google.maps
+    //    const maps = google.maps
 
     if (map) {
-      let center = new maps.LatLng(
+      let center = new google.maps.LatLng(
         this.state.currentLocation.lat,
         this.state.currentLocation.lng
       )
