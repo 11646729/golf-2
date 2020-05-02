@@ -36,8 +36,31 @@ export class GoogleMapContainer extends Component {
           lat: process.env.REACT_APP_BELFAST_PORT_LATITUDE,
           lng: process.env.REACT_APP_BELFAST_PORT_LONGITUDE,
         }}
-        name={"current location"}
       />
+    )
+  }
+
+  displayInfoWindows() {
+    return (
+      <InfoWindow
+        marker={this.state.activeMarker}
+        visible={this.state.showingInfoWindow}
+        onClose={this.onClose}
+      >
+        <Card>
+          <CardMedia
+            style={styles.media}
+            image={this.state.image}
+            title={this.state.photoTitle}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {this.state.title}
+            </Typography>
+            <Typography component="p">{this.state.description}</Typography>
+          </CardContent>
+        </Card>
+      </InfoWindow>
     )
   }
 
@@ -61,25 +84,7 @@ export class GoogleMapContainer extends Component {
     return (
       <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
         {this.displayMarkers()}
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
-        >
-          <Card>
-            <CardMedia
-              style={styles.media}
-              image={this.state.image}
-              title={this.state.photoTitle}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                {this.state.title}
-              </Typography>
-              <Typography component="p">{this.state.description}</Typography>
-            </CardContent>
-          </Card>
-        </InfoWindow>
+        {this.displayInfoWindows()}
       </CurrentLocation>
     )
   }

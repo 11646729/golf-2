@@ -9,7 +9,7 @@ const mapStyles = {
   map: {
     position: "absolute",
     width: "100%",
-    height: "100%",
+    height: "90%",
   },
 }
 
@@ -27,21 +27,12 @@ export class CurrentLocation extends React.Component {
   }
 
   componentDidMount() {
-    // if (this.props.centerAroundCurrentLocation) {
-    //   if (navigator && navigator.geolocation) {
-    //     navigator.geolocation.getCurrentPosition((pos) => {
-    //       const coords = pos.coords
     this.setState({
       currentLocation: {
-        // lat: coords.latitude,
-        // lng: coords.longitude,
-        lat: process.env.REACT_APP_HOME_LATITUDE,
-        lng: process.env.REACT_APP_HOME_LONGITUDE,
+        lat: process.env.REACT_APP_BELFAST_PORT_LATITUDE,
+        lng: process.env.REACT_APP_BELFAST_PORT_LONGITUDE,
       },
     })
-    //     })
-    //   }
-    // }
     this.loadMap()
   }
 
@@ -66,15 +57,36 @@ export class CurrentLocation extends React.Component {
       // reference to the actual DOM element
       const node = ReactDOM.findDOMNode(mapRef)
 
-      let { zoom, mapTypeId } = this.props
-      const { lat, lng } = this.state.currentLocation
-      const center = new maps.LatLng(lat, lng)
+      // const { lat, lng } = this.state.currentLocation
+      // const center = new maps.LatLng(lat, lng)
       const mapConfig = Object.assign(
         {},
         {
-          center: center,
-          zoom: zoom,
-          mapTypeId: mapTypeId,
+          centerAroundCurrentLocation: false,
+          visible: true,
+          fullscreenControl: false,
+
+          mapTypeId: "hybrid",
+          center: {
+            lat: process.env.REACT_APP_HOME_LATITUDE,
+            lng: process.env.REACT_APP_HOME_LONGITUDE,
+          },
+          zoom: 12,
+          zoomControl: true,
+          zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL,
+            position: google.maps.ControlPosition.RIGHT_TOP,
+          },
+          panControl: false,
+          mapTypeControl: false,
+          scaleControl: false,
+          overviewMapControl: false,
+          rotateControl: false,
+          disableDefaultUI: true,
+          keyboardShortcuts: false,
+          draggable: false,
+          disableDoubleClickZoom: true,
+          scrollwheel: false,
           streetViewControl: false,
         }
       )
@@ -132,12 +144,8 @@ export class CurrentLocation extends React.Component {
 export default CurrentLocation
 
 CurrentLocation.defaultProps = {
-  zoom: 14,
   initialCenter: {
     lat: process.env.REACT_APP_HOME_LATITUDE,
     lng: process.env.REACT_APP_HOME_LONGITUDE,
   },
-  centerAroundCurrentLocation: false,
-  visible: true,
-  mapTypeId: "hybrid",
 }
