@@ -17,11 +17,10 @@ export class CurrentLocation extends React.Component {
   constructor(props) {
     super(props)
 
-    const { lat, lng } = this.props.initialCenter
     this.state = {
       currentLocation: {
-        lat: lat,
-        lng: lng,
+        lat: process.env.REACT_APP_HOME_LATITUDE,
+        lng: process.env.REACT_APP_HOME_LONGITUDE,
       },
     }
   }
@@ -29,8 +28,8 @@ export class CurrentLocation extends React.Component {
   componentDidMount() {
     this.setState({
       currentLocation: {
-        lat: process.env.REACT_APP_BELFAST_PORT_LATITUDE,
-        lng: process.env.REACT_APP_BELFAST_PORT_LONGITUDE,
+        lat: this.state.currentLocation.lat,
+        lng: this.state.currentLocation.lng,
       },
     })
     this.loadMap()
@@ -57,8 +56,6 @@ export class CurrentLocation extends React.Component {
       // reference to the actual DOM element
       const node = ReactDOM.findDOMNode(mapRef)
 
-      // const { lat, lng } = this.state.currentLocation
-      // const center = new maps.LatLng(lat, lng)
       const mapConfig = Object.assign(
         {},
         {
@@ -67,10 +64,6 @@ export class CurrentLocation extends React.Component {
           fullscreenControl: false,
 
           mapTypeId: "hybrid",
-          center: {
-            lat: process.env.REACT_APP_HOME_LATITUDE,
-            lng: process.env.REACT_APP_HOME_LONGITUDE,
-          },
           zoom: 12,
           zoomControl: true,
           zoomControlOptions: {
@@ -98,15 +91,14 @@ export class CurrentLocation extends React.Component {
 
   recenterMap() {
     const map = this.map
-    // const current = this.state.currentLocation
 
     const google = this.props.google
     const maps = google.maps
 
     if (map) {
       let center = new maps.LatLng(
-        process.env.REACT_APP_BELFAST_PORT_LATITUDE,
-        process.env.REACT_APP_BELFAST_PORT_LONGITUDE
+        this.state.currentLocation.lat,
+        this.state.currentLocation.lng
       )
 
       map.panTo(center)
@@ -142,10 +134,3 @@ export class CurrentLocation extends React.Component {
 }
 
 export default CurrentLocation
-
-CurrentLocation.defaultProps = {
-  initialCenter: {
-    lat: process.env.REACT_APP_HOME_LATITUDE,
-    lng: process.env.REACT_APP_HOME_LONGITUDE,
-  },
-}
