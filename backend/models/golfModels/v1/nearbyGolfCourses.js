@@ -32,15 +32,10 @@ const featuresLocationSchema = new Schema({
   },
 })
 
-const featuresPropertySchema = new Schema(
-  {
-    name: { type: String },
-    phoneNumber: { type: String },
-  },
-  {
-    timestamps: true,
-  }
-)
+const featuresPropertySchema = new Schema({
+  name: { type: String },
+  phoneNumber: { type: String },
+})
 
 const featuresSchema = new Schema({
   type: { type: String, default: "Feature" },
@@ -48,10 +43,15 @@ const featuresSchema = new Schema({
   properties: { type: featuresPropertySchema },
 })
 
-const nearbyGolfCoursesSchema = new Schema({
-  type: { type: headerSchema },
-  features: [featuresSchema],
-})
+const nearbyGolfCoursesSchema = new Schema(
+  {
+    type: { type: headerSchema },
+    features: [featuresSchema],
+  },
+  {
+    timestamps: true,
+  }
+)
 
 // Export model
 export const NearbyGolfCourses = mongoose.model(
