@@ -9,6 +9,7 @@ import {
   saveDarkSkiesDataToDatabase,
 } from "./getDarkSkiesDataAndEmit"
 import {
+  getNearbyGolfCourseDataFromDatabase,
   emitNearbyGolfCourseData,
   saveNearbyGolfCourseDataToDatabase,
 } from "./getNearbyGolfCourseData"
@@ -69,6 +70,17 @@ export const runSwitchboard = (io) => {
           //     result.data.currently.temperature
           // )
         })
+      })
+    })
+
+    cron.schedule("* * * * *", () => {
+      console.log("Started getting Nearby Golf Course data!")
+
+      getNearbyGolfCourseDataFromDatabase().then((result) => {
+        console.log(
+          "In switchboard function (getNearbyGolfCourseData): "
+          //  + JSON.parse(result)
+        )
 
         emitNearbyGolfCourseData(socket, result).then((result) => {
           // console.log(

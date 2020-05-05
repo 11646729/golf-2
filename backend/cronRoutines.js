@@ -3,7 +3,7 @@ import { getSingleVesselDetails } from "./scrapeVessels"
 import { PortArrival } from "./models/cruiseShippingModels/v1/portArrival"
 import { VesselDetails } from "./models/cruiseShippingModels/v1/vesselDetails"
 import { HomeTemperature } from "./models/weatherModels/v1/rtTemperature"
-import { NearbyGolfCourse } from "./models/golfModels/v1/nearbyGolfCourse"
+import { NearbyGolfCourses } from "./models/golfModels/v1/nearbyGolfCourses"
 
 export async function emptyFile() {
   // First delete all previous data
@@ -31,7 +31,7 @@ export async function emptyFile() {
     }
   })
 
-  NearbyGolfCourse.deleteMany({}, function (error) {
+  NearbyGolfCourses.deleteMany({}, function (error) {
     if (error) {
       console.log("Error in NearbyGolfCourse.deleteMany() : ", error)
     } else {

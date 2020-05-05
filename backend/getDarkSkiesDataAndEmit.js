@@ -15,10 +15,8 @@ export const getDarkSkiesData = async () => {
       "," +
       process.env.HOME_LONGITUDE
 
-    // fetch data from the url endpoint
-    const response = await axios.get(darkSkiesUrl)
-
-    return response
+    // fetch data from the url endpoint and return it
+    return await axios.get(darkSkiesUrl)
   } catch (error) {
     // handle error
     console.log("Error in fetchDarkSkiesData: ", error)

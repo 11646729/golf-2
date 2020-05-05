@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose"
 
-const GeoSchema = new Schema({
+const locationSchema = new Schema({
   type: {
     type: String,
     default: "Point",
@@ -16,7 +16,7 @@ const PortArrivalSchema = new Schema(
     database_version: { type: Number, default: 1.0 },
     port_name: { type: String },
     port_un_locode: { type: String },
-    port_coords: { type: GeoSchema },
+    port_coords: { type: locationSchema },
     vessel_shortcruise_name: { type: String },
     vessel_eta: { type: String },
     vessel_etd: { type: String },

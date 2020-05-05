@@ -1,4 +1,4 @@
-import { NearbyGolfCourse } from "../../models/golfModels/v1/nearbyGolfCourse"
+import { NearbyGolfCourses } from "../../models/golfModels/v1/nearbyGolfCourses"
 
 // Path localhost:3000/golf/
 export function index_get(req, res) {
@@ -7,7 +7,7 @@ export function index_get(req, res) {
 
 // Path localhost:3000/golf/nearbyGolfCourses
 export function nearby_golf_course_getAll(req, res) {
-  NearbyGolfCourse.find({})
+  NearbyGolfCourses.find({})
     .then((nearbyGolfCourseSchema) => res.json(nearbyGolfCourseSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
@@ -19,7 +19,7 @@ export function nearby_golf_course_add(req, res) {
   const location_coords = req.body.location_coords
   const location_phone_number = req.body.location_phone_number
 
-  const nearbyGolfCourse = new NearbyGolfCourse({
+  const nearbyGolfCourse = new NearbyGolfCourses({
     database_version,
     location_name,
     location_coords,
