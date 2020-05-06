@@ -9,10 +9,8 @@ import axios from "axios"
 //   featuresPropertyGolfCourse,
 //   featuresGolfCourse,}
 
-import {
-  featuresGolfCourse,
-  NearbyGolfCourse,
-} from "./models/golfModels/v1/nearbyGolfCourse"
+import { featuresGolfCourse } from "./models/golfModels/v1/nearbyGolfCourse"
+import { NearbyGolfCourse } from "./models/golfModels/v1/nearbyGCSchema"
 
 const json = require("./nearbyGolfCourses.json")
 
@@ -56,10 +54,12 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
 
     console.log(type, crs)
 
-    // const nearbyGolfCourses = new NearbyGolfCourses({
-    //   type,
-    //   header,
-    // })
+    const test = new featuresGolfCourse({})
+
+    const nearbyGolfCourse = new NearbyGolfCourse({
+      type,
+      header,
+    })
 
     let featuresArray = []
 
