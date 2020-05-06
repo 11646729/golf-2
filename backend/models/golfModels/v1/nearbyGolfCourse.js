@@ -8,18 +8,30 @@ const headerCrsPropertiesSchema = new Schema({
   },
 })
 
+export const headerCrsPropertiesGolfCourse = mongoose.model(
+  "headerCrsPropertiesGolfCourse",
+  headerCrsPropertiesSchema
+)
+
 const headerCrsSchema = new Schema({
   crs: {
-    type: { type: String, default: "name" },
+    type: { type: String, default: "WGS84" },
     properties: { headerCrsPropertiesSchema },
   },
 })
+
+export const headerCrsGolfCourse = mongoose.model(
+  "headerCrsGolfCourse",
+  headerCrsSchema
+)
 
 const headerSchema = new Schema({
   database_version: { type: Number, default: 1.0 },
   type: { type: String, default: "FeatureCollection" },
   crs: { headerCrsSchema },
 })
+
+export const headerGolfCourse = mongoose.model("headerGolfCourse", headerSchema)
 
 const featuresLocationSchema = new Schema({
   type: {
@@ -32,18 +44,33 @@ const featuresLocationSchema = new Schema({
   },
 })
 
+export const featuresLocationGolfCourse = mongoose.model(
+  "featuresLocationGolfCourse",
+  featuresLocationSchema
+)
+
 const featuresPropertySchema = new Schema({
   name: { type: String },
   phoneNumber: { type: String },
 })
 
+export const featuresPropertyGolfCourse = mongoose.model(
+  "featuresPropertyGolfCourse",
+  featuresPropertySchema
+)
+
 const featuresSchema = new Schema({
   type: { type: String, default: "Feature" },
-  geometry: { type: featuresLocationSchema },
+  projection: { type: featuresLocationSchema },
   properties: { type: featuresPropertySchema },
 })
 
-const nearbyGolfCoursesSchema = new Schema(
+export const featuresGolfCourse = mongoose.model(
+  "featuresGolfCourse",
+  featuresSchema
+)
+
+const nearbyGolfCourseSchema = new Schema(
   {
     type: { type: headerSchema },
     features: [featuresSchema],
@@ -53,8 +80,7 @@ const nearbyGolfCoursesSchema = new Schema(
   }
 )
 
-// Export model
-export const NearbyGolfCourses = mongoose.model(
-  "nearbyGolfCourses",
-  nearbyGolfCoursesSchema
+export const NearbyGolfCourse = mongoose.model(
+  "NearbyGolfCourse",
+  nearbyGolfCourseSchema
 )

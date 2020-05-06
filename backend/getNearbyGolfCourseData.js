@@ -1,7 +1,18 @@
 "use strict"
 
 import axios from "axios"
-import { NearbyGolfCourses } from "./models/golfModels/v1/nearbyGolfCourses"
+// import {
+//   headerCrsPropertiesGolfCourse,
+//   headerCrsGolfCourse,
+//   headerGolfCourse,
+//   featuresLocationGolfCourse,
+//   featuresPropertyGolfCourse,
+//   featuresGolfCourse,}
+
+import {
+  featuresGolfCourse,
+  NearbyGolfCourse,
+} from "./models/golfModels/v1/nearbyGolfCourse"
 
 const json = require("./nearbyGolfCourses.json")
 
@@ -40,9 +51,25 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
     // Database version
     const database_version = process.env.DATABASE_VERSION
 
+    let type = json.type
+    let crs = json.crs
+
+    console.log(type, crs)
+
+    // const nearbyGolfCourses = new NearbyGolfCourses({
+    //   type,
+    //   header,
+    // })
+
+    let featuresArray = []
+
     let i = 0
 
     do {
+      // let type = json.type
+      // let header = json.header
+      // let feature = json.features[i]
+
       let location_name = json.features[i].properties.name
       let location_phone_number = json.features[i].properties.phoneNumber
       let location_latitude = json.features[i].geometry.coordinates[0]
@@ -55,20 +82,25 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
       }
 
       // Now create a model instance
-      const nearbyGolfCourses = new NearbyGolfCourses({
-        database_version,
+      const nearbyCourses = new nearbyGolfCourses({
+        // database_version,
         location_name,
         location_coords,
         location_phone_number,
       })
 
-      //      console.log(nearbyGolfCourse)
+      console.log("NearbyGolfCourses: " + nearbyCourses)
+
+      // console.log(json)
+      // console.log(nearbyGolfCourses)
 
       // Now save in mongoDB
-      nearbyGolfCourses.save()
+      // nearbyGolfCourses.save()
 
       i++
     } while (i < json.features.length)
+
+    console.log("Features array: " + featuresArray)
   } catch (error) {
     // handle error
     console.log("Error in saveNearbyGolfCourseDataToDatabase ", error)
