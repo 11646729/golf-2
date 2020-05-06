@@ -1,14 +1,11 @@
 import mongoose, { Schema } from "mongoose"
-import { headerCrsPropertiesGolfCourse } from "./headerCrsPropertiesGC"
+import { HeaderCrsProperties } from "./headerCrsPropertiesGC"
 
-const headerCrsSchema = new Schema({
+const headerCrsGC = new Schema({
   crs: {
     type: { type: String, default: "WGS84" },
-    properties: { headerCrsPropertiesGolfCourse },
+    properties: { HeaderCrsProperties },
   },
 })
 
-export const headerCrsGolfCourse = mongoose.model(
-  "headerCrsGolfCourse",
-  headerCrsSchema
-)
+export const HeaderCrs = mongoose.model("headerCrsGolfClub", headerCrsGC)
