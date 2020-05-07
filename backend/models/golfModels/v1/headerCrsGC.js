@@ -4,8 +4,12 @@ import { HeaderCrsProperties } from "./headerCrsPropertiesGC"
 const headerCrsGC = new Schema({
   crs: {
     type: { type: String, default: "WGS84" },
-    properties: { HeaderCrsProperties },
+    properties: {
+      type: Schema.Types.ObjectId,
+      ref: "headerCrsPropertiesGolfCourse",
+    },
   },
 })
 
-export const HeaderCrs = mongoose.model("headerCrsGolfClub", headerCrsGC)
+module.exports = HeaderCrs = mongoose.model("headerCrsGolfCourse", headerCrsGC)
+// export const HeaderCrs = mongoose.model("headerCrsGolfCourse", headerCrsGC)

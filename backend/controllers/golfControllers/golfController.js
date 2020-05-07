@@ -1,4 +1,4 @@
-import { NearbyGolfCourse } from "../../models/golfModels/v1/nearbyGolfCourse"
+import { NearbyGolfCourse } from "../../models/golfModels/v1/nearbyGC"
 
 // Path localhost:3000/golf/
 export function index_get(req, res) {

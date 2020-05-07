@@ -1,7 +1,7 @@
 "use strict"
 
 import axios from "axios"
-import { Features } from "./models/golfModels/v1/featuresGC"
+// import { Features } from "./models/golfModels/v1/featuresGC"
 import { NearbyGolfCourse } from "./models/golfModels/v1/nearbyGC"
 
 const json = require("./nearbyGolfCourses.json")
@@ -46,7 +46,7 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
 
     console.log(type, crs)
 
-    const test = new Features({})
+    // const test = new Features({})
 
     const nearbyGolfCourse = new NearbyGolfCourse({
       type,
@@ -74,14 +74,14 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
       }
 
       // Now create a model instance
-      const nearbyCourses = new NearbyGolfCourses({
-        // database_version,
-        location_name,
-        location_coords,
-        location_phone_number,
-      })
+      // const nearbyCourses = new NearbyGolfCourses({
+      //   // database_version,
+      //   location_name,
+      //   location_coords,
+      //   location_phone_number,
+      // })
 
-      console.log("NearbyGolfCourses: " + nearbyCourses)
+      // console.log("NearbyGolfCourses: " + nearbyCourses)
 
       // console.log(json)
       // console.log(nearbyGolfCourses)

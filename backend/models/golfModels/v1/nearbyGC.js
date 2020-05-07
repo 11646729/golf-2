@@ -1,15 +1,22 @@
 import mongoose, { Schema } from "mongoose"
-import { Header } from "./headerGC"
-import { Features } from "./featuresGC"
+import { HeaderSchema } from "./headerGC"
+// import { Features } from "./featuresGC"
 
-const nearbyGC = new Schema(
+const nearbyGCSchema = new Schema(
   {
-    type: { Header },
-    features: [Features],
+    type: { type: Schema.Types.ObjectId, ref: "headerGolfCourse" },
+    // features: [Features],
   },
   {
     timestamps: true,
   }
 )
 
-export const NearbyGolfCourse = mongoose.model("NearbyGolfCourse", nearbyGC)
+module.exports = NearbyGolfCourse = mongoose.model(
+  "NearbyGolfCourse",
+  nearbyGCSchema
+)
+// export const NearbyGolfCourse = mongoose.model(
+//   "NearbyGolfCourse",
+//   nearbyGCSchema
+// )

@@ -1,10 +1,17 @@
 import mongoose, { Schema } from "mongoose"
 import { HeaderCrs } from "./headerCrsGC"
 
-const headerGC = new Schema({
-  database_version: { type: Number, default: 1.0 },
+const headerGCSchema = new Schema({
+  databaseVersion: { type: Number, default: 1.0 },
   type: { type: String, default: "FeatureCollection" },
-  crs: { HeaderCrs },
+  crs: { type: Schema.Types.ObjectId, ref: "headerCrsGolfCourse" },
 })
 
-export const Header = mongoose.model("HeaderGolfCourse", headerGC)
+module.exports = HeaderSchema = mongoose.model(
+  "headerGolfCourse",
+  headerGCSchema
+)
+// export const HeaderSchema = mongoose.model(
+//   "headerGolfCourse",
+//   headerGCSchema
+// )
