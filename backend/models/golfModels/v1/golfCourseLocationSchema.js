@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose"
 
-const featuresLocationGC = new Schema({
+const golfCourseLocationSchema = new Schema({
   type: {
     type: String,
     default: "Point",
@@ -11,7 +11,7 @@ const featuresLocationGC = new Schema({
   },
 })
 
-export const FeaturesLocation = mongoose.model(
-  "featuresLocationGolfCourse",
-  featuresLocationGC
+export const GolfCourseLocationSchema = mongoose.model(
+  "golfCourseLocation",
+  golfCourseLocationSchema
 )
