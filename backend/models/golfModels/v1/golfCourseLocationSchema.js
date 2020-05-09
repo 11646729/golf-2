@@ -5,8 +5,8 @@ const golfCourseLocationSchema = new Schema({
     type: String,
     default: "Point",
   },
-  locationLatitude: { type: Number },
-  locationLongitude: { type: Number },
+  latitude: { type: Number },
+  longitude: { type: Number },
 
   // coordinates: {
   //   type: [Number],

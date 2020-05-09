@@ -41,8 +41,8 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
   try {
     const golfCourseLocation = new GolfCourseLocationSchema({
       type: "Point",
-      locationLatitude: 54.258716,
-      locationLongitude: -5.604549,
+      latitude: 54.258716,
+      longitude: -5.604549,
     })
 
     const golfCourseDetails = new GolfCourseDetailsSchema({
