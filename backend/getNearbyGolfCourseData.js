@@ -41,17 +41,15 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
   try {
     const golfCourseLocation = new GolfCourseLocationSchema({
       type: "Point",
-      //      coordinates: [-5.604549, 54.258716],
+      locationLatitude: 54.258716,
+      locationLongitude: -5.604549,
     })
-
-    //    golfCourseLocation.coordinates.push("-5.604549")
-    //    golfCourseLocation.coordinates.push(54.258716)
 
     const golfCourseDetails = new GolfCourseDetailsSchema({
       type: "Feature",
       name: "Ardglass Golf Club",
       phoneNumber: "028 44 841 219",
-      location: { golfCourseLocation },
+      location: golfCourseLocation,
     })
 
     const nearbyGolfCourse = new NearbyGolfCourseSchema({

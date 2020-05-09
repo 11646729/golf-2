@@ -5,10 +5,13 @@ const golfCourseLocationSchema = new Schema({
     type: String,
     default: "Point",
   },
-  coordinates: {
-    type: [Number],
-    index: "2dsphere",
-  },
+  locationLatitude: { type: Number },
+  locationLongitude: { type: Number },
+
+  // coordinates: {
+  //   type: [Number],
+  //   index: "2dsphere",
+  // },
 })
 
 export const GolfCourseLocationSchema = mongoose.model(
