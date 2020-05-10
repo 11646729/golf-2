@@ -1,11 +1,11 @@
 "use strict"
 
 import cron from "node-cron"
-import { emptyFile, runCron } from "./cronRoutines"
+import { runCron } from "./cronRoutines"
+import { clearDatabaseCollections } from "./clearDatabaseCollections"
 import {
   getDarkSkiesData,
   emitDarkSkiesData,
-  clearDarkSkiesData,
   saveDarkSkiesDataToDatabase,
 } from "./getDarkSkiesDataAndEmit"
 import {
@@ -28,7 +28,7 @@ export const runSwitchboard = (io) => {
 
     cron.schedule("* * * * *", () => {
       console.log("Started getting Vessel Arrivals & Details Scraping")
-      emptyFile()
+      clearDatabaseCollections()
       runCron()
       console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     })
