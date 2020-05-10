@@ -13,9 +13,11 @@ export function nearby_golf_course_getAll(req, res) {
 }
 
 // Path localhost:3000/golf/nearbyGolfCourses/add
+// TODO this uses the incorrect Schema
+
 export function nearby_golf_course_add(req, res) {
   const database_version = req.body.database_version
-  const location_name = req.body.location_name
+  const location_name = req.body.database_version
   const location_coords = req.body.location_coords
   const location_phone_number = req.body.location_phone_number
 

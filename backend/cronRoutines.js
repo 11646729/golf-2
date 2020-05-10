@@ -1,7 +1,7 @@
 import { getAllVesselArrivals } from "./scrapeArrivals"
 import { getSingleVesselDetails } from "./scrapeVessels"
-import { PortArrival } from "./models/cruiseShippingModels/v1/portArrival"
-import { VesselDetails } from "./models/cruiseShippingModels/v1/vesselDetails"
+import { PortArrival } from "./models/cruiseShippingModels/v1/portArrivalSchema"
+import { VesselDetails } from "./models/cruiseShippingModels/v1/vesselDetailsSchema"
 import { HomeTemperature } from "./models/weatherModels/v1/rtTemperature"
 import { NearbyGolfCourseSchema } from "./models/golfModels/v1/nearbyGolfCourseSchema"
 

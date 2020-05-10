@@ -39,14 +39,6 @@ export const emitNearbyGolfCourseData = async (
 // Function to save nearby golf course data to mongodb
 // Longitude first in Javascript
 export const saveNearbyGolfCourseDataToDatabase = async () => {
-  // const golfCourseLocation
-  // const golfCourseDetails
-  let location_name
-  let location_phone_number
-  let location_latitude
-  let location_longitude
-  let i
-
   try {
     const nearbyGolfCourse = new NearbyGolfCourseSchema({
       databaseVersion: process.env.DATABASE_VERSION,
@@ -55,24 +47,22 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
       crsUrn: "urn:ogc:def:crs:OGC:1.3:CRS84",
     })
 
-    i = 0
+    let i = 0
     do {
-      location_name = json.features[i].properties.name
-      location_phone_number = json.features[i].properties.phoneNumber
-      location_latitude = json.features[i].geometry.coordinates[0]
-      location_longitude = json.features[i].geometry.coordinates[1]
-
-      // Home Coordinates in GeoJSON
+      // NB Coordinates in GeoJSON order - Longitude then Latitude
       const golfCourseLocation = new GolfCourseLocationSchema({
         type: "Point",
-        coordinates: [location_longitude, location_latitude],
+        coordinates: [
+          json.features[i].geometry.coordinates[1],
+          json.features[i].geometry.coordinates[0],
+        ],
       })
 
       // Now create a model instance
       const golfCourseDetails = new GolfCourseDetailsSchema({
         type: "Feature",
-        name: location_name,
-        phoneNumber: location_phone_number,
+        name: json.features[i].properties.name,
+        phoneNumber: json.features[i].properties.phoneNumber,
         location: golfCourseLocation,
       })
 
@@ -80,14 +70,14 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
 
       i++
     } while (i < json.features.length)
+
     // Now save in mongoDB
-    nearbyGolfCourse.save(function (err) {
-      if (err) {
-        console.log("Error saving nearbyGolfCourse to mongoDB " + err)
-      } else {
-        console.log("nearbyGolfCourse saved to mongoDB")
-      }
-    })
+    nearbyGolfCourse
+      .save()
+      .then(() => console.log("nearbyGolfCourse saved to mongoDB"))
+      .catch((err) =>
+        res.status(400).json("Error saving nearbyGolfCourse to mongoDB " + err)
+      )
   } catch (error) {
     // handle error
     console.log("Error in saveNearbyGolfCourseDataToDatabase ", error)

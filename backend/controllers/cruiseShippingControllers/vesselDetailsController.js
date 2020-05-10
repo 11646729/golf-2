@@ -1,16 +1,16 @@
-import { VesselDetails } from "../../models/cruiseShippingModels/v1/vesselDetails"
+import { VesselDetails } from "../../models/cruiseShippingModels/v1/vesselDetailsSchema"
 
 // Path localhost:3000/cruiseShips/vessels
 export function vessel_get(req, res) {
   VesselDetails.find()
-    .then(vessel => res.json(vessel))
-    .catch(err => res.status(400).json("Error " + err))
+    .then((vessel) => res.json(vessel))
+    .catch((err) => res.status(400).json("Error " + err))
 }
 
 // Path localhost:3000/cruiseShips/vessels/add
 export function vessel_add(req, res) {
   const database_version = req.body.databaseVersion
-  const vessel_name_url = req.body.vessel_name_url
+  const vesselNameUrl = req.body.vessel_name_url
   const title = req.body.title
   const vessel_type = req.body.vessel_type
   const vessel_name = req.body.vessel_name
@@ -32,7 +32,7 @@ export function vessel_add(req, res) {
 
   const newVessel = new Vessel({
     database_version,
-    vessel_name_url,
+    vesselNameUrl,
     title,
     vessel_type,
     vessel_name,
@@ -50,11 +50,11 @@ export function vessel_add(req, res) {
     vessel_mmsi_number,
     vessel_callsign,
     vessel_typical_passengers,
-    vessel_typical_crew
+    vessel_typical_crew,
   })
 
   newVessel
     .save()
     .then(() => res.json("Vessel added!"))
-    .catch(err => res.status(400).json("Error: " + err))
+    .catch((err) => res.status(400).json("Error: " + err))
 }
