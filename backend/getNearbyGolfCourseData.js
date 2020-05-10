@@ -37,12 +37,12 @@ export const emitNearbyGolfCourseData = async (
 }
 
 // Function to save nearby golf course data to mongodb
+// Longitude first in Javascript
 export const saveNearbyGolfCourseDataToDatabase = async () => {
   try {
     const golfCourseLocation = new GolfCourseLocationSchema({
       type: "Point",
-      latitude: 54.258716,
-      longitude: -5.604549,
+      coordinates: [-5.604549, 54.258716],
     })
 
     const golfCourseDetails = new GolfCourseDetailsSchema({

@@ -3,15 +3,13 @@ import mongoose, { Schema } from "mongoose"
 const golfCourseLocationSchema = new Schema({
   type: {
     type: String,
-    default: "Point",
+    enum: ["Point"],
+    required: true,
   },
-  latitude: { type: Number },
-  longitude: { type: Number },
-
-  // coordinates: {
-  //   type: [Number],
-  //   index: "2dsphere",
-  // },
+  coordinates: {
+    type: [Number],
+    required: true,
+  },
 })
 
 export const GolfCourseLocationSchema = mongoose.model(
