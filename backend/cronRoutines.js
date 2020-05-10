@@ -3,7 +3,7 @@ import { getSingleVesselDetails } from "./scrapeVessels"
 import { PortArrival } from "./models/cruiseShippingModels/v1/portArrival"
 import { VesselDetails } from "./models/cruiseShippingModels/v1/vesselDetails"
 import { HomeTemperature } from "./models/weatherModels/v1/rtTemperature"
-import { NearbyGolfCourseSchema } from "./models/golfModels/v1/nearbyGolfCourse"
+import { NearbyGolfCourseSchema } from "./models/golfModels/v1/nearbyGolfCourseSchema"
 
 export async function emptyFile() {
   // First delete all previous data

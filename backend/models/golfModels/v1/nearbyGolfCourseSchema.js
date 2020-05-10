@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose"
-import { GolfCourseDetailsSchema } from "./golfCourseDetails"
+import { GolfCourseDetailsSchema } from "./golfCourseDetailsSchema"
 
 const nearbyGolfCourseSchema = new Schema(
   {
