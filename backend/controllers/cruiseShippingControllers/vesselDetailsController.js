@@ -10,8 +10,8 @@ export function vessel_get(req, res) {
 // Path localhost:3000/cruiseShips/vessels/add
 export function vessel_add(req, res) {
   const database_version = req.body.databaseVersion
-  const vesselNameUrl = req.body.vessel_name_url
-  const title = req.body.title
+  const vessel_name_url = req.body.vessel_name_url
+  const title_temp = req.body.title
   const vessel_type = req.body.vessel_type
   const vessel_name = req.body.vessel_name
   const vessel_flag = req.body.vessel_flag
@@ -31,26 +31,26 @@ export function vessel_add(req, res) {
   const vessel_typical_crew = req.body.vessel_typical_crew
 
   const newVessel = new VesselDetailsSchema({
-    database_version,
-    vesselNameUrl,
-    title,
-    vessel_type,
-    vessel_name,
-    vessel_flag,
-    vessel_short_operator,
-    vessel_long_operator,
-    vessel_year_built,
-    vessel_length_metres,
-    vessel_width_metres,
-    vessel_gross_tonnage,
-    vessel_average_speed_knots,
-    vessel_max_speed_knots,
-    vessel_average_draught_metres,
-    vessel_imo_number,
-    vessel_mmsi_number,
-    vessel_callsign,
-    vessel_typical_passengers,
-    vessel_typical_crew,
+    databaseVersion: database_version,
+    vesselNameUrl: vessel_name_url,
+    title: title_temp,
+    vesselType: vessel_type,
+    vesselName: vessel_name,
+    vesselFlag: vessel_flag,
+    vesselShortOperator: vessel_short_operator,
+    vesselLongOperator: vessel_long_operator,
+    vesselYearBuilt: vessel_year_built,
+    vesselLengthMetres: vessel_length_metres,
+    vesselWidthMetres: vessel_width_metres,
+    vesselGrossTonnage: vessel_gross_tonnage,
+    vesselAverageSpeedKnots: vessel_average_speed_knots,
+    vesselMaxSpeedKnots: vessel_max_speed_knots,
+    vesselAverageDraughtMetres: vessel_average_draught_metres,
+    vesselImoNumber: vessel_imo_number,
+    vesselMmsiNumber: vessel_mmsi_number,
+    vesselCallsign: vessel_callsign,
+    vesselTypicalPassengers: vessel_typical_passengers,
+    vesselTypicalCrew: vessel_typical_crew,
   })
 
   newVessel

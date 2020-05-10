@@ -103,7 +103,7 @@ export async function runCron() {
 
     let database_version = vesselDetails[0].database_version
     let vessel_name_url = vesselDetails[0].vessel_name_url
-    let title = vesselDetails[0].title
+    let title_temp = vesselDetails[0].title
     let vessel_type = vesselDetails[0].vessel_type
     let vessel_name = vesselDetails[0].vessel_name
     let vessel_flag = vesselDetails[0].vessel_flag
@@ -125,26 +125,26 @@ export async function runCron() {
 
     // Now create a model instance
     const newVessel = new VesselDetailsSchema({
-      database_version,
-      vessel_name_url,
-      title,
-      vessel_type,
-      vessel_name,
-      vessel_flag,
-      vessel_short_operator,
-      vessel_long_operator,
-      vessel_year_built,
-      vessel_length_metres,
-      vessel_width_metres,
-      vessel_gross_tonnage,
-      vessel_average_speed_knots,
-      vessel_max_speed_knots,
-      vessel_average_draught_metres,
-      vessel_imo_number,
-      vessel_mmsi_number,
-      vessel_callsign,
-      vessel_typical_passengers,
-      vessel_typical_crew,
+      databaseVersion: database_version,
+      vesselNameUrl: vessel_name_url,
+      title: title_temp,
+      vesselType: vessel_type,
+      vesselName: vessel_name,
+      vesselFlag: vessel_flag,
+      vesselShortOperator: vessel_short_operator,
+      vesselLongOperator: vessel_long_operator,
+      vesselYearBuilt: vessel_year_built,
+      vesselLengthMetres: vessel_length_metres,
+      vesselWidthMetres: vessel_width_metres,
+      vesselGrossTonnage: vessel_gross_tonnage,
+      vesselAverageSpeedKnots: vessel_average_speed_knots,
+      vesselMaxSpeedKnots: vessel_max_speed_knots,
+      vesselAverageDraughtMetres: vessel_average_draught_metres,
+      vesselImoNumber: vessel_imo_number,
+      vesselMmsiNumber: vessel_mmsi_number,
+      vesselCallsign: vessel_callsign,
+      vesselTypicalPassengers: vessel_typical_passengers,
+      vesselTypicalCrew: vessel_typical_crew,
     })
 
     // Now save in mongoDB
