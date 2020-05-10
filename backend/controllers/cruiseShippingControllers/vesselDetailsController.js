@@ -1,8 +1,8 @@
-import { VesselDetails } from "../../models/cruiseShippingModels/v1/vesselDetailsSchema"
+import { VesselDetailsSchema } from "../../models/cruiseShippingModels/v1/vesselDetailsSchema"
 
 // Path localhost:3000/cruiseShips/vessels
 export function vessel_get(req, res) {
-  VesselDetails.find()
+  VesselDetailsSchema.find()
     .then((vessel) => res.json(vessel))
     .catch((err) => res.status(400).json("Error " + err))
 }
@@ -30,7 +30,7 @@ export function vessel_add(req, res) {
   const vessel_typical_passengers = req.body.vessel_typical_passengers
   const vessel_typical_crew = req.body.vessel_typical_crew
 
-  const newVessel = new Vessel({
+  const newVessel = new VesselDetailsSchema({
     database_version,
     vesselNameUrl,
     title,

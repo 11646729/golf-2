@@ -1,13 +1,13 @@
 import { getAllVesselArrivals } from "./scrapeArrivals"
 import { getSingleVesselDetails } from "./scrapeVessels"
-import { PortArrival } from "./models/cruiseShippingModels/v1/portArrivalSchema"
-import { VesselDetails } from "./models/cruiseShippingModels/v1/vesselDetailsSchema"
-import { HomeTemperature } from "./models/weatherModels/v1/rtTemperature"
+import { PortArrivalSchema } from "./models/cruiseShippingModels/v1/portArrivalSchema"
+import { VesselDetailsSchema } from "./models/cruiseShippingModels/v1/vesselDetailsSchema"
+import { HomeTemperatureSchema } from "./models/weatherModels/v1/rtTemperatureSchema"
 import { NearbyGolfCourseSchema } from "./models/golfModels/v1/nearbyGolfCourseSchema"
 
 export async function emptyFile() {
   // First delete all previous data
-  PortArrival.deleteMany({}, function (error) {
+  PortArrivalSchema.deleteMany({}, function (error) {
     if (error) {
       console.log("Error in PortArrival.deleteMany() : ", error)
     } else {
@@ -15,7 +15,7 @@ export async function emptyFile() {
     }
   })
 
-  VesselDetails.deleteMany({}, function (error) {
+  VesselDetailsSchema.deleteMany({}, function (error) {
     if (error) {
       console.log("Error in VesselDetails.deleteMany() : ", error)
     } else {
@@ -23,7 +23,7 @@ export async function emptyFile() {
     }
   })
 
-  HomeTemperature.deleteMany({}, function (error) {
+  HomeTemperatureSchema.deleteMany({}, function (error) {
     if (error) {
       console.log("Error in HomeTemperature.deleteMany() : ", error)
     } else {
@@ -48,31 +48,26 @@ export async function getAndSavePortArrivals() {
   // Now extract vessel details urls
   let i = 0
   do {
-    let database_version = allArrivals[i].database_version
-    let port_name = allArrivals[i].port_name
-    let port_un_locode = allArrivals[i].port_un_locode
-    let port_coords = allArrivals[i].port_coords
-    let vessel_shortcruise_name = allArrivals[i].vessel_shortcruise_name
-    let vessel_eta = allArrivals[i].vessel_eta
-    let vessel_etd = allArrivals[i].vessel_etd
-    let vessel_name_url = allArrivals[i].vessel_name_url
-
-    allArrivalsVesselUrls.push(vessel_name_url)
+    allArrivalsVesselUrls.push(allArrivals[i].vesselNameUrl)
 
     // Now create a model instance
-    const newPortArrival = new PortArrival({
-      database_version,
-      port_name,
-      port_un_locode,
-      port_coords,
-      vessel_shortcruise_name,
-      vessel_eta,
-      vessel_etd,
-      vessel_name_url,
+    const portArrival = new PortArrivalSchema({
+      databaseVersion: allArrivals[i].databaseVersion,
+      portName: allArrivals[i].portName,
+      portUnLocode: allArrivals[i].portUnLocode,
+      portCoordinates: allArrivals[i].portCoords,
+      vesselShortcruiseName: allArrivals[i].vesselShortcruiseName,
+      vesselEta: allArrivals[i].vesselEta,
+      vesselEtd: allArrivals[i].vesselEtd,
+      vesselNameUrl: allArrivals[i].vesselNameUrl,
     })
 
     // Now save in mongoDB
-    newPortArrival.save()
+    portArrival
+      .save()
+      .then(() => res.json("Port Arrival added!"))
+      .catch((err) => res.status(400).json("Error: " + err))
+
     i++
   } while (i < allArrivals.length)
 
@@ -120,7 +115,7 @@ export async function runCron() {
     let vessel_typical_crew = vesselDetails[0].vessel_typical_crew
 
     // Now create a model instance
-    const newVessel = new VesselDetails({
+    const newVessel = new VesselDetailsSchema({
       database_version,
       vessel_name_url,
       title,
@@ -144,7 +139,10 @@ export async function runCron() {
     })
 
     // Now save in mongoDB
-    newVessel.save()
+    newVessel
+      .save()
+      .then(() => res.json("New Vessels added!"))
+      .catch((err) => res.status(400).json("Error: " + err))
 
     k++
   } while (k < DeduplicatedVesselUrlArray.length)

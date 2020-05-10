@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose"
 import { LocationSchema } from "../../commonModels/locationSchema"
 
-const PortArrivalSchema = new Schema(
+const portArrivalSchema = new Schema(
   {
     databaseVersion: { type: Number, default: 1.0 },
     portName: { type: String },
@@ -20,4 +20,7 @@ const PortArrivalSchema = new Schema(
 )
 
 // Export model
-export const PortArrival = mongoose.model("portArrival", PortArrivalSchema)
+export const PortArrivalSchema = mongoose.model(
+  "portArrival1",
+  portArrivalSchema
+)

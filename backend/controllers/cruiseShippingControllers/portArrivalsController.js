@@ -1,4 +1,4 @@
-import { PortArrival } from "../../models/cruiseShippingModels/v1/portArrivalSchema"
+import { PortArrivalSchema } from "../../models/cruiseShippingModels/v1/portArrivalSchema"
 
 // Path localhost:3000/cruiseShips/
 export function index_get(req, res) {
@@ -7,26 +7,26 @@ export function index_get(req, res) {
 
 // Path localhost:3000/cruiseShips/portArrivals
 export function port_arrivals_get(req, res) {
-  PortArrival.find({})
+  PortArrivalSchema.find({})
     .then((portArrival) => res.json(portArrival))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
 // Path localhost:3000/cruiseShips/portArrivals/add
 export function port_arrivals_add(req, res) {
-  const newPortArrival = new PortArrival({
-    databaseVersion: req.body.database_version,
-    portName: req.body.port_name,
-    portUnLocode: req.body.port_un_locode,
-    portCoordinates: req.body.port_coords,
-    vesselShortcruiseName: req.body.vessel_shortcruise_name,
-    vesselEta: req.body.vessel_eta,
-    vesselEtd: req.body.vessel_etd,
-    vesselNameUrl: req.body.vessel_name_url,
+  const portArrival = new PortArrivalSchema({
+    databaseVersion: req.body.databaseVersion,
+    portName: req.body.portName,
+    portUnLocode: req.body.portUnLocode,
+    portCoordinates: req.body.portCoordinates,
+    vesselShortcruiseName: req.body.vesselShortcruiseName,
+    vesselEta: req.body.vesselEta,
+    vesselEtd: req.body.vesselEtd,
+    vesselNameUrl: req.body.vesselNameUrl,
   })
 
-  newPortArrival
+  portArrival
     .save()
-    .then(() => res.json("Arrival added!"))
+    .then(() => res.json("Port Arrival added!"))
     .catch((err) => res.status(400).json("Error: " + err))
 }

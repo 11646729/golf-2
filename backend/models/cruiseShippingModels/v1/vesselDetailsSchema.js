@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose"
 
-var VesselSchema = new Schema(
+var vesselSchema = new Schema(
   {
     databaseVersion: { type: Number, default: 1.0 },
     vessel_name_url: {
@@ -33,4 +33,4 @@ var VesselSchema = new Schema(
 )
 
 // Export model
-export const VesselDetails = mongoose.model("vessel", VesselSchema)
+export const VesselDetailsSchema = mongoose.model("vessel", vesselSchema)

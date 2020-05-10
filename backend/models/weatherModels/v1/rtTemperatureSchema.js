@@ -1,15 +1,5 @@
 import mongoose, { Schema } from "mongoose"
-
-const GeoSchema = new Schema({
-  type: {
-    type: String,
-    default: "Point",
-  },
-  coordinates: {
-    type: [Number],
-    index: "2dsphere",
-  },
-})
+import { LocationSchema } from "../../commonModels/locationSchema"
 
 const rtTemperatureSchema = new Schema(
   {
@@ -18,7 +8,7 @@ const rtTemperatureSchema = new Schema(
       type: String,
     },
     location_name: { type: String },
-    location_coords: { type: GeoSchema },
+    location_coords: { type: LocationSchema.schema },
     location_temperature: { type: Number },
   },
   {
@@ -27,7 +17,7 @@ const rtTemperatureSchema = new Schema(
 )
 
 // Export model
-export const HomeTemperature = mongoose.model(
+export const HomeTemperatureSchema = mongoose.model(
   "rtTemperature",
   rtTemperatureSchema
 )
