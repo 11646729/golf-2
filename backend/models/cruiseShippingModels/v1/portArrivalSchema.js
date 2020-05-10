@@ -1,23 +1,12 @@
 import mongoose, { Schema } from "mongoose"
-
-const locationSchema = new Schema({
-  type: {
-    type: String,
-    enum: ["Point"],
-    required: true,
-  },
-  coordinates: {
-    type: [Number],
-    required: true,
-  },
-})
+import { LocationSchema } from "../../commonModels/locationSchema"
 
 const PortArrivalSchema = new Schema(
   {
     databaseVersion: { type: Number, default: 1.0 },
     portName: { type: String },
     portUnLocode: { type: String },
-    portCoordinates: { type: locationSchema },
+    portCoordinates: { type: LocationSchema.schema },
     vesselShortcruiseName: { type: String },
     vesselEta: { type: String },
     vesselEtd: { type: String },
