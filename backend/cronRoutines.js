@@ -50,16 +50,25 @@ export async function getAndSavePortArrivals() {
   do {
     allArrivalsVesselUrls.push(allArrivals[i].vesselNameUrl)
 
+    let database_version = allArrivals[i].database_version
+    let port_name = allArrivals[i].portName
+    let port_un_locode = allArrivals[i].portUnLocode
+    let port_coordinates = allArrivals[i].portCoords
+    let vessel_short_cruise_name = allArrivals[i].vesselShortcruiseName
+    let vessel_eta = allArrivals[i].vesselEta
+    let vessel_etd = allArrivals[i].vesselEtd
+    let vessel_name_url = allArrivals[i].vesselNameUrl
+
     // Now create a model instance
     const portArrival = new PortArrivalSchema({
-      databaseVersion: allArrivals[i].databaseVersion,
-      portName: allArrivals[i].portName,
-      portUnLocode: allArrivals[i].portUnLocode,
-      portCoordinates: allArrivals[i].portCoords,
-      vesselShortcruiseName: allArrivals[i].vesselShortcruiseName,
-      vesselEta: allArrivals[i].vesselEta,
-      vesselEtd: allArrivals[i].vesselEtd,
-      vesselNameUrl: allArrivals[i].vesselNameUrl,
+      databaseVersion: database_version,
+      portName: port_name,
+      portUnLocode: port_un_locode,
+      portCoordinates: port_coordinates,
+      vesselShortcruiseName: vessel_short_cruise_name,
+      vesselEta: vessel_eta,
+      vesselEtd: vessel_etd,
+      vesselNameUrl: vessel_name_url,
     })
 
     // Now save in mongoDB

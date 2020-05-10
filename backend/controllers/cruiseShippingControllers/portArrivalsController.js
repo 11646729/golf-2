@@ -14,15 +14,24 @@ export function port_arrivals_get(req, res) {
 
 // Path localhost:3000/cruiseShips/portArrivals/add
 export function port_arrivals_add(req, res) {
+  const database_version = req.body.databaseVersion
+  const port_name = req.body.portName
+  const port_un_locode = req.body.portUnLocode
+  const port_coordinates = req.body.portCoordinates
+  const vessel_short_cruise_name = req.body.vesselShortCruiseName
+  const vessel_eta = req.body.vesselEta
+  const vessel_etd = req.body.vesselEtd
+  const vessel_name_url = req.body.vesselNameUrl
+
   const portArrival = new PortArrivalSchema({
-    databaseVersion: req.body.databaseVersion,
-    portName: req.body.portName,
-    portUnLocode: req.body.portUnLocode,
-    portCoordinates: req.body.portCoordinates,
-    vesselShortcruiseName: req.body.vesselShortcruiseName,
-    vesselEta: req.body.vesselEta,
-    vesselEtd: req.body.vesselEtd,
-    vesselNameUrl: req.body.vesselNameUrl,
+    databaseVersion: database_version,
+    portName: port_name,
+    portUnLocode: port_un_locode,
+    portCoordinates: port_coordinates,
+    vesselShortCruiseName: vessel_short_cruise_name,
+    vesselEta: vessel_eta,
+    vesselEtd: vessel_etd,
+    vesselNameUrl: vessel_name_url,
   })
 
   portArrival

@@ -3,13 +3,13 @@ import { LocationSchema } from "../../commonModels/locationSchema"
 
 const rtTemperatureSchema = new Schema(
   {
-    database_version: { type: Number, default: 1.0 },
-    time_of_measurement: {
+    databaseVersion: { type: Number, default: 1.0 },
+    timeOfMeasurement: {
       type: String,
     },
-    location_name: { type: String },
-    location_coords: { type: LocationSchema.schema },
-    location_temperature: { type: Number },
+    locationName: { type: String },
+    locationCoordinates: { type: LocationSchema.schema },
+    locationTemperature: { type: Number },
   },
   {
     timestamps: true,

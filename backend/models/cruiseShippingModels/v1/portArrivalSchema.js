@@ -7,7 +7,7 @@ const portArrivalSchema = new Schema(
     portName: { type: String },
     portUnLocode: { type: String },
     portCoordinates: { type: LocationSchema.schema },
-    vesselShortcruiseName: { type: String },
+    vesselShortCruiseName: { type: String },
     vesselEta: { type: String },
     vesselEtd: { type: String },
     vesselNameUrl: {
@@ -21,6 +21,6 @@ const portArrivalSchema = new Schema(
 
 // Export model
 export const PortArrivalSchema = mongoose.model(
-  "portArrival1",
+  "portArrival",
   portArrivalSchema
 )

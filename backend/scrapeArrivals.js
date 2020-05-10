@@ -55,33 +55,33 @@ export async function getScheduleMonths() {
 }
 
 export async function getVesselArrivals(period) {
-  let arrival_url =
+  let arrivalUrl =
     process.env.CRUISE_MAPPER_URL +
     "?tab=schedule&month=" +
     period +
     "#schedule"
 
-  const { data: html } = await axios.get(arrival_url)
+  const { data: html } = await axios.get(arrivalUrl)
 
   // load up cheerio
   const $ = cheerio.load(html)
 
-  let vessel_arrival = []
+  let vesselArrival = []
 
   $(".portItemSchedule tr").each((i, item) => {
     // Ignore the table heading
     if (i > 0) {
       // Database version
-      const database_version = process.env.DATABASE_VERSION
+      const databaseVersion = process.env.DATABASE_VERSION
 
       // Port Name
-      const port_name = process.env.BELFAST_PORT_NAME
+      const portName = process.env.BELFAST_PORT_NAME
 
       // Port UN Locode
-      const port_un_locode = process.env.BELFAST_PORT_UN_LOCODE
+      const portUnLocode = process.env.BELFAST_PORT_UN_LOCODE
 
       // Belfast Port Coordinates in GeoJSON
-      const port_coords = {
+      const portCoordinates = {
         type: "Point",
         coordinates: [
           process.env.BELFAST_PORT_LONGITUDE,
@@ -90,56 +90,56 @@ export async function getVesselArrivals(period) {
       }
 
       // Name of Vessel
-      const vessel_shortcruise_name = $(item).find("a").text()
+      const vesselShortcruiseName = $(item).find("a").text()
 
       //  Date of Arrival
-      let arrival_date = $(item)
+      let arrivalDate = $(item)
         .children("td")
         .children("span")
         .html()
         .replace(/,/, "") // Removes the comma
 
       // // Expected Time of Arrival
-      let vessel_eta = $(item).children("td").next("td").next("td").html()
+      let vesselEta = $(item).children("td").next("td").next("td").html()
 
       // If No Arrival Time Given
-      if (vessel_eta == "") {
-        vessel_eta = "Not Known"
+      if (vesselEta == "") {
+        vesselEta = "Not Known"
       } else {
-        vessel_eta = Date.parse(arrival_date + " " + vessel_eta + " GMT")
-        var d = new Date(vessel_eta)
-        vessel_eta = d.toISOString()
+        vesselEta = Date.parse(arrivalDate + " " + vesselEta + " GMT")
+        var d = new Date(vesselEta)
+        vesselEta = d.toISOString()
       }
 
       // // Expected Time of Departure
-      let vessel_etd = $(item).children("td").last("td").html()
+      let vesselEtd = $(item).children("td").last("td").html()
 
       // If No Departure Time Given
-      if (vessel_etd == "") {
-        vessel_etd = "Not Known"
+      if (vesselEtd == "") {
+        vesselEtd = "Not Known"
       } else {
-        vessel_etd = Date.parse(arrival_date + " " + vessel_etd + " GMT")
-        var d = new Date(vessel_etd)
-        vessel_etd = d.toISOString()
+        vesselEtd = Date.parse(arrivalDate + " " + vesselEtd + " GMT")
+        var d = new Date(vesselEtd)
+        vesselEtd = d.toISOString()
       }
 
       // Url of Vessel Web Page
-      const vessel_name_url = $(item).find("a").attr("href")
+      const vesselNameUrl = $(item).find("a").attr("href")
 
       // Push an object with the data onto our array
-      vessel_arrival.push({
-        database_version,
-        port_name,
-        port_un_locode,
-        port_coords,
-        vessel_shortcruise_name,
-        vessel_eta,
-        vessel_etd,
-        vessel_name_url,
+      vesselArrival.push({
+        databaseVersion,
+        portName,
+        portUnLocode,
+        portCoordinates,
+        vesselShortcruiseName,
+        vesselEta,
+        vesselEtd,
+        vesselNameUrl,
       })
     }
   })
 
   // Return our data array
-  return vessel_arrival
+  return vesselArrival
 }

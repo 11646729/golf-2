@@ -2,7 +2,7 @@
 
 import axios from "axios"
 import moment from "moment"
-import { HomeTemperature } from "./models/weatherModels/v1/rtTemperature"
+import { HomeTemperatureSchema } from "./models/weatherModels/v1/rtTemperatureSchema"
 
 // Function to fetch weather data from the Dark Skies website
 export const getDarkSkiesData = async () => {
@@ -69,7 +69,7 @@ export const saveDarkSkiesDataToDatabase = async (darkSkiesData) => {
     const location_temperature = darkSkiesData.data.currently.temperature
 
     // // Now create a model instance
-    const homeTemperature = new HomeTemperature({
+    const homeTemperature = new HomeTemperatureSchema({
       database_version,
       time_of_measurement,
       location_name,
