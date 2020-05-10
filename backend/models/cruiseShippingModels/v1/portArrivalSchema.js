@@ -21,6 +21,6 @@ const portArrivalSchema = new Schema(
 
 // Export model
 export const PortArrivalSchema = mongoose.model(
-  "portArrival",
+  "portArrival1",
   portArrivalSchema
 )

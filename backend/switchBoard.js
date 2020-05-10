@@ -27,44 +27,41 @@ export const runSwitchboard = (io) => {
     })
 
     cron.schedule("* * * * *", () => {
-      console.log("Started getting Vessel Arrivals & Details Scraping!")
+      console.log("Started getting Vessel Arrivals & Details Scraping")
       emptyFile()
       runCron()
       console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     })
 
     cron.schedule("* * * * *", () => {
-      console.log("Started getting Dark Skies Weather data!")
+      console.log("Started getting Dark Skies Weather data")
 
       getDarkSkiesData().then((result) => {
-        // console.log(
-        //   "In switchboard function (getDarkSkiesData): " +
-        //     result.data.currently.temperature
-        // )
+        console.log(
+          "DarkSkiesData obtained: " + result.data.currently.temperature
+        )
+        // console.log("In switchboard function getDarkSkiesData")
 
-        emitDarkSkiesData(socket, result).then((result) => {
-          // console.log(
-          //   "In switchboard function (emitDarkSkiesData): " +
-          //     result.data.currently.temperature
-          // )
+        emitDarkSkiesData(socket, result).then(() => {
+          console.log("Now emitting DarkSkiesData over socket.io")
         })
 
-        // if (count > 3) {
-        // clearDarkSkiesData(socket).then((result) => {
-        //   // console.log(
-        //   //   "In switchboard function (emitDarkSkiesData): " +
-        //   //     result.data.currently.temperature
-        //   // )
-        // })
+        //     // if (count > 3) {
+        //     // clearDarkSkiesData(socket).then((result) => {
+        //     //   // console.log(
+        //     //   //   "In switchboard function (emitDarkSkiesData): " +
+        //     //   //     result.data.currently.temperature
+        //     //   // )
+        //     // })
 
-        //   count = 0
-        // } else {
-        //   count++
+        //     //   count = 0
+        //     // } else {
+        //     //   count++
 
-        //   console.log("In counter loop " + count)
-        // }
+        //     //   console.log("In counter loop " + count)
+        //     // }
 
-        saveDarkSkiesDataToDatabase(result).then((result) => {
+        saveDarkSkiesDataToDatabase(result).then(() => {
           // console.log(
           //   "In switchboard function (saveDarkSkiesDataToDatabase): " +
           //     result.data.currently.temperature
@@ -74,18 +71,13 @@ export const runSwitchboard = (io) => {
     })
 
     cron.schedule("* * * * *", () => {
-      console.log("Started getting Nearby Golf Course data!")
+      console.log("Started getting Nearby Golf Course data")
 
       getNearbyGolfCourseDataFromDatabase().then((result) => {
-        console.log(
-          "In switchboard function (getNearbyGolfCourseData): "
-          //  + JSON.parse(result)
-        )
+        console.log("In switchboard function getNearbyGolfCourseData")
 
-        emitNearbyGolfCourseData(socket, result).then((result) => {
-          // console.log(
-          //   "In switchboard function (emitNearbyGolfCourseData)"
-          // )
+        emitNearbyGolfCourseData(socket, result).then(() => {
+          console.log("Now emitting NearbyGolfCourseData over socket.io")
         })
 
         saveNearbyGolfCourseDataToDatabase().then((result) => {

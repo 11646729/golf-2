@@ -3,7 +3,7 @@
 import axios from "axios"
 import { NearbyGolfCourseSchema } from "./models/golfModels/v1/nearbyGolfCourseSchema"
 import { GolfCourseDetailsSchema } from "./models/golfModels/v1/golfCourseDetailsSchema"
-import { GolfCourseLocationSchema } from "./models/golfModels/v1/golfCourseLocationSchema"
+import { LocationSchema } from "./models/commonModels/locationSchema"
 
 const json = require("./nearbyGolfCourses.json")
 
@@ -50,7 +50,7 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
     let i = 0
     do {
       // NB Coordinates in GeoJSON order - Longitude then Latitude
-      const golfCourseLocation = new GolfCourseLocationSchema({
+      const golfCourseLocation = new LocationSchema({
         type: "Point",
         coordinates: [
           json.features[i].geometry.coordinates[1],
@@ -74,9 +74,9 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
     // Now save in mongoDB
     nearbyGolfCourse
       .save()
-      .then(() => console.log("nearbyGolfCourse saved to mongoDB"))
+      .then(() => console.log("nearbyGolfCourseData saved to mongoDB"))
       .catch((err) =>
-        res.status(400).json("Error saving nearbyGolfCourse to mongoDB " + err)
+        console.log("Error saving nearbyGolfCourse to mongoDB " + err)
       )
   } catch (error) {
     // handle error

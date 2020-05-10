@@ -74,8 +74,8 @@ export async function getAndSavePortArrivals() {
     // Now save in mongoDB
     portArrival
       .save()
-      .then(() => res.json("Port Arrival added!"))
-      .catch((err) => res.status(400).json("Error: " + err))
+      // .then(() => console.log("Port Arrival added"))
+      .catch((err) => console.log("Error: " + err))
 
     i++
   } while (i < allArrivals.length)
@@ -150,8 +150,8 @@ export async function runCron() {
     // Now save in mongoDB
     newVessel
       .save()
-      .then(() => res.json("New Vessels added!"))
-      .catch((err) => res.status(400).json("Error: " + err))
+      // .then(() => console.log("New Vessels added"))
+      .catch((err) => console.log("Error: " + err))
 
     k++
   } while (k < DeduplicatedVesselUrlArray.length)
