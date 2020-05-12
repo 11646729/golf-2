@@ -73,17 +73,15 @@ export const runSwitchboard = (io) => {
     cron.schedule("* * * * *", () => {
       console.log("Started getting Nearby Golf Course data")
 
-      getNearbyGolfCourseDataFromDatabase().then((result) => {
+      // saveNearbyGolfCourseDataToDatabase().then(() => {
+      //   console.log("In switchboard function saveGolfCourseDataToDatabase")
+      // })
+
+      getNearbyGolfCourseDataFromDatabase().then(() => {
         console.log("In switchboard function getNearbyGolfCourseData")
 
         emitNearbyGolfCourseData(socket, result).then(() => {
           console.log("Now emitting NearbyGolfCourseData over socket.io")
-        })
-
-        saveNearbyGolfCourseDataToDatabase().then((result) => {
-          // console.log(
-          //   "In switchboard function (saveGolfCourseDataToDatabase)"
-          // )
         })
       })
     })

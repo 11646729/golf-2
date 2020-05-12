@@ -10,10 +10,11 @@ const json = require("./nearbyGolfCourses.json")
 // Function to fetch nearby golf course data from the database
 export const getNearbyGolfCourseDataFromDatabase = async () => {
   try {
-    let nearbyGolfCourseUrl = process.env.NEARBY_GOLF_COURSE_URL
+    NearbyGolfCourseSchema.find({}).then((result) => {
+      console.log("Data from mongoDB is : " + result)
+    })
 
-    // fetch data from the url endpoint & return it
-    return await axios.get(nearbyGolfCourseUrl)
+    // return result
   } catch (error) {
     // handle error
     console.log("Error in getNearbyGolfCourseDataFromDatabase: ", error)
@@ -40,13 +41,7 @@ export const emitNearbyGolfCourseData = async (
 // Longitude first in Javascript
 export const saveNearbyGolfCourseDataToDatabase = async () => {
   try {
-    const nearbyGolfCourse = new NearbyGolfCourseSchema({
-      databaseVersion: process.env.DATABASE_VERSION,
-      type: "FeatureCollection",
-      crsName: "WGS84",
-      crsUrn: "urn:ogc:def:crs:OGC:1.3:CRS84",
-    })
-
+    const golfCourseDetailArray = []
     let i = 0
     do {
       // NB Coordinates in GeoJSON order - Longitude then Latitude
@@ -66,10 +61,18 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
         location: golfCourseLocation,
       })
 
-      nearbyGolfCourse.courses.push(golfCourseDetails)
+      golfCourseDetailArray.push(golfCourseDetails)
 
       i++
     } while (i < json.features.length)
+
+    const nearbyGolfCourse = new NearbyGolfCourseSchema({
+      databaseVersion: process.env.DATABASE_VERSION,
+      type: "FeatureCollection",
+      crsName: "WGS84",
+      crsUrn: "urn:ogc:def:crs:OGC:1.3:CRS84",
+      courses: golfCourseDetailArray,
+    })
 
     // Now save in mongoDB
     nearbyGolfCourse
