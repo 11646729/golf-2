@@ -5,7 +5,7 @@ import { VesselDetailsSchema } from "./models/cruiseShippingModels/v1/vesselDeta
 import { HomeTemperatureSchema } from "./models/weatherModels/v1/rtTemperatureSchema"
 import { NearbyGolfCourseSchema } from "./models/golfModels/v1/nearbyGolfCourseSchema"
 
-export async function clearDatabaseCollections() {
+export const clearDatabaseCollections = async () => {
   // First delete all previous data
   PortArrivalSchema.deleteMany({}, function (error) {
     if (error) {
@@ -28,14 +28,6 @@ export async function clearDatabaseCollections() {
       console.log("Error in HomeTemperature.deleteMany() : ", error)
     } else {
       console.log("HomeTemperature collection emptied")
-    }
-  })
-
-  NearbyGolfCourseSchema.deleteMany({}, function (error) {
-    if (error) {
-      console.log("Error in NearbyGolfCourse.deleteMany() : ", error)
-    } else {
-      console.log("NearbyGolfCourse collection emptied")
     }
   })
 }

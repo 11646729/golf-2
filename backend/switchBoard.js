@@ -9,6 +9,7 @@ import {
   saveDarkSkiesDataToDatabase,
 } from "./getDarkSkiesDataAndEmit"
 import {
+  clearNearbyGolfCourseDataFromDatabase,
   getNearbyGolfCourseDataFromDatabase,
   emitNearbyGolfCourseData,
   saveNearbyGolfCourseDataToDatabase,
@@ -73,11 +74,15 @@ export const runSwitchboard = (io) => {
     cron.schedule("* * * * *", () => {
       console.log("Started getting Nearby Golf Course data")
 
+      // clearNearbyGolfCourseDataFromDatabase().then(() => {
+      //   console.log("In switchboard function clearGolfCourseDataFromDatabase")
+      // })
+
       // saveNearbyGolfCourseDataToDatabase().then(() => {
       //   console.log("In switchboard function saveGolfCourseDataToDatabase")
       // })
 
-      getNearbyGolfCourseDataFromDatabase().then(() => {
+      getNearbyGolfCourseDataFromDatabase().then((result) => {
         console.log("In switchboard function getNearbyGolfCourseData")
 
         emitNearbyGolfCourseData(socket, result).then(() => {

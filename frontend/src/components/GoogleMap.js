@@ -4,6 +4,7 @@
 
 import React from "react"
 import ReactDOM from "react-dom"
+import socketIOClient from "socket.io-client"
 
 const mapStyles = {
   map: {
@@ -22,6 +23,7 @@ export class CurrentLocation extends React.Component {
         lat: process.env.REACT_APP_HOME_LATITUDE,
         lng: process.env.REACT_APP_HOME_LONGITUDE,
       },
+      // nearbyGolfCourseData: "",
     }
   }
 
@@ -36,6 +38,16 @@ export class CurrentLocation extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    //Very simply connect to the socket
+    // const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
+
+    //Listen for data on the "outgoing data" namespace and supply a callback for what to do when we get one. In this case, we set a state variable
+    // socket.on("NearbyGolfCourseData", (data) =>
+    //   this.setState({ nearbyGolfCourseData: data })
+    // )
+
+    // console.log(this.state.nearbyGolfCourseData)
+
     if (prevProps.google !== this.props.google) {
       this.loadMap()
     }

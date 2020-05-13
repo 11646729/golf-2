@@ -5,7 +5,20 @@ import { NearbyGolfCourseSchema } from "./models/golfModels/v1/nearbyGolfCourseS
 import { GolfCourseDetailsSchema } from "./models/golfModels/v1/golfCourseDetailsSchema"
 import { LocationSchema } from "./models/commonModels/locationSchema"
 
-const json = require("./nearbyGolfCourses.json")
+export const clearNearbyGolfCourseDataFromDatabase = async () => {
+  try {
+    NearbyGolfCourseSchema.deleteMany({}, function (error) {
+      if (error) {
+        console.log("Error in NearbyGolfCourse.deleteMany() : ", error)
+      } else {
+        console.log("NearbyGolfCourse collection emptied")
+      }
+    })
+  } catch (error) {
+    // handle error
+    console.log("Error in clearNearbyGolfCourseDataFromDatabase: ", error)
+  }
+}
 
 // Function to fetch nearby golf course data from the database
 export const getNearbyGolfCourseDataFromDatabase = async () => {
@@ -13,8 +26,6 @@ export const getNearbyGolfCourseDataFromDatabase = async () => {
     NearbyGolfCourseSchema.find({}).then((result) => {
       console.log("Data from mongoDB is : " + result)
     })
-
-    // return result
   } catch (error) {
     // handle error
     console.log("Error in getNearbyGolfCourseDataFromDatabase: ", error)
@@ -28,8 +39,7 @@ export const emitNearbyGolfCourseData = async (
 ) => {
   try {
     await socket.emit("NearbyGolfCourseData", {
-      // Time: darkSkiesData.data.currently.time,
-      // Temperature: darkSkiesData.data.currently.temperature,
+      // courses: nearbyGolfCourseData.courses,
     })
   } catch (error) {
     // handle error
@@ -41,6 +51,8 @@ export const emitNearbyGolfCourseData = async (
 // Longitude first in Javascript
 export const saveNearbyGolfCourseDataToDatabase = async () => {
   try {
+    const json = require("./nearbyGolfCourses.json")
+
     const golfCourseDetailArray = []
     let i = 0
     do {
