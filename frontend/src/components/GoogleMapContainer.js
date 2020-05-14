@@ -47,7 +47,7 @@ export class GoogleMapContainer extends Component {
       <InfoWindow
         marker={this.state.activeMarker}
         visible={this.state.showingInfoWindow}
-        onClose={this.onClose}
+        onClose={this.onInfoWindowClose}
       >
         <Card>
           <CardMedia
@@ -73,7 +73,7 @@ export class GoogleMapContainer extends Component {
       showingInfoWindow: true,
     })
 
-  onClose = (props) => {
+  onInfoWindowClose = (props) => {
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
