@@ -92,11 +92,12 @@ export class MapContainer extends Component {
         }}
         style={styles.map}
         zoom={14}
-        // mapTypeId={"hybrid"}
-        streetViewControl={false}
+        disableDefaultUI={true}
+        mapTypeId="satellite"
+        // streetViewControl={false}
         // bounds={bounds}
       >
-        <Marker onClick={this.onMarkerClick} name={"Current location"} />
+        <Marker onClick={this.onMarkerClick} />
 
         <InfoWindow
           onClose={this.onInfoWindowClose}
