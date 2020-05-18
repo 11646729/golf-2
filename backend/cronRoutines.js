@@ -4,6 +4,7 @@ import { getAllVesselArrivals } from "./scrapeArrivals"
 import { getSingleVesselDetails } from "./scrapeVessels"
 import { PortArrivalSchema } from "./models/cruiseShippingModels/v1/portArrivalSchema"
 import { VesselDetailsSchema } from "./models/cruiseShippingModels/v1/vesselDetailsSchema"
+import { CoordsSchema } from "./models/commonModels/coordsSchema"
 
 export async function getAndSavePortArrivals() {
   let allArrivalsVesselUrls = []
@@ -13,27 +14,22 @@ export async function getAndSavePortArrivals() {
   // Now extract vessel details urls
   let i = 0
   do {
-    allArrivalsVesselUrls.push(allArrivals[i].vesselNameUrl)
+    allArrivalsVesselUrls.push(allArrivals[i].portArrival.vesselNameUrl)
 
-    let database_version = allArrivals[i].database_version
-    let port_name = allArrivals[i].portName
-    let port_un_locode = allArrivals[i].portUnLocode
-    let port_coordinates = allArrivals[i].portCoords
-    let vessel_short_cruise_name = allArrivals[i].vesselShortcruiseName
-    let vessel_eta = allArrivals[i].vesselEta
-    let vessel_etd = allArrivals[i].vesselEtd
-    let vessel_name_url = allArrivals[i].vesselNameUrl
+    const coords = new CoordsSchema({
+      lat: allArrivals[i].portArrival.portCoordinates.lat,
+      lng: allArrivals[i].portArrival.portCoordinates.lng,
+    })
 
-    // Now create a model instance
     const portArrival = new PortArrivalSchema({
-      databaseVersion: database_version,
-      portName: port_name,
-      portUnLocode: port_un_locode,
-      portCoordinates: port_coordinates,
-      vesselShortcruiseName: vessel_short_cruise_name,
-      vesselEta: vessel_eta,
-      vesselEtd: vessel_etd,
-      vesselNameUrl: vessel_name_url,
+      databaseVersion: allArrivals[i].portArrival.database_version,
+      portName: allArrivals[i].portArrival.portName,
+      portUnLocode: allArrivals[i].portArrival.portUnLocode,
+      portCoordinates: coords,
+      vesselShortCruiseName: allArrivals[i].portArrival.vesselShortCruiseName,
+      vesselEta: allArrivals[i].portArrival.vesselEta,
+      vesselEtd: allArrivals[i].portArrival.vesselEtd,
+      vesselNameUrl: allArrivals[i].portArrival.vesselNameUrl,
     })
 
     // Now save in mongoDB
