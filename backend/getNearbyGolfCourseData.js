@@ -57,33 +57,17 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
     const golfCourseDetailArray = []
     let i = 0
     do {
-      // const golfCourseCoords = new CoordsSchema({
-      //   location: {
-      //     lat: {json.features[i].geometry.coordinates[1]},
-      //   },
-      // })
-
-      // NB Coordinates in GeoJSON order - Longitude then Latitude
-      const golfCourseLocation = new LocationSchema({
-        type: "Point",
-        coordinates: [
-          json.features[i].geometry.coordinates[1],
-          json.features[i].geometry.coordinates[0],
-        ],
+      const golfCourseCoords = new CoordsSchema({
+        lat: json.features[i].geometry.coordinates[1],
+        lng: json.features[i].geometry.coordinates[0],
       })
-      // {
-      //   name: "Location 5",
-      //   location: {
-      //     lat: 41.4055,
-      //     lng: 2.1915
-      //   },
 
       // Now create a model instance
       const golfCourseDetails = new GolfCourseDetailsSchema({
         type: "Feature",
         name: json.features[i].properties.name,
         phoneNumber: json.features[i].properties.phoneNumber,
-        location: golfCourseLocation,
+        location: golfCourseCoords,
       })
 
       golfCourseDetailArray.push(golfCourseDetails)
@@ -102,7 +86,7 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
     // Now save in mongoDB
     nearbyGolfCourse
       .save()
-      .then(() => console.log("nearbyGolfCourseData saved to mongoDB"))
+      .then(() => console.log(i + " nearbyGolfCourses saved to mongoDB"))
       .catch((err) =>
         console.log("Error saving nearbyGolfCourse to mongoDB " + err)
       )
