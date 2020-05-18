@@ -1,11 +1,11 @@
 import mongoose, { Schema } from "mongoose"
-import { LocationSchema } from "../../commonModels/locationSchema"
+import { CoordsSchema } from "../../commonModels/coordsSchema"
 
 const golfCourseDetailsSchema = new Schema({
   type: { type: String, default: "Feature" },
   name: { type: String },
   phoneNumber: { type: String },
-  location: { type: LocationSchema.schema },
+  location: { type: CoordsSchema.schema },
 })
 
 export const GolfCourseDetailsSchema = mongoose.model(

@@ -3,7 +3,7 @@
 import axios from "axios"
 import moment from "moment"
 import { HomeTemperatureSchema } from "./models/weatherModels/v1/rtTemperatureSchema"
-import { LocationSchema } from "./models/commonModels/locationSchema"
+import { CoordsSchema } from "./models/commonModels/coordsSchema"
 
 // Function to fetch weather data from the Dark Skies website
 export const getDarkSkiesData = async () => {
@@ -62,9 +62,9 @@ export const saveDarkSkiesDataToDatabase = async (darkSkiesData) => {
     const location_name = "Home"
 
     // Home Coordinates in GeoJSON
-    const location_coords = new LocationSchema({
-      type: "Point",
-      coordinates: [process.env.HOME_LONGITUDE, process.env.HOME_LATITUDE],
+    const location_coords = new CoordsSchema({
+      lat: process.env.HOME_LATITUDE,
+      lng: process.env.HOME_LONGITUDE,
     })
 
     const location_temperature = darkSkiesData.data.currently.temperature
@@ -81,7 +81,7 @@ export const saveDarkSkiesDataToDatabase = async (darkSkiesData) => {
     // Now save in mongoDB
     homeTemperature
       .save()
-      .then(() => console.log("Temperature Measurement saved"))
+      // .then(() => console.log("Temperature Measurement saved"))
       .catch((err) => console.log("Error: " + err))
   } catch (error) {
     // handle error

@@ -15,7 +15,7 @@ import EditIcon from "@material-ui/icons/Edit"
 import HomeIcon from "@material-ui/icons/Home"
 import MenuIcon from "@material-ui/icons/Menu"
 
-import Map from "./components/API GoogleMapContainer"
+import GoogleMapContainer from "./components/API GoogleMapContainer"
 // import GoogleMapContainer from "./components/FR GoogleMapContainer"
 //import GoogleMapContainer from "./components/GoogleMapContainer"
 import LeafletMap from "./components/LeafletMap"
@@ -91,8 +91,7 @@ function Home() {
 }
 
 function GoogleMapLink() {
-  return <Map />
-  // return <GoogleMapContainer />
+  return <GoogleMapContainer />
 }
 
 function LeafletMapLink() {

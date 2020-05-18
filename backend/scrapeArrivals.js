@@ -3,6 +3,8 @@
 import axios from "axios"
 import cheerio from "cheerio"
 import dotenv from "dotenv"
+import { PortArrivalSchema } from "./models/cruiseShippingModels/v1/portArrivalSchema"
+import { CoordsSchema } from "./models/commonModels/coordsSchema"
 
 dotenv.config()
 
@@ -72,25 +74,22 @@ export async function getVesselArrivals(period) {
     // Ignore the table heading
     if (i > 0) {
       // Database version
-      const databaseVersion = process.env.DATABASE_VERSION
+      const database_version = process.env.DATABASE_VERSION
 
       // Port Name
-      const portName = process.env.BELFAST_PORT_NAME
+      const port_name = process.env.BELFAST_PORT_NAME
 
       // Port UN Locode
-      const portUnLocode = process.env.BELFAST_PORT_UN_LOCODE
+      const port_un_locode = process.env.BELFAST_PORT_UN_LOCODE
 
       // Belfast Port Coordinates in GeoJSON
-      const portCoordinates = {
-        type: "Point",
-        coordinates: [
-          process.env.BELFAST_PORT_LONGITUDE,
-          process.env.BELFAST_PORT_LATITUDE,
-        ],
-      }
+      const port_coordinates = new CoordsSchema({
+        lat: process.env.BELFAST_PORT_LATITUDE,
+        lng: process.env.BELFAST_PORT_LONGITUDE,
+      })
 
       // Name of Vessel
-      const vesselShortcruiseName = $(item).find("a").text()
+      const vessel_short_cruise_name = $(item).find("a").text()
 
       //  Date of Arrival
       let arrivalDate = $(item)
@@ -100,42 +99,46 @@ export async function getVesselArrivals(period) {
         .replace(/,/, "") // Removes the comma
 
       // // Expected Time of Arrival
-      let vesselEta = $(item).children("td").next("td").next("td").html()
+      let vessel_eta = $(item).children("td").next("td").next("td").html()
 
       // If No Arrival Time Given
-      if (vesselEta == "") {
-        vesselEta = "Not Known"
+      if (vessel_eta == "") {
+        vessel_eta = "Not Known"
       } else {
-        vesselEta = Date.parse(arrivalDate + " " + vesselEta + " GMT")
-        var d = new Date(vesselEta)
-        vesselEta = d.toISOString()
+        vessel_eta = Date.parse(arrivalDate + " " + vessel_eta + " GMT")
+        var d = new Date(vessel_eta)
+        vessel_eta = d.toISOString()
       }
 
       // // Expected Time of Departure
-      let vesselEtd = $(item).children("td").last("td").html()
+      let vessel_etd = $(item).children("td").last("td").html()
 
       // If No Departure Time Given
-      if (vesselEtd == "") {
-        vesselEtd = "Not Known"
+      if (vessel_etd == "") {
+        vessel_etd = "Not Known"
       } else {
-        vesselEtd = Date.parse(arrivalDate + " " + vesselEtd + " GMT")
-        var d = new Date(vesselEtd)
-        vesselEtd = d.toISOString()
+        vessel_etd = Date.parse(arrivalDate + " " + vessel_etd + " GMT")
+        var d = new Date(vessel_etd)
+        vessel_etd = d.toISOString()
       }
 
       // Url of Vessel Web Page
-      const vesselNameUrl = $(item).find("a").attr("href")
+      const vessel_name_url = $(item).find("a").attr("href")
+
+      const portArrival = new PortArrivalSchema({
+        databaseVersion: database_version,
+        portName: port_name,
+        portUnLocode: port_un_locode,
+        portCoordinates: port_coordinates,
+        vesselShortCruiseName: vessel_short_cruise_name,
+        vesselEta: vessel_eta,
+        vesselEtd: vessel_etd,
+        vesselNameUrl: vessel_name_url,
+      })
 
       // Push an object with the data onto our array
       vesselArrival.push({
-        databaseVersion,
-        portName,
-        portUnLocode,
-        portCoordinates,
-        vesselShortcruiseName,
-        vesselEta,
-        vesselEtd,
-        vesselNameUrl,
+        portArrival,
       })
     }
   })

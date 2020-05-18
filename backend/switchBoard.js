@@ -28,14 +28,14 @@ export const runSwitchboard = (io) => {
     })
 
     cron.schedule("* * * * *", () => {
-      console.log("Started getting Vessel Arrivals & Details Scraping")
+      // console.log("Started getting Vessel Arrivals & Details Scraping")
       clearDatabaseCollections()
       runCron()
-      console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
+      // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     })
 
     cron.schedule("* * * * *", () => {
-      console.log("Started getting Dark Skies Weather data")
+      // console.log("Started getting Dark Skies Weather data")
 
       getDarkSkiesData().then((result) => {
         console.log(
@@ -44,7 +44,7 @@ export const runSwitchboard = (io) => {
         // console.log("In switchboard function getDarkSkiesData")
 
         emitDarkSkiesData(socket, result).then(() => {
-          console.log("Now emitting DarkSkiesData over socket.io")
+          // console.log("Now emitting DarkSkiesData over socket.io")
         })
 
         //     // if (count > 3) {
@@ -72,7 +72,7 @@ export const runSwitchboard = (io) => {
     })
 
     cron.schedule("* * * * *", () => {
-      console.log("Started getting Nearby Golf Course data")
+      // console.log("Started getting Nearby Golf Course data")
 
       // clearNearbyGolfCourseDataFromDatabase().then(() => {
       //   console.log("In switchboard function clearGolfCourseDataFromDatabase")
@@ -83,10 +83,10 @@ export const runSwitchboard = (io) => {
       // })
 
       getNearbyGolfCourseDataFromDatabase().then((result) => {
-        console.log("In switchboard function getNearbyGolfCourseData")
+        // console.log("In switchboard function getNearbyGolfCourseData")
 
         emitNearbyGolfCourseData(socket, result).then(() => {
-          console.log("Now emitting NearbyGolfCourseData over socket.io")
+          // console.log("Now emitting NearbyGolfCourseData over socket.io")
         })
       })
     })

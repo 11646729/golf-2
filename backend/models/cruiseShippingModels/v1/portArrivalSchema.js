@@ -1,12 +1,12 @@
 import mongoose, { Schema } from "mongoose"
-import { LocationSchema } from "../../commonModels/locationSchema"
+import { CoordsSchema } from "../../commonModels/coordsSchema"
 
 const portArrivalSchema = new Schema(
   {
     databaseVersion: { type: Number, default: 1.0 },
     portName: { type: String },
     portUnLocode: { type: String },
-    portCoordinates: { type: LocationSchema.schema },
+    portCoordinates: { type: CoordsSchema.schema },
     vesselShortCruiseName: { type: String },
     vesselEta: { type: String },
     vesselEtd: { type: String },
@@ -21,6 +21,6 @@ const portArrivalSchema = new Schema(
 
 // Export model
 export const PortArrivalSchema = mongoose.model(
-  "portArrival1",
+  "portArrival",
   portArrivalSchema
 )

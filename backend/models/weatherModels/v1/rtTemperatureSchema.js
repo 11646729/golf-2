@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose"
-import { LocationSchema } from "../../commonModels/locationSchema"
+import { CoordsSchema } from "../../commonModels/coordsSchema"
 
 const rtTemperatureSchema = new Schema(
   {
@@ -8,7 +8,7 @@ const rtTemperatureSchema = new Schema(
       type: String,
     },
     locationName: { type: String },
-    locationCoordinates: { type: LocationSchema.schema },
+    locationCoordinates: { type: CoordsSchema.schema },
     locationTemperature: { type: Number },
   },
   {

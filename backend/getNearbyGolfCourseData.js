@@ -3,7 +3,8 @@
 import axios from "axios"
 import { NearbyGolfCourseSchema } from "./models/golfModels/v1/nearbyGolfCourseSchema"
 import { GolfCourseDetailsSchema } from "./models/golfModels/v1/golfCourseDetailsSchema"
-import { LocationSchema } from "./models/commonModels/locationSchema"
+// import { LocationSchema } from "./models/commonModels/locationSchema"
+import { CoordsSchema } from "./models/commonModels/coordsSchema"
 
 export const clearNearbyGolfCourseDataFromDatabase = async () => {
   try {
@@ -24,7 +25,7 @@ export const clearNearbyGolfCourseDataFromDatabase = async () => {
 export const getNearbyGolfCourseDataFromDatabase = async () => {
   try {
     NearbyGolfCourseSchema.find({}).then((result) => {
-      console.log("Data from mongoDB is : " + result)
+      // console.log("Data from mongoDB is : " + result)
     })
   } catch (error) {
     // handle error
@@ -56,6 +57,12 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
     const golfCourseDetailArray = []
     let i = 0
     do {
+      // const golfCourseCoords = new CoordsSchema({
+      //   location: {
+      //     lat: {json.features[i].geometry.coordinates[1]},
+      //   },
+      // })
+
       // NB Coordinates in GeoJSON order - Longitude then Latitude
       const golfCourseLocation = new LocationSchema({
         type: "Point",
@@ -64,6 +71,12 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
           json.features[i].geometry.coordinates[0],
         ],
       })
+      // {
+      //   name: "Location 5",
+      //   location: {
+      //     lat: 41.4055,
+      //     lng: 2.1915
+      //   },
 
       // Now create a model instance
       const golfCourseDetails = new GolfCourseDetailsSchema({

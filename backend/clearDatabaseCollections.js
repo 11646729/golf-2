@@ -3,7 +3,6 @@
 import { PortArrivalSchema } from "./models/cruiseShippingModels/v1/portArrivalSchema"
 import { VesselDetailsSchema } from "./models/cruiseShippingModels/v1/vesselDetailsSchema"
 import { HomeTemperatureSchema } from "./models/weatherModels/v1/rtTemperatureSchema"
-import { NearbyGolfCourseSchema } from "./models/golfModels/v1/nearbyGolfCourseSchema"
 
 export const clearDatabaseCollections = async () => {
   // First delete all previous data
