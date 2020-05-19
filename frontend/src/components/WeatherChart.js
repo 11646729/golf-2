@@ -1,7 +1,6 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import moment from "moment"
 import socketIOClient from "socket.io-client"
-import { useEffect, useState } from "react"
 import { useTheme } from "@material-ui/core/styles"
 import {
   CartesianGrid,
@@ -25,7 +24,7 @@ export const formatYAxis = (tickItem) => {
   return +tickItem.toFixed(1)
 }
 
-export default function WeatherChart() {
+export const WeatherChart = () => {
   const theme = useTheme()
   const [data, setData] = useState([])
 
@@ -42,7 +41,7 @@ export default function WeatherChart() {
     socket.on("clearDataFromDarkSkiesAPI", () => {
       setData((data) => [])
     })
-    console.log("In the useEffect clearDataFromDarkSkies function")
+    // console.log("In the useEffect clearDataFromDarkSkies function")
   })
 
   // console.log(data)
@@ -109,3 +108,5 @@ export default function WeatherChart() {
     </div>
   )
 }
+
+export default WeatherChart

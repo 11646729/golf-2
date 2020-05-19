@@ -3,7 +3,6 @@
 import axios from "axios"
 import { NearbyGolfCourseSchema } from "./models/golfModels/v1/nearbyGolfCourseSchema"
 import { GolfCourseDetailsSchema } from "./models/golfModels/v1/golfCourseDetailsSchema"
-// import { LocationSchema } from "./models/commonModels/locationSchema"
 import { CoordsSchema } from "./models/commonModels/coordsSchema"
 
 export const clearNearbyGolfCourseDataFromDatabase = async () => {
@@ -24,9 +23,11 @@ export const clearNearbyGolfCourseDataFromDatabase = async () => {
 // Function to fetch nearby golf course data from the database
 export const getNearbyGolfCourseDataFromDatabase = async () => {
   try {
-    NearbyGolfCourseSchema.find({}).then((result) => {
-      // console.log("Data from mongoDB is : " + result)
-    })
+    const golfCourses = await NearbyGolfCourseSchema.find()
+
+    // console.log("Data from mongoDB is : " + golfCourses)
+
+    return golfCourses
   } catch (error) {
     // handle error
     console.log("Error in getNearbyGolfCourseDataFromDatabase: ", error)
@@ -40,7 +41,7 @@ export const emitNearbyGolfCourseData = async (
 ) => {
   try {
     await socket.emit("NearbyGolfCourseData", {
-      // courses: nearbyGolfCourseData.courses,
+      courses: nearbyGolfCourseData.courses,
     })
   } catch (error) {
     // handle error

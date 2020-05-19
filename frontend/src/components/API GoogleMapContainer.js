@@ -1,7 +1,10 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import socketIOClient from "socket.io-client"
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 
-const GoogleMapContainer = () => {
+const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
+
+export const GoogleMapContainer = () => {
   // const [myMap, setMyMap] = useState(null)
   const [defaultCenter, setCenter] = useState({
     lat: 54.665577,
@@ -63,6 +66,14 @@ const GoogleMapContainer = () => {
   //   setId((id) => id + 1)
   //   setMarkers((markers) => markers.concat([{ coords, id }]))
   // }
+
+  // Listen for weather data and update the state
+  useEffect(() => {
+    socket.on("NearbyGolfCourseData", (currentData) => {
+      console.log(currentData)
+      //      setData((data) => [...data, currentData])
+    })
+  }, [])
 
   const renderMap = () => (
     <div>

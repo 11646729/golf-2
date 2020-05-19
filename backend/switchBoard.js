@@ -38,33 +38,20 @@ export const runSwitchboard = (io) => {
       // console.log("Started getting Dark Skies Weather data")
 
       getDarkSkiesData().then((result) => {
-        console.log(
-          "DarkSkiesData obtained: " + result.data.currently.temperature
-        )
-        // console.log("In switchboard function getDarkSkiesData")
+        // console.log(
+        //   "DarkSkiesData obtained: " + result.data.currently.temperature
+        // )
 
         emitDarkSkiesData(socket, result).then(() => {
-          // console.log("Now emitting DarkSkiesData over socket.io")
+          // console.log(
+          //   "Emitting DarkSkiesData over socket.io: " +
+          //     result.data.currently.temperature
+          // )
         })
-
-        //     // if (count > 3) {
-        //     // clearDarkSkiesData(socket).then((result) => {
-        //     //   // console.log(
-        //     //   //   "In switchboard function (emitDarkSkiesData): " +
-        //     //   //     result.data.currently.temperature
-        //     //   // )
-        //     // })
-
-        //     //   count = 0
-        //     // } else {
-        //     //   count++
-
-        //     //   console.log("In counter loop " + count)
-        //     // }
 
         saveDarkSkiesDataToDatabase(result).then(() => {
           // console.log(
-          //   "In switchboard function (saveDarkSkiesDataToDatabase): " +
+          //   "Saving DarkSkiesData to database: " +
           //     result.data.currently.temperature
           // )
         })
@@ -74,18 +61,24 @@ export const runSwitchboard = (io) => {
     cron.schedule("* * * * *", () => {
       // console.log("Started getting Nearby Golf Course data")
 
-      clearNearbyGolfCourseDataFromDatabase().then(() => {
-        console.log("In switchboard function clearGolfCourseDataFromDatabase")
-      })
+      // clearNearbyGolfCourseDataFromDatabase().then(() => {
+      //   // console.log("In switchboard function clearGolfCourseDataFromDatabase")
+      // })
 
-      saveNearbyGolfCourseDataToDatabase().then(() => {
-        console.log("In switchboard function saveGolfCourseDataToDatabase")
-      })
+      // saveNearbyGolfCourseDataToDatabase().then(() => {
+      //   // console.log("In switchboard function saveGolfCourseDataToDatabase")
+      // })
 
       getNearbyGolfCourseDataFromDatabase().then((result) => {
         // console.log("In switchboard function getNearbyGolfCourseData")
 
+        console.log(
+          "In getNearbyGolfCourseDataFromDatabase: " + result[0].courses
+        )
+        // Good here
+
         emitNearbyGolfCourseData(socket, result).then(() => {
+          // console.log("In getNearbyGolfCourseDataFromDatabase: " + result)
           // console.log("Now emitting NearbyGolfCourseData over socket.io")
         })
       })
