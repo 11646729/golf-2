@@ -41,7 +41,7 @@ export const emitNearbyGolfCourseData = async (
 ) => {
   try {
     await socket.emit("NearbyGolfCourseData", {
-      courses: nearbyGolfCourseData.courses,
+      Courses: nearbyGolfCourseData[0].courses,
     })
   } catch (error) {
     // handle error

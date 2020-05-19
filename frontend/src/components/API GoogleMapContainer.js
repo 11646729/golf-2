@@ -41,12 +41,6 @@ export const GoogleMapContainer = () => {
       },
     },
   ]
-  // {
-  //   name: "Location 5",
-  //   location: {
-  //     lat: 41.4055,
-  //     lng: 2.1915
-  //   },
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
@@ -70,7 +64,7 @@ export const GoogleMapContainer = () => {
   // Listen for weather data and update the state
   useEffect(() => {
     socket.on("NearbyGolfCourseData", (currentData) => {
-      console.log(currentData)
+      console.log(currentData[0].courses)
       //      setData((data) => [...data, currentData])
     })
   }, [])
