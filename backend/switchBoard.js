@@ -70,16 +70,15 @@ export const runSwitchboard = (io) => {
       // })
 
       getNearbyGolfCourseDataFromDatabase().then((result) => {
-        // console.log("In switchboard function getNearbyGolfCourseData")
-
         // console.log(
-        //   "In getNearbyGolfCourseDataFromDatabase: " + result[0].courses
+        //   "Fetching NearbyGolfCourse data from the Database: " +
+        //     result[0].courses
         // )
-        // Good here
 
         emitNearbyGolfCourseData(socket, result).then(() => {
-          // console.log("In getNearbyGolfCourseDataFromDatabase: " + result)
-          // console.log("Now emitting NearbyGolfCourseData over socket.io")
+          // console.log(
+          //   "Emitting NearbyGolfCourseData over socket.io: " + result[0].courses
+          // )
         })
       })
     })
