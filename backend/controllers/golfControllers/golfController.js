@@ -1,4 +1,6 @@
 import { NearbyGolfCourseSchema } from "../../models/golfModels/v1/nearbyGolfCourseSchema"
+import { GolfCourseDetailsSchema } from "../../models/golfModels/v1/golfCourseDetailsSchema"
+import { CoordsSchema } from "../../models/commonModels/coordsSchema"
 
 // Path localhost:5000/golf/
 export function index_get(req, res) {
@@ -13,19 +15,25 @@ export function nearby_golf_course_getAll(req, res) {
 }
 
 // Path localhost:5000/golf/nearbyGolfCourses/add
-// TODO this uses the incorrect Schema
-
 export function nearby_golf_course_add(req, res) {
-  const database_version = req.body.database_version
-  const location_name = req.body.database_version
-  const location_coords = req.body.location_coords
-  const location_phone_number = req.body.location_phone_number
+  const location = new CoordsSchema({
+    lat: req.body.location_lat,
+    lng: req.body.location_lng,
+  })
+
+  const golfCourseDetails = new GolfCourseDetailsSchema({
+    type: req.body.golf_course_detail_type,
+    name: req.body.golf_course_detail_name,
+    phoneNumber: req.body.golf_course_detail_phone_number,
+    location: location,
+  })
 
   const nearbyGolfCourse = new NearbyGolfCourseSchema({
-    database_version,
-    location_name,
-    location_coords,
-    location_phone_number,
+    databaseVersion: req.body.nearby_golf_course.database_version,
+    type: req.body.nearby_golf_course.type,
+    crsName: req.body.nearby_golf_course.crs_name,
+    crsUrn: req.body.nearby_golf_course.crs_urn,
+    courses: golfCourseDetails,
   })
 
   nearbyGolfCourse
