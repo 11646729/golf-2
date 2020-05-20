@@ -1,4 +1,5 @@
 import { PortArrivalSchema } from "../../models/cruiseShippingModels/v1/portArrivalSchema"
+import { CoordsSchema } from "../../models/commonModels/coordsSchema"
 
 // Path localhost:5000/cruiseShips/
 export function index_get(req, res) {
@@ -14,24 +15,20 @@ export function port_arrivals_get(req, res) {
 
 // Path localhost:5000/cruiseShips/portArrivals/add
 export function port_arrivals_add(req, res) {
-  const database_version = req.body.databaseVersion
-  const port_name = req.body.portName
-  const port_un_locode = req.body.portUnLocode
-  const port_coordinates = req.body.portCoordinates
-  const vessel_short_cruise_name = req.body.vesselShortCruiseName
-  const vessel_eta = req.body.vesselEta
-  const vessel_etd = req.body.vesselEtd
-  const vessel_name_url = req.body.vesselNameUrl
+  const location = new CoordsSchema({
+    lat: req.body.port_coordinates_lat,
+    lng: req.body.port_coordinates_lng,
+  })
 
   const portArrival = new PortArrivalSchema({
-    databaseVersion: database_version,
-    portName: port_name,
-    portUnLocode: port_un_locode,
-    portCoordinates: port_coordinates,
-    vesselShortCruiseName: vessel_short_cruise_name,
-    vesselEta: vessel_eta,
-    vesselEtd: vessel_etd,
-    vesselNameUrl: vessel_name_url,
+    databaseVersion: req.body.databaseVersion,
+    portName: req.body.portName,
+    portUnLocode: req.body.portUnLocode,
+    portCoordinates: location,
+    vesselShortCruiseName: req.body.vesselShortCruiseName,
+    vesselEta: req.body.vesselEta,
+    vesselEtd: req.body.vesselEtd,
+    vesselNameUrl: req.body.vesselNameUrl,
   })
 
   portArrival
