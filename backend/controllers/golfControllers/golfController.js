@@ -1,18 +1,18 @@
 import { NearbyGolfCourseSchema } from "../../models/golfModels/v1/nearbyGolfCourseSchema"
 
-// Path localhost:3000/golf/
+// Path localhost:5000/golf/
 export function index_get(req, res) {
   res.send({ response: "I am alive" }).status(200)
 }
 
-// Path localhost:3000/golf/nearbyGolfCourses
+// Path localhost:5000/golf/nearbyGolfCourses
 export function nearby_golf_course_getAll(req, res) {
   NearbyGolfCourseSchema.find({})
     .then((nearbyGolfCourseSchema) => res.json(nearbyGolfCourseSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Path localhost:3000/golf/nearbyGolfCourses/add
+// Path localhost:5000/golf/nearbyGolfCourses/add
 // TODO this uses the incorrect Schema
 
 export function nearby_golf_course_add(req, res) {

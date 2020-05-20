@@ -6,6 +6,8 @@ const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
 export const GoogleMapContainer = () => {
   // const [myMap, setMyMap] = useState(null)
+  const [data, setData] = useState([])
+
   const [defaultCenter, setCenter] = useState({
     lat: 54.665577,
     lng: -5.766897,
@@ -63,11 +65,13 @@ export const GoogleMapContainer = () => {
 
   // Listen for weather data and update the state
   useEffect(() => {
-    socket.on("NearbyGolfCourseData", (currentData) => {
-      console.log(currentData[0].courses)
-      //      setData((data) => [...data, currentData])
+    socket.on("NearbyGolfCourseData", (nearbyGolfCourseData) => {
+      setData((data) => [...data, nearbyGolfCourseData])
     })
   }, [])
+
+  console.log(data)
+  console.log(JSON.parse(data))
 
   const renderMap = () => (
     <div>

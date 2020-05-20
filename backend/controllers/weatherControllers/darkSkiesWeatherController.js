@@ -1,18 +1,18 @@
 import { HomeTemperatureSchema } from "../../models/weatherModels/v1/rtTemperatureSchema"
 
-// Path localhost:3000/weather/
+// Path localhost:5000/weather/
 export function index_get(req, res) {
   res.send({ response: "I am alive" }).status(200)
 }
 
-// Path localhost:3000/weather/homeWeather
+// Path localhost:5000/weather/homeWeather
 export function home_weather_get(req, res) {
   HomeTemperatureSchema.find({})
     .then((rtTemperature) => res.json(rtTemperature))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Path localhost:3000/weather/homeWeather/add
+// Path localhost:5000/weather/homeWeather/add
 export function home_weather_add(req, res) {
   const database_version = req.body.databaseVersion
   const time_of_measurement = req.body.timeOfMeasurement

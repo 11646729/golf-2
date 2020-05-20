@@ -1,6 +1,6 @@
 "use strict"
 
-import axios from "axios"
+// import axios from "axios"
 import { NearbyGolfCourseSchema } from "./models/golfModels/v1/nearbyGolfCourseSchema"
 import { GolfCourseDetailsSchema } from "./models/golfModels/v1/golfCourseDetailsSchema"
 import { CoordsSchema } from "./models/commonModels/coordsSchema"
@@ -41,8 +41,9 @@ export const emitNearbyGolfCourseData = async (
 ) => {
   try {
     await socket.emit("NearbyGolfCourseData", {
-      Courses: nearbyGolfCourseData[0].courses,
+      Courses: JSON.stringify(nearbyGolfCourseData[0].courses),
     })
+    // console.log(nearbyGolfCourseData[0].courses)
   } catch (error) {
     // handle error
     console.log("Error in emitNearbyGolfCourseData: ", error)

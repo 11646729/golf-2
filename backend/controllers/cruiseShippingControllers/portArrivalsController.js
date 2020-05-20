@@ -1,18 +1,18 @@
 import { PortArrivalSchema } from "../../models/cruiseShippingModels/v1/portArrivalSchema"
 
-// Path localhost:3000/cruiseShips/
+// Path localhost:5000/cruiseShips/
 export function index_get(req, res) {
   res.send({ response: "I am alive" }).status(200)
 }
 
-// Path localhost:3000/cruiseShips/portArrivals
+// Path localhost:5000/cruiseShips/portArrivals
 export function port_arrivals_get(req, res) {
   PortArrivalSchema.find({})
     .then((portArrival) => res.json(portArrival))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Path localhost:3000/cruiseShips/portArrivals/add
+// Path localhost:5000/cruiseShips/portArrivals/add
 export function port_arrivals_add(req, res) {
   const database_version = req.body.databaseVersion
   const port_name = req.body.portName
