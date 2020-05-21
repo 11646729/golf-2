@@ -1,21 +1,11 @@
-"use strict"
-
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 
-// import socketIOClient from "socket.io-client"
-// const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
-
 export const GoogleMapContainer = () => {
-  // const [myMap, setMyMap] = useState(null)
-  const [data, setData] = useState([])
-  const [defaultCenter, setCenter] = useState({
+  const defaultCenter = {
     lat: 54.665577,
     lng: -5.766897,
-  })
-  const [id, setId] = useState(0)
-  // const [markers, setMarkers] = useState([])
-  // const [drawMarker, setDrawMarker] = useState(false)
+  }
 
   const mapStyles = {
     position: "absolute",
@@ -25,14 +15,14 @@ export const GoogleMapContainer = () => {
   }
 
   const database = [
-    // {
-    //   databaseVersion: 1,
-    //   type: "FeatureCollection",
-    //   crsName: "WGS84",
-    //   crsUrn: "urn:ogc:def:crs:OGC:1.3:CRS84",
-    //   _id: "5ec2b04c8d40ab1400d1a012",
-    // courses: [
     {
+      // databaseVersion: 1,
+      // type: "FeatureCollection",
+      // crsName: "WGS84",
+      // crsUrn: "urn:ogc:def:crs:OGC:1.3:CRS84",
+      // _id: "5ec2b04c8d40ab1400d1a012",
+      // courses: [
+      //   {
       type: "Feature",
       _id: "5ec2b04c8d40ab1400d19fb9",
       name: "Ardglass Golf Club",
@@ -362,12 +352,12 @@ export const GoogleMapContainer = () => {
         lng: -5.883267,
       },
     },
+    // ],
+    //   createdAt: "2020-05-18T15:57:00.094Z",
+    //   updatedAt: "2020-05-18T15:57:00.094Z",
+    //   __v: 0,
+    // },
   ]
-  //     createdAt: "2020-05-18T15:57:00.094Z",
-  //     updatedAt: "2020-05-18T15:57:00.094Z",
-  //     __v: 0,
-  //   },
-  // ]
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
@@ -375,26 +365,15 @@ export const GoogleMapContainer = () => {
 
   const options = {
     mapTypeId: "hybrid",
-    // mapTypeId: google.maps.MapTypeId.SATELLITE,
     zoomControlOptions: {
-      // position: google.maps.ControlPosition.RIGHT_CENTER, // ,
       // ...otherOptions
     },
   }
 
-  // add marker to Map
-  // const addMarker = (coords) => {
-  //   setId((id) => id + 1)
-  //   setMarkers((markers) => markers.concat([{ coords, id }]))
-  // }
-
   // Listen for data and update the state
   // useEffect(() => {
-  //   setData((data) => [...data, database[0]])
+  //   setData((data) => [...data, database])
   // }, [])
-
-  // console.log(data)
-  // console.log(data[0].type)
 
   const renderMap = () => (
     <div>
@@ -403,37 +382,11 @@ export const GoogleMapContainer = () => {
         zoom={15}
         center={defaultCenter}
         options={options}
-        // onLoad={(map) => setMyMap(map)}
-        // onClick={(e) => (drawMarker ? addMarker(e.latLng.toJSON()) : null)}
       >
         {database.map((item) => {
           return <Marker key={item.name} position={item.location} />
         })}
-        {/* {markers
-          ? markers.map((marker) => {
-              return (
-                <Marker
-                  key={marker.id}
-                  draggable={drawMarker}
-                  position={marker.coords}
-                  onDragEnd={(e) => (marker.coords = e.latLng.toJSON())}
-                />
-              )
-            })
-          : null} */}
       </GoogleMap>
-      {/* <button
-        type="button"
-        style={{ backgroundColor: drawMarker ? "green" : null }}
-        onClick={() => {
-          setDrawMarker(() => !drawMarker)
-        }}
-      >
-        ADD & DRAG
-      </button>
-      <button type="button" onClick={() => setMarkers([])}>
-        CLEAR MAP
-      </button> */}
     </div>
   )
 
