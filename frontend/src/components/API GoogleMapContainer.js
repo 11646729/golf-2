@@ -3,11 +3,19 @@ import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 import fileDatabase from "./testNearbyGolfCourseData.json"
 
 export const GoogleMapContainer = () => {
-  const [data, setData] = useState("")
+  const [markers, setData] = useState("")
 
-  const { isLoaded } = useLoadScript({
+  // Listen for data and update the state
+  useEffect(() => {
+    setData((markers) => [...markers, fileDatabase.courses])
+  }, [])
+
+  const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
+
+  if (loadError) return "Error loading Map"
+  if (!isLoaded) return "Loading Map"
 
   const defaultCenter = {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE), // 54.665577
@@ -16,8 +24,8 @@ export const GoogleMapContainer = () => {
 
   const mapStyles = {
     position: "absolute",
-    height: "100vh", // 100vh
-    width: "95%",
+    height: "86vh", // 100vh
+    width: "98%",
     margin: "20px",
   }
 
@@ -26,8 +34,6 @@ export const GoogleMapContainer = () => {
     disableDefaultUI: true,
     zoomControl: true,
   }
-
-  const database = fileDatabase
 
   // const database = {
   //   databaseVersion: 1,
@@ -47,20 +53,15 @@ export const GoogleMapContainer = () => {
   //         lng: -5.604549,
   //       },
 
-  // Listen for data and update the state
-  useEffect(() => {
-    setData((data) => [...data, database.courses])
-  }, [])
-
   const renderMap = () => (
     <div>
       <GoogleMap
         mapContainerStyle={mapStyles}
-        zoom={15}
+        zoom={14}
         center={defaultCenter}
         options={options}
       >
-        {data[0].map((item) => {
+        {markers[0].map((item) => {
           return <Marker key={item.name} position={item.location} />
         })}
       </GoogleMap>
