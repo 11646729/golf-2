@@ -1,97 +1,119 @@
-// This component is based on the Scotch.io article Build a React & Google Maps App
-// https://github.com/RayNjeri/GoogleMaps-React/blob/master/googlemap-react/src/App.js
-// But it has been modified
-
-import React, { Component } from "react"
+import React, { useState, useEffect } from "react"
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api"
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
-import { GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react"
+import fileDatabase from "./testNearbyGolfCourseData.json"
 
-import CurrentLocation from "./GoogleMap"
+export default function GoogleMapContainer() {
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
+  })
+  const [markers, setMarkers] = useState("")
+  const [selected, setSelected] = useState(null)
 
-const styles = {
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9,
-    marginTop: "30",
-  },
+  // Listen for data and update the state
+  useEffect(() => {
+    setMarkers((markers) => [...markers, fileDatabase.courses])
+  }, [])
+
+  if (loadError) return "Error loading Map"
+  if (!isLoaded) return "Loading Map..."
+
+  const styles = {
+    map: {
+      position: "absolute",
+      height: "86vh", // 100vh
+      width: "98%",
+      margin: "20px",
+    },
+    media: {
+      height: 0,
+      paddingTop: "56.25%", // 16:9,
+      marginTop: "30",
+    },
+  }
+
+  const defaultCenter = {
+    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE), // 54.665577
+    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE), // -5.766897
+  }
+
+  const options = {
+    mapTypeId: "hybrid",
+    disableDefaultUI: true,
+    zoomControl: true,
+  }
+
+  // const database = {
+  //   databaseVersion: 1,
+  //   type: "FeatureCollection",
+  //   crsName: "WGS84",
+  //   crsUrn: "urn:ogc:def:crs:OGC:1.3:CRS84",
+  //   _id: "5ec2b04c8d40ab1400d1a012",
+  //   courses: [
+  //     {
+  //       type: "Feature",
+  //       _id: "5ec2b04c8d40ab1400d19fb9",
+  //       name: "Ardglass Golf Club",
+  //       phoneNumber: "028 44 841 219",
+  //       location: {
+  //         _id: "5ec2b04c8d40ab1400d19fb8",
+  //         lat: 54.258716,
+  //         lng: -5.604549,
+  //       },
+
+  const renderMap = () => {
+    return (
+      <div>
+        <GoogleMap
+          mapContainerStyle={styles.map}
+          zoom={14}
+          center={defaultCenter}
+          options={options}
+        >
+          {markers[0].map((marker) => (
+            <Marker
+              key={marker.name}
+              position={marker.location}
+              onClick={() => {
+                setSelected(marker)
+              }}
+            />
+          ))}
+          {selected ? (
+            <InfoWindow
+              position={selected.location}
+              onCloseClick={() => {
+                setSelected(null)
+              }}
+            >
+              <Card>
+                <CardMedia
+                  style={styles.media}
+                  image={"static/images/Bosphorus.jpg"}
+                  title={"Istanbul Bridge Photo"}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {selected.name}
+                  </Typography>
+                  <Typography component="p">
+                    {
+                      "Istanbul is a major city in Turkey that straddles Europe and Asia across the Bosphorus Strait. Its Old City reflects cultural influences of the many empires that once ruled here."
+                    }
+                  </Typography>
+                </CardContent>
+              </Card>
+            </InfoWindow>
+          ) : null}
+        </GoogleMap>
+      </div>
+    )
+  }
+
+  return isLoaded ? renderMap() : null
 }
-
-export class GoogleMapContainer extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {},
-    image: "static/images/Bosphorus.jpg",
-    photoTitle: "Istanbul Bridge Photo",
-    title: "Istanbul",
-    description:
-      "Istanbul is a major city in Turkey that straddles Europe and Asia across the Bosphorus Strait. Its Old City reflects cultural influences of the many empires that once ruled here.",
-  }
-
-  // const [data, setData] = useState([])
-
-  displayMarkers() {
-    return (
-      <Marker
-        onClick={this.onMarkerClick}
-        position={{
-          lat: process.env.REACT_APP_BELFAST_PORT_LATITUDE,
-          lng: process.env.REACT_APP_BELFAST_PORT_LONGITUDE,
-        }}
-      />
-    )
-  }
-
-  displayInfoWindows() {
-    return (
-      <InfoWindow
-        marker={this.state.activeMarker}
-        visible={this.state.showingInfoWindow}
-        onClose={this.onInfoWindowClose}
-      >
-        <Card>
-          <CardMedia
-            style={styles.media}
-            image={this.state.image}
-            title={this.state.photoTitle}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {this.state.title}
-            </Typography>
-            <Typography component="p">{this.state.description}</Typography>
-          </CardContent>
-        </Card>
-      </InfoWindow>
-    )
-  }
-
-  onMarkerClick = (props, marker, e) =>
-    this.setState({
-      selectedPlace: props,
-      activeMarker: marker,
-      showingInfoWindow: true,
-    })
-
-  onInfoWindowClose = (props) => {
-    if (this.state.showingInfoWindow) {
-      this.setState({
-        showingInfoWindow: false,
-        activeMarker: null,
-      })
-    }
-  }
-
-  render() {
-    return (
-      <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
-        {this.displayMarkers()}
-        {this.displayInfoWindows()}
-      </CurrentLocation>
-    )
-  }
-}
-
-export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_GOOGLE_KEY,
-})(GoogleMapContainer)
