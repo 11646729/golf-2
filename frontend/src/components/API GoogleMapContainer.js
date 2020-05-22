@@ -15,18 +15,18 @@ export const GoogleMapContainer = () => {
   })
 
   if (loadError) return "Error loading Map"
-  if (!isLoaded) return "Loading Map"
-
-  const defaultCenter = {
-    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE), // 54.665577
-    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE), // -5.766897
-  }
+  if (!isLoaded) return "Loading Map..."
 
   const mapStyles = {
     position: "absolute",
     height: "86vh", // 100vh
     width: "98%",
     margin: "20px",
+  }
+
+  const defaultCenter = {
+    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE), // 54.665577
+    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE), // -5.766897
   }
 
   const options = {
