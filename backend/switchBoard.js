@@ -11,7 +11,6 @@ import {
 import {
   clearNearbyGolfCourseDataFromDatabase,
   getNearbyGolfCourseDataFromDatabase,
-  emitNearbyGolfCourseData,
   saveNearbyGolfCourseDataToDatabase,
 } from "./getNearbyGolfCourseData"
 
@@ -60,27 +59,17 @@ export const runSwitchboard = (io) => {
 
     cron.schedule("* * * * *", () => {
       // console.log("Started getting Nearby Golf Course data")
-
       // clearNearbyGolfCourseDataFromDatabase().then(() => {
       //   // console.log("In switchboard function clearGolfCourseDataFromDatabase")
       // })
-
       // saveNearbyGolfCourseDataToDatabase().then(() => {
       //   // console.log("In switchboard function saveGolfCourseDataToDatabase")
       // })
-
-      getNearbyGolfCourseDataFromDatabase().then((result) => {
-        // console.log(
-        //   "Fetching NearbyGolfCourse data from the Database: " +
-        //     result[0].courses
-        // )
-
-        emitNearbyGolfCourseData(socket, result).then(() => {
-          // console.log(
-          //   "Emitting NearbyGolfCourseData over socket.io: " + result[0].courses
-          // )
-        })
-      })
+      // getNearbyGolfCourseDataFromDatabase().then((result) => {
+      //   // console.log(
+      //   //   "Fetching NearbyGolfCourse data from the Database: " +
+      //   //     result[0].courses
+      //   // )
     })
 
     socket.on("disconnect", () => {

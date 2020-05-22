@@ -60,7 +60,7 @@ export default function GoogleMapContainer() {
   //       _id: "5ec2b04c8d40ab1400d19fb9",
   //       name: "Ardglass Golf Club",
   //       phoneNumber: "028 44 841 219",
-  //       location: {
+  //       coordinates: {
   //         _id: "5ec2b04c8d40ab1400d19fb8",
   //         lat: 54.258716,
   //         lng: -5.604549,
@@ -78,7 +78,7 @@ export default function GoogleMapContainer() {
           {markers[0].map((marker) => (
             <Marker
               key={marker.name}
-              position={marker.location}
+              position={marker.coordinates}
               onClick={() => {
                 setSelected(marker)
               }}
@@ -86,7 +86,7 @@ export default function GoogleMapContainer() {
           ))}
           {selected ? (
             <InfoWindow
-              position={selected.location}
+              position={selected.coordinates}
               onCloseClick={() => {
                 setSelected(null)
               }}
@@ -94,18 +94,14 @@ export default function GoogleMapContainer() {
               <Card>
                 <CardMedia
                   style={styles.media}
-                  image={"static/images/Bosphorus.jpg"}
-                  title={"Istanbul Bridge Photo"}
+                  image={selected.photoUrl}
+                  title={selected.photoTitle}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
                     {selected.name}
                   </Typography>
-                  <Typography component="p">
-                    {
-                      "Istanbul is a major city in Turkey that straddles Europe and Asia across the Bosphorus Strait. Its Old City reflects cultural influences of the many empires that once ruled here."
-                    }
-                  </Typography>
+                  <Typography component="p">{selected.description}</Typography>
                 </CardContent>
               </Card>
             </InfoWindow>

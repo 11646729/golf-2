@@ -5,7 +5,10 @@ const golfCourseDetailsSchema = new Schema({
   type: { type: String, default: "Feature" },
   name: { type: String },
   phoneNumber: { type: String },
-  location: { type: CoordsSchema.schema },
+  photoTitle: { type: String },
+  photoUrl: { type: String },
+  description: { type: String },
+  coordinates: { type: CoordsSchema.schema },
 })
 
 export const GolfCourseDetailsSchema = mongoose.model(

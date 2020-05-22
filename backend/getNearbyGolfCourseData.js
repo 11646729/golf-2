@@ -34,22 +34,6 @@ export const getNearbyGolfCourseDataFromDatabase = async () => {
   }
 }
 
-// Function to emit nearby golf course data to be consumed by the client
-export const emitNearbyGolfCourseData = async (
-  socket,
-  nearbyGolfCourseData
-) => {
-  try {
-    await socket.emit("NearbyGolfCourseData", {
-      Courses: JSON.stringify(nearbyGolfCourseData[0].courses),
-    })
-    // console.log(nearbyGolfCourseData[0].courses)
-  } catch (error) {
-    // handle error
-    console.log("Error in emitNearbyGolfCourseData: ", error)
-  }
-}
-
 // Function to save nearby golf course data to mongodb
 // Longitude first in Javascript
 export const saveNearbyGolfCourseDataToDatabase = async () => {
@@ -69,6 +53,11 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
         type: "Feature",
         name: json.features[i].properties.name,
         phoneNumber: json.features[i].properties.phoneNumber,
+        photoTitle: "Istanbul Bridge Photo",
+        photoUrl: "static/images/Bosphorus.jpg",
+        description:
+          "Istanbul is a major city in Turkey that straddles Europe and Asia across the Bosphorus Strait. Its Old City reflects cultural influences of the many empires that once ruled here.",
+
         location: golfCourseCoords,
       })
 
