@@ -5,6 +5,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api"
+import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
 import fileDatabase from "./testNearbyGolfCourseData.json"
 
 export default function GoogleMapContainer() {
@@ -22,11 +23,18 @@ export default function GoogleMapContainer() {
   if (loadError) return "Error loading Map"
   if (!isLoaded) return "Loading Map..."
 
-  const mapStyles = {
-    position: "absolute",
-    height: "86vh", // 100vh
-    width: "98%",
-    margin: "20px",
+  const styles = {
+    map: {
+      position: "absolute",
+      height: "86vh", // 100vh
+      width: "98%",
+      margin: "20px",
+    },
+    media: {
+      height: 0,
+      paddingTop: "56.25%", // 16:9,
+      marginTop: "30",
+    },
   }
 
   const defaultCenter = {
@@ -62,7 +70,7 @@ export default function GoogleMapContainer() {
     return (
       <div>
         <GoogleMap
-          mapContainerStyle={mapStyles}
+          mapContainerStyle={styles.map}
           zoom={14}
           center={defaultCenter}
           options={options}
@@ -83,9 +91,23 @@ export default function GoogleMapContainer() {
                 setSelected(null)
               }}
             >
-              <div>
-                <h2>{selected.name}</h2>
-              </div>
+              <Card>
+                <CardMedia
+                  style={styles.media}
+                  image={"static/images/Bosphorus.jpg"}
+                  title={"Istanbul Bridge Photo"}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {selected.name}
+                  </Typography>
+                  <Typography component="p">
+                    {
+                      "Istanbul is a major city in Turkey that straddles Europe and Asia across the Bosphorus Strait. Its Old City reflects cultural influences of the many empires that once ruled here."
+                    }
+                  </Typography>
+                </CardContent>
+              </Card>
             </InfoWindow>
           ) : null}
         </GoogleMap>
