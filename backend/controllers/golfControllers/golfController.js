@@ -25,6 +25,9 @@ export function nearby_golf_course_add(req, res) {
     type: req.body.golf_course_detail_type,
     name: req.body.golf_course_detail_name,
     phoneNumber: req.body.golf_course_detail_phone_number,
+    photoTitle: req.body.golf_course_detail_photo_detail,
+    photoUrl: req.body.golf_course_detail_photo_url,
+    description: req.body.golf_course_detail_description,
     location: location,
   })
 
