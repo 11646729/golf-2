@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react"
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api"
 import fileDatabase from "./testNearbyGolfCourseData.json"
 
-export const GoogleMapContainer = () => {
-  const [markers, setData] = useState("")
-
-  // Listen for data and update the state
-  useEffect(() => {
-    setData((markers) => [...markers, fileDatabase.courses])
-  }, [])
-
+export default function GoogleMapContainer() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
+  const [markers, setMarkers] = useState("")
+  const [selected, setSelected] = useState(null)
+
+  // Listen for data and update the state
+  useEffect(() => {
+    setMarkers((markers) => [...markers, fileDatabase.courses])
+  }, [])
 
   if (loadError) return "Error loading Map"
   if (!isLoaded) return "Loading Map..."
@@ -53,22 +58,40 @@ export const GoogleMapContainer = () => {
   //         lng: -5.604549,
   //       },
 
-  const renderMap = () => (
-    <div>
-      <GoogleMap
-        mapContainerStyle={mapStyles}
-        zoom={14}
-        center={defaultCenter}
-        options={options}
-      >
-        {markers[0].map((item) => {
-          return <Marker key={item.name} position={item.location} />
-        })}
-      </GoogleMap>
-    </div>
-  )
+  const renderMap = () => {
+    return (
+      <div>
+        <GoogleMap
+          mapContainerStyle={mapStyles}
+          zoom={14}
+          center={defaultCenter}
+          options={options}
+        >
+          {markers[0].map((marker) => (
+            <Marker
+              key={marker.name}
+              position={marker.location}
+              onClick={() => {
+                setSelected(marker)
+              }}
+            />
+          ))}
+          {selected ? (
+            <InfoWindow
+              position={selected.location}
+              onCloseClick={() => {
+                setSelected(null)
+              }}
+            >
+              <div>
+                <h2>{selected.name}</h2>
+              </div>
+            </InfoWindow>
+          ) : null}
+        </GoogleMap>
+      </div>
+    )
+  }
 
   return isLoaded ? renderMap() : null
 }
-
-export default GoogleMapContainer
