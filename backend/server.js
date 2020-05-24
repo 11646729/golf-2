@@ -59,9 +59,6 @@ connection.once("open", () => {
   console.log("Connected to MongoDB database")
 })
 
-// Configure mongoose's promise to global promise
-mongoose.promise = global.Promise
-
 // use controllers as per Express Tutorial
 // const indexRouter = require("./routes/cruiseRoutes/v1/indexRoute")
 // const usersRouter = require("./routes/cruiseRoutes/v1/usersRoute")
@@ -72,9 +69,9 @@ const cruiseShipsRouter = require("./routes/cruiseRoutes/v1/cruiseShipsCatalogRo
 // routes
 // app.use("/", indexRouter)
 // app.use("/users", usersRouter)
-app.use("/golf", golfRouter)
-app.use("/weather", weatherRouter)
-app.use("/cruiseShips", cruiseShipsRouter)
+app.use("/api/golf", golfRouter)
+app.use("/api/weather", weatherRouter)
+app.use("/api/cruiseShips", cruiseShipsRouter)
 
 runSwitchboard(io)
 

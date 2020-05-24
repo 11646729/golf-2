@@ -1,19 +1,19 @@
 import { HomeTemperatureSchema } from "../../models/weatherModels/v1/rtTemperatureSchema"
 import { CoordsSchema } from "../../models/commonModels/coordsSchema"
 
-// Path localhost:5000/weather/
+// Path localhost:5000/api/weather/
 export function index_get(req, res) {
   res.send({ response: "I am alive" }).status(200)
 }
 
-// Path localhost:5000/weather/homeWeather
+// Path localhost:5000/api/weather/homeWeather
 export function home_weather_get(req, res) {
   HomeTemperatureSchema.find({})
     .then((rtTemperature) => res.json(rtTemperature))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Path localhost:5000/weather/homeWeather/add
+// Path localhost:5000/api/weather/homeWeather/add
 export function home_weather_add(req, res) {
   const location = new CoordsSchema({
     lat: req.body.location_lat,
