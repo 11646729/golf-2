@@ -2,9 +2,9 @@
 
 import { getAllVesselArrivals } from "./scrapeArrivals"
 import { getSingleVesselDetails } from "./scrapeVessels"
-import { PortArrivalSchema } from "./models/cruiseShippingModels/v1/portArrivalSchema"
-import { VesselDetailsSchema } from "./models/cruiseShippingModels/v1/vesselDetailsSchema"
-import { CoordsSchema } from "./models/commonModels/coordsSchema"
+import { PortArrivalSchema } from "./models/cruiseModels/v1/portArrivalSchema"
+import { VesselDetailsSchema } from "./models/cruiseModels/v1/vesselDetailsSchema"
+import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 export async function getAndSavePortArrivals() {
   let allArrivalsVesselUrls = []

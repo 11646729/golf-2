@@ -60,18 +60,14 @@ connection.once("open", () => {
 })
 
 // use controllers as per Express Tutorial
-// const indexRouter = require("./routes/cruiseRoutes/v1/indexRoute")
-// const usersRouter = require("./routes/cruiseRoutes/v1/usersRoute")
 const golfRouter = require("./routes/golfRoutes/v1/golfCatalogRoute")
 const weatherRouter = require("./routes/weatherRoutes/v1/weatherCatalogRoute")
-const cruiseShipsRouter = require("./routes/cruiseRoutes/v1/cruiseShipsCatalogRoute")
+const cruiseRouter = require("./routes/cruiseRoutes/v1/cruiseCatalogRoute")
 
 // routes
-// app.use("/", indexRouter)
-// app.use("/users", usersRouter)
 app.use("/api/golf", golfRouter)
 app.use("/api/weather", weatherRouter)
-app.use("/api/cruiseShips", cruiseShipsRouter)
+app.use("/api/cruiseShips", cruiseRouter)
 
 runSwitchboard(io)
 

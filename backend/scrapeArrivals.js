@@ -3,8 +3,8 @@
 import axios from "axios"
 import cheerio from "cheerio"
 import dotenv from "dotenv"
-import { PortArrivalSchema } from "./models/cruiseShippingModels/v1/portArrivalSchema"
-import { CoordsSchema } from "./models/commonModels/coordsSchema"
+import { PortArrivalSchema } from "./models/cruiseModels/v1/portArrivalSchema"
+import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 dotenv.config()
 

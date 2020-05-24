@@ -1,4 +1,4 @@
-import { PortArrivalSchema } from "../../models/cruiseShippingModels/v1/portArrivalSchema"
+import { PortArrivalSchema } from "../../models/cruiseModels/v1/portArrivalSchema"
 import { CoordsSchema } from "../../models/commonModels/coordsSchema"
 
 // Path localhost:5000/api/cruiseShips/

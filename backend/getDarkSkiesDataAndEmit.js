@@ -3,7 +3,7 @@
 import axios from "axios"
 import moment from "moment"
 import { HomeTemperatureSchema } from "./models/weatherModels/v1/rtTemperatureSchema"
-import { CoordsSchema } from "./models/commonModels/coordsSchema"
+import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to fetch weather data from the Dark Skies website
 export const getDarkSkiesData = async () => {

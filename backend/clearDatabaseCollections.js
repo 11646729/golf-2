@@ -1,7 +1,7 @@
 "use strict"
 
-import { PortArrivalSchema } from "./models/cruiseShippingModels/v1/portArrivalSchema"
-import { VesselDetailsSchema } from "./models/cruiseShippingModels/v1/vesselDetailsSchema"
+import { PortArrivalSchema } from "./models/cruiseModels/v1/portArrivalSchema"
+import { VesselDetailsSchema } from "./models/cruiseModels/v1/vesselDetailsSchema"
 import { HomeTemperatureSchema } from "./models/weatherModels/v1/rtTemperatureSchema"
 
 export const clearDatabaseCollections = async () => {

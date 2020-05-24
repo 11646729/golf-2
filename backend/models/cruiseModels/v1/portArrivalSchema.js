@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose"
-import { CoordsSchema } from "../../commonModels/coordsSchema"
+import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 
 const portArrivalSchema = new Schema(
   {
