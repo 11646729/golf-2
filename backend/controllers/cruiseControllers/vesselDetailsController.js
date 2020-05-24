@@ -1,4 +1,4 @@
-import { VesselDetailsSchema } from "../../models/cruiseShippingModels/v1/vesselDetailsSchema"
+import { VesselDetailsSchema } from "../../models/cruiseModels/v1/vesselDetailsSchema"
 
 // Path localhost:5000/api/cruiseShips/vessels
 export function vessel_get(req, res) {

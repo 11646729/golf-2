@@ -1,5 +1,5 @@
 import { HomeTemperatureSchema } from "../../models/weatherModels/v1/rtTemperatureSchema"
-import { CoordsSchema } from "../../models/commonModels/coordsSchema"
+import { CoordsSchema } from "../../models/commonModels/v1/coordsSchema"
 
 // Path localhost:5000/api/weather/
 export function index_get(req, res) {

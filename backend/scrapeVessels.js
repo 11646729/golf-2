@@ -2,6 +2,9 @@
 
 import axios from "axios"
 import cheerio from "cheerio"
+import dotenv from "dotenv"
+
+dotenv.config()
 
 export async function getSingleVesselDetails(VesselUrl) {
   // Fetch the initial data
@@ -17,12 +20,10 @@ export async function getSingleVesselDetails(VesselUrl) {
   let vessel_name_url = VesselUrl
 
   // Database version
-  let database_version = "1.0"
+  const database_version = process.env.DATABASE_VERSION
 
   // Title
-  let title = $("#review .title")
-    .text()
-    .trim()
+  let title = $("#review .title").text().trim()
 
   let vessel_type = "Passenger Ship"
 
@@ -31,12 +32,8 @@ export async function getSingleVesselDetails(VesselUrl) {
 
   // Vessel Flag
   let vessel_flag = $("td")
-    .filter(function() {
-      return (
-        $(this)
-          .text()
-          .trim() === "Flag state"
-      )
+    .filter(function () {
+      return $(this).text().trim() === "Flag state"
     })
     .next()
     .text()
@@ -52,12 +49,8 @@ export async function getSingleVesselDetails(VesselUrl) {
 
   // Long Name of Vessel Operator
   let vessel_long_operator = $("td")
-    .filter(function() {
-      return (
-        $(this)
-          .text()
-          .trim() === "Operator"
-      )
+    .filter(function () {
+      return $(this).text().trim() === "Operator"
     })
     .next()
     .text()
@@ -69,12 +62,8 @@ export async function getSingleVesselDetails(VesselUrl) {
 
   // Year of Build
   const vessel_year_built_temp = $("td")
-    .filter(function() {
-      return (
-        $(this)
-          .text()
-          .trim() === "Year built"
-      )
+    .filter(function () {
+      return $(this).text().trim() === "Year built"
     })
     .next()
     .text()
@@ -91,12 +80,8 @@ export async function getSingleVesselDetails(VesselUrl) {
 
   // Length of Vessel in metres
   const vessel_length_metres_temp = $("td")
-    .filter(function() {
-      return (
-        $(this)
-          .text()
-          .trim() === "Length (LOA)"
-      )
+    .filter(function () {
+      return $(this).text().trim() === "Length (LOA)"
     })
     .next()
     .text()
@@ -113,12 +98,8 @@ export async function getSingleVesselDetails(VesselUrl) {
 
   // Width of Vessel in metres
   const vessel_width_metres_temp = $("td")
-    .filter(function() {
-      return (
-        $(this)
-          .text()
-          .trim() === "Beam (width)"
-      )
+    .filter(function () {
+      return $(this).text().trim() === "Beam (width)"
     })
     .next()
     .text()
@@ -135,12 +116,8 @@ export async function getSingleVesselDetails(VesselUrl) {
 
   // Gross Tonnage of Vessel
   const vessel_gross_tonnage_temp = $("td")
-    .filter(function() {
-      return (
-        $(this)
-          .text()
-          .trim() === "Gross Tonnage"
-      )
+    .filter(function () {
+      return $(this).text().trim() === "Gross Tonnage"
     })
     .next()
     .text()
@@ -179,12 +156,8 @@ export async function getSingleVesselDetails(VesselUrl) {
 
   // Vessel Maximum Speed
   const vessel_max_speed_knots_temp = $("td")
-    .filter(function() {
-      return (
-        $(this)
-          .text()
-          .trim() === "Speed"
-      )
+    .filter(function () {
+      return $(this).text().trim() === "Speed"
     })
     .next()
     .text()
@@ -201,12 +174,8 @@ export async function getSingleVesselDetails(VesselUrl) {
 
   // Typical Number of Passengers
   const vessel_typical_passengers = $("td")
-    .filter(function() {
-      return (
-        $(this)
-          .text()
-          .trim() === "Passengers"
-      )
+    .filter(function () {
+      return $(this).text().trim() === "Passengers"
     })
     .next()
     .text()
@@ -218,12 +187,8 @@ export async function getSingleVesselDetails(VesselUrl) {
 
   // Typical Number of Crew
   const vessel_typical_crew = $("td")
-    .filter(function() {
-      return (
-        $(this)
-          .text()
-          .trim() === "Crew"
-      )
+    .filter(function () {
+      return $(this).text().trim() === "Crew"
     })
     .next()
     .text()
@@ -257,7 +222,7 @@ export async function getSingleVesselDetails(VesselUrl) {
     vessel_mmsi_number,
     vessel_callsign,
     vessel_typical_passengers,
-    vessel_typical_crew
+    vessel_typical_crew,
   })
 
   // Return our data array

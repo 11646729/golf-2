@@ -1,6 +1,6 @@
 import { NearbyGolfCourseSchema } from "../../models/golfModels/v1/nearbyGolfCourseSchema"
 import { GolfCourseDetailsSchema } from "../../models/golfModels/v1/golfCourseDetailsSchema"
-import { CoordsSchema } from "../../models/commonModels/coordsSchema"
+import { CoordsSchema } from "../../models/commonModels/v1/coordsSchema"
 
 // Path localhost:5000/api/golf/
 export function index_get(req, res) {
