@@ -4,11 +4,11 @@ var router = express.Router()
 // Require golf controller module
 var golf_controller = require("../../../controllers/golfControllers/golfController")
 
-/// Nearby Golf Courses Routes ///
-
+/// Cruise Routes ///
 // Get catalogue home page
 router.get("/", golf_controller.index_get)
 
+/// Nearby Golf Courses Routes ///
 // Get nearby golf course details from the database
 router.get("/nearbyGolfCourses", golf_controller.nearby_golf_course_getAll)
 

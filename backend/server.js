@@ -26,7 +26,7 @@ const port = process.env.PORT || 5000
 app.use(
   cors({
     origin: ["http://localhost:" + process.env.PORT],
-    methods: ["GET", "POST"],
+    // methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 )
@@ -67,7 +67,7 @@ const cruiseRouter = require("./routes/cruiseRoutes/v1/cruiseCatalogRoute")
 // routes
 app.use("/api/golf", golfRouter)
 app.use("/api/weather", weatherRouter)
-app.use("/api/cruiseShips", cruiseRouter)
+app.use("/api/cruise", cruiseRouter)
 
 runSwitchboard(io)
 
