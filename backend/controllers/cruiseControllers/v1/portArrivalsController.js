@@ -1,5 +1,5 @@
-import { PortArrivalSchema } from "../../models/cruiseModels/v1/portArrivalSchema"
-import { CoordsSchema } from "../../models/commonModels/v1/coordsSchema"
+import { PortArrivalSchema } from "../../../models/cruiseModels/v1/portArrivalSchema"
+import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
 
 // Path localhost:5000/api/cruise/
 export function index_get(req, res) {

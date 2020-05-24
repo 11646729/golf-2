@@ -10,8 +10,8 @@ import {
 } from "./getDarkSkiesDataAndEmit"
 import {
   clearNearbyGolfCourseDataFromDatabase,
-  getNearbyGolfCourseDataFromDatabase,
-  saveNearbyGolfCourseDataToDatabase,
+  // getNearbyGolfCourseDataFromDatabase2,
+  // saveNearbyGolfCourseDataToDatabase2,
 } from "./getNearbyGolfCourseData"
 
 let count = 0
@@ -62,14 +62,15 @@ export const runSwitchboard = (io) => {
       // clearNearbyGolfCourseDataFromDatabase().then(() => {
       //   // console.log("In switchboard function clearGolfCourseDataFromDatabase")
       // })
-      // saveNearbyGolfCourseDataToDatabase().then(() => {
+      // saveNearbyGolfCourseDataToDatabase2().then(() => {
       //   // console.log("In switchboard function saveGolfCourseDataToDatabase")
       // })
-      // getNearbyGolfCourseDataFromDatabase().then((result) => {
+      // getNearbyGolfCourseDataFromDatabase2().then((result) => {
       //   // console.log(
       //   //   "Fetching NearbyGolfCourse data from the Database: " +
       //   //     result[0].courses
       //   // )
+      // })
     })
 
     socket.on("disconnect", () => {

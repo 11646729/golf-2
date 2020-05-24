@@ -7,7 +7,6 @@ import socketIo from "socket.io"
 import cors from "cors"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
-
 import { runSwitchboard } from "./switchBoard"
 
 // const cookieParser = require("cookie-parser")
@@ -33,6 +32,9 @@ app.use(
 app.use(express.json())
 
 app.use(express.static(path.join(__dirname, "public")))
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }))
 
 // MongoDB connection string
 const uri = process.env.ATLAS_URI
