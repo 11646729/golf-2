@@ -6,7 +6,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api"
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
-import fileDatabase from "./testNearbyGolfCourseData2.json"
+import fileDatabase from "./testNearbyGolfCourseData.json"
 
 export default function GoogleMapContainer() {
   const { isLoaded, loadError } = useLoadScript({
@@ -47,24 +47,6 @@ export default function GoogleMapContainer() {
     disableDefaultUI: true,
     zoomControl: true,
   }
-
-  // const database = {
-  //   databaseVersion: 1,
-  //   type: "FeatureCollection",
-  //   crsName: "WGS84",
-  //   crsUrn: "urn:ogc:def:crs:OGC:1.3:CRS84",
-  //   _id: "5ec2b04c8d40ab1400d1a012",
-  //   courses: [
-  //     {
-  //       type: "Feature",
-  //       _id: "5ec2b04c8d40ab1400d19fb9",
-  //       name: "Ardglass Golf Club",
-  //       phoneNumber: "028 44 841 219",
-  //       coordinates: {
-  //         _id: "5ec2b04c8d40ab1400d19fb8",
-  //         lat: 54.258716,
-  //         lng: -5.604549,
-  //       },
 
   const renderMap = () => {
     return (
