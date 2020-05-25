@@ -1,4 +1,4 @@
-import { NearbyGolfCourseSchema2 } from "../../../models/golfModels/v2/nearbyGolfCourseSchema2"
+import { NearbyGolfCourseSchema } from "../../../models/golfModels/v2/nearbyGolfCourseSchema"
 import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
 
 // Path localhost:5000/api/golf/
@@ -20,7 +20,7 @@ export function nearby_golf_course_add(req, res) {
     lng: req.body.location_lng,
   })
 
-  const nearbyGolfCourse2 = new NearbyGolfCourseSchema2({
+  const nearbyGolfCourse = new NearbyGolfCourseSchema({
     databaseVersion: req.body.nearby_golf_course.database_version,
     type: req.body.nearby_golf_course.type,
     crsName: req.body.nearby_golf_course.crs_name,
@@ -33,7 +33,7 @@ export function nearby_golf_course_add(req, res) {
     location: location,
   })
 
-  nearbyGolfCourse2
+  nearbyGolfCourse
     .save()
     .then(() => res.json("Nearby Golf Course Details added!"))
     .catch((err) => res.status(400).json("Error: " + err))

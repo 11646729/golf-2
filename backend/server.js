@@ -62,14 +62,12 @@ connection.once("open", () => {
 })
 
 // use controllers as per Express Tutorial
-// const golfRouter = require("./routes/golfRoutes/v1/golfCatalogRoute")
-const golfRouter2 = require("./routes/golfRoutes/v2/golfCatalogRoute2")
+const golfRouter = require("./routes/golfRoutes/v2/golfCatalogRoute")
 const weatherRouter = require("./routes/weatherRoutes/v1/weatherCatalogRoute")
 const cruiseRouter = require("./routes/cruiseRoutes/v1/cruiseCatalogRoute")
 
 // routes
-// app.use("/api/golf", golfRouter)
-app.use("/api/golf", golfRouter2)
+app.use("/api/golf", golfRouter)
 app.use("/api/weather", weatherRouter)
 app.use("/api/cruise", cruiseRouter)
 

@@ -2,7 +2,7 @@ import express from "express"
 var router = express.Router()
 
 // Require golf controller module
-var golf_controller = require("../../../controllers/golfControllers/v2/golfController2")
+var golf_controller = require("../../../controllers/golfControllers/v2/golfController")
 
 /// Cruise Routes ///
 // Get catalogue home page
