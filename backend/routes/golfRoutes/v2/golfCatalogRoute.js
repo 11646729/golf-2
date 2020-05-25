@@ -6,16 +6,25 @@ var golf_controller = require("../../../controllers/golfControllers/v2/golfContr
 
 /// Cruise Routes ///
 // Get catalogue home page
-router.get("/", golf_controller.index_get)
+router.get("/", golf_controller.golfIndex)
 
 /// Nearby Golf Courses Routes ///
-// Get all nearby golf course details from the database
+// GET all nearbyGolfCourses
 router.get("/nearbyGolfCourses", golf_controller.findAll)
 
-// Get nearbyGolfCourse by id
-// router.get("/nearbyGolfCourses", golf_controller.findAll)
+// GET a nearbyGolfCourse by id
+router.get("/nearbyGolfCourses/:id", golf_controller.findOne)
 
-// Post details of a nearby golf course to the database
-// router.post("/nearbyGolfCourse/add", golf_controller.nearby_golf_course_add)
+// POST a nearbyGolfCourse
+router.post("/nearbyGolfCourses", golf_controller.create)
+
+// PUT a nearbyGolfCourse
+router.put("/nearbyGolfCourses", golf_controller.updateOne)
+
+// DELETE all nearbyGolfCourses
+router.delete("/nearbyGolfCourses", golf_controller.removeAll)
+
+// DELETE a nearbyGolfCourse
+router.delete("/nearbyGolfCourses", golf_controller.removeOne)
 
 module.exports = router

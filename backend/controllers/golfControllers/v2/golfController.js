@@ -2,19 +2,12 @@ import { NearbyGolfCourseSchema } from "../../../models/golfModels/v2/nearbyGolf
 import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
 
 // Path localhost:5000/api/golf/
-exports.index_get = (req, res) => {
+export function golfIndex(req, res) {
   res.send({ response: "I am alive" }).status(200)
 }
 
 // Path localhost:5000/api/golf/nearbyGolfCourses
-exports.findAll = (req, res) => {
-  NearbyGolfCourseSchema.find({})
-    .then((nearbyGolfCourseSchema) => res.json(nearbyGolfCourseSchema))
-    .catch((err) => res.status(400).json("Error " + err))
-}
-
-// Path localhost:5000/api/golf/nearbyGolfCourses/add
-exports.find = (req, res) => {
+export function create(req, res) {
   const location = new CoordsSchema({
     lat: req.body.location_lat,
     lng: req.body.location_lng,
@@ -38,3 +31,22 @@ exports.find = (req, res) => {
     .then(() => res.json("Nearby Golf Course Details added!"))
     .catch((err) => res.status(400).json("Error: " + err))
 }
+
+// Path localhost:5000/api/golf/nearbyGolfCourses
+export function findAll(req, res) {
+  NearbyGolfCourseSchema.find({})
+    .then((nearbyGolfCourseSchema) => res.json(nearbyGolfCourseSchema))
+    .catch((err) => res.status(400).json("Error " + err))
+}
+
+// Path localhost:5000/api/golf/nearbyGolfCourses/id
+export function findOne(req, res) {}
+
+// Path localhost:5000/api/golf/nearbyGolfCourses/id
+export function updateOne(req, res) {}
+
+// Path localhost:5000/api/golf/nearbyGolfCourses
+export function removeAll(req, res) {}
+
+// Path localhost:5000/api/golf/nearbyGolfCourses/id
+export function removeOne(req, res) {}
