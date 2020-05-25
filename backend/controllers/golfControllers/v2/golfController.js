@@ -2,19 +2,19 @@ import { NearbyGolfCourseSchema } from "../../../models/golfModels/v2/nearbyGolf
 import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
 
 // Path localhost:5000/api/golf/
-export function index_get(req, res) {
+exports.index_get = (req, res) => {
   res.send({ response: "I am alive" }).status(200)
 }
 
 // Path localhost:5000/api/golf/nearbyGolfCourses
-export function nearby_golf_course_getAll(req, res) {
+exports.findAll = (req, res) => {
   NearbyGolfCourseSchema.find({})
     .then((nearbyGolfCourseSchema) => res.json(nearbyGolfCourseSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
 // Path localhost:5000/api/golf/nearbyGolfCourses/add
-export function nearby_golf_course_add(req, res) {
+exports.find = (req, res) => {
   const location = new CoordsSchema({
     lat: req.body.location_lat,
     lng: req.body.location_lng,

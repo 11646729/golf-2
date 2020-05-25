@@ -6,6 +6,7 @@ import path from "path"
 import socketIo from "socket.io"
 import cors from "cors"
 import mongoose from "mongoose"
+import toJson from "@meanie/mongoose-to-json"
 import dotenv from "dotenv"
 import { runSwitchboard } from "./switchBoard"
 
@@ -53,6 +54,9 @@ const options = {
   socketTimeoutMS: 360000, // Close sockets after 45 seconds of inactivity
   family: 4, // Use IPv4, skip trying IPv6
 }
+
+// Add plug-in to change _id to id
+mongoose.plugin(toJson)
 
 mongoose.connect(uri, options)
 
