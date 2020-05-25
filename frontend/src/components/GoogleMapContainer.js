@@ -6,7 +6,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api"
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
-import fileDatabase from "./testNearbyGolfCourseData.json"
+import fileDatabase from "./testNearbyGolfCourseData2.json"
 
 export default function GoogleMapContainer() {
   const { isLoaded, loadError } = useLoadScript({
@@ -17,7 +17,7 @@ export default function GoogleMapContainer() {
 
   // Listen for data and update the state
   useEffect(() => {
-    setMarkers((markers) => [...markers, fileDatabase.courses])
+    setMarkers((markers) => [...markers, fileDatabase])
   }, [])
 
   if (loadError) return "Error loading Map"

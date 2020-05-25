@@ -2,8 +2,8 @@ import express from "express"
 var router = express.Router()
 
 // Require cruise controller modules
-const port_arrivals_controller = require("../../../controllers/cruiseControllers/portArrivalsController")
-const vessel_details_controller = require("../../../controllers/cruiseControllers/vesselDetailsController")
+const port_arrivals_controller = require("../../../controllers/cruiseControllers/v1/portArrivalsController")
+const vessel_details_controller = require("../../../controllers/cruiseControllers/v1/vesselDetailsController")
 // const itinerary_controller = require("../../../controllers/cruiseControllers/itineraryController")
 
 /// Cruise Routes ///

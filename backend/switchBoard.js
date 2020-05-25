@@ -10,8 +10,8 @@ import {
 } from "./getDarkSkiesDataAndEmit"
 import {
   clearNearbyGolfCourseDataFromDatabase,
-  // getNearbyGolfCourseDataFromDatabase2,
-  // saveNearbyGolfCourseDataToDatabase2,
+  getNearbyGolfCourseDataFromDatabase2,
+  saveNearbyGolfCourseDataToDatabase2,
 } from "./getNearbyGolfCourseData"
 
 let count = 0
@@ -60,17 +60,17 @@ export const runSwitchboard = (io) => {
     cron.schedule("* * * * *", () => {
       // console.log("Started getting Nearby Golf Course data")
       // clearNearbyGolfCourseDataFromDatabase().then(() => {
-      //   // console.log("In switchboard function clearGolfCourseDataFromDatabase")
+      // console.log("In switchboard function clearGolfCourseDataFromDatabase")
       // })
-      // saveNearbyGolfCourseDataToDatabase2().then(() => {
-      //   // console.log("In switchboard function saveGolfCourseDataToDatabase")
-      // })
-      // getNearbyGolfCourseDataFromDatabase2().then((result) => {
-      //   // console.log(
-      //   //   "Fetching NearbyGolfCourse data from the Database: " +
-      //   //     result[0].courses
-      //   // )
-      // })
+      saveNearbyGolfCourseDataToDatabase2().then(() => {
+        console.log("In switchboard function saveGolfCourseDataToDatabase")
+      })
+      getNearbyGolfCourseDataFromDatabase2().then((result) => {
+        // console.log(
+        //   "Fetching NearbyGolfCourse data from the Database: " +
+        //     result[0].courses
+        // )
+      })
     })
 
     socket.on("disconnect", () => {

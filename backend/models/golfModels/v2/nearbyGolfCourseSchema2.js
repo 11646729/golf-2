@@ -1,3 +1,4 @@
+import mongoose, { Schema } from "mongoose"
 import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 
 const nearbyGolfCourseSchema2 = new Schema(
@@ -18,11 +19,11 @@ const nearbyGolfCourseSchema2 = new Schema(
   }
 )
 
-nearbyGolfCourseSchema2.method("toJSON", function () {
-  const { __v, _id, ...object } = this.toObject()
-  object.id = _id
-  return object
-})
+// nearbyGolfCourseSchema2.method("toJSON", function () {
+//   const { __v, _id, ...object } = this.toObject()
+//   object.id = _id
+//   return object
+// })
 
 export const NearbyGolfCourseSchema2 = mongoose.model(
   "nearbyGolfCourse2",

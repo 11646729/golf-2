@@ -2,7 +2,7 @@ import express from "express"
 var router = express.Router()
 
 // Require weather controller module
-const dark_skies_weather_controller = require("../../../controllers/weatherControllers/darkSkiesWeatherController")
+const dark_skies_weather_controller = require("../../../controllers/weatherControllers/v1/darkSkiesWeatherController")
 
 /// Dark Skies Weather Routes ///
 // Get catalogue home page
