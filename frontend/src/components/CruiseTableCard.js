@@ -38,10 +38,10 @@ export default function CruiseTableCard() {
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          Cruise Ship Arivals
+          Cruise Ship Arrivals
         </Typography>
         <Typography>
-          This shows details of the Cruise Ships arriving soon in Belfast
+          Details about the Cruise Ships arriving soon in Belfast
         </Typography>
       </CardContent>
       <CardActions>
