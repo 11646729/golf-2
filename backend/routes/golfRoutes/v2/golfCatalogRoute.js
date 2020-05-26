@@ -5,7 +5,7 @@ var router = express.Router()
 var golf_controller = require("../../../controllers/golfControllers/v2/golfController")
 
 /// Cruise Routes ///
-// Get catalogue home page
+// GET catalogue home page
 router.get("/", golf_controller.golfIndex)
 
 /// Nearby Golf Courses Routes ///
@@ -15,16 +15,16 @@ router.get("/nearbyGolfCourses", golf_controller.findAll)
 // GET a nearbyGolfCourse by id
 router.get("/nearbyGolfCourses/:id", golf_controller.findOne)
 
-// POST a nearbyGolfCourse
+// POST a new nearbyGolfCourse
 router.post("/nearbyGolfCourses", golf_controller.create)
 
-// PUT a nearbyGolfCourse
-router.put("/nearbyGolfCourses", golf_controller.updateOne)
+// UPDATE a nearbyGolfCourse by id
+router.put("/nearbyGolfCourses/:id", golf_controller.updateOne)
 
 // DELETE all nearbyGolfCourses
-router.delete("/nearbyGolfCourses", golf_controller.removeAll)
+router.delete("/nearbyGolfCourses", golf_controller.deleteAll)
 
-// DELETE a nearbyGolfCourse
-router.delete("/nearbyGolfCourses", golf_controller.removeOne)
+// DELETE a nearbyGolfCourse by id
+router.delete("/nearbyGolfCourses/:id", golf_controller.deleteOne)
 
 module.exports = router
