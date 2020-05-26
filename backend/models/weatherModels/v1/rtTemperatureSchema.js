@@ -3,18 +3,22 @@ import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 
 const rtTemperatureSchema = new Schema(
   {
-    databaseVersion: { type: Number, default: 1.0 },
-    timeOfMeasurement: {
-      type: String,
-    },
-    locationName: { type: String },
-    locationCoordinates: { type: CoordsSchema.schema },
-    locationTemperature: { type: Number },
+    databaseVersion: Number,
+    timeOfMeasurement: String,
+    locationName: String,
+    locationCoordinates: CoordsSchema.schema,
+    locationTemperature: Number,
   },
   {
     timestamps: true,
   }
 )
+
+rtTemperatureSchema.method("toJSON", function () {
+  const { __v, _id, ...object } = this.toObject()
+  object.id = _id
+  return object
+})
 
 // Export model
 export const HomeTemperatureSchema = mongoose.model(

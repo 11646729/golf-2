@@ -12,6 +12,6 @@ router.get("/", dark_skies_weather_controller.index_get)
 router.get("/homeWeather", dark_skies_weather_controller.home_weather_get)
 
 // Post a single weather reading to the database
-router.post("/homeWeather/add", dark_skies_weather_controller.home_weather_add)
+router.post("/homeWeather/:id", dark_skies_weather_controller.home_weather_add)
 
 module.exports = router

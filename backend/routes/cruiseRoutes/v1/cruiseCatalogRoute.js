@@ -19,9 +19,9 @@ router.post("/portArrivals/add", port_arrivals_controller.port_arrivals_add)
 
 /// Vessels Routes ///
 // Get all vessels from the database
-router.get("/vessels", vessel_details_controller.vessel_get)
+router.get("/vesselDetails", vessel_details_controller.vessel_get)
 
 // Post a single vessel to the database
-router.post("/vessels/add", vessel_details_controller.vessel_add)
+router.post("/vessels/vesselDetails/:id", vessel_details_controller.vessel_add)
 
 module.exports = router

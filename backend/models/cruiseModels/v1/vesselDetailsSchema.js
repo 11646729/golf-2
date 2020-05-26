@@ -2,35 +2,37 @@ import mongoose, { Schema } from "mongoose"
 
 var vesselDetailsSchema = new Schema(
   {
-    databaseVersion: { type: Number, default: 1.0 },
-    vesselNameUrl: {
-      type: String,
-    },
-    title: {
-      type: String,
-    },
-    vesselType: { type: String },
-    vesselName: { type: String },
-    vesselFlag: { type: String },
-    vesselShortOperator: { type: String },
-    vesselLongOperator: { type: String },
-    vesselYearBuilt: { type: String },
-    vesselLengthMetres: { type: Number },
-    vesselWidthMetres: { type: Number },
-    vesselGrossTonnage: { type: Number },
-    vesselAverageSpeedKnots: { type: String },
-    vesselMaxSpeedKnots: { type: Number },
-    vesselAverageDraughtMetres: { type: Number },
-    vesselImoNumber: { type: Number },
-    vesselMmsiNumber: { type: Number },
-    vesselCallsign: { type: String },
-    vesselTypicalPassengers: { type: String },
-    vesselTypicalCrew: { type: String },
+    databaseVersion: Number,
+    vesselNameUrl: String,
+    title: String,
+    vesselType: String,
+    vesselName: String,
+    vesselFlag: String,
+    vesselShortOperator: String,
+    vesselLongOperator: String,
+    vesselYearBuilt: String,
+    vesselLengthMetres: Number,
+    vesselWidthMetres: Number,
+    vesselGrossTonnage: Number,
+    vesselAverageSpeedKnots: String,
+    vesselMaxSpeedKnots: Number,
+    vesselAverageDraughtMetres: Number,
+    vesselImoNumber: Number,
+    vesselMmsiNumber: Number,
+    vesselCallsign: String,
+    vesselTypicalPassengers: String,
+    vesselTypicalCrew: String,
   },
   {
     timestamps: true,
   }
 )
+
+vesselDetailsSchema.method("toJSON", function () {
+  const { __v, _id, ...object } = this.toObject()
+  object.id = _id
+  return object
+})
 
 // Export model
 export const VesselDetailsSchema = mongoose.model(
