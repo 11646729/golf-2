@@ -3,7 +3,7 @@ import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 
 const nearbyGolfCourseSchema = new Schema(
   {
-    databaseVersion: { type: Number, default: 1.0 },
+    databaseVersion: Number,
     type: String,
     crsName: String,
     crsUrn: String,
