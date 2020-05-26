@@ -130,4 +130,21 @@ export function deleteAll(req, res) {
 }
 
 // Path localhost:5000/api/golf/nearbyGolfCourses/id
-export function deleteOne(req, res) {}
+export function deleteOne(req, res) {
+  const id = req.params.id
+
+  NearbyGolfCourseSchema.findByIdAndRemove(id)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message:
+            "Cannot delete nearbyGolfCourse with id=${id}. Maybe nearbyGolfCourse was not found!",
+        })
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Could not delete nearbyGolfCourse with id=" + id,
+      })
+    })
+}
