@@ -60,7 +60,7 @@ export const runSwitchboard = (io) => {
     cron.schedule("* * * * *", () => {
       // console.log("Started getting Nearby Golf Course data")
       // clearNearbyGolfCourseDataFromDatabase().then(() => {
-      // console.log("In switchboard function clearGolfCourseDataFromDatabase")
+      //   console.log("In switchboard function clearGolfCourseDataFromDatabase")
       // })
       // saveNearbyGolfCourseDataToDatabase().then(() => {
       //   console.log("In switchboard function saveGolfCourseDataToDatabase")
