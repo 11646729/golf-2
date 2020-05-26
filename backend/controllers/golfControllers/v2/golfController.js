@@ -83,22 +83,50 @@ export function findOne(req, res) {
 }
 
 // Path localhost:5000/api/golf/nearbyGolfCourses/id
-export function updateOne(req, res) {}
+export function updateOne(req, res) {
+  if (!req.body) {
+    return res.status(400).send({
+      message: "Data to update cannot be empty!",
+    })
+  }
+
+  const id = req.params.id
+
+  NearbyGolfCourseSchema.findByIdAndUpdate(id, req.body, {
+    useFindAndModify: false,
+  })
+    .then((data) => {
+      if (!data)
+        res.status(404).send({
+          message:
+            "Cannnot update nearbyGolfCourse with id=${id}. Maybe nearbyGolfCourse was not found!",
+        })
+      else res.send({ message: "NearbyGolfCourse was updated successfully." })
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Error updating nearbyGolfCourse with id= " + id,
+      })
+    })
+}
 
 // Path localhost:5000/api/golf/nearbyGolfCourses
 export function deleteAll(req, res) {
-  try {
-    NearbyGolfCourseSchema.deleteMany({}, function (error) {
-      if (error) {
-        console.log("Error in NearbyGolfCourse.deleteMany() : ", error)
-      } else {
-        console.log("NearbyGolfCourse collection emptied")
-      }
+  NearbyGolfCourseSchema.deleteMany({})
+    .then((data) => {
+      res.send({
+        message:
+          "${data.deletedCount} NearbyGolfCourses were deleted successfully!",
+      })
     })
-  } catch (error) {
-    // handle error
-    console.log("Error in clearNearbyGolfCourseDataFromDatabase: ", error)
-  }
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error occurred while removing all nearbyGolfCourses",
+      })
+    })
 }
 
 // Path localhost:5000/api/golf/nearbyGolfCourses/id
