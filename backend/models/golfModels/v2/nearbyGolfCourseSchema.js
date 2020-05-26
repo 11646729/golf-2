@@ -19,6 +19,12 @@ const nearbyGolfCourseSchema = new Schema(
   }
 )
 
+nearbyGolfCourseSchema.method("toJSON", function () {
+  const { __v, _id, ...object } = this.toObject()
+  object.id = _id
+  return object
+})
+
 export const NearbyGolfCourseSchema = mongoose.model(
   "nearbyGolfCourse",
   nearbyGolfCourseSchema
