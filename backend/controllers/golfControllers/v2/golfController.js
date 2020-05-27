@@ -7,13 +7,48 @@ export function golfIndex(req, res) {
 }
 
 // Path localhost:5000/api/golf/nearbyGolfCourses
+export function findAll(req, res) {
+  NearbyGolfCourseSchema.find({})
+    .then((data) => {
+      res.send(data)
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error ocurred while retrieving nearbyGolfCourses.",
+      })
+    })
+}
+
+// Path localhost:5000/api/golf/nearbyGolfCourses/:id
+export function findOne(req, res) {
+  const id = req.params.id
+
+  NearbyGolfCourseSchema.findById(id)
+    .then((data) => {
+      if (!data)
+        res
+          .status(404)
+          .send({ message: "Not found nearbyGolfCourse with id " + id })
+      else res.send(data)
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Error retrieving nearbyGolfCourse with id= " + id,
+      })
+    })
+}
+
+// Path localhost:5000/api/golf/nearbyGolfCourses
 export function create(req, res) {
   // Validate request
   if (!req.body.location_lat || !req.body.location_lng) {
     res.status(400).send({ message: "Coordinates cannot be empty!" })
     return
   }
-  // Create a new nearbyGolfCourse
+  // Create a new location object
   const location = new CoordsSchema({
     lat: req.body.location_lat,
     lng: req.body.location_lng,
@@ -42,44 +77,9 @@ export function create(req, res) {
       res.status(500).send({
         message:
           err.message ||
-          "Some error ocurred while creating the nearbyGolfCourse.",
+          "Some error ocurred while creating the new nearbyGolfCourse.",
       })
     )
-}
-
-// Path localhost:5000/api/golf/nearbyGolfCourses
-export function findAll(req, res) {
-  NearbyGolfCourseSchema.find({})
-    .then((data) => {
-      res.send(data)
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message ||
-          "Some error ocurred while retrieving nearbyGolfCourses.",
-      })
-    })
-}
-
-// Path localhost:5000/api/golf/nearbyGolfCourses/id
-export function findOne(req, res) {
-  const id = req.params.id
-
-  NearbyGolfCourseSchema.findById(id)
-    .then((data) => {
-      if (!data)
-        res
-          .status(404)
-          .send({ message: "Not found nearbyGolfCourse with id " + id })
-      else res.send(data)
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Error retrieving nearbyGolfCourse with id= " + id,
-      })
-    })
 }
 
 // Path localhost:5000/api/golf/nearbyGolfCourses/id
