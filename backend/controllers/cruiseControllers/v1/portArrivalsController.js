@@ -2,7 +2,7 @@ import { PortArrivalSchema } from "../../../models/cruiseModels/v1/portArrivalSc
 import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
 
 // Path localhost:5000/api/cruise/
-export function index_get(req, res) {
+export function cruiseIndex(req, res) {
   res.send({ response: "I am alive" }).status(200)
 }
 

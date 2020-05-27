@@ -4,24 +4,23 @@ var router = express.Router()
 // Require cruise controller modules
 const port_arrivals_controller = require("../../../controllers/cruiseControllers/v1/portArrivalsController")
 const vessel_details_controller = require("../../../controllers/cruiseControllers/v1/vesselDetailsController")
-// const itinerary_controller = require("../../../controllers/cruiseControllers/itineraryController")
 
 /// Cruise Routes ///
-// Get catalogue home page
-router.get("/", port_arrivals_controller.index_get)
+// GET catalogue home page
+router.get("/", port_arrivals_controller.cruiseIndex)
 
 /// PortArrivals Routes ///
-// Get all port arrivals from the database - only Belfast at present
+// GET all port arrivals from the database - only Belfast at present
 router.get("/portArrivals", port_arrivals_controller.port_arrivals_get)
 
-// Post a single arrival to the database
+// POST a single arrival to the database
 router.post("/portArrivals/add", port_arrivals_controller.port_arrivals_add)
 
 /// Vessels Routes ///
-// Get all vessels from the database
+// GET all vessels from the database
 router.get("/vesselDetails", vessel_details_controller.vessel_get)
 
-// Post a single vessel to the database
+// POST a single vessel to the database
 router.post("/vessels/vesselDetails/:id", vessel_details_controller.vessel_add)
 
 module.exports = router
