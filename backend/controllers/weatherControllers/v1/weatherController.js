@@ -7,6 +7,37 @@ export function weatherIndex(req, res) {
 }
 
 // Path localhost:5000/api/weather/homeWeather
+export function findAll(req, res) {
+  HomeTemperatureSchema.find({})
+    .then((data) => {
+      res.send(data)
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error ocurred while retrieving temperature.",
+      })
+    })
+}
+
+// Path localhost:5000/api/weather/homeWeather/:id
+export function findOne(req, res) {
+  const id = req.params.id
+
+  HomeTemperatureSchema.findById(id)
+    .then((data) => {
+      if (!data)
+        res.status(404).send({ message: "Not found temperature with id " + id })
+      else res.send(data)
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Error retrieving temperature with id= " + id,
+      })
+    })
+}
+
+// Path localhost:5000/api/weather/homeWeather
 export function create(req, res) {
   // Validate request
   if (!req.body.location_lat || !req.body.location_lng) {
@@ -42,33 +73,70 @@ export function create(req, res) {
     )
 }
 
-// Path localhost:5000/api/weather/homeWeather
-export function findAll(req, res) {
-  HomeTemperatureSchema.find({})
+// Path localhost:5000/api/weather/homeWeather/:id
+export function updateOne(req, res) {
+  if (!req.body) {
+    return res.status(400).send({
+      message: "Data to update cannot be empty!",
+    })
+  }
+
+  const id = req.params.id
+
+  HomeTemperatureSchema.findByIdAndUpdate(id, req.body, {
+    useFindAndModify: false,
+  })
     .then((data) => {
-      res.send(data)
+      if (!data)
+        res.status(404).send({
+          message:
+            "Cannnot update temperature readings with id=${id}. Maybe temperature readings was not found!",
+        })
+      else
+        res.send({ message: "temperature readings was updated successfully." })
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || "Some error ocurred while retrieving temperature.",
+          err.message || "Error updating temperature readings with id= " + id,
+      })
+    })
+}
+
+// Path localhost:5000/api/weather/homeWeather
+export function deleteAll(req, res) {
+  HomeTemperatureSchema.deleteMany({})
+    .then((data) => {
+      res.send({
+        message:
+          "${data.deletedCount} temperature readings were deleted successfully!",
+      })
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error occurred while removing all temperature readings",
       })
     })
 }
 
 // Path localhost:5000/api/weather/homeWeather/:id
-export function findOne(req, res) {
+export function deleteOne(req, res) {
   const id = req.params.id
 
-  HomeTemperatureSchema.findById(id)
+  HomeTemperatureSchema.findByIdAndRemove(id)
     .then((data) => {
-      if (!data)
-        res.status(404).send({ message: "Not found temperature with id " + id })
-      else res.send(data)
+      if (!data) {
+        res.status(404).send({
+          message:
+            "Cannot delete temperature reading with id=${id}. Maybe temperature reading was not found!",
+        })
+      }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Error retrieving temperature with id= " + id,
+        message: "Could not delete temperature reading with id=" + id,
       })
     })
 }
