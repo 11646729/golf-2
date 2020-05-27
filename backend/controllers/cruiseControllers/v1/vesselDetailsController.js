@@ -1,14 +1,17 @@
 import { VesselDetailsSchema } from "../../../models/cruiseModels/v1/vesselDetailsSchema"
 
 // Path localhost:5000/api/cruise/vessels
-export function vessel_get(req, res) {
+export function findAll(req, res) {
   VesselDetailsSchema.find()
     .then((vessel) => res.json(vessel))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
+// Path localhost:5000/api/cruise/vessels/:id
+export function findOne(req, res) {}
+
 // Path localhost:5000/api/cruise/vessels/add
-export function vessel_add(req, res) {
+export function create(req, res) {
   const newVessel = new VesselDetailsSchema({
     databaseVersion: req.body.databaseVersion,
     vesselNameUrl: req.body.vessel_name_url,

@@ -7,14 +7,17 @@ export function cruiseIndex(req, res) {
 }
 
 // Path localhost:5000/api/cruise/portArrivals
-export function port_arrivals_get(req, res) {
+export function findAll(req, res) {
   PortArrivalSchema.find({})
     .then((portArrival) => res.json(portArrival))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
+// Path localhost:5000/api/cruise/portArrivals/:id
+export function findOne(req, res) {}
+
 // Path localhost:5000/api/cruise/portArrivals/add
-export function port_arrivals_add(req, res) {
+export function create(req, res) {
   const location = new CoordsSchema({
     lat: req.body.port_coordinates_lat,
     lng: req.body.port_coordinates_lng,
