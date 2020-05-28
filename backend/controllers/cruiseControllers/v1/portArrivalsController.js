@@ -141,3 +141,14 @@ export function deleteOne(req, res) {
       })
     })
 }
+
+// Direct call
+export function directDeleteAll() {
+  PortArrivalSchema.deleteMany({}, (err) => {
+    if (err) {
+      console.log("Some error occurred while removing all port arrivals")
+    } else {
+      console.log("All port arrivals were deleted successfully!")
+    }
+  })
+}

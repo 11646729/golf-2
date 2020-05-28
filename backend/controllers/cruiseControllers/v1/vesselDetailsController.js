@@ -143,3 +143,14 @@ export function deleteOne(req, res) {
       })
     })
 }
+
+// Direct call
+export function directDeleteAll() {
+  VesselDetailsSchema.deleteMany({}, (err) => {
+    if (err) {
+      console.log("Some error occurred while removing all vessel details")
+    } else {
+      console.log("All vessel details were deleted successfully!")
+    }
+  })
+}

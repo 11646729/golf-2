@@ -140,3 +140,14 @@ export function deleteOne(req, res) {
       })
     })
 }
+
+// Direct call
+export function directDeleteAll() {
+  TemperatureSchema.deleteMany({}, (err) => {
+    if (err) {
+      console.log("Some error occurred while removing all temperature readings")
+    } else {
+      console.log("All temperature readings were deleted successfully!")
+    }
+  })
+}
