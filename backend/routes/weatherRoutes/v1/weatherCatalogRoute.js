@@ -9,18 +9,18 @@ const weather_controller = require("../../../controllers/weatherControllers/v1/w
 router.get("/", weather_controller.weatherIndex)
 
 // GET all temperature readings from the database
-router.get("/homeWeather", weather_controller.findAll)
+router.get("/weather", weather_controller.findAll)
 
 // POST a temperature reading to the database
-router.post("/homeWeather/:id", weather_controller.create)
+router.post("/weather/:id", weather_controller.create)
 
 // UPDATE a temperature reading by id
-router.put("/homeWeather/:id", weather_controller.updateOne)
+router.put("/weather/:id", weather_controller.updateOne)
 
 // DELETE all temperature readings
-router.delete("/homeWeather", weather_controller.deleteAll)
+router.delete("/weather", weather_controller.deleteAll)
 
 // DELETE a temperature reading by id
-router.delete("/homeWeather/:id", weather_controller.deleteOne)
+router.delete("/weather/:id", weather_controller.deleteOne)
 
 module.exports = router
