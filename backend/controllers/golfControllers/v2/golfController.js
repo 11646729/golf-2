@@ -82,7 +82,7 @@ export function create(req, res) {
     )
 }
 
-// Path localhost:5000/api/golf/nearbyGolfCourses/id
+// Path localhost:5000/api/golf/nearbyGolfCourses/:id
 export function updateOne(req, res) {
   if (!req.body) {
     return res.status(400).send({
@@ -129,7 +129,7 @@ export function deleteAll(req, res) {
     })
 }
 
-// Path localhost:5000/api/golf/nearbyGolfCourses/id
+// Path localhost:5000/api/golf/nearbyGolfCourses/:id
 export function deleteOne(req, res) {
   const id = req.params.id
 
