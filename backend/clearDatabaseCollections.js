@@ -2,7 +2,7 @@
 
 import { PortArrivalSchema } from "./models/cruiseModels/v1/portArrivalSchema"
 import { VesselDetailsSchema } from "./models/cruiseModels/v1/vesselDetailsSchema"
-import { HomeTemperatureSchema } from "./models/weatherModels/v1/rtTemperatureSchema"
+import { TemperatureSchema } from "./models/weatherModels/v1/temperatureSchema"
 
 export const clearDatabaseCollections = async () => {
   // First delete all previous data
@@ -22,7 +22,7 @@ export const clearDatabaseCollections = async () => {
     }
   })
 
-  HomeTemperatureSchema.deleteMany({}, function (error) {
+  TemperatureSchema.deleteMany({}, function (error) {
     if (error) {
       console.log("Error in Temperature.deleteMany() : ", error)
     } else {

@@ -2,7 +2,7 @@
 
 import axios from "axios"
 import moment from "moment"
-import { TemperatureSchema } from "./models/weatherModels/v1/rtTemperatureSchema"
+import { TemperatureSchema } from "./models/weatherModels/v1/temperatureSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to fetch weather data from the Dark Skies website

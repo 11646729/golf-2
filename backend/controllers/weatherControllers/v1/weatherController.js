@@ -1,4 +1,4 @@
-import { TemperatureSchema } from "../../../models/weatherModels/v1/rtTemperatureSchema"
+import { TemperatureSchema } from "../../../models/weatherModels/v1/temperatureSchema"
 import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
 
 // Path localhost:5000/api/weather/
