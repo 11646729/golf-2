@@ -1,4 +1,4 @@
-import { HomeTemperatureSchema } from "../../../models/weatherModels/v1/rtTemperatureSchema"
+import { TemperatureSchema } from "../../../models/weatherModels/v1/rtTemperatureSchema"
 import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
 
 // Path localhost:5000/api/weather/
@@ -6,9 +6,9 @@ export function weatherIndex(req, res) {
   res.send({ response: "I am alive" }).status(200)
 }
 
-// Path localhost:5000/api/weather/homeWeather
+// Path localhost:5000/api/weather/temperatures
 export function findAll(req, res) {
-  HomeTemperatureSchema.find({})
+  TemperatureSchema.find({})
     .then((data) => {
       res.send(data)
     })
@@ -20,11 +20,11 @@ export function findAll(req, res) {
     })
 }
 
-// Path localhost:5000/api/weather/homeWeather/:id
+// Path localhost:5000/api/weather/temperatures/:id
 export function findOne(req, res) {
   const id = req.params.id
 
-  HomeTemperatureSchema.findById(id)
+  TemperatureSchema.findById(id)
     .then((data) => {
       if (!data)
         res.status(404).send({ message: "Not found temperature with id " + id })
@@ -37,7 +37,7 @@ export function findOne(req, res) {
     })
 }
 
-// Path localhost:5000/api/weather/homeWeather
+// Path localhost:5000/api/weather/temperatures
 export function create(req, res) {
   // Validate request
   if (!req.body.location_lat || !req.body.location_lng) {
@@ -50,7 +50,7 @@ export function create(req, res) {
     lng: req.body.location_lng,
   })
 
-  const homeTemperature = new HomeTemperatureSchema({
+  const temperature = new TemperatureSchema({
     databaseVersion: req.body.databaseVersion,
     timeOfMeasurement: req.body.databaseVersion,
     locationName: location,
@@ -59,7 +59,7 @@ export function create(req, res) {
   })
 
   // Save the temperature in the database
-  homeTemperature
+  temperature
     .save()
     .then((data) => {
       res.send(data)
@@ -73,7 +73,7 @@ export function create(req, res) {
     )
 }
 
-// Path localhost:5000/api/weather/homeWeather/:id
+// Path localhost:5000/api/weather/temperatures/:id
 export function updateOne(req, res) {
   if (!req.body) {
     return res.status(400).send({
@@ -83,7 +83,7 @@ export function updateOne(req, res) {
 
   const id = req.params.id
 
-  HomeTemperatureSchema.findByIdAndUpdate(id, req.body, {
+  TemperatureSchema.findByIdAndUpdate(id, req.body, {
     useFindAndModify: false,
   })
     .then((data) => {
@@ -103,9 +103,9 @@ export function updateOne(req, res) {
     })
 }
 
-// Path localhost:5000/api/weather/homeWeather
+// Path localhost:5000/api/weather/temperatures
 export function deleteAll(req, res) {
-  HomeTemperatureSchema.deleteMany({})
+  TemperatureSchema.deleteMany({})
     .then((data) => {
       res.send({
         message:
@@ -121,11 +121,11 @@ export function deleteAll(req, res) {
     })
 }
 
-// Path localhost:5000/api/weather/homeWeather/:id
+// Path localhost:5000/api/weather/temperatures/:id
 export function deleteOne(req, res) {
   const id = req.params.id
 
-  HomeTemperatureSchema.findByIdAndRemove(id)
+  TemperatureSchema.findByIdAndRemove(id)
     .then((data) => {
       if (!data) {
         res.status(404).send({

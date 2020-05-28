@@ -24,9 +24,9 @@ export const clearDatabaseCollections = async () => {
 
   HomeTemperatureSchema.deleteMany({}, function (error) {
     if (error) {
-      console.log("Error in HomeTemperature.deleteMany() : ", error)
+      console.log("Error in Temperature.deleteMany() : ", error)
     } else {
-      console.log("HomeTemperature collection emptied")
+      console.log("Temperature collection emptied")
     }
   })
 }

@@ -2,7 +2,7 @@
 
 import axios from "axios"
 import moment from "moment"
-import { HomeTemperatureSchema } from "./models/weatherModels/v1/rtTemperatureSchema"
+import { TemperatureSchema } from "./models/weatherModels/v1/rtTemperatureSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to fetch weather data from the Dark Skies website
@@ -70,7 +70,7 @@ export const saveDarkSkiesDataToDatabase = async (darkSkiesData) => {
     const location_temperature = darkSkiesData.data.currently.temperature
 
     // // Now create a model instance
-    const homeTemperature = new HomeTemperatureSchema({
+    const temperature = new TemperatureSchema({
       databaseVersion: database_version,
       timeOfMeasurement: time_of_measurement,
       locationName: location_name,
@@ -79,7 +79,7 @@ export const saveDarkSkiesDataToDatabase = async (darkSkiesData) => {
     })
 
     // Now save in mongoDB
-    homeTemperature
+    temperature
       .save()
       // .then(() => console.log("Temperature Measurement saved"))
       .catch((err) => console.log("Error: " + err))
