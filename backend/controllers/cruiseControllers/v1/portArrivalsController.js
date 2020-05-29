@@ -142,7 +142,7 @@ export function deleteOne(req, res) {
     })
 }
 
-// Direct call
+// Direct call to delete all port arrivals in the database
 export function directDeleteAll() {
   PortArrivalSchema.deleteMany({}, (err) => {
     if (err) {

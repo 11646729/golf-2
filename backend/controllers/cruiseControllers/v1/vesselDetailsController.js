@@ -144,7 +144,7 @@ export function deleteOne(req, res) {
     })
 }
 
-// Direct call
+// Direct call to delete all vessel details in the database
 export function directDeleteAll() {
   VesselDetailsSchema.deleteMany({}, (err) => {
     if (err) {
