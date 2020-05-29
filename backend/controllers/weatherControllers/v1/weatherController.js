@@ -73,6 +73,32 @@ export function create(req, res) {
     )
 }
 
+// Direct call to save a new weather data reading in the database
+export const directCreate = (darkSkiesData) => {
+  const location_coords = new CoordsSchema({
+    lat: darkSkiesData.locationCoordinates.lat,
+    lng: darkSkiesData.locationCoordinates.lng,
+  })
+
+  const temperature = new TemperatureSchema({
+    databaseVersion: darkSkiesData.databaseVersion,
+    timeOfMeasurement: darkSkiesData.timeOfMeasurement,
+    locationName: darkSkiesData.locationName,
+    locationCoordinates: location_coords,
+    locationTemperature: darkSkiesData.locationTemperature,
+  })
+
+  temperature.save({}, (err) => {
+    if (err) {
+      console.log(
+        "Some error ocurred while creating the new temperature. " + err
+      )
+    } else {
+      console.log("A new temperature readings was created successfully!")
+    }
+  })
+}
+
 // Path localhost:5000/api/weather/temperatures/:id
 export function updateOne(req, res) {
   if (!req.body) {
@@ -141,7 +167,7 @@ export function deleteOne(req, res) {
     })
 }
 
-// Direct call
+// Direct call to delete all weather data in the database
 export function directDeleteAll() {
   TemperatureSchema.deleteMany({}, (err) => {
     if (err) {
