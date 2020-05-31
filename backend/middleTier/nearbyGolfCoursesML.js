@@ -1,42 +1,28 @@
 "use strict"
 
-import { NearbyGolfCourseSchema } from "./models/golfModels/v2/nearbyGolfCourseSchema"
-import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
-
-export const clearNearbyGolfCourseDataFromDatabase = async () => {
-  try {
-    NearbyGolfCourseSchema.deleteMany({}, function (error) {
-      if (error) {
-        console.log("Error in NearbyGolfCourse.deleteMany() : ", error)
-      } else {
-        console.log("NearbyGolfCourse collection emptied")
-      }
-    })
-  } catch (error) {
-    // handle error
-    console.log("Error in clearNearbyGolfCourseDataFromDatabase: ", error)
-  }
-}
+import { NearbyGolfCourseSchema } from "../models/golfModels/v2/nearbyGolfCourseSchema"
+import { CoordsSchema } from "../models/commonModels/v1/coordsSchema"
+import { directFindAll } from "../controllers/golfControllers/v2/golfController"
 
 // Function to fetch nearby golf course data from the database
-export const getNearbyGolfCourseDataFromDatabase = async () => {
-  try {
-    const golfCourses = await NearbyGolfCourseSchema.find()
-
-    // console.log("Data from mongoDB is : " + golfCourses)
-
-    return golfCourses
-  } catch (error) {
-    // handle error
-    console.log("Error in getNearbyGolfCourseDataFromDatabase: ", error)
-  }
+export function getNearbyGolfCourseDataFromDatabase() {
+  // try {
+  //   console.log("Here I am")
+  //   const golfCourses = directFindAll()
+  //   console.log(
+  //     "getNearbyGolfCourseDataFromDatabase Data from mongoDB is : " +
+  //       JSON.stringify(golfCourses)
+  //   )
+  // } catch (err) {
+  //   console.log("Error in getNearbyGolfCourseDataFromDatabase: ", err)
+  // }
 }
 
 // Function to save nearby golf course data to mongodb
 // Longitude first in Javascript
 export const saveNearbyGolfCourseDataToDatabase = async () => {
   try {
-    const json = require("./nearbyGolfCourses.json")
+    const json = require("../nearbyGolfCourses.json")
 
     let i = 0
     do {

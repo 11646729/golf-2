@@ -93,8 +93,6 @@ export const directCreate = (darkSkiesData) => {
       console.log(
         "Some error ocurred while creating the new temperature. " + err
       )
-    } else {
-      console.log("A new temperature readings was created successfully!")
     }
   })
 }
@@ -147,6 +145,17 @@ export function deleteAll(req, res) {
     })
 }
 
+// Direct call to delete all weather data in the database
+export function directDeleteAll() {
+  TemperatureSchema.deleteMany({}, (err) => {
+    if (err) {
+      console.log("Some error occurred while removing all temperature readings")
+    } else {
+      console.log("All temperature readings were deleted successfully!")
+    }
+  })
+}
+
 // Path localhost:5000/api/weather/temperatures/:id
 export function deleteOne(req, res) {
   const id = req.params.id
@@ -165,15 +174,4 @@ export function deleteOne(req, res) {
         message: "Could not delete temperature reading with id=" + id,
       })
     })
-}
-
-// Direct call to delete all weather data in the database
-export function directDeleteAll() {
-  TemperatureSchema.deleteMany({}, (err) => {
-    if (err) {
-      console.log("Some error occurred while removing all temperature readings")
-    } else {
-      console.log("All temperature readings were deleted successfully!")
-    }
-  })
 }

@@ -21,6 +21,24 @@ export function findAll(req, res) {
     })
 }
 
+// Path localhost:5000/api/golf/nearbyGolfCourses
+// export const saveDarkSkiesDataToDatabase = async (darkSkiesData) => {
+export function directFindAll() {
+  //   function getJedisQuery(name){
+  //     var query = Jedi.find({name:name});
+  //     return query;
+  //  }
+
+  NearbyGolfCourseSchema.find()
+    .then((data) => {
+      // console.log("Data received from database is: " + data)
+      return data
+    })
+    .catch((err) => {
+      console.log("Some error ocurred while retrieving nearbyGolfCourses.")
+    })
+}
+
 // Path localhost:5000/api/golf/nearbyGolfCourses/:id
 export function findOne(req, res) {
   const id = req.params.id
@@ -117,16 +135,27 @@ export function deleteAll(req, res) {
     .then((data) => {
       res.send({
         message:
-          "${data.deletedCount} NearbyGolfCourses were deleted successfully!",
+          "${data.deletedCount} Nearby Golf Courses were deleted successfully!",
       })
     })
     .catch((err) => {
       res.status(500).send({
         message:
           err.message ||
-          "Some error occurred while removing all nearbyGolfCourses",
+          "Some error occurred while removing all nearby Golf Courses",
       })
     })
+}
+
+// Direct call to delete all nearby Golf Course data in the database
+export function directDeleteAll() {
+  NearbyGolfCourseSchema.deleteMany({}, (err) => {
+    if (err) {
+      console.log("Some error occurred while removing all nearby Golf Courses")
+    } else {
+      console.log("All nearby Golf Courses were deleted successfully!")
+    }
+  })
 }
 
 // Path localhost:5000/api/golf/nearbyGolfCourses/:id
