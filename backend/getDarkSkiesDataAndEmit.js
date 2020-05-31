@@ -7,8 +7,9 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 import { directCreate as createTemperatureReading } from "./controllers/weatherControllers/v1/weatherController"
 
 // Function to fetch weather data from the Dark Skies website
-export const getDarkSkiesData = async () => {
+export const getAndSaveDarkSkiesData = async () => {
   try {
+    // build Dark Skies Url
     let darkSkiesUrl =
       process.env.DARK_SKY_URL +
       process.env.DARK_SKY_WEATHER_API_KEY +
@@ -18,10 +19,14 @@ export const getDarkSkiesData = async () => {
       process.env.HOME_LONGITUDE
 
     // fetch data from the url endpoint and return it
-    return await axios.get(darkSkiesUrl)
-  } catch (error) {
-    // handle error
-    console.log("Error in fetchDarkSkiesData: ", error)
+    const data = await axios.get(darkSkiesUrl)
+
+    // call local save data function
+    saveDarkSkiesData(data)
+
+    return data
+  } catch (err) {
+    console.log("Error in fetchDarkSkiesData: ", err)
   }
 }
 
@@ -32,25 +37,13 @@ export const emitDarkSkiesData = async (socket, darkSkiesData) => {
       Time: darkSkiesData.data.currently.time,
       Temperature: darkSkiesData.data.currently.temperature,
     })
-  } catch (error) {
-    // handle error
-    console.log("Error in emitDarkSkiesData: ", error)
-  }
-}
-
-// Function to clear weather data array on the client
-export const clearDarkSkiesData = async (socket) => {
-  try {
-    await socket.emit("clearDataFromDarkSkiesAPI")
-    console.log("In the clearDarkSkiesData function")
-  } catch (error) {
-    // handle error
-    console.log("Error in clearDataFromDarkSkiesAPI: ", error)
+  } catch (err) {
+    console.log("Error in emitDarkSkiesData: ", err)
   }
 }
 
 // Function to save weather data to mongodb
-export const saveDarkSkiesDataToDatabase = async (darkSkiesData) => {
+const saveDarkSkiesData = async (darkSkiesData) => {
   try {
     // Database version
     const database_version = process.env.DATABASE_VERSION
@@ -79,7 +72,7 @@ export const saveDarkSkiesDataToDatabase = async (darkSkiesData) => {
       locationTemperature: location_temperature,
     })
 
-    // Now save in mongoDB
+    // Now save data in database
     createTemperatureReading(temperature)
   } catch (err) {
     console.log("Error in saveDarkSkiesDataToDatabase: ", err)

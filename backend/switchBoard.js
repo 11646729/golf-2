@@ -6,9 +6,8 @@ import { directDeleteAll as deleteAllPortArrivals } from "./controllers/cruiseCo
 import { directDeleteAll as deleteAllVesselDetails } from "./controllers/cruiseControllers/v1/vesselDetailsController"
 import { directDeleteAll as deleteAllTemperatureReadings } from "./controllers/weatherControllers/v1/weatherController"
 import {
-  getDarkSkiesData,
+  getAndSaveDarkSkiesData,
   emitDarkSkiesData,
-  saveDarkSkiesDataToDatabase,
 } from "./getDarkSkiesDataAndEmit"
 import {
   getNearbyGolfCourseDataFromDatabase,
@@ -37,9 +36,7 @@ export const runSwitchboard = (io) => {
     })
 
     cron.schedule("* * * * *", () => {
-      // console.log("Started getting Dark Skies Weather data")
-
-      getDarkSkiesData().then((result) => {
+      getAndSaveDarkSkiesData().then((result) => {
         // console.log(
         //   "DarkSkiesData obtained: " + result.data.currently.temperature
         // )
@@ -47,13 +44,6 @@ export const runSwitchboard = (io) => {
         emitDarkSkiesData(socket, result).then(() => {
           // console.log(
           //   "Emitting DarkSkiesData over socket.io: " +
-          //     result.data.currently.temperature
-          // )
-        })
-
-        saveDarkSkiesDataToDatabase(result).then(() => {
-          // console.log(
-          //   "Saving DarkSkiesData to database: " +
           //     result.data.currently.temperature
           // )
         })
