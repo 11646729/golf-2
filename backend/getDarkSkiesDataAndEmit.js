@@ -33,9 +33,35 @@ export const getAndSaveDarkSkiesData = async () => {
 // Function to emit weather data to be consumed by the client
 export const emitDarkSkiesData = async (socket, darkSkiesData) => {
   try {
+    // Database version
+    const database_version = process.env.DATABASE_VERSION
+
+    // // Converted From UNIX Time
+    // const time_of_measurement = moment
+    //   .unix(darkSkiesData.data.currently.time)
+    //   .format()
+
+    const location_name = "Home"
+
+    // Home Coordinates in GeoJSON
+    const location_coords = new CoordsSchema({
+      lat: process.env.HOME_LATITUDE,
+      lng: process.env.HOME_LONGITUDE,
+    })
+
+    // // Now create a model instance
+    const temperature = new TemperatureSchema({
+      databaseVersion: database_version,
+      timeOfMeasurement: darkSkiesData.data.currently.time,
+      locationName: location_name,
+      locationCoordinates: location_coords,
+      locationTemperature: darkSkiesData.data.currently.temperature,
+    })
+
     await socket.emit("DataFromDarkSkiesAPI", {
-      Time: darkSkiesData.data.currently.time,
-      Temperature: darkSkiesData.data.currently.temperature,
+      temperature,
+      // timeOfMeasurement: darkSkiesData.data.currently.time,
+      // locationTemperature: darkSkiesData.data.currently.temperature,
     })
   } catch (err) {
     console.log("Error in emitDarkSkiesData: ", err)
