@@ -31,9 +31,9 @@ export const WeatherChart = () => {
   const theme = useTheme()
   const [data, setData] = useState([])
 
-  // socket.on("clearDataFromDarkSkiesAPI", () => {
-  //   setData((data) => [])
-  // })
+  const clearDataArray = () => {
+    setData((data) => [])
+  }
 
   // This line initialises the data array
   useEffect(() => {
@@ -43,7 +43,6 @@ export const WeatherChart = () => {
       )
       setData(result.data)
     }
-
     fetchData()
   }, [])
 
@@ -64,7 +63,7 @@ export const WeatherChart = () => {
           {Object.values(data[0])[4]} °F
         </Title>
       )}
-      <Button size="small" color="primary">
+      <Button size="small" color="primary" onClick={clearDataArray}>
         Clear
       </Button>
       <ResponsiveContainer>
