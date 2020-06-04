@@ -1,7 +1,6 @@
 "use strict"
 
 import axios from "axios"
-import moment from "moment"
 import { TemperatureSchema } from "./models/weatherModels/v1/temperatureSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 import { directCreate as createTemperatureReading } from "./controllers/weatherControllers/v1/weatherController"
@@ -36,11 +35,6 @@ export const emitDarkSkiesData = async (socket, darkSkiesData) => {
     // Database version
     const database_version = process.env.DATABASE_VERSION
 
-    // // Converted From UNIX Time
-    // const time_of_measurement = moment
-    //   .unix(darkSkiesData.data.currently.time)
-    //   .format()
-
     const location_name = "Home"
 
     // Home Coordinates in GeoJSON
@@ -60,8 +54,6 @@ export const emitDarkSkiesData = async (socket, darkSkiesData) => {
 
     await socket.emit("DataFromDarkSkiesAPI", {
       temperature,
-      // timeOfMeasurement: darkSkiesData.data.currently.time,
-      // locationTemperature: darkSkiesData.data.currently.temperature,
     })
   } catch (err) {
     console.log("Error in emitDarkSkiesData: ", err)
@@ -73,11 +65,6 @@ const saveDarkSkiesData = async (darkSkiesData) => {
   try {
     // Database version
     const database_version = process.env.DATABASE_VERSION
-
-    // Converted From UNIX Time
-    const time_of_measurement = moment
-      .unix(darkSkiesData.data.currently.time)
-      .format()
 
     const location_name = "Home"
 
@@ -92,7 +79,7 @@ const saveDarkSkiesData = async (darkSkiesData) => {
     // // Now create a model instance
     const temperature = new TemperatureSchema({
       databaseVersion: database_version,
-      timeOfMeasurement: time_of_measurement,
+      timeOfMeasurement: darkSkiesData.data.currently.time,
       locationName: location_name,
       locationCoordinates: location_coords,
       locationTemperature: location_temperature,

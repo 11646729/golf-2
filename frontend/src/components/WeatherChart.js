@@ -33,21 +33,25 @@ export const WeatherChart = () => {
 
   // This line clears the data array
   useEffect(() => {
-    socket.on("clearDataFromDarkSkiesAPI", () => {
-      setData((data) => [])
-    })
-  })
+    // socket.on("clearDataFromDarkSkiesAPI", () => {
+    //   setData((data) => [])
+    // })
 
-  // // This line initializes the data array from the database
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:5000/api/weather/temperatureReadings")
-  //     .then((resp) => {
-  //       setData((data) => [...data, resp.data[0]])
-  //       console.log(resp.data[0])
-  //       console.log(data.length)
-  //     })
-  // })
+    let i = 0
+
+    const fetchData = async () => {
+      const result = await axios(
+        "http://localhost:5000/api/weather/temperatureReadings"
+      )
+
+      do {
+        setData((data) => [...data, result.data[i]])
+        i++
+      } while (i < result.data.length)
+    }
+
+    fetchData()
+  }, [])
 
   // Listen for realtime weather data and update the state
   useEffect(() => {
@@ -55,8 +59,6 @@ export const WeatherChart = () => {
       setData((data) => [...data, currentData.temperature])
     })
   }, [])
-
-  console.log(data[0])
 
   return (
     <div style={{ width: "100%", height: 300 }}>
