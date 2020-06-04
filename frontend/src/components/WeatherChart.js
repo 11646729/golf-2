@@ -31,23 +31,17 @@ export const WeatherChart = () => {
   const theme = useTheme()
   const [data, setData] = useState([])
 
-  // This line clears the data array
+  // socket.on("clearDataFromDarkSkiesAPI", () => {
+  //   setData((data) => [])
+  // })
+
+  // This line initialises the data array
   useEffect(() => {
-    // socket.on("clearDataFromDarkSkiesAPI", () => {
-    //   setData((data) => [])
-    // })
-
-    let i = 0
-
     const fetchData = async () => {
       const result = await axios(
         "http://localhost:5000/api/weather/temperatureReadings"
       )
-
-      do {
-        setData((data) => [...data, result.data[i]])
-        i++
-      } while (i < result.data.length)
+      setData(result.data)
     }
 
     fetchData()
