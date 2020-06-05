@@ -7,11 +7,8 @@ import {
   InfoWindow,
 } from "@react-google-maps/api"
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
-// import fileDatabase from "./testNearbyGolfCourseData.json"
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json())
-
-// const Marker = ({ children }) => children
 
 export default function GoogleMapContainer() {
   const { isLoaded, loadError } = useLoadScript({
@@ -50,8 +47,6 @@ export default function GoogleMapContainer() {
     "http://localhost:5000/api/golf/nearbyGolfCourses"
   const { data, error } = useSwr(url, { fetcher })
   const markers = data && !error ? data : []
-
-  // console.log(markers[0])
 
   if (error) return "Error loading Map"
   if (!data) return "Loading Map..."
