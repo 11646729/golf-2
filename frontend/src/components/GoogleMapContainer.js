@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import useSwr from "swr"
 import {
   GoogleMap,
   useLoadScript,
@@ -6,25 +7,21 @@ import {
   InfoWindow,
 } from "@react-google-maps/api"
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
-import fileDatabase from "./testNearbyGolfCourseData.json"
+// import fileDatabase from "./testNearbyGolfCourseData.json"
+
+const fetcher = (...args) => fetch(...args).then((response) => response.json())
+
+// const Marker = ({ children }) => children
 
 export default function GoogleMapContainer() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
-  const [markers, setMarkers] = useState("")
+  // const [markers, setMarkers] = useState([])
   const [selected, setSelected] = useState(null)
 
-  // Listen for data and update the state
-  useEffect(() => {
-    setMarkers((markers) => [...markers, fileDatabase])
-  }, [])
-
-  if (loadError) return "Error loading Map"
-  if (!isLoaded) return "Loading Map..."
-
   const styles = {
-    map: {
+    displayMap: {
       position: "absolute",
       height: "86vh", // 100vh
       width: "98%",
@@ -48,16 +45,27 @@ export default function GoogleMapContainer() {
     zoomControl: true,
   }
 
+  const url =
+    // "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10"
+    "http://localhost:5000/api/golf/nearbyGolfCourses"
+  const { data, error } = useSwr(url, { fetcher })
+  const markers = data && !error ? data : []
+
+  // console.log(markers[0])
+
+  if (error) return "Error loading Map"
+  if (!data) return "Loading Map..."
+
   const renderMap = () => {
     return (
       <div>
         <GoogleMap
-          mapContainerStyle={styles.map}
+          mapContainerStyle={styles.displayMap}
           zoom={14}
           center={defaultCenter}
           options={options}
         >
-          {markers[0].map((marker) => (
+          {markers.map((marker) => (
             <Marker
               key={marker.name}
               position={marker.coordinates}
@@ -88,7 +96,7 @@ export default function GoogleMapContainer() {
               </Card>
             </InfoWindow>
           ) : null}
-        </GoogleMap>
+        </GoogleMap>{" "}
       </div>
     )
   }

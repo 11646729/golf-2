@@ -33,6 +33,7 @@
     "recharts": "^1.8.5",
     "sass": "^1.23.7",
     "socket.io-client": "^2.3.0",
+    "swr": "^0.2.2",
     "typescript": "^3.7.3",
     "use-position": "0.0.6"
   },
