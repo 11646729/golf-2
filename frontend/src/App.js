@@ -15,9 +15,10 @@ import EditIcon from "@material-ui/icons/Edit"
 import HomeIcon from "@material-ui/icons/Home"
 import MenuIcon from "@material-ui/icons/Menu"
 
-import GoogleMapContainer from "./components/GoogleMapContainer"
+import GoogleMapContainer from "./components/CoursesGMContainer"
 import LeafletMap from "./components/LeafletMap"
 import CruiseTable from "./components/CruiseTable"
+import CrimesMap from "./components/CrimeGMContainer"
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -78,6 +79,7 @@ export default function App() {
         <Route path="googlemap" element={<GoogleMapLink />} />
         <Route path="leaflet" element={<LeafletMapLink />} />
         <Route path="cruisetable" element={<CruiseTableLink />} />
+        <Route path="crimesmap" element={<CrimesMapLink />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
@@ -98,6 +100,10 @@ function LeafletMapLink() {
 
 function CruiseTableLink() {
   return <CruiseTable />
+}
+
+function CrimesMapLink() {
+  return <CrimesMap />
 }
 
 function NotFound() {

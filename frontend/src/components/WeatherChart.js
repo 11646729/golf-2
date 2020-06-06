@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import useSwr from "swr"
 import axios from "axios"
 // import { Link } from "react-router-dom"
 import Button from "@material-ui/core/Button"
@@ -16,6 +17,8 @@ import {
   ResponsiveContainer,
 } from "recharts"
 import Title from "./Title"
+
+const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
 const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
@@ -45,6 +48,20 @@ export const WeatherChart = () => {
     }
     fetchData()
   }, [])
+
+  // const url = "http://localhost:5000/api/weather/temperatureReadings"
+  // const { tempData, error } = useSwr(url, { fetcher })
+  // const data = tempData && !error ? tempData : []
+
+  // if (data && !error) {
+  //   return setMarkers(data)
+  // } else {
+  //   if (error) return "Error loading Map"
+  //   if (!data) return "Loading Map..."
+  // }
+
+  // if (error) return "Error loading Data"
+  // if (!tempData) return "Loading Data..."
 
   // Listen for realtime weather data and update the state
   useEffect(() => {

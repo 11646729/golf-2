@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import useSwr from "swr"
 import {
   GoogleMap,
@@ -94,6 +94,10 @@ export default function GoogleMapContainer() {
         </GoogleMap>{" "}
       </div>
     )
+  }
+
+  if (loadError) {
+    return <div>Map cannot be loaded right now, sorry.</div>
   }
 
   return isLoaded ? renderMap() : null

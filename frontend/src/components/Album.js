@@ -13,6 +13,7 @@ import WeatherChart from "./WeatherChart"
 import NearbyGolfCoursesCard from "./NearbyGolfCoursesCard"
 import LeafletMapCard from "./LeafletMapCard"
 import CruiseTableCard from "./CruiseTableCard"
+import CrimesCard from "./CrimesCard"
 
 function Copyright() {
   return (
@@ -131,6 +132,9 @@ export default function Album() {
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <CruiseTableCard />
+            </Grid>
+            <Grid item sm={4} style={{ padding: 20 }}>
+              <CrimesCard />
             </Grid>
           </Grid>
         </Container>
