@@ -45,7 +45,7 @@ export default function NearbyCrimesCard() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" component={Link} to="/googlemap">
+        <Button size="small" color="primary" component={Link} to="/crimesmap">
           View
         </Button>
       </CardActions>

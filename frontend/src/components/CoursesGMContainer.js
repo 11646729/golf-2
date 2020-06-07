@@ -42,9 +42,7 @@ export default function GoogleMapContainer() {
     zoomControl: true,
   }
 
-  const url =
-    // "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10"
-    "http://localhost:5000/api/golf/nearbyGolfCourses"
+  const url = "http://localhost:5000/api/golf/nearbyGolfCourses"
   const { data, error } = useSwr(url, { fetcher })
   const markers = data && !error ? data : []
 
