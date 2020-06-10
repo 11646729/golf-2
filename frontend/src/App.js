@@ -19,6 +19,7 @@ import GoogleMapContainer from "./components/CoursesGMContainer"
 import LeafletMap from "./components/LeafletMap"
 import CruiseTable from "./components/CruiseTable"
 import CrimesMap from "./components/CrimeGMContainer"
+import CrimesMapApi from "./components/CrimeGMContainerApi"
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -103,7 +104,8 @@ function CruiseTableLink() {
 }
 
 function CrimesMapLink() {
-  return <CrimesMap />
+  return <CrimesMapApi />
+  // return <CrimesMap />
 }
 
 function NotFound() {

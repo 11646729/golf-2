@@ -10,13 +10,10 @@ const Marker = ({ children }) => children
 
 export default function GoogleMapContainer() {
   const mapRef = useRef()
+
   const [bounds, setBounds] = useState(null)
   const [zoom, setZoom] = useState(10)
-
-  // const url =
-  //   "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10"
-  // const { data, error } = useSwr(url, { fetcher })
-  // const crimes = data && !error ? data.slice(0, 2000) : []
+  const [selected, setSelected] = useState(null)
 
   // build Crimes Url
   let crimesUrl =
@@ -25,7 +22,7 @@ export default function GoogleMapContainer() {
     process.env.REACT_APP_HOME_LATITUDE +
     "&lng=" +
     process.env.REACT_APP_HOME_LONGITUDE +
-    "&date=2019-10"
+    "&date=2020-04"
 
   // fetch data
   const { data, error } = useSwr(crimesUrl, { fetcher })
@@ -50,15 +47,39 @@ export default function GoogleMapContainer() {
     options: { radius: 75, maxZoom: 20 },
   })
 
+  console.log("Crimes: " + crimes)
+  console.log("Points: " + points)
+  console.log("Bounds: " + bounds)
+  console.log("Zoom: " + zoom)
+  console.log("Clusters: " + clusters)
+  console.log("Supercluster: " + supercluster)
+
+  const styles = {
+    displayMap: {
+      position: "absolute",
+      height: "86vh", // 100vh
+      width: "98%",
+      margin: "20px",
+    },
+  }
+
+  const myDefaultCenter = {
+    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE), // 54.665577
+    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE), // -5.766897
+  }
+
+  const options = {
+    disableDefaultUI: true,
+    zoomControl: true,
+  }
+
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div style={styles.displayMap}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
-        defaultCenter={{
-          lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-          lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-        }}
-        defaultZoom={10}
+        center={myDefaultCenter}
+        options={options}
+        zoom={10}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map }) => {
           mapRef.current = map
@@ -114,7 +135,13 @@ export default function GoogleMapContainer() {
               lat={latitude}
               lng={longitude}
             >
-              <button className="crime-marker">
+              <button
+                className="crime-marker"
+                onClick={() => {
+                  console.log(cluster.properties.category)
+                  setSelected(cluster)
+                }}
+              >
                 <img src="/static/images/custody.svg" alt="crime doesn't pay" />
               </button>
             </Marker>

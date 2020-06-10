@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 import useSwr from "swr"
 import {
   GoogleMap,
@@ -7,6 +7,8 @@ import {
   InfoWindow,
 } from "@react-google-maps/api"
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
+// import useSupercluster from "use-supercluster"
+// import "../App.css"
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
@@ -14,10 +16,42 @@ export default function GoogleMapContainer() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
-  // const [markers, setMarkers] = useState([])
+
+  // const mapRef = useRef()
+
+  // const [bounds, setBounds] = useState(null)
+  // const [zoom, setZoom] = useState(10)
   const [selected, setSelected] = useState(null)
 
   console.log(selected)
+
+  // build Crimes Url
+  let crimesUrl =
+    process.env.REACT_APP_CRIMES_ENDPOINT +
+    "?lat=" +
+    process.env.REACT_APP_HOME_LATITUDE +
+    "&lng=" +
+    process.env.REACT_APP_HOME_LONGITUDE +
+    "&date=2020-04"
+
+  // fetch data
+  const { data, error } = useSwr(crimesUrl, { fetcher })
+  const markers = data && !error ? data : []
+
+  if (error) return "Error loading Map"
+  if (!data) return "Loading Map..."
+
+  const points = markers.map((crime) => ({
+    type: "Feature",
+    properties: { cluster: false, crimeId: crime.id, category: crime.category },
+    geometry: {
+      type: "Point",
+      coordinates: {
+        lat: parseFloat(crime.location.latitude),
+        lng: parseFloat(crime.location.longitude),
+      },
+    },
+  }))
 
   const styles = {
     displayMap: {
@@ -39,39 +73,31 @@ export default function GoogleMapContainer() {
   }
 
   const options = {
-    mapTypeId: "hybrid",
     disableDefaultUI: true,
     zoomControl: true,
   }
-
-  const url = "http://localhost:5000/api/golf/nearbyGolfCourses"
-  const { data, error } = useSwr(url, { fetcher })
-  const markers = data && !error ? data : []
-
-  if (error) return "Error loading Map"
-  if (!data) return "Loading Map..."
 
   const renderMap = () => {
     return (
       <div>
         <GoogleMap
           mapContainerStyle={styles.displayMap}
-          zoom={14}
+          zoom={10}
           center={defaultCenter}
           options={options}
         >
-          {markers.map((marker) => (
+          {points.map((crime) => (
             <Marker
-              key={marker.name}
-              position={marker.coordinates}
+              key={crime.properties.crimeId}
+              position={crime.geometry.coordinates}
               onClick={() => {
-                setSelected(marker)
+                setSelected(crime)
               }}
             />
           ))}
           {selected ? (
             <InfoWindow
-              position={selected.coordinates}
+              position={selected.geometry.coordinates}
               onCloseClick={() => {
                 setSelected(null)
               }}
@@ -79,14 +105,16 @@ export default function GoogleMapContainer() {
               <Card>
                 <CardMedia
                   style={styles.media}
-                  image={selected.photoUrl}
-                  title={selected.photoTitle}
+                  // image={selected.photoUrl}
+                  title={selected.properties.category}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    {selected.name}
+                    {selected.properties.category}
                   </Typography>
-                  <Typography component="p">{selected.description}</Typography>
+                  <Typography component="p">
+                    {selected.properties.category}
+                  </Typography>
                 </CardContent>
               </Card>
             </InfoWindow>
