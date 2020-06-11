@@ -1,19 +1,40 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useCallback } from "react"
 import useSwr from "swr"
-import GoogleMapReact from "google-map-react"
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api"
+import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
 import useSupercluster from "use-supercluster"
 import "../App.css"
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
-const Marker = ({ children }) => children
-
 export default function GoogleMapContainer() {
-  const mapRef = useRef()
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
+  })
+
+  // const mapRef = useRef()
 
   const [bounds, setBounds] = useState(null)
   const [zoom, setZoom] = useState(10)
   const [selected, setSelected] = useState(null)
+  const [map, setMap] = useState(null)
+
+  const onLoad = useCallback(function callback(map) {
+    const bounds = new window.google.maps.LatLngBounds()
+    console.log(bounds)
+
+    // map.fitBounds(bounds)
+    // setMap(map)
+  }, [])
+
+  const onUnmount = useCallback(function callback(map) {
+    setMap(null)
+  }, [])
 
   // build Crimes Url
   let crimesUrl =
@@ -28,31 +49,34 @@ export default function GoogleMapContainer() {
   const { data, error } = useSwr(crimesUrl, { fetcher })
   const crimes = data && !error ? data : []
 
+  // if (error) return "Error loading Map"
+  // if (!data) return "Loading Map..."
+
   const points = crimes.map((crime) => ({
     type: "Feature",
     properties: { cluster: false, crimeId: crime.id, category: crime.category },
     geometry: {
       type: "Point",
-      coordinates: [
-        parseFloat(crime.location.longitude),
-        parseFloat(crime.location.latitude),
-      ],
+      coordinates: {
+        lat: parseFloat(crime.location.latitude),
+        lng: parseFloat(crime.location.longitude),
+      },
     },
   }))
 
-  const { clusters, supercluster } = useSupercluster({
-    points,
-    bounds,
-    zoom,
-    options: { radius: 75, maxZoom: 20 },
-  })
+  // const { clusters, supercluster } = useSupercluster({
+  //   points,
+  //   bounds,
+  //   zoom,
+  //   options: { radius: 75, maxZoom: 20 },
+  // })
 
-  console.log("Crimes: " + crimes)
-  console.log("Points: " + points)
-  console.log("Bounds: " + bounds)
-  console.log("Zoom: " + zoom)
-  console.log("Clusters: " + clusters)
-  console.log("Supercluster: " + supercluster)
+  // console.log("Crimes: " + crimes)
+  // console.log("Points: " + points)
+  // console.log("Bounds: " + bounds)
+  // console.log("Zoom: " + zoom)
+  // console.log("Clusters: " + clusters)
+  // console.log("Supercluster: " + supercluster)
 
   const styles = {
     displayMap: {
@@ -61,9 +85,14 @@ export default function GoogleMapContainer() {
       width: "98%",
       margin: "20px",
     },
+    media: {
+      height: 0,
+      paddingTop: "56.25%", // 16:9,
+      marginTop: "30",
+    },
   }
 
-  const myDefaultCenter = {
+  const defaultCenter = {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE), // 54.665577
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE), // -5.766897
   }
@@ -73,81 +102,71 @@ export default function GoogleMapContainer() {
     zoomControl: true,
   }
 
-  return (
-    <div style={styles.displayMap}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
-        center={myDefaultCenter}
-        options={options}
-        zoom={10}
-        yesIWantToUseGoogleMapApiInternals
-        onGoogleApiLoaded={({ map }) => {
-          mapRef.current = map
-        }}
-        onChange={({ zoom, bounds }) => {
-          setZoom(zoom)
-          setBounds([
-            bounds.nw.lng,
-            bounds.se.lat,
-            bounds.se.lng,
-            bounds.nw.lat,
-          ])
-        }}
-      >
-        {clusters.map((cluster) => {
-          const [longitude, latitude] = cluster.geometry.coordinates
-          const {
-            cluster: isCluster,
-            point_count: pointCount,
-          } = cluster.properties
-
-          if (isCluster) {
-            return (
-              <Marker
-                key={`cluster-${cluster.id}`}
-                lat={latitude}
-                lng={longitude}
-              >
-                <div
-                  className="cluster-marker"
-                  style={{
-                    width: `${10 + (pointCount / points.length) * 20}px`,
-                    height: `${10 + (pointCount / points.length) * 20}px`,
-                  }}
-                  onClick={() => {
-                    const expansionZoom = Math.min(
-                      supercluster.getClusterExpansionZoom(cluster.id),
-                      20
-                    )
-                    mapRef.current.setZoom(expansionZoom)
-                    mapRef.current.panTo({ lat: latitude, lng: longitude })
-                  }}
-                >
-                  {pointCount}
-                </div>
-              </Marker>
-            )
-          }
-
-          return (
+  const renderMap = () => {
+    return (
+      <div>
+        <GoogleMap
+          mapContainerStyle={styles.displayMap}
+          zoom={10}
+          center={defaultCenter}
+          options={options}
+          onLoad={onLoad}
+          onUnmount={onUnmount}
+          yesIWantToUseGoogleMapApiInternals
+          // onGoogleApiLoaded={({ map }) => {
+          //   mapRef.current = map
+          // }}
+          onChange={({ zoom, bounds }) => {
+            setZoom(zoom)
+            setBounds([
+              bounds.nw.lng,
+              bounds.se.lat,
+              bounds.se.lng,
+              bounds.nw.lat,
+            ])
+          }}
+        >
+          {points.map((crime) => (
             <Marker
-              key={`crime-${cluster.properties.crimeId}`}
-              lat={latitude}
-              lng={longitude}
+              key={crime.properties.crimeId}
+              position={crime.geometry.coordinates}
+              onClick={() => {
+                setSelected(crime)
+              }}
+            ></Marker>
+          ))}
+          {selected ? (
+            <InfoWindow
+              position={selected.geometry.coordinates}
+              onCloseClick={() => {
+                setSelected(null)
+              }}
             >
-              <button
-                className="crime-marker"
-                onClick={() => {
-                  console.log(cluster.properties.category)
-                  setSelected(cluster)
-                }}
-              >
-                <img src="/static/images/custody.svg" alt="crime doesn't pay" />
-              </button>
-            </Marker>
-          )
-        })}
-      </GoogleMapReact>
-    </div>
-  )
+              <Card>
+                {/* <CardMedia
+                  style={styles.media}
+                  // image={selected.photoUrl}
+                  title={selected.properties.category}
+                /> */}
+                <CardContent>
+                  {/* <Typography gutterBottom variant="h5" component="h2">
+                    {selected.properties.category}
+                  </Typography> */}
+                  <Typography component="p">
+                    {selected.properties.category}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </InfoWindow>
+          ) : null}
+        </GoogleMap>
+      </div>
+    )
+  }
+
+  if (loadError) {
+    return <div>Map cannot be loaded right now, sorry.</div>
+  }
+
+  return isLoaded ? renderMap() : null
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useCallback } from "react"
 import useSwr from "swr"
 import {
   GoogleMap,
@@ -14,10 +14,10 @@ export default function GoogleMapContainer() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
+
   // const [markers, setMarkers] = useState([])
   const [selected, setSelected] = useState(null)
-
-  console.log(selected)
+  const [map, setMap] = useState(null)
 
   const styles = {
     displayMap: {
@@ -48,8 +48,20 @@ export default function GoogleMapContainer() {
   const { data, error } = useSwr(url, { fetcher })
   const markers = data && !error ? data : []
 
-  if (error) return "Error loading Map"
-  if (!data) return "Loading Map..."
+  // if (error) return "Error loading Map"
+  // if (!data) return "Loading Map..."
+
+  const onLoad = useCallback(function callback(map) {
+    const bounds = new window.google.maps.LatLngBounds()
+    console.log(bounds)
+
+    // map.fitBounds(bounds)
+    // setMap(map)
+  }, [])
+
+  const onUnmount = useCallback(function callback(map) {
+    setMap(null)
+  }, [])
 
   const renderMap = () => {
     return (
@@ -59,6 +71,8 @@ export default function GoogleMapContainer() {
           zoom={14}
           center={defaultCenter}
           options={options}
+          onLoad={onLoad}
+          onUnmount={onUnmount}
         >
           {markers.map((marker) => (
             <Marker
