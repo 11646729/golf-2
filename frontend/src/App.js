@@ -15,10 +15,11 @@ import EditIcon from "@material-ui/icons/Edit"
 import HomeIcon from "@material-ui/icons/Home"
 import MenuIcon from "@material-ui/icons/Menu"
 
-import GoogleMapContainer from "./components/CoursesGMContainer"
+import CoursesMapContainer from "./components/CoursesGMContainer"
 import LeafletMap from "./components/LeafletMap"
 import CruiseTable from "./components/CruiseTable"
-import CrimesMap from "./components/CrimeGMContainer"
+// import CrimesMapContainer from "./components/CrimesGMContainer"
+import CrimesMapContainer from "./components/CrimesGMContainerTemp"
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -76,7 +77,7 @@ export default function App() {
       </AppBar>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="googlemap" element={<GoogleMapLink />} />
+        <Route path="golfcoursesmap" element={<CoursesMapLink />} />
         <Route path="leaflet" element={<LeafletMapLink />} />
         <Route path="cruisetable" element={<CruiseTableLink />} />
         <Route path="crimesmap" element={<CrimesMapLink />} />
@@ -90,8 +91,8 @@ function Home() {
   return <Album />
 }
 
-function GoogleMapLink() {
-  return <GoogleMapContainer />
+function CoursesMapLink() {
+  return <CoursesMapContainer />
 }
 
 function LeafletMapLink() {
@@ -103,7 +104,8 @@ function CruiseTableLink() {
 }
 
 function CrimesMapLink() {
-  return <CrimesMap />
+  // return <CrimesMapContainer centre={{ lat: 44.076613, lng: -98.362239833 }} />
+  return <CrimesMapContainer />
 }
 
 function NotFound() {

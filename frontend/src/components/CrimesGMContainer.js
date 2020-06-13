@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react"
+import React, { useState, Fragment } from "react"
 import useSwr from "swr"
 import {
   GoogleMap,
@@ -12,29 +12,27 @@ import "../App.css"
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
-export default function GoogleMapContainer() {
+export default function CrimesMapContainer(props) {
+  // const [bounds, setBounds] = useState(null)
+  // const [zoom, setZoom] = useState(10)
+  const [selected, setSelected] = useState(null)
+  // const [map, setMap] = useState(null)
+
+  // Load the Google maps scripts
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
 
-  // const mapRef = useRef()
+  // const state = { map: {} }
 
-  const [bounds, setBounds] = useState(null)
-  const [zoom, setZoom] = useState(10)
-  const [selected, setSelected] = useState(null)
-  const [map, setMap] = useState(null)
+  // const boundsCallBack = () => {
+  //   const { map } = state
+  //   console.log("map: ", map)
+  // }
 
-  const onLoad = useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds()
-    console.log(bounds)
-
-    // map.fitBounds(bounds)
-    // setMap(map)
-  }, [])
-
-  const onUnmount = useCallback(function callback(map) {
-    setMap(null)
-  }, [])
+  // const handleMapLoad = (map) => {
+  //   setState((state) => ({ ...state, map }))
+  // }
 
   // build Crimes Url
   let crimesUrl =
@@ -48,9 +46,6 @@ export default function GoogleMapContainer() {
   // fetch data
   const { data, error } = useSwr(crimesUrl, { fetcher })
   const crimes = data && !error ? data : []
-
-  // if (error) return "Error loading Map"
-  // if (!data) return "Loading Map..."
 
   const points = crimes.map((crime) => ({
     type: "Feature",
@@ -92,39 +87,42 @@ export default function GoogleMapContainer() {
     },
   }
 
-  const defaultCenter = {
-    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE), // 54.665577
-    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE), // -5.766897
-  }
-
   const options = {
     disableDefaultUI: true,
     zoomControl: true,
   }
 
+  const defaultCenter = {
+    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE), // 54.665577
+    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE), // -5.766897
+  }
+
   const renderMap = () => {
     return (
-      <div>
+      <Fragment>
         <GoogleMap
           mapContainerStyle={styles.displayMap}
           zoom={10}
+          // center={props.center}
           center={defaultCenter}
           options={options}
-          onLoad={onLoad}
-          onUnmount={onUnmount}
-          yesIWantToUseGoogleMapApiInternals
+          // onLoad={onLoad}
+          // onUnmount={onUnmount}
+          // onDragEnd={boundsCallBack}
+          // onLoad={handleMapLoad}
+          // yesIWantToUseGoogleMapApiInternals
           // onGoogleApiLoaded={({ map }) => {
           //   mapRef.current = map
           // }}
-          onChange={({ zoom, bounds }) => {
-            setZoom(zoom)
-            setBounds([
-              bounds.nw.lng,
-              bounds.se.lat,
-              bounds.se.lng,
-              bounds.nw.lat,
-            ])
-          }}
+          // onChange={({ zoom, bounds }) => {
+          //   setZoom(zoom)
+          //   setBounds([
+          //     bounds.nw.lng,
+          //     bounds.se.lat,
+          //     bounds.se.lng,
+          //     bounds.nw.lat,
+          //   ])
+          // }}
         >
           {points.map((crime) => (
             <Marker
@@ -143,15 +141,15 @@ export default function GoogleMapContainer() {
               }}
             >
               <Card>
-                {/* <CardMedia
+                <CardMedia
                   style={styles.media}
                   // image={selected.photoUrl}
                   title={selected.properties.category}
-                /> */}
+                />
                 <CardContent>
-                  {/* <Typography gutterBottom variant="h5" component="h2">
+                  <Typography gutterBottom variant="h5" component="h2">
                     {selected.properties.category}
-                  </Typography> */}
+                  </Typography>
                   <Typography component="p">
                     {selected.properties.category}
                   </Typography>
@@ -160,7 +158,7 @@ export default function GoogleMapContainer() {
             </InfoWindow>
           ) : null}
         </GoogleMap>
-      </div>
+      </Fragment>
     )
   }
 

@@ -43,7 +43,12 @@ export default function NearbyGolfCoursesCard() {
         <Typography>This shows Golf Courses in Northern Ireland</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" component={Link} to="/googlemap">
+        <Button
+          size="small"
+          color="primary"
+          component={Link}
+          to="/golfcoursesmap"
+        >
           View
         </Button>
       </CardActions>

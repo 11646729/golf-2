@@ -10,12 +10,11 @@ import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
-export default function GoogleMapContainer() {
+export default function CoursesMapContainer() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
 
-  // const [markers, setMarkers] = useState([])
   const [selected, setSelected] = useState(null)
   const [map, setMap] = useState(null)
 
@@ -48,15 +47,11 @@ export default function GoogleMapContainer() {
   const { data, error } = useSwr(url, { fetcher })
   const markers = data && !error ? data : []
 
-  // if (error) return "Error loading Map"
-  // if (!data) return "Loading Map..."
-
-  const onLoad = useCallback(function callback(map) {
+  const onLoad = useCallback(function callback(map1) {
     const bounds = new window.google.maps.LatLngBounds()
     console.log(bounds)
-
-    // map.fitBounds(bounds)
-    // setMap(map)
+    map1.fitBounds(bounds)
+    setMap(map1)
   }, [])
 
   const onUnmount = useCallback(function callback(map) {
