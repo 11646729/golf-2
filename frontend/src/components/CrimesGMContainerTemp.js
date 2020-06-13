@@ -1,20 +1,24 @@
 import React, { useState, Fragment } from "react"
+import useSwr from "swr"
 import {
   useLoadScript,
   GoogleMap,
   Marker,
   InfoWindow,
 } from "@react-google-maps/api"
+import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
 import "../App.css"
+
+const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
 export default function CrimesMapContainer(props) {
   // The things we need to track in state
   const [mapRef, setMapRef] = useState(null)
   const [selectedPlace, setSelectedPlace] = useState(null)
   const [markerMap, setMarkerMap] = useState({})
-  const [center, setCenter] = useState({ lat: 44.076613, lng: -98.362239833 })
+  const [center, setCenter] = useState({ lat: 54.665577, lng: -5.766897 })
   const [zoom, setZoom] = useState(5)
-  const [clickedLatLng, setClickedLatLng] = useState(null)
+  // const [clickedLatLng, setClickedLatLng] = useState(null)
   const [infoOpen, setInfoOpen] = useState(false)
 
   // Load the Google maps scripts
@@ -24,18 +28,51 @@ export default function CrimesMapContainer(props) {
 
   // The places I want to create markers for.
   // This could be a data-driven prop.
-  const myPlaces = [
-    { id: "place1", pos: { lat: 39.09366509575983, lng: -94.58751660204751 } },
-    { id: "place2", pos: { lat: 39.10894664788252, lng: -94.57926449532226 } },
-    { id: "place3", pos: { lat: 39.07602397235644, lng: -94.5184089401211 } },
-  ]
+  // const points = [
+  //   { id: "place1", pos: { lat: 39.09366509575983, lng: -94.58751660204751 } },
+  //   { id: "place2", pos: { lat: 39.10894664788252, lng: -94.57926449532226 } },
+  //   { id: "place3", pos: { lat: 39.07602397235644, lng: -94.5184089401211 } },
+  // ]
+
+  // build Crimes Url
+  let crimesUrl =
+    process.env.REACT_APP_CRIMES_ENDPOINT +
+    "?lat=" +
+    process.env.REACT_APP_HOME_LATITUDE +
+    "&lng=" +
+    process.env.REACT_APP_HOME_LONGITUDE +
+    "&date=2020-04"
+
+  // fetch data
+  const { data, error } = useSwr(crimesUrl, { fetcher })
+  const crimes = data && !error ? data : []
+
+  const points = crimes.map((crime) => ({
+    type: "Feature",
+    properties: { cluster: false, crimeId: crime.id, category: crime.category },
+    geometry: {
+      type: "Point",
+      coordinates: {
+        lat: parseFloat(crime.location.latitude),
+        lng: parseFloat(crime.location.longitude),
+      },
+    },
+  }))
+  // if (points.length === 7) {
+  //   console.log(points[0].properties.crimeId)
+  //   console.log(points[0].geometry.coordinates)
+  // }
 
   // Iterate myPlaces to size, center, and zoom map to contain all markers
   const fitBounds = (map) => {
     const bounds = new window.google.maps.LatLngBounds()
-    myPlaces.map((place) => {
-      bounds.extend(place.pos)
-      return place.id
+    // points.map((place) => {
+    //   bounds.extend(place.pos)
+    //   return place.id
+    // })
+    points.map((point) => {
+      bounds.extend(point.geometry.coordinates)
+      return point.properties.crimeId
     })
     map.fitBounds(bounds)
   }
@@ -92,17 +129,19 @@ export default function CrimesMapContainer(props) {
           // Save the current center position in state
           onCenterChanged={() => setCenter(mapRef.getCenter().toJSON())}
           // Save the user's map click position
-          onClick={(e) => setClickedLatLng(e.latLng.toJSON())}
+          // onClick={(e) => setClickedLatLng(e.latLng.toJSON())}
           center={props.center}
           zoom={10}
           mapContainerStyle={styles.displayMap}
         >
-          {myPlaces.map((place) => (
+          {points.map((point) => (
             <Marker
-              key={place.id}
-              position={place.pos}
-              onLoad={(marker) => markerLoadHandler(marker, place)}
-              onClick={(event) => markerClickHandler(event, place)}
+              // key={point.id}
+              // position={point.pos}
+              key={point.properties.crimeId}
+              position={point.geometry.coordinates}
+              onLoad={(marker) => markerLoadHandler(marker, point)}
+              onClick={(event) => markerClickHandler(event, point)}
               // Not required, but if you want a custom icon:
               // icon={{
               //   path:
@@ -120,25 +159,38 @@ export default function CrimesMapContainer(props) {
               anchor={markerMap[selectedPlace.id]}
               onCloseClick={() => setInfoOpen(false)}
             >
-              <div>
+              <Card>
+                <CardMedia
+                  style={styles.media}
+                  // image={selected.photoUrl}
+                  title={selectedPlace.id}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {selectedPlace.id}
+                  </Typography>
+                  <Typography component="p">{selectedPlace.id}</Typography>
+                </CardContent>
+              </Card>
+              {/* <div>
                 <h3>{selectedPlace.id}</h3>
                 <div>This is your info window content</div>
-              </div>
+              </div> */}
             </InfoWindow>
           )}
         </GoogleMap>
         {/* Our center position always in state */}
-        <h3>
+        {/* <h3>
           Center {center.lat}, {center.lng}
-        </h3>
+        </h3> */}
         {/* Position of the user's map click */}
-        {clickedLatLng && (
+        {/* {clickedLatLng && (
           <h3>
             You clicked: {clickedLatLng.lat}, {clickedLatLng.lng}
           </h3>
-        )}
+        )} */}
         {/* Position of the user's map click */}
-        {selectedPlace && <h3>Selected Marker: {selectedPlace.id}</h3>}
+        {/* {selectedPlace && <h3>Selected Marker: {selectedPlace.id}</h3>} */}
       </Fragment>
     )
   }

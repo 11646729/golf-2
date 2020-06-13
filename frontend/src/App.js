@@ -104,8 +104,16 @@ function CruiseTableLink() {
 }
 
 function CrimesMapLink() {
-  // return <CrimesMapContainer centre={{ lat: 44.076613, lng: -98.362239833 }} />
-  return <CrimesMapContainer />
+  return (
+    <CrimesMapContainer
+      centre={{
+        lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE), // 54.665577
+        lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE), // -5.766897
+      }}
+    />
+  )
+  // lat: 54.665577, lng: -5.766897 }} />
+  // return <CrimesMapContainer />
 }
 
 function NotFound() {
