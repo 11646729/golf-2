@@ -80,6 +80,7 @@ export default function CrimesMapContainer(props) {
   const loadHandler = (map) => {
     // Store a reference to the google map instance in state
     setMapRef(map)
+
     // Fit map bounds to contain all markers
     fitBounds(map)
   }
@@ -111,6 +112,10 @@ export default function CrimesMapContainer(props) {
     setCenter(place.pos)
   }
 
+  function handleCenterChanged() {
+    setCenter(mapRef.getCenter().toJSON())
+  }
+
   const styles = {
     displayMap: {
       position: "absolute",
@@ -127,7 +132,7 @@ export default function CrimesMapContainer(props) {
           // Do stuff on map initial load
           onLoad={loadHandler}
           // Save the current center position in state
-          onCenterChanged={() => setCenter(mapRef.getCenter().toJSON())}
+          onCenterChanged={handleCenterChanged}
           // Save the user's map click position
           // onClick={(e) => setClickedLatLng(e.latLng.toJSON())}
           center={props.center}

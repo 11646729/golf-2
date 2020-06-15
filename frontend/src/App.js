@@ -19,7 +19,9 @@ import CoursesMapContainer from "./components/CoursesGMContainer"
 import LeafletMap from "./components/LeafletMap"
 import CruiseTable from "./components/CruiseTable"
 // import CrimesMapContainer from "./components/CrimesGMContainer"
-import CrimesMapContainer from "./components/CrimesGMContainerTemp"
+// import CrimesMapContainer from "./components/CrimesGMContainerTemp"
+// import CrimesMapContainer from "./components/CrimesGMContainerLeigh"
+import CrimesMapContainer from "./components/CrimesGMContainerPartLeigh"
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -92,7 +94,14 @@ function Home() {
 }
 
 function CoursesMapLink() {
-  return <CoursesMapContainer />
+  return (
+    <CoursesMapContainer
+      center={{
+        lat: 54.665577,
+        lng: -5.766897,
+      }}
+    />
+  )
 }
 
 function LeafletMapLink() {
@@ -106,14 +115,12 @@ function CruiseTableLink() {
 function CrimesMapLink() {
   return (
     <CrimesMapContainer
-      centre={{
-        lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE), // 54.665577
-        lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE), // -5.766897
+      center={{
+        lat: 54.665577,
+        lng: -5.766897,
       }}
     />
   )
-  // lat: 54.665577, lng: -5.766897 }} />
-  // return <CrimesMapContainer />
 }
 
 function NotFound() {
