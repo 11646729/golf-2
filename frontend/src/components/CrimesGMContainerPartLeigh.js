@@ -6,6 +6,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api"
+import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
 import useSupercluster from "use-supercluster"
 import "../App.css"
 
@@ -31,6 +32,7 @@ export default function CrimesMapContainer(props) {
   const [mapRef, setMapRef] = useState(null)
   const [bounds, setBounds] = useState(null)
   const [zoom, setZoom] = useState(null)
+  const [selected, setSelected] = useState(null)
 
   // Store a reference to the google map instance in state
   const loadHandler = (map) => {
@@ -118,10 +120,13 @@ export default function CrimesMapContainer(props) {
           //   mapRef.current = map
           // }}
         >
-          {markers.map((marker) => (
+          {markers.map((crime) => (
             <Marker
-              key={marker.properties.crimeId}
-              position={marker.geometry.coordinates}
+              key={crime.properties.crimeId}
+              position={crime.geometry.coordinates}
+              onClick={() => {
+                setSelected(crime)
+              }}
               // onLoad={(marker) => markerLoadHandler(marker, point)}
               // onClick={(event) => markerClickHandler(event, point)}
               // Not required, but if you want a custom icon:
@@ -135,6 +140,30 @@ export default function CrimesMapContainer(props) {
               // }}
             />
           ))}
+          {selected ? (
+            <InfoWindow
+              position={selected.geometry.coordinates}
+              onCloseClick={() => {
+                setSelected(null)
+              }}
+            >
+              <Card>
+                <CardMedia
+                  style={styles.media}
+                  // image={selected.photoUrl}
+                  title={selected.properties.category}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {selected.properties.category}
+                  </Typography>
+                  <Typography component="p">
+                    {selected.properties.category}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </InfoWindow>
+          ) : null}
         </GoogleMap>
       </Fragment>
     )
