@@ -14,13 +14,7 @@ export default function CoursesMapContainer(props) {
   // The things we need to track in state
   const [mapRef, setMapRef] = useState(null)
   const [selected, setSelected] = useState(null)
-  const [bounds, setBounds] = useState(null)
-  const [zoom, setZoom] = useState(10)
-  // const [map, setMap] = useState(null)
-
-  // const mapRef1 = useRef()
-  // setMapRef(mapRef1)
-  // console.log("mapRef: " + mapRef)
+  // const [bounds, setBounds] = useState(null)
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
@@ -63,23 +57,10 @@ export default function CoursesMapContainer(props) {
   if (mapRef) {
     const bounds = new window.google.maps.LatLngBounds()
     markers.map((marker) => {
-      bounds.extend(marker.geometry.coordinates)
+      bounds.extend(marker.coordinates)
       return bounds
     })
     mapRef.fitBounds(bounds)
-  }
-
-  // Iterate myPlaces to size, center, and zoom map to contain all markers
-  const fitBounds = (map) => {
-    const tempBounds = new window.google.maps.LatLngBounds()
-    markers.map((marker) => {
-      tempBounds.extend(marker.coordinates)
-      return marker.name
-    })
-    console.log(tempBounds)
-
-    setBounds(tempBounds)
-    map.fitBounds(tempBounds)
   }
 
   const renderMap = () => {
@@ -92,15 +73,6 @@ export default function CoursesMapContainer(props) {
           options={options}
           onLoad={onLoadHandler}
           onUnmount={onUnmountHandler}
-          onChange={({ zoom, bounds }) => {
-            setZoom(zoom)
-            // setBounds([
-            //   bounds.nw.lng,
-            //   bounds.se.lat,
-            //   bounds.se.lng,
-            //   bounds.nw.lat,
-            // ])
-          }}
         >
           {markers
             ? markers.map((marker) => (

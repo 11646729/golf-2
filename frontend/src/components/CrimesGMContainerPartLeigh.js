@@ -35,10 +35,12 @@ export default function CrimesMapContainer(props) {
   // Store a reference to the google map instance in state
   const loadHandler = (map) => {
     setMapRef(map)
+    setZoom(props.zoom)
   }
 
   const onUnmountHandler = () => {
     setMapRef(null)
+    setZoom(null)
   }
 
   // Load and prepare data
@@ -75,18 +77,19 @@ export default function CrimesMapContainer(props) {
       bounds.extend(marker.geometry.coordinates)
       return bounds
     })
+    // setBounds(bounds)
     mapRef.fitBounds(bounds)
   }
 
   // Iterate myPlaces to size, center, and zoom map to contain all markers
-  const fitBounds = (map) => {
-    const bounds = new window.google.maps.LatLngBounds()
-    markers.map((point) => {
-      bounds.extend(point.geometry.coordinates)
-      return point.properties.crimeId
-    })
-    map.fitBounds(bounds)
-  }
+  // const fitBounds = (map) => {
+  //   const bounds = new window.google.maps.LatLngBounds()
+  //   markers.map((marker) => {
+  //     bounds.extend(marker.geometry.coordinates)
+  //     return bounds
+  //   })
+  //   map.fitBounds(bounds)
+  // }
 
   // get clusters
 
