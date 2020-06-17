@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, Fragment } from "react"
 import useSwr from "swr"
 import {
   GoogleMap,
@@ -53,13 +53,20 @@ export default function CoursesMapContainer(props) {
   const onLoadHandler = (map) => {
     // Store a reference to the google map instance in state
     setMapRef(map)
-
-    // Fit map bounds to contain all markers
-    fitBounds(map)
   }
 
-  const onUnloadHandler = () => {
+  const onUnmountHandler = () => {
     setMapRef(null)
+  }
+
+  // get map bounds
+  if (mapRef) {
+    const bounds = new window.google.maps.LatLngBounds()
+    markers.map((marker) => {
+      bounds.extend(marker.geometry.coordinates)
+      return bounds
+    })
+    mapRef.fitBounds(bounds)
   }
 
   // Iterate myPlaces to size, center, and zoom map to contain all markers
@@ -77,22 +84,22 @@ export default function CoursesMapContainer(props) {
 
   const renderMap = () => {
     return (
-      <div>
+      <Fragment>
         <GoogleMap
           mapContainerStyle={styles.displayMap}
-          defaultZoom={14}
+          defaultZoom={props.zoom}
           defaultCenter={props.center}
           options={options}
           onLoad={onLoadHandler}
-          onUnmount={onUnloadHandler}
+          onUnmount={onUnmountHandler}
           onChange={({ zoom, bounds }) => {
             setZoom(zoom)
-            setBounds([
-              bounds.nw.lng,
-              bounds.se.lat,
-              bounds.se.lng,
-              bounds.nw.lat,
-            ])
+            // setBounds([
+            //   bounds.nw.lng,
+            //   bounds.se.lat,
+            //   bounds.se.lng,
+            //   bounds.nw.lat,
+            // ])
           }}
         >
           {markers
@@ -130,7 +137,7 @@ export default function CoursesMapContainer(props) {
             </InfoWindow>
           ) : null}
         </GoogleMap>
-      </div>
+      </Fragment>
     )
   }
 

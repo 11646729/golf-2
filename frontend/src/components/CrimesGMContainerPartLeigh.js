@@ -37,7 +37,9 @@ export default function CrimesMapContainer(props) {
     setMapRef(map)
   }
 
-  console.log(zoom)
+  const onUnmountHandler = () => {
+    setMapRef(null)
+  }
 
   // Load and prepare data
   // Build Crimes Url
@@ -54,7 +56,7 @@ export default function CrimesMapContainer(props) {
   const crimes = data && !error ? data : []
 
   // Reformat data for plotting
-  const points = crimes.map((crime) => ({
+  const markers = crimes.map((crime) => ({
     type: "Feature",
     properties: { cluster: false, crimeId: crime.id, category: crime.category },
     geometry: {
@@ -66,22 +68,25 @@ export default function CrimesMapContainer(props) {
     },
   }))
 
+  // get map bounds
+  if (mapRef) {
+    const bounds = new window.google.maps.LatLngBounds()
+    markers.map((marker) => {
+      bounds.extend(marker.geometry.coordinates)
+      return bounds
+    })
+    mapRef.fitBounds(bounds)
+  }
+
   // Iterate myPlaces to size, center, and zoom map to contain all markers
   const fitBounds = (map) => {
     const bounds = new window.google.maps.LatLngBounds()
-    // points.map((place) => {
-    //   bounds.extend(place.pos)
-    //   return place.id
-    // })
-    points.map((point) => {
+    markers.map((point) => {
       bounds.extend(point.geometry.coordinates)
       return point.properties.crimeId
     })
     map.fitBounds(bounds)
   }
-
-  // get map bounds
-  // fitBounds()
 
   // get clusters
 
@@ -92,11 +97,12 @@ export default function CrimesMapContainer(props) {
         <GoogleMap
           mapContainerStyle={styles.displayMap}
           center={props.center}
-          zoom={10}
+          zoom={props.zoom}
           onLoad={loadHandler}
+          onUnmount={onUnmountHandler}
           onChange={({ zoom, bounds }) => {
             setZoom(zoom)
-            fitBounds(bounds)
+            // fitBounds(bounds)
             // setBounds([
             //   bounds.nw.lng,
             //   bounds.se.lat,
@@ -109,10 +115,10 @@ export default function CrimesMapContainer(props) {
           //   mapRef.current = map
           // }}
         >
-          {points.map((point) => (
+          {markers.map((marker) => (
             <Marker
-              key={point.properties.crimeId}
-              position={point.geometry.coordinates}
+              key={marker.properties.crimeId}
+              position={marker.geometry.coordinates}
               // onLoad={(marker) => markerLoadHandler(marker, point)}
               // onClick={(event) => markerClickHandler(event, point)}
               // Not required, but if you want a custom icon:

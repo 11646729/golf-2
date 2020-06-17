@@ -100,6 +100,7 @@ function CoursesMapLink() {
         lat: 54.665577,
         lng: -5.766897,
       }}
+      zoom={10}
     />
   )
 }
@@ -119,6 +120,7 @@ function CrimesMapLink() {
         lat: 54.665577,
         lng: -5.766897,
       }}
+      zoom={10}
     />
   )
 }
