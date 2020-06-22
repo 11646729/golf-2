@@ -16,12 +16,8 @@ import HomeIcon from "@material-ui/icons/Home"
 import MenuIcon from "@material-ui/icons/Menu"
 
 import CoursesMapContainer from "./components/CoursesGMContainer"
-import LeafletMap from "./components/LeafletMap"
 import CruiseTable from "./components/CruiseTable"
-// import CrimesMapContainer from "./components/CrimesGMContainer"
-// import CrimesMapContainer from "./components/CrimesGMContainerTemp"
 import CrimesMapContainer from "./components/CrimesGMContainerLeigh"
-// import CrimesMapContainer from "./components/CrimesGMContainerPartLeigh"
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -80,7 +76,6 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="golfcoursesmap" element={<CoursesMapLink />} />
-        <Route path="leaflet" element={<LeafletMapLink />} />
         <Route path="cruisetable" element={<CruiseTableLink />} />
         <Route path="crimesmap" element={<CrimesMapLink />} />
         <Route path="*" element={<NotFound />} />
@@ -103,10 +98,6 @@ function CoursesMapLink() {
       zoom={10}
     />
   )
-}
-
-function LeafletMapLink() {
-  return <LeafletMap />
 }
 
 function CruiseTableLink() {

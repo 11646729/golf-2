@@ -11,7 +11,6 @@ import Paper from "@material-ui/core/paper"
 
 import WeatherChart from "./WeatherChart"
 import NearbyGolfCoursesCard from "./NearbyGolfCoursesCard"
-import LeafletMapCard from "./LeafletMapCard"
 import CruiseTableCard from "./CruiseTableCard"
 import CrimesCard from "./CrimesCard"
 
@@ -128,13 +127,10 @@ export default function Album() {
               <NearbyGolfCoursesCard />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
-              <LeafletMapCard />
+              <CrimesCard />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <CruiseTableCard />
-            </Grid>
-            <Grid item sm={4} style={{ padding: 20 }}>
-              <CrimesCard />
             </Grid>
           </Grid>
         </Container>
