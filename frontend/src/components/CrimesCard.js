@@ -33,7 +33,7 @@ export default function NearbyCrimesCard() {
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        // image="/static/images/NearbyClubs.jpg"
+        image="/static/images/Crimes.jpg"
         title="Nearby Crimes"
       />
       <CardContent className={classes.cardContent}>

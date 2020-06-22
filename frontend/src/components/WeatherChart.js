@@ -104,7 +104,6 @@ export const WeatherChart = () => {
               Time &amp; Date
             </Label>
           </XAxis>
-          />
           <YAxis
             stroke={theme.palette.text.secondary}
             dataKey="locationTemperature"

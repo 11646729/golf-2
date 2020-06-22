@@ -8,16 +8,23 @@ const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
 const Marker = ({ children }) => children
 
-export default function CrimesMapContainer() {
+export default function CrimesMapContainer(props) {
   const mapRef = useRef()
   const [bounds, setBounds] = useState(null)
   const [zoom, setZoom] = useState(10)
 
-  console.log("mapRef: " + mapRef)
-  console.log("bounds: " + bounds)
+  const styles = {
+    displayMap: {
+      position: "absolute",
+      height: "86vh", // 100vh
+      width: "98%",
+      margin: "20px",
+    },
+  }
 
-  // const url =
-  // "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10"
+  // const crimesUrl =
+  //   "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10"
+
   // build Crimes Url
   let crimesUrl =
     process.env.REACT_APP_CRIMES_ENDPOINT +
@@ -49,11 +56,11 @@ export default function CrimesMapContainer() {
   })
 
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div style={styles.displayMap}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
-        defaultCenter={{ lat: 54.665577, lng: -5.766897 }}
-        defaultZoom={10}
+        defaultCenter={props.center}
+        defaultZoom={props.zoom}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map }) => {
           mapRef.current = map
@@ -110,7 +117,7 @@ export default function CrimesMapContainer() {
               lng={longitude}
             >
               <button className="crime-marker">
-                <img src="/custody.svg" alt="crime doesn't pay" />
+                <img src="/static/images/Custody.svg" alt="crime doesn't pay" />
               </button>
             </Marker>
           )

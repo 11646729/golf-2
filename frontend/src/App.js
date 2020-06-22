@@ -20,8 +20,8 @@ import LeafletMap from "./components/LeafletMap"
 import CruiseTable from "./components/CruiseTable"
 // import CrimesMapContainer from "./components/CrimesGMContainer"
 // import CrimesMapContainer from "./components/CrimesGMContainerTemp"
-// import CrimesMapContainer from "./components/CrimesGMContainerLeigh"
-import CrimesMapContainer from "./components/CrimesGMContainerPartLeigh"
+import CrimesMapContainer from "./components/CrimesGMContainerLeigh"
+// import CrimesMapContainer from "./components/CrimesGMContainerPartLeigh"
 
 const useStyles = makeStyles((theme) => ({
   icon: {
