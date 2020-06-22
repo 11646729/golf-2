@@ -11,8 +11,8 @@ import Paper from "@material-ui/core/paper"
 
 import WeatherChart from "./WeatherChart"
 import NearbyGolfCoursesCard from "./NearbyGolfCoursesCard"
-import CruiseTableCard from "./CruiseTableCard"
 import CrimesCard from "./CrimesCard"
+import CruiseTableCard from "./CruiseTableCard"
 
 function Copyright() {
   return (
