@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react"
 import useSwr from "swr"
 import GoogleMapReact from "google-map-react"
 import useSupercluster from "use-supercluster"
+import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
+import MomentUtils from "@date-io/moment"
 import "../App.css"
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json())
@@ -12,6 +14,7 @@ export default function CrimesMapContainer(props) {
   const mapRef = useRef()
   const [bounds, setBounds] = useState(null)
   const [zoom, setZoom] = useState(10)
+  const [selectedDate, handleDateChange] = useState(new Date())
 
   const styles = {
     displayMap: {
@@ -57,6 +60,16 @@ export default function CrimesMapContainer(props) {
 
   return (
     <div style={styles.displayMap}>
+      <MuiPickersUtilsProvider utils={MomentUtils}>
+        <DatePicker
+          views={["year", "month"]}
+          label="Choose Month and Year"
+          minDate={new Date("2018-01-01")}
+          maxDate={new Date("2020-07-01")}
+          value={selectedDate}
+          onChange={handleDateChange}
+        />
+      </MuiPickersUtilsProvider>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
         defaultCenter={props.center}
