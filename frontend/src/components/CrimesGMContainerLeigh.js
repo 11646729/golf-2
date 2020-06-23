@@ -37,9 +37,11 @@ export default function CrimesMapContainer(props) {
   let crimesUrl =
     process.env.REACT_APP_CRIMES_ENDPOINT +
     "?lat=" +
-    process.env.REACT_APP_HOME_LATITUDE +
+    "54.695882" +
+    // process.env.REACT_APP_HOME_LATITUDE +
     "&lng=" +
-    process.env.REACT_APP_HOME_LONGITUDE +
+    "-5.857359" +
+    // process.env.REACT_APP_HOME_LONGITUDE +
     "&date=" +
     moment(selectedDate).format("YYYY") +
     "-" +
