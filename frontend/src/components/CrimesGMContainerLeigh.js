@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react"
 import useSwr from "swr"
 import GoogleMapReact from "google-map-react"
 import useSupercluster from "use-supercluster"
+import moment from "moment"
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
 import MomentUtils from "@date-io/moment"
 import "../App.css"
@@ -14,7 +15,11 @@ export default function CrimesMapContainer(props) {
   const mapRef = useRef()
   const [bounds, setBounds] = useState(null)
   const [zoom, setZoom] = useState(10)
-  const [selectedDate, handleDateChange] = useState(new Date())
+  const [selectedDate, handleDateChange] = useState(
+    moment().subtract(2, "months").calendar()
+  )
+
+  console.log(selectedDate)
 
   const styles = {
     displayMap: {
@@ -35,7 +40,10 @@ export default function CrimesMapContainer(props) {
     process.env.REACT_APP_HOME_LATITUDE +
     "&lng=" +
     process.env.REACT_APP_HOME_LONGITUDE +
-    "&date=2020-04"
+    "&date=" +
+    moment(selectedDate).format("YYYY") +
+    "-" +
+    moment(selectedDate).format("MM")
 
   const { data, error } = useSwr(crimesUrl, { fetcher })
   const crimes = data && !error ? data.slice(0, 2000) : []
