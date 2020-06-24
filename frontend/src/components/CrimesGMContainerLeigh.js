@@ -24,7 +24,7 @@ export default function CrimesMapContainer(props) {
   const styles = {
     displayMap: {
       position: "absolute",
-      height: "86vh", // 100vh
+      height: "80vh", // 100vh
       width: "98%",
       margin: "20px",
     },
