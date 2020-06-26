@@ -4,6 +4,8 @@ import GoogleMapReact from "google-map-react"
 import useSupercluster from "use-supercluster"
 import moment from "moment"
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import Checkbox from "@material-ui/core/Checkbox"
 import MomentUtils from "@date-io/moment"
 import "../App.css"
 
@@ -15,11 +17,11 @@ export default function CrimesMapContainer(props) {
   const mapRef = useRef()
   const [bounds, setBounds] = useState(null)
   const [zoom, setZoom] = useState(10)
-  const [selectedDate, handleDateChange] = useState(
-    moment().subtract(2, "months").calendar()
-  )
 
-  console.log(selectedDate)
+  // Subtract 2 months because latest data is typically 2 months ago
+  const [selectedDate, handleDateChange] = useState()
+  // moment().subtract(2, "months").calendar()
+  // )
 
   const styles = {
     displayMap: {
@@ -28,24 +30,34 @@ export default function CrimesMapContainer(props) {
       width: "98%",
       margin: "20px",
     },
+    mapContainer: {
+      position: "relative",
+      paddingTop: "50%",
+    },
+    map: {
+      position: "absolute",
+      width: "98%",
+      height: "80vh",
+      top: 0,
+    },
   }
 
   // const crimesUrl =
   //   "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10"
 
-  // build Crimes Url
+  // build Crimes Url - use place only to fetch most recent data
   let crimesUrl =
     process.env.REACT_APP_CRIMES_ENDPOINT +
     "?lat=" +
     "54.695882" +
-    // process.env.REACT_APP_HOME_LATITUDE +
+    // + process.env.REACT_APP_HOME_LATITUDE
     "&lng=" +
-    "-5.857359" +
-    // process.env.REACT_APP_HOME_LONGITUDE +
-    "&date=" +
-    moment(selectedDate).format("YYYY") +
-    "-" +
-    moment(selectedDate).format("MM")
+    "-5.857359"
+  // + process.env.REACT_APP_HOME_LONGITUDE
+  // + "&date="
+  // + moment(selectedDate).format("YYYY")
+  // + "-"
+  // + moment(selectedDate).format("MM")
 
   const { data, error } = useSwr(crimesUrl, { fetcher })
   const crimes = data && !error ? data.slice(0, 2000) : []
@@ -69,7 +81,7 @@ export default function CrimesMapContainer(props) {
   })
 
   return (
-    <div style={styles.displayMap}>
+    <div>
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <DatePicker
           views={["year", "month"]}
@@ -80,13 +92,23 @@ export default function CrimesMapContainer(props) {
           onChange={handleDateChange}
         />
       </MuiPickersUtilsProvider>
+      <FormControlLabel
+        value="end"
+        control={<Checkbox color="primary" />}
+        label="Most Recent Data"
+        labelPlacement="end"
+      />
       <GoogleMapReact
+        style={styles.displayMap}
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
         defaultCenter={props.center}
         defaultZoom={props.zoom}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map }) => {
           mapRef.current = map
+        }}
+        onClick={(event) => {
+          console.log("Latitude: " + event.lat + " Longitude: " + event.lng)
         }}
         onChange={({ zoom, bounds }) => {
           setZoom(zoom)
