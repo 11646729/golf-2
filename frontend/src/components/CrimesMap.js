@@ -14,6 +14,7 @@ const fetcher = (...args) => fetch(...args).then((response) => response.json())
 const Marker = ({ children }) => children
 
 export default function CrimesMapContainer(props) {
+  // State
   const mapRef = useRef()
   const [bounds, setBounds] = useState(null)
   const [zoom, setZoom] = useState(10)

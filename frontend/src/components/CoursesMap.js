@@ -11,7 +11,7 @@ import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
 const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
 export default function CoursesMapContainer(props) {
-  // The things we need to track in state
+  // State
   const [mapRef, setMapRef] = useState(null)
   const [selected, setSelected] = useState(null)
   // const [bounds, setBounds] = useState(null)
