@@ -17,11 +17,26 @@ export default function CrimesMapContainer(props) {
   const mapRef = useRef()
   const [bounds, setBounds] = useState(null)
   const [zoom, setZoom] = useState(10)
+  const [crimesLocationLatitude, setcrimesLocationLatitude] = useState(
+    process.env.REACT_APP_HOME_LATITUDE
+  )
+  const [crimesLocationLongitude, setcrimesLocationLongitude] = useState(
+    process.env.REACT_APP_HOME_LONGITUDE
+  )
 
   // Subtract 2 months because latest data is typically 2 months ago
   const [selectedDate, handleDateChange] = useState()
   // moment().subtract(2, "months").calendar()
   // )
+
+  const [state, setCheckboxState] = useState({
+    checkedA: false,
+    checkedB: true,
+  })
+
+  const handleCheckboxChange = (event) => {
+    setCheckboxState({ ...state, [event.target.name]: event.target.checked })
+  }
 
   const styles = {
     displayMap: {
@@ -42,6 +57,15 @@ export default function CrimesMapContainer(props) {
     },
   }
 
+  // if (state.checkedB === true) {
+  //   console.log("Home is checked")
+  //   setcrimesLocationLatitude(process.env.REACT_APP_HOME_LATITUDE)
+  //   setcrimesLocationLongitude(process.env.REACT_APP_HOME_LONGITUDE)
+  // } else {
+  //   setcrimesLocationLatitude("54.695882")
+  //   setcrimesLocationLongitude("-5.857359")
+  // }
+
   // const crimesUrl =
   //   "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10"
 
@@ -49,11 +73,9 @@ export default function CrimesMapContainer(props) {
   let crimesUrl =
     process.env.REACT_APP_CRIMES_ENDPOINT +
     "?lat=" +
-    "54.695882" +
-    // + process.env.REACT_APP_HOME_LATITUDE
+    crimesLocationLatitude +
     "&lng=" +
-    "-5.857359"
-  // + process.env.REACT_APP_HOME_LONGITUDE
+    crimesLocationLongitude
   // + "&date="
   // + moment(selectedDate).format("YYYY")
   // + "-"
@@ -93,9 +115,27 @@ export default function CrimesMapContainer(props) {
         />
       </MuiPickersUtilsProvider>
       <FormControlLabel
-        value="end"
-        control={<Checkbox color="primary" />}
+        control={
+          <Checkbox
+            color="primary"
+            checked={state.checkedA}
+            onChange={handleCheckboxChange}
+            name="checkedA"
+          />
+        }
         label="Most Recent Data"
+        labelPlacement="end"
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            color="primary"
+            checked={state.checkedB}
+            onChange={handleCheckboxChange}
+            name="checkedB"
+          />
+        }
+        label="Home Location"
         labelPlacement="end"
       />
       <GoogleMapReact
@@ -108,7 +148,8 @@ export default function CrimesMapContainer(props) {
           mapRef.current = map
         }}
         onClick={(event) => {
-          console.log("Latitude: " + event.lat + " Longitude: " + event.lng)
+          setcrimesLocationLatitude(event.lat)
+          setcrimesLocationLongitude(event.lng)
         }}
         onChange={({ zoom, bounds }) => {
           setZoom(zoom)
