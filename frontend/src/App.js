@@ -15,9 +15,9 @@ import EditIcon from "@material-ui/icons/Edit"
 import HomeIcon from "@material-ui/icons/Home"
 import MenuIcon from "@material-ui/icons/Menu"
 
-import CoursesMapContainer from "./components/CoursesGMContainer"
+import CoursesMap from "./components/CoursesMap"
 import CruiseTable from "./components/CruiseTable"
-import CrimesMapContainer from "./components/CrimesGMContainerLeigh"
+import CrimesMap from "./components/CrimesMap"
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -90,7 +90,7 @@ function Home() {
 
 function CoursesMapLink() {
   return (
-    <CoursesMapContainer
+    <CoursesMap
       center={{
         lat: 54.665577,
         lng: -5.766897,
@@ -106,7 +106,7 @@ function CruiseTableLink() {
 
 function CrimesMapLink() {
   return (
-    <CrimesMapContainer
+    <CrimesMap
       center={{
         lat: 54.665577,
         lng: -5.766897,
