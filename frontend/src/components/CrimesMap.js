@@ -18,10 +18,12 @@ export default function CrimesMapContainer(props) {
   const mapRef = useRef()
   const [bounds, setBounds] = useState(null)
   const [zoom, setZoom] = useState(10)
-  const [crimesLocationLatitude, setcrimesLocationLatitude] = useState(
+  const [homeCheckboxState, setHomeCheckboxState] = useState(true)
+  const [recentDataCheckboxState, setRecentDataCheckboxState] = useState(true)
+  const [crimesLocationLatitude, setCrimesLocationLatitude] = useState(
     process.env.REACT_APP_HOME_LATITUDE
   )
-  const [crimesLocationLongitude, setcrimesLocationLongitude] = useState(
+  const [crimesLocationLongitude, setCrimesLocationLongitude] = useState(
     process.env.REACT_APP_HOME_LONGITUDE
   )
 
@@ -30,13 +32,19 @@ export default function CrimesMapContainer(props) {
   // moment().subtract(2, "months").calendar()
   // )
 
-  const [state, setCheckboxState] = useState({
-    checkedA: false,
-    checkedB: true,
-  })
+  const handleRecentDataCheckboxChange = (event) => {
+    setRecentDataCheckboxState(event.target.checked)
+  }
 
-  const handleCheckboxChange = (event) => {
-    setCheckboxState({ ...state, [event.target.name]: event.target.checked })
+  const handleHomeCheckboxChange = (event) => {
+    setHomeCheckboxState(event.target.checked)
+    if (event.target.checked == true) {
+      setCrimesLocationLatitude(process.env.REACT_APP_HOME_LATITUDE)
+      setCrimesLocationLongitude(process.env.REACT_APP_HOME_LONGITUDE)
+    } else {
+      setCrimesLocationLatitude("54.695882")
+      setCrimesLocationLongitude("-5.857359")
+    }
   }
 
   const styles = {
@@ -119,9 +127,9 @@ export default function CrimesMapContainer(props) {
         control={
           <Checkbox
             color="primary"
-            checked={state.checkedA}
-            onChange={handleCheckboxChange}
-            name="checkedA"
+            checked={recentDataCheckboxState}
+            onChange={handleRecentDataCheckboxChange}
+            name="recentDataCheckbox"
           />
         }
         label="Most Recent Data"
@@ -131,9 +139,9 @@ export default function CrimesMapContainer(props) {
         control={
           <Checkbox
             color="primary"
-            checked={state.checkedB}
-            onChange={handleCheckboxChange}
-            name="checkedB"
+            checked={homeCheckboxState}
+            onChange={handleHomeCheckboxChange}
+            name="homeCheckbox"
           />
         }
         label="Home Location"
@@ -149,8 +157,8 @@ export default function CrimesMapContainer(props) {
           mapRef.current = map
         }}
         onClick={(event) => {
-          setcrimesLocationLatitude(event.lat)
-          setcrimesLocationLongitude(event.lng)
+          setCrimesLocationLatitude(event.lat)
+          setCrimesLocationLongitude(event.lng)
         }}
         onChange={({ zoom, bounds }) => {
           setZoom(zoom)
