@@ -27,6 +27,7 @@ export default function CrimesMapContainer(props) {
   const [crimesLocationLongitude, setCrimesLocationLongitude] = useState(
     process.env.REACT_APP_HOME_LONGITUDE
   )
+  const [dateInfo, setDateInfo] = useState("")
 
   // Subtract 2 months because latest data is typically 2 months ago
   const [selectedDate, handleDateChange] = useState()
@@ -36,6 +37,16 @@ export default function CrimesMapContainer(props) {
   const handleRecentDataCheckboxChange = (event) => {
     setRecentDataCheckboxState(event.target.checked)
     setHomeCheckboxEnabledState(event.target.checked)
+    if (event.target.checked === true) {
+      setDateInfo(
+        "&date=" +
+          moment(selectedDate).format("YYYY") +
+          "-" +
+          moment(selectedDate).format("MM")
+      )
+    } else {
+      setDateInfo("")
+    }
   }
 
   const handleHomeCheckboxChange = (event) => {
@@ -77,11 +88,8 @@ export default function CrimesMapContainer(props) {
     "?lat=" +
     crimesLocationLatitude +
     "&lng=" +
-    crimesLocationLongitude
-  // + "&date="
-  // + moment(selectedDate).format("YYYY")
-  // + "-"
-  // + moment(selectedDate).format("MM")
+    crimesLocationLongitude +
+    dateInfo
 
   const { data, error } = useSwr(crimesUrl, { fetcher })
   const crimes = data && !error ? data.slice(0, 2000) : []
