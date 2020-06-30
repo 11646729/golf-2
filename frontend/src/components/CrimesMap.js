@@ -19,6 +19,7 @@ export default function CrimesMapContainer(props) {
   const [bounds, setBounds] = useState(null)
   const [zoom, setZoom] = useState(10)
   const [homeCheckboxState, setHomeCheckboxState] = useState(true)
+  const [homeCheckboxEnabledState, setHomeCheckboxEnabledState] = useState(true)
   const [recentDataCheckboxState, setRecentDataCheckboxState] = useState(true)
   const [crimesLocationLatitude, setCrimesLocationLatitude] = useState(
     process.env.REACT_APP_HOME_LATITUDE
@@ -34,6 +35,7 @@ export default function CrimesMapContainer(props) {
 
   const handleRecentDataCheckboxChange = (event) => {
     setRecentDataCheckboxState(event.target.checked)
+    setHomeCheckboxEnabledState(event.target.checked)
   }
 
   const handleHomeCheckboxChange = (event) => {
@@ -106,10 +108,12 @@ export default function CrimesMapContainer(props) {
     <div>
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <DatePicker
+          name="datePicker"
           views={["year", "month"]}
           label="Choose Month and Year"
           minDate={new Date("2018-01-01")}
           maxDate={new Date("2020-07-01")}
+          disabled={homeCheckboxEnabledState}
           value={selectedDate}
           onChange={handleDateChange}
         />
