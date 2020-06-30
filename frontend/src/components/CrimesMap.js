@@ -38,7 +38,7 @@ export default function CrimesMapContainer(props) {
 
   const handleHomeCheckboxChange = (event) => {
     setHomeCheckboxState(event.target.checked)
-    if (event.target.checked == true) {
+    if (event.target.checked === true) {
       setCrimesLocationLatitude(process.env.REACT_APP_HOME_LATITUDE)
       setCrimesLocationLongitude(process.env.REACT_APP_HOME_LONGITUDE)
     } else {
@@ -65,15 +65,6 @@ export default function CrimesMapContainer(props) {
       top: 0,
     },
   }
-
-  // if (state.checkedB === true) {
-  //   console.log("Home is checked")
-  //   setcrimesLocationLatitude(process.env.REACT_APP_HOME_LATITUDE)
-  //   setcrimesLocationLongitude(process.env.REACT_APP_HOME_LONGITUDE)
-  // } else {
-  //   setcrimesLocationLatitude("54.695882")
-  //   setcrimesLocationLongitude("-5.857359")
-  // }
 
   // const crimesUrl =
   //   "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10"
@@ -157,6 +148,7 @@ export default function CrimesMapContainer(props) {
           mapRef.current = map
         }}
         onClick={(event) => {
+          setHomeCheckboxState(false)
           setCrimesLocationLatitude(event.lat)
           setCrimesLocationLongitude(event.lng)
         }}
