@@ -28,11 +28,7 @@ export default function CrimesMapContainer(props) {
     process.env.REACT_APP_HOME_LONGITUDE
   )
   const [dateInfo, setDateInfo] = useState("")
-
-  // Subtract 2 months because latest data is typically 2 months ago
   const [selectedDate, handleDateChange] = useState()
-  // moment().subtract(2, "months").calendar()
-  // )
 
   const handleRecentDataCheckboxChange = (event) => {
     setRecentDataCheckboxState(event.target.checked)
@@ -67,15 +63,17 @@ export default function CrimesMapContainer(props) {
       width: "98%",
       margin: "20px",
     },
-    mapContainer: {
-      position: "relative",
-      paddingTop: "50%",
+    displayDatePicker: {
+      marginTop: "10px",
+      marginLeft: "20px",
     },
-    map: {
-      position: "absolute",
-      width: "98%",
-      height: "80vh",
-      top: 0,
+    displayRecentDataCheckBox: {
+      marginTop: "20px",
+      marginLeft: "20px",
+    },
+    displayHomeLocationCheckBox: {
+      marginTop: "20px",
+      marginLeft: "20px",
     },
   }
 
@@ -116,6 +114,7 @@ export default function CrimesMapContainer(props) {
     <div>
       <MuiPickersUtilsProvider utils={MomentUtils}>
         <DatePicker
+          style={styles.displayDatePicker}
           name="datePicker"
           views={["year", "month"]}
           label="Choose Month and Year"
@@ -127,6 +126,7 @@ export default function CrimesMapContainer(props) {
         />
       </MuiPickersUtilsProvider>
       <FormControlLabel
+        style={styles.displayRecentDataCheckBox}
         control={
           <Checkbox
             color="primary"
@@ -139,6 +139,7 @@ export default function CrimesMapContainer(props) {
         labelPlacement="end"
       />
       <FormControlLabel
+        style={styles.displayHomeLocationCheckBox}
         control={
           <Checkbox
             color="primary"
