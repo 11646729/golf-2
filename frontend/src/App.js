@@ -20,6 +20,11 @@ import CruiseTable from "./components/CruiseTable"
 import CrimesMap from "./components/CrimesMap"
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    marginTop: 0,
+    height: 30,
+  },
   icon: {
     marginRight: theme.spacing(2),
   },
@@ -39,40 +44,42 @@ export default function App() {
   return (
     <Router>
       <CssBaseline />
-      <AppBar position="sticky">
-        <Toolbar>
-          <IconButton
-            className={classes.menuButton}
-            aria-label="Menu"
-            color="inherit"
-          >
-            <MenuIcon />
-          </IconButton>
-          <IconButton
-            color="inherit"
-            aria-label="Home"
-            // tooltip="Home"
-            // linkButton="true"
-            href="/"
-          >
-            {<HomeIcon />}
-          </IconButton>
-          <Typography variant="h6" color="inherit" noWrap>
-            My Website
-          </Typography>
-          <section className={classes.rightToolbar}>
-            <IconButton color="inherit" aria-label="Edit">
-              <EditIcon />
+      <div className={classes.root}>
+        <AppBar position="sticky">
+          <Toolbar>
+            <IconButton
+              className={classes.menuButton}
+              aria-label="Menu"
+              color="inherit"
+            >
+              <MenuIcon />
             </IconButton>
-            <IconButton color="inherit" aria-label="Save">
-              <SaveIcon />
+            <IconButton
+              color="inherit"
+              aria-label="Home"
+              // tooltip="Home"
+              // linkButton="true"
+              href="/"
+            >
+              {<HomeIcon />}
             </IconButton>
-            <IconButton color="inherit" aria-label="More Options">
-              <MoreVertIcon />
-            </IconButton>
-          </section>
-        </Toolbar>
-      </AppBar>
+            <Typography variant="h6" color="inherit" noWrap>
+              My Website
+            </Typography>
+            <section className={classes.rightToolbar}>
+              <IconButton color="inherit" aria-label="Edit">
+                <EditIcon />
+              </IconButton>
+              <IconButton color="inherit" aria-label="Save">
+                <SaveIcon />
+              </IconButton>
+              <IconButton color="inherit" aria-label="More Options">
+                <MoreVertIcon />
+              </IconButton>
+            </section>
+          </Toolbar>
+        </AppBar>
+      </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="golfcoursesmap" element={<CoursesMapLink />} />

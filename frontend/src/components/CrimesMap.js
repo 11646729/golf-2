@@ -1,12 +1,20 @@
-import React, { useState, useRef } from "react"
-import useSwr from "swr"
+import React, { Fragment, useState, useRef } from "react"
 import GoogleMapReact from "google-map-react"
+import useSwr from "swr"
 import useSupercluster from "use-supercluster"
 import moment from "moment"
-import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
-import FormControlLabel from "@material-ui/core/FormControlLabel"
-import Checkbox from "@material-ui/core/Checkbox"
 import MomentUtils from "@date-io/moment"
+import {
+  Typography,
+  Checkbox,
+  Container,
+  CssBaseline,
+  FormControlLabel,
+  Grid,
+  Box,
+} from "@material-ui/core"
+import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
+
 import "../App.css"
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json())
@@ -57,23 +65,17 @@ export default function CrimesMapContainer(props) {
   }
 
   const styles = {
-    displayMap: {
-      position: "absolute",
-      height: "80vh", // 100vh
-      width: "98%",
-      margin: "20px",
-    },
-    displayDatePicker: {
-      marginTop: "10px",
-      marginLeft: "20px",
+    displayHomeLocationCheckBox: {
+      marginTop: "0px",
+      marginLeft: "100px",
     },
     displayRecentDataCheckBox: {
-      marginTop: "20px",
-      marginLeft: "20px",
+      marginTop: "0px",
+      marginLeft: "100px",
     },
-    displayHomeLocationCheckBox: {
-      marginTop: "20px",
-      marginLeft: "20px",
+    displayDatePicker: {
+      marginTop: "0px",
+      marginLeft: "40px",
     },
   }
 
@@ -111,118 +113,152 @@ export default function CrimesMapContainer(props) {
   })
 
   return (
-    <div>
-      <MuiPickersUtilsProvider utils={MomentUtils}>
-        <DatePicker
-          style={styles.displayDatePicker}
-          name="datePicker"
-          views={["year", "month"]}
-          label="Choose Month and Year"
-          minDate={new Date("2018-01-01")}
-          maxDate={new Date("2020-07-01")}
-          disabled={homeCheckboxEnabledState}
-          value={selectedDate}
-          onChange={handleDateChange}
-        />
-      </MuiPickersUtilsProvider>
-      <FormControlLabel
-        style={styles.displayRecentDataCheckBox}
-        control={
-          <Checkbox
-            color="primary"
-            checked={recentDataCheckboxState}
-            onChange={handleRecentDataCheckboxChange}
-            name="recentDataCheckbox"
-          />
-        }
-        label="Most Recent Data"
-        labelPlacement="end"
-      />
-      <FormControlLabel
-        style={styles.displayHomeLocationCheckBox}
-        control={
-          <Checkbox
-            color="primary"
-            checked={homeCheckboxState}
-            onChange={handleHomeCheckboxChange}
-            name="homeCheckbox"
-          />
-        }
-        label="Home Location"
-        labelPlacement="end"
-      />
-      <GoogleMapReact
-        style={styles.displayMap}
-        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
-        defaultCenter={props.center}
-        defaultZoom={props.zoom}
-        yesIWantToUseGoogleMapApiInternals
-        onGoogleApiLoaded={({ map }) => {
-          mapRef.current = map
-        }}
-        onClick={(event) => {
-          setHomeCheckboxState(false)
-          setCrimesLocationLatitude(event.lat)
-          setCrimesLocationLongitude(event.lng)
-        }}
-        onChange={({ zoom, bounds }) => {
-          setZoom(zoom)
-          setBounds([
-            bounds.nw.lng,
-            bounds.se.lat,
-            bounds.se.lng,
-            bounds.nw.lat,
-          ])
-        }}
-      >
-        {clusters.map((cluster) => {
-          const [longitude, latitude] = cluster.geometry.coordinates
-          const {
-            cluster: isCluster,
-            point_count: pointCount,
-          } = cluster.properties
-
-          if (isCluster) {
-            return (
-              <Marker
-                key={`cluster-${cluster.id}`}
-                lat={latitude}
-                lng={longitude}
-              >
-                <div
-                  className="cluster-marker"
-                  style={{
-                    width: `${10 + (pointCount / points.length) * 20}px`,
-                    height: `${10 + (pointCount / points.length) * 20}px`,
-                  }}
-                  onClick={() => {
-                    const expansionZoom = Math.min(
-                      supercluster.getClusterExpansionZoom(cluster.id),
-                      20
-                    )
-                    mapRef.current.setZoom(expansionZoom)
-                    mapRef.current.panTo({ lat: latitude, lng: longitude })
-                  }}
-                >
-                  {pointCount}
-                </div>
-              </Marker>
-            )
-          }
-
-          return (
-            <Marker
-              key={`crime-${cluster.properties.crimeId}`}
-              lat={latitude}
-              lng={longitude}
+    <Fragment>
+      <CssBaseline />
+      <Grid container spacing={1}>
+        <Container maxWidth="xl">
+          <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
+            {/* <Box bgcolor="warning.main" color="warning.contrastText" p={2}> */}
+            <Typography
+              style={{ display: "inline-block" }}
+              component="h4"
+              variant="h5"
+              align="left"
+              color="textPrimary"
+              gutterBottom
             >
-              <button className="crime-marker">
-                <img src="/static/images/Custody.svg" alt="crime doesn't pay" />
-              </button>
-            </Marker>
-          )
-        })}
-      </GoogleMapReact>
-    </div>
+              Crimes Dashboard
+            </Typography>
+            <FormControlLabel
+              style={styles.displayHomeLocationCheckBox}
+              control={
+                <Checkbox
+                  color="primary"
+                  checked={homeCheckboxState}
+                  onChange={handleHomeCheckboxChange}
+                  name="homeCheckbox"
+                />
+              }
+              label="Home Location"
+              labelPlacement="end"
+            />
+            <FormControlLabel
+              style={styles.displayRecentDataCheckBox}
+              control={
+                <Checkbox
+                  color="primary"
+                  checked={recentDataCheckboxState}
+                  onChange={handleRecentDataCheckboxChange}
+                  name="recentDataCheckbox"
+                />
+              }
+              label="Most Recent Data"
+              labelPlacement="end"
+            />
+            <MuiPickersUtilsProvider utils={MomentUtils}>
+              <DatePicker
+                style={styles.displayDatePicker}
+                name="datePicker"
+                views={["year", "month"]}
+                label="Year and Month"
+                minDate={new Date("2018-01-01")}
+                maxDate={new Date("2020-07-01")}
+                disabled={homeCheckboxEnabledState}
+                value={selectedDate}
+                onChange={handleDateChange}
+              />
+            </MuiPickersUtilsProvider>
+            {/* </Box> */}
+          </Grid>
+        </Container>
+        <Container maxWidth="xl">
+          <Grid item xs={12} sm={12}>
+            <Box height="600px" p={2}>
+              <GoogleMapReact
+                bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
+                defaultCenter={props.center}
+                defaultZoom={props.zoom}
+                yesIWantToUseGoogleMapApiInternals
+                onGoogleApiLoaded={({ map }) => {
+                  mapRef.current = map
+                }}
+                onClick={(event) => {
+                  setHomeCheckboxState(false)
+                  setCrimesLocationLatitude(event.lat)
+                  setCrimesLocationLongitude(event.lng)
+                }}
+                onChange={({ zoom, bounds }) => {
+                  setZoom(zoom)
+                  setBounds([
+                    bounds.nw.lng,
+                    bounds.se.lat,
+                    bounds.se.lng,
+                    bounds.nw.lat,
+                  ])
+                }}
+              >
+                {clusters.map((cluster) => {
+                  const [longitude, latitude] = cluster.geometry.coordinates
+                  const {
+                    cluster: isCluster,
+                    point_count: pointCount,
+                  } = cluster.properties
+
+                  if (isCluster) {
+                    return (
+                      <Marker
+                        key={`cluster-${cluster.id}`}
+                        lat={latitude}
+                        lng={longitude}
+                      >
+                        <div
+                          className="cluster-marker"
+                          style={{
+                            width: `${
+                              10 + (pointCount / points.length) * 20
+                            }px`,
+                            height: `${
+                              10 + (pointCount / points.length) * 20
+                            }px`,
+                          }}
+                          onClick={() => {
+                            const expansionZoom = Math.min(
+                              supercluster.getClusterExpansionZoom(cluster.id),
+                              20
+                            )
+                            mapRef.current.setZoom(expansionZoom)
+                            mapRef.current.panTo({
+                              lat: latitude,
+                              lng: longitude,
+                            })
+                          }}
+                        >
+                          {pointCount}
+                        </div>
+                      </Marker>
+                    )
+                  }
+
+                  return (
+                    <Marker
+                      key={`crime-${cluster.properties.crimeId}`}
+                      lat={latitude}
+                      lng={longitude}
+                    >
+                      <button className="crime-marker">
+                        <img
+                          src="/static/images/Custody.svg"
+                          alt="crime doesn't pay"
+                        />
+                      </button>
+                    </Marker>
+                  )
+                })}
+              </GoogleMapReact>
+            </Box>
+          </Grid>
+        </Container>
+      </Grid>
+    </Fragment>
   )
 }

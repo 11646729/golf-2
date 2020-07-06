@@ -33,11 +33,11 @@ export const runSwitchboard = (io) => {
       // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     })
 
-    cron.schedule("* * * * *", () => {
-      getAndSaveDarkSkiesData().then((result) => {
-        emitDarkSkiesData(socket, result).then(() => {})
-      })
-    })
+    // cron.schedule("* * * * *", () => {
+    //   getAndSaveDarkSkiesData().then((result) => {
+    //     emitDarkSkiesData(socket, result).then(() => {})
+    //   })
+    // })
 
     cron.schedule("* * * * *", () => {
       // saveNearbyGolfCourseDataToDatabase().then(() => {

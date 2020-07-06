@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import Button from "@material-ui/core/Button"
 import clsx from "clsx"
 import CssBaseline from "@material-ui/core/CssBaseline"
@@ -74,7 +74,7 @@ export default function Album() {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
 
   return (
-    <React.Fragment>
+    <Fragment>
       <CssBaseline />
       <main>
         {/* Hero unit */}
@@ -151,6 +151,6 @@ export default function Album() {
         <Copyright />
       </footer>
       {/* End footer */}
-    </React.Fragment>
+    </Fragment>
   )
 }

@@ -40,9 +40,7 @@ export default function NearbyCrimesCard() {
         <Typography gutterBottom variant="h5" component="h2">
           Recent Nearby Crimes
         </Typography>
-        <Typography>
-          This shows recent crimes near Home in Northern Ireland
-        </Typography>
+        <Typography>Review recent crimes near Home</Typography>
       </CardContent>
       <CardActions>
         <Button size="small" color="primary" component={Link} to="/crimesmap">
