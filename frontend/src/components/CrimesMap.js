@@ -25,11 +25,7 @@ export default function CrimesMapContainer() {
   const mapRef = useRef()
   const [mapBounds, setBounds] = useState(null)
   const [mapZoom, setZoom] = useState(10)
-  const [mapCenter, setCenter] = useState({
-    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-  })
-  const [crimesLocationCentre, setCrimesLocationCentre] = useState({
+  const [mapCenter, setMapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
@@ -62,12 +58,12 @@ export default function CrimesMapContainer() {
   const handleHomeCheckboxChange = (event) => {
     setHomeCheckboxState(event.target.checked)
     if (event.target.checked === true) {
-      setCrimesLocationCentre({
+      setMapCenter({
         lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
         lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
       })
     } else {
-      setCrimesLocationCentre({
+      setMapCenter({
         lat: parseFloat("54.695882"),
         lng: parseFloat("-5.857359"),
       })
@@ -96,9 +92,9 @@ export default function CrimesMapContainer() {
   let crimesUrl =
     process.env.REACT_APP_CRIMES_ENDPOINT +
     "?lat=" +
-    crimesLocationCentre.lat +
+    mapCenter.lat +
     "&lng=" +
-    crimesLocationCentre.lng +
+    mapCenter.lng +
     dateInfo
 
   // Now fetch crimes data
@@ -196,7 +192,7 @@ export default function CrimesMapContainer() {
                 }}
                 onClick={(event) => {
                   setHomeCheckboxState(false)
-                  setCrimesLocationCentre({
+                  setMapCenter({
                     lat: event.lat,
                     lng: event.lng,
                   })
