@@ -11,7 +11,6 @@ import {
   CssBaseline,
   FormControlLabel,
   Grid,
-  Box,
 } from "@material-ui/core"
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
 
@@ -21,27 +20,33 @@ const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
 const Marker = ({ children }) => children
 
-export default function CrimesMapContainer(props) {
+export default function CrimesMapContainer() {
   // State
   const mapRef = useRef()
-  const [bounds, setBounds] = useState(null)
-  const [zoom, setZoom] = useState(10)
+  const [mapBounds, setBounds] = useState(null)
+  const [mapZoom, setZoom] = useState(10)
+  const [mapCenter, setCenter] = useState({
+    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+  })
+  const [crimesLocationCentre, setCrimesLocationCentre] = useState({
+    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+  })
+
   const [homeCheckboxState, setHomeCheckboxState] = useState(true)
-  const [homeCheckboxEnabledState, setHomeCheckboxEnabledState] = useState(true)
+  const [
+    recentDataCheckboxEnabledState,
+    setRecentDataCheckboxEnabledState,
+  ] = useState(true)
   const [recentDataCheckboxState, setRecentDataCheckboxState] = useState(true)
-  const [crimesLocationLatitude, setCrimesLocationLatitude] = useState(
-    process.env.REACT_APP_HOME_LATITUDE
-  )
-  const [crimesLocationLongitude, setCrimesLocationLongitude] = useState(
-    process.env.REACT_APP_HOME_LONGITUDE
-  )
+
   const [dateInfo, setDateInfo] = useState("")
   const [selectedDate, handleDateChange] = useState()
-  const [helperTextState, setHelperTextState] = useState("Default")
 
   const handleRecentDataCheckboxChange = (event) => {
     setRecentDataCheckboxState(event.target.checked)
-    setHomeCheckboxEnabledState(event.target.checked)
+    setRecentDataCheckboxEnabledState(event.target.checked)
     if (event.target.checked === true) {
       setDateInfo(
         "&date=" +
@@ -49,21 +54,23 @@ export default function CrimesMapContainer(props) {
           "-" +
           moment(selectedDate).format("MM")
       )
-      setHelperTextState("")
     } else {
       setDateInfo("")
-      setHelperTextState("Click on map to fetch Crimes")
     }
   }
 
   const handleHomeCheckboxChange = (event) => {
     setHomeCheckboxState(event.target.checked)
     if (event.target.checked === true) {
-      setCrimesLocationLatitude(process.env.REACT_APP_HOME_LATITUDE)
-      setCrimesLocationLongitude(process.env.REACT_APP_HOME_LONGITUDE)
+      setCrimesLocationCentre({
+        lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+        lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+      })
     } else {
-      setCrimesLocationLatitude("54.695882")
-      setCrimesLocationLongitude("-5.857359")
+      setCrimesLocationCentre({
+        lat: parseFloat("54.695882"),
+        lng: parseFloat("-5.857359"),
+      })
     }
   }
 
@@ -89,14 +96,17 @@ export default function CrimesMapContainer(props) {
   let crimesUrl =
     process.env.REACT_APP_CRIMES_ENDPOINT +
     "?lat=" +
-    crimesLocationLatitude +
+    crimesLocationCentre.lat +
     "&lng=" +
-    crimesLocationLongitude +
+    crimesLocationCentre.lng +
     dateInfo
 
+  // Now fetch crimes data
   const { data, error } = useSwr(crimesUrl, { fetcher })
   const crimes = data && !error ? data.slice(0, 2000) : []
-  const points = crimes.map((crime) => ({
+
+  // Now reformat relevant crimes data to use with supercluster
+  const reformattedCrimes = crimes.map((crime) => ({
     type: "Feature",
     properties: { cluster: false, crimeId: crime.id, category: crime.category },
     geometry: {
@@ -108,10 +118,11 @@ export default function CrimesMapContainer(props) {
     },
   }))
 
+  // Now use supercluster via useSupercluster hook
   const { clusters, supercluster } = useSupercluster({
-    points,
-    bounds,
-    zoom,
+    points: reformattedCrimes,
+    bounds: mapBounds,
+    zoom: mapZoom,
     options: { radius: 75, maxZoom: 20 },
   })
 
@@ -121,7 +132,6 @@ export default function CrimesMapContainer(props) {
       <Grid container spacing={1}>
         <Container maxWidth="xl">
           <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
-            {/* <Box bgcolor="warning.main" color="warning.contrastText" p={2}> */}
             <Typography
               style={{ display: "inline-block" }}
               component="h4"
@@ -138,8 +148,6 @@ export default function CrimesMapContainer(props) {
                 <Checkbox
                   color="primary"
                   checked={homeCheckboxState}
-                  // helperText={helperTextState}
-                  // helperText="Test"
                   onChange={handleHomeCheckboxChange}
                   name="homeCheckbox"
                 />
@@ -168,29 +176,30 @@ export default function CrimesMapContainer(props) {
                 label="Year and Month"
                 minDate={new Date("2018-01-01")}
                 maxDate={new Date("2020-07-01")}
-                disabled={homeCheckboxEnabledState}
+                disabled={recentDataCheckboxEnabledState}
                 value={selectedDate}
                 onChange={handleDateChange}
               />
             </MuiPickersUtilsProvider>
-            {/* </Box> */}
           </Grid>
         </Container>
         <Container maxWidth="xl">
           <Grid item xs={12} sm={12}>
-            <Box height="600px" p={2}>
+            <div style={{ height: "580px", width: "100%", marginTop: 20 }}>
               <GoogleMapReact
                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
-                defaultCenter={props.center}
-                defaultZoom={props.zoom}
+                center={mapCenter}
+                zoom={mapZoom}
                 yesIWantToUseGoogleMapApiInternals
                 onGoogleApiLoaded={({ map }) => {
                   mapRef.current = map
                 }}
                 onClick={(event) => {
                   setHomeCheckboxState(false)
-                  setCrimesLocationLatitude(event.lat)
-                  setCrimesLocationLongitude(event.lng)
+                  setCrimesLocationCentre({
+                    lat: event.lat,
+                    lng: event.lng,
+                  })
                 }}
                 onChange={({ zoom, bounds }) => {
                   setZoom(zoom)
@@ -220,10 +229,10 @@ export default function CrimesMapContainer(props) {
                           className="cluster-marker"
                           style={{
                             width: `${
-                              10 + (pointCount / points.length) * 20
+                              10 + (pointCount / reformattedCrimes.length) * 20
                             }px`,
                             height: `${
-                              10 + (pointCount / points.length) * 20
+                              10 + (pointCount / reformattedCrimes.length) * 20
                             }px`,
                           }}
                           onClick={() => {
@@ -260,7 +269,7 @@ export default function CrimesMapContainer(props) {
                   )
                 })}
               </GoogleMapReact>
-            </Box>
+            </div>
           </Grid>
         </Container>
       </Grid>

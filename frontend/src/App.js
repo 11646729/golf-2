@@ -112,15 +112,7 @@ function CruiseTableLink() {
 }
 
 function CrimesMapLink() {
-  return (
-    <CrimesMap
-      center={{
-        lat: 54.665577,
-        lng: -5.766897,
-      }}
-      zoom={10}
-    />
-  )
+  return <CrimesMap />
 }
 
 function NotFound() {
