@@ -37,6 +37,7 @@ export default function CrimesMapContainer(props) {
   )
   const [dateInfo, setDateInfo] = useState("")
   const [selectedDate, handleDateChange] = useState()
+  const [helperTextState, setHelperTextState] = useState("Default")
 
   const handleRecentDataCheckboxChange = (event) => {
     setRecentDataCheckboxState(event.target.checked)
@@ -48,8 +49,10 @@ export default function CrimesMapContainer(props) {
           "-" +
           moment(selectedDate).format("MM")
       )
+      setHelperTextState("")
     } else {
       setDateInfo("")
+      setHelperTextState("Click on map to fetch Crimes")
     }
   }
 
@@ -135,6 +138,8 @@ export default function CrimesMapContainer(props) {
                 <Checkbox
                   color="primary"
                   checked={homeCheckboxState}
+                  // helperText={helperTextState}
+                  // helperText="Test"
                   onChange={handleHomeCheckboxChange}
                   name="homeCheckbox"
                 />

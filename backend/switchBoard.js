@@ -25,7 +25,8 @@ export const runSwitchboard = (io) => {
       console.log("In the fetchLocation function in the switchboard file")
     })
 
-    cron.schedule("* * * * *", () => {
+    // Fetch data Daily at 07:00
+    cron.schedule("0 7 * * *", () => {
       // console.log("Started getting Vessel Arrivals & Details Scraping")
       deleteAllPortArrivals()
       deleteAllVesselDetails()
@@ -33,11 +34,12 @@ export const runSwitchboard = (io) => {
       // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     })
 
-    // cron.schedule("* * * * *", () => {
-    //   getAndSaveDarkSkiesData().then((result) => {
-    //     emitDarkSkiesData(socket, result).then(() => {})
-    //   })
-    // })
+    // Fetch data Daily at 07:00
+    cron.schedule("0 7 * * *", () => {
+      getAndSaveDarkSkiesData().then((result) => {
+        emitDarkSkiesData(socket, result).then(() => {})
+      })
+    })
 
     cron.schedule("* * * * *", () => {
       // saveNearbyGolfCourseDataToDatabase().then(() => {
