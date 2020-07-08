@@ -14,6 +14,9 @@ import {
   CssBaseline,
   Container,
   Grid,
+  Button,
+  Link,
+  CardActions,
 } from "@material-ui/core"
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json())
@@ -138,6 +141,16 @@ export default function CoursesMapContainer() {
                           {selected.description}
                         </Typography>
                       </CardContent>
+                      <CardActions>
+                        <Button
+                          size="small"
+                          color="primary"
+                          component={Link}
+                          // to="/golfcoursesmap"
+                        >
+                          View
+                        </Button>
+                      </CardActions>
                     </Card>
                   </InfoWindow>
                 ) : null}
