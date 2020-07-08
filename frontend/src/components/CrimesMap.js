@@ -24,21 +24,37 @@ export default function CrimesMapContainer() {
   // State
   const mapRef = useRef()
   const [mapBounds, setBounds] = useState(null)
-  const [mapZoom, setZoom] = useState(10)
+  const [mapZoom, setZoom] = useState(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM)
   const [mapCenter, setMapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
 
   const [homeCheckboxState, setHomeCheckboxState] = useState(true)
+  const [recentDataCheckboxState, setRecentDataCheckboxState] = useState(true)
   const [
     recentDataCheckboxEnabledState,
     setRecentDataCheckboxEnabledState,
   ] = useState(true)
-  const [recentDataCheckboxState, setRecentDataCheckboxState] = useState(true)
 
   const [dateInfo, setDateInfo] = useState("")
   const [selectedDate, handleDateChange] = useState()
+
+  const handleHomeCheckboxChange = (event) => {
+    setHomeCheckboxState(event.target.checked)
+    setZoom(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM)
+    if (event.target.checked === true) {
+      setMapCenter({
+        lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+        lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+      })
+    } else {
+      setMapCenter({
+        lat: parseFloat("54.695882"),
+        lng: parseFloat("-5.857359"),
+      })
+    }
+  }
 
   const handleRecentDataCheckboxChange = (event) => {
     setRecentDataCheckboxState(event.target.checked)
@@ -52,21 +68,6 @@ export default function CrimesMapContainer() {
       )
     } else {
       setDateInfo("")
-    }
-  }
-
-  const handleHomeCheckboxChange = (event) => {
-    setHomeCheckboxState(event.target.checked)
-    if (event.target.checked === true) {
-      setMapCenter({
-        lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-        lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-      })
-    } else {
-      setMapCenter({
-        lat: parseFloat("54.695882"),
-        lng: parseFloat("-5.857359"),
-      })
     }
   }
 
