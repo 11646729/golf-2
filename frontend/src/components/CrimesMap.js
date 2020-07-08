@@ -42,7 +42,7 @@ export default function CrimesMapContainer() {
 
   const handleHomeCheckboxChange = (event) => {
     setHomeCheckboxState(event.target.checked)
-    setZoom(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM)
+    setZoom(parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM))
     if (event.target.checked === true) {
       setMapCenter({
         lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
@@ -50,8 +50,8 @@ export default function CrimesMapContainer() {
       })
     } else {
       setMapCenter({
-        lat: parseFloat("54.695882"),
-        lng: parseFloat("-5.857359"),
+        lat: parseFloat(process.env.REACT_APP_ANDREA_HOME_LATITUDE),
+        lng: parseFloat(process.env.REACT_APP_ANDREA_HOME_LONGITUDE),
       })
     }
   }
@@ -86,10 +86,7 @@ export default function CrimesMapContainer() {
     },
   }
 
-  // const crimesUrl =
-  //   "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10"
-
-  // build Crimes Url - use place only to fetch most recent data
+  // build Crimes Url - set dateInfo to "" to fetch most recent data
   let crimesUrl =
     process.env.REACT_APP_CRIMES_ENDPOINT +
     "?lat=" +
