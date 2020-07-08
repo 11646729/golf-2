@@ -24,7 +24,9 @@ export default function CrimesMapContainer() {
   // State
   const mapRef = useRef()
   const [mapBounds, setBounds] = useState(null)
-  const [mapZoom, setZoom] = useState(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM)
+  const [mapZoom, setZoom] = useState(
+    parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM)
+  )
   const [mapCenter, setMapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
@@ -94,6 +96,8 @@ export default function CrimesMapContainer() {
     "&lng=" +
     mapCenter.lng +
     dateInfo
+
+  console.log(crimesUrl)
 
   // Now fetch crimes data
   const { data, error } = useSwr(crimesUrl, { fetcher })
