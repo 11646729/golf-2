@@ -21,15 +21,15 @@ const fetcher = (...args) => fetch(...args).then((response) => response.json())
 export default function CoursesMapContainer() {
   // State
   const [mapRef, setMapRef] = useState(null)
-  const [selected, setSelected] = useState(null)
-  // const [bounds, setBounds] = useState(null)
-  const [mapZoom, setZoom] = useState(
+  const [mapZoom] = useState(
     parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM)
   )
-  const [mapCenter, setMapCenter] = useState({
+  const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
+
+  const [selected, setSelected] = useState(null)
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
@@ -37,19 +37,20 @@ export default function CoursesMapContainer() {
 
   const styles = {
     displayMap: {
-      height: "670px",
-      width: "98%",
+      height: "600px",
+      width: "97%",
       margin: 20,
     },
     media: {
       height: 0,
-      paddingTop: "56.25%", // 16:9,
+      // paddingTop: "56.25%", // 16:9,
+      paddingTop: "40%",
       marginTop: "30",
     },
   }
 
   const options = {
-    mapTypeId: "hybrid",
+    // mapTypeId: "hybrid",
     disableDefaultUI: true,
     zoomControl: true,
   }
@@ -84,6 +85,18 @@ export default function CoursesMapContainer() {
         <Grid container spacing={1}>
           <Container maxWidth="xl">
             <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
+              <Typography
+                style={{ display: "inline-block" }}
+                component="h4"
+                variant="h5"
+                align="left"
+                color="textPrimary"
+                gutterBottom
+              >
+                Nearby Golf Courses Dashboard
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={12}>
               <GoogleMap
                 mapContainerStyle={styles.displayMap}
                 center={mapCenter}
