@@ -96,15 +96,7 @@ function Home() {
 }
 
 function CoursesMapLink() {
-  return (
-    <CoursesMap
-      center={{
-        lat: 54.665577,
-        lng: -5.766897,
-      }}
-      zoom={10}
-    />
-  )
+  return <CoursesMap />
 }
 
 function CruiseTableLink() {

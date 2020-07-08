@@ -40,7 +40,15 @@ export default function CrimesMapContainer() {
   ] = useState(true)
 
   const [dateInfo, setDateInfo] = useState("")
-  const [selectedDate, handleDateChange] = useState()
+  const [selectedDate, handleDateChange] = useState("")
+
+  console.log(
+    "Selected Date: " +
+      "&date=" +
+      moment(selectedDate).format("YYYY") +
+      "-" +
+      moment(selectedDate).format("MM")
+  )
 
   const handleHomeCheckboxChange = (event) => {
     setHomeCheckboxState(event.target.checked)

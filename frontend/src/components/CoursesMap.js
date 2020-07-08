@@ -6,15 +6,30 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api"
-import { Card, CardContent, CardMedia, Typography } from "@material-ui/core"
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  CssBaseline,
+  Container,
+  Grid,
+} from "@material-ui/core"
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
-export default function CoursesMapContainer(props) {
+export default function CoursesMapContainer() {
   // State
   const [mapRef, setMapRef] = useState(null)
   const [selected, setSelected] = useState(null)
   // const [bounds, setBounds] = useState(null)
+  const [mapZoom, setZoom] = useState(
+    parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM)
+  )
+  const [mapCenter, setMapCenter] = useState({
+    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+  })
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
@@ -22,10 +37,9 @@ export default function CoursesMapContainer(props) {
 
   const styles = {
     displayMap: {
-      position: "absolute",
-      height: "86vh", // 100vh
+      height: "670px",
       width: "98%",
-      margin: "20px",
+      margin: 20,
     },
     media: {
       height: 0,
@@ -66,49 +80,58 @@ export default function CoursesMapContainer(props) {
   const renderMap = () => {
     return (
       <Fragment>
-        <GoogleMap
-          mapContainerStyle={styles.displayMap}
-          defaultZoom={props.zoom}
-          defaultCenter={props.center}
-          options={options}
-          onLoad={onLoadHandler}
-          onUnmount={onUnmountHandler}
-        >
-          {markers
-            ? markers.map((marker) => (
-                <Marker
-                  key={marker.name}
-                  position={marker.coordinates}
-                  onClick={() => {
-                    setSelected(marker)
-                  }}
-                />
-              ))
-            : null}
+        <CssBaseline />
+        <Grid container spacing={1}>
+          <Container maxWidth="xl">
+            <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
+              <GoogleMap
+                mapContainerStyle={styles.displayMap}
+                center={mapCenter}
+                zoom={mapZoom}
+                options={options}
+                onLoad={onLoadHandler}
+                onUnmount={onUnmountHandler}
+              >
+                {markers
+                  ? markers.map((marker) => (
+                      <Marker
+                        key={marker.name}
+                        position={marker.coordinates}
+                        onClick={() => {
+                          setSelected(marker)
+                        }}
+                      />
+                    ))
+                  : null}
 
-          {selected ? (
-            <InfoWindow
-              position={selected.coordinates}
-              onCloseClick={() => {
-                setSelected(null)
-              }}
-            >
-              <Card>
-                <CardMedia
-                  style={styles.media}
-                  image={selected.photoUrl}
-                  title={selected.photoTitle}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    {selected.name}
-                  </Typography>
-                  <Typography component="p">{selected.description}</Typography>
-                </CardContent>
-              </Card>
-            </InfoWindow>
-          ) : null}
-        </GoogleMap>
+                {selected ? (
+                  <InfoWindow
+                    position={selected.coordinates}
+                    onCloseClick={() => {
+                      setSelected(null)
+                    }}
+                  >
+                    <Card>
+                      <CardMedia
+                        style={styles.media}
+                        image={selected.photoUrl}
+                        title={selected.photoTitle}
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {selected.name}
+                        </Typography>
+                        <Typography component="p">
+                          {selected.description}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </InfoWindow>
+                ) : null}
+              </GoogleMap>
+            </Grid>
+          </Container>
+        </Grid>
       </Fragment>
     )
   }
