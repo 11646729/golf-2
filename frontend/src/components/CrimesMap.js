@@ -81,6 +81,11 @@ export default function CrimesMapContainer() {
     }
   }
 
+  const markerClicked = (marker) => {
+    console.log("clicked...")
+    console.log("The marker that was clicked is", marker)
+  }
+
   const styles = {
     displayHomeLocationCheckBox: {
       marginTop: "0px",
@@ -265,7 +270,10 @@ export default function CrimesMapContainer() {
                       lat={latitude}
                       lng={longitude}
                     >
-                      <button className="crime-marker">
+                      <button
+                        className="crime-marker"
+                        onClick={() => markerClicked(cluster)}
+                      >
                         <img
                           src="/static/images/Custody.svg"
                           alt="crime doesn't pay"
