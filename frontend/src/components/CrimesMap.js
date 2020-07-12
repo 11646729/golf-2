@@ -11,7 +11,6 @@ import {
   CssBaseline,
   FormControlLabel,
   Grid,
-  TextField,
 } from "@material-ui/core"
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
 
@@ -40,7 +39,7 @@ export default function CrimesMapContainer() {
   )
 
   const [dateInfo, setDateInfo] = useState("")
-  const [selectedDate, handleDateChange] = useState("")
+  const [selectedDate, setDateChange] = useState("")
 
   const handleHomeCheckboxChange = (event) => {
     setHomeCheckbox(event.target.checked)
@@ -96,7 +95,7 @@ export default function CrimesMapContainer() {
       marginTop: "0px",
       marginLeft: "100px",
     },
-    displayRecentDataCheckBox: {
+    displayLatestDataCheckBox: {
       marginTop: "0px",
       marginLeft: "100px",
     },
@@ -146,7 +145,7 @@ export default function CrimesMapContainer() {
 
   if (reformattedCrimes.length > 0 && selectedDate === "") {
     setDateInfo("&date=" + reformattedCrimes[0].properties.month)
-    handleDateChange(
+    setDateChange(
       moment(reformattedCrimes[0].properties.month).format("YYYY") +
         "-" +
         moment(reformattedCrimes[0].properties.month).format("MM")
@@ -214,21 +213,11 @@ export default function CrimesMapContainer() {
                 disabled={latestDataCheckboxEnabled}
                 value={selectedDate}
                 onChange={(val) => {
-                  handleDateChange(val)
+                  setDateChange(val)
                   handleDateInfoChange(val)
                 }}
               />
             </MuiPickersUtilsProvider>
-          </Grid>
-          <Grid item xs={12} sm={12} style={{ marginTop: 0 }}>
-            <TextField
-              id="mostRecentDateText"
-              style={styles.mostRecentDateText}
-              label="From May 2020"
-              InputProps={{
-                readOnly: true,
-              }}
-            />
           </Grid>
         </Container>
         <Container maxWidth="xl">
