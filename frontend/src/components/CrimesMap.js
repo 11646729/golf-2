@@ -11,6 +11,7 @@ import {
   CssBaseline,
   FormControlLabel,
   Grid,
+  TextField,
 } from "@material-ui/core"
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
 
@@ -32,27 +33,19 @@ export default function CrimesMapContainer() {
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
 
-  const [homeCheckboxState, setHomeCheckboxState] = useState(true)
-  const [recentDataCheckboxState, setRecentDataCheckboxState] = useState(true)
-  const [
-    recentDataCheckboxEnabledState,
-    setRecentDataCheckboxEnabledState,
-  ] = useState(true)
+  const [homeCheckbox, setHomeCheckbox] = useState(true)
+  const [latestDataCheckbox, setLatestDataCheckbox] = useState(true)
+  const [latestDataCheckboxEnabled, setLatestDataCheckboxEnabled] = useState(
+    true
+  )
 
   const [dateInfo, setDateInfo] = useState("")
   const [selectedDate, handleDateChange] = useState("")
 
-  console.log(
-    "Selected Date: " +
-      "&date=" +
-      moment(selectedDate).format("YYYY") +
-      "-" +
-      moment(selectedDate).format("MM")
-  )
-
   const handleHomeCheckboxChange = (event) => {
-    setHomeCheckboxState(event.target.checked)
+    setHomeCheckbox(event.target.checked)
     setZoom(parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM))
+
     if (event.target.checked === true) {
       setMapCenter({
         lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
@@ -66,10 +59,11 @@ export default function CrimesMapContainer() {
     }
   }
 
-  const handleRecentDataCheckboxChange = (event) => {
-    setRecentDataCheckboxState(event.target.checked)
-    setRecentDataCheckboxEnabledState(event.target.checked)
-    if (event.target.checked === true) {
+  const handleLatestDataCheckboxChange = (event) => {
+    setLatestDataCheckbox(event.target.checked)
+    setLatestDataCheckboxEnabled(event.target.checked)
+
+    if (event.target.checked === false) {
       setDateInfo(
         "&date=" +
           moment(selectedDate).format("YYYY") +
@@ -81,10 +75,21 @@ export default function CrimesMapContainer() {
     }
   }
 
-  const markerClicked = (marker) => {
-    console.log("clicked...")
-    console.log("The marker that was clicked is", marker)
+  const handleDateInfoChange = (val) => {
+    setDateInfo(
+      "&date=" +
+        moment(val._d).format("YYYY") +
+        "-" +
+        moment(val._d).format("MM")
+    )
   }
+
+  // const markerClicked = (marker) => {
+  //   // setShowingInfoWindow(true)
+
+  //   console.log("clicked...")
+  //   console.log("The marker that was clicked is", marker)
+  // }
 
   const styles = {
     displayHomeLocationCheckBox: {
@@ -98,6 +103,11 @@ export default function CrimesMapContainer() {
     displayDatePicker: {
       marginTop: "0px",
       marginLeft: "40px",
+    },
+    latestDateText: {
+      display: "inline-block",
+      marginTop: "-20px",
+      marginLeft: "580px",
     },
   }
 
@@ -119,7 +129,12 @@ export default function CrimesMapContainer() {
   // Now reformat relevant crimes data to use with supercluster
   const reformattedCrimes = crimes.map((crime) => ({
     type: "Feature",
-    properties: { cluster: false, crimeId: crime.id, category: crime.category },
+    properties: {
+      cluster: false,
+      crimeId: crime.id,
+      category: crime.category,
+      month: crime.month,
+    },
     geometry: {
       type: "Point",
       coordinates: [
@@ -128,6 +143,15 @@ export default function CrimesMapContainer() {
       ],
     },
   }))
+
+  if (reformattedCrimes.length > 0 && selectedDate === "") {
+    setDateInfo("&date=" + reformattedCrimes[0].properties.month)
+    handleDateChange(
+      moment(reformattedCrimes[0].properties.month).format("YYYY") +
+        "-" +
+        moment(reformattedCrimes[0].properties.month).format("MM")
+    )
+  }
 
   // Now use supercluster via useSupercluster hook
   const { clusters, supercluster } = useSupercluster({
@@ -158,7 +182,7 @@ export default function CrimesMapContainer() {
               control={
                 <Checkbox
                   color="primary"
-                  checked={homeCheckboxState}
+                  checked={homeCheckbox}
                   onChange={handleHomeCheckboxChange}
                   name="homeCheckbox"
                 />
@@ -167,16 +191,16 @@ export default function CrimesMapContainer() {
               labelPlacement="end"
             />
             <FormControlLabel
-              style={styles.displayRecentDataCheckBox}
+              style={styles.displayLatestDataCheckBox}
               control={
                 <Checkbox
                   color="primary"
-                  checked={recentDataCheckboxState}
-                  onChange={handleRecentDataCheckboxChange}
-                  name="recentDataCheckbox"
+                  checked={latestDataCheckbox}
+                  onChange={handleLatestDataCheckboxChange}
+                  name="latestDataCheckbox"
                 />
               }
-              label="Most Recent Data"
+              label="Latest Data"
               labelPlacement="end"
             />
             <MuiPickersUtilsProvider utils={MomentUtils}>
@@ -186,12 +210,25 @@ export default function CrimesMapContainer() {
                 views={["year", "month"]}
                 label="Year and Month"
                 minDate={new Date("2018-01-01")}
-                maxDate={new Date("2020-07-01")}
-                disabled={recentDataCheckboxEnabledState}
+                maxDate={new Date("2020-06-01")}
+                disabled={latestDataCheckboxEnabled}
                 value={selectedDate}
-                onChange={handleDateChange}
+                onChange={(val) => {
+                  handleDateChange(val)
+                  handleDateInfoChange(val)
+                }}
               />
             </MuiPickersUtilsProvider>
+          </Grid>
+          <Grid item xs={12} sm={12} style={{ marginTop: 0 }}>
+            <TextField
+              id="mostRecentDateText"
+              style={styles.mostRecentDateText}
+              label="From May 2020"
+              InputProps={{
+                readOnly: true,
+              }}
+            />
           </Grid>
         </Container>
         <Container maxWidth="xl">
@@ -205,8 +242,9 @@ export default function CrimesMapContainer() {
                 onGoogleApiLoaded={({ map }) => {
                   mapRef.current = map
                 }}
+                // onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps, places)}
                 onClick={(event) => {
-                  setHomeCheckboxState(false)
+                  setHomeCheckbox(false)
                   setMapCenter({
                     lat: event.lat,
                     lng: event.lng,
@@ -272,7 +310,7 @@ export default function CrimesMapContainer() {
                     >
                       <button
                         className="crime-marker"
-                        onClick={() => markerClicked(cluster)}
+                        // onClick={() => markerClicked(cluster)}
                       >
                         <img
                           src="/static/images/Custody.svg"
