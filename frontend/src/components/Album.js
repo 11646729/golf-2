@@ -8,6 +8,7 @@ import {
   Paper,
   Container,
   makeStyles,
+  CardMedia,
 } from "@material-ui/core"
 import clsx from "clsx"
 
@@ -82,6 +83,11 @@ export default function Album() {
         {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
+            <CardMedia
+              className={classes.cardMedia}
+              image="/static/images/NearbyGolfClubs.jpg"
+              title="Nearby Golf Courses"
+            />
             <Typography
               component="h1"
               variant="h2"
