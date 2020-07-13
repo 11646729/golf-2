@@ -18,6 +18,7 @@ import MenuIcon from "@material-ui/icons/Menu"
 import CoursesMap from "./components/CoursesMap"
 import CruiseTable from "./components/CruiseTable"
 import CrimesMap from "./components/CrimesMap"
+import TransportMap from "./components/TransportMap"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -85,6 +86,7 @@ export default function App() {
         <Route path="golfcoursesmap" element={<CoursesMapLink />} />
         <Route path="cruisetable" element={<CruiseTableLink />} />
         <Route path="crimesmap" element={<CrimesMapLink />} />
+        <Route path="transportmap" element={<TransportMapLink />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
@@ -105,6 +107,10 @@ function CruiseTableLink() {
 
 function CrimesMapLink() {
   return <CrimesMap />
+}
+
+function TransportMapLink() {
+  return <TransportMap />
 }
 
 function NotFound() {

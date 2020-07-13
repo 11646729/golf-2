@@ -28,28 +28,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function CoursesCard() {
+export default function TransportCard() {
   const classes = useStyles()
 
   return (
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        image="/static/images/NearbyGolfClubs.jpg"
-        title="Nearby Golf Courses"
+        image="/static/images/TranslinkRailways.jpg"
+        title="Transport Map"
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          Nearby Golf Courses
+          Transport
         </Typography>
-        <Typography>This shows Golf Courses in Northern Ireland</Typography>
+        <Typography>This shows transport on the Peninsula</Typography>
       </CardContent>
       <CardActions>
         <Button
           size="small"
           color="primary"
           component={Link}
-          to="/golfcoursesmap"
+          to="/transportmap"
         >
           View
         </Button>
