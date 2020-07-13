@@ -16,34 +16,9 @@ import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
 
 import "../App.css"
 
-// InfoWindow component
-//   return (
-//     <div style={infoWindowStyle}>
-//       {/* <div style={{ fontSize: 16 }}>{place.name}</div>
-//       <div style={{ fontSize: 14 }}>
-//         <span style={{ color: "grey" }}>{place.rating} </span>
-//         <span style={{ color: "orange" }}>
-//           {String.fromCharCode(9733).repeat(Math.floor(place.rating))}
-//         </span>
-//         <span style={{ color: "lightgrey" }}>
-//           {String.fromCharCode(9733).repeat(5 - Math.floor(place.rating))}
-//         </span>
-//       </div>
-//       <div style={{ fontSize: 14, color: "grey" }}>{place.types[0]}</div>
-//       <div style={{ fontSize: 14, color: "grey" }}>
-//         {"$".repeat(place.price_level)}
-//       </div>
-//       <div style={{ fontSize: 14, color: "green" }}>
-//         {place.opening_hours.open_now ? "Open" : "Closed"}
-//       </div> */}
-//     </div>
-//   )
-// }
-
 const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
 const Marker = ({ children }) => children
-const InfoWindow = ({ children }) => children
 
 export default function CrimesMapContainer() {
   // State
@@ -63,8 +38,11 @@ export default function CrimesMapContainer() {
     true
   )
 
+  // dateInfo e.g. &date=2020-05 is the date string to be appended to the coordinates for downloading data
   const [dateInfo, setDateInfo] = useState("")
+  // selectedDate e.g. 2020-04 is the date chosen by the user to obtain data
   const [selectedDate, setDateChange] = useState("")
+  // latestDateInfoAvailable e.g. 2020-05 is the date of the latest available data ready for download
   const [latestDateInfoAvailable, setLatestDateInfoAvailable] = useState("")
 
   const handleHomeCheckboxChange = (event) => {
@@ -110,11 +88,10 @@ export default function CrimesMapContainer() {
     )
   }
 
-  const markerClicked = (marker) => {
-    // setShowingInfoWindow(true)
-    // console.log("clicked...")
-    // console.log("The marker that was clicked is", marker)
-  }
+  // const markerClicked = (marker) => {
+  //   console.log("clicked...")
+  //   console.log("The marker that was clicked is", marker)
+  // }
 
   const styles = {
     displayHomeLocationCheckBox: {
@@ -326,21 +303,17 @@ export default function CrimesMapContainer() {
                       >
                         <button
                           className="crime-marker"
-                          onClick={() => markerClicked(cluster)}
+                          // onClick={() => markerClicked(cluster)}
                         >
                           <img
                             src="/static/images/Custody.svg"
                             alt="crime doesn't pay"
                           />
                         </button>
+                        {/* <div className="cluster-infowindow">
+                          Category: {cluster.properties.category}
+                        </div> */}
                       </Marker>
-                      <InfoWindow
-                        key={`crime-${cluster.properties.crimeId}`}
-                        lat={latitude}
-                        lng={longitude}
-                      >
-                        <div className="cluster-infowindow"></div>
-                      </InfoWindow>
                     </Fragment>
                   )
                 })}

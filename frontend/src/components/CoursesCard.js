@@ -33,7 +33,7 @@ export default function NearbyGolfCoursesCard() {
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        image="/static/images/NearbyClubs.jpg"
+        image="/static/images/NearbyGolfClubs.jpg"
         title="Nearby Golf Courses"
       />
       <CardContent className={classes.cardContent}>

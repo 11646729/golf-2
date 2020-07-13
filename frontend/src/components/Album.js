@@ -12,7 +12,7 @@ import {
 import clsx from "clsx"
 
 import WeatherChart from "./WeatherChart"
-import NearbyGolfCoursesCard from "./NearbyGolfCoursesCard"
+import CoursesCard from "./CoursesCard"
 import CrimesCard from "./CrimesCard"
 import CruiseTableCard from "./CruiseTableCard"
 
@@ -124,7 +124,7 @@ export default function Album() {
               </Paper>
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
-              <NearbyGolfCoursesCard />
+              <CoursesCard />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <CrimesCard />

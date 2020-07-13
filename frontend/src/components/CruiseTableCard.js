@@ -33,8 +33,8 @@ export default function CruiseTableCard() {
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        image="/static/images/NearbyClubs.jpg"
-        title="Nearby Golf Clubs"
+        image="/static/images/CruiseShips.jpg"
+        title="Cruise Ship in Belfast Lough"
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">

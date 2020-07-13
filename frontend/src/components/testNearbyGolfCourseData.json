@@ -384,26 +384,6 @@
     "type": "Golf Course",
     "crsName": "WGS84",
     "crsUrn": "urn:ogc:def:crs:OGC:1.3:CRS84",
-    "_id": "5ecb696cc2768807b98630fe",
-    "name": "Mahee Island Golf Club",
-    "phoneNumber": "028 9754 1234",
-    "photoTitle": "Istanbul Bridge Photo",
-    "photoUrl": "static/images/Bosphorus.jpg",
-    "description": "Istanbul is a major city in Turkey that straddles Europe and Asia across the Bosphorus Strait. Its Old City reflects cultural influences of the many empires that once ruled here.",
-    "coordinates": {
-      "_id": "5ecb696cc2768807b98630fd",
-      "lat": 54.498789,
-      "lng": -5.643564
-    },
-    "createdAt": "2020-05-25T06:45:00.077Z",
-    "updatedAt": "2020-05-25T06:45:00.077Z",
-    "__v": 0
-  },
-  {
-    "databaseVersion": 1,
-    "type": "Golf Course",
-    "crsName": "WGS84",
-    "crsUrn": "urn:ogc:def:crs:OGC:1.3:CRS84",
     "_id": "5ecb696cc2768807b9863101",
     "name": "Malone Golf Club",
     "phoneNumber": "028 9061 2758",
