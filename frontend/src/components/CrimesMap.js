@@ -16,9 +16,34 @@ import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
 
 import "../App.css"
 
+// InfoWindow component
+//   return (
+//     <div style={infoWindowStyle}>
+//       {/* <div style={{ fontSize: 16 }}>{place.name}</div>
+//       <div style={{ fontSize: 14 }}>
+//         <span style={{ color: "grey" }}>{place.rating} </span>
+//         <span style={{ color: "orange" }}>
+//           {String.fromCharCode(9733).repeat(Math.floor(place.rating))}
+//         </span>
+//         <span style={{ color: "lightgrey" }}>
+//           {String.fromCharCode(9733).repeat(5 - Math.floor(place.rating))}
+//         </span>
+//       </div>
+//       <div style={{ fontSize: 14, color: "grey" }}>{place.types[0]}</div>
+//       <div style={{ fontSize: 14, color: "grey" }}>
+//         {"$".repeat(place.price_level)}
+//       </div>
+//       <div style={{ fontSize: 14, color: "green" }}>
+//         {place.opening_hours.open_now ? "Open" : "Closed"}
+//       </div> */}
+//     </div>
+//   )
+// }
+
 const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
 const Marker = ({ children }) => children
+const InfoWindow = ({ children }) => children
 
 export default function CrimesMapContainer() {
   // State
@@ -40,6 +65,7 @@ export default function CrimesMapContainer() {
 
   const [dateInfo, setDateInfo] = useState("")
   const [selectedDate, setDateChange] = useState("")
+  const [latestDateInfoAvailable, setLatestDateInfoAvailable] = useState("")
 
   const handleHomeCheckboxChange = (event) => {
     setHomeCheckbox(event.target.checked)
@@ -71,6 +97,7 @@ export default function CrimesMapContainer() {
       )
     } else {
       setDateInfo("")
+      setDateChange(latestDateInfoAvailable)
     }
   }
 
@@ -83,12 +110,11 @@ export default function CrimesMapContainer() {
     )
   }
 
-  // const markerClicked = (marker) => {
-  //   // setShowingInfoWindow(true)
-
-  //   console.log("clicked...")
-  //   console.log("The marker that was clicked is", marker)
-  // }
+  const markerClicked = (marker) => {
+    // setShowingInfoWindow(true)
+    // console.log("clicked...")
+    // console.log("The marker that was clicked is", marker)
+  }
 
   const styles = {
     displayHomeLocationCheckBox: {
@@ -145,6 +171,7 @@ export default function CrimesMapContainer() {
 
   if (reformattedCrimes.length > 0 && selectedDate === "") {
     setDateInfo("&date=" + reformattedCrimes[0].properties.month)
+    setLatestDateInfoAvailable(reformattedCrimes[0].properties.month)
     setDateChange(
       moment(reformattedCrimes[0].properties.month).format("YYYY") +
         "-" +
@@ -231,7 +258,6 @@ export default function CrimesMapContainer() {
                 onGoogleApiLoaded={({ map }) => {
                   mapRef.current = map
                 }}
-                // onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps, places)}
                 onClick={(event) => {
                   setHomeCheckbox(false)
                   setMapCenter({
@@ -292,21 +318,30 @@ export default function CrimesMapContainer() {
                   }
 
                   return (
-                    <Marker
-                      key={`crime-${cluster.properties.crimeId}`}
-                      lat={latitude}
-                      lng={longitude}
-                    >
-                      <button
-                        className="crime-marker"
-                        // onClick={() => markerClicked(cluster)}
+                    <Fragment>
+                      <Marker
+                        key={`crime-${cluster.properties.crimeId}`}
+                        lat={latitude}
+                        lng={longitude}
                       >
-                        <img
-                          src="/static/images/Custody.svg"
-                          alt="crime doesn't pay"
-                        />
-                      </button>
-                    </Marker>
+                        <button
+                          className="crime-marker"
+                          onClick={() => markerClicked(cluster)}
+                        >
+                          <img
+                            src="/static/images/Custody.svg"
+                            alt="crime doesn't pay"
+                          />
+                        </button>
+                      </Marker>
+                      <InfoWindow
+                        key={`crime-${cluster.properties.crimeId}`}
+                        lat={latitude}
+                        lng={longitude}
+                      >
+                        <div className="cluster-infowindow"></div>
+                      </InfoWindow>
+                    </Fragment>
                   )
                 })}
               </GoogleMapReact>

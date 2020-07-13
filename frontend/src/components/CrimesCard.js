@@ -38,9 +38,9 @@ export default function NearbyCrimesCard() {
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          Recent Nearby Crimes
+          Nearby Crimes
         </Typography>
-        <Typography>Review recent crimes near Home</Typography>
+        <Typography>Recent crimes near Home</Typography>
       </CardContent>
       <CardActions>
         <Button size="small" color="primary" component={Link} to="/crimesmap">

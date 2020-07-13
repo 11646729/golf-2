@@ -96,7 +96,7 @@ export default function CoursesMapContainer() {
                 color="textPrimary"
                 gutterBottom
               >
-                Nearby Golf Courses Dashboard
+                Golf Courses Dashboard
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12}>
