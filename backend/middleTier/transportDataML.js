@@ -31,7 +31,7 @@ export const saveTransportDataToDatabase = async () => {
         stop_url: "No data",
         location_type: 0,
         parent_station: "No data",
-        stop_timezone: "Not Required",
+        stop_timezone: "Not required",
         wheelchair_boarding: 0,
       })
 
