@@ -43,10 +43,9 @@ export const runSwitchboard = (io) => {
     })
 
     cron.schedule("* * * * *", () => {
-      saveTransportDataToDatabase().then(() => {
-        console.log("In switchboard function saveTransportDataToDatabase")
-      })
-
+      // saveTransportDataToDatabase().then(() => {
+      //   console.log("In switchboard function saveTransportDataToDatabase")
+      // })
       // saveNearbyGolfCourseDataToDatabase().then(() => {
       //   console.log("In switchboard function saveGolfCourseDataToDatabase")
       // })
