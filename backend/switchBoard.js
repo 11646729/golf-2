@@ -12,6 +12,7 @@ import {
   getNearbyGolfCourseDataFromDatabase,
   saveNearbyGolfCourseDataToDatabase,
 } from "./middleTier/nearbyGolfCoursesML"
+import { saveTransportDataToDatabase } from "./middleTier/transportDataML"
 
 let count = 0
 
@@ -42,6 +43,10 @@ export const runSwitchboard = (io) => {
     })
 
     cron.schedule("* * * * *", () => {
+      saveTransportDataToDatabase().then(() => {
+        console.log("In switchboard function saveTransportDataToDatabase")
+      })
+
       // saveNearbyGolfCourseDataToDatabase().then(() => {
       //   console.log("In switchboard function saveGolfCourseDataToDatabase")
       // })
