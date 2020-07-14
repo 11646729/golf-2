@@ -8,8 +8,8 @@ const transport_controller = require("../../../controllers/transportControllers/
 // GET catalogue home page
 router.get("/", transport_controller.transportIndex)
 
-// // GET all temperature readings from the database
-// router.get("/temperatureReadings", weather_controller.findAll)
+// GET all bus stops and stations from the database
+router.get("/stopsstations", transport_controller.stops_and_stations_getAll)
 
 // // POST a temperature reading to the database
 // router.post("/temperatureReadings/:id", weather_controller.create)

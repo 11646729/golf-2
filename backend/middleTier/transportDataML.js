@@ -13,8 +13,8 @@ export const saveTransportDataToDatabase = async () => {
     let i = 0
     do {
       const busStopCoords = new GtfsCoordsSchema({
-        stop_lat: geojson.features[i].properties.Latitude,
-        stop_lon: geojson.features[i].properties.Longitude,
+        lat: geojson.features[i].properties.Latitude,
+        lng: geojson.features[i].properties.Longitude,
       })
 
       console.log(busStopCoords)
@@ -36,16 +36,16 @@ export const saveTransportDataToDatabase = async () => {
       })
 
       // Now save in mongoDB
-      busStop
-        .save()
-        // .then(() => console.log(i + " busStopsStations saved to mongoDB"))
-        .catch((err) =>
-          console.log("Error saving busStopsStations to mongoDB " + err)
-        )
+      // busStop
+      //   .save()
+      //   // .then(() => console.log(i + " busStopsStations saved to mongoDB"))
+      //   .catch((err) =>
+      //     console.log("Error saving busStopsStations to mongoDB " + err)
+      //   )
 
       i++
     } while (i < geojson.features.length)
-    console.log("Import ended")
+    console.log("Import ended " + i)
   } catch (error) {
     // handle error
     console.log("Error in saveTransportDataToDatabase ", error)

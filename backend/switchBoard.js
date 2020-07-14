@@ -36,16 +36,16 @@ export const runSwitchboard = (io) => {
     })
 
     // Fetch data Daily at 07:00
-    cron.schedule("0 7 * * *", () => {
+    cron.schedule("* 1 * * *", () => {
       getAndSaveDarkSkiesData().then((result) => {
         emitDarkSkiesData(socket, result).then(() => {})
       })
     })
 
     cron.schedule("* * * * *", () => {
-      // saveTransportDataToDatabase().then(() => {
-      //   console.log("In switchboard function saveTransportDataToDatabase")
-      // })
+      saveTransportDataToDatabase().then(() => {
+        console.log("In switchboard function saveTransportDataToDatabase")
+      })
       // saveNearbyGolfCourseDataToDatabase().then(() => {
       //   console.log("In switchboard function saveGolfCourseDataToDatabase")
       // })

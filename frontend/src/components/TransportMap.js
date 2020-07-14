@@ -58,9 +58,11 @@ export default function TransportMapContainer() {
     zoomControl: true,
   }
 
-  const url = "http://localhost:5000/api/golf/nearbyGolfCourses"
+  const url = "http://localhost:5000/api/transport/stopsstations"
   const { data, error } = useSwr(url, { fetcher })
   const markers = data && !error ? data : []
+
+  console.log(markers.length)
 
   const onLoadHandler = (map) => {
     // Store a reference to the google map instance in state
@@ -96,7 +98,7 @@ export default function TransportMapContainer() {
                 color="textPrimary"
                 gutterBottom
               >
-                Golf Courses Dashboard
+                Transport Dashboard
               </Typography>
             </Grid>
             <Grid item xs={12} sm={12}>
@@ -111,49 +113,14 @@ export default function TransportMapContainer() {
                 {markers
                   ? markers.map((marker) => (
                       <Marker
-                        key={marker.name}
-                        position={marker.coordinates}
+                        key={marker.stop_id}
+                        position={marker.stop_coordinates}
                         onClick={() => {
                           setSelected(marker)
                         }}
                       />
                     ))
                   : null}
-
-                {selected ? (
-                  <InfoWindow
-                    position={selected.coordinates}
-                    onCloseClick={() => {
-                      setSelected(null)
-                    }}
-                  >
-                    <Card>
-                      <CardMedia
-                        style={styles.media}
-                        image={selected.photoUrl}
-                        title={selected.photoTitle}
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {selected.name}
-                        </Typography>
-                        <Typography component="p">
-                          {selected.description}
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button
-                          size="small"
-                          color="primary"
-                          component={Link}
-                          // to="/golfcoursesmap"
-                        >
-                          View
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  </InfoWindow>
-                ) : null}
               </GoogleMap>
             </Grid>
           </Container>

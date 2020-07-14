@@ -3,8 +3,8 @@ import mongoose, { Schema } from "mongoose"
 // NB No id created to eliminate _id problem
 const gtfsCoordsSchema = new Schema(
   {
-    stop_lat: { type: Number, required: true },
-    stop_lon: {
+    lat: { type: Number, required: true },
+    lng: {
       type: Number,
       required: true,
     },
