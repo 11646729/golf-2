@@ -24,8 +24,10 @@ export default function TransportMapContainer() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
-  const [busStops, setData] = useState([])
   const [homeCheckbox, setHomeCheckbox] = useState(true)
+  const [busStops, setData] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState([])
 
   // Event Handlers
 
@@ -59,11 +61,22 @@ export default function TransportMapContainer() {
 
   // This line initialises the data array
   useEffect(() => {
+    let ignore = false
     const fetchData = async () => {
-      const result = await axios(url)
-      setData(result.data)
+      try {
+        setLoading(true)
+        setError({})
+        const result = await axios(url)
+        if (!ignore) setData(result.data)
+      } catch (err) {
+        setError(err)
+      }
+      setLoading(false)
     }
     fetchData()
+    return () => {
+      ignore = true
+    }
   }, [])
 
   // Now compute bounds of map to display
