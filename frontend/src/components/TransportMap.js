@@ -20,17 +20,18 @@ export default function TransportMapContainer() {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
-  const [selected, setSelected] = useState(null)
+  // const [selected, setSelected] = useState(null)
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
   const [busStops, setData] = useState([])
   const [homeCheckbox, setHomeCheckbox] = useState(true)
 
+  const url = "http://localhost:5000/api/transport/stopsstations"
+
   // This line initialises the data array
   useEffect(() => {
     const fetchData = async () => {
-      const url = "http://localhost:5000/api/transport/stopsstations"
       const result = await axios(url)
       setData(result.data)
     }

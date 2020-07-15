@@ -1,5 +1,6 @@
-import React, { Fragment, useState, useRef } from "react"
+import React, { Fragment, useState, useEffect, useRef } from "react"
 import GoogleMapReact from "google-map-react"
+import axios from "axios"
 import useSwr from "swr"
 import useSupercluster from "use-supercluster"
 import moment from "moment"
@@ -31,12 +32,12 @@ export default function CrimesMapContainer() {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
-
   const [homeCheckbox, setHomeCheckbox] = useState(true)
   const [latestDataCheckbox, setLatestDataCheckbox] = useState(true)
   const [latestDataCheckboxEnabled, setLatestDataCheckboxEnabled] = useState(
     true
   )
+  // const [crimes, setData] = useState([])
 
   // dateInfo e.g. &date=2020-05 is the date string to be appended to the coordinates for downloading data
   const [dateInfo, setDateInfo] = useState("")
@@ -114,7 +115,7 @@ export default function CrimesMapContainer() {
   }
 
   // build Crimes Url - set dateInfo to "" to fetch most recent data
-  let crimesUrl =
+  let url =
     process.env.REACT_APP_CRIMES_ENDPOINT +
     "?lat=" +
     mapCenter.lat +
@@ -122,11 +123,20 @@ export default function CrimesMapContainer() {
     mapCenter.lng +
     dateInfo
 
-  console.log(crimesUrl)
-
   // Now fetch crimes data
-  const { data, error } = useSwr(crimesUrl, { fetcher })
-  const crimes = data && !error ? data.slice(0, 2000) : []
+  const { data, error } = useSwr(url, { fetcher })
+  // const crimes = data && !error ? data.slice(0, 2000) : []
+  const crimes = data && !error ? data : []
+  // setData(oldCrimes)
+
+  // This line initialises the data array
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await axios(url)
+  //     setData(result.data)
+  //   }
+  //   fetchData()
+  // }, [])
 
   // Now reformat relevant crimes data to use with supercluster
   const reformattedCrimes = crimes.map((crime) => ({
