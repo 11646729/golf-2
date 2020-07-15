@@ -21,6 +21,9 @@ import {
 
 export default function CoursesMapContainer() {
   // State Hooks
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
+  })
   const [mapRef, setMapRef] = useState(null)
   const [mapZoom] = useState(
     parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM)
@@ -29,13 +32,8 @@ export default function CoursesMapContainer() {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
-
-  const [selected, setSelected] = useState(null)
-
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
-  })
   const [golfCourses, setData] = useState([])
+  const [selected, setSelected] = useState(null)
 
   // Event Handlers
   const onLoadHandler = (map) => {
