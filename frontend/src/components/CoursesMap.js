@@ -57,10 +57,11 @@ export default function CoursesMapContainer() {
     zoomControl: true,
   }
 
+  const url = "http://localhost:5000/api/golf/nearbyGolfCourses"
+
   // This line initialises the data array
   useEffect(() => {
     const fetchData = async () => {
-      const url = "http://localhost:5000/api/golf/nearbyGolfCourses"
       const result = await axios(url)
       setData(result.data)
     }
