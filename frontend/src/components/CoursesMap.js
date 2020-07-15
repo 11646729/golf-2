@@ -58,16 +58,13 @@ export default function CoursesMapContainer() {
   }, [])
 
   // Now compute bounds of map to display
-  if (golfCourses != null) {
-    // get map bounds
-    if (mapRef) {
-      const bounds = new window.google.maps.LatLngBounds()
-      golfCourses.map((golfCourse) => {
-        bounds.extend(golfCourse.coordinates)
-        return bounds
-      })
-      mapRef.fitBounds(bounds)
-    }
+  if (mapRef && golfCourses != null) {
+    const bounds = new window.google.maps.LatLngBounds()
+    golfCourses.map((golfCourse) => {
+      bounds.extend(golfCourse.coordinates)
+      return bounds
+    })
+    mapRef.fitBounds(bounds)
   }
 
   const renderMap = () => {

@@ -67,16 +67,13 @@ export default function TransportMapContainer() {
   }, [])
 
   // Now compute bounds of map to display
-  if (busStops != null) {
-    // get map bounds
-    if (mapRef) {
-      const bounds = new window.google.maps.LatLngBounds()
-      busStops.map((busStop) => {
-        bounds.extend(busStop.stop_coordinates)
-        return bounds
-      })
-      mapRef.fitBounds(bounds)
-    }
+  if (mapRef && busStops != null) {
+    const bounds = new window.google.maps.LatLngBounds()
+    busStops.map((busStop) => {
+      bounds.extend(busStop.stop_coordinates)
+      return bounds
+    })
+    mapRef.fitBounds(bounds)
   }
 
   const renderMap = () => {

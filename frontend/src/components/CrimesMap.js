@@ -125,7 +125,6 @@ export default function CrimesMapContainer() {
 
   // Now fetch crimes data
   const { data, error } = useSwr(url, { fetcher })
-  // const crimes = data && !error ? data.slice(0, 2000) : []
   const crimes = data && !error ? data : []
   // setData(oldCrimes)
 
