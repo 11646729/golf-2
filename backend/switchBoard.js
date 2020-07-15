@@ -4,6 +4,7 @@ import cron from "node-cron"
 import { runCron } from "./cronRoutines"
 import { directDeleteAll as deleteAllPortArrivals } from "./controllers/cruiseControllers/v1/portArrivalsController"
 import { directDeleteAll as deleteAllVesselDetails } from "./controllers/cruiseControllers/v1/vesselDetailsController"
+import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/transportController"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
@@ -31,21 +32,23 @@ export const runSwitchboard = (io) => {
       // console.log("Started getting Vessel Arrivals & Details Scraping")
       deleteAllPortArrivals()
       deleteAllVesselDetails()
+      // deleteAllBusStops()
       runCron()
       // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     })
 
-    // Fetch data Daily at 07:00
+    // Fetch data every minute at 01:00
     cron.schedule("* 1 * * *", () => {
       getAndSaveDarkSkiesData().then((result) => {
         emitDarkSkiesData(socket, result).then(() => {})
       })
     })
 
-    cron.schedule("* * * * *", () => {
-      saveTransportDataToDatabase().then(() => {
-        console.log("In switchboard function saveTransportDataToDatabase")
-      })
+    // Save data to database every 5 minutes
+    cron.schedule("*/10 * * * *", () => {
+      // saveTransportDataToDatabase().then(() => {
+      //   console.log("In switchboard function saveTransportDataToDatabase")
+      // })
       // saveNearbyGolfCourseDataToDatabase().then(() => {
       //   console.log("In switchboard function saveGolfCourseDataToDatabase")
       // })

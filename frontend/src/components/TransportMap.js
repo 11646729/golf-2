@@ -2,7 +2,14 @@ import React, { useState, useEffect, Fragment } from "react"
 import useSwr from "swr"
 import axios from "axios"
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
-import { Typography, CssBaseline, Container, Grid } from "@material-ui/core"
+import {
+  Typography,
+  CssBaseline,
+  Container,
+  Grid,
+  FormControlLabel,
+  Checkbox,
+} from "@material-ui/core"
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
@@ -20,14 +27,19 @@ export default function TransportMapContainer() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
-  const [markers, setData] = useState([])
+  const [busStops, setData] = useState([])
+  const [homeCheckbox, setHomeCheckbox] = useState(true)
 
   // This line initialises the data array
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(
-        "http://localhost:5000/api/transport/stopsstations"
-      )
+      const url = "http://localhost:5000/api/transport/stopsstations"
+
+      // const { data, error } = useSwr(url, { fetcher })
+      // const busStops = data && !error ? data : []
+      // setData(busStops)
+
+      const result = await axios(url)
       setData(result.data)
     }
     fetchData()
@@ -45,6 +57,10 @@ export default function TransportMapContainer() {
       paddingTop: "40%",
       marginTop: "30",
     },
+    displayHomeLocationCheckBox: {
+      marginTop: "0px",
+      marginLeft: "100px",
+    },
   }
 
   const options = {
@@ -53,11 +69,7 @@ export default function TransportMapContainer() {
     zoomControl: true,
   }
 
-  // const url = "http://localhost:5000/api/transport/stopsstations"
-  // const { data, error } = useSwr(url, { fetcher })
-  // const markers = data && !error ? data : []
-
-  console.log(markers.length)
+  console.log(busStops.length)
 
   const onLoadHandler = (map) => {
     // Store a reference to the google map instance in state
@@ -68,19 +80,34 @@ export default function TransportMapContainer() {
     setMapRef(null)
   }
 
-  // if (markers != null) {
-  //   console.log(markers.length)
+  // Now compute bounds of map to display
+  if (busStops != null) {
+    // get map bounds
+    if (mapRef) {
+      const bounds = new window.google.maps.LatLngBounds()
+      busStops.map((busStop) => {
+        bounds.extend(busStop.stop_coordinates)
+        return bounds
+      })
+      mapRef.fitBounds(bounds)
+    }
+  }
 
-  //   // get map bounds
-  //   if (mapRef) {
-  //     const bounds = new window.google.maps.LatLngBounds()
-  //     markers.map((marker) => {
-  //       bounds.extend(marker.coordinates)
-  //       return bounds
-  //     })
-  //     mapRef.fitBounds(bounds)
-  //   }
-  // }
+  const handleHomeCheckboxChange = (event) => {
+    setHomeCheckbox(event.target.checked)
+
+    // if (event.target.checked === true) {
+    //   setMapCenter({
+    //     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+    //     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+    //   })
+    // } else {
+    //   setMapCenter({
+    //     lat: parseFloat(process.env.REACT_APP_ANDREA_HOME_LATITUDE),
+    //     lng: parseFloat(process.env.REACT_APP_ANDREA_HOME_LONGITUDE),
+    //   })
+    // }
+  }
 
   const renderMap = () => {
     return (
@@ -99,6 +126,19 @@ export default function TransportMapContainer() {
               >
                 Transport Dashboard
               </Typography>
+              <FormControlLabel
+                style={styles.displayHomeLocationCheckBox}
+                control={
+                  <Checkbox
+                    color="primary"
+                    checked={homeCheckbox}
+                    onChange={handleHomeCheckboxChange}
+                    name="homeCheckbox"
+                  />
+                }
+                label="Display Bus Stops"
+                labelPlacement="end"
+              />
             </Grid>
             <Grid item xs={12} sm={12}>
               <GoogleMap
@@ -109,14 +149,14 @@ export default function TransportMapContainer() {
                 onLoad={onLoadHandler}
                 onUnmount={onUnmountHandler}
               >
-                {markers
-                  ? markers.map((marker) => (
+                {busStops
+                  ? busStops.map((busStop) => (
                       <Marker
-                        key={marker.stop_id}
-                        position={marker.stop_coordinates}
-                        onClick={() => {
-                          setSelected(marker)
-                        }}
+                        key={busStop.stop_id}
+                        position={busStop.stop_coordinates}
+                        // onClick={() => {
+                        //   setSelected(busStop)
+                        // }}
                       />
                     ))
                   : null}

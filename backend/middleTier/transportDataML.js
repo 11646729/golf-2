@@ -7,8 +7,7 @@ import { GtfsCoordsSchema } from "../models/commonModels/v1/gtfsCoordsSchema"
 // Longitude first in Javascript
 export const saveTransportDataToDatabase = async () => {
   try {
-    // const geojson = require("../translink_bus_stop_test_list.json")
-    const geojson = require("../translink_bus_stop_list_january_2018.json")
+    const geojson = require("../rawData/translink_bus_stop_list_january_2018.json")
 
     let i = 0
     do {
@@ -36,12 +35,12 @@ export const saveTransportDataToDatabase = async () => {
       })
 
       // Now save in mongoDB
-      // busStop
-      //   .save()
-      //   // .then(() => console.log(i + " busStopsStations saved to mongoDB"))
-      //   .catch((err) =>
-      //     console.log("Error saving busStopsStations to mongoDB " + err)
-      //   )
+      busStop
+        .save()
+        // .then(() => console.log(i + " busStopsStations saved to mongoDB"))
+        .catch((err) =>
+          console.log("Error saving busStopsStations to mongoDB " + err)
+        )
 
       i++
     } while (i < geojson.features.length)
