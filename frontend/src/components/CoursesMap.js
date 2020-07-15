@@ -33,6 +33,8 @@ export default function CoursesMapContainer() {
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
   const [golfCourses, setData] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState([])
   const [selected, setSelected] = useState(null)
 
   // Event Handlers
@@ -50,11 +52,22 @@ export default function CoursesMapContainer() {
 
   // This line initialises the data array
   useEffect(() => {
+    let ignore = false
     const fetchData = async () => {
-      const result = await axios(url)
-      setData(result.data)
+      try {
+        setLoading(true)
+        setError({})
+        const result = await axios(url)
+        if (!ignore) setData(result.data)
+      } catch (err) {
+        setError(err)
+      }
+      setLoading(false)
     }
     fetchData()
+    return () => {
+      ignore = true
+    }
   }, [])
 
   // Now compute bounds of map to display
