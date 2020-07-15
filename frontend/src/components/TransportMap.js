@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core"
 
 export default function TransportMapContainer() {
-  // State
+  // State Hooks
   const [mapRef, setMapRef] = useState(null)
   const [mapZoom] = useState(
     parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM)
@@ -27,17 +27,34 @@ export default function TransportMapContainer() {
   const [busStops, setData] = useState([])
   const [homeCheckbox, setHomeCheckbox] = useState(true)
 
-  const url = "http://localhost:5000/api/transport/stopsstations"
+  // Event Handlers
 
-  // This line initialises the data array
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios(url)
-      setData(result.data)
-    }
-    fetchData()
-  }, [])
+  const onLoadHandler = (map) => {
+    // Store a reference to the google map instance in state
+    setMapRef(map)
+  }
 
+  const onUnmountHandler = () => {
+    setMapRef(null)
+  }
+
+  const handleHomeCheckboxChange = (event) => {
+    setHomeCheckbox(event.target.checked)
+
+    // if (event.target.checked === true) {
+    //   setMapCenter({
+    //     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+    //     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+    //   })
+    // } else {
+    //   setMapCenter({
+    //     lat: parseFloat(process.env.REACT_APP_ANDREA_HOME_LATITUDE),
+    //     lng: parseFloat(process.env.REACT_APP_ANDREA_HOME_LONGITUDE),
+    //   })
+    // }
+  }
+
+  // Styles
   const styles = {
     displayMap: {
       height: "600px",
@@ -56,22 +73,17 @@ export default function TransportMapContainer() {
     },
   }
 
-  const options = {
-    // mapTypeId: "hybrid",
-    disableDefaultUI: true,
-    zoomControl: true,
-  }
+  // Fetch data - after componentHasUpdated
+  const url = "http://localhost:5000/api/transport/stopsstations"
 
-  console.log(busStops.length)
-
-  const onLoadHandler = (map) => {
-    // Store a reference to the google map instance in state
-    setMapRef(map)
-  }
-
-  const onUnmountHandler = () => {
-    setMapRef(null)
-  }
+  // This line initialises the data array
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(url)
+      setData(result.data)
+    }
+    fetchData()
+  }, [])
 
   // Now compute bounds of map to display
   if (busStops != null) {
@@ -84,22 +96,6 @@ export default function TransportMapContainer() {
       })
       mapRef.fitBounds(bounds)
     }
-  }
-
-  const handleHomeCheckboxChange = (event) => {
-    setHomeCheckbox(event.target.checked)
-
-    // if (event.target.checked === true) {
-    //   setMapCenter({
-    //     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-    //     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-    //   })
-    // } else {
-    //   setMapCenter({
-    //     lat: parseFloat(process.env.REACT_APP_ANDREA_HOME_LATITUDE),
-    //     lng: parseFloat(process.env.REACT_APP_ANDREA_HOME_LONGITUDE),
-    //   })
-    // }
   }
 
   const renderMap = () => {
@@ -138,7 +134,11 @@ export default function TransportMapContainer() {
                 mapContainerStyle={styles.displayMap}
                 center={mapCenter}
                 zoom={mapZoom}
-                options={options}
+                options={{
+                  // mapTypeId: "hybrid",
+                  disableDefaultUI: true,
+                  zoomControl: true,
+                }}
                 onLoad={onLoadHandler}
                 onUnmount={onUnmountHandler}
               >

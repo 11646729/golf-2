@@ -20,7 +20,7 @@ import {
 } from "@material-ui/core"
 
 export default function CoursesMapContainer() {
-  // State
+  // State Hooks
   const [mapRef, setMapRef] = useState(null)
   const [mapZoom] = useState(
     parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM)
@@ -37,6 +37,17 @@ export default function CoursesMapContainer() {
   })
   const [golfCourses, setData] = useState([])
 
+  // Event Handlers
+  const onLoadHandler = (map) => {
+    // Store a reference to the google map instance in state
+    setMapRef(map)
+  }
+
+  const onUnmountHandler = () => {
+    setMapRef(null)
+  }
+
+  // Styles
   const styles = {
     displayMap: {
       height: "600px",
@@ -51,12 +62,7 @@ export default function CoursesMapContainer() {
     },
   }
 
-  const options = {
-    // mapTypeId: "hybrid",
-    disableDefaultUI: true,
-    zoomControl: true,
-  }
-
+  // Fetch data - after componentHasUpdated
   const url = "http://localhost:5000/api/golf/nearbyGolfCourses"
 
   // This line initialises the data array
@@ -67,15 +73,6 @@ export default function CoursesMapContainer() {
     }
     fetchData()
   }, [])
-
-  const onLoadHandler = (map) => {
-    // Store a reference to the google map instance in state
-    setMapRef(map)
-  }
-
-  const onUnmountHandler = () => {
-    setMapRef(null)
-  }
 
   // Now compute bounds of map to display
   if (golfCourses != null) {
@@ -113,7 +110,11 @@ export default function CoursesMapContainer() {
                 mapContainerStyle={styles.displayMap}
                 center={mapCenter}
                 zoom={mapZoom}
-                options={options}
+                options={{
+                  // mapTypeId: "hybrid",
+                  disableDefaultUI: true,
+                  zoomControl: true,
+                }}
                 onLoad={onLoadHandler}
                 onUnmount={onUnmountHandler}
               >
