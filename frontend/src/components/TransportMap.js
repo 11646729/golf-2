@@ -149,7 +149,7 @@ export default function TransportMapContainer() {
                 onLoad={onLoadHandler}
                 onUnmount={onUnmountHandler}
               >
-                {busStops
+                {busStops && homeCheckbox
                   ? busStops.map((busStop) => (
                       <Marker
                         key={busStop.stop_id}
