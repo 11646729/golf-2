@@ -50,7 +50,7 @@ export default function CoursesMapContainer() {
   // Fetch data - after componentHasUpdated
   const url = "http://localhost:5000/api/golf/nearbyGolfCourses"
 
-  // This line initialises the data array
+  // Now fetch golf courses data
   useEffect(() => {
     let ignore = false
     const fetchData = async () => {

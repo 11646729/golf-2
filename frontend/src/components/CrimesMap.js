@@ -34,13 +34,15 @@ export default function CrimesMapContainer() {
   const [latestDataCheckboxEnabled, setLatestDataCheckboxEnabled] = useState(
     true
   )
-  const [crimes, setData] = useState([])
   // dateInfo e.g. &date=2020-05 is the date string to be appended to the coordinates for downloading data
   const [dateInfo, setDateInfo] = useState("")
   // selectedDate e.g. 2020-04 is the date chosen by the user to obtain data
   const [selectedDate, setDateChange] = useState("")
   // latestDateInfoAvailable e.g. 2020-05 is the date of the latest available data ready for download
   const [latestDateInfoAvailable, setLatestDateInfoAvailable] = useState("")
+  const [crimes, setData] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState([])
 
   // Event Handlers
   const handleHomeCheckboxChange = (event) => {
@@ -122,11 +124,22 @@ export default function CrimesMapContainer() {
 
   // Now fetch crimes data
   useEffect(() => {
+    let ignore = false
     const fetchData = async () => {
-      const result = await axios(url)
-      setData(result.data)
+      try {
+        setLoading(true)
+        setError({})
+        const result = await axios(url)
+        if (!ignore) setData(result.data)
+      } catch (err) {
+        setError(err)
+      }
+      setLoading(false)
     }
     fetchData()
+    return () => {
+      ignore = true
+    }
   }, [homeCheckbox, latestDataCheckbox, dateInfo, url])
 
   // Now reformat relevant crimes data to use with supercluster

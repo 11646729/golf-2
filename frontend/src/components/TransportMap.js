@@ -59,7 +59,7 @@ export default function TransportMapContainer() {
   // Fetch data - after componentHasUpdated
   const url = "http://localhost:5000/api/transport/stopsstations"
 
-  // This line initialises the data array
+  // Now fetch bus stops data
   useEffect(() => {
     let ignore = false
     const fetchData = async () => {
