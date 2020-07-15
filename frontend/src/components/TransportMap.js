@@ -54,25 +54,6 @@ export default function TransportMapContainer() {
     // }
   }
 
-  // Styles
-  const styles = {
-    displayMap: {
-      height: "600px",
-      width: "97%",
-      margin: 20,
-    },
-    media: {
-      height: 0,
-      // paddingTop: "56.25%", // 16:9,
-      paddingTop: "40%",
-      marginTop: "30",
-    },
-    displayHomeLocationCheckBox: {
-      marginTop: "0px",
-      marginLeft: "100px",
-    },
-  }
-
   // Fetch data - after componentHasUpdated
   const url = "http://localhost:5000/api/transport/stopsstations"
 
@@ -116,7 +97,11 @@ export default function TransportMapContainer() {
                 Transport Dashboard
               </Typography>
               <FormControlLabel
-                style={styles.displayHomeLocationCheckBox}
+                // style={styles.displayHomeLocationCheckBox}
+                style={{
+                  marginTop: "0px",
+                  marginLeft: "100px",
+                }}
                 control={
                   <Checkbox
                     color="primary"
@@ -131,7 +116,11 @@ export default function TransportMapContainer() {
             </Grid>
             <Grid item xs={12} sm={12}>
               <GoogleMap
-                mapContainerStyle={styles.displayMap}
+                mapContainerStyle={{
+                  height: "600px",
+                  width: "97%",
+                  margin: 20,
+                }}
                 center={mapCenter}
                 zoom={mapZoom}
                 options={{

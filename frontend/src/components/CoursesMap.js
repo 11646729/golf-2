@@ -47,21 +47,6 @@ export default function CoursesMapContainer() {
     setMapRef(null)
   }
 
-  // Styles
-  const styles = {
-    displayMap: {
-      height: "600px",
-      width: "97%",
-      margin: 20,
-    },
-    media: {
-      height: 0,
-      // paddingTop: "56.25%", // 16:9,
-      paddingTop: "40%",
-      marginTop: "30",
-    },
-  }
-
   // Fetch data - after componentHasUpdated
   const url = "http://localhost:5000/api/golf/nearbyGolfCourses"
 
@@ -107,7 +92,11 @@ export default function CoursesMapContainer() {
             </Grid>
             <Grid item xs={12} sm={12}>
               <GoogleMap
-                mapContainerStyle={styles.displayMap}
+                mapContainerStyle={{
+                  height: "600px",
+                  width: "97%",
+                  margin: 20,
+                }}
                 center={mapCenter}
                 zoom={mapZoom}
                 options={{
@@ -139,7 +128,12 @@ export default function CoursesMapContainer() {
                   >
                     <Card>
                       <CardMedia
-                        style={styles.media}
+                        style={{
+                          height: 0,
+                          // paddingTop: "56.25%", // 16:9,
+                          paddingTop: "40%",
+                          marginTop: "30",
+                        }}
                         image={selected.photoUrl}
                         title={selected.photoTitle}
                       />
