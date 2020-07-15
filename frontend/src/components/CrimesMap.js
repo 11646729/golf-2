@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useEffect, useRef } from "react"
 import GoogleMapReact from "google-map-react"
 import axios from "axios"
-import useSwr from "swr"
 import useSupercluster from "use-supercluster"
 import moment from "moment"
 import MomentUtils from "@date-io/moment"
@@ -16,8 +15,6 @@ import {
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
 
 import "../App.css"
-
-const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
 const Marker = ({ children }) => children
 
@@ -37,8 +34,7 @@ export default function CrimesMapContainer() {
   const [latestDataCheckboxEnabled, setLatestDataCheckboxEnabled] = useState(
     true
   )
-  // const [crimes, setData] = useState([])
-
+  const [crimes, setData] = useState([])
   // dateInfo e.g. &date=2020-05 is the date string to be appended to the coordinates for downloading data
   const [dateInfo, setDateInfo] = useState("")
   // selectedDate e.g. 2020-04 is the date chosen by the user to obtain data
@@ -46,6 +42,7 @@ export default function CrimesMapContainer() {
   // latestDateInfoAvailable e.g. 2020-05 is the date of the latest available data ready for download
   const [latestDateInfoAvailable, setLatestDateInfoAvailable] = useState("")
 
+  // Event Handlers
   const handleHomeCheckboxChange = (event) => {
     setHomeCheckbox(event.target.checked)
     setZoom(parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM))
@@ -124,18 +121,13 @@ export default function CrimesMapContainer() {
     dateInfo
 
   // Now fetch crimes data
-  const { data, error } = useSwr(url, { fetcher })
-  const crimes = data && !error ? data : []
-  // setData(oldCrimes)
-
-  // This line initialises the data array
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const result = await axios(url)
-  //     setData(result.data)
-  //   }
-  //   fetchData()
-  // }, [])
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(url)
+      setData(result.data)
+    }
+    fetchData()
+  }, [homeCheckbox, latestDataCheckbox, dateInfo, url])
 
   // Now reformat relevant crimes data to use with supercluster
   const reformattedCrimes = crimes.map((crime) => ({
