@@ -1,23 +1,8 @@
-import React, { useState, Fragment } from "react"
+import React, { useState, useEffect, Fragment } from "react"
 import useSwr from "swr"
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  InfoWindow,
-} from "@react-google-maps/api"
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  CssBaseline,
-  Container,
-  Grid,
-  Button,
-  Link,
-  CardActions,
-} from "@material-ui/core"
+import axios from "axios"
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
+import { Typography, CssBaseline, Container, Grid } from "@material-ui/core"
 
 const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
@@ -31,12 +16,22 @@ export default function TransportMapContainer() {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
-
   const [selected, setSelected] = useState(null)
-
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
+  const [markers, setData] = useState([])
+
+  // This line initialises the data array
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        "http://localhost:5000/api/transport/stopsstations"
+      )
+      setData(result.data)
+    }
+    fetchData()
+  }, [])
 
   const styles = {
     displayMap: {
@@ -58,9 +53,9 @@ export default function TransportMapContainer() {
     zoomControl: true,
   }
 
-  const url = "http://localhost:5000/api/transport/stopsstations"
-  const { data, error } = useSwr(url, { fetcher })
-  const markers = data && !error ? data : []
+  // const url = "http://localhost:5000/api/transport/stopsstations"
+  // const { data, error } = useSwr(url, { fetcher })
+  // const markers = data && !error ? data : []
 
   console.log(markers.length)
 
@@ -73,15 +68,19 @@ export default function TransportMapContainer() {
     setMapRef(null)
   }
 
-  // get map bounds
-  if (mapRef) {
-    const bounds = new window.google.maps.LatLngBounds()
-    markers.map((marker) => {
-      bounds.extend(marker.coordinates)
-      return bounds
-    })
-    mapRef.fitBounds(bounds)
-  }
+  // if (markers != null) {
+  //   console.log(markers.length)
+
+  //   // get map bounds
+  //   if (mapRef) {
+  //     const bounds = new window.google.maps.LatLngBounds()
+  //     markers.map((marker) => {
+  //       bounds.extend(marker.coordinates)
+  //       return bounds
+  //     })
+  //     mapRef.fitBounds(bounds)
+  //   }
+  // }
 
   const renderMap = () => {
     return (
