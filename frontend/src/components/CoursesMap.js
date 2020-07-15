@@ -1,5 +1,5 @@
-import React, { useState, Fragment } from "react"
-import useSwr from "swr"
+import React, { useState, useEffect, Fragment } from "react"
+import axios from "axios"
 import {
   GoogleMap,
   useLoadScript,
@@ -19,8 +19,6 @@ import {
   CardActions,
 } from "@material-ui/core"
 
-const fetcher = (...args) => fetch(...args).then((response) => response.json())
-
 export default function CoursesMapContainer() {
   // State
   const [mapRef, setMapRef] = useState(null)
@@ -37,6 +35,7 @@ export default function CoursesMapContainer() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
+  const [golfCourses, setData] = useState([])
 
   const styles = {
     displayMap: {
@@ -58,9 +57,15 @@ export default function CoursesMapContainer() {
     zoomControl: true,
   }
 
-  const url = "http://localhost:5000/api/golf/nearbyGolfCourses"
-  const { data, error } = useSwr(url, { fetcher })
-  const markers = data && !error ? data : []
+  // This line initialises the data array
+  useEffect(() => {
+    const fetchData = async () => {
+      const url = "http://localhost:5000/api/golf/nearbyGolfCourses"
+      const result = await axios(url)
+      setData(result.data)
+    }
+    fetchData()
+  }, [])
 
   const onLoadHandler = (map) => {
     // Store a reference to the google map instance in state
@@ -71,14 +76,17 @@ export default function CoursesMapContainer() {
     setMapRef(null)
   }
 
-  // get map bounds
-  if (mapRef) {
-    const bounds = new window.google.maps.LatLngBounds()
-    markers.map((marker) => {
-      bounds.extend(marker.coordinates)
-      return bounds
-    })
-    mapRef.fitBounds(bounds)
+  // Now compute bounds of map to display
+  if (golfCourses != null) {
+    // get map bounds
+    if (mapRef) {
+      const bounds = new window.google.maps.LatLngBounds()
+      golfCourses.map((golfCourse) => {
+        bounds.extend(golfCourse.coordinates)
+        return bounds
+      })
+      mapRef.fitBounds(bounds)
+    }
   }
 
   const renderMap = () => {
@@ -108,13 +116,13 @@ export default function CoursesMapContainer() {
                 onLoad={onLoadHandler}
                 onUnmount={onUnmountHandler}
               >
-                {markers
-                  ? markers.map((marker) => (
+                {golfCourses
+                  ? golfCourses.map((golfCourse) => (
                       <Marker
-                        key={marker.name}
-                        position={marker.coordinates}
+                        key={golfCourse.name}
+                        position={golfCourse.coordinates}
                         onClick={() => {
-                          setSelected(marker)
+                          setSelected(golfCourse)
                         }}
                       />
                     ))

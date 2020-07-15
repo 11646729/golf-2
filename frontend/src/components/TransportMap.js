@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment } from "react"
-import useSwr from "swr"
 import axios from "axios"
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 import {
@@ -10,8 +9,6 @@ import {
   FormControlLabel,
   Checkbox,
 } from "@material-ui/core"
-
-const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
 export default function TransportMapContainer() {
   // State
@@ -34,11 +31,6 @@ export default function TransportMapContainer() {
   useEffect(() => {
     const fetchData = async () => {
       const url = "http://localhost:5000/api/transport/stopsstations"
-
-      // const { data, error } = useSwr(url, { fetcher })
-      // const busStops = data && !error ? data : []
-      // setData(busStops)
-
       const result = await axios(url)
       setData(result.data)
     }
