@@ -17,6 +17,7 @@ import {
   Button,
   Link,
   CardActions,
+  TextField,
 } from "@material-ui/core"
 
 export default function CoursesMapContainer() {
@@ -97,6 +98,28 @@ export default function CoursesMapContainer() {
               >
                 Golf Courses Dashboard
               </Typography>
+              {/* <Typography
+                style={{ display: "inline-block" }}
+                alignItems="flex-right"
+                component="h5"
+                variant="h6"
+                align="right"
+                color="textWarning"
+                gutterBottom
+              >
+                Loading...
+              </Typography> */}
+              {/* <TextField
+                style={{
+                  fontSize: 14,
+                  color: "red",
+                  textAlign: "center",
+                  marginLeft: "100px",
+                }}
+                className="loading-error-textfield"
+                label="Outlined"
+                variant="outlined"
+              /> */}
             </Grid>
             <Grid item xs={12} sm={12}>
               <GoogleMap
