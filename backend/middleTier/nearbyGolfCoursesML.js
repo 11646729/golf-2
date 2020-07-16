@@ -22,7 +22,7 @@ export function getNearbyGolfCourseDataFromDatabase() {
 // Longitude first in Javascript
 export const saveNearbyGolfCourseDataToDatabase = async () => {
   try {
-    const json = require("../nearbyGolfCourses.json")
+    const json = require("../rawData/nearbyGolfCourses.json")
 
     let i = 0
     do {
