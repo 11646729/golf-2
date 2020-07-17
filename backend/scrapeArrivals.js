@@ -39,11 +39,13 @@ export async function getScheduleMonths() {
   const { data: html } = await axios.get(process.env.TEST_INITIAL_URL)
 
   // load up cheerio
-  try {
-    const $ = cheerio.load(html)
-  } catch (e) {
-    console.log("Error thrown while scraping Arrivals " + e) // handle error
-  }
+  const $ = cheerio.load(html)
+
+  // try {
+  //   const $ = cheerio.load(html)
+  // } catch (e) {
+  //   console.log("Error thrown while scraping Arrivals " + e) // handle error
+  // }
 
   let monthYearStringArray = []
 
