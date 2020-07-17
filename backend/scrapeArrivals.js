@@ -53,6 +53,8 @@ export async function getScheduleMonths() {
     }
   )
 
+  // console.log(monthYearStringArray.length)
+
   return monthYearStringArray
 }
 

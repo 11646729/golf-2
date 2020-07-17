@@ -28,10 +28,11 @@ export const runSwitchboard = (io) => {
     })
 
     // Fetch data Daily at 07:00
-    cron.schedule("0 7 * * *", () => {
+    // cron.schedule("0 7 * * *", () => {
+    cron.schedule("*/5 * * * *", () => {
       // console.log("Started getting Vessel Arrivals & Details Scraping")
-      deleteAllPortArrivals()
-      deleteAllVesselDetails()
+      // deleteAllPortArrivals()
+      // deleteAllVesselDetails()
       // deleteAllBusStops()
       runCron()
       // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())

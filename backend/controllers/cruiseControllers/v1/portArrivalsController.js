@@ -8,7 +8,7 @@ export function cruiseIndex(req, res) {
 
 // Path localhost:5000/api/cruise/portArrivals
 export function findAll(req, res) {
-  PortArrivalsSchema.find({})
+  PortArrivalSchema.find({})
     .then((data) => {
       res.send(data)
     })
@@ -24,7 +24,7 @@ export function findAll(req, res) {
 export function findOne(req, res) {
   const id = req.params.id
 
-  PortArrivalsSchema.findById(id)
+  PortArrivalSchema.findById(id)
     .then((data) => {
       if (!data)
         res

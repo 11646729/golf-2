@@ -1,13 +1,16 @@
-import React from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import Paper from "@material-ui/core/Paper"
-import Table from "@material-ui/core/Table"
-import TableBody from "@material-ui/core/TableBody"
-import TableCell from "@material-ui/core/TableCell"
-import TableContainer from "@material-ui/core/TableContainer"
-import TableHead from "@material-ui/core/TableHead"
-import TablePagination from "@material-ui/core/TablePagination"
-import TableRow from "@material-ui/core/TableRow"
+import React, { Fragment, useState, useEffect, useRef } from "react"
+import axios from "axios"
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePagination,
+  TableRow,
+  makeStyles,
+} from "@material-ui/core"
 
 const columns = [
   { id: "name", label: "Name", minWidth: 170 },
@@ -63,14 +66,44 @@ const useStyles = makeStyles({
     width: "100%",
   },
   container: {
+    marginTop: 50,
     maxHeight: 440,
   },
 })
 
 export default function CruiseTableCard() {
   const classes = useStyles()
-  const [page, setPage] = React.useState(0)
-  const [rowsPerPage, setRowsPerPage] = React.useState(10)
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
+
+  const [portArrivals, setData] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState([])
+
+  // Fetch data - after componentHasUpdated
+  const url = "http://localhost:5000/api/cruise/portArrivals"
+
+  // Now fetch cruise arrivals & vessels data
+  useEffect(() => {
+    let ignore = false
+    const fetchData = async () => {
+      try {
+        setLoading(true)
+        setError({})
+        const result = await axios(url)
+        if (!ignore) setData(result.data)
+      } catch (err) {
+        setError(err)
+      }
+      setLoading(false)
+    }
+    fetchData()
+    return () => {
+      ignore = true
+    }
+  }, [])
+
+  console.log(portArrivals)
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
