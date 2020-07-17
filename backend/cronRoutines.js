@@ -6,48 +6,6 @@ import { PortArrivalSchema } from "./models/cruiseModels/v1/portArrivalSchema"
 import { VesselDetailsSchema } from "./models/cruiseModels/v1/vesselDetailsSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
-export async function getAndSavePortArrivals() {
-  let allArrivalsVesselUrls = []
-
-  let allArrivals = await getAllVesselArrivals()
-
-  console.log("allArrivals in getAndSavePortArrivals: " + allArrivals)
-
-  // Now extract vessel details urls
-  let i = 0
-  do {
-    allArrivalsVesselUrls.push(allArrivals[i].portArrival.vesselNameUrl)
-
-    const coords = new CoordsSchema({
-      lat: allArrivals[i].portArrival.portCoordinates.lat,
-      lng: allArrivals[i].portArrival.portCoordinates.lng,
-    })
-
-    const portArrival = new PortArrivalSchema({
-      databaseVersion: allArrivals[i].portArrival.database_version,
-      portName: allArrivals[i].portArrival.portName,
-      portUnLocode: allArrivals[i].portArrival.portUnLocode,
-      portCoordinates: coords,
-      vesselShortCruiseName: allArrivals[i].portArrival.vesselShortCruiseName,
-      vesselEta: allArrivals[i].portArrival.vesselEta,
-      vesselEtd: allArrivals[i].portArrival.vesselEtd,
-      vesselNameUrl: allArrivals[i].portArrival.vesselNameUrl,
-    })
-
-    // Now save in mongoDB
-    portArrival
-      .save()
-      // .then(() => console.log("Port Arrival added"))
-      .catch((err) => console.log("Error: " + err))
-
-    i++
-  } while (i < allArrivals.length)
-
-  console.log(allArrivals.length + " Port Arrivals added")
-
-  return allArrivalsVesselUrls
-}
-
 export async function runCron() {
   let vesselUrls = await getAndSavePortArrivals()
 
@@ -98,4 +56,46 @@ export async function runCron() {
   } while (k < DeduplicatedVesselUrlArray.length)
 
   console.log(DeduplicatedVesselUrlArray.length + " Vessel Details added")
+}
+
+export async function getAndSavePortArrivals() {
+  let allArrivalsVesselUrls = []
+
+  let allArrivals = await getAllVesselArrivals()
+
+  // console.log("allArrivals in getAndSavePortArrivals: " + allArrivals[1])
+
+  // Now extract vessel details urls
+  let i = 0
+  do {
+    allArrivalsVesselUrls.push(allArrivals[i].portArrival.vesselNameUrl)
+
+    const coords = new CoordsSchema({
+      lat: allArrivals[i].portArrival.portCoordinates.lat,
+      lng: allArrivals[i].portArrival.portCoordinates.lng,
+    })
+
+    const portArrival = new PortArrivalSchema({
+      databaseVersion: allArrivals[i].portArrival.database_version,
+      portName: allArrivals[i].portArrival.portName,
+      portUnLocode: allArrivals[i].portArrival.portUnLocode,
+      portCoordinates: coords,
+      vesselShortCruiseName: allArrivals[i].portArrival.vesselShortCruiseName,
+      vesselEta: allArrivals[i].portArrival.vesselEta,
+      vesselEtd: allArrivals[i].portArrival.vesselEtd,
+      vesselNameUrl: allArrivals[i].portArrival.vesselNameUrl,
+    })
+
+    // Now save in mongoDB
+    portArrival
+      .save()
+      // .then(() => console.log("Port Arrival added"))
+      .catch((err) => console.log("Error: " + err))
+
+    i++
+  } while (i < allArrivals.length)
+
+  console.log(allArrivals.length + " Port Arrivals added")
+
+  return allArrivalsVesselUrls
 }

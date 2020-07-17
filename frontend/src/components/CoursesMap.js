@@ -17,7 +17,7 @@ import {
   Button,
   Link,
   CardActions,
-  TextField,
+  Box,
 } from "@material-ui/core"
 
 export default function CoursesMapContainer() {
@@ -49,7 +49,7 @@ export default function CoursesMapContainer() {
   }
 
   // Fetch data - after componentHasUpdated
-  const url = "http://localhost:5000/api/golf/nearbyGolfCourses"
+  let url = "http://localhost:5000/api/golf/nearbyGolfCourses"
 
   // Now fetch golf courses data
   useEffect(() => {
@@ -88,38 +88,31 @@ export default function CoursesMapContainer() {
         <Grid container spacing={1}>
           <Container maxWidth="xl">
             <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
-              <Typography
-                style={{ display: "inline-block" }}
-                component="h4"
-                variant="h5"
-                align="left"
-                color="textPrimary"
-                gutterBottom
-              >
-                Golf Courses Dashboard
-              </Typography>
-              {/* <Typography
-                style={{ display: "inline-block" }}
-                alignItems="flex-right"
-                component="h5"
-                variant="h6"
-                align="right"
-                color="textWarning"
-                gutterBottom
-              >
-                Loading...
-              </Typography> */}
-              {/* <TextField
-                style={{
-                  fontSize: 14,
-                  color: "red",
-                  textAlign: "center",
-                  marginLeft: "100px",
-                }}
-                className="loading-error-textfield"
-                label="Outlined"
-                variant="outlined"
-              /> */}
+              <div style={{ width: "100%" }}>
+                <Typography
+                  component="div"
+                  display="inline"
+                  p={1}
+                  m={1}
+                  component="h4"
+                  variant="h5"
+                  align="left"
+                  color="textPrimary"
+                  gutterBottom
+                >
+                  Golf Courses Dashboard
+                </Typography>
+                <Box
+                  component="div"
+                  display="inline"
+                  component="h5"
+                  variant="h4"
+                  p={1}
+                  m={1}
+                >
+                  Loading...
+                </Box>
+              </div>
             </Grid>
             <Grid item xs={12} sm={12}>
               <GoogleMap
