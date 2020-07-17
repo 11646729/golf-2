@@ -36,7 +36,7 @@ export async function getAllVesselArrivals() {
 
 export async function getScheduleMonths() {
   // Fetch the initial data
-  const { data: html } = await axios.get(process.env.INITIAL_URL)
+  const { data: html } = await axios.get(process.env.TEST_INITIAL_URL)
 
   // load up cheerio
   const $ = cheerio.load(html)
@@ -52,8 +52,6 @@ export async function getScheduleMonths() {
       })
     }
   )
-
-  // console.log(monthYearStringArray.length)
 
   return monthYearStringArray
 }
