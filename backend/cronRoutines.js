@@ -63,8 +63,6 @@ export async function getAndSavePortArrivals() {
 
   let allArrivals = await getAllVesselArrivals()
 
-  // console.log("allArrivals in getAndSavePortArrivals: " + allArrivals[1])
-
   // Now extract vessel details urls
   let i = 0
   do {

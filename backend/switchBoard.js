@@ -31,9 +31,8 @@ export const runSwitchboard = (io) => {
     // cron.schedule("0 7 * * *", () => {
     cron.schedule("*/5 * * * *", () => {
       // console.log("Started getting Vessel Arrivals & Details Scraping")
-      // deleteAllPortArrivals()
-      // deleteAllVesselDetails()
-      // deleteAllBusStops()
+      deleteAllPortArrivals()
+      deleteAllVesselDetails()
       runCron()
       // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     })
@@ -45,8 +44,9 @@ export const runSwitchboard = (io) => {
       })
     })
 
-    // Save data to database every 5 minutes
+    // Save data to database every 10 minutes
     cron.schedule("*/10 * * * *", () => {
+      // deleteAllBusStops()
       // saveTransportDataToDatabase().then(() => {
       //   console.log("In switchboard function saveTransportDataToDatabase")
       // })

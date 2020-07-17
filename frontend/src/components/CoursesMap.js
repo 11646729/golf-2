@@ -69,7 +69,7 @@ export default function CoursesMapContainer() {
     return () => {
       ignore = true
     }
-  }, [])
+  }, [url])
 
   // Now compute bounds of map to display
   if (mapRef && golfCourses != null) {
@@ -94,7 +94,6 @@ export default function CoursesMapContainer() {
                   display="inline"
                   p={1}
                   m={1}
-                  component="h4"
                   variant="h5"
                   align="left"
                   color="textPrimary"
@@ -102,14 +101,7 @@ export default function CoursesMapContainer() {
                 >
                   Golf Courses Dashboard
                 </Typography>
-                <Box
-                  component="div"
-                  display="inline"
-                  component="h5"
-                  variant="h4"
-                  p={1}
-                  m={1}
-                >
+                <Box component="div" display="inline" variant="h4" p={1} m={1}>
                   Loading...
                 </Box>
               </div>

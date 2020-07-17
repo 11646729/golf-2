@@ -39,7 +39,11 @@ export async function getScheduleMonths() {
   const { data: html } = await axios.get(process.env.TEST_INITIAL_URL)
 
   // load up cheerio
-  const $ = cheerio.load(html)
+  try {
+    const $ = cheerio.load(html)
+  } catch (e) {
+    console.log("Error thrown while scraping Arrivals " + e) // handle error
+  }
 
   let monthYearStringArray = []
 
@@ -58,7 +62,7 @@ export async function getScheduleMonths() {
 
 export async function getVesselArrivals(period) {
   let arrivalUrl =
-    process.env.CRUISE_MAPPER_URL +
+    process.env.TEST_CRUISE_MAPPER_URL +
     "?tab=schedule&month=" +
     period +
     "#schedule"
@@ -77,15 +81,15 @@ export async function getVesselArrivals(period) {
       const database_version = process.env.DATABASE_VERSION
 
       // Port Name
-      const port_name = process.env.BELFAST_PORT_NAME
+      const port_name = process.env.GEIRANGER_PORT_NAME
 
       // Port UN Locode
-      const port_un_locode = process.env.BELFAST_PORT_UN_LOCODE
+      const port_un_locode = process.env.GEIRANGER_PORT_UN_LOCODE
 
       // Belfast Port Coordinates in GeoJSON
       const port_coordinates = new CoordsSchema({
-        lat: process.env.BELFAST_PORT_LATITUDE,
-        lng: process.env.BELFAST_PORT_LONGITUDE,
+        lat: process.env.GEIRANGER_PORT_LATITUDE,
+        lng: process.env.GEIRANGER_PORT_LONGITUDE,
       })
 
       // Name of Vessel
