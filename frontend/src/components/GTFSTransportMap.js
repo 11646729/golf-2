@@ -10,7 +10,7 @@ import {
   Checkbox,
 } from "@material-ui/core"
 
-export default function GTFSTransportMapContainer() {
+export default function TransportMapContainer() {
   // State Hooks
   const [mapRef, setMapRef] = useState(null)
   const [mapZoom] = useState(

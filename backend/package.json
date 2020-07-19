@@ -18,7 +18,8 @@
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
-    "mongoose": "^5.8.0",
+    "gtfs": "^1.10.3",
+    "mongoose": "^5.9.25",
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",
     "socket.io": "^2.3.0"

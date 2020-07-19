@@ -15,6 +15,7 @@ import {
   saveNearbyGolfCourseDataToDatabase,
 } from "./middleTier/nearbyGolfCoursesML"
 import { saveTransportDataToDatabase } from "./middleTier/transportDataML"
+import { importGtfsData } from "./gtfs"
 
 let count = 0
 
@@ -36,6 +37,7 @@ export const runSwitchboard = (io) => {
       // deleteAllVesselDetails()
       // deleteAllTemperatures()
       // runCron()
+      importGtfsData()
       // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     })
 

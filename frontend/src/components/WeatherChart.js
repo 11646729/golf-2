@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-// import useSwr from "swr"
 import axios from "axios"
 // import { Link } from "react-router-dom"
 import Button from "@material-ui/core/Button"
@@ -17,8 +16,6 @@ import {
   ResponsiveContainer,
 } from "recharts"
 import Title from "./Title"
-
-// const fetcher = (...args) => fetch(...args).then((response) => response.json())
 
 const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
