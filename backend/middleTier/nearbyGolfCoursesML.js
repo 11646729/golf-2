@@ -34,7 +34,7 @@ export const saveNearbyGolfCourseDataToDatabase = async () => {
       // Now create a model instance
       const nearbyGolfCourse = new NearbyGolfCourseSchema({
         databaseVersion: process.env.DATABASE_VERSION,
-        type: "Golf Course",
+        type: "Golf Club",
         crsName: "WGS84",
         crsUrn: "urn:ogc:def:crs:OGC:1.3:CRS84",
         name: json.features[i].properties.name,

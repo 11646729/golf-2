@@ -13,26 +13,26 @@ import {
 } from "@material-ui/core"
 
 const columns = [
-  { id: "name", label: "Name", minWidth: 170 },
-  { id: "code", label: "ISO\u00a0Code", minWidth: 100 },
+  { id: "name", label: "Name", minWidth: 70 },
+  { id: "code", label: "ISO\u00a0Code", minWidth: 50 },
   {
     id: "population",
     label: "Population",
-    minWidth: 170,
+    minWidth: 100,
     align: "right",
     format: (value) => value.toLocaleString(),
   },
   {
     id: "size",
     label: "Size\u00a0(km\u00b2)",
-    minWidth: 170,
+    minWidth: 100,
     align: "right",
     format: (value) => value.toLocaleString(),
   },
   {
     id: "density",
     label: "Density",
-    minWidth: 170,
+    minWidth: 100,
     align: "right",
     format: (value) => value.toFixed(2),
   },

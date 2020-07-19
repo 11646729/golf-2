@@ -33,7 +33,7 @@ export const runSwitchboard = (io) => {
       // console.log("Started getting Vessel Arrivals & Details Scraping")
       // deleteAllPortArrivals()
       // deleteAllVesselDetails()
-      runCron()
+      // runCron()
       // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     })
 
