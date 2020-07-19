@@ -1,14 +1,9 @@
 import gtfs from "gtfs"
+import gtfsToGeoJSON from "gtfs-to-geojson"
 import mongoose from "mongoose"
 import config from "./custom-config.json"
 
-mongoose.connect(config.mongoUrl, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-})
-
-// Function to fetch weather data from the Dark Skies website
+// Function to fetch GTFS data
 export const importGtfsData = async () => {
   try {
     gtfs
@@ -21,6 +16,21 @@ export const importGtfsData = async () => {
         console.error(err)
       })
   } catch (err) {
-    console.log("Error in fetchDarkSkiesData: ", err)
+    console.log("Error in importGtfsData: ", err)
+  }
+}
+
+// Function to convert GTFS data to geoJSON
+export const convertGtfsDataToGeojson = async () => {
+  try {
+    gtfsToGeoJSON(config)
+      .then(() => {
+        console.log("GeoJSON Generation Successful")
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  } catch (err) {
+    console.log("Error in importGtfsData: ", err)
   }
 }

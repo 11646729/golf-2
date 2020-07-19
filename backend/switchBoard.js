@@ -15,7 +15,7 @@ import {
   saveNearbyGolfCourseDataToDatabase,
 } from "./middleTier/nearbyGolfCoursesML"
 import { saveTransportDataToDatabase } from "./middleTier/transportDataML"
-import { importGtfsData } from "./gtfs"
+import { importGtfsData, convertGtfsDataToGeojson } from "./gtfs"
 
 let count = 0
 
@@ -31,15 +31,16 @@ export const runSwitchboard = (io) => {
 
     // Fetch data Daily at 07:00
     // cron.schedule("0 7 * * *", () => {
-    cron.schedule("*/5 * * * *", () => {
-      // console.log("Started getting Vessel Arrivals & Details Scraping")
-      // deleteAllPortArrivals()
-      // deleteAllVesselDetails()
-      // deleteAllTemperatures()
-      // runCron()
-      importGtfsData()
-      // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
-    })
+    // cron.schedule("*/15 * * * *", () => {
+    // console.log("Started getting Vessel Arrivals & Details Scraping")
+    // deleteAllPortArrivals()
+    // deleteAllVesselDetails()
+    // deleteAllTemperatures()
+    // runCron()
+    // importGtfsData()
+    // convertGtfsDataToGeojson()
+    // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
+    // })
 
     // Fetch data every 5 minutes
     cron.schedule("1 * * * *", () => {

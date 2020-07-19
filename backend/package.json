@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -r esm server.js"
+    "start": "node --max-old-space-size=2000 -r esm server.js"
   },
   "keywords": [],
   "author": "Brian Smith",
@@ -19,6 +19,7 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "gtfs": "^1.10.3",
+    "gtfs-to-geojson": "^0.5.4",
     "mongoose": "^5.9.25",
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",

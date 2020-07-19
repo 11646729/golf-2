@@ -1,9 +1,12 @@
 {
-  "mongoUrl": "mongodb://localhost:27017/gtfs",
+  "mongoUrl": "mongodb://127.0.0.1:27017/bds_data",
   "agencies": [
     {
-      "agency_key": "county-connection",
-      "url": "http://countyconnection.com/GTFS/google_transit.zip"
+      "agency_key": "Dublin Bus",
+      "url": "http://transitfeeds.com/p/transport-for-ireland/782/latest/download"
     }
-  ]
+  ],
+  "outputType": "route",
+  "verbose": true,
+  "includeStops": true
 }
