@@ -5,6 +5,7 @@ import { runCron } from "./cronRoutines"
 import { directDeleteAll as deleteAllPortArrivals } from "./controllers/cruiseControllers/v1/portArrivalsController"
 import { directDeleteAll as deleteAllVesselDetails } from "./controllers/cruiseControllers/v1/vesselDetailsController"
 import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/transportController"
+import { directDeleteAll as deleteAllTemperatures } from "./controllers/weatherControllers/v1/weatherController"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
@@ -33,12 +34,13 @@ export const runSwitchboard = (io) => {
       // console.log("Started getting Vessel Arrivals & Details Scraping")
       // deleteAllPortArrivals()
       // deleteAllVesselDetails()
+      // deleteAllTemperatures()
       // runCron()
       // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     })
 
-    // Fetch data every minute at 01:00
-    cron.schedule("* 1 * * *", () => {
+    // Fetch data every 5 minutes
+    cron.schedule("5 * * * *", () => {
       getAndSaveDarkSkiesData().then((result) => {
         emitDarkSkiesData(socket, result).then(() => {})
       })
