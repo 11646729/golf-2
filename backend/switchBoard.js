@@ -40,9 +40,11 @@ export const runSwitchboard = (io) => {
     })
 
     // Fetch data every 5 minutes
-    cron.schedule("5 * * * *", () => {
+    cron.schedule("1 * * * *", () => {
       getAndSaveDarkSkiesData().then((result) => {
-        emitDarkSkiesData(socket, result).then(() => {})
+        emitDarkSkiesData(socket, result).then(() => {
+          console.log("Fetched temperature value")
+        })
       })
     })
 
