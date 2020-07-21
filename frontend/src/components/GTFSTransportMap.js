@@ -30,7 +30,8 @@ export default function TransportMapContainer() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
-  const [homeCheckbox, setHomeCheckbox] = useState(true)
+  const [homeCheckboxSelected, setHomeCheckbox] = useState(true)
+  const [layerCheckboxSelected, setLayerCheckbox] = useState(true)
   const [busStops, setData] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState([])
@@ -63,6 +64,10 @@ export default function TransportMapContainer() {
     //     lng: parseFloat(process.env.REACT_APP_ANDREA_HOME_LONGITUDE),
     //   })
     // }
+  }
+
+  const handleLayerCheckboxChange = (event) => {
+    setLayerCheckbox(event.target.checked)
   }
 
   // Fetch data - after componentHasUpdated
@@ -116,7 +121,6 @@ export default function TransportMapContainer() {
                 GTFS Transport Test
               </Typography>
               <FormControlLabel
-                // style={styles.displayHomeLocationCheckBox}
                 style={{
                   marginTop: "0px",
                   marginLeft: "100px",
@@ -124,12 +128,28 @@ export default function TransportMapContainer() {
                 control={
                   <Checkbox
                     color="primary"
-                    checked={homeCheckbox}
+                    checked={homeCheckboxSelected}
                     onChange={handleHomeCheckboxChange}
                     name="homeCheckbox"
                   />
                 }
                 label="Display Bus Stops"
+                labelPlacement="end"
+              />
+              <FormControlLabel
+                style={{
+                  marginTop: "0px",
+                  marginLeft: "100px",
+                }}
+                control={
+                  <Checkbox
+                    color="primary"
+                    checked={layerCheckboxSelected}
+                    onChange={handleLayerCheckboxChange}
+                    name="homeCheckbox"
+                  />
+                }
+                label="Display Geojson Layer"
                 labelPlacement="end"
               />
             </Grid>
@@ -150,31 +170,34 @@ export default function TransportMapContainer() {
                 onLoad={onLoadHandler}
                 onUnmount={onUnmountHandler}
               >
-                <Polyline
-                  path={[
-                    {
-                      lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-                      lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-                    },
-                    { lat: 62.100833, lng: 7.203439 },
-                    { lat: -36.73590441, lng: 144.25178198 },
-                  ]}
-                  options={{
-                    strokeColor: "#ff2343",
-                    strokeOpacity: "1.0",
-                    strokeWeight: 2,
-                    icons: [
+                {layerCheckboxSelected ? (
+                  // <TransitLayer onLoad={onLoad}>
+                  <Polyline
+                    path={[
                       {
-                        icon: "hello",
-                        offset: "0",
-                        repeat: "10px",
+                        lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+                        lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
                       },
-                    ],
-                  }}
-                />
-                <TransitLayer onLoad={onLoad} />
+                      { lat: 62.100833, lng: 7.203439 },
+                      { lat: -36.73590441, lng: 144.25178198 },
+                    ]}
+                    options={{
+                      strokeColor: "#ff2343",
+                      strokeOpacity: "1.0",
+                      strokeWeight: 2,
+                      icons: [
+                        {
+                          icon: "hello",
+                          offset: "0",
+                          repeat: "10px",
+                        },
+                      ],
+                    }}
+                  />
+                ) : // </TransitLayer>
+                null}
 
-                {busStops && homeCheckbox
+                {busStops && homeCheckboxSelected
                   ? busStops.map((busStop) => (
                       <Marker
                         key={busStop.stop_id}
