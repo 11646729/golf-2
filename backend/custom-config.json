@@ -2,8 +2,8 @@
   "mongoUrl": "mongodb://127.0.0.1:27017/bds_data",
   "agencies": [
     {
-      "agency_key": "Dublin Bus",
-      "url": "http://transitfeeds.com/p/transport-for-ireland/782/latest/download"
+      "agency_key": "Hamilton Ontario Bus",
+      "url": "http://googlehsrdocs.hamilton.ca/"
     }
   ],
   "outputType": "route",

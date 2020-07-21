@@ -1,6 +1,12 @@
 import React, { useState, useEffect, Fragment } from "react"
 import axios from "axios"
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  TransitLayer,
+  Polyline,
+} from "@react-google-maps/api"
 import {
   Typography,
   CssBaseline,
@@ -30,6 +36,9 @@ export default function TransportMapContainer() {
   const [error, setError] = useState([])
 
   // Event Handlers
+  const onLoad = (transitLayer) => {
+    console.log("transitLayer: ", transitLayer)
+  }
 
   const onLoadHandler = (map) => {
     // Store a reference to the google map instance in state
@@ -141,6 +150,30 @@ export default function TransportMapContainer() {
                 onLoad={onLoadHandler}
                 onUnmount={onUnmountHandler}
               >
+                <Polyline
+                  path={[
+                    {
+                      lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+                      lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+                    },
+                    { lat: 62.100833, lng: 7.203439 },
+                    { lat: -36.73590441, lng: 144.25178198 },
+                  ]}
+                  options={{
+                    strokeColor: "#ff2343",
+                    strokeOpacity: "1.0",
+                    strokeWeight: 2,
+                    icons: [
+                      {
+                        icon: "hello",
+                        offset: "0",
+                        repeat: "10px",
+                      },
+                    ],
+                  }}
+                />
+                <TransitLayer onLoad={onLoad} />
+
                 {busStops && homeCheckbox
                   ? busStops.map((busStop) => (
                       <Marker
