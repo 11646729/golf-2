@@ -81,6 +81,15 @@ export default function CoursesMapContainer() {
     mapRef.fitBounds(bounds)
   }
 
+  var iconPin = {
+    path:
+      "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
+    strokeColor: "blue",
+    fillColor: "#000080",
+    fillOpacity: 1,
+    scale: 0.03, //to reduce the size of icons
+  }
+
   const renderMap = () => {
     return (
       <Fragment>
@@ -128,6 +137,7 @@ export default function CoursesMapContainer() {
                       <Marker
                         key={golfCourse.name}
                         position={golfCourse.coordinates}
+                        icon={iconPin}
                         onClick={() => {
                           setSelected(golfCourse)
                         }}

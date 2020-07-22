@@ -146,6 +146,10 @@ export default function TransportMapContainer() {
                       <Marker
                         key={busStop.stop_id}
                         position={busStop.stop_coordinates}
+                        icon={{
+                          url:
+                            "http://maps.google.com/mapfiles/ms/icons/blue.png",
+                        }}
                         // onClick={() => {
                         //   setSelected(busStop)
                         // }}

@@ -4,7 +4,6 @@ import {
   GoogleMap,
   useLoadScript,
   Marker,
-  TransitLayer,
   Polyline,
 } from "@react-google-maps/api"
 import {
@@ -17,6 +16,9 @@ import {
 } from "@material-ui/core"
 
 export default function TransportMapContainer() {
+  const geojson1 = require("../1_0.json")
+  console.log(geojson1)
+
   // State Hooks
   const [mapRef, setMapRef] = useState(null)
   const [mapZoom] = useState(
@@ -37,10 +39,6 @@ export default function TransportMapContainer() {
   const [error, setError] = useState([])
 
   // Event Handlers
-  const onLoad = (transitLayer) => {
-    console.log("transitLayer: ", transitLayer)
-  }
-
   const onLoadHandler = (map) => {
     // Store a reference to the google map instance in state
     setMapRef(map)
@@ -149,7 +147,7 @@ export default function TransportMapContainer() {
                     name="homeCheckbox"
                   />
                 }
-                label="Display Geojson Layer"
+                label="Display Geojson Test"
                 labelPlacement="end"
               />
             </Grid>
@@ -171,7 +169,6 @@ export default function TransportMapContainer() {
                 onUnmount={onUnmountHandler}
               >
                 {layerCheckboxSelected ? (
-                  // <TransitLayer onLoad={onLoad}>
                   <Polyline
                     path={[
                       {
@@ -194,14 +191,17 @@ export default function TransportMapContainer() {
                       ],
                     }}
                   />
-                ) : // </TransitLayer>
-                null}
+                ) : null}
 
                 {busStops && homeCheckboxSelected
                   ? busStops.map((busStop) => (
                       <Marker
                         key={busStop.stop_id}
                         position={busStop.stop_coordinates}
+                        icon={{
+                          url:
+                            "http://maps.google.com/mapfiles/ms/icons/blue.png",
+                        }}
                         // onClick={() => {
                         //   setSelected(busStop)
                         // }}
