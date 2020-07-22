@@ -37,7 +37,7 @@ export const runSwitchboard = (io) => {
     // deleteAllVesselDetails()
     // deleteAllTemperatures()
     // runCron()
-    // importGtfsData()
+    importGtfsData()
     // convertGtfsDataToGeojson()
     // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     // })
