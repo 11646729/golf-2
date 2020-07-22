@@ -1,4 +1,4 @@
-import { StopsStationsSchema } from "../../../models/transportModels/v1/stopsStationsSchema"
+import { GtfsStopsSchema } from "../../../models/transportModels/v1/gtfsStopsSchema"
 import { GtfsCoordsSchema } from "../../../models/commonModels/v1/gtfsCoordsSchema"
 
 // Path localhost:5000/api/transport/
@@ -6,10 +6,10 @@ export function transportIndex(req, res) {
   res.send({ response: "I am alive" }).status(200)
 }
 
-// Path localhost:5000/api/transport/stopsstations
+// Path localhost:5000/api/transport/stops
 export function stops_and_stations_getAll(req, res) {
-  StopsStationsSchema.find({})
-    .then((stopsStationsSchema) => res.json(stopsStationsSchema))
+  GtfsStopsSchema.find({})
+    .then((gtfsStopsSchema) => res.json(gtfsStopsSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
@@ -31,7 +31,7 @@ export function stops_and_stations_getAll(req, res) {
 
 // Direct call to delete all bus stops in the database
 export function directDeleteAll() {
-  StopsStationsSchema.deleteMany({}, (err) => {
+  GtfsStopsSchema.deleteMany({}, (err) => {
     if (err) {
       console.log("Some error occurred while removing all bus stops")
     } else {

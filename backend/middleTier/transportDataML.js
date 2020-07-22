@@ -1,6 +1,6 @@
 "use strict"
 
-import { StopsStationsSchema } from "../models/transportModels/v1/stopsStationsSchema"
+import { GtfsStopsSchema } from "../models/transportModels/v1/gtfsStopsSchema"
 import { GtfsCoordsSchema } from "../models/commonModels/v1/gtfsCoordsSchema"
 
 // Function to save bus stop data to mongodb
@@ -16,11 +16,10 @@ export const saveTransportDataToDatabase = async () => {
         lng: geojson.features[i].properties.Longitude,
       })
 
-      console.log(busStopCoords)
-
       // Now create a model instance
-      const busStop = new StopsStationsSchema({
+      const busStop = new GtfsStopsSchema({
         databaseVersion: process.env.DATABASE_VERSION,
+        agency_key: "Translink Buses",
         stop_id: geojson.features[i].properties.LocationID,
         stop_code: "No data",
         stop_name: geojson.features[i].properties.Stop_Name,
