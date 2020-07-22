@@ -16,9 +16,6 @@ import {
 } from "@material-ui/core"
 
 export default function TransportMapContainer() {
-  const geojson1 = require("../1_0.json")
-  console.log(geojson1)
-
   // State Hooks
   const [mapRef, setMapRef] = useState(null)
   const [mapZoom] = useState(
