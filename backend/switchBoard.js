@@ -16,7 +16,11 @@ import {
 } from "./middleTier/nearbyGolfCoursesML"
 import {
   saveTranslinkStopsDataToDatabase,
-  saveTranslinkRouteDataToDatabase,
+  saveTranslinkRouteDataToDatabase1,
+  saveTranslinkRouteDataToDatabase2,
+  saveTranslinkRouteDataToDatabase3,
+  saveTranslinkRouteDataToDatabase4,
+  saveTranslinkRouteDataToDatabase5,
 } from "./middleTier/transportDataML"
 import { importGtfsData, convertGtfsDataToGeojson } from "./gtfs"
 
@@ -46,6 +50,7 @@ export const runSwitchboard = (io) => {
     saveTranslinkRouteDataToDatabase2()
     saveTranslinkRouteDataToDatabase3()
     saveTranslinkRouteDataToDatabase4()
+    saveTranslinkRouteDataToDatabase5()
     // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     // })
 
