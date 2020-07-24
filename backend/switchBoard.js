@@ -14,7 +14,10 @@ import {
   getNearbyGolfCourseDataFromDatabase,
   saveNearbyGolfCourseDataToDatabase,
 } from "./middleTier/nearbyGolfCoursesML"
-import { saveTransportDataToDatabase } from "./middleTier/transportDataML"
+import {
+  saveTranslinkStopsDataToDatabase,
+  saveTranslinkRouteDataToDatabase,
+} from "./middleTier/transportDataML"
 import { importGtfsData, convertGtfsDataToGeojson } from "./gtfs"
 
 let count = 0
@@ -39,6 +42,7 @@ export const runSwitchboard = (io) => {
     // runCron()
     // importGtfsData()
     // convertGtfsDataToGeojson()
+    saveTranslinkRouteDataToDatabase()
     // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     // })
 
@@ -54,8 +58,8 @@ export const runSwitchboard = (io) => {
     // Save data to database every 10 minutes
     cron.schedule("*/10 * * * *", () => {
       // deleteAllBusStops()
-      // saveTransportDataToDatabase().then(() => {
-      //   console.log("In switchboard function saveTransportDataToDatabase")
+      // saveTranslinkStopsDataToDatabase().then(() => {
+      //   console.log("In switchboard function saveTranslinkStopsDataToDatabase")
       // })
       // saveNearbyGolfCourseDataToDatabase().then(() => {
       //   console.log("In switchboard function saveGolfCourseDataToDatabase")

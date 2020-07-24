@@ -8,7 +8,7 @@ const transport_controller = require("../../../controllers/transportControllers/
 // GET catalogue home page
 router.get("/", transport_controller.transportIndex)
 
-// GET all bus stops and stations from the database
+// GET all Translink bus stops from the database
 router.get("/stops", transport_controller.stops_and_stations_getAll)
 
 // // POST a temperature reading to the database

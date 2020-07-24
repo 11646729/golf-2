@@ -1,0 +1,165 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+  },
+
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "SubNetwork": "nir",
+        "OpBranch": "\"90\"",
+        "FromStopID": 92.0,
+        "FromStopAr": 1.0,
+        "FromStoppi": "\"1\"",
+        "ToStopID": 93.0,
+        "ToStopArea": 1.0,
+        "ToStopping": "\"1\"",
+        "DrawClass": 29.0,
+        "IsOnStreet": 0.0,
+        "TmpKeyPTLi": 1.0,
+        "ExistsInDa": 1.0,
+        "LineDIVA": "90Sub5",
+        "LineEFA": null,
+        "Project": "y15",
+        "TmpKeyLine": null,
+        "OperCode": null,
+        "OperDep": null,
+        "Way": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-6.335358, 53.711913, 0.0],
+          [-6.250058, 53.351362, 0.0]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "SubNetwork": "nir",
+        "OpBranch": "\"90\"",
+        "FromStopID": 93.0,
+        "FromStopAr": 1.0,
+        "FromStoppi": "\"1\"",
+        "ToStopID": 92.0,
+        "ToStopArea": 1.0,
+        "ToStopping": "\"1\"",
+        "DrawClass": 29.0,
+        "IsOnStreet": 0.0,
+        "TmpKeyPTLi": 2.0,
+        "ExistsInDa": 1.0,
+        "LineDIVA": "90Sub5",
+        "LineEFA": null,
+        "Project": "y15",
+        "TmpKeyLine": null,
+        "OperCode": null,
+        "OperDep": null,
+        "Way": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-6.250058, 53.351362, 0.0],
+          [-6.335358, 53.711913, 0.0]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "SubNetwork": "nir",
+        "OpBranch": "\"19\"",
+        "FromStopID": 11420.0,
+        "FromStopAr": 0.0,
+        "FromStoppi": "\"239\"",
+        "ToStopID": 11402.0,
+        "ToStopArea": 0.0,
+        "ToStopping": "\"845\"",
+        "DrawClass": 29.0,
+        "IsOnStreet": 1.0,
+        "TmpKeyPTLi": 45113.0,
+        "ExistsInDa": 1.0,
+        "LineDIVA": "19Z007",
+        "LineEFA": null,
+        "Project": "y15",
+        "TmpKeyLine": null,
+        "OperCode": null,
+        "OperDep": null,
+        "Way": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-5.828273, 54.596678, 0.0],
+          [-5.82815, 54.596379, 0.0],
+          [-5.827985, 54.596278, 0.0],
+          [-5.827803, 54.596211, 0.0],
+          [-5.827729, 54.596147, 0.0],
+          [-5.827418, 54.595872, 0.0],
+          [-5.827055, 54.595434, 0.0],
+          [-5.827048, 54.595263, 0.0],
+          [-5.826881, 54.595197, 0.0],
+          [-5.826762, 54.595114, 0.0],
+          [-5.826412, 54.594722, 0.0],
+          [-5.826357, 54.594577, 0.0],
+          [-5.826364, 54.594451, 0.0],
+          [-5.826453, 54.594237, 0.0],
+          [-5.826254, 54.594197, 0.0],
+          [-5.825916, 54.594146, 0.0],
+          [-5.825453, 54.594111, 0.0],
+          [-5.824743, 54.594089, 0.0],
+          [-5.824598, 54.594482, 0.0],
+          [-5.824556, 54.594688, 0.0],
+          [-5.824547, 54.594859, 0.0],
+          [-5.824626, 54.595121, 0.0],
+          [-5.824725, 54.595293, 0.0],
+          [-5.824884, 54.595503, 0.0],
+          [-5.825653, 54.596173, 0.0],
+          [-5.826892, 54.597318, 0.0],
+          [-5.827105, 54.597682, 0.0],
+          [-5.827355, 54.597929, 0.0],
+          [-5.827423, 54.59811, 0.0],
+          [-5.827272, 54.598332, 0.0]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "SubNetwork": "nir",
+        "OpBranch": "\"19\"",
+        "FromStopID": 11402.0,
+        "FromStopAr": 0.0,
+        "FromStoppi": "\"845\"",
+        "ToStopID": 11406.0,
+        "ToStopArea": 0.0,
+        "ToStopping": "\"247\"",
+        "DrawClass": 29.0,
+        "IsOnStreet": 1.0,
+        "TmpKeyPTLi": 45114.0,
+        "ExistsInDa": 1.0,
+        "LineDIVA": "19Z007",
+        "LineEFA": null,
+        "Project": "y15",
+        "TmpKeyLine": null,
+        "OperCode": null,
+        "OperDep": null,
+        "Way": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-5.827272, 54.598332, 0.0],
+          [-5.827271, 54.598341, 0.0],
+          [-5.827106, 54.598545, 0.0],
+          [-5.826941, 54.599018, 0.0],
+          [-5.826744, 54.599527, 0.0]
+        ]
+      }
+    }
+  ]
+}
