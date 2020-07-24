@@ -42,7 +42,10 @@ export const runSwitchboard = (io) => {
     // runCron()
     // importGtfsData()
     // convertGtfsDataToGeojson()
-    saveTranslinkRouteDataToDatabase()
+    saveTranslinkRouteDataToDatabase1()
+    saveTranslinkRouteDataToDatabase2()
+    saveTranslinkRouteDataToDatabase3()
+    saveTranslinkRouteDataToDatabase4()
     // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     // })
 
