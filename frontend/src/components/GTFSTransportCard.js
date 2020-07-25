@@ -35,7 +35,7 @@ export default function GTFSTransportCard() {
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        image="/static/images/HamiltonTransitMap.jpg"
+        image="/static/images/HamiltonBus.jpg"
         title="Transport Map"
       />
       <CardContent className={classes.cardContent}>
