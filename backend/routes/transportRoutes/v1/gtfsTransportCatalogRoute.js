@@ -9,7 +9,7 @@ const gtfs_transport_controller = require("../../../controllers/transportControl
 router.get("/", gtfs_transport_controller.gtfsTransportIndex)
 
 // GET all Translink bus stops from the database
-router.get("/stops", gtfs_transport_controller.getAllStops)
+router.get("/stops", gtfs_transport_controller.gftsGetAllStops)
 
 // // POST a temperature reading to the database
 // router.post("/temperatureReadings/:id", gtfs_transport_controller.create)

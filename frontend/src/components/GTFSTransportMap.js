@@ -10,7 +10,7 @@ import {
   Checkbox,
 } from "@material-ui/core"
 
-export default function TransportMapContainer() {
+export default function GTFSTransportMapContainer() {
   // State Hooks
   const [mapRef, setMapRef] = useState(null)
   const [mapZoom] = useState(
@@ -56,7 +56,7 @@ export default function TransportMapContainer() {
   }
 
   // Fetch data - after componentHasUpdated
-  const url = "http://localhost:5000/api/transport/stops"
+  const url = "http://localhost:5000/api/gtfsTransport/stops"
 
   // Now fetch bus stops data
   useEffect(() => {
@@ -77,6 +77,8 @@ export default function TransportMapContainer() {
       ignore = true
     }
   }, [])
+
+  console.log(busStops)
 
   // Now compute bounds of map to display
   if (mapRef && busStops != null) {

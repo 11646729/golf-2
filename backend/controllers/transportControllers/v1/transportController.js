@@ -1,5 +1,5 @@
-import { GtfsStopsSchema } from "../../../models/transportModels/v1/gtfsStopsSchema"
-import { GtfsCoordsSchema } from "../../../models/commonModels/v1/gtfsCoordsSchema"
+import { StopsSchema } from "../../../models/transportModels/v1/stopsSchema"
+import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
 
 // Path localhost:5000/api/transport/
 export const transportIndex = async (req, res) => {
@@ -8,8 +8,8 @@ export const transportIndex = async (req, res) => {
 
 // Path localhost:5000/api/transport/stops
 export const getAllStops = async (req, res) => {
-  GtfsStopsSchema.find({})
-    .then((gtfsStopsSchema) => res.json(gtfsStopsSchema))
+  StopsSchema.find({})
+    .then((stopsSchema) => res.json(stopsSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
@@ -31,7 +31,7 @@ export const getAllStops = async (req, res) => {
 
 // Direct call to delete all bus stops in the database
 export const directDeleteAll = async () => {
-  GtfsStopsSchema.deleteMany({}, (err) => {
+  StopsSchema.deleteMany({}, (err) => {
     if (err) {
       console.log("Some error occurred while removing all bus stops")
     } else {
