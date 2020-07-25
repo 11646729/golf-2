@@ -6,16 +6,15 @@ import { directDeleteAll as deleteAllPortArrivals } from "./controllers/cruiseCo
 import { directDeleteAll as deleteAllVesselDetails } from "./controllers/cruiseControllers/v1/vesselDetailsController"
 import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/transportController"
 import { directDeleteAll as deleteAllTemperatures } from "./controllers/weatherControllers/v1/weatherController"
+import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/transportController"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
-import {
-  getNearbyGolfCourseDataFromDatabase,
-  saveNearbyGolfCourseDataToDatabase,
-} from "./middleTier/nearbyGolfCoursesML"
+import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
 import {
   saveTranslinkStopsDataToDatabase,
+  saveTranslinkRouteDataToDatabase,
   saveTranslinkRouteDataToDatabase1,
   saveTranslinkRouteDataToDatabase2,
   saveTranslinkRouteDataToDatabase3,
@@ -46,11 +45,13 @@ export const runSwitchboard = (io) => {
     // runCron()
     // importGtfsData()
     // convertGtfsDataToGeojson()
-    saveTranslinkRouteDataToDatabase1()
-    saveTranslinkRouteDataToDatabase2()
-    saveTranslinkRouteDataToDatabase3()
-    saveTranslinkRouteDataToDatabase4()
-    saveTranslinkRouteDataToDatabase5()
+    // saveTranslinkStopsDataToDatabase()
+    // saveTranslinkRouteDataToDatabase()
+    // saveTranslinkRouteDataToDatabase1()
+    // saveTranslinkRouteDataToDatabase2()
+    // saveTranslinkRouteDataToDatabase3()
+    // saveTranslinkRouteDataToDatabase4()
+    // saveTranslinkRouteDataToDatabase5()
     // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     // })
 
