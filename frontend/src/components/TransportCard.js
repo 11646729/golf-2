@@ -42,7 +42,7 @@ export default function TransportCard() {
         <Typography gutterBottom variant="h5" component="h2">
           Transport
         </Typography>
-        <Typography>This shows transport on the Peninsula</Typography>
+        <Typography>This shows transport in the Province</Typography>
       </CardContent>
       <CardActions>
         <Button
