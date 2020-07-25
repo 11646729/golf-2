@@ -9,6 +9,8 @@ const gtfsStopsSchema = new Schema(
     stop_code: String,
     stop_name: String,
     stop_desc: String,
+    stop_lat: Number,
+    stop_lon: Number,
     stop_coordinates: GtfsCoordsSchema.schema,
     zone_id: String,
     stop_url: String,

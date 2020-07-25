@@ -99,8 +99,6 @@ export default function TransportMapContainer() {
     mapRef.fitBounds(bounds)
   }
 
-  console.log(busStops)
-
   const renderMap = () => {
     return (
       <Fragment>

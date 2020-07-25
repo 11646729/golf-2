@@ -78,13 +78,16 @@ export default function GTFSTransportMapContainer() {
     }
   }, [])
 
-  console.log(busStops)
-
   // Now compute bounds of map to display
   if (mapRef && busStops != null) {
     const bounds = new window.google.maps.LatLngBounds()
     busStops.map((busStop) => {
-      bounds.extend(busStop.stop_coordinates)
+      const myLatLng = new window.google.maps.LatLng({
+        lat: busStop.stop_lat,
+        lng: busStop.stop_lon,
+      })
+
+      bounds.extend(myLatLng)
       return bounds
     })
     mapRef.fitBounds(bounds)
@@ -145,7 +148,10 @@ export default function GTFSTransportMapContainer() {
                   ? busStops.map((busStop) => (
                       <Marker
                         key={busStop.stop_id}
-                        position={busStop.stop_coordinates}
+                        position={{
+                          lat: busStop.stop_lat,
+                          lng: busStop.stop_lon,
+                        }}
                         icon={{
                           url:
                             "http://maps.google.com/mapfiles/ms/icons/blue.png",
