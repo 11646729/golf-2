@@ -7,7 +7,7 @@ export const transportIndex = async (req, res) => {
 }
 
 // Path localhost:5000/api/transport/stops
-export const stops_and_stations_getAll = async (req, res) => {
+export const getAllStops = async (req, res) => {
   GtfsStopsSchema.find({})
     .then((gtfsStopsSchema) => res.json(gtfsStopsSchema))
     .catch((err) => res.status(400).json("Error " + err))

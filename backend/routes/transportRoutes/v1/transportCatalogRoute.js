@@ -9,18 +9,18 @@ const transport_controller = require("../../../controllers/transportControllers/
 router.get("/", transport_controller.transportIndex)
 
 // GET all Translink bus stops from the database
-router.get("/stops", transport_controller.stops_and_stations_getAll)
+router.get("/stops", transport_controller.getAllStops)
 
-// // POST a temperature reading to the database
-// router.post("/temperatureReadings/:id", weather_controller.create)
+// POST a temperature reading to the database
+// router.post("/temperatureReadings/:id", transport_controller.create)
 
-// // UPDATE a temperature reading by id
-// router.put("/temperatureReadings/:id", weather_controller.updateOne)
+// UPDATE a temperature reading by id
+// router.put("/temperatureReadings/:id", transport_controller.updateOne)
 
-// // DELETE all temperature readings
-// router.delete("/temperatureReadings", weather_controller.deleteAll)
+// DELETE all temperature readings
+// router.delete("/temperatureReadings", transport_controller.deleteAll)
 
-// // DELETE a temperature reading by id
-// router.delete("/temperatureReadings/:id", weather_controller.deleteOne)
+// DELETE a temperature reading by id
+// router.delete("/temperatureReadings/:id", transport_controller.deleteOne)
 
 module.exports = router

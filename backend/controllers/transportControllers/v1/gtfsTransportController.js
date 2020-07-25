@@ -2,12 +2,12 @@ import { GtfsStopsSchema } from "../../../models/transportModels/v1/gtfsStopsSch
 import { GtfsCoordsSchema } from "../../../models/commonModels/v1/gtfsCoordsSchema"
 
 // Path localhost:5000/api/gtfsTransport/
-export const transportIndex = async (req, res) => {
+export const gtfsTransportIndex = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)
 }
 
 // Path localhost:5000/api/gtfsTransport/stops
-export const stops_and_stations_getAll = async (req, res) => {
+export const getAllStops = async (req, res) => {
   GtfsStopsSchema.find({})
     .then((gtfsStopsSchema) => res.json(gtfsStopsSchema))
     .catch((err) => res.status(400).json("Error " + err))
