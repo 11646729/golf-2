@@ -43,7 +43,7 @@ export const runSwitchboard = (io) => {
     // deleteAllVesselDetails()
     // deleteAllTemperatures()
     // runCron()
-    // importGtfsData()
+    importGtfsData()
     // convertGtfsDataToGeojson()
     // saveTranslinkStopsDataToDatabase()
     // saveTranslinkRouteDataToDatabase()

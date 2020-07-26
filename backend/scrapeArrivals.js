@@ -21,7 +21,6 @@ export async function getAllVesselArrivals() {
     vesselArrivals = await getVesselArrivals(period)
 
     let j = 0
-
     do {
       allVesselMovements.push(vesselArrivals[j])
 

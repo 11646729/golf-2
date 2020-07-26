@@ -5,19 +5,21 @@ import config from "./custom-config.json"
 
 // Function to fetch GTFS data
 export const importGtfsData = async () => {
-  try {
-    gtfs
-      .import(config)
-      .then(() => {
-        console.log("Import Successful")
-        return mongoose.connection.close()
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-  } catch (err) {
-    console.log("Error in importGtfsData: ", err)
-  }
+  // try {
+  //   gtfs
+  //     .import(config)
+  //     .then(() => {
+  //       console.log("Import Successful")
+  //       return mongoose.connection.close()
+  //     })
+  //     .catch((err) => {
+  //       console.error(err)
+  //     })
+  // } catch (err) {
+  //   console.log("Error in importGtfsData: ", err)
+  // }
+
+  createReducedShapeData()
 }
 
 // Function to convert GTFS data to geoJSON
@@ -33,4 +35,8 @@ export const convertGtfsDataToGeojson = async () => {
   } catch (err) {
     console.log("Error in importGtfsData: ", err)
   }
+}
+
+const createReducedShapeData = async () => {
+  console.log("Creating reduced Shape data")
 }

@@ -28,6 +28,7 @@ export default function GTFSTransportMapContainer() {
   const [routesCheckboxSelected, setRoutesCheckbox] = useState(true)
   const [busStops, setBusStopsData] = useState([])
   const [busShapes, setBusShapesData] = useState([])
+  // const [reducedBusShapes, setReducedBusShapesData] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState([])
 
@@ -84,8 +85,6 @@ export default function GTFSTransportMapContainer() {
     }
   }, [])
 
-  console.log(busStops)
-
   // Now compute bounds of map to display
   if (mapRef && busStops != null) {
     const bounds = new window.google.maps.LatLngBounds()
@@ -102,29 +101,74 @@ export default function GTFSTransportMapContainer() {
   }
 
   // Now fetch shapes data
-  const shapesUrl = "http://localhost:5000/api/gtfsTransport/shapes"
+  // const shapesUrl = "http://localhost:5000/api/gtfsTransport/shapes"
 
-  // Fetch data - after componentHasUpdated
-  useEffect(() => {
-    let ignore = false
-    const fetchBusShapesData = async () => {
-      try {
-        setLoading(true)
-        setError({})
-        const busShapesResult = await axios(shapesUrl)
-        if (!ignore) setBusShapesData(busShapesResult.data)
-      } catch (err) {
-        setError(err)
-      }
-      setLoading(false)
-    }
-    fetchBusShapesData()
-    return () => {
-      ignore = true
-    }
-  }, [])
+  // // Fetch data - after componentHasUpdated
+  // useEffect(() => {
+  //   let ignore = false
+  //   const fetchBusShapesData = async () => {
+  //     try {
+  //       setLoading(true)
+  //       setError({})
+  //       const busShapesResult = await axios(shapesUrl)
+  //       if (!ignore) setBusShapesData(busShapesResult.data)
+  //     } catch (err) {
+  //       setError(err)
+  //     }
+  //     setLoading(false)
+  //   }
+  //   fetchBusShapesData()
+  //   return () => {
+  //     ignore = true
+  //   }
+  // }, [])
 
-  console.log(busShapes)
+  // if (busShapes.length !== 0) {
+  //   console.log(busShapes)
+  // }
+
+  // if (busShapes.length !== 0) {
+  //   let j = 0
+  //   do {
+  //     const test = busShapes[j].shape_id
+  //     console.log(test)
+  //   } while (j < busShapes.length)
+  // }
+
+  //   let j = 1
+  //   do {
+  //     if (busShapes[j].shape_id == test) {
+  //       setReducedBusShapesData((reducedBusShapes) => [
+  //         ...reducedBusShapes,
+  //         busShapes[j],
+  //       ])
+  //     }
+  //     j++
+  //   } while (j <= busShapes.length)
+  // }
+
+  // console.log(reducedBusShapes)
+
+  // Map reduced shape data here
+  // const reducedBusShapes = busShapes.map((busShape) => ({
+  //   type: "Feature",
+  //   properties: {
+  //     shape_id: busShape.shape_id,
+  //     crimeId: shape_pt_sequence,
+  //   },
+  //   geometry: {
+  //     type: "LineString",
+  //     path_coordinates: [
+  //       {
+  //         lat: busShape.shape_pt_lat,
+  //         lng: busShape.shape_pt_lon,
+  //       },
+  //     ],
+  //   },
+  // }))
+  // -------------------------------------------------------
+
+  // console.log(reducedBusShapes)
 
   const renderMap = () => {
     return (
