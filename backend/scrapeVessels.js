@@ -10,14 +10,14 @@ export async function getSingleVesselDetails(VesselUrl) {
   // Fetch the initial data
   const { data: html } = await axios.get(VesselUrl)
 
-  // load up cheerio
+  // Load up cheerio
   const $ = cheerio.load(html)
 
-  // try {
-  //   const $ = cheerio.load(html)
-  // } catch (e) {
-  //   console.log("Error thrown while scraping Vessels " + e) // handle error
-  // }
+  try {
+    const $ = cheerio.load(html)
+  } catch (e) {
+    console.log("Error thrown while scraping Vessels " + e) // handle error
+  }
 
   // Create an empty array that will store our data
   const vessel_details = []

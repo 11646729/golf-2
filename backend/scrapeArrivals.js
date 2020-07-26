@@ -38,14 +38,14 @@ export async function getScheduleMonths() {
   // Fetch the initial data
   const { data: html } = await axios.get(process.env.TEST_INITIAL_URL)
 
-  // load up cheerio
+  // Load up cheerio
   const $ = cheerio.load(html)
 
-  // try {
-  //   const $ = cheerio.load(html)
-  // } catch (e) {
-  //   console.log("Error thrown while scraping Arrivals " + e) // handle error
-  // }
+  try {
+    const $ = cheerio.load(html)
+  } catch (e) {
+    console.log("Error thrown while scraping Arrivals " + e) // handle error
+  }
 
   let monthYearStringArray = []
 
@@ -104,7 +104,7 @@ export async function getVesselArrivals(period) {
         .html()
         .replace(/,/, "") // Removes the comma
 
-      // // Expected Time of Arrival
+      // Expected Time of Arrival
       let vessel_eta = $(item).children("td").next("td").next("td").html()
 
       // If No Arrival Time Given
@@ -116,7 +116,7 @@ export async function getVesselArrivals(period) {
         vessel_eta = d.toISOString()
       }
 
-      // // Expected Time of Departure
+      // Expected Time of Departure
       let vessel_etd = $(item).children("td").last("td").html()
 
       // If No Departure Time Given

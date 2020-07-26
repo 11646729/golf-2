@@ -25,6 +25,7 @@ export default function GTFSTransportMapContainer() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
   const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
+  const [routesCheckboxSelected, setRoutesCheckbox] = useState(true)
   const [busStops, setBusStopsData] = useState([])
   const [busShapes, setBusShapesData] = useState([])
   const [loading, setLoading] = useState(false)
@@ -54,6 +55,10 @@ export default function GTFSTransportMapContainer() {
     //     lng: parseFloat(process.env.REACT_APP_ANDREA_HOME_LONGITUDE),
     //   })
     // }
+  }
+
+  const handleRoutesCheckboxChange = (event) => {
+    setRoutesCheckbox(event.target.checked)
   }
 
   // Now fetch bus stops data
@@ -152,6 +157,22 @@ export default function GTFSTransportMapContainer() {
                   />
                 }
                 label="Display Bus Stops"
+                labelPlacement="end"
+              />
+              <FormControlLabel
+                style={{
+                  marginTop: "0px",
+                  marginLeft: "100px",
+                }}
+                control={
+                  <Checkbox
+                    color="primary"
+                    checked={routesCheckboxSelected}
+                    onChange={handleRoutesCheckboxChange}
+                    name="routeCheckbox"
+                  />
+                }
+                label="Display Bus Routes"
                 labelPlacement="end"
               />
             </Grid>
