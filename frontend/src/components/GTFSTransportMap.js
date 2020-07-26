@@ -25,7 +25,8 @@ export default function GTFSTransportMapContainer() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
   const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
-  const [busStops, setData] = useState([])
+  const [busStops, setBusStopsData] = useState([])
+  const [busShapes, setBusShapesData] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState([])
 
@@ -55,28 +56,30 @@ export default function GTFSTransportMapContainer() {
     // }
   }
 
-  // Fetch data - after componentHasUpdated
-  const url = "http://localhost:5000/api/gtfsTransport/stops"
-
   // Now fetch bus stops data
+  const stopsUrl = "http://localhost:5000/api/gtfsTransport/stops"
+
+  // Fetch data - after componentHasUpdated
   useEffect(() => {
     let ignore = false
-    const fetchData = async () => {
+    const fetchBusStopsData = async () => {
       try {
         setLoading(true)
         setError({})
-        const result = await axios(url)
-        if (!ignore) setData(result.data)
+        const busStopsResult = await axios(stopsUrl)
+        if (!ignore) setBusStopsData(busStopsResult.data)
       } catch (err) {
         setError(err)
       }
       setLoading(false)
     }
-    fetchData()
+    fetchBusStopsData()
     return () => {
       ignore = true
     }
   }, [])
+
+  console.log(busStops)
 
   // Now compute bounds of map to display
   if (mapRef && busStops != null) {
@@ -92,6 +95,31 @@ export default function GTFSTransportMapContainer() {
     })
     mapRef.fitBounds(bounds)
   }
+
+  // Now fetch shapes data
+  const shapesUrl = "http://localhost:5000/api/gtfsTransport/shapes"
+
+  // Fetch data - after componentHasUpdated
+  useEffect(() => {
+    let ignore = false
+    const fetchBusShapesData = async () => {
+      try {
+        setLoading(true)
+        setError({})
+        const busShapesResult = await axios(shapesUrl)
+        if (!ignore) setBusShapesData(busShapesResult.data)
+      } catch (err) {
+        setError(err)
+      }
+      setLoading(false)
+    }
+    fetchBusShapesData()
+    return () => {
+      ignore = true
+    }
+  }, [])
+
+  console.log(busShapes)
 
   const renderMap = () => {
     return (

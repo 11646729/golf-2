@@ -4,7 +4,7 @@ const gtfsShapesSchema = new Schema(
   {
     databaseVersion: Number,
     agency_key: String,
-    shape_id: Number,
+    shape_id: String,
     shape_pt_lat: Number,
     shape_pt_lon: Number,
     shape_pt_sequence: Number,
@@ -22,7 +22,4 @@ gtfsShapesSchema.method("toJSON", function () {
 })
 
 // Export model
-export const GtfsShapesSchema = mongoose.model(
-  "translink_shapes",
-  gtfsShapesSchema
-)
+export const GtfsShapesSchema = mongoose.model("shapes", gtfsShapesSchema)

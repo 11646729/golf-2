@@ -1,5 +1,4 @@
 import mongoose, { Schema } from "mongoose"
-import { GtfsCoordsSchema } from "../../commonModels/v1/gtfsCoordsSchema"
 
 const gtfsStopsSchema = new Schema(
   {
@@ -11,7 +10,6 @@ const gtfsStopsSchema = new Schema(
     stop_desc: String,
     stop_lat: Number,
     stop_lon: Number,
-    stop_coordinates: GtfsCoordsSchema.schema,
     zone_id: String,
     stop_url: String,
     location_type: Number,
