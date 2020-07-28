@@ -109,14 +109,12 @@ const createReducedShapeData = async () => {
       l++
     } while (l < constTemp.length)
 
-    console.log("PathArray: " + pathArray)
-
     // And save it in a gtfsReducedShapesSchema collection
     const gtfsReducedShapesSchema = new GtfsReducedShapesSchema({
       databaseVersion: process.env.DATABASE_VERSION,
-      agency_key: data[0].agency_key,
-      shape_id: uniqueShapeId[0],
-      shape_path: pathArray,
+      agencyKey: data[0].agency_key,
+      shapeId: uniqueShapeId[0],
+      coordinates: pathArray,
     })
 
     // Save the reducedShapes in the database

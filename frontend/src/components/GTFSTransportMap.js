@@ -127,11 +127,6 @@ export default function GTFSTransportMapContainer() {
     }
   }, [])
 
-  if (reducedBusShapes != null) {
-    // const temp = reducedBusShapes[0]
-    console.log(reducedBusShapes[0])
-  }
-
   const renderMap = () => {
     return (
       <Fragment>
@@ -202,8 +197,8 @@ export default function GTFSTransportMapContainer() {
                 {reducedBusShapes && routesCheckboxSelected
                   ? reducedBusShapes.map((reducedBusShape) => (
                       <Polyline
-                        key={reducedBusShape.shape_path}
-                        path={reducedBusShape.shape_path}
+                        key={reducedBusShape.coordinates}
+                        path={reducedBusShape.coordinates}
                         options={{
                           strokeColor: "#ff2343",
                           strokeOpacity: "1.0",

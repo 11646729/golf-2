@@ -4,9 +4,9 @@ import { GtfsCoordsSchema } from "../../commonModels/v1/gtfsCoordsSchema"
 const gtfsReducedShapesSchema = new Schema(
   {
     databaseVersion: { type: Number },
-    agency_key: { type: String },
-    shape_id: { type: String },
-    shape_path: [{ type: GtfsCoordsSchema.schema }],
+    agencyKey: { type: String },
+    shapeId: { type: String },
+    coordinates: [{ type: GtfsCoordsSchema.schema }],
   },
   {
     timestamps: true,
