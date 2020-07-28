@@ -1,9 +1,9 @@
 import gtfs from "gtfs"
 import gtfsToGeoJSON from "gtfs-to-geojson"
-import mongoose from "mongoose"
 import config from "./custom-config.json"
 import { GtfsShapesSchema } from "./models/transportModels/v1/gtfsShapesSchema"
 import { GtfsReducedShapesSchema } from "./models/transportModels/v1/gtfsReducedShapesSchema"
+import { GtfsCoordsSchema } from "./models/commonModels/v1/gtfsCoordsSchema"
 
 // Function to fetch GTFS data
 export const importGtfsData = async () => {
@@ -20,8 +20,9 @@ export const importGtfsData = async () => {
   // } catch (err) {
   //   console.log("Error in importGtfsData: ", err)
   // }
-
-  createReducedShapeData()
+  //
+  // Convert data to a better format for display
+  // createReducedShapeData()
 }
 
 // Function to convert GTFS data to geoJSON
@@ -96,32 +97,26 @@ const createReducedShapeData = async () => {
 
     // Now build all the paths into a long string
     let l = 0
-    let pathString = "["
+    let pathArray = []
     do {
-      pathString +=
-        "{ lat: " +
-        constTemp[l].shape_pt_lat +
-        ", lng: " +
-        constTemp[l].shape_pt_lon +
-        " }"
+      const gtfsCoordsSchema = new GtfsCoordsSchema({
+        lat: constTemp[l].shape_pt_lat,
+        lng: constTemp[l].shape_pt_lon,
+      })
 
-      if (l < constTemp.length - 1) {
-        pathString += ","
-      }
+      pathArray.push(gtfsCoordsSchema)
 
       l++
     } while (l < constTemp.length)
 
-    pathString = pathString + "]"
-
-    // console.log(pathString)
+    console.log("PathArray: " + pathArray)
 
     // And save it in a gtfsReducedShapesSchema collection
     const gtfsReducedShapesSchema = new GtfsReducedShapesSchema({
       databaseVersion: process.env.DATABASE_VERSION,
       agency_key: data[0].agency_key,
       shape_id: uniqueShapeId[0],
-      shape_path: pathString,
+      shape_path: pathArray,
     })
 
     // Save the reducedShapes in the database

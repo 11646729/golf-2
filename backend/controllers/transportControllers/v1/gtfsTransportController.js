@@ -1,6 +1,6 @@
 import { GtfsStopsSchema } from "../../../models/transportModels/v1/gtfsStopsSchema"
-import { GtfsShapesSchema } from "../../../models/transportModels/v1/gtfsShapesSchema"
-import { GtfsCoordsSchema } from "../../../models/commonModels/v1/gtfsCoordsSchema"
+import { GtfsReducedShapesSchema } from "../../../models/transportModels/v1/gtfsReducedShapesSchema"
+// import { GtfsCoordsSchema } from "../../../models/commonModels/v1/gtfsCoordsSchema"
 
 // Path localhost:5000/api/gtfsTransport/
 export const gtfsTransportIndex = async (req, res) => {
@@ -16,8 +16,8 @@ export const gftsGetAllStops = async (req, res) => {
 
 // Path localhost:5000/api/gtfsTransport/shapes
 export const gftsGetAllShapes = async (req, res) => {
-  GtfsShapesSchema.find({})
-    .then((gtfsShapesSchema) => res.json(gtfsShapesSchema))
+  GtfsReducedShapesSchema.find({})
+    .then((gtfsReducedShapesSchema) => res.json(gtfsReducedShapesSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
@@ -38,12 +38,23 @@ export const gftsGetAllShapes = async (req, res) => {
 // }
 
 // Direct call to delete all bus stops in the database
-export const directDeleteAll = async () => {
+export const directDeleteAllStops = async () => {
   GtfsStopsSchema.deleteMany({}, (err) => {
     if (err) {
       console.log("Some error occurred while removing all bus stops")
     } else {
       console.log("All bus stops were deleted successfully!")
+    }
+  })
+}
+
+// Direct call to delete all route shapes in the database
+export const directDeleteAllShapes = async () => {
+  GtfsReducedShapesSchema.deleteMany({}, (err) => {
+    if (err) {
+      console.log("Some error occurred while removing all route shapes")
+    } else {
+      console.log("All route shapes were deleted successfully!")
     }
   })
 }

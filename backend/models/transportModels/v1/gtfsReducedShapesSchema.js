@@ -1,15 +1,12 @@
 import mongoose, { Schema } from "mongoose"
+import { GtfsCoordsSchema } from "../../commonModels/v1/gtfsCoordsSchema"
 
 const gtfsReducedShapesSchema = new Schema(
   {
-    databaseVersion: Number,
-    agency_key: String,
-    shape_id: String,
-    shape_path: String,
-    // shape_pt_lat: Number,
-    // shape_pt_lon: Number,
-    // shape_pt_sequence: Number,
-    // shape_distance_travelled: Number,
+    databaseVersion: { type: Number },
+    agency_key: { type: String },
+    shape_id: { type: String },
+    shape_path: [{ type: GtfsCoordsSchema.schema }],
   },
   {
     timestamps: true,

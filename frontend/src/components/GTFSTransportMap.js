@@ -1,6 +1,11 @@
 import React, { useState, useEffect, Fragment } from "react"
 import axios from "axios"
-import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  Polyline,
+} from "@react-google-maps/api"
 import {
   Typography,
   CssBaseline,
@@ -27,8 +32,7 @@ export default function GTFSTransportMapContainer() {
   const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
   const [routesCheckboxSelected, setRoutesCheckbox] = useState(true)
   const [busStops, setBusStopsData] = useState([])
-  const [busShapes, setBusShapesData] = useState([])
-  // const [reducedBusShapes, setReducedBusShapesData] = useState([])
+  const [reducedBusShapes, setReducedBusShapesData] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState([])
 
@@ -101,74 +105,32 @@ export default function GTFSTransportMapContainer() {
   }
 
   // Now fetch shapes data
-  // const shapesUrl = "http://localhost:5000/api/gtfsTransport/shapes"
+  const shapesUrl = "http://localhost:5000/api/gtfsTransport/shapes"
 
-  // // Fetch data - after componentHasUpdated
-  // useEffect(() => {
-  //   let ignore = false
-  //   const fetchBusShapesData = async () => {
-  //     try {
-  //       setLoading(true)
-  //       setError({})
-  //       const busShapesResult = await axios(shapesUrl)
-  //       if (!ignore) setBusShapesData(busShapesResult.data)
-  //     } catch (err) {
-  //       setError(err)
-  //     }
-  //     setLoading(false)
-  //   }
-  //   fetchBusShapesData()
-  //   return () => {
-  //     ignore = true
-  //   }
-  // }, [])
+  // Fetch data - after componentHasUpdated
+  useEffect(() => {
+    let ignore = false
+    const fetchReducedBusShapesData = async () => {
+      try {
+        setLoading(true)
+        setError({})
+        const reducedBusShapesResult = await axios(shapesUrl)
+        if (!ignore) setReducedBusShapesData(reducedBusShapesResult.data)
+      } catch (err) {
+        setError(err)
+      }
+      setLoading(false)
+    }
+    fetchReducedBusShapesData()
+    return () => {
+      ignore = true
+    }
+  }, [])
 
-  // if (busShapes.length !== 0) {
-  //   console.log(busShapes)
-  // }
-
-  // if (busShapes.length !== 0) {
-  //   let j = 0
-  //   do {
-  //     const test = busShapes[j].shape_id
-  //     console.log(test)
-  //   } while (j < busShapes.length)
-  // }
-
-  //   let j = 1
-  //   do {
-  //     if (busShapes[j].shape_id == test) {
-  //       setReducedBusShapesData((reducedBusShapes) => [
-  //         ...reducedBusShapes,
-  //         busShapes[j],
-  //       ])
-  //     }
-  //     j++
-  //   } while (j <= busShapes.length)
-  // }
-
-  // console.log(reducedBusShapes)
-
-  // Map reduced shape data here
-  // const reducedBusShapes = busShapes.map((busShape) => ({
-  //   type: "Feature",
-  //   properties: {
-  //     shape_id: busShape.shape_id,
-  //     crimeId: shape_pt_sequence,
-  //   },
-  //   geometry: {
-  //     type: "LineString",
-  //     path_coordinates: [
-  //       {
-  //         lat: busShape.shape_pt_lat,
-  //         lng: busShape.shape_pt_lon,
-  //       },
-  //     ],
-  //   },
-  // }))
-  // -------------------------------------------------------
-
-  // console.log(reducedBusShapes)
+  if (reducedBusShapes != null) {
+    // const temp = reducedBusShapes[0]
+    console.log(reducedBusShapes[0])
+  }
 
   const renderMap = () => {
     return (
@@ -237,54 +199,26 @@ export default function GTFSTransportMapContainer() {
                 onLoad={onLoadHandler}
                 onUnmount={onUnmountHandler}
               >
-                {/* {routesCheckboxSelected ? (
-                  <Polyline
-                    path={[
-                      { lat: 54.596678, lng: -5.828273 },
-                      { lat: 54.596379, lng: -5.82815 },
-                      { lat: 54.596278, lng: -5.827985 },
-                      { lat: 54.596211, lng: -5.827803 },
-                      { lat: 54.596147, lng: -5.827729 },
-                      { lat: 54.595872, lng: -5.827418 },
-                      { lat: 54.595434, lng: -5.827055 },
-                      { lat: 54.595263, lng: -5.827048 },
-                      { lat: 54.595197, lng: -5.826881 },
-                      { lat: 54.595114, lng: -5.826762 },
-                      { lat: 54.594722, lng: -5.826412 },
-                      { lat: 54.594577, lng: -5.826357 },
-                      { lat: 54.594451, lng: -5.826364 },
-                      { lat: 54.594237, lng: -5.826453 },
-                      { lat: 54.594197, lng: -5.826254 },
-                      { lat: 54.594146, lng: -5.825916 },
-                      { lat: 54.594111, lng: -5.825453 },
-                      { lat: 54.594089, lng: -5.824743 },
-                      { lat: 54.594482, lng: -5.824598 },
-                      { lat: 54.594688, lng: -5.824556 },
-                      { lat: 54.594859, lng: -5.824547 },
-                      { lat: 54.595121, lng: -5.824626 },
-                      { lat: 54.595293, lng: -5.824725 },
-                      { lat: 54.595503, lng: -5.824884 },
-                      { lat: 54.596173, lng: -5.825653 },
-                      { lat: 54.597318, lng: -5.826892 },
-                      { lat: 54.597682, lng: -5.827105 },
-                      { lat: 54.597929, lng: -5.827355 },
-                      { lat: 54.59811, lng: -5.827423 },
-                      { lat: 54.598332, lng: -5.827272 },
-                    ]}
-                    options={{
-                      strokeColor: "#ff2343",
-                      strokeOpacity: "1.0",
-                      strokeWeight: 2,
-                      icons: [
-                        {
-                          icon: "hello",
-                          offset: "0",
-                          repeat: "10px",
-                        },
-                      ],
-                    }}
-                  />
-                ) : null} */}
+                {reducedBusShapes && routesCheckboxSelected
+                  ? reducedBusShapes.map((reducedBusShape) => (
+                      <Polyline
+                        key={reducedBusShape.shape_path}
+                        path={reducedBusShape.shape_path}
+                        options={{
+                          strokeColor: "#ff2343",
+                          strokeOpacity: "1.0",
+                          strokeWeight: 2,
+                          icons: [
+                            {
+                              icon: "hello",
+                              offset: "0",
+                              repeat: "10px",
+                            },
+                          ],
+                        }}
+                      />
+                    ))
+                  : null}
 
                 {busStops && busStopsCheckboxSelected
                   ? busStops.map((busStop) => (
