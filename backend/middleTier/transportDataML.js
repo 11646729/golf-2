@@ -1,5 +1,3 @@
-"use strict"
-
 import { GtfsStopsSchema } from "../models/transportModels/v1/gtfsStopsSchema"
 import { GtfsShapesSchema } from "../models/transportModels/v1/gtfsShapesSchema"
 import { CoordsSchema } from "../models/commonModels/v1/coordsSchema"
