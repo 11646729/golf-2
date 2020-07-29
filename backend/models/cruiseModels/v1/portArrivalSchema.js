@@ -3,14 +3,14 @@ import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 
 const portArrivalSchema = new Schema(
   {
-    databaseVersion: Number,
-    portName: String,
-    portUnLocode: String,
-    portCoordinates: CoordsSchema.schema,
-    vesselShortCruiseName: String,
-    vesselEta: String,
-    vesselEtd: String,
-    vesselNameUrl: String,
+    databaseVersion: { type: Number },
+    portName: { type: String },
+    portUnLocode: { type: String },
+    portCoordinates: { type: CoordsSchema.schema },
+    vesselShortCruiseName: { type: String },
+    vesselEta: { type: String },
+    vesselEtd: { type: String },
+    vesselNameUrl: { type: String },
   },
   {
     timestamps: true,

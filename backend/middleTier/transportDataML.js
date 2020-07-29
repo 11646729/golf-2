@@ -2,7 +2,7 @@
 
 import { GtfsStopsSchema } from "../models/transportModels/v1/gtfsStopsSchema"
 import { GtfsShapesSchema } from "../models/transportModels/v1/gtfsShapesSchema"
-import { GtfsCoordsSchema } from "../models/commonModels/v1/gtfsCoordsSchema"
+import { CoordsSchema } from "../models/commonModels/v1/coordsSchema"
 
 // Function to save bus stop data to mongodb
 // Longitude first in Javascript
@@ -12,7 +12,7 @@ export const saveTranslinkStopsDataToDatabase = async () => {
 
     let i = 0
     do {
-      const busStopCoords = new GtfsCoordsSchema({
+      const busStopCoords = new CoordsSchema({
         lat: geojson.features[i].properties.Latitude,
         lng: geojson.features[i].properties.Longitude,
       })

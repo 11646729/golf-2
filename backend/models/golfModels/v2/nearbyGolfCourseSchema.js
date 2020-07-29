@@ -3,16 +3,16 @@ import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 
 const nearbyGolfCourseSchema = new Schema(
   {
-    databaseVersion: Number,
-    type: String,
-    crsName: String,
-    crsUrn: String,
-    name: String,
-    phoneNumber: String,
-    photoTitle: String,
-    photoUrl: String,
-    description: String,
-    coordinates: CoordsSchema.schema,
+    databaseVersion: { type: Number },
+    type: { type: String },
+    crsName: { type: String },
+    crsUrn: { type: String },
+    name: { type: String },
+    phoneNumber: { type: String },
+    photoTitle: { type: String },
+    photoUrl: { type: String },
+    description: { type: String },
+    coordinates: { type: CoordsSchema.schema },
   },
   {
     timestamps: true,

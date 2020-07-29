@@ -3,11 +3,11 @@ import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 
 const temperatureSchema = new Schema(
   {
-    databaseVersion: Number,
-    timeOfMeasurement: String,
-    locationName: String,
-    locationCoordinates: CoordsSchema.schema,
-    locationTemperature: Number,
+    databaseVersion: { type: Number },
+    timeOfMeasurement: { type: String },
+    locationName: { type: String },
+    locationCoordinates: { type: CoordsSchema.schema },
+    locationTemperature: { type: Number },
   },
   {
     timestamps: true,

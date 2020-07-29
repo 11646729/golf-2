@@ -2,13 +2,13 @@ import mongoose, { Schema } from "mongoose"
 
 const gtfsShapesSchema = new Schema(
   {
-    databaseVersion: Number,
-    agency_key: String,
-    shape_id: String,
-    shape_pt_lat: Number,
-    shape_pt_lon: Number,
-    shape_pt_sequence: Number,
-    shape_distance_travelled: Number,
+    databaseVersion: { type: Number },
+    agency_key: { type: String },
+    shape_id: { type: String },
+    shape_pt_lat: { type: Number },
+    shape_pt_lon: { type: Number },
+    shape_pt_sequence: { type: Number },
+    shape_distance_travelled: { type: Number },
   },
   {
     timestamps: true,

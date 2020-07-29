@@ -3,7 +3,7 @@ import gtfsToGeoJSON from "gtfs-to-geojson"
 import config from "./custom-config.json"
 import { GtfsShapesSchema } from "./models/transportModels/v1/gtfsShapesSchema"
 import { GtfsReducedShapesSchema } from "./models/transportModels/v1/gtfsReducedShapesSchema"
-import { GtfsCoordsSchema } from "./models/commonModels/v1/gtfsCoordsSchema"
+import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to fetch GTFS data
 export const importGtfsData = async () => {
@@ -22,7 +22,7 @@ export const importGtfsData = async () => {
   // }
   //
   // Convert data to a better format for display
-  // createReducedShapeData()
+  createReducedShapeData()
 }
 
 // Function to convert GTFS data to geoJSON
@@ -56,76 +56,80 @@ const createReducedShapeData = async () => {
 
     let uniqueShapeId = [...new Set(tempShapeId)]
 
+    let totalCount = 0
+
     // Step 2: Copy all documents with a specified shape_id
     // to the constTemp array
-    let constTemp = []
-    i = 0
     let j = 0
-    let count = 0
-    // do {
     do {
-      if (data[i].shape_id == uniqueShapeId[j]) {
-        constTemp.push(data[i])
-        count++
+      let constTemp = []
+      let m = 0
+      do {
+        if (data[m].shape_id == uniqueShapeId[j]) {
+          constTemp.push(data[m])
+        }
+        m++
+      } while (m < data.length)
+
+      // This routine lists the shape_pt_sequence
+      // to show that they are not in sequential order
+      let k = 0
+      do {
+        constTemp[k].shape_pt_sequence
+        k++
+      } while (k < constTemp.length)
+
+      function compare(a, b) {
+        if (a.shape_pt_sequence < b.shape_pt_sequence) {
+          return -1
+        }
+        if (a.shape_pt_sequence > b.shape_pt_sequence) {
+          return 1
+        }
+        return 0
       }
-      i++
-    } while (i < data.length)
-    //   i = 0
-    //   j++
-    // } while (j < uniqueShapeId.length)
 
-    // This routine lists the shape_pt_sequence
-    // to show that they are not in sequential order
-    let k = 0
-    do {
-      constTemp[k].shape_pt_sequence
-      k++
-    } while (k < constTemp.length)
+      // Now sort all the records by increasing shape_pt_sequence
+      constTemp.sort(compare)
 
-    function compare(a, b) {
-      if (a.shape_pt_sequence < b.shape_pt_sequence) {
-        return -1
-      }
-      if (a.shape_pt_sequence > b.shape_pt_sequence) {
-        return 1
-      }
-      return 0
-    }
+      // Now build all the paths into a long string
+      let l = 0
+      let pathArray = []
+      do {
+        const coordsSchema = new CoordsSchema({
+          lat: constTemp[l].shape_pt_lat,
+          lng: constTemp[l].shape_pt_lon,
+        })
 
-    // Now sort all the records by increasing shape_pt_sequence
-    constTemp.sort(compare)
+        pathArray.push(coordsSchema)
 
-    // Now build all the paths into a long string
-    let l = 0
-    let pathArray = []
-    do {
-      const gtfsCoordsSchema = new GtfsCoordsSchema({
-        lat: constTemp[l].shape_pt_lat,
-        lng: constTemp[l].shape_pt_lon,
+        l++
+      } while (l < constTemp.length)
+
+      // And save it in a gtfsReducedShapesSchema collection
+      const gtfsReducedShapesSchema = new GtfsReducedShapesSchema({
+        databaseVersion: process.env.DATABASE_VERSION,
+        agencyKey: data[j].agency_key,
+        shapeId: uniqueShapeId[j],
+        coordinates: pathArray,
       })
 
-      pathArray.push(gtfsCoordsSchema)
+      // Save the reducedShapes in the database
+      gtfsReducedShapesSchema
+        .save()
+        .then(() => {
+          console.log("gtfsReducedShapesSchema collection saved successful")
+        })
+        .catch((err) => {
+          console.error(err)
+        })
 
-      l++
-    } while (l < constTemp.length)
+      console.log("Loop Ended: " + m + " " + constTemp.length)
 
-    // And save it in a gtfsReducedShapesSchema collection
-    const gtfsReducedShapesSchema = new GtfsReducedShapesSchema({
-      databaseVersion: process.env.DATABASE_VERSION,
-      agencyKey: data[0].agency_key,
-      shapeId: uniqueShapeId[0],
-      coordinates: pathArray,
-    })
+      totalCount += constTemp.length
+      console.log("Total Count: " + totalCount)
 
-    // Save the reducedShapes in the database
-    gtfsReducedShapesSchema
-      .save()
-      .then(() => {
-        console.log("gtfsReducedShapesSchema collection saved successful")
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-    console.log("Loop Ended: " + i + " " + constTemp.length)
+      j++
+    } while (j < uniqueShapeId.length)
   })
 }
