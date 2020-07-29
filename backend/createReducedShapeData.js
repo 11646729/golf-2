@@ -1,46 +1,8 @@
-import gtfs from "gtfs"
-import gtfsToGeoJSON from "gtfs-to-geojson"
-import config from "./custom-config.json"
 import { GtfsShapesSchema } from "./models/transportModels/v1/gtfsShapesSchema"
 import { GtfsReducedShapesSchema } from "./models/transportModels/v1/gtfsReducedShapesSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
-// Function to fetch GTFS data
-export const importGtfsData = async () => {
-  // try {
-  //   gtfs
-  //     .import(config)
-  //     .then(() => {
-  //       console.log("Import Successful")
-  //       return mongoose.connection.close()
-  //     })
-  //     .catch((err) => {
-  //       console.error(err)
-  //     })
-  // } catch (err) {
-  //   console.log("Error in importGtfsData: ", err)
-  // }
-  //
-  // Convert data to a better format for display
-  createReducedShapeData()
-}
-
-// Function to convert GTFS data to geoJSON
-export const convertGtfsDataToGeojson = async () => {
-  try {
-    gtfsToGeoJSON(config)
-      .then(() => {
-        console.log("GeoJSON Generation Successful")
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-  } catch (err) {
-    console.log("Error in importGtfsData: ", err)
-  }
-}
-
-const createReducedShapeData = async () => {
+export const createReducedShapeData = async () => {
   console.log("Creating reduced Shape data")
 
   GtfsShapesSchema.find({}).then((data) => {

@@ -21,7 +21,9 @@ import {
   saveTranslinkRouteDataToDatabase4,
   saveTranslinkRouteDataToDatabase5,
 } from "./middleTier/transportDataML"
-import { importGtfsData, convertGtfsDataToGeojson } from "./gtfs"
+import { importGtfsData } from "./importGtfsData"
+import { convertGtfsDataToGeojson } from "./convertGtfsDataToGeojson"
+import { createReducedShapeData } from "./createReducedShapeData"
 
 let count = 0
 
@@ -43,7 +45,8 @@ export const runSwitchboard = (io) => {
     // deleteAllVesselDetails()
     // deleteAllTemperatures()
     // runCron()
-    importGtfsData()
+    // importGtfsData()
+    createReducedShapeData()
     // convertGtfsDataToGeojson()
     // saveTranslinkStopsDataToDatabase()
     // saveTranslinkRouteDataToDatabase()
