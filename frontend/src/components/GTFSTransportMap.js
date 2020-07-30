@@ -127,8 +127,6 @@ export default function GTFSTransportMapContainer() {
     }
   }, [])
 
-  console.log(reducedBusShapes[0])
-
   const renderMap = () => {
     return (
       <Fragment>
@@ -201,6 +199,7 @@ export default function GTFSTransportMapContainer() {
                       <Polyline
                         key={reducedBusShape.coordinates}
                         path={reducedBusShape.coordinates}
+                        // onClick={() => this.handleToggleOpen(i)}
                         options={{
                           strokeColor: "#ff2343",
                           strokeOpacity: "1.0",
