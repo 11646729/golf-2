@@ -127,6 +127,8 @@ export default function GTFSTransportMapContainer() {
     }
   }, [])
 
+  console.log(reducedBusShapes[0])
+
   const renderMap = () => {
     return (
       <Fragment>

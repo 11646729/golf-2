@@ -46,7 +46,8 @@ export const runSwitchboard = (io) => {
     // deleteAllTemperatures()
     // runCron()
     // importGtfsData()
-    createReducedShapeData()
+    // createReducedShapeData()
+    // console.log("Back in the switchBoard function")
     // convertGtfsDataToGeojson()
     // saveTranslinkStopsDataToDatabase()
     // saveTranslinkRouteDataToDatabase()
@@ -59,24 +60,24 @@ export const runSwitchboard = (io) => {
     // })
 
     // Fetch data every 5 minutes
-    cron.schedule("1 * * * *", () => {
-      getAndSaveDarkSkiesData().then((result) => {
-        emitDarkSkiesData(socket, result).then(() => {
-          console.log("Fetched temperature value")
-        })
-      })
-    })
+    // cron.schedule("1 * * * *", () => {
+    //   getAndSaveDarkSkiesData().then((result) => {
+    //     emitDarkSkiesData(socket, result).then(() => {
+    //       console.log("Fetched temperature value")
+    //     })
+    //   })
+    // })
 
     // Save data to database every 10 minutes
-    cron.schedule("*/10 * * * *", () => {
-      // deleteAllBusStops()
-      // saveTranslinkStopsDataToDatabase().then(() => {
-      //   console.log("In switchboard function saveTranslinkStopsDataToDatabase")
-      // })
-      // saveNearbyGolfCourseDataToDatabase().then(() => {
-      //   console.log("In switchboard function saveGolfCourseDataToDatabase")
-      // })
-    })
+    // cron.schedule("*/10 * * * *", () => {
+    // deleteAllBusStops()
+    // saveTranslinkStopsDataToDatabase().then(() => {
+    //   console.log("In switchboard function saveTranslinkStopsDataToDatabase")
+    // })
+    // saveNearbyGolfCourseDataToDatabase().then(() => {
+    //   console.log("In switchboard function saveGolfCourseDataToDatabase")
+    // })
+    // })
 
     socket.on("disconnect", () => {
       console.log("Client Disconnected")

@@ -1,6 +1,5 @@
 import { GtfsStopsSchema } from "../../../models/transportModels/v1/gtfsStopsSchema"
 import { GtfsReducedShapesSchema } from "../../../models/transportModels/v1/gtfsReducedShapesSchema"
-// import { GtfsCoordsSchema } from "../../../models/commonModels/v1/gtfsCoordsSchema"
 
 // Path localhost:5000/api/gtfsTransport/
 export const gtfsTransportIndex = async (req, res) => {
@@ -15,7 +14,7 @@ export const gftsGetAllStops = async (req, res) => {
 }
 
 // Path localhost:5000/api/gtfsTransport/shapes
-export const gftsGetAllShapes = async (req, res) => {
+export const gftsGetAllReducedShapes = async (req, res) => {
   GtfsReducedShapesSchema.find({})
     .then((gtfsReducedShapesSchema) => res.json(gtfsReducedShapesSchema))
     .catch((err) => res.status(400).json("Error " + err))
