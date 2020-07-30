@@ -9,9 +9,6 @@ export const createReducedShapeData = async () => {
   // and store the number of unique shape_id fields
   // in tempShapeId collection
   GtfsShapesSchema.find({}).then((data) => {
-    // GtfsShapesSchema.find({})
-    //   .lean()
-    //   .exec(function (err, data) {
     try {
       let i = 0
       let tempShape_id = []
@@ -90,4 +87,5 @@ export const createReducedShapeData = async () => {
       console.log("Error in createReducedShapeData: ", err)
     }
   })
+  console.log("Reduced Shape data saved to database")
 }
