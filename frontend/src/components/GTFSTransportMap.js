@@ -31,6 +31,7 @@ export default function GTFSTransportMapContainer() {
   })
   const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
   const [routesCheckboxSelected, setRoutesCheckbox] = useState(true)
+  const [routeSelected, setClickSelected] = useState(null)
   const [busStops, setBusStopsData] = useState([])
   const [reducedBusShapes, setReducedBusShapesData] = useState([])
   const [loading, setLoading] = useState(false)
@@ -64,6 +65,10 @@ export default function GTFSTransportMapContainer() {
 
   const handleRoutesCheckboxChange = (event) => {
     setRoutesCheckbox(event.target.checked)
+  }
+
+  const handlePolylineClick = (event) => {
+    console.log(routeSelected)
   }
 
   // Now fetch bus stops data
@@ -212,7 +217,12 @@ export default function GTFSTransportMapContainer() {
                       <Polyline
                         key={reducedBusShape.coordinates}
                         path={reducedBusShape.coordinates}
-                        // onClick={() => this.handleToggleOpen(i)}
+                        onLoad={() => {
+                          setClickSelected(reducedBusShape)
+                        }}
+                        onClick={() => {
+                          handlePolylineClick()
+                        }}
                         options={polylineOptions.polyline1}
                       />
                     ))
@@ -222,7 +232,12 @@ export default function GTFSTransportMapContainer() {
                       <Polyline
                         key={reducedBusShape.coordinates}
                         path={reducedBusShape.coordinates}
-                        // onClick={() => this.handleToggleOpen(i)}
+                        onLoad={() => {
+                          setClickSelected(reducedBusShape)
+                        }}
+                        onClick={() => {
+                          handlePolylineClick()
+                        }}
                         options={polylineOptions.polyline2}
                       />
                     ))
