@@ -127,6 +127,19 @@ export default function GTFSTransportMapContainer() {
     }
   }, [])
 
+  const polylineOptions = {
+    polyline1: {
+      strokeColor: "#ff2343",
+      strokeOpacity: "1.0",
+      strokeWeight: 2,
+    },
+    polyline2: {
+      strokeColor: "#0000ff",
+      strokeOpacity: "1.0",
+      strokeWeight: 2,
+    },
+  }
+
   const renderMap = () => {
     return (
       <Fragment>
@@ -200,18 +213,17 @@ export default function GTFSTransportMapContainer() {
                         key={reducedBusShape.coordinates}
                         path={reducedBusShape.coordinates}
                         // onClick={() => this.handleToggleOpen(i)}
-                        options={{
-                          strokeColor: "#ff2343",
-                          strokeOpacity: "1.0",
-                          strokeWeight: 2,
-                          icons: [
-                            {
-                              icon: "hello",
-                              offset: "0",
-                              repeat: "10px",
-                            },
-                          ],
-                        }}
+                        options={polylineOptions.polyline1}
+                      />
+                    ))
+                  : null}
+                {reducedBusShapes && !routesCheckboxSelected
+                  ? reducedBusShapes.map((reducedBusShape) => (
+                      <Polyline
+                        key={reducedBusShape.coordinates}
+                        path={reducedBusShape.coordinates}
+                        // onClick={() => this.handleToggleOpen(i)}
+                        options={polylineOptions.polyline2}
                       />
                     ))
                   : null}
