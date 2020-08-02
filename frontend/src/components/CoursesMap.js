@@ -31,20 +31,14 @@ export default function CoursesMapContainer() {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
+  const [selected, setSelected] = useState(null)
+
+  // -----------------------------------------------------
+  // DATA SECTION
+  // -----------------------------------------------------
   const [golfCourses, setData] = useState([])
   const [dataLoading, setDataLoading] = useState(true)
   const [error, setError] = useState([])
-  const [selected, setSelected] = useState(null)
-
-  // Event Handlers
-  const onLoadHandler = (map) => {
-    // Store a reference to the google map instance in state
-    setMapRef(map)
-  }
-
-  const onUnmountHandler = () => {
-    setMapRef(null)
-  }
 
   // Fetch data - after componentHasUpdated
   let url = "http://localhost:5000/api/golf/nearbyGolfCourses"
@@ -68,6 +62,20 @@ export default function CoursesMapContainer() {
       ignore = true
     }
   }, [url])
+  // -----------------------------------------------------
+
+  // -----------------------------------------------------
+  // EVENT HANDLERS SECTION
+  // -----------------------------------------------------
+  // Event Handlers
+  const onLoadHandler = (map) => {
+    // Store a reference to the google map instance in state
+    setMapRef(map)
+  }
+
+  const onUnmountHandler = () => {
+    setMapRef(null)
+  }
 
   // Now compute bounds of map to display
   if (mapRef && golfCourses != null) {
@@ -78,7 +86,11 @@ export default function CoursesMapContainer() {
     })
     mapRef.fitBounds(bounds)
   }
+  // -----------------------------------------------------
 
+  // -----------------------------------------------------
+  // VIEW SECTION
+  // -----------------------------------------------------
   var iconPin = {
     path:
       "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
