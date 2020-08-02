@@ -32,7 +32,7 @@ export default function CoursesMapContainer() {
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
   const [golfCourses, setData] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [dataLoading, setDataLoading] = useState(true)
   const [error, setError] = useState([])
   const [selected, setSelected] = useState(null)
 
@@ -54,14 +54,14 @@ export default function CoursesMapContainer() {
     let ignore = false
     const fetchData = async () => {
       try {
-        setLoading(true)
+        setDataLoading(true)
         setError({})
         const result = await axios(url)
         if (!ignore) setData(result.data)
       } catch (err) {
         setError(err)
       }
-      setLoading(false)
+      setDataLoading(false)
     }
     fetchData()
     return () => {
@@ -108,9 +108,17 @@ export default function CoursesMapContainer() {
                 >
                   Golf Courses Dashboard
                 </Typography>
-                <Box component="div" display="inline" variant="h4" p={1} m={1}>
-                  Loading...
-                </Box>
+                {dataLoading ? (
+                  <Box
+                    component="div"
+                    display="inline"
+                    variant="h4"
+                    p={1}
+                    m={1}
+                  >
+                    Loading...
+                  </Box>
+                ) : null}
               </div>
             </Grid>
             <Grid item xs={12} sm={12}>

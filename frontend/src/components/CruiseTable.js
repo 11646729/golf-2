@@ -10,6 +10,7 @@ import {
   TablePagination,
   TableRow,
   makeStyles,
+  Box,
 } from "@material-ui/core"
 
 const columns = [
@@ -77,7 +78,7 @@ export default function CruiseTableCard() {
   const [rowsPerPage, setRowsPerPage] = useState(10)
 
   const [portArrivals, setData] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [dataLoading, setDataLoading] = useState(true)
   const [error, setError] = useState([])
 
   // Fetch data - after componentHasUpdated
@@ -88,14 +89,14 @@ export default function CruiseTableCard() {
     let ignore = false
     const fetchData = async () => {
       try {
-        setLoading(true)
+        setDataLoading(true)
         setError({})
         const result = await axios(url)
         if (!ignore) setData(result.data)
       } catch (err) {
         setError(err)
       }
-      setLoading(false)
+      setDataLoading(false)
     }
     fetchData()
     return () => {
@@ -116,6 +117,11 @@ export default function CruiseTableCard() {
 
   return (
     <Paper className={classes.root}>
+      {dataLoading ? (
+        <Box component="div" display="inline" variant="h4" p={1} m={1}>
+          Loading...
+        </Box>
+      ) : null}
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
