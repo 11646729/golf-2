@@ -316,26 +316,3 @@ export const saveTranslinkRouteDataToDatabase5 = async () => {
     console.log("Error in saveTranslinkRouteDataToDatabase ", error)
   }
 }
-
-// This creates the path used by a Polyline in GTFSTransportMap
-// ------------------------------------------------------------
-// let path = ""
-// let tempPath1 = "["
-// let tempPath2 = ""
-// let tempPath3 = "]"
-// let j = 0
-// do {
-//   tempPath2 =
-//     "{ lat: " +
-//     geojson.features[i].geometry.coordinates[j][1] +
-//     ", lng: " +
-//     geojson.features[i].geometry.coordinates[j][0] +
-//     " },"
-
-//   path = path + tempPath2
-//   tempPath2 = ""
-
-//   j++
-// } while (j < geojson.features[i].geometry.coordinates.length)
-
-// console.log(tempPath1 + path + tempPath3)
