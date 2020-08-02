@@ -22,13 +22,11 @@ import {
 
 export default function CoursesMapContainer() {
   // State Hooks
-  const { isLoaded, loadError } = useLoadScript({
+  const { isLoaded, mapLoadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
   const [mapRef, setMapRef] = useState(null)
-  const [mapZoom] = useState(
-    parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM)
-  )
+  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
   const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
@@ -84,8 +82,8 @@ export default function CoursesMapContainer() {
   var iconPin = {
     path:
       "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
-    strokeColor: "blue",
-    fillColor: "#000080",
+    strokeColor: "green",
+    fillColor: "#78a32e",
     fillOpacity: 1,
     scale: 0.03, //to reduce the size of icons
   }
@@ -192,7 +190,7 @@ export default function CoursesMapContainer() {
     )
   }
 
-  if (loadError) {
+  if (mapLoadError) {
     return <div>Map cannot be loaded right now, sorry.</div>
   }
 

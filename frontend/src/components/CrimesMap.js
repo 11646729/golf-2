@@ -23,7 +23,7 @@ export default function CrimesMapContainer() {
   const mapRef = useRef()
   const [mapBounds, setBounds] = useState(null)
   const [mapZoom, setZoom] = useState(
-    parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM)
+    parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
   )
   const [mapCenter, setMapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),

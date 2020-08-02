@@ -13,26 +13,25 @@ import {
   Grid,
   FormControlLabel,
   Checkbox,
+  Box,
 } from "@material-ui/core"
 
 export default function TransportMapContainer() {
   // State Hooks
   const [mapRef, setMapRef] = useState(null)
-  const [mapZoom] = useState(
-    parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM)
-  )
+  const { isLoaded, mapLoadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
+  })
+  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
   const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
   // const [selected, setSelected] = useState(null)
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
-  })
   const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
   const [routesCheckboxSelected, setRoutesCheckbox] = useState(true)
   const [busStops, setData] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [dataLoading, setDataLoading] = useState(true)
   const [error, setError] = useState([])
 
   // Event Handlers
@@ -74,14 +73,14 @@ export default function TransportMapContainer() {
     let ignore = false
     const fetchData = async () => {
       try {
-        setLoading(true)
+        // setDataLoading(true)
         setError({})
         const result = await axios(url)
         if (!ignore) setData(result.data)
       } catch (err) {
         setError(err)
       }
-      setLoading(false)
+      setDataLoading(false)
     }
     fetchData()
     return () => {
@@ -116,6 +115,11 @@ export default function TransportMapContainer() {
               >
                 Transport Dashboard
               </Typography>
+              {dataLoading ? (
+                <Box component="div" display="inline" variant="h4" p={1} m={1}>
+                  Loading...
+                </Box>
+              ) : null}
               <FormControlLabel
                 // style={styles.displayHomeLocationCheckBox}
                 style={{
@@ -239,7 +243,7 @@ export default function TransportMapContainer() {
     )
   }
 
-  if (loadError) {
+  if (mapLoadError) {
     return <div>Map cannot be loaded right now, sorry.</div>
   }
 

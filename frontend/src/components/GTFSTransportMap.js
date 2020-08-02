@@ -5,7 +5,7 @@ import {
   useLoadScript,
   Marker,
   Polyline,
-  InfoWindow,
+  // InfoWindow,
 } from "@react-google-maps/api"
 import {
   Typography,
@@ -20,15 +20,13 @@ import {
 export default function GTFSTransportMapContainer() {
   // State Hooks
   const [mapRef, setMapRef] = useState(null)
-  const [mapZoom] = useState(
-    parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM)
-  )
+  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
   const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
   // const [selected, setSelected] = useState(null)
-  const { isLoaded, loadError } = useLoadScript({
+  const { isLoaded, mapLoadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
   const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
@@ -36,7 +34,7 @@ export default function GTFSTransportMapContainer() {
   const [routeSelected, setClickSelected] = useState(null)
   const [busStops, setBusStopsData] = useState([])
   const [reducedBusShapes, setReducedBusShapesData] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [dataLoading, setDataLoading] = useState(true)
   const [error, setError] = useState([])
 
   // Event Handlers
@@ -81,14 +79,14 @@ export default function GTFSTransportMapContainer() {
     let ignore = false
     const fetchBusStopsData = async () => {
       try {
-        setLoading(true)
+        setDataLoading(true)
         setError({})
         const busStopsResult = await axios(stopsUrl)
         if (!ignore) setBusStopsData(busStopsResult.data)
       } catch (err) {
         setError(err)
       }
-      setLoading(false)
+      setDataLoading(false)
     }
     fetchBusStopsData()
     return () => {
@@ -119,14 +117,14 @@ export default function GTFSTransportMapContainer() {
     let ignore = false
     const fetchReducedBusShapesData = async () => {
       try {
-        setLoading(true)
+        setDataLoading(true)
         setError({})
         const reducedBusShapesResult = await axios(shapesUrl)
         if (!ignore) setReducedBusShapesData(reducedBusShapesResult.data)
       } catch (err) {
         setError(err)
       }
-      setLoading(false)
+      setDataLoading(false)
     }
     fetchReducedBusShapesData()
     return () => {
@@ -164,9 +162,11 @@ export default function GTFSTransportMapContainer() {
               >
                 GTFS Transport Test
               </Typography>
-              <Box component="div" display="inline" variant="h4" p={1} m={1}>
-                Loading...
-              </Box>
+              {dataLoading ? (
+                <Box component="div" display="inline" variant="h4" p={1} m={1}>
+                  Loading...
+                </Box>
+              ) : null}
               <FormControlLabel
                 style={{
                   marginTop: "0px",
@@ -311,7 +311,7 @@ export default function GTFSTransportMapContainer() {
     )
   }
 
-  if (loadError) {
+  if (mapLoadError) {
     return <div>Map cannot be loaded right now, sorry.</div>
   }
 
