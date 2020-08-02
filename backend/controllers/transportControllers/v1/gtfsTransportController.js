@@ -13,11 +13,51 @@ export const gftsGetAllStops = async (req, res) => {
     .catch((err) => res.status(400).json("Error " + err))
 }
 
+// Path localhost:5000/api/gtfsTransport/stops/:id
+export const gtfsGetOneStop = async (req, res) => {
+  const id = req.params.id
+
+  GtfsStopsSchema.findById(id)
+    .then((data) => {
+      if (!data)
+        res
+          .status(404)
+          .send({ message: "Not found gtfsTransport stop with id " + id })
+      else res.send(data)
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Error retrieving gtfsTransport stop with id= " + id,
+      })
+    })
+}
+
 // Path localhost:5000/api/gtfsTransport/shapes
 export const gftsGetAllReducedShapes = async (req, res) => {
   GtfsReducedShapesSchema.find({})
     .then((gtfsReducedShapesSchema) => res.json(gtfsReducedShapesSchema))
     .catch((err) => res.status(400).json("Error " + err))
+}
+
+// Path localhost:5000/api/gtfsTransport/shapes/:id
+export const gtfsGetOneReducedShape = async (req, res) => {
+  const id = req.params.id
+
+  GtfsReducedShapesSchema.findById(id)
+    .then((data) => {
+      if (!data)
+        res
+          .status(404)
+          .send({ message: "Not found gtfsTransport shape with id " + id })
+      else res.send(data)
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Error retrieving gtfsTransport shape with id= " + id,
+      })
+    })
 }
 
 // Path localhost:5000/api/gtfsTransport/stopsstations

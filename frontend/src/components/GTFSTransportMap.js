@@ -5,6 +5,7 @@ import {
   useLoadScript,
   Marker,
   Polyline,
+  InfoWindow,
 } from "@react-google-maps/api"
 import {
   Typography,
@@ -13,6 +14,7 @@ import {
   Grid,
   FormControlLabel,
   Checkbox,
+  Box,
 } from "@material-ui/core"
 
 export default function GTFSTransportMapContainer() {
@@ -162,6 +164,9 @@ export default function GTFSTransportMapContainer() {
               >
                 GTFS Transport Test
               </Typography>
+              <Box component="div" display="inline" variant="h4" p={1} m={1}>
+                Loading...
+              </Box>
               <FormControlLabel
                 style={{
                   marginTop: "0px",
@@ -232,16 +237,53 @@ export default function GTFSTransportMapContainer() {
                       <Polyline
                         key={reducedBusShape.coordinates}
                         path={reducedBusShape.coordinates}
-                        onLoad={() => {
-                          setClickSelected(reducedBusShape)
-                        }}
                         onClick={() => {
-                          handlePolylineClick()
+                          setClickSelected(reducedBusShape)
                         }}
                         options={polylineOptions.polyline2}
                       />
                     ))
                   : null}
+
+                {/* {routeSelected ? (
+                    <InfoWindow
+                      position={routeSelected.coordinates}
+                      onCloseClick={() => {
+                        setClickSelected(null)
+                      }}
+                    >
+                      {/* <Card>
+                      <CardMedia
+                        style={{
+                          height: 0,
+                          // paddingTop: "56.25%", // 16:9,
+                          paddingTop: "40%",
+                          marginTop: "30",
+                        }}
+                        // image={selected.photoUrl}
+                        // title={selected.photoTitle}
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {selected.name}
+                        </Typography>
+                        <Typography component="p">
+                          {selected.description}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Button
+                          size="small"
+                          color="primary"
+                          component={Link}
+                          // to="/golfcoursesmap"
+                        >
+                          View
+                        </Button>
+                      </CardActions>
+                    </Card>
+                    </InfoWindow>
+                  ) : null} */}
 
                 {busStops && busStopsCheckboxSelected
                   ? busStops.map((busStop) => (

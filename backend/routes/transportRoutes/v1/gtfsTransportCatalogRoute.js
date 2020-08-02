@@ -8,22 +8,40 @@ const gtfs_transport_controller = require("../../../controllers/transportControl
 // GET catalogue home page
 router.get("/", gtfs_transport_controller.gtfsTransportIndex)
 
-// GET all bus stops from the database
+// GET all bus stops
 router.get("/stops", gtfs_transport_controller.gftsGetAllStops)
+
+// GET a bus stop by id
+router.get("/stops/:id", gtfs_transport_controller.gtfsGetOneStop)
 
 // GET all shapes from the database
 router.get("/shapes", gtfs_transport_controller.gftsGetAllReducedShapes)
 
-// // POST a temperature reading to the database
-// router.post("/temperatureReadings/:id", gtfs_transport_controller.create)
+// GET a shape by id
+router.get("/shapes/:id", gtfs_transport_controller.gtfsGetOneReducedShape)
 
-// // UPDATE a temperature reading by id
-// router.put("/temperatureReadings/:id", gtfs_transport_controller.updateOne)
+// POST a bus stop to the database
+// router.post("/stops/:id", gtfs_transport_controller.create)
 
-// // DELETE all temperature readings
-// router.delete("/temperatureReadings", gtfs_transport_controller.deleteAll)
+// POST a shape to the database
+// router.post("/shapes/:id", gtfs_transport_controller.create)
 
-// // DELETE a temperature reading by id
-// router.delete("/temperatureReadings/:id", gtfs_transport_controller.deleteOne)
+// UPDATE a bus stop reading by id
+// router.put("/stops/:id", gtfs_transport_controller.updateOne)
+
+// UPDATE a shape by id
+// router.put("/shapes/:id", gtfs_transport_controller.updateOne)
+
+// DELETE all bus stops
+// router.delete("/stops", gtfs_transport_controller.deleteAll)
+
+// DELETE all shapes
+// router.delete("/shapes", gtfs_transport_controller.deleteAll)
+
+// DELETE a bus stop by id
+// router.delete("/stops/:id", gtfs_transport_controller.deleteOne)
+
+// DELETE a shape by id
+// router.delete("/shapes/:id", gtfs_transport_controller.deleteOne)
 
 module.exports = router
