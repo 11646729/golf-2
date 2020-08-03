@@ -38,7 +38,7 @@ export default function CoursesMapContainer() {
   // -----------------------------------------------------
   const [golfCourses, setData] = useState([])
   const [dataLoading, setDataLoading] = useState(true)
-  const [error, setError] = useState([])
+  const [errorLoading, setLoadingError] = useState([])
 
   // Fetch data - after componentHasUpdated
   let url = "http://localhost:5000/api/golf/nearbyGolfCourses"
@@ -49,11 +49,11 @@ export default function CoursesMapContainer() {
     const fetchData = async () => {
       try {
         setDataLoading(true)
-        setError({})
+        setLoadingError({})
         const result = await axios(url)
         if (!ignore) setData(result.data)
       } catch (err) {
-        setError(err)
+        setLoadingError(err)
       }
       setDataLoading(false)
     }
@@ -129,6 +129,17 @@ export default function CoursesMapContainer() {
                     m={1}
                   >
                     Loading...
+                  </Box>
+                ) : null}
+                {errorLoading ? (
+                  <Box
+                    component="div"
+                    display="inline"
+                    variant="h4"
+                    p={1}
+                    m={1}
+                  >
+                    Error Loading...
                   </Box>
                 ) : null}
               </div>

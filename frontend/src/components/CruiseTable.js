@@ -79,7 +79,7 @@ export default function CruiseTableCard() {
 
   const [portArrivals, setData] = useState([])
   const [dataLoading, setDataLoading] = useState(true)
-  const [error, setError] = useState([])
+  const [errorLoading, setLoadingError] = useState([])
 
   // Fetch data - after componentHasUpdated
   const url = "http://localhost:5000/api/cruise/portArrivals"
@@ -90,11 +90,11 @@ export default function CruiseTableCard() {
     const fetchData = async () => {
       try {
         setDataLoading(true)
-        setError({})
+        setLoadingError({})
         const result = await axios(url)
         if (!ignore) setData(result.data)
       } catch (err) {
-        setError(err)
+        setLoadingError(err)
       }
       setDataLoading(false)
     }
@@ -120,6 +120,11 @@ export default function CruiseTableCard() {
       {dataLoading ? (
         <Box component="div" display="inline" variant="h4" p={1} m={1}>
           Loading...
+        </Box>
+      ) : null}
+      {errorLoading ? (
+        <Box component="div" display="inline" variant="h4" p={1} m={1}>
+          Error Loading...
         </Box>
       ) : null}
       <TableContainer className={classes.container}>

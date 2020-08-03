@@ -43,7 +43,7 @@ export default function CrimesMapContainer() {
   const [latestDateInfoAvailable, setLatestDateInfoAvailable] = useState("")
   const [crimes, setData] = useState([])
   const [dataLoading, setDataLoading] = useState(true)
-  const [error, setError] = useState([])
+  const [errorLoading, setLoadingError] = useState([])
 
   // Event Handlers
   const handleHomeCheckboxChange = (event) => {
@@ -129,11 +129,11 @@ export default function CrimesMapContainer() {
     const fetchData = async () => {
       try {
         setDataLoading(true)
-        setError({})
+        setLoadingError({})
         const result = await axios(url)
         if (!ignore) setData(result.data)
       } catch (err) {
-        setError(err)
+        setLoadingError(err)
       }
       setDataLoading(false)
     }
@@ -198,6 +198,11 @@ export default function CrimesMapContainer() {
             {dataLoading ? (
               <Box component="div" display="inline" variant="h4" p={1} m={1}>
                 Loading...
+              </Box>
+            ) : null}
+            {errorLoading ? (
+              <Box component="div" display="inline" variant="h4" p={1} m={1}>
+                Error Loading...
               </Box>
             ) : null}
             <FormControlLabel

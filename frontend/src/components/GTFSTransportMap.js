@@ -5,7 +5,7 @@ import {
   useLoadScript,
   Marker,
   Polyline,
-  // InfoWindow,
+  InfoWindow,
 } from "@react-google-maps/api"
 import {
   Typography,
@@ -35,7 +35,9 @@ export default function GTFSTransportMapContainer() {
   const [busStops, setBusStopsData] = useState([])
   const [reducedBusShapes, setReducedBusShapesData] = useState([])
   const [dataLoading, setDataLoading] = useState(true)
-  const [error, setError] = useState([])
+  const [errorLoading, setLoadingError] = useState([])
+
+  const [selected, setSelected] = useState(null)
 
   // Event Handlers
   const onLoadHandler = (map) => {
@@ -80,11 +82,11 @@ export default function GTFSTransportMapContainer() {
     const fetchBusStopsData = async () => {
       try {
         setDataLoading(true)
-        setError({})
+        setLoadingError({})
         const busStopsResult = await axios(stopsUrl)
         if (!ignore) setBusStopsData(busStopsResult.data)
       } catch (err) {
-        setError(err)
+        setLoadingError(err)
       }
       setDataLoading(false)
     }
@@ -118,11 +120,11 @@ export default function GTFSTransportMapContainer() {
     const fetchReducedBusShapesData = async () => {
       try {
         setDataLoading(true)
-        setError({})
+        setLoadingError({})
         const reducedBusShapesResult = await axios(shapesUrl)
         if (!ignore) setReducedBusShapesData(reducedBusShapesResult.data)
       } catch (err) {
-        setError(err)
+        setLoadingError(err)
       }
       setDataLoading(false)
     }
@@ -152,53 +154,72 @@ export default function GTFSTransportMapContainer() {
         <Grid container spacing={1}>
           <Container maxWidth="xl">
             <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
-              <Typography
-                style={{ display: "inline-block" }}
-                component="h4"
-                variant="h5"
-                align="left"
-                color="textPrimary"
-                gutterBottom
-              >
-                GTFS Transport Test
-              </Typography>
-              {dataLoading ? (
-                <Box component="div" display="inline" variant="h4" p={1} m={1}>
-                  Loading...
-                </Box>
-              ) : null}
-              <FormControlLabel
-                style={{
-                  marginTop: "0px",
-                  marginLeft: "100px",
-                }}
-                control={
-                  <Checkbox
-                    color="primary"
-                    checked={busStopsCheckboxSelected}
-                    onChange={handleBusStopsCheckboxChange}
-                    name="busStopsCheckbox"
-                  />
-                }
-                label="Display Bus Stops"
-                labelPlacement="end"
-              />
-              <FormControlLabel
-                style={{
-                  marginTop: "0px",
-                  marginLeft: "100px",
-                }}
-                control={
-                  <Checkbox
-                    color="primary"
-                    checked={routesCheckboxSelected}
-                    onChange={handleRoutesCheckboxChange}
-                    name="routeCheckbox"
-                  />
-                }
-                label="Display Bus Routes"
-                labelPlacement="end"
-              />
+              <div style={{ width: "100%" }}>
+                <Typography
+                  style={{ display: "inline-block" }}
+                  component="h4"
+                  variant="h5"
+                  align="left"
+                  color="textPrimary"
+                  gutterBottom
+                >
+                  GTFS Transport Test
+                </Typography>
+                {dataLoading ? (
+                  <Box
+                    component="div"
+                    display="inline"
+                    variant="h4"
+                    p={1}
+                    m={1}
+                  >
+                    Loading...
+                  </Box>
+                ) : null}
+                {errorLoading ? (
+                  <Box
+                    component="div"
+                    display="inline"
+                    variant="h4"
+                    p={1}
+                    m={1}
+                  >
+                    Error Loading...
+                  </Box>
+                ) : null}
+                <FormControlLabel
+                  style={{
+                    marginTop: "0px",
+                    marginLeft: "100px",
+                  }}
+                  control={
+                    <Checkbox
+                      color="primary"
+                      checked={busStopsCheckboxSelected}
+                      onChange={handleBusStopsCheckboxChange}
+                      name="busStopsCheckbox"
+                    />
+                  }
+                  label="Display Bus Stops"
+                  labelPlacement="end"
+                />
+                <FormControlLabel
+                  style={{
+                    marginTop: "0px",
+                    marginLeft: "100px",
+                  }}
+                  control={
+                    <Checkbox
+                      color="primary"
+                      checked={routesCheckboxSelected}
+                      onChange={handleRoutesCheckboxChange}
+                      name="routeCheckbox"
+                    />
+                  }
+                  label="Display Bus Routes"
+                  labelPlacement="end"
+                />
+              </div>
             </Grid>
             <Grid item xs={12} sm={12}>
               <GoogleMap
@@ -217,7 +238,7 @@ export default function GTFSTransportMapContainer() {
                 onLoad={onLoadHandler}
                 onUnmount={onUnmountHandler}
               >
-                {reducedBusShapes && routesCheckboxSelected
+                {/* {reducedBusShapes && routesCheckboxSelected
                   ? reducedBusShapes.map((reducedBusShape) => (
                       <Polyline
                         key={reducedBusShape.coordinates}
@@ -231,8 +252,8 @@ export default function GTFSTransportMapContainer() {
                         options={polylineOptions.polyline1}
                       />
                     ))
-                  : null}
-                {reducedBusShapes && !routesCheckboxSelected
+                  : null} */}
+                {/* {reducedBusShapes && !routesCheckboxSelected
                   ? reducedBusShapes.map((reducedBusShape) => (
                       <Polyline
                         key={reducedBusShape.coordinates}
@@ -243,48 +264,7 @@ export default function GTFSTransportMapContainer() {
                         options={polylineOptions.polyline2}
                       />
                     ))
-                  : null}
-
-                {/* {routeSelected ? (
-                    <InfoWindow
-                      position={routeSelected.coordinates}
-                      onCloseClick={() => {
-                        setClickSelected(null)
-                      }}
-                    >
-                      {/* <Card>
-                      <CardMedia
-                        style={{
-                          height: 0,
-                          // paddingTop: "56.25%", // 16:9,
-                          paddingTop: "40%",
-                          marginTop: "30",
-                        }}
-                        // image={selected.photoUrl}
-                        // title={selected.photoTitle}
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {selected.name}
-                        </Typography>
-                        <Typography component="p">
-                          {selected.description}
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button
-                          size="small"
-                          color="primary"
-                          component={Link}
-                          // to="/golfcoursesmap"
-                        >
-                          View
-                        </Button>
-                      </CardActions>
-                    </Card>
-                    </InfoWindow>
-                  ) : null} */}
-
+                  : null} */}
                 {busStops && busStopsCheckboxSelected
                   ? busStops.map((busStop) => (
                       <Marker
@@ -297,12 +277,25 @@ export default function GTFSTransportMapContainer() {
                           url:
                             "http://maps.google.com/mapfiles/ms/icons/blue.png",
                         }}
-                        // onClick={() => {
-                        //   setSelected(busStop)
-                        // }}
+                        onClick={() => {
+                          setSelected(busStop)
+                          console.log(busStop)
+                        }}
                       />
                     ))
                   : null}
+
+                {/* {selected ? (
+                  <InfoWindow
+                    position={{
+                      lat: selected.stop_lat,
+                      lng: selected.stop_lon,
+                    }}
+                    onCloseClick={() => {
+                      setSelected(null)
+                    }}
+                  />
+                ) : null} */}
               </GoogleMap>
             </Grid>
           </Container>
