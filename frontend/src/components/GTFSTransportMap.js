@@ -176,7 +176,7 @@ export default function GTFSTransportMapContainer() {
                     Loading...
                   </Box>
                 ) : null}
-                {errorLoading ? (
+                {!errorLoading ? (
                   <Box
                     component="div"
                     display="inline"

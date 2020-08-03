@@ -94,10 +94,11 @@ export default function CoursesMapContainer() {
   var iconPin = {
     path:
       "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
-    strokeColor: "green",
     fillColor: "#78a32e",
-    fillOpacity: 1,
+    fillOpacity: 0.7,
     scale: 0.03, //to reduce the size of icons
+    strokeColor: "#2f4024",
+    strokeWeight: 1,
   }
 
   const renderMap = () => {
@@ -131,7 +132,7 @@ export default function CoursesMapContainer() {
                     Loading...
                   </Box>
                 ) : null}
-                {errorLoading ? (
+                {!errorLoading ? (
                   <Box
                     component="div"
                     display="inline"

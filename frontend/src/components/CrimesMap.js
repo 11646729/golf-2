@@ -200,7 +200,7 @@ export default function CrimesMapContainer() {
                 Loading...
               </Box>
             ) : null}
-            {errorLoading ? (
+            {!errorLoading ? (
               <Box component="div" display="inline" variant="h4" p={1} m={1}>
                 Error Loading...
               </Box>
