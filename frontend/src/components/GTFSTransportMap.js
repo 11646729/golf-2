@@ -145,6 +145,11 @@ export default function GTFSTransportMapContainer() {
       strokeOpacity: "1.0",
       strokeWeight: 2,
     },
+    divStyle: {
+      background: `white`,
+      border: `1px solid #ccc`,
+      padding: 15,
+    },
   }
 
   const renderMap = () => {
@@ -284,8 +289,7 @@ export default function GTFSTransportMapContainer() {
                       />
                     ))
                   : null}
-
-                {/* {selected ? (
+                {selected ? (
                   <InfoWindow
                     position={{
                       lat: selected.stop_lat,
@@ -294,8 +298,14 @@ export default function GTFSTransportMapContainer() {
                     onCloseClick={() => {
                       setSelected(null)
                     }}
-                  />
-                ) : null} */}
+                  >
+                    <div style={polylineOptions.divStyle}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {selected.stop_name}
+                      </Typography>
+                    </div>
+                  </InfoWindow>
+                ) : null}
               </GoogleMap>
             </Grid>
           </Container>
