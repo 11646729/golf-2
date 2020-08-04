@@ -25,22 +25,25 @@ export default function GTFSTransportMapContainer() {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
-  // const [selected, setSelected] = useState(null)
   const { isLoaded, mapLoadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
+
+  const [busStopsCollection, setBusStopsCollection] = useState([])
+  const [busShapesCollection, setBusShapesCollection] = useState([])
+
   const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
-  const [routesCheckboxSelected, setRoutesCheckbox] = useState(true)
-  const [shapeSelected, setShapeSelected] = useState(null)
-  const [busStops, setBusStopsData] = useState([])
-  const [reducedBusShapes, setReducedBusShapesData] = useState([])
+  const [busShapesCheckboxSelected, setBusShapesCheckbox] = useState(true)
+
+  const [busStopSelected, setBusStopSelected] = useState(null)
+  const [busShapeSelected, setBusShapeSelected] = useState(null)
+
   const [dataLoading, setDataLoading] = useState(true)
   const [errorLoading, setLoadingError] = useState([])
-  const [busStopSelected, setBusStopSelected] = useState(null)
 
   // Event Handlers
   const onLoadHandler = (map) => {
-    // Store a reference to the google map instance in state
+    // Store a reference to the google map instance
     setMapRef(map)
   }
 
@@ -52,12 +55,12 @@ export default function GTFSTransportMapContainer() {
     setBusStopsCheckbox(event.target.checked)
   }
 
-  const handleRoutesCheckboxChange = (event) => {
-    setRoutesCheckbox(event.target.checked)
+  const handleBusShapesCheckboxChange = (event) => {
+    setBusShapesCheckbox(event.target.checked)
   }
 
-  const handleShapeClick = (event) => {
-    console.log(shapeSelected)
+  const handleBusShapeClick = (event) => {
+    console.log(busShapeSelected)
   }
 
   // Now fetch bus stops data
@@ -71,7 +74,7 @@ export default function GTFSTransportMapContainer() {
         setDataLoading(true)
         setLoadingError({})
         const busStopsResult = await axios(stopsUrl)
-        if (!ignore) setBusStopsData(busStopsResult.data)
+        if (!ignore) setBusStopsCollection(busStopsResult.data)
       } catch (err) {
         setLoadingError(err)
       }
@@ -84,9 +87,9 @@ export default function GTFSTransportMapContainer() {
   }, [])
 
   // Now compute bounds of map to display
-  if (mapRef && busStops != null) {
+  if (mapRef && busStopsCollection != null) {
     const bounds = new window.google.maps.LatLngBounds()
-    busStops.map((busStop) => {
+    busStopsCollection.map((busStop) => {
       const myLatLng = new window.google.maps.LatLng({
         lat: busStop.stop_lat,
         lng: busStop.stop_lon,
@@ -104,18 +107,18 @@ export default function GTFSTransportMapContainer() {
   // Fetch data - after componentHasUpdated
   useEffect(() => {
     let ignore = false
-    const fetchReducedBusShapesData = async () => {
+    const fetchBusShapesData = async () => {
       try {
         setDataLoading(true)
         setLoadingError({})
-        const reducedBusShapesResult = await axios(shapesUrl)
-        if (!ignore) setReducedBusShapesData(reducedBusShapesResult.data)
+        const busShapesResult = await axios(shapesUrl)
+        if (!ignore) setBusShapesCollection(busShapesResult.data)
       } catch (err) {
         setLoadingError(err)
       }
       setDataLoading(false)
     }
-    fetchReducedBusShapesData()
+    fetchBusShapesData()
     return () => {
       ignore = true
     }
@@ -203,12 +206,12 @@ export default function GTFSTransportMapContainer() {
                   control={
                     <Checkbox
                       color="primary"
-                      checked={routesCheckboxSelected}
-                      onChange={handleRoutesCheckboxChange}
-                      name="routeCheckbox"
+                      checked={busShapesCheckboxSelected}
+                      onChange={handleBusShapesCheckboxChange}
+                      name="busShapesCheckbox"
                     />
                   }
-                  label="Display Bus Routes"
+                  label="Display Bus Shapes"
                   labelPlacement="end"
                 />
               </div>
@@ -230,23 +233,23 @@ export default function GTFSTransportMapContainer() {
                 onLoad={onLoadHandler}
                 onUnmount={onUnmountHandler}
               >
-                {reducedBusShapes
-                  ? reducedBusShapes.map((reducedBusShape) => (
+                {busShapesCollection
+                  ? busShapesCollection.map((busShape) => (
                       <Polyline
-                        key={reducedBusShape.shapeId}
-                        path={reducedBusShape.coordinates}
+                        key={busShape.shapeId}
+                        path={busShape.coordinates}
                         onLoad={() => {
-                          setShapeSelected(reducedBusShape)
+                          setBusShapeSelected(busShape)
                         }}
                         onClick={() => {
-                          handleShapeClick()
+                          handleBusShapeClick()
                         }}
                         options={polylineOptions.polyline1}
                       />
                     ))
                   : null}
-                {busStops && busStopsCheckboxSelected
-                  ? busStops.map((busStop) => (
+                {busStopsCollection && busStopsCheckboxSelected
+                  ? busStopsCollection.map((busStop) => (
                       <Marker
                         key={busStop.stop_id}
                         position={{

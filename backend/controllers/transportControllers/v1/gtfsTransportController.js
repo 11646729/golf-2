@@ -35,8 +35,8 @@ export const gtfsGetOneStop = async (req, res) => {
 
 // Path localhost:5000/api/gtfsTransport/shapes
 export const gftsGetAllReducedShapes = async (req, res) => {
-  // GtfsReducedShapesSchema.find({ shapeId: "25772" })
-  GtfsReducedShapesSchema.find({})
+  GtfsReducedShapesSchema.find({ shapeId: "25774" })
+    // GtfsReducedShapesSchema.find({})
     .then((gtfsReducedShapesSchema) => res.json(gtfsReducedShapesSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
