@@ -1,6 +1,7 @@
 import { GtfsShapesSchema } from "./models/transportModels/v1/gtfsShapesSchema"
 import { GtfsReducedShapesSchema } from "./models/transportModels/v1/gtfsReducedShapesSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
+import { TripIdSchema } from "../../commonModels/v1/tripIdSchema"
 
 export const createReducedShapeData = async () => {
   console.log("Creating reduced Shape data")
@@ -60,13 +61,16 @@ export const createReducedShapeData = async () => {
           l++
         } while (l < unsortedShape_id.length)
 
+        // Temporary array
+        let tripIdArray = []
+
         // And save it in a gtfsReducedShapesSchema collection
         const gtfsReducedShapesSchema = new GtfsReducedShapesSchema({
           databaseVersion: process.env.DATABASE_VERSION,
           agencyKey: data[j].agency_key,
           shapeId: uniqueShape_id[j],
           shapeCoordinates: pathArray,
-          tripId: "To be completed",
+          tripId: tripIdArray,
           busStopsId: "To be completed",
           busStopsCoordinates: "To be completed",
         })

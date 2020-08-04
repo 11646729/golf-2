@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose"
 import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
+import { TripIdSchema } from "../../commonModels/v1/tripIdSchema"
 
 const gtfsReducedShapesSchema = new Schema(
   {
@@ -7,7 +8,7 @@ const gtfsReducedShapesSchema = new Schema(
     agencyKey: { type: String },
     shapeId: { type: String },
     shapeCoordinates: [{ type: CoordsSchema.schema }],
-    tripId: { type: String },
+    tripId: [{ type: TripIdSchema.schema }],
     busStopsId: { type: String },
     busStopsCoordinates: { type: String },
   },
