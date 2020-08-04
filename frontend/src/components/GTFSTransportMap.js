@@ -31,13 +31,12 @@ export default function GTFSTransportMapContainer() {
   })
   const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
   const [routesCheckboxSelected, setRoutesCheckbox] = useState(true)
-  const [routeSelected, setClickSelected] = useState(null)
+  const [shapeSelected, setShapeSelected] = useState(null)
   const [busStops, setBusStopsData] = useState([])
   const [reducedBusShapes, setReducedBusShapesData] = useState([])
   const [dataLoading, setDataLoading] = useState(true)
   const [errorLoading, setLoadingError] = useState([])
-
-  const [selected, setSelected] = useState(null)
+  const [busStopSelected, setBusStopSelected] = useState(null)
 
   // Event Handlers
   const onLoadHandler = (map) => {
@@ -51,26 +50,14 @@ export default function GTFSTransportMapContainer() {
 
   const handleBusStopsCheckboxChange = (event) => {
     setBusStopsCheckbox(event.target.checked)
-
-    // if (event.target.checked === true) {
-    //   setMapCenter({
-    //     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-    //     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-    //   })
-    // } else {
-    //   setMapCenter({
-    //     lat: parseFloat(process.env.REACT_APP_ANDREA_HOME_LATITUDE),
-    //     lng: parseFloat(process.env.REACT_APP_ANDREA_HOME_LONGITUDE),
-    //   })
-    // }
   }
 
   const handleRoutesCheckboxChange = (event) => {
     setRoutesCheckbox(event.target.checked)
   }
 
-  const handlePolylineClick = (event) => {
-    console.log(routeSelected)
+  const handleShapeClick = (event) => {
+    console.log(shapeSelected)
   }
 
   // Now fetch bus stops data
@@ -243,33 +230,21 @@ export default function GTFSTransportMapContainer() {
                 onLoad={onLoadHandler}
                 onUnmount={onUnmountHandler}
               >
-                {/* {reducedBusShapes && routesCheckboxSelected
+                {reducedBusShapes
                   ? reducedBusShapes.map((reducedBusShape) => (
                       <Polyline
-                        key={reducedBusShape.coordinates}
+                        key={reducedBusShape.shapeId}
                         path={reducedBusShape.coordinates}
                         onLoad={() => {
-                          setClickSelected(reducedBusShape)
+                          setShapeSelected(reducedBusShape)
                         }}
                         onClick={() => {
-                          handlePolylineClick()
+                          handleShapeClick()
                         }}
                         options={polylineOptions.polyline1}
                       />
                     ))
-                  : null} */}
-                {/* {reducedBusShapes && !routesCheckboxSelected
-                  ? reducedBusShapes.map((reducedBusShape) => (
-                      <Polyline
-                        key={reducedBusShape.coordinates}
-                        path={reducedBusShape.coordinates}
-                        onClick={() => {
-                          setClickSelected(reducedBusShape)
-                        }}
-                        options={polylineOptions.polyline2}
-                      />
-                    ))
-                  : null} */}
+                  : null}
                 {busStops && busStopsCheckboxSelected
                   ? busStops.map((busStop) => (
                       <Marker
@@ -283,25 +258,25 @@ export default function GTFSTransportMapContainer() {
                             "http://maps.google.com/mapfiles/ms/icons/blue.png",
                         }}
                         onClick={() => {
-                          setSelected(busStop)
+                          setBusStopSelected(busStop)
                           console.log(busStop)
                         }}
                       />
                     ))
                   : null}
-                {selected ? (
+                {busStopSelected ? (
                   <InfoWindow
                     position={{
-                      lat: selected.stop_lat,
-                      lng: selected.stop_lon,
+                      lat: busStopSelected.stop_lat,
+                      lng: busStopSelected.stop_lon,
                     }}
                     onCloseClick={() => {
-                      setSelected(null)
+                      setBusStopSelected(null)
                     }}
                   >
                     <div style={polylineOptions.divStyle}>
                       <Typography gutterBottom variant="h5" component="h2">
-                        {selected.stop_name}
+                        {busStopSelected.stop_name}
                       </Typography>
                     </div>
                   </InfoWindow>
