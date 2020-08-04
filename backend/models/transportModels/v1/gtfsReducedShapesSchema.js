@@ -6,7 +6,10 @@ const gtfsReducedShapesSchema = new Schema(
     databaseVersion: { type: Number },
     agencyKey: { type: String },
     shapeId: { type: String },
-    coordinates: [{ type: CoordsSchema.schema }],
+    shapeCoordinates: [{ type: CoordsSchema.schema }],
+    tripId: { type: String },
+    busStopsId: { type: String },
+    busStopsCoordinates: { type: String },
   },
   {
     timestamps: true,

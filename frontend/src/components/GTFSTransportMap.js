@@ -237,7 +237,7 @@ export default function GTFSTransportMapContainer() {
                   ? busShapesCollection.map((busShape) => (
                       <Polyline
                         key={busShape.shapeId}
-                        path={busShape.coordinates}
+                        path={busShape.shapeCoordinates}
                         onLoad={() => {
                           setBusShapeSelected(busShape)
                         }}

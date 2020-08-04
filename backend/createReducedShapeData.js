@@ -65,7 +65,10 @@ export const createReducedShapeData = async () => {
           databaseVersion: process.env.DATABASE_VERSION,
           agencyKey: data[j].agency_key,
           shapeId: uniqueShape_id[j],
-          coordinates: pathArray,
+          shapeCoordinates: pathArray,
+          tripId: "To be completed",
+          busStopsId: "To be completed",
+          busStopsCoordinates: "To be completed",
         })
 
         // Save the reducedShapes in the database
