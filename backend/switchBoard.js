@@ -24,6 +24,7 @@ import {
 import { importGtfsData } from "./importGtfsData"
 import { convertGtfsDataToGeojson } from "./convertGtfsDataToGeojson"
 import { createReducedShapeData } from "./createReducedShapeData"
+import { importTripIdReducedShapeData } from "./importTripIdIntoReducedShapeData"
 
 let count = 0
 
@@ -47,6 +48,7 @@ export const runSwitchboard = (io) => {
     // runCron()
     // importGtfsData()
     // createReducedShapeData()
+    importTripIdReducedShapeData()
     // console.log("Back in the switchBoard function")
     // convertGtfsDataToGeojson()
     // saveTranslinkStopsDataToDatabase()
