@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose"
 
-const gtfsTripsSchema = new Schema(
+const gtfsTripSchema = new Schema(
   {
     created_at: {
       type: Date,
@@ -53,11 +53,11 @@ const gtfsTripsSchema = new Schema(
   }
 )
 
-gtfsTripsSchema.method("toJSON", function () {
+gtfsTripSchema.method("toJSON", function () {
   const { __v, _id, ...object } = this.toObject()
   object.id = _id
   return object
 })
 
 // Export model
-export const GtfsTripsSchema = mongoose.model("trips", gtfsTripsSchema)
+export const GtfsTripSchema = mongoose.model("gtfsTrips", gtfsTripSchema)

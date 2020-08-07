@@ -1,4 +1,4 @@
-import { GtfsStopsSchema } from "../models/transportModels/v1/gtfsStopsSchema"
+import { GtfsMyStopsSchema } from "../models/transportModels/v1/gtfsMyStopsSchema"
 import { GtfsShapesSchema } from "../models/transportModels/v1/gtfsShapesSchema"
 import { CoordsSchema } from "../models/commonModels/v1/coordsSchema"
 
@@ -16,7 +16,7 @@ export const saveTranslinkStopsDataToDatabase = async () => {
       })
 
       // Now create a model instance
-      const busStop = new GtfsStopsSchema({
+      const busStop = new GtfsMyStopsSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         agency_key: "Translink Buses",
         stop_id: geojson.features[i].properties.LocationID,

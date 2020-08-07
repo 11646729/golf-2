@@ -48,7 +48,7 @@ export const runSwitchboard = (io) => {
     // runCron()
     // importGtfsData()
     // createReducedShapeData()
-    importTripIdReducedShapeData()
+    // importTripIdReducedShapeData()
     // console.log("Back in the switchBoard function")
     // convertGtfsDataToGeojson()
     // saveTranslinkStopsDataToDatabase()

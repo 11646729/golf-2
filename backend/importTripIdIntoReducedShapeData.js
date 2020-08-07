@@ -1,5 +1,5 @@
 import { GtfsReducedShapesSchema } from "./models/transportModels/v1/gtfsReducedShapesSchema"
-import { GtfsTripsSchema } from "./models/transportModels/v1/gtfsTripsSchema"
+import { GtfsTripSchema } from "./models/transportModels/v1/gtfsTripSchema"
 import { TripIdSchema } from "./models/commonModels/v1/tripIdSchema"
 
 export const importTripIdReducedShapeData = async () => {
@@ -12,7 +12,7 @@ export const importTripIdReducedShapeData = async () => {
   let i = 0
   do {
     // Step 3: Fetch all trip_id data from trips collection
-    const trip_idCollection = await GtfsTripsSchema.find({
+    const trip_idCollection = await GtfsTripSchema.find({
       shape_id: reducedShapeCollection[i].shapeId,
     })
 

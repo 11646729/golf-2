@@ -1,4 +1,4 @@
-import { GtfsStopsSchema } from "../../../models/transportModels/v1/gtfsStopsSchema"
+import { GtfsMyStopsSchema } from "../../../models/transportModels/v1/gtfsMyStopsSchema"
 import { GtfsReducedShapesSchema } from "../../../models/transportModels/v1/gtfsReducedShapesSchema"
 
 // Path localhost:5000/api/gtfsTransport/
@@ -8,8 +8,8 @@ export const gtfsTransportIndex = async (req, res) => {
 
 // Path localhost:5000/api/gtfsTransport/stops
 export const gftsGetAllStops = async (req, res) => {
-  GtfsStopsSchema.find({})
-    .then((gtfsStopsSchema) => res.json(gtfsStopsSchema))
+  GtfsMyStopsSchema.find({})
+    .then((gtfsMyStopsSchema) => res.json(gtfsMyStopsSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
@@ -17,7 +17,7 @@ export const gftsGetAllStops = async (req, res) => {
 export const gtfsGetOneStop = async (req, res) => {
   const id = req.params.id
 
-  GtfsStopsSchema.findById(id)
+  GtfsMyStopsSchema.findById(id)
     .then((data) => {
       if (!data)
         res
@@ -79,7 +79,7 @@ export const gtfsGetOneReducedShape = async (req, res) => {
 
 // Direct call to delete all bus stops in the database
 export const directDeleteAllStops = async () => {
-  GtfsStopsSchema.deleteMany({}, (err) => {
+  GtfsMyStopsSchema.deleteMany({}, (err) => {
     if (err) {
       console.log("Some error occurred while removing all bus stops")
     } else {

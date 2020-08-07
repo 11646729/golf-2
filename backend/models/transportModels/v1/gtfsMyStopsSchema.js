@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose"
 
-const gtfsStopsSchema = new Schema(
+const gtfsMyStopsSchema = new Schema(
   {
     databaseVersion: { type: Number },
     agency_key: { type: String },
@@ -22,11 +22,11 @@ const gtfsStopsSchema = new Schema(
   }
 )
 
-gtfsStopsSchema.method("toJSON", function () {
+gtfsMyStopsSchema.method("toJSON", function () {
   const { __v, _id, ...object } = this.toObject()
   object.id = _id
   return object
 })
 
 // Export model
-export const GtfsStopsSchema = mongoose.model("stops", gtfsStopsSchema)
+export const GtfsMyStopsSchema = mongoose.model("stops", gtfsMyStopsSchema)
