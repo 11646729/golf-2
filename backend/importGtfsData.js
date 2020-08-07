@@ -8,7 +8,7 @@ export const importGtfsData = async () => {
       .import(config)
       .then(() => {
         console.log("Import Successful")
-        return mongoose.connection.close()
+        // return mongoose.connection.close()
       })
       .catch((err) => {
         console.error(err)

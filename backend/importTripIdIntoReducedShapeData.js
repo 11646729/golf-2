@@ -16,6 +16,8 @@ export const importTripIdReducedShapeData = async () => {
       shape_id: reducedShapeCollection[i].shapeId,
     })
 
+    console.log("trip_idCollection length is: " + trip_idCollection.length)
+
     // Step 4: Setup loop over trip_idCollection & push onto tripIdArray
     let tripIdArray = []
     let j = 0

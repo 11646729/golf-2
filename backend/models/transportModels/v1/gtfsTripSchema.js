@@ -60,4 +60,4 @@ gtfsTripSchema.method("toJSON", function () {
 })
 
 // Export model
-export const GtfsTripSchema = mongoose.model("gtfsTrips", gtfsTripSchema)
+export const GtfsTripSchema = mongoose.model("trips", gtfsTripSchema)

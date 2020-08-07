@@ -19,6 +19,8 @@ export const createReducedShapeData = async () => {
 
       let uniqueShape_id = [...new Set(tempShape_id)]
 
+      console.log("End of Step 1")
+
       // Step 2: Copy all documents with a specified shape_id
       // to the constTemp array
       let j = 0
@@ -90,5 +92,5 @@ export const createReducedShapeData = async () => {
       console.log("Error in createReducedShapeData: ", err)
     }
   })
-  console.log("Reduced Shape data saved to database")
+  // console.log("Reduced Shape data saved to database")
 }
