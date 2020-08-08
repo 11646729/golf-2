@@ -27,15 +27,13 @@ export default function TransportMapContainer() {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
-  // const [selected, setSelected] = useState(null)
   const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
   const [routesCheckboxSelected, setRoutesCheckbox] = useState(true)
-  const [busStops, setData] = useState([])
+  const [busStopsData, setData] = useState([])
   const [dataLoading, setDataLoading] = useState(true)
   const [errorLoading, setLoadingError] = useState([])
 
   // Event Handlers
-
   const onLoadHandler = (map) => {
     // Store a reference to the google map instance in state
     setMapRef(map)
@@ -47,18 +45,6 @@ export default function TransportMapContainer() {
 
   const handleBusStopsCheckboxChange = (event) => {
     setBusStopsCheckbox(event.target.checked)
-
-    // if (event.target.checked === true) {
-    //   setMapCenter({
-    //     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-    //     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-    //   })
-    // } else {
-    //   setMapCenter({
-    //     lat: parseFloat(process.env.REACT_APP_ANDREA_HOME_LATITUDE),
-    //     lng: parseFloat(process.env.REACT_APP_ANDREA_HOME_LONGITUDE),
-    //   })
-    // }
   }
 
   const handleRoutesCheckboxChange = (event) => {
@@ -66,7 +52,7 @@ export default function TransportMapContainer() {
   }
 
   // Fetch data - after componentHasUpdated
-  const url = "http://localhost:5000/api/transport/stops"
+  const url = "http://localhost:5000/api/transport/translinkstops"
 
   // Now fetch bus stops data
   useEffect(() => {
@@ -89,9 +75,9 @@ export default function TransportMapContainer() {
   }, [])
 
   // Now compute bounds of map to display
-  if (mapRef && busStops != null) {
+  if (mapRef && busStopsData != null) {
     const bounds = new window.google.maps.LatLngBounds()
-    busStops.map((busStop) => {
+    busStopsData.map((busStop) => {
       bounds.extend(busStop.stop_coordinates)
       return bounds
     })
@@ -225,8 +211,8 @@ export default function TransportMapContainer() {
                   />
                 ) : null}
 
-                {busStops && busStopsCheckboxSelected
-                  ? busStops.map((busStop) => (
+                {busStopsData && busStopsCheckboxSelected
+                  ? busStopsData.map((busStop) => (
                       <Marker
                         key={busStop.stop_id}
                         position={busStop.stop_coordinates}
@@ -234,9 +220,6 @@ export default function TransportMapContainer() {
                           url:
                             "http://maps.google.com/mapfiles/ms/icons/blue.png",
                         }}
-                        // onClick={() => {
-                        //   setSelected(busStop)
-                        // }}
                       />
                     ))
                   : null}

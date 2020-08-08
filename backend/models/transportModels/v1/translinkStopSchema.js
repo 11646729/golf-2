@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose"
 import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 
-const stopsSchema = new Schema(
+const translinkStopSchema = new Schema(
   {
     databaseVersion: { type: Number },
     agency_key: { type: String },
@@ -22,11 +22,14 @@ const stopsSchema = new Schema(
   }
 )
 
-stopsSchema.method("toJSON", function () {
+translinkStopSchema.method("toJSON", function () {
   const { __v, _id, ...object } = this.toObject()
   object.id = _id
   return object
 })
 
 // Export model
-export const StopsSchema = mongoose.model("translink_stops", stopsSchema)
+export const TranslinkStopSchema = mongoose.model(
+  "translinkstops",
+  translinkStopSchema
+)

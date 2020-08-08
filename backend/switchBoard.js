@@ -4,16 +4,15 @@ import cron from "node-cron"
 import { runCron } from "./cronRoutines"
 import { directDeleteAll as deleteAllPortArrivals } from "./controllers/cruiseControllers/v1/portArrivalsController"
 import { directDeleteAll as deleteAllVesselDetails } from "./controllers/cruiseControllers/v1/vesselDetailsController"
-import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/transportController"
+import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/translinkTransportController"
 import { directDeleteAll as deleteAllTemperatures } from "./controllers/weatherControllers/v1/weatherController"
-import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/transportController"
+import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/translinkTransportController"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
 import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
 import {
-  saveTranslinkStopsDataToDatabase,
   saveTranslinkRouteDataToDatabase,
   saveTranslinkRouteDataToDatabase1,
   saveTranslinkRouteDataToDatabase2,
@@ -21,6 +20,7 @@ import {
   saveTranslinkRouteDataToDatabase4,
   saveTranslinkRouteDataToDatabase5,
 } from "./middleTier/transportDataML"
+import { saveTranslinkStopsDataToDatabase } from "./saveTranslinkStopsDataToDatabase"
 import { importGtfsData } from "./importGtfsData"
 import { convertGtfsDataToGeojson } from "./convertGtfsDataToGeojson"
 import { createReducedShapeData } from "./createReducedShapeData"
