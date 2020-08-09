@@ -1,28 +1,22 @@
-import { TranslinkStopSchema } from "../models/transportModels/v1/translinkStopSchema"
-import { CoordsSchema } from "../models/commonModels/v1/coordsSchema"
+import { TranslinkStopSchema } from "./models/transportModels/v1/translinkStopSchema"
 
 // Function to save Translink busStop data to mongodb
 // Longitude first in Javascript
-export const saveTranslinkStopsDataToDatabase = async () => {
+export const saveTranslinkStopDataToDatabase = async () => {
   try {
-    const geojson = require("../rawData/translink_bus_stop_list_january_2018.json")
+    const geojson = require("./rawData/translink_bus_stop_list_january_2018.json")
 
     let i = 0
     do {
-      const busStopCoords = new CoordsSchema({
-        lat: geojson.features[i].properties.Latitude,
-        lng: geojson.features[i].properties.Longitude,
-      })
-
       // Now create a model instance
       const busStop = new TranslinkStopSchema({
-        databaseVersion: process.env.DATABASE_VERSION,
         agency_key: "Translink Buses",
         stop_id: geojson.features[i].properties.LocationID,
         stop_code: "No data",
         stop_name: geojson.features[i].properties.Stop_Name,
         stop_desc: "No data",
-        stop_coordinates: busStopCoords,
+        stop_lat: geojson.features[i].properties.Latitude,
+        stop_lon: geojson.features[i].properties.Longitude,
         zone_id: geojson.features[i].properties.Fare_Stage,
         stop_url: "No data",
         location_type: 0,
@@ -44,6 +38,6 @@ export const saveTranslinkStopsDataToDatabase = async () => {
     console.log("Import ended " + i)
   } catch (error) {
     // handle error
-    console.log("Error in saveTranslinkStopsDataToDatabase ", error)
+    console.log("Error in saveTranslinkStopDataToDatabase ", error)
   }
 }

@@ -1,4 +1,4 @@
-import { GtfsMyStopsSchema } from "../../../models/transportModels/v1/gtfsMyStopsSchema"
+import { GtfsStopSchema } from "../../../models/transportModels/v1/gtfsStopSchema"
 import { GtfsReducedShapesSchema } from "../../../models/transportModels/v1/gtfsReducedShapesSchema"
 
 // Path localhost:5000/api/gtfsTransport/

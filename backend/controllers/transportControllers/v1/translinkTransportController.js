@@ -1,5 +1,4 @@
 import { TranslinkStopSchema } from "../../../models/transportModels/v1/translinkStopSchema"
-import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
 
 // Path localhost:5000/api/transport/
 export const transportIndex = async (req, res) => {

@@ -20,7 +20,7 @@ import {
   saveTranslinkRouteDataToDatabase4,
   saveTranslinkRouteDataToDatabase5,
 } from "./middleTier/transportDataML"
-import { saveTranslinkStopsDataToDatabase } from "./saveTranslinkStopsDataToDatabase"
+import { saveTranslinkStopDataToDatabase } from "./saveTranslinkStopDataToDatabase"
 import { importGtfsData } from "./importGtfsData"
 import { convertGtfsDataToGeojson } from "./convertGtfsDataToGeojson"
 import { createReducedShapeData } from "./createReducedShapeData"
@@ -51,7 +51,7 @@ export const runSwitchboard = (io) => {
     // importTripIdReducedShapeData()
     // console.log("Back in the switchBoard function")
     // convertGtfsDataToGeojson()
-    // saveTranslinkStopsDataToDatabase()
+    // saveTranslinkStopDataToDatabase()
     // saveTranslinkRouteDataToDatabase()
     // saveTranslinkRouteDataToDatabase1()
     // saveTranslinkRouteDataToDatabase2()

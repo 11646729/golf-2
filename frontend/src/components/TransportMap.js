@@ -29,7 +29,7 @@ export default function TransportMapContainer() {
   })
   const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
   const [routesCheckboxSelected, setRoutesCheckbox] = useState(true)
-  const [busStopsData, setData] = useState([])
+  const [busStopsCollection, setBusStopsCollection] = useState([])
   const [dataLoading, setDataLoading] = useState(true)
   const [errorLoading, setLoadingError] = useState([])
 
@@ -62,7 +62,7 @@ export default function TransportMapContainer() {
         // setDataLoading(true)
         setLoadingError({})
         const result = await axios(url)
-        if (!ignore) setData(result.data)
+        if (!ignore) setBusStopsCollection(result.data)
       } catch (err) {
         setLoadingError(err)
       }
@@ -74,11 +74,18 @@ export default function TransportMapContainer() {
     }
   }, [])
 
+  console.log(busStopsCollection)
+
   // Now compute bounds of map to display
-  if (mapRef && busStopsData != null) {
+  if (mapRef && busStopsCollection != null) {
     const bounds = new window.google.maps.LatLngBounds()
-    busStopsData.map((busStop) => {
-      bounds.extend(busStop.stop_coordinates)
+    busStopsCollection.map((busStop) => {
+      const myLatLng = new window.google.maps.LatLng({
+        lat: busStop.stop_lat,
+        lng: busStop.stop_lon,
+      })
+
+      bounds.extend(myLatLng)
       return bounds
     })
     mapRef.fitBounds(bounds)
@@ -211,11 +218,14 @@ export default function TransportMapContainer() {
                   />
                 ) : null}
 
-                {busStopsData && busStopsCheckboxSelected
-                  ? busStopsData.map((busStop) => (
+                {busStopsCollection && busStopsCheckboxSelected
+                  ? busStopsCollection.map((busStop) => (
                       <Marker
                         key={busStop.stop_id}
-                        position={busStop.stop_coordinates}
+                        position={{
+                          lat: busStop.stop_lat,
+                          lng: busStop.stop_lon,
+                        }}
                         icon={{
                           url:
                             "http://maps.google.com/mapfiles/ms/icons/blue.png",

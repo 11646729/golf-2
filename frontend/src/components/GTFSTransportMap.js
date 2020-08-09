@@ -94,7 +94,6 @@ export default function GTFSTransportMapContainer() {
         lat: busStop.stop_lat,
         lng: busStop.stop_lon,
       })
-
       bounds.extend(myLatLng)
       return bounds
     })
