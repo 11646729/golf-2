@@ -1,10 +1,14 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is the backend project for my own project",
   "main": "index.js",
   "scripts": {
     "start": "nodemon -r esm server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/11646729/golf-2/tree/master/backend"
   },
   "keywords": [],
   "author": "Brian Smith",
@@ -18,9 +22,9 @@
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
-    "gtfs": "^1.10.3",
+    "gtfs": "^1.10.4",
     "gtfs-to-geojson": "^0.5.4",
-    "mongoose": "^5.9.25",
+    "mongoose": "^5.9.28",
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",
     "socket.io": "^2.3.0"
