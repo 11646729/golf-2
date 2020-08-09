@@ -8,8 +8,8 @@ export const gtfsTransportIndex = async (req, res) => {
 
 // Path localhost:5000/api/gtfsTransport/stops
 export const gftsGetAllStops = async (req, res) => {
-  GtfsMyStopsSchema.find({})
-    .then((gtfsMyStopsSchema) => res.json(gtfsMyStopsSchema))
+  GtfsStopSchema.find({})
+    .then((gtfsStopSchema) => res.json(gtfsStopSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
@@ -17,7 +17,7 @@ export const gftsGetAllStops = async (req, res) => {
 export const gtfsGetOneStop = async (req, res) => {
   const id = req.params.id
 
-  GtfsMyStopsSchema.findById(id)
+  GtfsStopSchema.findById(id)
     .then((data) => {
       if (!data)
         res
@@ -79,7 +79,7 @@ export const gtfsGetOneReducedShape = async (req, res) => {
 
 // Direct call to delete all bus stops in the database
 export const directDeleteAllStops = async () => {
-  GtfsMyStopsSchema.deleteMany({}, (err) => {
+  GtfsStopSchema.deleteMany({}, (err) => {
     if (err) {
       console.log("Some error occurred while removing all bus stops")
     } else {

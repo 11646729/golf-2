@@ -69,4 +69,4 @@ gtfsStopSchema.method("toJSON", function () {
 })
 
 // Export model
-export const GtfsStopSchema = mongoose.model("gtfsStops", gtfsStopSchema)
+export const GtfsStopSchema = mongoose.model("stops", gtfsStopSchema)

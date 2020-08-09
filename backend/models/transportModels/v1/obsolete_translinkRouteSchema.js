@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose"
 
-const gtfsRoutesSchema = new Schema(
+const translinkRouteSchema = new Schema(
   {
     databaseVersion: { type: Number },
     agency_key: { type: String },
@@ -19,14 +19,14 @@ const gtfsRoutesSchema = new Schema(
   }
 )
 
-gtfsRoutesSchema.method("toJSON", function () {
+translinkRouteSchema.method("toJSON", function () {
   const { __v, _id, ...object } = this.toObject()
   object.id = _id
   return object
 })
 
 // Export model
-export const GtfsRoutesSchema = mongoose.model(
-  "translink_routes",
-  gtfsRoutesSchema
+export const TranslinkRouteSchema = mongoose.model(
+  "translinkroutes",
+  translinkRouteSchema
 )
