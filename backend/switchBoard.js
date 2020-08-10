@@ -11,14 +11,14 @@ import {
 } from "./getDarkSkiesDataAndEmit"
 import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
 import {
-  saveTranslinkRouteDataToDatabase,
   saveTranslinkRouteDataToDatabase1,
   saveTranslinkRouteDataToDatabase2,
   saveTranslinkRouteDataToDatabase3,
   saveTranslinkRouteDataToDatabase4,
   saveTranslinkRouteDataToDatabase5,
 } from "./middleTier/transportDataML"
-import { saveTranslinkStopDataToDatabase } from "./saveTranslinkStopDataToDatabase"
+import { importTranslinkShapeData } from "./importTranslinkShapeData"
+import { importTranslinkStopData } from "./importTranslinkStopData"
 import { importGtfsData } from "./importGtfsData"
 // import { convertGtfsDataToGeojson } from "./convertGtfsDataToGeojson"
 import { createReducedShapeData } from "./createReducedShapeData"
@@ -49,8 +49,8 @@ export const runSwitchboard = (io) => {
     // importTripIdReducedShapeData()
     // console.log("Back in the switchBoard function")
     // convertGtfsDataToGeojson()
-    // saveTranslinkStopDataToDatabase()
-    // saveTranslinkRouteDataToDatabase()
+    // importTranslinkStopData()
+    // importTranslinkShapeData()
     // saveTranslinkRouteDataToDatabase1()
     // saveTranslinkRouteDataToDatabase2()
     // saveTranslinkRouteDataToDatabase3()

@@ -2,7 +2,7 @@ import { TranslinkStopSchema } from "./models/transportModels/v1/translinkStopSc
 
 // Function to save Translink busStop data to mongodb
 // Longitude first in Javascript
-export const saveTranslinkStopDataToDatabase = async () => {
+export const importTranslinkStopData = async () => {
   try {
     const rawjson = require("./rawData/translink_bus_stop_list_january_2018.json")
 
@@ -28,16 +28,14 @@ export const saveTranslinkStopDataToDatabase = async () => {
       // Now save in mongoDB
       busStop
         .save()
-        // .then(() => console.log(i + " busStopsStations saved to mongoDB"))
-        .catch((err) =>
-          console.log("Error saving busStopsStations to mongoDB " + err)
-        )
+        // .then(() => console.log(i + " busStops saved to mongoDB"))
+        .catch((err) => console.log("Error saving busStops to mongoDB " + err))
 
       i++
     } while (i < rawjson.features.length)
     console.log("Import ended " + i)
   } catch (error) {
     // handle error
-    console.log("Error in saveTranslinkStopDataToDatabase ", error)
+    console.log("Error in importTranslinkStopData ", error)
   }
 }
