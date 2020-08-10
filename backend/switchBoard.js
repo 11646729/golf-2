@@ -1,5 +1,3 @@
-"use strict"
-
 import cron from "node-cron"
 import { runCron } from "./cronRoutines"
 import { directDeleteAll as deleteAllPortArrivals } from "./controllers/cruiseControllers/v1/portArrivalsController"
@@ -22,7 +20,7 @@ import {
 } from "./middleTier/transportDataML"
 import { saveTranslinkStopDataToDatabase } from "./saveTranslinkStopDataToDatabase"
 import { importGtfsData } from "./importGtfsData"
-import { convertGtfsDataToGeojson } from "./convertGtfsDataToGeojson"
+// import { convertGtfsDataToGeojson } from "./convertGtfsDataToGeojson"
 import { createReducedShapeData } from "./createReducedShapeData"
 import { importTripIdReducedShapeData } from "./importTripIdIntoReducedShapeData"
 

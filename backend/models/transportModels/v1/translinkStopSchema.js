@@ -58,7 +58,7 @@ const translinkStopSchema = new Schema(
     },
   },
   {
-    timestamps: true,
+    timestamps: false,
   }
 )
 
