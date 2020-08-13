@@ -3,6 +3,8 @@ import { TranslinkStopSchema } from "./models/transportModels/v1/translinkStopSc
 // Function to save Translink busStop data to mongodb
 // Longitude first in Javascript
 export const importTranslinkStopData = async () => {
+  console.log("In importTranslinkStopData")
+
   try {
     const rawjson = require("./rawData/translink_bus_stop_list_january_2018.json")
 
