@@ -58,13 +58,13 @@ export default function TransportMapContainer() {
     setBusShapesCheckbox(event.target.checked)
   }
 
-  const handleBusStopClick = (event) => {
-    console.log(busStopSelected)
-  }
+  // const handleBusStopClick = (event) => {
+  //   console.log(busStopSelected)
+  // }
 
-  const handleBusShapeClick = (event) => {
-    console.log(busShapeSelected)
-  }
+  // const handleBusShapeClick = (event) => {
+  //   console.log(busShapeSelected)
+  // }
 
   // Fetch data - after componentHasUpdated
   const url = "http://localhost:5000/api/transport/translinkstops"
@@ -88,8 +88,6 @@ export default function TransportMapContainer() {
       ignore = true
     }
   }, [])
-
-  // console.log(busStopsCollection)
 
   // Now compute bounds of map to display
   if (mapRef && busStopsCollection != null) {
@@ -128,8 +126,6 @@ export default function TransportMapContainer() {
       ignore = true
     }
   }, [])
-
-  console.log(busShapesCollection)
 
   const polylineOptions = {
     polyline1: {
@@ -206,7 +202,7 @@ export default function TransportMapContainer() {
                     name="busShapesCheckbox"
                   />
                 }
-                label="Display Bus Shapes"
+                label="Display Bus Trip Shapes"
                 labelPlacement="end"
               />
             </Grid>

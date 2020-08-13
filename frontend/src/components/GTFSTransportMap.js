@@ -59,13 +59,13 @@ export default function GTFSTransportMapContainer() {
     setBusShapesCheckbox(event.target.checked)
   }
 
-  const handleBusStopClick = (event) => {
-    console.log(busStopSelected)
-  }
+  // const handleBusStopClick = (event) => {
+  //   console.log(busStopSelected)
+  // }
 
-  const handleBusShapeClick = (event) => {
-    console.log(busShapeSelected)
-  }
+  // const handleBusShapeClick = (event) => {
+  //   console.log(busShapeSelected)
+  // }
 
   // Now fetch bus stops data
   const stopsUrl = "http://localhost:5000/api/gtfsTransport/stops"
@@ -214,7 +214,7 @@ export default function GTFSTransportMapContainer() {
                       name="busShapesCheckbox"
                     />
                   }
-                  label="Display Bus Shapes"
+                  label="Display Bus Trip Shapes"
                   labelPlacement="end"
                 />
               </div>
