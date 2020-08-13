@@ -1,14 +1,25 @@
 import { TranslinkStopSchema } from "../../../models/transportModels/v1/translinkStopSchema"
+import { TranslinkModifiedShapeSchema } from "../../../models/transportModels/v1/translinkModifiedShapeSchema"
 
 // Path localhost:5000/api/transport/
 export const transportIndex = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)
 }
 
-// Path localhost:5000/api/transport/stops
+// Path localhost:5000/api/transport/translinkstops
 export const getAllStops = async (req, res) => {
   TranslinkStopSchema.find({})
     .then((stopsSchema) => res.json(stopsSchema))
+    .catch((err) => res.status(400).json("Error " + err))
+}
+
+// Path localhost:5000/api/transport/translinkshapes
+export const getAllModifiedShapes = async (req, res) => {
+  // TranslinkModifiedShapeSchema.find({ shapeId: "25774" })
+  TranslinkModifiedShapeSchema.find({})
+    .then((TranslinkModifiedShapeSchema) =>
+      res.json(TranslinkModifiedShapeSchema)
+    )
     .catch((err) => res.status(400).json("Error " + err))
 }
 

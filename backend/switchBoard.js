@@ -50,7 +50,7 @@ export const runSwitchboard = (io) => {
     // console.log("Back in the switchBoard function")
     // convertGtfsDataToGeojson()
     // importTranslinkStopData()
-    importTranslinkShapeData()
+    // importTranslinkShapeData()
     // saveTranslinkRouteDataToDatabase1()
     // saveTranslinkRouteDataToDatabase2()
     // saveTranslinkRouteDataToDatabase3()

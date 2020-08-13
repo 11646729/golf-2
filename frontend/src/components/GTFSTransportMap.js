@@ -59,6 +59,10 @@ export default function GTFSTransportMapContainer() {
     setBusShapesCheckbox(event.target.checked)
   }
 
+  const handleBusStopClick = (event) => {
+    console.log(busStopSelected)
+  }
+
   const handleBusShapeClick = (event) => {
     console.log(busShapeSelected)
   }
@@ -237,13 +241,12 @@ export default function GTFSTransportMapContainer() {
                       <Polyline
                         key={busShape.shapeId}
                         path={busShape.shapeCoordinates}
-                        onLoad={() => {
-                          setBusShapeSelected(busShape)
-                        }}
-                        onClick={() => {
-                          handleBusShapeClick()
-                        }}
                         options={polylineOptions.polyline1}
+                        onClick={() => {
+                          setBusShapeSelected(busShape)
+                          console.log(busShape)
+                          // handleBusShapeClick()
+                        }}
                       />
                     ))
                   : null}
@@ -262,6 +265,7 @@ export default function GTFSTransportMapContainer() {
                         onClick={() => {
                           setBusStopSelected(busStop)
                           console.log(busStop)
+                          // handleBusStopClick()
                         }}
                       />
                     ))
