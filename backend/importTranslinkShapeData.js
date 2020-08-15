@@ -10,8 +10,8 @@ export const importTranslinkShapeData = async () => {
   // const endloop = rawjson.features.length
   // console.log(endloop)
 
-  const startloop = 0
-  const endloop = 45107
+  const startloop = 24000
+  const endloop = 25000 // 45107
 
   let i = startloop
   do {

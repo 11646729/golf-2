@@ -34,8 +34,8 @@ export default function TransportMapContainer() {
   const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(false)
   const [busShapesCheckboxSelected, setBusShapesCheckbox] = useState(true)
 
-  const [busStopSelected, setBusStopSelected] = useState(null)
-  const [busShapeSelected, setBusShapeSelected] = useState(null)
+  // const [busStopSelected, setBusStopSelected] = useState(null)
+  // const [busShapeSelected, setBusShapeSelected] = useState(null)
 
   const [dataLoading, setDataLoading] = useState(true)
   const [errorLoading, setLoadingError] = useState([])
@@ -74,7 +74,7 @@ export default function TransportMapContainer() {
     let ignore = false
     const fetchData = async () => {
       try {
-        // setDataLoading(true)
+        setDataLoading(true)
         setLoadingError({})
         const result = await axios(url)
         if (!ignore) setBusStopsCollection(result.data)
@@ -230,7 +230,7 @@ export default function TransportMapContainer() {
                         path={busShape.shapeCoordinates}
                         options={polylineOptions.polyline1}
                         onClick={() => {
-                          setBusShapeSelected(busShape)
+                          // setBusShapeSelected(busShape)
                           console.log(busShape)
                           // handleBusShapeClick()
                         }}
@@ -250,7 +250,7 @@ export default function TransportMapContainer() {
                             "http://maps.google.com/mapfiles/ms/icons/blue.png",
                         }}
                         onClick={() => {
-                          setBusStopSelected(busStop)
+                          // setBusStopSelected(busStop)
                           console.log(busStop)
                           // handleBusStopClick()
                         }}
