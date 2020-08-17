@@ -10,13 +10,6 @@ import {
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
 import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
-import {
-  saveTranslinkRouteDataToDatabase1,
-  saveTranslinkRouteDataToDatabase2,
-  saveTranslinkRouteDataToDatabase3,
-  saveTranslinkRouteDataToDatabase4,
-  saveTranslinkRouteDataToDatabase5,
-} from "./middleTier/transportDataML"
 import { importTranslinkShapeData } from "./importTranslinkShapeData"
 import { importTranslinkStopData } from "./importTranslinkStopData"
 import { importGtfsData } from "./importGtfsData"
