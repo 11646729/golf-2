@@ -7,11 +7,11 @@ export const importTranslinkShapeData = async () => {
   console.log("In importTranslinkShapeData")
 
   const rawjson = require("./rawData/translink_ulsterbus_routes.json")
-  // const endloop = rawjson.features.length
+  const endloop = rawjson.features.length
   // console.log(endloop)
 
-  const startloop = 24000
-  const endloop = 25000 // 45107
+  const startloop = 0
+  // const endloop = 45107
 
   let i = startloop
   do {
@@ -28,23 +28,17 @@ export const importTranslinkShapeData = async () => {
       shapeCoordinates: convertedcoords,
       from_stop_id: rawjson.features[i].properties.FromStopID,
       to_stop_id: rawjson.features[i].properties.ToStopID,
-      // shape_pt_lat: rawjson.features[i].geometry.coordinates[j][1],
-      // shape_pt_lon: rawjson.features[i].geometry.coordinates[j][0],
-      // shape_pt_sequence: 10000, // + j
+      shape_pt_lat: rawjson.features[i].geometry.coordinates[j][1],
+      shape_pt_lon: rawjson.features[i].geometry.coordinates[j][0],
+      shape_pt_sequence: 10000, // + j
       shape_distance_travelled: 0.0,
     })
-
-    // console.log(busShapes)
 
     // Now save in mongoDB
     busShapes
       .save()
       // .then(() => console.log(i + " busShapes saved to mongoDB"))
       .catch((err) => console.log("Error saving busShapes to mongoDB " + err))
-    // } catch (error) {
-    // handle error
-    // console.log("Error in importTranslinkShapeData ", error)
-    // }
 
     i++
     console.log("i: " + i)

@@ -23,6 +23,7 @@ import { importGtfsData } from "./importGtfsData"
 // import { convertGtfsDataToGeojson } from "./convertGtfsDataToGeojson"
 import { createReducedShapeData } from "./createReducedShapeData"
 import { importTripIdReducedShapeData } from "./importTripIdIntoReducedShapeData"
+import { importAndReduceTranslinkShapeData } from "./importAndReduceTranslinkShapeData"
 
 let count = 0
 
@@ -51,11 +52,7 @@ export const runSwitchboard = (io) => {
     // convertGtfsDataToGeojson()
     // importTranslinkStopData()
     // importTranslinkShapeData()
-    // saveTranslinkRouteDataToDatabase1()
-    // saveTranslinkRouteDataToDatabase2()
-    // saveTranslinkRouteDataToDatabase3()
-    // saveTranslinkRouteDataToDatabase4()
-    // saveTranslinkRouteDataToDatabase5()
+    // importAndReduceTranslinkShapeData()
     // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     // })
 

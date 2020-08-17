@@ -45,8 +45,17 @@ const translinkModifiedShapeSchema = new Schema(
     //   type: Number,
     //   required: true,
     // },
-    shape_dist_traveled: {
-      type: Number,
+    // shape_dist_traveled: {
+    //   type: Number,
+    // },
+    shape_duplicate: {
+      type: String,
+    },
+    to_from_shape: {
+      type: String,
+    },
+    from_to_shape: {
+      type: String,
     },
   },
   {

@@ -1,5 +1,3 @@
-"use strict"
-
 import express from "express"
 import http from "http"
 import path from "path"
@@ -65,14 +63,14 @@ connection.once("open", () => {
   console.log("Connected to MongoDB database")
 })
 
-// use controllers as per Express Tutorial
+// Routers use Controllers as per Express Tutorial
 const golfRouter = require("./routes/golfRoutes/v2/golfCatalogRoute")
 const weatherRouter = require("./routes/weatherRoutes/v1/weatherCatalogRoute")
 const cruiseRouter = require("./routes/cruiseRoutes/v1/cruiseCatalogRoute")
 const transportRouter = require("./routes/transportRoutes/v1/transportCatalogRoute")
 const gtfsTransportRouter = require("./routes/transportRoutes/v1/gtfsTransportCatalogRoute")
 
-// routes
+// Routes
 app.use("/api/golf", golfRouter)
 app.use("/api/weather", weatherRouter)
 app.use("/api/cruise", cruiseRouter)
@@ -81,6 +79,7 @@ app.use("/api/gtfsTransport", gtfsTransportRouter)
 
 runSwitchboard(io)
 
+// Start Express server
 server.listen(port, (err) => {
   if (err) {
     throw err
