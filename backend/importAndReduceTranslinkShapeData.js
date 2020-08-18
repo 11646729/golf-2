@@ -1,9 +1,9 @@
 import { TranslinkModifiedShapeSchema } from "./models/transportModels/v1/translinkModifiedShapeSchema"
-// import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
+import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to save bus shapes data to mongodb
 // Longitude first in Javascript
-export const importAndReduceTranslinkShapeData = async () => {
+export async function importAndReduceTranslinkShapeData() {
   console.log("In importAndReduceTranslinkShapeData")
 
   const rawjson = require("./rawData/translink_ulsterbus_routes.json")
@@ -14,11 +14,15 @@ export const importAndReduceTranslinkShapeData = async () => {
 
   let i = startloop
   do {
-    // let convertedcoords = decodeInnerArray(oldcoords, oldcoordslength)
+    let oldcoords = rawjson.features[i].geometry.coordinates
+    let oldcoordslength = oldcoords.length
+
+    // let convertedcoords = await decodeInnerArray(oldcoords, oldcoordslength)
 
     const busShapes = new TranslinkModifiedShapeSchema({
       agency_key: "Translink Buses",
       shape_id: i + 1,
+      // shapeCoordinates: convertedcoords,
       from_stop_id: rawjson.features[i].properties.FromStopID,
       to_stop_id: rawjson.features[i].properties.ToStopID,
       shape_duplicate: "",
@@ -44,19 +48,19 @@ export const importAndReduceTranslinkShapeData = async () => {
   console.log(i + " busShapes Imported")
 }
 
-// const decodeInnerArray = (oldcoords, oldcoordslength) => {
-//   let j = 0
-//   let pathArray = []
-//   do {
-//     const coordsSchema = new CoordsSchema({
-//       lat: oldcoords[j][1],
-//       lng: oldcoords[j][0],
-//     })
+export async function decodeInnerArray(oldcoords, oldcoordslength) {
+  let j = 0
+  let pathArray = []
+  do {
+    const coordsSchema = new CoordsSchema({
+      lat: oldcoords[j][1],
+      lng: oldcoords[j][0],
+    })
 
-//     pathArray.push(coordsSchema)
+    pathArray.push(coordsSchema)
 
-//     j++
-//   } while (j < oldcoordslength)
+    j++
+  } while (j < oldcoordslength)
 
-//   return pathArray
-// }
+  return pathArray
+}

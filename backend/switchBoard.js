@@ -25,7 +25,9 @@ export const runSwitchboard = (io) => {
 
     // Start listening for browser position data
     socket.on("fetchLocation", (pos) => {
-      console.log("In the fetchLocation function in the switchboard file")
+      console.log(
+        "Start listening to the fetchLocation event in the switchboard file"
+      )
     })
 
     // Fetch data Daily at 07:00
@@ -43,7 +45,7 @@ export const runSwitchboard = (io) => {
     // convertGtfsDataToGeojson()
     // importTranslinkStopData()
     // importTranslinkShapeData()
-    // importAndReduceTranslinkShapeData()
+    importAndReduceTranslinkShapeData()
     // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     // })
 
@@ -66,6 +68,12 @@ export const runSwitchboard = (io) => {
     //   console.log("In switchboard function saveGolfCourseDataToDatabase")
     // })
     // })
+
+    socket.off("fetchLocation", (pos) => {
+      console.log(
+        "Stop listening to the fetchLocation event in the switchboard file"
+      )
+    })
 
     socket.on("disconnect", () => {
       console.log("Client Disconnected")

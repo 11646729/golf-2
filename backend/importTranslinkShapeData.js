@@ -3,14 +3,15 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to save bus shapes data to mongodb
 // Longitude first in Javascript
-export const importTranslinkShapeData = async () => {
+// export const importTranslinkShapeData = async () => {
+export async function importTranslinkShapeData() {
   console.log("In importTranslinkShapeData")
 
   const rawjson = require("./rawData/translink_ulsterbus_routes.json")
-  const endloop = rawjson.features.length
-  // console.log(endloop)
 
   const startloop = 0
+  const endloop = rawjson.features.length
+  // console.log(endloop)
   // const endloop = 45107
 
   let i = startloop
@@ -18,8 +19,7 @@ export const importTranslinkShapeData = async () => {
     let oldcoords = rawjson.features[i].geometry.coordinates
     let oldcoordslength = oldcoords.length
 
-    let convertedcoords = decodeInnerArray(oldcoords, oldcoordslength)
-    // console.log(convertedcoords)
+    let convertedcoords = await decodeInnerArray(oldcoords, oldcoordslength)
 
     // Now create a model instance
     const busShapes = new TranslinkModifiedShapeSchema({
@@ -46,7 +46,8 @@ export const importTranslinkShapeData = async () => {
   console.log(i + " busShapes Imported")
 }
 
-const decodeInnerArray = (oldcoords, oldcoordslength) => {
+// export const decodeInnerArray = (oldcoords, oldcoordslength) => {
+export async function decodeInnerArray(oldcoords, oldcoordslength) {
   let j = 0
   let pathArray = []
   do {
