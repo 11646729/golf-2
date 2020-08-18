@@ -14,7 +14,7 @@ import {
   Box,
 } from "@material-ui/core"
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
-
+import Title from "./Title"
 import "../App.css"
 
 const Marker = ({ children }) => children
@@ -185,16 +185,7 @@ export default function CrimesMapContainer() {
       <Grid container spacing={1}>
         <Container maxWidth="xl">
           <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
-            <Typography
-              style={{ display: "inline-block" }}
-              component="h4"
-              variant="h5"
-              align="left"
-              color="textPrimary"
-              gutterBottom
-            >
-              Crimes Dashboard
-            </Typography>
+            <Title>Crimes Dashboard</Title>
             {dataLoading ? (
               <Box component="div" display="inline" variant="h4" p={1} m={1}>
                 Loading...

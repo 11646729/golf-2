@@ -18,8 +18,6 @@ import { createReducedShapeData } from "./createReducedShapeData"
 import { importTripIdReducedShapeData } from "./importTripIdIntoReducedShapeData"
 import { importAndReduceTranslinkShapeData } from "./importAndReduceTranslinkShapeData"
 
-let count = 0
-
 export const runSwitchboard = (io) => {
   // Using socket.io for realtime
   io.on("connection", (socket) => {

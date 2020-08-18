@@ -16,6 +16,7 @@ import {
   Checkbox,
   Box,
 } from "@material-ui/core"
+import Title from "./Title"
 
 export default function GTFSTransportMapContainer() {
   // State Hooks
@@ -153,16 +154,7 @@ export default function GTFSTransportMapContainer() {
           <Container maxWidth="xl">
             <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
               <div style={{ width: "100%" }}>
-                <Typography
-                  style={{ display: "inline-block" }}
-                  component="h4"
-                  variant="h5"
-                  align="left"
-                  color="textPrimary"
-                  gutterBottom
-                >
-                  GTFS Transport Test
-                </Typography>
+                <Title>GTFS Transport Test</Title>
                 {dataLoading ? (
                   <Box
                     component="div"

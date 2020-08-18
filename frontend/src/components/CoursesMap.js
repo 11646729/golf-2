@@ -19,6 +19,7 @@ import {
   CardActions,
   Box,
 } from "@material-ui/core"
+import Title from "./Title"
 
 export default function CoursesMapContainer() {
   // State Hooks
@@ -109,18 +110,7 @@ export default function CoursesMapContainer() {
           <Container maxWidth="xl">
             <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
               <div style={{ width: "100%" }}>
-                <Typography
-                  component="div"
-                  display="inline"
-                  p={1}
-                  m={1}
-                  variant="h5"
-                  align="left"
-                  color="textPrimary"
-                  gutterBottom
-                >
-                  Golf Courses Dashboard
-                </Typography>
+                <Title>Golf Courses Dashboard</Title>
                 {dataLoading ? (
                   <Box
                     component="div"

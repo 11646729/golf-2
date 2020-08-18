@@ -15,6 +15,7 @@ import {
   Checkbox,
   Box,
 } from "@material-ui/core"
+import Title from "./Title"
 
 export default function TransportMapContainer() {
   // State Hooks
@@ -152,16 +153,7 @@ export default function TransportMapContainer() {
         <Grid container spacing={1}>
           <Container maxWidth="xl">
             <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
-              <Typography
-                style={{ display: "inline-block" }}
-                component="h4"
-                variant="h5"
-                align="left"
-                color="textPrimary"
-                gutterBottom
-              >
-                Transport Dashboard
-              </Typography>
+              <Title>Transport Dashboard</Title>
               {dataLoading ? (
                 <Box component="div" display="inline" variant="h4" p={1} m={1}>
                   Loading...
