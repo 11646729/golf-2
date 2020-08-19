@@ -17,12 +17,14 @@ import {
   Button,
   Link,
   CardActions,
-  Box,
 } from "@material-ui/core"
 import Title from "./Title"
+import LoadingTitle from "./LoadingTitle"
 
 export default function CoursesMapContainer() {
-  // State Hooks
+  // -----------------------------------------------------
+  // STATE HOOKS
+  // -----------------------------------------------------
   const { isLoaded, mapLoadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
@@ -35,7 +37,7 @@ export default function CoursesMapContainer() {
   const [selected, setSelected] = useState(null)
 
   // -----------------------------------------------------
-  // DATA SECTION
+  // DATA HOOKS SECTION
   // -----------------------------------------------------
   const [golfCourses, setData] = useState([])
   const [dataLoading, setDataLoading] = useState(true)
@@ -63,12 +65,10 @@ export default function CoursesMapContainer() {
       ignore = true
     }
   }, [url])
-  // -----------------------------------------------------
 
   // -----------------------------------------------------
   // EVENT HANDLERS SECTION
   // -----------------------------------------------------
-  // Event Handlers
   const onLoadHandler = (map) => {
     // Store a reference to the google map instance in state
     setMapRef(map)
@@ -87,7 +87,6 @@ export default function CoursesMapContainer() {
     })
     mapRef.fitBounds(bounds)
   }
-  // -----------------------------------------------------
 
   // -----------------------------------------------------
   // VIEW SECTION
@@ -111,27 +110,9 @@ export default function CoursesMapContainer() {
             <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
               <div style={{ width: "100%" }}>
                 <Title>Nearby Golf Courses</Title>
-                {dataLoading ? (
-                  <Box
-                    component="div"
-                    display="inline"
-                    variant="h4"
-                    p={1}
-                    m={1}
-                  >
-                    Loading...
-                  </Box>
-                ) : null}
+                {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
                 {!errorLoading ? (
-                  <Box
-                    component="div"
-                    display="inline"
-                    variant="h4"
-                    p={1}
-                    m={1}
-                  >
-                    Error Loading...
-                  </Box>
+                  <LoadingTitle>Error Loading...</LoadingTitle>
                 ) : null}
               </div>
             </Grid>
@@ -176,7 +157,6 @@ export default function CoursesMapContainer() {
                       <CardMedia
                         style={{
                           height: 0,
-                          // paddingTop: "56.25%", // 16:9,
                           paddingTop: "40%",
                           marginTop: "30",
                         }}
