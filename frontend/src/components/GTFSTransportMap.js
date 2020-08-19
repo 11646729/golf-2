@@ -14,9 +14,9 @@ import {
   Grid,
   FormControlLabel,
   Checkbox,
-  Box,
 } from "@material-ui/core"
 import Title from "./Title"
+import LoadingTitle from "./LoadingTitle"
 
 export default function GTFSTransportMapContainer() {
   // State Hooks
@@ -155,27 +155,9 @@ export default function GTFSTransportMapContainer() {
             <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
               <div style={{ width: "100%" }}>
                 <Title>GTFS Transport Test</Title>
-                {dataLoading ? (
-                  <Box
-                    component="div"
-                    display="inline"
-                    variant="h4"
-                    p={1}
-                    m={1}
-                  >
-                    Loading...
-                  </Box>
-                ) : null}
+                {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
                 {!errorLoading ? (
-                  <Box
-                    component="div"
-                    display="inline"
-                    variant="h4"
-                    p={1}
-                    m={1}
-                  >
-                    Error Loading...
-                  </Box>
+                  <LoadingTitle>Error Loading...</LoadingTitle>
                 ) : null}
                 <FormControlLabel
                   style={{

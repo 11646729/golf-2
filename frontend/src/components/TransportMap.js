@@ -7,15 +7,14 @@ import {
   Polyline,
 } from "@react-google-maps/api"
 import {
-  Typography,
   CssBaseline,
   Container,
   Grid,
   FormControlLabel,
   Checkbox,
-  Box,
 } from "@material-ui/core"
 import Title from "./Title"
+import LoadingTitle from "./LoadingTitle"
 
 export default function TransportMapContainer() {
   // State Hooks
@@ -154,15 +153,9 @@ export default function TransportMapContainer() {
           <Container maxWidth="xl">
             <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
               <Title>Transport Dashboard</Title>
-              {dataLoading ? (
-                <Box component="div" display="inline" variant="h4" p={1} m={1}>
-                  Loading...
-                </Box>
-              ) : null}
+              {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
               {!errorLoading ? (
-                <Box component="div" display="inline" variant="h4" p={1} m={1}>
-                  Error Loading...
-                </Box>
+                <LoadingTitle>Error Loading...</LoadingTitle>
               ) : null}
               <FormControlLabel
                 // style={styles.displayHomeLocationCheckBox}

@@ -5,16 +5,16 @@ import useSupercluster from "use-supercluster"
 import moment from "moment"
 import MomentUtils from "@date-io/moment"
 import {
-  Typography,
   Checkbox,
   Container,
   CssBaseline,
   FormControlLabel,
   Grid,
-  Box,
 } from "@material-ui/core"
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
 import Title from "./Title"
+import LoadingTitle from "./LoadingTitle"
+
 import "../App.css"
 
 const Marker = ({ children }) => children
@@ -185,16 +185,10 @@ export default function CrimesMapContainer() {
       <Grid container spacing={1}>
         <Container maxWidth="xl">
           <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
-            <Title>Crimes Dashboard</Title>
-            {dataLoading ? (
-              <Box component="div" display="inline" variant="h4" p={1} m={1}>
-                Loading...
-              </Box>
-            ) : null}
+            <Title>Nearby Crimes</Title>
+            {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
             {!errorLoading ? (
-              <Box component="div" display="inline" variant="h4" p={1} m={1}>
-                Error Loading...
-              </Box>
+              <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
             <FormControlLabel
               style={styles.displayHomeLocationCheckBox}

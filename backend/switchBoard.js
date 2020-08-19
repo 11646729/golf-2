@@ -1,22 +1,22 @@
 import cron from "node-cron"
-import { runCron } from "./cronRoutines"
 import { directDeleteAll as deleteAllPortArrivals } from "./controllers/cruiseControllers/v1/portArrivalsController"
 import { directDeleteAll as deleteAllVesselDetails } from "./controllers/cruiseControllers/v1/vesselDetailsController"
-import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/translinkTransportController"
 import { directDeleteAll as deleteAllTemperatures } from "./controllers/weatherControllers/v1/weatherController"
-import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/translinkTransportController"
+import { runCron } from "./cronRoutines"
+import { importGtfsData } from "./importGtfsData"
+import { createReducedShapeData } from "./createReducedShapeData"
+import { importTripIdReducedShapeData } from "./importTripIdIntoReducedShapeData"
+// import { convertGtfsDataToGeojson } from "./convertGtfsDataToGeojson"
+import { importTranslinkStopData } from "./importTranslinkStopData"
+import { importTranslinkShapeData } from "./importTranslinkShapeData"
+import { importAndReduceTranslinkShapeData } from "./importAndReduceTranslinkShapeData"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
+import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/translinkTransportController"
 import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
-import { importTranslinkShapeData } from "./importTranslinkShapeData"
-import { importTranslinkStopData } from "./importTranslinkStopData"
-import { importGtfsData } from "./importGtfsData"
-// import { convertGtfsDataToGeojson } from "./convertGtfsDataToGeojson"
-import { createReducedShapeData } from "./createReducedShapeData"
-import { importTripIdReducedShapeData } from "./importTripIdIntoReducedShapeData"
-import { importAndReduceTranslinkShapeData } from "./importAndReduceTranslinkShapeData"
+// import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/translinkTransportController"
 
 export const runSwitchboard = (io) => {
   // Using socket.io for realtime
@@ -45,7 +45,7 @@ export const runSwitchboard = (io) => {
     // convertGtfsDataToGeojson()
     // importTranslinkStopData()
     // importTranslinkShapeData()
-    importAndReduceTranslinkShapeData()
+    // importAndReduceTranslinkShapeData()
     // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     // })
 
@@ -60,16 +60,13 @@ export const runSwitchboard = (io) => {
 
     // Save data to database every 10 minutes
     // cron.schedule("*/10 * * * *", () => {
-    // deleteAllBusStops()
-    // saveTranslinkStopsDataToDatabase().then(() => {
-    //   console.log("In switchboard function saveTranslinkStopsDataToDatabase")
-    // })
-    // saveNearbyGolfCourseDataToDatabase().then(() => {
-    //   console.log("In switchboard function saveGolfCourseDataToDatabase")
-    // })
+    //   deleteAllBusStops()
+    //   saveNearbyGolfCourseDataToDatabase().then(() => {
+    //     console.log("In switchboard function saveGolfCourseDataToDatabase")
+    //   })
     // })
 
-    socket.off("fetchLocation", (pos) => {
+    socket.off("fetchLocation", () => {
       console.log(
         "Stop listening to the fetchLocation event in the switchboard file"
       )

@@ -110,7 +110,7 @@ export default function CoursesMapContainer() {
           <Container maxWidth="xl">
             <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
               <div style={{ width: "100%" }}>
-                <Title>Golf Courses Dashboard</Title>
+                <Title>Nearby Golf Courses</Title>
                 {dataLoading ? (
                   <Box
                     component="div"
