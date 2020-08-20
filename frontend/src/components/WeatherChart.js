@@ -30,6 +30,10 @@ export const WeatherChart = () => {
       const result = await axios(
         "http://localhost:5000/api/weather/temperatureReadings"
       )
+
+      // Only display data for the last 20 values
+      result.data.splice(0, result.data.length - 20)
+
       setData(result.data)
     }
     fetchData()
@@ -38,6 +42,8 @@ export const WeatherChart = () => {
   // Listen for realtime weather data and update the state
   useEffect(() => {
     socket.on("DataFromDarkSkiesAPI", (currentData) => {
+      console.log(data.length)
+
       setData((data) => [...data, currentData.temperature])
     })
   }, [])
