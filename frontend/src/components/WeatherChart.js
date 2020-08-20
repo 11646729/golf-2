@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
-// import { Link } from "react-router-dom"
 import Button from "@material-ui/core/Button"
 import moment from "moment"
 import socketIOClient from "socket.io-client"
@@ -19,21 +18,11 @@ import Title from "./Title"
 
 const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
-export const formatXAxis = (tickItem) => {
-  return moment.unix(tickItem).format("HH:mm MMM Do")
-}
-
-export const formatYAxis = (tickItem) => {
-  return +tickItem.toFixed(2)
-}
-
 export const WeatherChart = () => {
-  const theme = useTheme()
+  // -----------------------------------------------------
+  // DATA HOOKS SECTION
+  // -----------------------------------------------------
   const [data, setData] = useState([])
-
-  const clearDataArray = () => {
-    setData((data) => [])
-  }
 
   // This line initialises the data array
   useEffect(() => {
@@ -46,17 +35,6 @@ export const WeatherChart = () => {
     fetchData()
   }, [])
 
-  // const url = "http://localhost:5000/api/weather/temperatureReadings"
-  // const { result, error } = useSwr(url, { fetcher })
-  // const data = result && !error ? result : []
-
-  // if (result && !error) {
-  //   return setData(result)
-  // } else {
-  //   if (error) return "Error loading Map"
-  //   if (!result) return "Loading Map..."
-  // }
-
   // Listen for realtime weather data and update the state
   useEffect(() => {
     socket.on("DataFromDarkSkiesAPI", (currentData) => {
@@ -64,6 +42,26 @@ export const WeatherChart = () => {
     })
   }, [])
 
+  // -----------------------------------------------------
+  // EVENT HANDLERS SECTION
+  // -----------------------------------------------------
+  const theme = useTheme()
+
+  const clearDataArray = () => {
+    setData((data) => [])
+  }
+
+  const formatXAxis = (tickItem) => {
+    return moment.unix(tickItem).format("HH:mm MMM Do")
+  }
+
+  const formatYAxis = (tickItem) => {
+    return +tickItem.toFixed(2)
+  }
+
+  // -----------------------------------------------------
+  // VIEW SECTION
+  // -----------------------------------------------------
   return (
     <div style={{ width: "100%", height: 300 }}>
       {data.length < 1 ? (
