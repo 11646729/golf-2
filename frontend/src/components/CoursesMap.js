@@ -43,7 +43,6 @@ export default function CoursesMapContainer() {
   const [dataLoading, setDataLoading] = useState(true)
   const [errorLoading, setLoadingError] = useState([])
 
-  // Fetch data - after componentHasUpdated
   let url = "http://localhost:5000/api/golf/nearbyGolfCourses"
 
   // Now fetch golf courses data

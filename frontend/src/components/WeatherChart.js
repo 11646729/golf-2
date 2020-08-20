@@ -22,31 +22,41 @@ export const WeatherChart = () => {
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
-  const [data, setData] = useState([])
+  const [temperatureValues, setData] = useState([])
+  const [errorLoading, setLoadingError] = useState([])
+
+  let url = "http://localhost:5000/api/weather/temperatureReadings"
 
   // This line initialises the data array
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(
-        "http://localhost:5000/api/weather/temperatureReadings"
-      )
+      try {
+        setLoadingError({})
+        const result = await axios(url)
 
-      // Only display data for the last 20 values
-      result.data.splice(0, result.data.length - 20)
+        // Only display data for the last 20 values
+        result.data.splice(0, result.data.length - 20)
 
-      setData(result.data)
+        setData(result.data)
+      } catch (err) {
+        setLoadingError(err)
+      }
     }
     fetchData()
-  }, [])
+  }, [url])
 
   // Listen for realtime weather data and update the state
   useEffect(() => {
     socket.on("DataFromDarkSkiesAPI", (currentData) => {
-      console.log(data.length)
+      // Only display data for the last 20 values
+      temperatureValues.splice(0, 1)
 
-      setData((data) => [...data, currentData.temperature])
+      setData((temperatureValues) => [
+        ...temperatureValues,
+        currentData.temperature,
+      ])
     })
-  }, [])
+  }, [temperatureValues])
 
   // -----------------------------------------------------
   // EVENT HANDLERS SECTION
@@ -54,7 +64,7 @@ export const WeatherChart = () => {
   const theme = useTheme()
 
   const clearDataArray = () => {
-    setData((data) => [])
+    setData((temperatureValues) => [])
   }
 
   const formatXAxis = (tickItem) => {
@@ -70,12 +80,12 @@ export const WeatherChart = () => {
   // -----------------------------------------------------
   return (
     <div style={{ width: "100%", height: 300 }}>
-      {data.length < 1 ? (
+      {temperatureValues.length < 1 ? (
         <Title>Home Temperature is loading...</Title>
       ) : (
         <Title>
           Home Temperature is: &nbsp;
-          {Object.values(data[0])[4]} °F
+          {Object.values(temperatureValues[0])[4]} °F
         </Title>
       )}
       <Button size="small" color="primary" onClick={clearDataArray}>
@@ -83,7 +93,7 @@ export const WeatherChart = () => {
       </Button>
       <ResponsiveContainer>
         <LineChart
-          data={data}
+          data={temperatureValues}
           padding={{
             top: 0,
             right: 30,
