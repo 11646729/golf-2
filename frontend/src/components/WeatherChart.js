@@ -22,13 +22,25 @@ export const WeatherChart = () => {
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
-  const [temperatureValues, setData] = useState([])
+  const [hasLoaded, setLoaded] = useState(false)
+  const [temperatureValues, setTemperatureValues] = useState([])
   const [errorLoading, setLoadingError] = useState([])
 
-  let url = "http://localhost:5000/api/weather/temperatureReadings"
+  const fetchRTTemperatureData = (temperatureValues) => {
+    socket.on("DataFromDarkSkiesAPI", (currentData) => {
+      setTemperatureValues((temperatureValues) => [
+        ...temperatureValues,
+        currentData.temperature,
+      ])
+    })
+    // Only display data for the last 20 values
+    temperatureValues.splice(0, temperatureValues.length - 20)
+  }
 
   // This line initialises the data array
   useEffect(() => {
+    let url = "http://localhost:5000/api/weather/temperatureReadings"
+
     const fetchData = async () => {
       try {
         setLoadingError({})
@@ -37,26 +49,19 @@ export const WeatherChart = () => {
         // Only display data for the last 20 values
         result.data.splice(0, result.data.length - 20)
 
-        setData(result.data)
+        setTemperatureValues(result.data)
+        setLoaded(true)
       } catch (err) {
         setLoadingError(err)
       }
     }
     fetchData()
-  }, [url])
+  }, [])
 
   // Listen for realtime weather data and update the state
-  useEffect(() => {
-    socket.on("DataFromDarkSkiesAPI", (currentData) => {
-      // Only display data for the last 20 values
-      temperatureValues.splice(0, 1)
-
-      setData((temperatureValues) => [
-        ...temperatureValues,
-        currentData.temperature,
-      ])
-    })
-  }, [temperatureValues])
+  if (hasLoaded) {
+    fetchRTTemperatureData(temperatureValues)
+  }
 
   // -----------------------------------------------------
   // EVENT HANDLERS SECTION
@@ -64,7 +69,8 @@ export const WeatherChart = () => {
   const theme = useTheme()
 
   const clearDataArray = () => {
-    setData((temperatureValues) => [])
+    // Error here
+    // setTemperatureValues((temperatureValues) => [])
   }
 
   const formatXAxis = (tickItem) => {

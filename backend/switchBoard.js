@@ -49,14 +49,14 @@ export const runSwitchboard = (io) => {
     // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
     // })
 
-    // Fetch data every 5 minutes
-    // cron.schedule("1 * * * *", () => {
-    //   getAndSaveDarkSkiesData().then((result) => {
-    //     emitDarkSkiesData(socket, result).then(() => {
-    //       console.log("Fetched temperature value")
-    //     })
-    //   })
-    // })
+    // Fetch data every 1 minutes
+    cron.schedule("*/1 * * * *", () => {
+      getAndSaveDarkSkiesData().then((result) => {
+        emitDarkSkiesData(socket, result).then(() => {
+          console.log("Fetched temperature value")
+        })
+      })
+    })
 
     // Save data to database every 10 minutes
     // cron.schedule("*/10 * * * *", () => {
