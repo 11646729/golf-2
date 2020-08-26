@@ -43,27 +43,24 @@ export default function CoursesMapContainer() {
   const [dataLoading, setDataLoading] = useState(true)
   const [errorLoading, setLoadingError] = useState([])
 
-  let url = "http://localhost:5000/api/golf/nearbyGolfCourses"
-
   // Now fetch golf courses data
   useEffect(() => {
-    let ignore = false
+    let url = "http://localhost:5000/api/golf/nearbyGolfCourses"
+
     const fetchData = async () => {
       try {
         setDataLoading(true)
         setLoadingError({})
         const result = await axios(url)
-        if (!ignore) setData(result.data)
+
+        setData(result.data)
       } catch (err) {
         setLoadingError(err)
       }
       setDataLoading(false)
     }
     fetchData()
-    return () => {
-      ignore = true
-    }
-  }, [url])
+  }, [])
 
   // -----------------------------------------------------
   // EVENT HANDLERS SECTION
