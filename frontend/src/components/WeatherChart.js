@@ -22,7 +22,7 @@ export const WeatherChart = () => {
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
-  const [hasLoaded, setLoaded] = useState(false)
+  const [initialDataLoaded, setInitialData] = useState(false)
   const [temperatureValues, setTemperatureValues] = useState([])
   const [errorLoading, setLoadingError] = useState([])
 
@@ -50,7 +50,7 @@ export const WeatherChart = () => {
         result.data.splice(0, result.data.length - 20)
 
         setTemperatureValues(result.data)
-        setLoaded(true)
+        setInitialData(true)
       } catch (err) {
         setLoadingError(err)
       }
@@ -59,7 +59,8 @@ export const WeatherChart = () => {
   }, [])
 
   // Listen for realtime weather data and update the state
-  if (hasLoaded) {
+  if (initialDataLoaded) {
+    console.log("Temperature array length: " + temperatureValues.length)
     fetchRTTemperatureData(temperatureValues)
   }
 
@@ -70,7 +71,8 @@ export const WeatherChart = () => {
 
   const clearDataArray = () => {
     // Error here
-    // setTemperatureValues((temperatureValues) => [])
+    setTemperatureValues((temperatureValues) => [])
+    // setTemperatureValues([])
   }
 
   const formatXAxis = (tickItem) => {
