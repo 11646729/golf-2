@@ -41,7 +41,8 @@ export default function CoursesMapContainer() {
   // -----------------------------------------------------
   const [golfCourses, setData] = useState([])
   const [dataLoading, setDataLoading] = useState(true)
-  const [errorLoading, setLoadingError] = useState([])
+  const [errorLoading, setLoadingError] = useState(false)
+  const [errorLoadingMessage, setLoadingErrorMessage] = useState([])
 
   // Now fetch golf courses data
   useEffect(() => {
@@ -50,12 +51,12 @@ export default function CoursesMapContainer() {
     const fetchData = async () => {
       try {
         setDataLoading(true)
-        setLoadingError({})
         const result = await axios(url)
 
         setData(result.data)
       } catch (err) {
-        setLoadingError(err)
+        setLoadingError(true)
+        setLoadingErrorMessage(err)
       }
       setDataLoading(false)
     }
@@ -65,11 +66,12 @@ export default function CoursesMapContainer() {
   // -----------------------------------------------------
   // EVENT HANDLERS SECTION
   // -----------------------------------------------------
+  // Store a reference to the google map instance in state
   const onLoadHandler = (map) => {
-    // Store a reference to the google map instance in state
     setMapRef(map)
   }
 
+  // Clear the reference to the google map instance
   const onUnmountHandler = () => {
     setMapRef(null)
   }
@@ -107,8 +109,10 @@ export default function CoursesMapContainer() {
               <div style={{ width: "100%" }}>
                 <Title>Nearby Golf Courses</Title>
                 {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
-                {!errorLoading ? (
-                  <LoadingTitle>Error Loading...</LoadingTitle>
+                {errorLoading ? (
+                  <LoadingTitle>
+                    Error Loading...{errorLoadingMessage}
+                  </LoadingTitle>
                 ) : null}
               </div>
             </Grid>

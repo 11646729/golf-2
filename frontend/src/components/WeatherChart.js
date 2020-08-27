@@ -60,7 +60,7 @@ export const WeatherChart = () => {
 
   // Listen for realtime weather data and update the state
   if (initialDataLoaded) {
-    console.log("Temperature array length: " + temperatureValues.length)
+    // console.log("Temperature array length: " + temperatureValues.length)
     fetchRTTemperatureData(temperatureValues)
   }
 

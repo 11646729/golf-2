@@ -19,7 +19,9 @@ import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 
 export default function GTFSTransportMapContainer() {
-  // State Hooks
+  // -----------------------------------------------------
+  // STATE HOOKS
+  // -----------------------------------------------------
   const [mapRef, setMapRef] = useState(null)
   const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
   const [mapCenter] = useState({
@@ -40,14 +42,18 @@ export default function GTFSTransportMapContainer() {
   const [busShapeSelected, setBusShapeSelected] = useState(null)
 
   const [dataLoading, setDataLoading] = useState(true)
-  const [errorLoading, setLoadingError] = useState([])
+  const [errorLoading, setLoadingError] = useState(false)
+  const [errorLoadingMessage, setLoadingErrorMessage] = useState([])
 
-  // Event Handlers
+  // -----------------------------------------------------
+  // EVENT HANDLERS SECTION
+  // -----------------------------------------------------
+  // Store a reference to the google map instance
   const onLoadHandler = (map) => {
-    // Store a reference to the google map instance
     setMapRef(map)
   }
 
+  // Clear the reference to the google map instance
   const onUnmountHandler = () => {
     setMapRef(null)
   }
@@ -68,27 +74,21 @@ export default function GTFSTransportMapContainer() {
   //   console.log(busShapeSelected)
   // }
 
-  // Now fetch bus stops data
-  const stopsUrl = "http://localhost:5000/api/gtfsTransport/stops"
-
-  // Fetch data - after componentHasUpdated
+  // Fetch bus stops data
   useEffect(() => {
-    let ignore = false
+    const stopsUrl = "http://localhost:5000/api/gtfsTransport/stops"
     const fetchBusStopsData = async () => {
       try {
         setDataLoading(true)
-        setLoadingError({})
         const busStopsResult = await axios(stopsUrl)
-        if (!ignore) setBusStopsCollection(busStopsResult.data)
+
+        setBusStopsCollection(busStopsResult.data)
       } catch (err) {
-        setLoadingError(err)
+        setLoadingError(true)
+        setLoadingErrorMessage(err)
       }
-      setDataLoading(false)
     }
     fetchBusStopsData()
-    return () => {
-      ignore = true
-    }
   }, [])
 
   // Now compute bounds of map to display
@@ -105,27 +105,21 @@ export default function GTFSTransportMapContainer() {
     mapRef.fitBounds(bounds)
   }
 
-  // Now fetch shapes data
-  const shapesUrl = "http://localhost:5000/api/gtfsTransport/shapes"
-
-  // Fetch data - after componentHasUpdated
+  // Fetch shapes data
   useEffect(() => {
-    let ignore = false
+    const shapesUrl = "http://localhost:5000/api/gtfsTransport/shapes"
     const fetchBusShapesData = async () => {
       try {
-        setDataLoading(true)
-        setLoadingError({})
         const busShapesResult = await axios(shapesUrl)
-        if (!ignore) setBusShapesCollection(busShapesResult.data)
+
+        setBusShapesCollection(busShapesResult.data)
       } catch (err) {
-        setLoadingError(err)
+        setLoadingError(true)
+        setLoadingErrorMessage(err)
       }
       setDataLoading(false)
     }
     fetchBusShapesData()
-    return () => {
-      ignore = true
-    }
   }, [])
 
   const polylineOptions = {
@@ -156,8 +150,10 @@ export default function GTFSTransportMapContainer() {
               <div style={{ width: "100%" }}>
                 <Title>GTFS Transport Test</Title>
                 {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
-                {!errorLoading ? (
-                  <LoadingTitle>Error Loading...</LoadingTitle>
+                {errorLoading ? (
+                  <LoadingTitle>
+                    Error Loading...{errorLoadingMessage}
+                  </LoadingTitle>
                 ) : null}
                 <FormControlLabel
                   style={{
