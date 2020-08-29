@@ -32,47 +32,20 @@ export default function GTFSTransportMapContainer() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
 
-  const [busStopsCollection, setBusStopsCollection] = useState([])
-  const [busShapesCollection, setBusShapesCollection] = useState([])
-
   const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
   const [busShapesCheckboxSelected, setBusShapesCheckbox] = useState(true)
 
   const [busStopSelected, setBusStopSelected] = useState(null)
   const [busShapeSelected, setBusShapeSelected] = useState(null)
 
+  // -----------------------------------------------------
+  // DATA HOOKS SECTION
+  // -----------------------------------------------------
+  const [busStopsCollection, setBusStopsCollection] = useState([])
+  const [busShapesCollection, setBusShapesCollection] = useState([])
   const [dataLoading, setDataLoading] = useState(true)
   const [errorLoading, setLoadingError] = useState(false)
   const [errorLoadingMessage, setLoadingErrorMessage] = useState([])
-
-  // -----------------------------------------------------
-  // EVENT HANDLERS SECTION
-  // -----------------------------------------------------
-  // Store a reference to the google map instance
-  const onLoadHandler = (map) => {
-    setMapRef(map)
-  }
-
-  // Clear the reference to the google map instance
-  const onUnmountHandler = () => {
-    setMapRef(null)
-  }
-
-  const handleBusStopsCheckboxChange = (event) => {
-    setBusStopsCheckbox(event.target.checked)
-  }
-
-  const handleBusShapesCheckboxChange = (event) => {
-    setBusShapesCheckbox(event.target.checked)
-  }
-
-  // const handleBusStopClick = (event) => {
-  //   console.log(busStopSelected)
-  // }
-
-  // const handleBusShapeClick = (event) => {
-  //   console.log(busShapeSelected)
-  // }
 
   // Fetch bus stops data
   useEffect(() => {
@@ -110,6 +83,7 @@ export default function GTFSTransportMapContainer() {
     const shapesUrl = "http://localhost:5000/api/gtfsTransport/shapes"
     const fetchBusShapesData = async () => {
       try {
+        setDataLoading(true)
         const busShapesResult = await axios(shapesUrl)
 
         setBusShapesCollection(busShapesResult.data)
@@ -122,6 +96,38 @@ export default function GTFSTransportMapContainer() {
     fetchBusShapesData()
   }, [])
 
+  // -----------------------------------------------------
+  // EVENT HANDLERS SECTION
+  // -----------------------------------------------------
+  // Store a reference to the google map instance
+  const onLoadHandler = (map) => {
+    setMapRef(map)
+  }
+
+  // Clear the reference to the google map instance
+  const onUnmountHandler = () => {
+    setMapRef(null)
+  }
+
+  const handleBusStopsCheckboxChange = (event) => {
+    setBusStopsCheckbox(event.target.checked)
+  }
+
+  const handleBusShapesCheckboxChange = (event) => {
+    setBusShapesCheckbox(event.target.checked)
+  }
+
+  // const handleBusStopClick = (event) => {
+  //   console.log(busStopSelected)
+  // }
+
+  // const handleBusShapeClick = (event) => {
+  //   console.log(busShapeSelected)
+  // }
+
+  // -----------------------------------------------------
+  // VIEW SECTION
+  // -----------------------------------------------------
   const polylineOptions = {
     polyline1: {
       strokeColor: "#ff2343",

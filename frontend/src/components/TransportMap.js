@@ -17,7 +17,9 @@ import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 
 export default function TransportMapContainer() {
-  // State Hooks
+  // -----------------------------------------------------
+  // STATE HOOKS
+  // -----------------------------------------------------
   const [mapRef, setMapRef] = useState(null)
   const { isLoaded, mapLoadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
@@ -28,19 +30,74 @@ export default function TransportMapContainer() {
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
 
-  const [busStopsCollection, setBusStopsCollection] = useState([])
-  const [busShapesCollection, setBusShapesCollection] = useState([])
-
-  const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(false)
-  const [busShapesCheckboxSelected, setBusShapesCheckbox] = useState(true)
+  const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
+  const [busShapesCheckboxSelected, setBusShapesCheckbox] = useState(false)
 
   // const [busStopSelected, setBusStopSelected] = useState(null)
   // const [busShapeSelected, setBusShapeSelected] = useState(null)
 
+  // -----------------------------------------------------
+  // DATA HOOKS SECTION
+  // -----------------------------------------------------
+  const [busStopsCollection, setBusStopsCollection] = useState([])
+  const [busShapesCollection, setBusShapesCollection] = useState([])
   const [dataLoading, setDataLoading] = useState(true)
-  const [errorLoading, setLoadingError] = useState([])
+  const [errorLoading, setLoadingError] = useState(false)
+  const [errorLoadingMessage, setLoadingErrorMessage] = useState([])
 
-  // Event Handlers
+  // Fetch bus stops data
+  useEffect(() => {
+    const stopsUrl = "http://localhost:5000/api/transport/translinkstops"
+    const fetchData = async () => {
+      try {
+        setDataLoading(true)
+        const result = await axios(stopsUrl)
+
+        setBusStopsCollection(result.data)
+      } catch (err) {
+        setLoadingError(err)
+      }
+      setDataLoading(false)
+    }
+    fetchData()
+  }, [])
+
+  // Now compute bounds of map to display
+  if (mapRef && busStopsCollection != null) {
+    const bounds = new window.google.maps.LatLngBounds()
+    busStopsCollection.map((busStop) => {
+      const myLatLng = new window.google.maps.LatLng({
+        lat: busStop.stop_lat,
+        lng: busStop.stop_lon,
+      })
+
+      bounds.extend(myLatLng)
+      return bounds
+    })
+    mapRef.fitBounds(bounds)
+  }
+
+  // Fetch shapes data
+  useEffect(() => {
+    const shapesUrl = "http://localhost:5000/api/transport/translinkshapes"
+    const fetchBusShapesData = async () => {
+      try {
+        setDataLoading(true)
+        const busShapesResult = await axios(shapesUrl)
+
+        setBusShapesCollection(busShapesResult.data)
+      } catch (err) {
+        setLoadingError(true)
+        setLoadingErrorMessage(err)
+      }
+      setDataLoading(false)
+    }
+    fetchBusShapesData()
+  }, [])
+
+  // -----------------------------------------------------
+  // EVENT HANDLERS SECTION
+  // -----------------------------------------------------
   const onLoadHandler = (map) => {
     // Store a reference to the google map instance in state
     setMapRef(map)
@@ -66,67 +123,9 @@ export default function TransportMapContainer() {
   //   console.log(busShapeSelected)
   // }
 
-  // Fetch data - after componentHasUpdated
-  const url = "http://localhost:5000/api/transport/translinkstops"
-
-  // Now fetch bus stops data
-  useEffect(() => {
-    let ignore = false
-    const fetchData = async () => {
-      try {
-        setDataLoading(true)
-        setLoadingError({})
-        const result = await axios(url)
-        if (!ignore) setBusStopsCollection(result.data)
-      } catch (err) {
-        setLoadingError(err)
-      }
-      setDataLoading(false)
-    }
-    fetchData()
-    return () => {
-      ignore = true
-    }
-  }, [])
-
-  // Now compute bounds of map to display
-  if (mapRef && busStopsCollection != null) {
-    const bounds = new window.google.maps.LatLngBounds()
-    busStopsCollection.map((busStop) => {
-      const myLatLng = new window.google.maps.LatLng({
-        lat: busStop.stop_lat,
-        lng: busStop.stop_lon,
-      })
-
-      bounds.extend(myLatLng)
-      return bounds
-    })
-    mapRef.fitBounds(bounds)
-  }
-
-  // Now fetch shapes data
-  const shapesUrl = "http://localhost:5000/api/transport/translinkshapes"
-
-  // Fetch data - after componentHasUpdated
-  useEffect(() => {
-    let ignore = false
-    const fetchBusShapesData = async () => {
-      try {
-        setDataLoading(true)
-        setLoadingError({})
-        const busShapesResult = await axios(shapesUrl)
-        if (!ignore) setBusShapesCollection(busShapesResult.data)
-      } catch (err) {
-        setLoadingError(err)
-      }
-      setDataLoading(false)
-    }
-    fetchBusShapesData()
-    return () => {
-      ignore = true
-    }
-  }, [])
-
+  // -----------------------------------------------------
+  // VIEW SECTION
+  // -----------------------------------------------------
   const polylineOptions = {
     polyline1: {
       strokeColor: "#ff2343",
@@ -154,8 +153,10 @@ export default function TransportMapContainer() {
             <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
               <Title>Transport Dashboard</Title>
               {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
-              {!errorLoading ? (
-                <LoadingTitle>Error Loading...</LoadingTitle>
+              {errorLoading ? (
+                <LoadingTitle>
+                  Error Loading...{errorLoadingMessage}
+                </LoadingTitle>
               ) : null}
               <FormControlLabel
                 // style={styles.displayHomeLocationCheckBox}
