@@ -22,6 +22,10 @@ import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 
 export default function CoursesMapContainer() {
+  return <CoursesMapViewController />
+}
+
+function CoursesMapViewController() {
   // -----------------------------------------------------
   // STATE HOOKS
   // -----------------------------------------------------
@@ -86,20 +90,23 @@ export default function CoursesMapContainer() {
     mapRef.fitBounds(bounds)
   }
 
+  // return <CourseMapView courses={golfCourses} />
+
   // -----------------------------------------------------
   // VIEW SECTION
   // -----------------------------------------------------
-  var iconPin = {
-    path:
-      "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
-    fillColor: "#78a32e",
-    fillOpacity: 0.7,
-    scale: 0.03, //to reduce the size of icons
-    strokeColor: "#2f4024",
-    strokeWeight: 1,
-  }
+  function CoursesMapView() {
+    // const CoursesMapView = () => {
+    var iconPin = {
+      path:
+        "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
+      fillColor: "#78a32e",
+      fillOpacity: 0.7,
+      scale: 0.03, //to reduce the size of icons
+      strokeColor: "#2f4024",
+      strokeWeight: 1,
+    }
 
-  const renderMap = () => {
     return (
       <Fragment>
         <CssBaseline />
@@ -196,5 +203,5 @@ export default function CoursesMapContainer() {
     return <div>Map cannot be loaded right now, sorry.</div>
   }
 
-  return isLoaded ? renderMap() : null
+  return isLoaded ? CoursesMapView() : null
 }
