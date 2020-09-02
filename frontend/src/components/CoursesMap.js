@@ -32,21 +32,15 @@ function CoursesMapViewController() {
   const { isLoaded, mapLoadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
-  // const [mapRef, setMapRef] = useState(null)
-  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
-  const [mapCenter] = useState({
-    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-  })
   const [selected, setSelected] = useState(null)
 
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
   const [golfCourses, setData] = useState([])
-  // const [dataLoading, setDataLoading] = useState(true)
-  // const [errorLoading, setLoadingError] = useState(false)
-  // const [errorLoadingMessage, setLoadingErrorMessage] = useState([])
+  const [dataLoading, setDataLoading] = useState(true)
+  const [errorLoading, setLoadingError] = useState(false)
+  const [errorLoadingMessage, setLoadingErrorMessage] = useState([])
 
   // Now fetch golf courses data
   useEffect(() => {
@@ -85,17 +79,33 @@ function CoursesMapViewController() {
     return <div>Map cannot be loaded right now, sorry.</div>
   }
 
-  return isLoaded ? CoursesMapView({ mapRef }) : null
+  return isLoaded
+    ? CoursesMapView({
+        mapRef,
+        golfCourses,
+        dataLoading,
+        errorLoading,
+        errorLoadingMessage,
+      })
+    : null
 }
 
 // -----------------------------------------------------
 // VIEW SECTION
 // -----------------------------------------------------
-function CoursesMapView({ mapRef }) {
-  const [mapRef, setMapRef] = useState(null)
-  const [dataLoading, setDataLoading] = useState(true)
-  const [errorLoading, setLoadingError] = useState(false)
-  const [errorLoadingMessage, setLoadingErrorMessage] = useState([])
+function CoursesMapView({
+  mapRef,
+  golfCourses,
+  dataLoading,
+  errorLoading,
+  errorLoadingMessage,
+}) {
+  const [mapRef, setMapRef] = useState(mapRef)
+  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
+  const [mapCenter] = useState({
+    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+  })
 
   // Store a reference to the google map instance in state
   const onLoadHandler = (map) => {
