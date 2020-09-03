@@ -32,7 +32,7 @@ function CoursesMapViewController() {
   const { isLoaded, mapLoadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
-  const [selected, setSelected] = useState(null)
+  const [mapRef, setMapRef] = useState(null)
 
   // -----------------------------------------------------
   // DATA HOOKS SECTION
@@ -64,8 +64,7 @@ function CoursesMapViewController() {
   // -----------------------------------------------------
   // EVENT HANDLERS SECTION
   // -----------------------------------------------------
-
-  // Now compute bounds of map to display
+  // Compute bounds of map to display
   if (mapRef && golfCourses != null) {
     const bounds = new window.google.maps.LatLngBounds()
     golfCourses.map((golfCourse) => {
@@ -100,22 +99,23 @@ function CoursesMapView({
   errorLoading,
   errorLoadingMessage,
 }) {
-  const [mapRef, setMapRef] = useState(mapRef)
+  // const [mapRef, setMapRef] = useState(mapRef)
   const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
   const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
+  const [selected, setSelected] = useState(null)
 
   // Store a reference to the google map instance in state
-  const onLoadHandler = (map) => {
-    setMapRef(map)
-  }
+  // const onLoadHandler = (map) => {
+  //   setMapRef(map)
+  // }
 
   // Clear the reference to the google map instance
-  const onUnmountHandler = () => {
-    setMapRef(null)
-  }
+  // const onUnmountHandler = () => {
+  //   setMapRef(null)
+  // }
 
   var iconPin = {
     path:
@@ -157,8 +157,8 @@ function CoursesMapView({
                 disableDefaultUI: true,
                 zoomControl: true,
               }}
-              onLoad={onLoadHandler}
-              onUnmount={onUnmountHandler}
+              // onLoad={onLoadHandler}
+              // onUnmount={onUnmountHandler}
             >
               {golfCourses
                 ? golfCourses.map((golfCourse) => (
@@ -218,9 +218,3 @@ function CoursesMapView({
     </Fragment>
   )
 }
-
-// if (mapLoadError) {
-//   return <div>Map cannot be loaded right now, sorry.</div>
-// }
-
-// return isLoaded ? CoursesMapView() : null
