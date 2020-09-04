@@ -15,7 +15,7 @@ import EditIcon from "@material-ui/icons/Edit"
 import HomeIcon from "@material-ui/icons/Home"
 import MenuIcon from "@material-ui/icons/Menu"
 
-import CoursesMap from "./components/CoursesMap"
+import CoursesMap from "./components/CoursesMap2"
 import CruiseTable from "./components/CruiseTable"
 import CrimesMap from "./components/CrimesMap"
 import TransportMap from "./components/TransportMap"

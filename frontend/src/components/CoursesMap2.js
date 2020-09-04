@@ -90,6 +90,12 @@ function CoursesMapViewController() {
     mapRef.fitBounds(bounds)
   }
 
+  if (mapLoadError) {
+    return <div>Map cannot be loaded right now, sorry.</div>
+  }
+
+  return isLoaded ? CoursesMapView() : null
+
   // -----------------------------------------------------
   // VIEW SECTION
   // -----------------------------------------------------
@@ -195,10 +201,4 @@ function CoursesMapViewController() {
       </Fragment>
     )
   }
-
-  if (mapLoadError) {
-    return <div>Map cannot be loaded right now, sorry.</div>
-  }
-
-  return isLoaded ? CoursesMapView() : null
 }
