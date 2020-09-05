@@ -33,11 +33,6 @@ function CoursesMapViewController() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
   const [mapRef, setMapRef] = useState(null)
-  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
-  const [mapCenter] = useState({
-    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-  })
   const [selected, setSelected] = useState(null)
 
   // -----------------------------------------------------
@@ -90,6 +85,12 @@ function CoursesMapViewController() {
     mapRef.fitBounds(bounds)
   }
 
+  if (mapLoadError) {
+    return <div>Map cannot be loaded right now, sorry.</div>
+  }
+
+  return isLoaded ? CoursesMapView() : null
+
   // -----------------------------------------------------
   // VIEW SECTION
   // -----------------------------------------------------
@@ -102,6 +103,12 @@ function CoursesMapViewController() {
       scale: 0.03, //to reduce the size of icons
       strokeColor: "#2f4024",
       strokeWeight: 1,
+    }
+
+    const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
+    const mapCenter = {
+      lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+      lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
     }
 
     return (
@@ -195,10 +202,4 @@ function CoursesMapViewController() {
       </Fragment>
     )
   }
-
-  if (mapLoadError) {
-    return <div>Map cannot be loaded right now, sorry.</div>
-  }
-
-  return isLoaded ? CoursesMapView() : null
 }

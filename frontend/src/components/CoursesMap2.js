@@ -33,11 +33,6 @@ function CoursesMapViewController() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
   const [mapRef, setMapRef] = useState(null)
-  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
-  const [mapCenter] = useState({
-    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-  })
   const [selected, setSelected] = useState(null)
 
   // -----------------------------------------------------
@@ -110,6 +105,12 @@ function CoursesMapViewController() {
       strokeWeight: 1,
     }
 
+    const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
+    const mapCenter = {
+      lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+      lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+    }
+
     return (
       <Fragment>
         <CssBaseline />
@@ -133,8 +134,8 @@ function CoursesMapViewController() {
                   width: "97%",
                   margin: 20,
                 }}
-                center={mapCenter}
                 zoom={mapZoom}
+                center={mapCenter}
                 options={{
                   // mapTypeId: "hybrid",
                   disableDefaultUI: true,
