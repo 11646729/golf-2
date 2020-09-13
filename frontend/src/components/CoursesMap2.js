@@ -32,8 +32,7 @@ function CoursesMapViewController() {
   const { isLoaded, mapLoadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
-  // const [mapRef, setMapRef] = useState(null)
-  const [selected, setSelected] = useState(null)
+  // const [selected, setSelected] = useState(null)
 
   // -----------------------------------------------------
   // DATA HOOKS SECTION
@@ -62,29 +61,6 @@ function CoursesMapViewController() {
     fetchData()
   }, [])
 
-  // -----------------------------------------------------
-  // EVENT HANDLERS SECTION
-  // -----------------------------------------------------
-  // Store a reference to the google map instance in state
-  // let onLoadHandler = (map) => {
-  //   setMapRef(map)
-  // }
-
-  // Clear the reference to the google map instance
-  // let onUnmountHandler = () => {
-  //   setMapRef(null)
-  // }
-
-  // Now compute bounds of map to display
-  // if (mapRef && golfCourses != null) {
-  //   const bounds = new window.google.maps.LatLngBounds()
-  //   golfCourses.map((golfCourse) => {
-  //     bounds.extend(golfCourse.coordinates)
-  //     return bounds
-  //   })
-  //   mapRef.fitBounds(bounds)
-  // }
-
   if (mapLoadError) {
     return <div>Map cannot be loaded right now, sorry.</div>
   }
@@ -108,9 +84,7 @@ function CoursesMapView(
   errorLoading,
   errorLoadingMessage
 ) {
-  // let [mapRef, setMapRef] = useState()
-
-  // console.log(golfCourses)
+  let mapRef = null
 
   var iconPin = {
     path:
@@ -123,22 +97,23 @@ function CoursesMapView(
   }
 
   // Store a reference to the google map instance in state
-  // let onLoadHandler = (map) => {
-  //   setMapRef(map)
-  //   if (mapRef && golfCourses != null) {
-  //     const bounds = new window.google.maps.LatLngBounds()
-  //     golfCourses.map((golfCourse) => {
-  //       bounds.extend(golfCourse.coordinates)
-  //       return bounds
-  //     })
-  //     mapRef.fitBounds(bounds)
-  //   }
-  // }
+  let onLoadHandler = (mapRef) => {
+    console.log(golfCourses)
+
+    if (mapRef && golfCourses != null) {
+      const bounds = new window.google.maps.LatLngBounds()
+      golfCourses.map((golfCourse) => {
+        bounds.extend(golfCourse.coordinates)
+        return bounds
+      })
+      mapRef.fitBounds(bounds)
+    }
+  }
 
   // Clear the reference to the google map instance
-  // let onUnmountHandler = () => {
-  //   setMapRef(null)
-  // }
+  let onUnmountHandler = () => {
+    mapRef = null
+  }
 
   let mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
   let mapCenter = {
@@ -176,10 +151,10 @@ function CoursesMapView(
                 disableDefaultUI: true,
                 zoomControl: true,
               }}
-              // onLoad={onLoadHandler}
-              // onUnmount={onUnmountHandler}
+              onLoad={onLoadHandler}
+              onUnmount={onUnmountHandler}
             >
-              {/* {golfCourses
+              {golfCourses
                 ? golfCourses.map((golfCourse) => (
                     <Marker
                       key={golfCourse.name}
@@ -190,7 +165,7 @@ function CoursesMapView(
                       }}
                     />
                   ))
-                : null} */}
+                : null}
 
               {/* {selected ? (
                 <InfoWindow
