@@ -24,7 +24,7 @@
     "express": "^4.17.1",
     "gtfs": "^1.10.4",
     "gtfs-to-geojson": "^0.5.4",
-    "mongoose": "^5.9.28",
+    "mongoose": "^5.10.5",
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",
     "socket.io": "^2.3.0"

@@ -50,6 +50,7 @@ function CoursesMapViewController() {
     const fetchData = async () => {
       try {
         setDataLoading(true)
+
         const result = await axios(url)
 
         setData(result.data)
