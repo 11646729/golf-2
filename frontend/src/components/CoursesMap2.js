@@ -43,6 +43,7 @@ function CoursesMapViewController() {
   const [errorLoadingMessage, setLoadingErrorMessage] = useState([])
 
   // Now fetch golf courses data
+  // MUST BE IN THE useEffect function
   useEffect(() => {
     let url = "http://localhost:5000/api/golf/nearbyGolfCourses"
 
@@ -58,6 +59,7 @@ function CoursesMapViewController() {
       }
       setDataLoading(false)
     }
+
     fetchData()
   }, [])
 
@@ -86,6 +88,8 @@ function CoursesMapView(
 ) {
   let mapRef = null
 
+  // console.log(golfCourses)
+
   var iconPin = {
     path:
       "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
@@ -97,9 +101,8 @@ function CoursesMapView(
   }
 
   // Store a reference to the google map instance in state
-  let onLoadHandler = (mapRef) => {
-    console.log(golfCourses)
-
+  let onLoadHandler = (map) => {
+    mapRef = map
     if (mapRef && golfCourses != null) {
       const bounds = new window.google.maps.LatLngBounds()
       golfCourses.map((golfCourse) => {
