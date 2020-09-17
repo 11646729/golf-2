@@ -22,10 +22,6 @@ import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 
 export default function CoursesMapContainer() {
-  return <CoursesMapViewController />
-}
-
-function CoursesMapViewController() {
   // -----------------------------------------------------
   // STATE HOOKS
   // -----------------------------------------------------
@@ -86,32 +82,26 @@ function CoursesMapViewController() {
     mapRef.fitBounds(bounds)
   }
 
-  if (mapLoadError) {
-    return <div>Map cannot be loaded right now, sorry.</div>
-  }
-
-  return isLoaded ? CoursesMapView() : null
-
   // -----------------------------------------------------
   // VIEW SECTION
   // -----------------------------------------------------
-  function CoursesMapView() {
-    var iconPin = {
-      path:
-        "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
-      fillColor: "#78a32e",
-      fillOpacity: 0.7,
-      scale: 0.03, //to reduce the size of icons
-      strokeColor: "#2f4024",
-      strokeWeight: 1,
-    }
+  var iconPin = {
+    path:
+      "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
+    fillColor: "#78a32e",
+    fillOpacity: 0.7,
+    scale: 0.03, //to reduce the size of icons
+    strokeColor: "#2f4024",
+    strokeWeight: 1,
+  }
 
-    const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
-    const mapCenter = {
-      lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-      lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-    }
+  const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
+  const mapCenter = {
+    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+  }
 
+  const renderMap = () => {
     return (
       <Fragment>
         <CssBaseline />
@@ -203,4 +193,10 @@ function CoursesMapViewController() {
       </Fragment>
     )
   }
+
+  if (mapLoadError) {
+    return <div>Map cannot be loaded right now, sorry.</div>
+  }
+
+  return isLoaded ? renderMap() : null
 }
