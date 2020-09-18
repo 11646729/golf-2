@@ -73,7 +73,7 @@ export default function CoursesMapContainer() {
   }
 
   // Now compute bounds of map to display
-  if (mapRef && golfCourses != null) {
+  if (mapRef != null && golfCourses.length !== 0) {
     const bounds = new window.google.maps.LatLngBounds()
     golfCourses.map((golfCourse) => {
       bounds.extend(golfCourse.coordinates)
