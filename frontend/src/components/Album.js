@@ -5,13 +5,12 @@ import {
   Grid,
   Typography,
   Link,
-  Paper,
   Container,
   makeStyles,
 } from "@material-ui/core"
 import clsx from "clsx"
 
-import WeatherChart from "./WeatherChart"
+import WeatherCard from "./WeatherCard"
 import CoursesCard from "./CoursesCard"
 import CrimesCard from "./CrimesCard"
 import CruiseTableCard from "./CruiseTableCard"
@@ -75,7 +74,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Album() {
   const classes = useStyles()
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
 
   return (
     <Fragment>
@@ -120,10 +118,8 @@ export default function Album() {
         <Container className={classes.cardGrid} maxWidth="xl">
           {/* End hero unit */}
           <Grid container>
-            <Grid item sm={8} style={{ padding: 20 }}>
-              <Paper className={fixedHeightPaper}>
-                <WeatherChart />
-              </Paper>
+            <Grid item sm={4} style={{ padding: 20 }}>
+              <WeatherCard />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <CoursesCard />

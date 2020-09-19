@@ -15,6 +15,7 @@ import EditIcon from "@material-ui/icons/Edit"
 import HomeIcon from "@material-ui/icons/Home"
 import MenuIcon from "@material-ui/icons/Menu"
 
+import WeatherChart from "./components/WeatherChart"
 import CoursesMap from "./components/CoursesMap"
 import CruiseTable from "./components/CruiseTable"
 import CrimesMap from "./components/CrimesMap"
@@ -84,6 +85,7 @@ export default function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="weatherchart" element={<WeatherChartLink />} />
         <Route path="golfcoursesmap" element={<CoursesMapLink />} />
         <Route path="cruisetable" element={<CruiseTableLink />} />
         <Route path="crimesmap" element={<CrimesMapLink />} />
@@ -97,6 +99,10 @@ export default function App() {
 
 function Home() {
   return <Album />
+}
+
+function WeatherChartLink() {
+  return <WeatherChart />
 }
 
 function CoursesMapLink() {
