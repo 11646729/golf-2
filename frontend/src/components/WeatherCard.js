@@ -42,7 +42,7 @@ export default function WeatherCard() {
         <Typography gutterBottom variant="h5" component="h2">
           Outside Temperature
         </Typography>
-        <Typography>This shows the outside temperature at Home</Typography>
+        <Typography>This shows the Outside Temperature at Home</Typography>
       </CardContent>
       <CardActions>
         <Button

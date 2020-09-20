@@ -36,13 +36,13 @@ export default function NearbyCrimesCard() {
       <CardMedia
         className={classes.cardMedia}
         image="/static/images/Crimes.jpg"
-        title="Nearby Crimes"
+        title="Crimes"
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          Nearby Crimes
+          Crime
         </Typography>
-        <Typography>Recent crimes near Home</Typography>
+        <Typography>This shows Crime in the Province</Typography>
       </CardContent>
       <CardActions>
         <Button size="small" color="primary" component={Link} to="/crimesmap">

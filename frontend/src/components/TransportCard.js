@@ -35,14 +35,14 @@ export default function TransportCard() {
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        image="/static/images/TranslinkRailways.jpg"
-        title="Transport Map"
+        image="/static/images/CoachTransport.jpg"
+        title="Bus Transport Map"
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          Transport
+          Bus Transport
         </Typography>
-        <Typography>This shows transport in the Province</Typography>
+        <Typography>This shows Bus Transport in the Province</Typography>
       </CardContent>
       <CardActions>
         <Button

@@ -40,9 +40,9 @@ export default function CoursesCard() {
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          Nearby Golf Courses
+          Golf Courses
         </Typography>
-        <Typography>This shows Golf Courses in Northern Ireland</Typography>
+        <Typography>This shows Golf Courses in the Province</Typography>
       </CardContent>
       <CardActions>
         <Button

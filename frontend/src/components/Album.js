@@ -8,7 +8,6 @@ import {
   Container,
   makeStyles,
 } from "@material-ui/core"
-import clsx from "clsx"
 
 import WeatherCard from "./WeatherCard"
 import CoursesCard from "./CoursesCard"

@@ -40,7 +40,7 @@ export default function GTFSTransportCard() {
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          Hamilton GTFS Transport Test
+          Hamilton GTFS Bus Transport Test
         </Typography>
         <Typography>GTFS Test using local mongodb instance</Typography>
       </CardContent>
