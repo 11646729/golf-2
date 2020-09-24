@@ -27,16 +27,11 @@ const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
 const useStyles = makeStyles({
   paper: {
-    // width: "100%",
     height: 600,
     margingTop: 50,
     marginLeft: 40,
     marginRight: 40,
     marginBottom: 100,
-  },
-  container: {
-    marginTop: 50,
-    maxHeight: 440,
   },
 })
 
@@ -84,7 +79,6 @@ export const WeatherChart = () => {
 
   // Listen for realtime weather data and update the state
   if (initialDataLoaded) {
-    // console.log("Temperature array length: " + temperatureValues.length)
     fetchRTTemperatureData(temperatureValues)
   }
 
@@ -96,7 +90,6 @@ export const WeatherChart = () => {
   const clearDataArray = () => {
     // Error here
     setTemperatureValues((temperatureValues) => [])
-    // setTemperatureValues([])
   }
 
   const formatXAxis = (tickItem) => {
