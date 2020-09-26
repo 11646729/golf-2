@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react"
-import axios from "axios"
+// import axios from "axios"
 import moment from "moment"
 import socketIOClient from "socket.io-client"
 import {
@@ -22,6 +22,7 @@ import {
   ResponsiveContainer,
 } from "recharts"
 import Title from "./Title"
+import get20WeatherDataPoints from "./getWeatherData"
 
 const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
@@ -58,23 +59,25 @@ export const WeatherChart = () => {
 
   // This line initialises the data array
   useEffect(() => {
-    let url = "http://localhost:5000/api/weather/temperatureReadings"
+    // const fetchData = async function () {
+    let isSubscribed = true
+    try {
+      // setLoadingError({})
 
-    const fetchData = async () => {
-      try {
-        setLoadingError({})
-        const result = await axios(url)
-
-        // Only display data for the last 20 values
-        result.data.splice(0, result.data.length - 20)
-
-        setTemperatureValues(result.data)
-        setInitialData(true)
-      } catch (err) {
-        setLoadingError(err)
-      }
+      // await get20WeatherDataPoints().then(setTemperatureValues)
+      get20WeatherDataPoints().then((temperatureValues) => {
+        if (isSubscribed) {
+          setTemperatureValues(temperatureValues)
+        }
+      })
+      // setInitialData(true)
+    } catch (err) {
+      setLoadingError(err)
     }
-    fetchData()
+    return () => (isSubscribed = false)
+    // }
+
+    // fetchData()
   }, [])
 
   // Listen for realtime weather data and update the state
