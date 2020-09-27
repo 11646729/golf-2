@@ -21,6 +21,7 @@ import {
   ResponsiveContainer,
 } from "recharts"
 import Title from "./Title"
+import LoadingTitle from "./LoadingTitle"
 import get20WeatherDataPoints from "./getWeatherData"
 
 const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
@@ -111,6 +112,9 @@ export const WeatherChart = () => {
                   {Object.values(temperatureValues[0])[4]} °F
                 </Title>
               )}
+              {!errorLoading ? (
+                <LoadingTitle>Error Loading...</LoadingTitle>
+              ) : null}
               <Button size="small" color="primary" onClick={clearDataArray}>
                 Clear
               </Button>
