@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Fragment } from "react"
-// import axios from "axios"
 import moment from "moment"
 import socketIOClient from "socket.io-client"
 import {
@@ -42,7 +41,6 @@ export const WeatherChart = () => {
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
-  const [initialDataLoaded, setInitialData] = useState(false)
   const [temperatureValues, setTemperatureValues] = useState([])
   const [errorLoading, setLoadingError] = useState([])
 
@@ -59,29 +57,21 @@ export const WeatherChart = () => {
 
   // This line initialises the data array
   useEffect(() => {
-    // const fetchData = async function () {
     let isSubscribed = true
-    try {
-      // setLoadingError({})
 
-      // await get20WeatherDataPoints().then(setTemperatureValues)
-      get20WeatherDataPoints().then((temperatureValues) => {
-        if (isSubscribed) {
-          setTemperatureValues(temperatureValues)
-        }
-      })
-      // setInitialData(true)
-    } catch (err) {
-      setLoadingError(err)
-    }
+    get20WeatherDataPoints()
+      .then((temperatureValues) =>
+        isSubscribed ? setTemperatureValues(temperatureValues) : null
+      )
+      .catch((errorLoading) =>
+        isSubscribed ? setLoadingError(errorLoading) : null
+      )
+
     return () => (isSubscribed = false)
-    // }
-
-    // fetchData()
   }, [])
 
   // Listen for realtime weather data and update the state
-  if (initialDataLoaded) {
+  if (temperatureValues.length > 0) {
     fetchRTTemperatureData(temperatureValues)
   }
 
