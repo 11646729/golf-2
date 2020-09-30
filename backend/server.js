@@ -18,10 +18,6 @@ const app = express()
 const server = http.createServer(app)
 const io = socketIo(server)
 
-// Heartbeat test code
-io.set("heartbeat timeout", 4000)
-io.set("heartbeat interval", 2000)
-
 const port = process.env.PORT || 5000
 
 // cors settings from https://blog.jscrambler.com/setting-up-5-useful-middlewares-for-an-express-api/
