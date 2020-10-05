@@ -47,16 +47,17 @@ export const WeatherChart = () => {
 
   const fetchRTTemperatureData = (temperatureValues) => {
     socket.on("DataFromDarkSkiesAPI", (currentData) => {
-      setTemperatureValues((temperatureValues) => [
-        ...temperatureValues,
-        currentData.temperature,
-      ])
+      // setTemperatureValues((temperatureValues) => [
+      //   ...temperatureValues,
+      //   currentData.temperature,
+      // ])
     })
     // Only display data for the last 20 values
     temperatureValues.splice(0, temperatureValues.length - 20)
   }
 
   // This line initialises the data array
+  // NB Reset useEffect() with a closure to fix error
   useEffect(() => {
     let isSubscribed = true
 
