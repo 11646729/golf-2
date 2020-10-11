@@ -43,9 +43,7 @@ export default function GTFSTransportMapContainer() {
   // -----------------------------------------------------
   const [busStopsCollection, setBusStopsCollection] = useState([])
   const [busShapesCollection, setBusShapesCollection] = useState([])
-  const [dataLoading, setDataLoading] = useState(false)
-  const [errorLoading, setLoadingError] = useState(false)
-  const [errorLoadingMessage, setLoadingErrorMessage] = useState([])
+  const [errorLoading, setLoadingError] = useState([])
 
   // Fetch bus stops data
   useEffect(() => {
@@ -149,11 +147,8 @@ export default function GTFSTransportMapContainer() {
           <Grid item xs={12} sm={12} style={{ marginTop: 50, marginLeft: 20 }}>
             <div style={{ width: "100%" }}>
               <Title>GTFS Transport Test</Title>
-              {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
-              {errorLoading ? (
-                <LoadingTitle>
-                  Error Loading...{errorLoadingMessage}
-                </LoadingTitle>
+              {!errorLoading ? (
+                <LoadingTitle>Error Loading...</LoadingTitle>
               ) : null}
             </div>
           </Grid>
@@ -162,7 +157,8 @@ export default function GTFSTransportMapContainer() {
               mapContainerStyle={{
                 height: "600px",
                 width: "97%",
-                margin: 20,
+                marginLeft: 20,
+                marginBottom: 50
               }}
               center={mapCenter}
               zoom={mapZoom}
@@ -230,11 +226,8 @@ export default function GTFSTransportMapContainer() {
           <Grid item xs={12} sm={3} style={{ marginTop: 50 }}>
             <div style={{ width: "100%" }}>
               <Title>GTFS Transport Test</Title>
-              {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
-              {errorLoading ? (
-                <LoadingTitle>
-                  Error Loading...{errorLoadingMessage}
-                </LoadingTitle>
+              {!errorLoading ? (
+                <LoadingTitle>Error Loading...</LoadingTitle>
               ) : null}
               <FormControlLabel
                 style={{
