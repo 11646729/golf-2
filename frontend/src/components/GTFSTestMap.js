@@ -32,13 +32,22 @@ const useStyles = makeStyles({
     strokeWeight: 2,
   },
   divStyle: {
-    background: `white`,
-    border: `1px solid #ccc`,
+    background: "white",
+    border: "1px solid #ccc",
     padding: 15,
   },
-  paper: {
-    backgroundColor: 'red'
+  headerSelection: {
+    marginTop: 55,
+    marginLeft: 20,
   },
+  routeSelection: {
+    marginRight: 20,
+    marginBottom: 50,
+    height: "600px",
+    square: true,
+    border: "1px solid #ccc",
+    backgroundColor: "none", //"red",
+  }
 })
 
 export default function GTFSTestMapContainer() {
@@ -151,8 +160,8 @@ export default function GTFSTestMapContainer() {
       <Fragment>
         <CssBaseline />
         <Grid container spacing={1}>
-          <Grid item xs={12} sm={12} style={{ width: "100%", height: "100px" }}>
-            <div style={{ marginTop: 55, marginLeft: 20 }}>
+          <Grid item xs={12} sm={12}>
+            <div className={classes.headerSelection}>
               <Title>GTFS Transport UI Test</Title>
               {!errorLoading ? (
                 <LoadingTitle>Error Loading...</LoadingTitle>
@@ -163,8 +172,9 @@ export default function GTFSTestMapContainer() {
             <GoogleMap
               mapContainerStyle={{
                 height: "600px",
-                width: "97%",
+                border: "1px solid #ccc",
                 marginLeft: 20,
+                marginRight: 10,
                 marginBottom: 50
               }}
               center={mapCenter}
@@ -182,7 +192,7 @@ export default function GTFSTestMapContainer() {
                     <Polyline
                       key={busShape.shapeId}
                       path={busShape.shapeCoordinates}
-                      // options={polylineOptions.polyline1}
+                      // options={classes.polyline1}
                       options={{strokeColor: "#ff2343"}}
                       onClick={() => {
                         setBusShapeSelected(busShape)
@@ -231,16 +241,15 @@ export default function GTFSTestMapContainer() {
               ) : null}
             </GoogleMap>
           </Grid>
-          <Grid item xs={12} sm={3} style={{ marginTop: 50 }}>
-          <Paper className={classes.paper}>
-            <div style={{ width: "100%" }}>
+          <Grid item xs={12} sm={3}>
+          <Paper className={classes.routeSelection}>
               {!errorLoading ? (
                 <LoadingTitle>Error Loading...</LoadingTitle>
               ) : null}
               <FormControlLabel
                 style={{
-                  marginTop: "0px",
-                  marginLeft: "100px",
+                  marginTop: "10px",
+                  marginLeft: "20px",
                 }}
                 control={
                   <Checkbox
@@ -256,7 +265,7 @@ export default function GTFSTestMapContainer() {
               <FormControlLabel
                 style={{
                   marginTop: "0px",
-                  marginLeft: "100px",
+                  marginLeft: "20px",
                 }}
                 control={
                   <Checkbox
@@ -269,7 +278,6 @@ export default function GTFSTestMapContainer() {
                 label="Display Bus Trip Shapes"
                 labelPlacement="end"
               />
-            </div>
             </Paper>
           </Grid>
         </Grid>
