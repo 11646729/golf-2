@@ -225,7 +225,6 @@ export default function GTFSTransportMapContainer() {
           </Grid>
           <Grid item xs={12} sm={3} style={{ marginTop: 50 }}>
             <div style={{ width: "100%" }}>
-              <Title>GTFS Transport Test</Title>
               {!errorLoading ? (
                 <LoadingTitle>Error Loading...</LoadingTitle>
               ) : null}
