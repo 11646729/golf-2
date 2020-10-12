@@ -18,7 +18,7 @@ import LoadingTitle from "./LoadingTitle"
 import getGFTSTransportStopsDataPoints from "./getGFTSTransportStopsData"
 import getGFTSTransportShapesData from "./getGTFSTransportShapesData"
 
-export default function GTFSTransportMapContainer() {
+export default function GTFSTestMapContainer() {
   // -----------------------------------------------------
   // STATE HOOKS
   // -----------------------------------------------------
@@ -146,7 +146,7 @@ export default function GTFSTransportMapContainer() {
         <Grid container spacing={1}>
           <Grid item xs={12} sm={12} style={{ marginTop: 50, marginLeft: 20 }}>
             <div style={{ width: "100%" }}>
-              <Title>GTFS Transport Test</Title>
+              <Title>GTFS Transport UI Test</Title>
               {!errorLoading ? (
                 <LoadingTitle>Error Loading...</LoadingTitle>
               ) : null}

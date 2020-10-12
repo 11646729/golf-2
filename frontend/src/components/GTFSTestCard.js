@@ -49,7 +49,7 @@ export default function GTFSTestCard() {
           size="small"
           color="primary"
           component={Link}
-          to="/gtfstransportmap"
+          to="/gtfstestmap"
         >
           View
         </Button>
