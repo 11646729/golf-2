@@ -19,6 +19,7 @@ import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import getGFTSTransportStopsDataPoints from "./getGFTSTransportStopsData"
 import getGFTSTransportShapesData from "./getGTFSTransportShapesData"
+import SingleRoute from "./SingleRoute"
 
 const useStyles = makeStyles({
   // polyline1: {
@@ -278,6 +279,7 @@ export default function GTFSTestMapContainer() {
                 label="Display Bus Trip Shapes"
                 labelPlacement="end"
               />
+              <SingleRoute />
             </Paper>
           </Grid>
         </Grid>

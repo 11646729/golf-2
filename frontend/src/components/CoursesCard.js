@@ -53,7 +53,7 @@ export default function CoursesCard() {
         >
           View
         </Button>
-      </CardActions>
+        </CardActions>
     </Card>
   )
 }
