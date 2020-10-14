@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react"
+import React, { useState, useEffect } from "react"
 import axios from "axios"
 import {
   GoogleMap,
@@ -146,7 +146,7 @@ export default function TransportMapContainer() {
 
   const renderMap = () => {
     return (
-      <>
+      <div>
         <CssBaseline />
         <Grid container spacing={1}>
           <Container maxWidth="xl">
@@ -248,7 +248,7 @@ export default function TransportMapContainer() {
             </Grid>
           </Container>
         </Grid>
-      </>
+      </div>
     )
   }
 

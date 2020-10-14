@@ -47,7 +47,7 @@ export default function RouteListItem() {
       <Typography
         component="div"
         // display="inline"
-        variant="h7"
+        variant="h6"
         color="primary"
         p={1}
         m={1}
