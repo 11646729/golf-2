@@ -47,7 +47,7 @@ const useStyles = makeStyles({
     height: "600px",
     square: true,
     border: "1px solid #ccc",
-    backgroundColor: "none", //"red",
+    backgroundColor: "none", // "red",
   }
 })
 
@@ -58,7 +58,8 @@ export default function GTFSTestMapContainer() {
   // STATE HOOKS
   // -----------------------------------------------------
   const [mapRef, setMapRef] = useState(null)
-  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
+  const newLocal = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
+  const [mapZoom] = useState(newLocal)
   const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
@@ -85,12 +86,12 @@ export default function GTFSTestMapContainer() {
     let isSubscribed = true
 
     getGFTSTransportStopsDataPoints()
-        .then((busStopsResult) =>
-          isSubscribed ? setBusStopsCollection(busStopsResult) : null
-        )
-        .catch((errorLoading) =>
-          isSubscribed ? setLoadingError(errorLoading) : null
-        )
+      .then((busStopsResult) =>
+        isSubscribed ? setBusStopsCollection(busStopsResult) : null
+      )
+      .catch((errorLoading) =>
+        isSubscribed ? setLoadingError(errorLoading) : null
+      )
 
     return () => (isSubscribed = false)
   }, [])
@@ -114,12 +115,12 @@ export default function GTFSTestMapContainer() {
     let isSubscribed = true
 
     getGFTSTransportShapesData()
-        .then((busShapesResult) =>
-          isSubscribed ? setBusShapesCollection(busShapesResult) : null
-        )
-        .catch((errorLoading) =>
-          isSubscribed ? setLoadingError(errorLoading) : null
-        )
+      .then((busShapesResult) =>
+        isSubscribed ? setBusShapesCollection(busShapesResult) : null
+      )
+      .catch((errorLoading) =>
+        isSubscribed ? setLoadingError(errorLoading) : null
+      )
 
     return () => (isSubscribed = false)
   }, [])
@@ -190,38 +191,38 @@ export default function GTFSTestMapContainer() {
             >
               {busShapesCollection
                 ? busShapesCollection.map((busShape) => (
-                    <Polyline
-                      key={busShape.shapeId}
-                      path={busShape.shapeCoordinates}
-                      // options={classes.polyline1}
-                      options={{strokeColor: "#ff2343"}}
-                      onClick={() => {
-                        setBusShapeSelected(busShape)
-                        console.log(busShape)
-                        // handleBusShapeClick()
-                      }}
-                    />
-                  ))
+                  <Polyline
+                    key={busShape.shapeId}
+                    path={busShape.shapeCoordinates}
+                    // options={classes.polyline1}
+                    options={{ strokeColor: "#ff2343" }}
+                    onClick={() => {
+                      setBusShapeSelected(busShape)
+                      // console.log(busShape)
+                      // handleBusShapeClick()
+                    }}
+                  />
+                ))
                 : null}
               {busStopsCollection && busStopsCheckboxSelected
                 ? busStopsCollection.map((busStop) => (
-                    <Marker
-                      key={busStop.stop_id}
-                      position={{
-                        lat: busStop.stop_lat,
-                        lng: busStop.stop_lon,
-                      }}
-                      icon={{
-                        url:
-                          "http://maps.google.com/mapfiles/ms/icons/blue.png",
-                      }}
-                      onClick={() => {
-                        setBusStopSelected(busStop)
-                        console.log(busStop)
-                        // handleBusStopClick()
-                      }}
-                    />
-                  ))
+                  <Marker
+                    key={busStop.stop_id}
+                    position={{
+                      lat: busStop.stop_lat,
+                      lng: busStop.stop_lon,
+                    }}
+                    icon={{
+                      url:
+                        "http://maps.google.com/mapfiles/ms/icons/blue.png",
+                    }}
+                    onClick={() => {
+                      setBusStopSelected(busStop)
+                      // console.log(busStop)
+                      // handleBusStopClick()
+                    }}
+                  />
+                ))
                 : null}
               {busStopSelected ? (
                 <InfoWindow
@@ -243,7 +244,7 @@ export default function GTFSTestMapContainer() {
             </GoogleMap>
           </Grid>
           <Grid item xs={12} sm={3}>
-          <Paper className={classes.routeSelection}>
+            <Paper className={classes.routeSelection}>
               {!errorLoading ? (
                 <LoadingTitle>Error Loading...</LoadingTitle>
               ) : null}

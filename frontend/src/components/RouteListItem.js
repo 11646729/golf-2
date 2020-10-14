@@ -32,7 +32,7 @@ export default function RouteListItem() {
       <CssBaseline />
       <div className={classes.root}>
         <Icon className="fa fa-check-square" style={{ color: green[500] }} />
-        <Button variant="contained" color="primary">18</Button>
+          <Button variant="contained" color="primary">18</Button>
         <Typography
           component="div"
           display="inline"
