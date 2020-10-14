@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react"
+import React, { useState, useEffect } from "react"
 import {
   GoogleMap,
   useLoadScript,
@@ -161,7 +161,7 @@ export default function GTFSTestMapContainer() {
   // -----------------------------------------------------
   const renderMap = () => {
     return (
-      <Fragment>
+      <div>
         <CssBaseline />
         <Grid container spacing={1}>
           <Grid item xs={12} sm={12}>
@@ -255,14 +255,14 @@ export default function GTFSTestMapContainer() {
                   marginTop: "10px",
                   marginLeft: "20px",
                 }}
-                control={
+                control={(
                   <Checkbox
                     color="primary"
                     checked={busStopsCheckboxSelected}
                     onChange={handleBusStopsCheckboxChange}
                     name="busStopsCheckbox"
                   />
-                }
+                )}
                 label="Display Bus Stops"
                 labelPlacement="end"
               />
@@ -271,14 +271,14 @@ export default function GTFSTestMapContainer() {
                   marginTop: "0px",
                   marginLeft: "20px",
                 }}
-                control={
+                control={(
                   <Checkbox
                     color="primary"
                     checked={busShapesCheckboxSelected}
                     onChange={handleBusShapesCheckboxChange}
                     name="busShapesCheckbox"
                   />
-                }
+                )}
                 label="Display Bus Trip Shapes"
                 labelPlacement="end"
               />
@@ -286,7 +286,7 @@ export default function GTFSTestMapContainer() {
             </Paper>
           </Grid>
         </Grid>
-      </Fragment>
+      </div>
     )
   }
 
