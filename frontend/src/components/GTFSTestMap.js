@@ -58,7 +58,7 @@ export default function GTFSTestMapContainer() {
   // STATE HOOKS
   // -----------------------------------------------------
   const [mapRef, setMapRef] = useState(null)
-  const newLocal = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
+  const newLocal = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
   const [mapZoom] = useState(newLocal)
   const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
@@ -89,11 +89,12 @@ export default function GTFSTestMapContainer() {
       .then((busStopsResult) =>
         isSubscribed ? setBusStopsCollection(busStopsResult) : null
       )
-      .catch((errorLoading) =>
-        isSubscribed ? setLoadingError(errorLoading) : null
+      .catch((error) =>
+        isSubscribed ? setLoadingError(error) : null
       )
 
-    return () => (isSubscribed = false)
+    isSubscribed = false
+    return () => (isSubscribed)
   }, [])
 
   // Now compute bounds of map to display
@@ -118,11 +119,12 @@ export default function GTFSTestMapContainer() {
       .then((busShapesResult) =>
         isSubscribed ? setBusShapesCollection(busShapesResult) : null
       )
-      .catch((errorLoading) =>
-        isSubscribed ? setLoadingError(errorLoading) : null
+      .catch((error) =>
+        isSubscribed ? setLoadingError(error) : null
       )
 
-    return () => (isSubscribed = false)
+    isSubscribed = false
+    return () => (isSubscribed)
   }, [])
 
   // -----------------------------------------------------
