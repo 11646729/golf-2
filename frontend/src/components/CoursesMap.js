@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react"
+import React, { useState, useEffect } from "react"
 import axios from "axios"
 import {
   GoogleMap,
@@ -41,7 +41,7 @@ export default function CoursesMapContainer() {
 
   // Now fetch golf courses data
   useEffect(() => {
-    let url = "http://localhost:5000/api/golf/nearbyGolfCourses"
+    const url = "http://localhost:5000/api/golf/nearbyGolfCourses"
 
     const fetchData = async () => {
       try {
@@ -85,17 +85,17 @@ export default function CoursesMapContainer() {
   // -----------------------------------------------------
   // VIEW SECTION
   // -----------------------------------------------------
-  var iconPin = {
+  const iconPin = {
     path:
       "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
     fillColor: "#78a32e",
     fillOpacity: 0.7,
-    scale: 0.03, //to reduce the size of icons
+    scale: 0.03, // to reduce the size of icons
     strokeColor: "#2f4024",
     strokeWeight: 1,
   }
 
-  const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
+  const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
   const mapCenter = {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
@@ -103,7 +103,7 @@ export default function CoursesMapContainer() {
 
   const renderMap = () => {
     return (
-      <Fragment>
+      <div>
         <CssBaseline />
         <Grid container>
           <Container maxWidth="xl">
@@ -112,7 +112,8 @@ export default function CoursesMapContainer() {
               {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
               {errorLoading ? (
                 <LoadingTitle>
-                  Error Loading...{errorLoadingMessage}
+                  Error Loading...
+                  {errorLoadingMessage}
                 </LoadingTitle>
               ) : null}
             </Grid>
@@ -135,15 +136,15 @@ export default function CoursesMapContainer() {
               >
                 {golfCourses
                   ? golfCourses.map((golfCourse) => (
-                      <Marker
-                        key={golfCourse.name}
-                        position={golfCourse.coordinates}
-                        icon={iconPin}
-                        onClick={() => {
-                          setSelected(golfCourse)
-                        }}
-                      />
-                    ))
+                    <Marker
+                      key={golfCourse.name}
+                      position={golfCourse.coordinates}
+                      icon={iconPin}
+                      onClick={() => {
+                        setSelected(golfCourse)
+                      }}
+                    />
+                  ))
                   : null}
 
                 {selected ? (
@@ -176,7 +177,7 @@ export default function CoursesMapContainer() {
                           size="small"
                           color="primary"
                           component={Link}
-                          // to="/golfcoursesmap"
+                        // to="/golfcoursesmap"
                         >
                           View
                         </Button>
@@ -188,7 +189,7 @@ export default function CoursesMapContainer() {
             </Grid>
           </Container>
         </Grid>
-      </Fragment>
+      </div>
     )
   }
 

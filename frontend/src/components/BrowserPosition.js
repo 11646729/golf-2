@@ -1,4 +1,3 @@
-//import React from "react"
 import { usePosition } from "use-position"
 import { useEffect } from "react"
 import socketIOClient from "socket.io-client"
@@ -11,8 +10,6 @@ export const BrowserPosition = () => {
   useEffect(() => {
     if (latitude && longitude && !error) {
       socket.emit("fetchLocation", { latitude, longitude })
-
-      // console.log(latitude, longitude)
     }
   })
 

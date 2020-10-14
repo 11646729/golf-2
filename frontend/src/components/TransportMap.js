@@ -24,7 +24,7 @@ export default function TransportMapContainer() {
   const { isLoaded, mapLoadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
-  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
+  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10))
   const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
@@ -146,7 +146,7 @@ export default function TransportMapContainer() {
 
   const renderMap = () => {
     return (
-      <Fragment>
+      <>
         <CssBaseline />
         <Grid container spacing={1}>
           <Container maxWidth="xl">
@@ -155,7 +155,8 @@ export default function TransportMapContainer() {
               {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
               {errorLoading ? (
                 <LoadingTitle>
-                  Error Loading...{errorLoadingMessage}
+                  Error Loading...
+                  {errorLoadingMessage}
                 </LoadingTitle>
               ) : null}
               <FormControlLabel
@@ -164,14 +165,14 @@ export default function TransportMapContainer() {
                   marginTop: "0px",
                   marginLeft: "100px",
                 }}
-                control={
+                control={(
                   <Checkbox
                     color="primary"
                     checked={busStopsCheckboxSelected}
                     onChange={handleBusStopsCheckboxChange}
                     name="homeCheckbox"
                   />
-                }
+                )}
                 label="Display Bus Stops"
                 labelPlacement="end"
               />
@@ -180,14 +181,14 @@ export default function TransportMapContainer() {
                   marginTop: "0px",
                   marginLeft: "100px",
                 }}
-                control={
+                control={(
                   <Checkbox
                     color="primary"
                     checked={busShapesCheckboxSelected}
                     onChange={handleBusShapesCheckboxChange}
                     name="busShapesCheckbox"
                   />
-                }
+                )}
                 label="Display Bus Trip Shapes"
                 labelPlacement="end"
               />
@@ -211,43 +212,43 @@ export default function TransportMapContainer() {
               >
                 {busShapesCollection
                   ? busShapesCollection.map((busShape) => (
-                      <Polyline
-                        key={busShape.shapeId}
-                        path={busShape.shapeCoordinates}
-                        options={polylineOptions.polyline1}
-                        onClick={() => {
-                          // setBusShapeSelected(busShape)
-                          console.log(busShape)
-                          // handleBusShapeClick()
-                        }}
-                      />
-                    ))
+                    <Polyline
+                      key={busShape.shapeId}
+                      path={busShape.shapeCoordinates}
+                      options={polylineOptions.polyline1}
+                      onClick={() => {
+                        // setBusShapeSelected(busShape)
+                        // console.log(busShape)
+                        // handleBusShapeClick()
+                      }}
+                    />
+                  ))
                   : null}
                 {busStopsCollection && busStopsCheckboxSelected
                   ? busStopsCollection.map((busStop) => (
-                      <Marker
-                        key={busStop.stop_id}
-                        position={{
-                          lat: busStop.stop_lat,
-                          lng: busStop.stop_lon,
-                        }}
-                        icon={{
-                          url:
-                            "http://maps.google.com/mapfiles/ms/icons/blue.png",
-                        }}
-                        onClick={() => {
-                          // setBusStopSelected(busStop)
-                          console.log(busStop)
-                          // handleBusStopClick()
-                        }}
-                      />
-                    ))
+                    <Marker
+                      key={busStop.stop_id}
+                      position={{
+                        lat: busStop.stop_lat,
+                        lng: busStop.stop_lon,
+                      }}
+                      icon={{
+                        url:
+                          "http://maps.google.com/mapfiles/ms/icons/blue.png",
+                      }}
+                      onClick={() => {
+                        // setBusStopSelected(busStop)
+                        // console.log(busStop)
+                        // handleBusStopClick()
+                      }}
+                    />
+                  ))
                   : null}
               </GoogleMap>
             </Grid>
           </Container>
         </Grid>
-      </Fragment>
+      </>
     )
   }
 

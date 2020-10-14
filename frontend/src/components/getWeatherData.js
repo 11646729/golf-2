@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export default async function get20WeatherDataPoints() {
-  let url = "http://localhost:5000/api/weather/temperatureReadings"
+  const url = "http://localhost:5000/api/weather/temperatureReadings"
 
   const result = await axios(url)
 

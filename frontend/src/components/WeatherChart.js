@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react"
+import React, { useState, useEffect } from "react"
 import moment from "moment"
 import socketIOClient from "socket.io-client"
 import {
@@ -100,7 +100,7 @@ export const WeatherChart = () => {
   // VIEW SECTION
   // -----------------------------------------------------
   return (
-    <Fragment>
+    <div>
       <Paper className={classes.paper}>
         <CssBaseline />
         <Grid container>
@@ -109,11 +109,11 @@ export const WeatherChart = () => {
               {temperatureValues.length < 1 ? (
                 <Title>Home Temperature is loading...</Title>
               ) : (
-                <Title>
-                  Home Temperature is: &nbsp;
-                  {Object.values(temperatureValues[0])[4]} °F
-                </Title>
-              )}
+                  <Title>
+                    Home Temperature is: &nbsp;
+                    {Object.values(temperatureValues[0])[4]} °F
+                  </Title>
+                )}
               {!errorLoading ? (
                 <LoadingTitle>Error Loading...</LoadingTitle>
               ) : null}
@@ -177,7 +177,7 @@ export const WeatherChart = () => {
           </Container>
         </Grid>
       </Paper>
-    </Fragment>
+    </div>
   )
 }
 

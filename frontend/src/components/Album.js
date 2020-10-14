@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React from "react"
 import {
   Button,
   CssBaseline,
@@ -24,9 +24,9 @@ function Copyright() {
       <Link color="inherit" href="https://material-ui.com/">
         My Website
       </Link>
-      {"/"}
+      {/* {"/"} */}
       {new Date().getFullYear()}
-      {"."}
+      {/* {"."} */}
     </Typography>
   )
 }
@@ -76,7 +76,7 @@ export default function Album() {
   const classes = useStyles()
 
   return (
-    <Fragment>
+    <div>
       <CssBaseline />
       <main>
         {/* Hero unit */}
@@ -158,6 +158,6 @@ export default function Album() {
         <Copyright />
       </footer>
       {/* End footer */}
-    </Fragment>
+    </div>
   )
 }

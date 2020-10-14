@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import axios from "axios"
 import GoogleMapReact from "google-map-react"
 import useSupercluster from "use-supercluster"
@@ -24,7 +24,7 @@ export default function CrimesMapContainer() {
   const mapRef = useRef()
   const [mapBounds, setBounds] = useState(null)
   const [mapZoom, setZoom] = useState(
-    parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
+    parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
   )
   const [mapCenter, setMapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
@@ -69,10 +69,8 @@ export default function CrimesMapContainer() {
 
     if (event.target.checked === false) {
       setDateInfo(
-        "&date=" +
-          moment(selectedDate).format("YYYY") +
-          "-" +
-          moment(selectedDate).format("MM")
+        `&date=${moment(selectedDate).format("YYYY")
+        }-${moment(selectedDate).format("MM")}`
       )
     } else {
       setDateInfo("")
@@ -82,10 +80,8 @@ export default function CrimesMapContainer() {
 
   const handleDateInfoChange = (val) => {
     setDateInfo(
-      "&date=" +
-        moment(val._d).format("YYYY") +
-        "-" +
-        moment(val._d).format("MM")
+      `&date=${moment(val._d).format("YYYY")
+      }-${moment(val._d).format("MM")}`
     )
   }
 
@@ -115,13 +111,11 @@ export default function CrimesMapContainer() {
   }
 
   // build Crimes Url - set dateInfo to "" to fetch most recent data
-  let url =
-    process.env.REACT_APP_CRIMES_ENDPOINT +
-    "?lat=" +
-    mapCenter.lat +
-    "&lng=" +
-    mapCenter.lng +
-    dateInfo
+  const url =
+    `${process.env.REACT_APP_CRIMES_ENDPOINT
+    }?lat=${mapCenter.lat
+    }&lng=${mapCenter.lng
+    }${dateInfo}`
 
   // Now fetch crimes data
   useEffect(() => {
@@ -162,12 +156,11 @@ export default function CrimesMapContainer() {
   }))
 
   if (reformattedCrimes.length > 0 && selectedDate === "") {
-    setDateInfo("&date=" + reformattedCrimes[0].properties.month)
+    setDateInfo(`&date=${reformattedCrimes[0].properties.month}`)
     setLatestDateInfoAvailable(reformattedCrimes[0].properties.month)
     setDateChange(
-      moment(reformattedCrimes[0].properties.month).format("YYYY") +
-        "-" +
-        moment(reformattedCrimes[0].properties.month).format("MM")
+      `${moment(reformattedCrimes[0].properties.month).format("YYYY")
+      }-${moment(reformattedCrimes[0].properties.month).format("MM")}`
     )
   }
 
@@ -180,7 +173,7 @@ export default function CrimesMapContainer() {
   })
 
   return (
-    <Fragment>
+    <div>
       <CssBaseline />
       <Grid container spacing={1}>
         <Container maxWidth="xl">
@@ -192,27 +185,27 @@ export default function CrimesMapContainer() {
             ) : null}
             <FormControlLabel
               style={styles.displayHomeLocationCheckBox}
-              control={
+              control={(
                 <Checkbox
                   color="primary"
                   checked={homeCheckbox}
                   onChange={handleHomeCheckboxChange}
                   name="homeCheckbox"
                 />
-              }
+              )}
               label="Home Location"
               labelPlacement="end"
             />
             <FormControlLabel
               style={styles.displayLatestDataCheckBox}
-              control={
+              control={(
                 <Checkbox
                   color="primary"
                   checked={latestDataCheckbox}
                   onChange={handleLatestDataCheckboxChange}
                   name="latestDataCheckbox"
                 />
-              }
+              )}
               label="Latest Data"
               labelPlacement="end"
             />
@@ -279,12 +272,10 @@ export default function CrimesMapContainer() {
                         <div
                           className="cluster-marker"
                           style={{
-                            width: `${
-                              10 + (pointCount / reformattedCrimes.length) * 20
-                            }px`,
-                            height: `${
-                              10 + (pointCount / reformattedCrimes.length) * 20
-                            }px`,
+                            width: `${10 + (pointCount / reformattedCrimes.length) * 20
+                              }px`,
+                            height: `${10 + (pointCount / reformattedCrimes.length) * 20
+                              }px`,
                           }}
                           onClick={() => {
                             const expansionZoom = Math.min(
@@ -305,7 +296,7 @@ export default function CrimesMapContainer() {
                   }
 
                   return (
-                    <Fragment>
+                    <div>
                       <Marker
                         key={`crime-${cluster.properties.crimeId}`}
                         lat={latitude}
@@ -313,7 +304,7 @@ export default function CrimesMapContainer() {
                       >
                         <button
                           className="crime-marker"
-                          // onClick={() => markerClicked(cluster)}
+                        // onClick={() => markerClicked(cluster)}
                         >
                           <img
                             src="/static/images/Custody.svg"
@@ -324,7 +315,7 @@ export default function CrimesMapContainer() {
                           Category: {cluster.properties.category}
                         </div> */}
                       </Marker>
-                    </Fragment>
+                    </div>
                   )
                 })}
               </GoogleMapReact>
@@ -332,6 +323,6 @@ export default function CrimesMapContainer() {
           </Grid>
         </Container>
       </Grid>
-    </Fragment>
+    </div>
   )
 }

@@ -104,7 +104,7 @@ export default function CruiseTableCard() {
     }
   }, [])
 
-  console.log(portArrivals[0])
+  // console.log(portArrivals[0])
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)

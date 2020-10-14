@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react"
+import React, { useState, useEffect } from "react"
 import {
   GoogleMap,
   useLoadScript,
@@ -23,7 +23,7 @@ export default function GTFSTransportMapContainer() {
   // STATE HOOKS
   // -----------------------------------------------------
   const [mapRef, setMapRef] = useState(null)
-  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
+  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10))
   const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
@@ -50,14 +50,15 @@ export default function GTFSTransportMapContainer() {
     let isSubscribed = true
 
     getGFTSTransportStopsDataPoints()
-        .then((busStopsResult) =>
-          isSubscribed ? setBusStopsCollection(busStopsResult) : null
-        )
-        .catch((errorLoading) =>
-          isSubscribed ? setLoadingError(errorLoading) : null
-        )
+      .then((busStopsResult) =>
+        isSubscribed ? setBusStopsCollection(busStopsResult) : null
+      )
+      .catch((error) =>
+        isSubscribed ? setLoadingError(error) : null
+      )
 
-    return () => (isSubscribed = false)
+    isSubscribed = false
+    return () => (isSubscribed)
   }, [])
 
   // Now compute bounds of map to display
@@ -79,14 +80,15 @@ export default function GTFSTransportMapContainer() {
     let isSubscribed = true
 
     getGFTSTransportShapesData()
-        .then((busShapesResult) =>
-          isSubscribed ? setBusShapesCollection(busShapesResult) : null
-        )
-        .catch((errorLoading) =>
-          isSubscribed ? setLoadingError(errorLoading) : null
-        )
+      .then((busShapesResult) =>
+        isSubscribed ? setBusShapesCollection(busShapesResult) : null
+      )
+      .catch((error) =>
+        isSubscribed ? setLoadingError(error) : null
+      )
 
-    return () => (isSubscribed = false)
+    isSubscribed = false
+    return () => (isSubscribed)
   }, [])
 
   // -----------------------------------------------------
@@ -141,7 +143,7 @@ export default function GTFSTransportMapContainer() {
 
   const renderMap = () => {
     return (
-      <Fragment>
+      <div>
         <CssBaseline />
         <Grid container spacing={1}>
           <Grid item xs={12} sm={12} style={{ marginTop: 50, marginLeft: 20 }}>
@@ -172,37 +174,37 @@ export default function GTFSTransportMapContainer() {
             >
               {busShapesCollection
                 ? busShapesCollection.map((busShape) => (
-                    <Polyline
-                      key={busShape.shapeId}
-                      path={busShape.shapeCoordinates}
-                      options={polylineOptions.polyline1}
-                      onClick={() => {
-                        setBusShapeSelected(busShape)
-                        console.log(busShape)
-                        // handleBusShapeClick()
-                      }}
-                    />
-                  ))
+                  <Polyline
+                    key={busShape.shapeId}
+                    path={busShape.shapeCoordinates}
+                    options={polylineOptions.polyline1}
+                    onClick={() => {
+                      setBusShapeSelected(busShape)
+                      // console.log(busShape)
+                      // handleBusShapeClick()
+                    }}
+                  />
+                ))
                 : null}
               {busStopsCollection && busStopsCheckboxSelected
                 ? busStopsCollection.map((busStop) => (
-                    <Marker
-                      key={busStop.stop_id}
-                      position={{
-                        lat: busStop.stop_lat,
-                        lng: busStop.stop_lon,
-                      }}
-                      icon={{
-                        url:
-                          "http://maps.google.com/mapfiles/ms/icons/blue.png",
-                      }}
-                      onClick={() => {
-                        setBusStopSelected(busStop)
-                        console.log(busStop)
-                        // handleBusStopClick()
-                      }}
-                    />
-                  ))
+                  <Marker
+                    key={busStop.stop_id}
+                    position={{
+                      lat: busStop.stop_lat,
+                      lng: busStop.stop_lon,
+                    }}
+                    icon={{
+                      url:
+                        "http://maps.google.com/mapfiles/ms/icons/blue.png",
+                    }}
+                    onClick={() => {
+                      setBusStopSelected(busStop)
+                      // console.log(busStop)
+                      // handleBusStopClick()
+                    }}
+                  />
+                ))
                 : null}
               {busStopSelected ? (
                 <InfoWindow
@@ -233,14 +235,14 @@ export default function GTFSTransportMapContainer() {
                   marginTop: "0px",
                   marginLeft: "100px",
                 }}
-                control={
+                control={(
                   <Checkbox
                     color="primary"
                     checked={busStopsCheckboxSelected}
                     onChange={handleBusStopsCheckboxChange}
                     name="busStopsCheckbox"
                   />
-                }
+                )}
                 label="Display Bus Stops"
                 labelPlacement="end"
               />
@@ -249,21 +251,21 @@ export default function GTFSTransportMapContainer() {
                   marginTop: "0px",
                   marginLeft: "100px",
                 }}
-                control={
+                control={(
                   <Checkbox
                     color="primary"
                     checked={busShapesCheckboxSelected}
                     onChange={handleBusShapesCheckboxChange}
                     name="busShapesCheckbox"
                   />
-                }
+                )}
                 label="Display Bus Trip Shapes"
                 labelPlacement="end"
               />
             </div>
           </Grid>
         </Grid>
-      </Fragment>
+      </div>
     )
   }
 

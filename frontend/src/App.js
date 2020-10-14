@@ -1,5 +1,4 @@
 import React from "react"
-import Album from "./components/Album"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { makeStyles } from "@material-ui/core/styles"
 import {
@@ -15,6 +14,7 @@ import EditIcon from "@material-ui/icons/Edit"
 import HomeIcon from "@material-ui/icons/Home"
 import MenuIcon from "@material-ui/icons/Menu"
 
+import Album from "./components/Album"
 import WeatherChart from "./components/WeatherChart"
 import CoursesMap from "./components/CoursesMap"
 import CruiseTable from "./components/CruiseTable"
@@ -65,7 +65,7 @@ export default function App() {
               // linkButton="true"
               href="/"
             >
-              {<HomeIcon />}
+              <HomeIcon />
             </IconButton>
             <Typography variant="h6" color="inherit" noWrap>
               My Website
