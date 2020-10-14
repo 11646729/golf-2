@@ -14,8 +14,8 @@ export async function importAndReduceTranslinkShapeData() {
 
   let i = startloop
   do {
-    let oldcoords = rawjson.features[i].geometry.coordinates
-    let oldcoordslength = oldcoords.length
+    // let oldcoords = rawjson.features[i].geometry.coordinates
+    // let oldcoordslength = oldcoords.length
 
     // let convertedcoords = await decodeInnerArray(oldcoords, oldcoordslength)
 

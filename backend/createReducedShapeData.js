@@ -5,6 +5,17 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 export const createReducedShapeData = async () => {
   console.log("Creating ReducedShape data")
 
+  // Step 3: Sort all the records by increasing shape_pt_sequence
+  function compare(a, b) {
+    if (a.shape_pt_sequence < b.shape_pt_sequence) {
+      return -1
+    }
+    if (a.shape_pt_sequence > b.shape_pt_sequence) {
+      return 1
+    }
+    return 0
+  }
+
   // Step 1: Fetch all data from shapes collection
   // and store the number of unique shape_id fields
   // in tempShapeId collection
@@ -35,15 +46,15 @@ export const createReducedShapeData = async () => {
         } while (k < data.length)
 
         // Step 3: Sort all the records by increasing shape_pt_sequence
-        function compare(a, b) {
-          if (a.shape_pt_sequence < b.shape_pt_sequence) {
-            return -1
-          }
-          if (a.shape_pt_sequence > b.shape_pt_sequence) {
-            return 1
-          }
-          return 0
-        }
+        // function compare(a, b) {
+        //   if (a.shape_pt_sequence < b.shape_pt_sequence) {
+        //     return -1
+        //   }
+        //   if (a.shape_pt_sequence > b.shape_pt_sequence) {
+        //     return 1
+        //   }
+        //   return 0
+        // }
 
         unsortedShape_id.sort(compare)
 
