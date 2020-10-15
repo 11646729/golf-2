@@ -57,8 +57,9 @@ export default function GTFSTransportMapContainer() {
         isSubscribed ? setLoadingError(error) : null
       )
 
-    isSubscribed = false
-    return () => (isSubscribed)
+    // isSubscribed = false
+    // return isSubscribed
+    return () => (isSubscribed = false)
   }, [])
 
   // Now compute bounds of map to display
@@ -87,8 +88,9 @@ export default function GTFSTransportMapContainer() {
         isSubscribed ? setLoadingError(error) : null
       )
 
-    isSubscribed = false
-    return () => (isSubscribed)
+    // isSubscribed = false
+    // return isSubscribed
+    return () => (isSubscribed = false)
   }, [])
 
   // -----------------------------------------------------

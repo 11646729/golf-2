@@ -93,8 +93,9 @@ export default function GTFSTestMapContainer() {
         isSubscribed ? setLoadingError(error) : null
       )
 
-    isSubscribed = false
-    return () => (isSubscribed)
+    // isSubscribed = false
+    // return isSubscribed
+    return () => (isSubscribed = false)
   }, [])
 
   // Now compute bounds of map to display
@@ -123,9 +124,14 @@ export default function GTFSTestMapContainer() {
         isSubscribed ? setLoadingError(error) : null
       )
 
-    isSubscribed = false
-    return () => (isSubscribed)
+    // isSubscribed = false
+    // return isSubscribed
+    return () => (isSubscribed = false)
   }, [])
+
+  // if (busShapesCollection.length > 0) {
+  //   console.log(busShapesCollection)
+  // }
 
   // -----------------------------------------------------
   // EVENT HANDLERS SECTION
