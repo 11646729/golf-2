@@ -88,13 +88,9 @@ export const WeatherChart = () => {
     setTemperatureValues((temperatureValues) => [])
   }
 
-  const formatXAxis = (tickItem) => {
-    return moment.unix(tickItem).format("HH:mm MMM Do")
-  }
+  const formatXAxis = (tickItem) => moment.unix(tickItem).format("HH:mm MMM Do")
 
-  const formatYAxis = (tickItem) => {
-    return +tickItem.toFixed(2)
-  }
+  const formatYAxis = (tickItem) => +tickItem.toFixed(2)
 
   // -----------------------------------------------------
   // VIEW SECTION
@@ -109,11 +105,11 @@ export const WeatherChart = () => {
               {temperatureValues.length < 1 ? (
                 <Title>Home Temperature is loading...</Title>
               ) : (
-                  <Title>
-                    Home Temperature is: &nbsp;
-                    {Object.values(temperatureValues[0])[4]} °F
-                  </Title>
-                )}
+                <Title>
+                  Home Temperature is: &nbsp;
+                  {Object.values(temperatureValues[0])[4]} °F
+                </Title>
+              )}
               {!errorLoading ? (
                 <LoadingTitle>Error Loading...</LoadingTitle>
               ) : null}

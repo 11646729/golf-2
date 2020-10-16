@@ -1,5 +1,5 @@
 import React from "react"
-import { loadCSS } from 'fg-loadcss'
+import { loadCSS } from "fg-loadcss"
 import {
   CssBaseline,
   Typography,
@@ -11,7 +11,7 @@ import { green } from "@material-ui/core/colors"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    '& > .fa': {
+    "& > .fa": {
       margin: theme.spacing(2),
     },
   },
@@ -22,17 +22,19 @@ export default function RouteListItem() {
 
   React.useEffect(() => {
     loadCSS(
-      'https://use.fontawesome.com/releases/v5.12.0/css/all.css',
-      document.querySelector('#font-awesome-css'),
-    );
-  }, []);
+      "https://use.fontawesome.com/releases/v5.12.0/css/all.css",
+      document.querySelector("#font-awesome-css")
+    )
+  }, [])
 
   return (
     <div>
       <CssBaseline />
       <div className={classes.root}>
         <Icon className="fa fa-check-square" style={{ color: green[500] }} />
-        <Button variant="contained" color="primary">18</Button>
+        <Button variant="contained" color="primary">
+          18
+        </Button>
         <Typography
           component="div"
           display="inline"
@@ -57,4 +59,3 @@ export default function RouteListItem() {
     </div>
   )
 }
-

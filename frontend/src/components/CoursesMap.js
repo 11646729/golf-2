@@ -101,41 +101,40 @@ export default function CoursesMapContainer() {
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   }
 
-  const renderMap = () => {
-    return (
-      <div>
-        <CssBaseline />
-        <Grid container>
-          <Container maxWidth="xl">
-            <Grid item xs={12} sm={12} style={{ marginTop: 50, width: "100%" }}>
-              <Title>Nearby Golf Courses</Title>
-              {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
-              {errorLoading ? (
-                <LoadingTitle>
-                  Error Loading...
-                  {errorLoadingMessage}
-                </LoadingTitle>
-              ) : null}
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <GoogleMap
-                mapContainerStyle={{
-                  height: "600px",
-                  width: "97%",
-                  margin: 20,
-                }}
-                center={mapCenter}
-                zoom={mapZoom}
-                options={{
-                  // mapTypeId: "hybrid",
-                  disableDefaultUI: true,
-                  zoomControl: true,
-                }}
-                onLoad={onLoadHandler}
-                onUnmount={onUnmountHandler}
-              >
-                {golfCourses
-                  ? golfCourses.map((golfCourse) => (
+  const renderMap = () => (
+    <div>
+      <CssBaseline />
+      <Grid container>
+        <Container maxWidth="xl">
+          <Grid item xs={12} sm={12} style={{ marginTop: 50, width: "100%" }}>
+            <Title>Nearby Golf Courses</Title>
+            {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
+            {errorLoading ? (
+              <LoadingTitle>
+                Error Loading...
+                {errorLoadingMessage}
+              </LoadingTitle>
+            ) : null}
+          </Grid>
+          <Grid item xs={12} sm={12}>
+            <GoogleMap
+              mapContainerStyle={{
+                height: "600px",
+                width: "97%",
+                margin: 20,
+              }}
+              center={mapCenter}
+              zoom={mapZoom}
+              options={{
+                // mapTypeId: "hybrid",
+                disableDefaultUI: true,
+                zoomControl: true,
+              }}
+              onLoad={onLoadHandler}
+              onUnmount={onUnmountHandler}
+            >
+              {golfCourses
+                ? golfCourses.map((golfCourse) => (
                     <Marker
                       key={golfCourse.name}
                       position={golfCourse.coordinates}
@@ -145,53 +144,52 @@ export default function CoursesMapContainer() {
                       }}
                     />
                   ))
-                  : null}
+                : null}
 
-                {selected ? (
-                  <InfoWindow
-                    position={selected.coordinates}
-                    onCloseClick={() => {
-                      setSelected(null)
-                    }}
-                  >
-                    <Card>
-                      <CardMedia
-                        style={{
-                          height: 0,
-                          paddingTop: "40%",
-                          marginTop: "30",
-                        }}
-                        image={selected.photoUrl}
-                        title={selected.photoTitle}
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {selected.name}
-                        </Typography>
-                        <Typography component="p">
-                          {selected.description}
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button
-                          size="small"
-                          color="primary"
-                          component={Link}
+              {selected ? (
+                <InfoWindow
+                  position={selected.coordinates}
+                  onCloseClick={() => {
+                    setSelected(null)
+                  }}
+                >
+                  <Card>
+                    <CardMedia
+                      style={{
+                        height: 0,
+                        paddingTop: "40%",
+                        marginTop: "30",
+                      }}
+                      image={selected.photoUrl}
+                      title={selected.photoTitle}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {selected.name}
+                      </Typography>
+                      <Typography component="p">
+                        {selected.description}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button
+                        size="small"
+                        color="primary"
+                        component={Link}
                         // to="/golfcoursesmap"
-                        >
-                          View
-                        </Button>
-                      </CardActions>
-                    </Card>
-                  </InfoWindow>
-                ) : null}
-              </GoogleMap>
-            </Grid>
-          </Container>
-        </Grid>
-      </div>
-    )
-  }
+                      >
+                        View
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </InfoWindow>
+              ) : null}
+            </GoogleMap>
+          </Grid>
+        </Container>
+      </Grid>
+    </div>
+  )
 
   if (mapLoadError) {
     return <div>Map cannot be loaded right now, sorry.</div>

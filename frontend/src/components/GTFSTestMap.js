@@ -48,7 +48,7 @@ const useStyles = makeStyles({
     square: true,
     border: "1px solid #ccc",
     backgroundColor: "none", // "red",
-  }
+  },
 })
 
 export default function GTFSTestMapContainer() {
@@ -89,9 +89,7 @@ export default function GTFSTestMapContainer() {
       .then((busStopsResult) =>
         isSubscribed ? setBusStopsCollection(busStopsResult) : null
       )
-      .catch((error) =>
-        isSubscribed ? setLoadingError(error) : null
-      )
+      .catch((error) => (isSubscribed ? setLoadingError(error) : null))
 
     // isSubscribed = false
     // return isSubscribed
@@ -120,9 +118,7 @@ export default function GTFSTestMapContainer() {
       .then((busShapesResult) =>
         isSubscribed ? setBusShapesCollection(busShapesResult) : null
       )
-      .catch((error) =>
-        isSubscribed ? setLoadingError(error) : null
-      )
+      .catch((error) => (isSubscribed ? setLoadingError(error) : null))
 
     // isSubscribed = false
     // return isSubscribed
@@ -165,40 +161,39 @@ export default function GTFSTestMapContainer() {
   // -----------------------------------------------------
   // VIEW SECTION
   // -----------------------------------------------------
-  const renderMap = () => {
-    return (
-      <div>
-        <CssBaseline />
-        <Grid container spacing={1}>
-          <Grid item xs={12} sm={12}>
-            <div className={classes.headerSelection}>
-              <Title>GTFS Transport UI Test</Title>
-              {!errorLoading ? (
-                <LoadingTitle>Error Loading...</LoadingTitle>
-              ) : null}
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={9}>
-            <GoogleMap
-              mapContainerStyle={{
-                height: "600px",
-                border: "1px solid #ccc",
-                marginLeft: 20,
-                marginRight: 10,
-                marginBottom: 50
-              }}
-              center={mapCenter}
-              zoom={mapZoom}
-              options={{
-                // mapTypeId: "hybrid",
-                disableDefaultUI: true,
-                zoomControl: true,
-              }}
-              onLoad={onLoadHandler}
-              onUnmount={onUnmountHandler}
-            >
-              {busShapesCollection
-                ? busShapesCollection.map((busShape) => (
+  const renderMap = () => (
+    <div>
+      <CssBaseline />
+      <Grid container spacing={1}>
+        <Grid item xs={12} sm={12}>
+          <div className={classes.headerSelection}>
+            <Title>GTFS Transport UI Test</Title>
+            {!errorLoading ? (
+              <LoadingTitle>Error Loading...</LoadingTitle>
+            ) : null}
+          </div>
+        </Grid>
+        <Grid item xs={12} sm={9}>
+          <GoogleMap
+            mapContainerStyle={{
+              height: "600px",
+              border: "1px solid #ccc",
+              marginLeft: 20,
+              marginRight: 10,
+              marginBottom: 50,
+            }}
+            center={mapCenter}
+            zoom={mapZoom}
+            options={{
+              // mapTypeId: "hybrid",
+              disableDefaultUI: true,
+              zoomControl: true,
+            }}
+            onLoad={onLoadHandler}
+            onUnmount={onUnmountHandler}
+          >
+            {busShapesCollection
+              ? busShapesCollection.map((busShape) => (
                   <Polyline
                     key={busShape.shapeId}
                     path={busShape.shapeCoordinates}
@@ -211,9 +206,9 @@ export default function GTFSTestMapContainer() {
                     }}
                   />
                 ))
-                : null}
-              {busStopsCollection && busStopsCheckboxSelected
-                ? busStopsCollection.map((busStop) => (
+              : null}
+            {busStopsCollection && busStopsCheckboxSelected
+              ? busStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stop_id}
                     position={{
@@ -221,8 +216,7 @@ export default function GTFSTestMapContainer() {
                       lng: busStop.stop_lon,
                     }}
                     icon={{
-                      url:
-                        "http://maps.google.com/mapfiles/ms/icons/blue.png",
+                      url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
                     }}
                     onClick={() => {
                       setBusStopSelected(busStop)
@@ -231,70 +225,69 @@ export default function GTFSTestMapContainer() {
                     }}
                   />
                 ))
-                : null}
-              {busStopSelected ? (
-                <InfoWindow
-                  position={{
-                    lat: busStopSelected.stop_lat,
-                    lng: busStopSelected.stop_lon,
-                  }}
-                  onCloseClick={() => {
-                    setBusStopSelected(null)
-                  }}
-                >
-                  <div style={classes.divStyle}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {busStopSelected.stop_name}
-                    </Typography>
-                  </div>
-                </InfoWindow>
-              ) : null}
-            </GoogleMap>
-          </Grid>
-          <Grid item xs={12} sm={3}>
-            <Paper className={classes.routeSelection}>
-              {!errorLoading ? (
-                <LoadingTitle>Error Loading...</LoadingTitle>
-              ) : null}
-              <FormControlLabel
-                style={{
-                  marginTop: "10px",
-                  marginLeft: "20px",
+              : null}
+            {busStopSelected ? (
+              <InfoWindow
+                position={{
+                  lat: busStopSelected.stop_lat,
+                  lng: busStopSelected.stop_lon,
                 }}
-                control={(
-                  <Checkbox
-                    color="primary"
-                    checked={busStopsCheckboxSelected}
-                    onChange={handleBusStopsCheckboxChange}
-                    name="busStopsCheckbox"
-                  />
-                )}
-                label="Display Bus Stops"
-                labelPlacement="end"
-              />
-              <FormControlLabel
-                style={{
-                  marginTop: "0px",
-                  marginLeft: "20px",
+                onCloseClick={() => {
+                  setBusStopSelected(null)
                 }}
-                control={(
-                  <Checkbox
-                    color="primary"
-                    checked={busShapesCheckboxSelected}
-                    onChange={handleBusShapesCheckboxChange}
-                    name="busShapesCheckbox"
-                  />
-                )}
-                label="Display Bus Trip Shapes"
-                labelPlacement="end"
-              />
-              <RouteListItem />
-            </Paper>
-          </Grid>
+              >
+                <div style={classes.divStyle}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {busStopSelected.stop_name}
+                  </Typography>
+                </div>
+              </InfoWindow>
+            ) : null}
+          </GoogleMap>
         </Grid>
-      </div>
-    )
-  }
+        <Grid item xs={12} sm={3}>
+          <Paper className={classes.routeSelection}>
+            {!errorLoading ? (
+              <LoadingTitle>Error Loading...</LoadingTitle>
+            ) : null}
+            <FormControlLabel
+              style={{
+                marginTop: "10px",
+                marginLeft: "20px",
+              }}
+              control={
+                <Checkbox
+                  color="primary"
+                  checked={busStopsCheckboxSelected}
+                  onChange={handleBusStopsCheckboxChange}
+                  name="busStopsCheckbox"
+                />
+              }
+              label="Display Bus Stops"
+              labelPlacement="end"
+            />
+            <FormControlLabel
+              style={{
+                marginTop: "0px",
+                marginLeft: "20px",
+              }}
+              control={
+                <Checkbox
+                  color="primary"
+                  checked={busShapesCheckboxSelected}
+                  onChange={handleBusShapesCheckboxChange}
+                  name="busShapesCheckbox"
+                />
+              }
+              label="Display Bus Trip Shapes"
+              labelPlacement="end"
+            />
+            <RouteListItem />
+          </Paper>
+        </Grid>
+      </Grid>
+    </div>
+  )
 
   if (mapLoadError) {
     return <div>Map cannot be loaded right now, sorry.</div>

@@ -69,8 +69,9 @@ export default function CrimesMapContainer() {
 
     if (event.target.checked === false) {
       setDateInfo(
-        `&date=${moment(selectedDate).format("YYYY")
-        }-${moment(selectedDate).format("MM")}`
+        `&date=${moment(selectedDate).format("YYYY")}-${moment(
+          selectedDate
+        ).format("MM")}`
       )
     } else {
       setDateInfo("")
@@ -80,8 +81,7 @@ export default function CrimesMapContainer() {
 
   const handleDateInfoChange = (val) => {
     setDateInfo(
-      `&date=${moment(val._d).format("YYYY")
-      }-${moment(val._d).format("MM")}`
+      `&date=${moment(val._d).format("YYYY")}-${moment(val._d).format("MM")}`
     )
   }
 
@@ -111,11 +111,7 @@ export default function CrimesMapContainer() {
   }
 
   // build Crimes Url - set dateInfo to "" to fetch most recent data
-  const url =
-    `${process.env.REACT_APP_CRIMES_ENDPOINT
-    }?lat=${mapCenter.lat
-    }&lng=${mapCenter.lng
-    }${dateInfo}`
+  const url = `${process.env.REACT_APP_CRIMES_ENDPOINT}?lat=${mapCenter.lat}&lng=${mapCenter.lng}${dateInfo}`
 
   // Now fetch crimes data
   useEffect(() => {
@@ -159,8 +155,9 @@ export default function CrimesMapContainer() {
     setDateInfo(`&date=${reformattedCrimes[0].properties.month}`)
     setLatestDateInfoAvailable(reformattedCrimes[0].properties.month)
     setDateChange(
-      `${moment(reformattedCrimes[0].properties.month).format("YYYY")
-      }-${moment(reformattedCrimes[0].properties.month).format("MM")}`
+      `${moment(reformattedCrimes[0].properties.month).format("YYYY")}-${moment(
+        reformattedCrimes[0].properties.month
+      ).format("MM")}`
     )
   }
 
@@ -185,27 +182,27 @@ export default function CrimesMapContainer() {
             ) : null}
             <FormControlLabel
               style={styles.displayHomeLocationCheckBox}
-              control={(
+              control={
                 <Checkbox
                   color="primary"
                   checked={homeCheckbox}
                   onChange={handleHomeCheckboxChange}
                   name="homeCheckbox"
                 />
-              )}
+              }
               label="Home Location"
               labelPlacement="end"
             />
             <FormControlLabel
               style={styles.displayLatestDataCheckBox}
-              control={(
+              control={
                 <Checkbox
                   color="primary"
                   checked={latestDataCheckbox}
                   onChange={handleLatestDataCheckboxChange}
                   name="latestDataCheckbox"
                 />
-              )}
+              }
               label="Latest Data"
               labelPlacement="end"
             />
@@ -275,7 +272,7 @@ export default function CrimesMapContainer() {
                             width: `${10 + (pointCount / reformattedCrimes.length) * 20
                               }px`,
                             height: `${10 + (pointCount / reformattedCrimes.length) * 20
-                              }px`,
+                            }px`,
                           }}
                           onClick={() => {
                             const expansionZoom = Math.min(
@@ -304,7 +301,7 @@ export default function CrimesMapContainer() {
                       >
                         <button
                           className="crime-marker"
-                        // onClick={() => markerClicked(cluster)}
+                          // onClick={() => markerClicked(cluster)}
                         >
                           <img
                             src="/static/images/Custody.svg"

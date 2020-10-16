@@ -24,7 +24,9 @@ export default function TransportMapContainer() {
   const { isLoaded, mapLoadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
-  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10))
+  const [mapZoom] = useState(
+    parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
+  )
   const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
@@ -144,74 +146,73 @@ export default function TransportMapContainer() {
     },
   }
 
-  const renderMap = () => {
-    return (
-      <div>
-        <CssBaseline />
-        <Grid container spacing={1}>
-          <Container maxWidth="xl">
-            <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
-              <Title>Transport Dashboard</Title>
-              {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
-              {errorLoading ? (
-                <LoadingTitle>
-                  Error Loading...
-                  {errorLoadingMessage}
-                </LoadingTitle>
-              ) : null}
-              <FormControlLabel
-                // style={styles.displayHomeLocationCheckBox}
-                style={{
-                  marginTop: "0px",
-                  marginLeft: "100px",
-                }}
-                control={(
-                  <Checkbox
-                    color="primary"
-                    checked={busStopsCheckboxSelected}
-                    onChange={handleBusStopsCheckboxChange}
-                    name="homeCheckbox"
-                  />
-                )}
-                label="Display Bus Stops"
-                labelPlacement="end"
-              />
-              <FormControlLabel
-                style={{
-                  marginTop: "0px",
-                  marginLeft: "100px",
-                }}
-                control={(
-                  <Checkbox
-                    color="primary"
-                    checked={busShapesCheckboxSelected}
-                    onChange={handleBusShapesCheckboxChange}
-                    name="busShapesCheckbox"
-                  />
-                )}
-                label="Display Bus Trip Shapes"
-                labelPlacement="end"
-              />
-            </Grid>
-            <Grid item xs={12} sm={12}>
-              <GoogleMap
-                mapContainerStyle={{
-                  height: "600px",
-                  width: "97%",
-                  margin: 20,
-                }}
-                center={mapCenter}
-                zoom={mapZoom}
-                options={{
-                  // mapTypeId: "hybrid",
-                  disableDefaultUI: true,
-                  zoomControl: true,
-                }}
-                onLoad={onLoadHandler}
-                onUnmount={onUnmountHandler}
-              >
-                {busShapesCollection
-                  ? busShapesCollection.map((busShape) => (
+  const renderMap = () => (
+    <div>
+      <CssBaseline />
+      <Grid container spacing={1}>
+        <Container maxWidth="xl">
+          <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
+            <Title>Transport Dashboard</Title>
+            {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
+            {errorLoading ? (
+              <LoadingTitle>
+                Error Loading...
+                {errorLoadingMessage}
+              </LoadingTitle>
+            ) : null}
+            <FormControlLabel
+              // style={styles.displayHomeLocationCheckBox}
+              style={{
+                marginTop: "0px",
+                marginLeft: "100px",
+              }}
+              control={
+                <Checkbox
+                  color="primary"
+                  checked={busStopsCheckboxSelected}
+                  onChange={handleBusStopsCheckboxChange}
+                  name="homeCheckbox"
+                />
+              }
+              label="Display Bus Stops"
+              labelPlacement="end"
+            />
+            <FormControlLabel
+              style={{
+                marginTop: "0px",
+                marginLeft: "100px",
+              }}
+              control={
+                <Checkbox
+                  color="primary"
+                  checked={busShapesCheckboxSelected}
+                  onChange={handleBusShapesCheckboxChange}
+                  name="busShapesCheckbox"
+                />
+              }
+              label="Display Bus Trip Shapes"
+              labelPlacement="end"
+            />
+          </Grid>
+          <Grid item xs={12} sm={12}>
+            <GoogleMap
+              mapContainerStyle={{
+                height: "600px",
+                width: "97%",
+                margin: 20,
+              }}
+              center={mapCenter}
+              zoom={mapZoom}
+              options={{
+                // mapTypeId: "hybrid",
+                disableDefaultUI: true,
+                zoomControl: true,
+              }}
+              onLoad={onLoadHandler}
+              onUnmount={onUnmountHandler}
+            >
+              {busShapesCollection
+                ? busShapesCollection.map((busShape) => (
                     <Polyline
                       key={busShape.shapeId}
                       path={busShape.shapeCoordinates}
@@ -223,9 +224,9 @@ export default function TransportMapContainer() {
                       }}
                     />
                   ))
-                  : null}
-                {busStopsCollection && busStopsCheckboxSelected
-                  ? busStopsCollection.map((busStop) => (
+                : null}
+              {busStopsCollection && busStopsCheckboxSelected
+                ? busStopsCollection.map((busStop) => (
                     <Marker
                       key={busStop.stop_id}
                       position={{
@@ -243,14 +244,13 @@ export default function TransportMapContainer() {
                       }}
                     />
                   ))
-                  : null}
-              </GoogleMap>
-            </Grid>
-          </Container>
-        </Grid>
-      </div>
-    )
-  }
+                : null}
+            </GoogleMap>
+          </Grid>
+        </Container>
+      </Grid>
+    </div>
+  )
 
   if (mapLoadError) {
     return <div>Map cannot be loaded right now, sorry.</div>

@@ -45,12 +45,7 @@ export default function GTFSTestCard() {
         <Typography>GTFS UI Test</Typography>
       </CardContent>
       <CardActions>
-        <Button
-          size="small"
-          color="primary"
-          component={Link}
-          to="/gtfstestmap"
-        >
+        <Button size="small" color="primary" component={Link} to="/gtfstestmap">
           View
         </Button>
       </CardActions>
