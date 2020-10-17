@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import Typography from "@material-ui/core/Typography"
 
 export default function LoadingTitle(props) {
+  const { children } = props
   return (
     <Typography
       component="div"
@@ -12,7 +13,7 @@ export default function LoadingTitle(props) {
       p={1}
       m={1}
     >
-      {props.children}
+      {children}
     </Typography>
   )
 }

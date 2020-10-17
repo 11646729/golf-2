@@ -157,7 +157,7 @@ export default function Album() {
         </Typography>
         <Copyright />
       </footer>
-      {/* End footer */}
+      End footer
     </div>
   )
 }

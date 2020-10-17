@@ -36,7 +36,7 @@ const useStyles = makeStyles({
   },
 })
 
-export const WeatherChart = () => {
+export default function WeatherChart() {
   const classes = useStyles()
 
   // -----------------------------------------------------
@@ -169,5 +169,3 @@ export const WeatherChart = () => {
     </div>
   )
 }
-
-export default WeatherChart
