@@ -45,13 +45,10 @@ export const WeatherChart = () => {
   const [temperatureValues, setTemperatureValues] = useState([])
   const [errorLoading, setLoadingError] = useState([])
 
-  const fetchRTTemperatureData = (temperatureValues) => {
+  const fetchRTTemperatureData = (temperatures) => {
     socket.on("DataFromDarkSkiesAPI", (currentData) => {
       // Need to cancel the Promise here to stop errors
-      setTemperatureValues((temperatureValues) => [
-        ...temperatureValues,
-        currentData.temperature,
-      ])
+      setTemperatureValues((temps) => [...temps, currentData.temperature])
     })
     // Only display data for the last 20 values
     temperatureValues.splice(0, temperatureValues.length - 20)
@@ -63,12 +60,8 @@ export const WeatherChart = () => {
     let isSubscribed = true
 
     get20WeatherDataPoints()
-      .then((temperatureValues) =>
-        isSubscribed ? setTemperatureValues(temperatureValues) : null
-      )
-      .catch((errorLoading) =>
-        isSubscribed ? setLoadingError(errorLoading) : null
-      )
+      .then((temps) => (isSubscribed ? setTemperatureValues(temps) : null))
+      .catch((error) => (isSubscribed ? setLoadingError(error) : null))
 
     return () => (isSubscribed = false)
   }, [])
@@ -85,7 +78,7 @@ export const WeatherChart = () => {
 
   const clearDataArray = () => {
     // Error here
-    setTemperatureValues((temperatureValues) => [])
+    setTemperatureValues(() => [])
   }
 
   const formatXAxis = (tickItem) => moment.unix(tickItem).format("HH:mm MMM Do")

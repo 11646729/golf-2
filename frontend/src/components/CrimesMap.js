@@ -269,9 +269,11 @@ export default function CrimesMapContainer() {
                         <div
                           className="cluster-marker"
                           style={{
-                            width: `${10 + (pointCount / reformattedCrimes.length) * 20
-                              }px`,
-                            height: `${10 + (pointCount / reformattedCrimes.length) * 20
+                            width: `${
+                              10 + (pointCount / reformattedCrimes.length) * 20
+                            }px`,
+                            height: `${
+                              10 + (pointCount / reformattedCrimes.length) * 20
                             }px`,
                           }}
                           onClick={() => {

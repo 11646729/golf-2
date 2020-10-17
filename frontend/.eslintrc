@@ -1,10 +1,6 @@
 // TODO: Update 2020/7/19
 {
-  "extends": [
-    "airbnb",
-    "prettier",
-    "prettier/react"
-  ],
+  "extends": ["airbnb", "prettier", "prettier/react"],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2020,
@@ -23,10 +19,7 @@
     "no-debugger": 0,
     "no-alert": 0,
     "no-await-in-loop": 0,
-    "no-return-assign": [
-      "error",
-      "except-parens"
-    ],
+    "no-return-assign": ["error", "except-parens"],
     "no-restricted-syntax": [
       2,
       "ForInStatement",
@@ -46,10 +39,7 @@
         "destructuring": "all"
       }
     ],
-    "arrow-body-style": [
-      2,
-      "as-needed"
-    ],
+    "arrow-body-style": [2, "as-needed"],
     "no-unused-expressions": [
       2,
       {
@@ -85,10 +75,7 @@
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx"]
       }
     ],
     "radix": 0,
@@ -96,14 +83,7 @@
       2,
       {
         "hoist": "all",
-        "allow": [
-          "resolve",
-          "reject",
-          "done",
-          "next",
-          "err",
-          "error"
-        ]
+        "allow": ["resolve", "reject", "done", "next", "err", "error"]
       }
     ],
     "quotes": [
@@ -127,17 +107,16 @@
     "jsx-a11y/anchor-is-valid": [
       "warn",
       {
-        "aspects": [
-          "invalidHref"
-        ]
+        "aspects": ["invalidHref"]
       }
     ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   },
-  "plugins": [
-    "html",
-    "prettier",
-    "react-hooks"
-  ]
+  "plugins": ["html", "prettier", "react-hooks"],
+  "settings": {
+    "react": {
+      "version": "latest"
+    }
+  }
 }
