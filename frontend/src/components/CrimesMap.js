@@ -267,6 +267,8 @@ export default function CrimesMapContainer() {
                         lng={longitude}
                       >
                         <div
+                          role="button"
+                          tabIndex="0"
                           className="cluster-marker"
                           style={{
                             width: `${
@@ -275,6 +277,17 @@ export default function CrimesMapContainer() {
                             height: `${
                               10 + (pointCount / reformattedCrimes.length) * 20
                             }px`,
+                          }}
+                          onKeyDown={() => {
+                            const expansionZoom = Math.min(
+                              supercluster.getClusterExpansionZoom(cluster.id),
+                              20
+                            )
+                            mapRef.current.setZoom(expansionZoom)
+                            mapRef.current.panTo({
+                              lat: latitude,
+                              lng: longitude,
+                            })
                           }}
                           onClick={() => {
                             const expansionZoom = Math.min(
@@ -302,6 +315,7 @@ export default function CrimesMapContainer() {
                         lng={longitude}
                       >
                         <button
+                          type="button"
                           className="crime-marker"
                           // onClick={() => markerClicked(cluster)}
                         >
