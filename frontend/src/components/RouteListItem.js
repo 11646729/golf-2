@@ -1,25 +1,31 @@
 import React from "react"
 import { loadCSS } from "fg-loadcss"
 import {
+  Grid,
   CssBaseline,
   Typography,
   Button,
   Icon,
-  makeStyles,
+  createMuiTheme,
+  ThemeProvider,
 } from "@material-ui/core"
-import { green } from "@material-ui/core/colors"
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > .fa": {
-      margin: theme.spacing(2),
+const theme = createMuiTheme({
+  typography: {
+    button: {
+      fontSize: 16,
+      fontStyle: "bold",
+    },
+    body1: {
+      fontWeight: 500,
+    },
+    subtitle1: {
+      fontSize: 12,
     },
   },
-}))
+})
 
 export default function RouteListItem() {
-  const classes = useStyles()
-
   React.useEffect(() => {
     loadCSS(
       "https://use.fontawesome.com/releases/v5.12.0/css/all.css",
@@ -30,32 +36,38 @@ export default function RouteListItem() {
   return (
     <div>
       <CssBaseline />
-      <div className={classes.root}>
-        <Icon className="fa fa-check-square" style={{ color: green[500] }} />
-        <Button variant="contained" color="primary">
-          18
-        </Button>
-        <Typography
-          component="div"
-          display="inline"
-          variant="h6"
-          color="primary"
-          p={1}
-          m={1}
-        >
-          San Rafael - Sausalito
-        </Typography>
-      </div>
-      <Typography
-        component="div"
-        // display="inline"
-        variant="h6"
-        color="primary"
-        p={1}
-        m={1}
-      >
-        via Strawberry, Mill Valley
-      </Typography>
+      <ThemeProvider theme={theme}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={1} />
+          <Grid item xs={12} sm={1}>
+            <Icon className="fa fa-check-square" style={{ color: "#87cefa" }} />
+          </Grid>
+          <Grid item xs={12} sm={1}>
+            <Button
+              style={{
+                maxWidth: "40px",
+                maxHeight: "30px",
+                minWidth: "40px",
+                minHeight: "30px",
+                color: "#ffffff",
+                backgroundColor: "#87cefa",
+                padding: "12px 22px",
+                fontSize: "18px",
+              }}
+              variant="contained"
+            >
+              18
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={1} />
+          <Grid item xs={12} sm={8}>
+            <Typography>San Rafael - Sausalito</Typography>
+            <Typography variant="subtitle1">
+              via Strawberry, Mill Valley
+            </Typography>
+          </Grid>
+        </Grid>
+      </ThemeProvider>
     </div>
   )
 }
