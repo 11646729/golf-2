@@ -12,10 +12,10 @@ import {
 
 const theme = createMuiTheme({
   typography: {
-    button: {
-      fontSize: 16,
-      fontStyle: "bold",
-    },
+    // button: {
+    //   fontSize: 16,
+    //   fontStyle: "bold",
+    // },
     body1: {
       fontWeight: 500,
     },
@@ -25,7 +25,11 @@ const theme = createMuiTheme({
   },
 })
 
-export default function RouteListItem() {
+export default function RouteListItem(props) {
+  // const busRouteNumber = "18"
+  // const busRouteName = "San Rafael - Sausalito"
+  // const busRouteVia = "via Strawberry, Mill Valley"
+
   React.useEffect(() => {
     loadCSS(
       "https://use.fontawesome.com/releases/v5.12.0/css/all.css",
@@ -38,9 +42,13 @@ export default function RouteListItem() {
       <CssBaseline />
       <ThemeProvider theme={theme}>
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={1} />
-          <Grid item xs={12} sm={1}>
-            <Icon className="fa fa-check-square" style={{ color: "#87cefa" }} />
+          <Grid item xs={12} sm={2}>
+            <Grid container justify="flex-end">
+              <Icon
+                className="fa fa-check-square"
+                style={{ color: "#87cefa" }}
+              />
+            </Grid>
           </Grid>
           <Grid item xs={12} sm={1}>
             <Button
@@ -56,15 +64,14 @@ export default function RouteListItem() {
               }}
               variant="contained"
             >
-              18
+              {props.busRouteNumber}
             </Button>
           </Grid>
-          <Grid item xs={12} sm={1} />
           <Grid item xs={12} sm={8}>
-            <Typography>San Rafael - Sausalito</Typography>
-            <Typography variant="subtitle1">
-              via Strawberry, Mill Valley
-            </Typography>
+            <Grid container justify="center">
+              <Typography variant="body1">{props.busRouteName}</Typography>
+              <Typography variant="subtitle1">{props.busRouteVia}</Typography>
+            </Grid>
           </Grid>
         </Grid>
       </ThemeProvider>

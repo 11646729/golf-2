@@ -282,7 +282,16 @@ export default function GTFSTestMapContainer() {
               label="Display Bus Trip Shapes"
               labelPlacement="end"
             />
-            <RouteListItem />
+            <RouteListItem
+              busRouteNumber="28"
+              busRouteName="San Rafael - Sausalito"
+              busRouteVia="via Strawberry, Mill Valley"
+            />
+            <RouteListItem
+              busRouteNumber="218"
+              busRouteName="San Rafael - Sausalito"
+              busRouteVia="via Strawberry, Mill Valley"
+            />
           </Paper>
         </Grid>
       </Grid>
