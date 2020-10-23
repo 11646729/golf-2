@@ -283,11 +283,13 @@ export default function GTFSTestMapContainer() {
               labelPlacement="end"
             />
             <RouteListItem
+              // props
               busRouteNumber="28"
               busRouteName="San Rafael - Sausalito"
               busRouteVia="via Strawberry, Mill Valley"
             />
             <RouteListItem
+              // props
               busRouteNumber="218"
               busRouteName="San Rafael - Sausalito"
               busRouteVia="via Strawberry, Mill Valley"

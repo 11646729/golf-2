@@ -1,13 +1,12 @@
 import React from "react"
-import { loadCSS } from "fg-loadcss"
 import {
   Grid,
   CssBaseline,
   Typography,
   Button,
-  Icon,
   createMuiTheme,
   ThemeProvider,
+  Checkbox,
 } from "@material-ui/core"
 
 const theme = createMuiTheme({
@@ -25,18 +24,13 @@ const theme = createMuiTheme({
   },
 })
 
+RouteListItem.defaultProps = {
+  busRouteNumber: "18",
+  busRouteName: "San Rafael - Sausalito",
+  busRouteVia: "via Strawberry, Mill Valley",
+}
+
 export default function RouteListItem(props) {
-  // const busRouteNumber = "18"
-  // const busRouteName = "San Rafael - Sausalito"
-  // const busRouteVia = "via Strawberry, Mill Valley"
-
-  React.useEffect(() => {
-    loadCSS(
-      "https://use.fontawesome.com/releases/v5.12.0/css/all.css",
-      document.querySelector("#font-awesome-css")
-    )
-  }, [])
-
   return (
     <div>
       <CssBaseline />
@@ -44,9 +38,11 @@ export default function RouteListItem(props) {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={2}>
             <Grid container justify="flex-end">
-              <Icon
-                className="fa fa-check-square"
+              <Checkbox
                 style={{ color: "#87cefa" }}
+                // checked={busShapesCheckboxSelected}
+                // onChange={handleBusShapesCheckboxChange}
+                name="busShapesCheckbox"
               />
             </Grid>
           </Grid>
