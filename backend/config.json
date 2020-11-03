@@ -1,0 +1,10 @@
+{
+  "agencies": [
+    {
+      "agency_key": "Hamilton Ontario Street Railway",
+      "path": "/Users/briansmith/Documents/GTD/golf-2/backend/gtfs data/Hamilton Ontario Street Railway"
+    }
+  ],
+  "verbose": true,
+  "sqlitePath": "/Users/briansmith/Documents/GTD/golf-2/backend/gtfstest.db"
+}
