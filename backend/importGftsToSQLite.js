@@ -16,3 +16,7 @@ export const importGtfsToSQLite = async () => {
     console.log("Error in importGtfsToSQLite: ", error)
   }
 }
+
+// These 2 lines may be needed in config.json to use npm package gfts
+// "url": "http://transitfeeds.com/p/hamilton-street-railway/31/latest/download"
+// "path": "/Users/briansmith/Documents/GTD/golf-2/backend/gtfs data/Hamilton Ontario Street Railway",

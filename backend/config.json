@@ -2,7 +2,7 @@
   "agencies": [
     {
       "agency_key": "Hamilton Ontario Street Railway",
-      "path": "/Users/briansmith/Documents/GTD/golf-2/backend/gtfs data/Hamilton Ontario Street Railway"
+      "url": "http://transitfeeds.com/p/hamilton-street-railway/31/latest/download"
     }
   ],
   "verbose": true,
