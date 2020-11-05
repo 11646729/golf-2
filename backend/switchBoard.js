@@ -16,6 +16,7 @@ import {
 } from "./getDarkSkiesDataAndEmit"
 import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/translinkTransportController"
 import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
+import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
 // import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/translinkTransportController"
 
 export const runSwitchboard = (io) => {
@@ -38,7 +39,8 @@ export const runSwitchboard = (io) => {
   // deleteAllVesselDetails()
   // deleteAllTemperatures()
   // runCron()
-  importGtfsToSQLite()
+  // importGtfsToSQLite()
+  convertGtfsToGeoJSON()
   // createReducedShapeData()
   // importTripIdReducedShapeData()
   // console.log("Back in the switchBoard function")
@@ -77,3 +79,5 @@ export const runSwitchboard = (io) => {
   // })
   // })
 }
+
+// "skipImport": true
