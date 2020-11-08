@@ -21,7 +21,7 @@ router.get("/shapes", gtfs_transport_controller.gtfsGetAllReducedShapes)
 router.get("/shapes/:id", gtfs_transport_controller.gtfsGetOneReducedShape)
 
 // GET a route
-router.post("/route", gtfs_transport_controller.gtfsGetRoute)
+router.get("/route", gtfs_transport_controller.gtfsGetRoute)
 
 // POST a shape to the database
 // router.post("/shapes/:id", gtfs_transport_controller.create)

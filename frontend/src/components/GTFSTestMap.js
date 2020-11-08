@@ -17,8 +17,9 @@ import {
 } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
-import getGTFSTransportStopsDataPoints from "./getGTFSTransportStopsData"
-import getGTFSTransportShapesData from "./getGTFSTransportShapesData"
+import getGTFSStopsData from "./getGTFSStopsData"
+import getGTFSShapesData from "./getGTFSShapesData"
+import getGTFSRouteData from "./getGTFSRouteData"
 import RouteListItem from "./RouteListItem"
 
 const useStyles = makeStyles({
@@ -79,15 +80,22 @@ export default function GTFSTestMapContainer() {
   // -----------------------------------------------------
   const [busStopsCollection, setBusStopsCollection] = useState([])
   const [busShapesCollection, setBusShapesCollection] = useState([])
+  const [busRoutesCollection, setBusRoutesCollection] = useState([])
   const [errorLoading, setLoadingError] = useState([])
 
   // Fetch bus stops data
   useEffect(() => {
     let isSubscribed = true
 
-    getGTFSTransportStopsDataPoints()
-      .then((busStopsResult) =>
-        isSubscribed ? setBusStopsCollection(busStopsResult) : null
+    // getGTFSStopsData()
+    //   .then((busStopsResult) =>
+    //     isSubscribed ? setBusStopsCollection(busStopsResult) : null
+    //   )
+    //   .catch((error) => (isSubscribed ? setLoadingError(error) : null))
+
+    getGTFSRouteData()
+      .then((busRoutesResult) =>
+        isSubscribed ? setBusRoutesCollection(busRoutesResult) : null
       )
       .catch((error) => (isSubscribed ? setLoadingError(error) : null))
 
@@ -114,7 +122,7 @@ export default function GTFSTestMapContainer() {
   useEffect(() => {
     let isSubscribed = true
 
-    getGTFSTransportShapesData()
+    getGTFSShapesData()
       .then((busShapesResult) =>
         isSubscribed ? setBusShapesCollection(busShapesResult) : null
       )
