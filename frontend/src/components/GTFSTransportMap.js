@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
-import getGTFSStopsDataPoints from "./getGTFSStopsData"
+import getGTFSStopsData from "./getGTFSStopsData"
 import getGTFSShapesData from "./getGTFSShapesData"
 
 export default function GTFSTransportMapContainer() {
@@ -51,7 +51,7 @@ export default function GTFSTransportMapContainer() {
   useEffect(() => {
     let isSubscribed = true
 
-    getGTFSStopsDataPoints()
+    getGTFSStopsData()
       .then((busStopsResult) =>
         isSubscribed ? setBusStopsCollection(busStopsResult) : null
       )
@@ -171,7 +171,7 @@ export default function GTFSTransportMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {busShapesCollection
+            {busShapesCollection && busShapesCheckboxSelected
               ? busShapesCollection.map((busShape) => (
                   <Polyline
                     key={busShape.shapeId}

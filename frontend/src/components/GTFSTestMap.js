@@ -87,17 +87,17 @@ export default function GTFSTestMapContainer() {
   useEffect(() => {
     let isSubscribed = true
 
-    // getGTFSStopsData()
-    //   .then((busStopsResult) =>
-    //     isSubscribed ? setBusStopsCollection(busStopsResult) : null
-    //   )
-    //   .catch((error) => (isSubscribed ? setLoadingError(error) : null))
-
-    getGTFSRouteData()
-      .then((busRoutesResult) =>
-        isSubscribed ? setBusRoutesCollection(busRoutesResult) : null
+    getGTFSStopsData()
+      .then((busStopsResult) =>
+        isSubscribed ? setBusStopsCollection(busStopsResult) : null
       )
       .catch((error) => (isSubscribed ? setLoadingError(error) : null))
+
+    // getGTFSRouteData()
+    //   .then((busRoutesResult) =>
+    //     isSubscribed ? setBusRoutesCollection(busRoutesResult) : null
+    //   )
+    //   .catch((error) => (isSubscribed ? setLoadingError(error) : null))
 
     // isSubscribed = false
     // return isSubscribed
@@ -200,7 +200,7 @@ export default function GTFSTestMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {busShapesCollection
+            {busShapesCollection && busShapesCheckboxSelected
               ? busShapesCollection.map((busShape) => (
                   <Polyline
                     key={busShape.shapeId}
