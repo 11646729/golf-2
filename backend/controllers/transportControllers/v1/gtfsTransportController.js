@@ -7,7 +7,7 @@ export const gtfsTransportIndex = async (req, res) => {
 }
 
 // Path localhost:5000/api/gtfsTransport/stops
-export const gftsGetAllStops = async (req, res) => {
+export const gtfsGetAllStops = async (req, res) => {
   GtfsStopSchema.find({})
     .then((gtfsStopSchema) => res.json(gtfsStopSchema))
     .catch((err) => res.status(400).json("Error " + err))
@@ -34,7 +34,7 @@ export const gtfsGetOneStop = async (req, res) => {
 }
 
 // Path localhost:5000/api/gtfsTransport/shapes
-export const gftsGetAllReducedShapes = async (req, res) => {
+export const gtfsGetAllReducedShapes = async (req, res) => {
   GtfsReducedShapesSchema.find({ shapeId: "25774" })
     // GtfsReducedShapesSchema.find({})
     .then((gtfsReducedShapesSchema) => res.json(gtfsReducedShapesSchema))
@@ -59,6 +59,16 @@ export const gtfsGetOneReducedShape = async (req, res) => {
           err.message || "Error retrieving gtfsTransport shape with id= " + id,
       })
     })
+}
+
+// Path localhost:5000/api/gtfsTransport/route
+export const gtfsGetRoute = async (req, res) => {
+  console.log("In gtfsGetRoute in gtfsTransportController")
+
+  // GtfsReducedShapesSchema.find({ shapeId: "25774" })
+  //   // GtfsReducedShapesSchema.find({})
+  //   .then((gtfsReducedShapesSchema) => res.json(gtfsReducedShapesSchema))
+  //   .catch((err) => res.status(400).json("Error " + err))
 }
 
 // Path localhost:5000/api/gtfsTransport/stopsstations

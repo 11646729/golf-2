@@ -9,19 +9,19 @@ const gtfs_transport_controller = require("../../../controllers/transportControl
 router.get("/", gtfs_transport_controller.gtfsTransportIndex)
 
 // GET all bus stops
-router.get("/stops", gtfs_transport_controller.gftsGetAllStops)
+router.get("/stops", gtfs_transport_controller.gtfsGetAllStops)
 
 // GET a bus stop by id
 router.get("/stops/:id", gtfs_transport_controller.gtfsGetOneStop)
 
 // GET all shapes from the database
-router.get("/shapes", gtfs_transport_controller.gftsGetAllReducedShapes)
+router.get("/shapes", gtfs_transport_controller.gtfsGetAllReducedShapes)
 
 // GET a shape by id
 router.get("/shapes/:id", gtfs_transport_controller.gtfsGetOneReducedShape)
 
-// POST a bus stop to the database
-// router.post("/stops/:id", gtfs_transport_controller.create)
+// GET a route
+router.post("/route", gtfs_transport_controller.gtfsGetRoute)
 
 // POST a shape to the database
 // router.post("/shapes/:id", gtfs_transport_controller.create)
