@@ -15,8 +15,8 @@ import {
 } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
-import getGFTSTransportStopsDataPoints from "./getGFTSTransportStopsData"
-import getGFTSTransportShapesData from "./getGTFSTransportShapesData"
+import getGTFSTransportStopsDataPoints from "./getGTFSTransportStopsData"
+import getGTFSTransportShapesData from "./getGTFSTransportShapesData"
 
 export default function GTFSTransportMapContainer() {
   // -----------------------------------------------------
@@ -51,7 +51,7 @@ export default function GTFSTransportMapContainer() {
   useEffect(() => {
     let isSubscribed = true
 
-    getGFTSTransportStopsDataPoints()
+    getGTFSTransportStopsDataPoints()
       .then((busStopsResult) =>
         isSubscribed ? setBusStopsCollection(busStopsResult) : null
       )
@@ -80,7 +80,7 @@ export default function GTFSTransportMapContainer() {
   useEffect(() => {
     let isSubscribed = true
 
-    getGFTSTransportShapesData()
+    getGTFSTransportShapesData()
       .then((busShapesResult) =>
         isSubscribed ? setBusShapesCollection(busShapesResult) : null
       )
