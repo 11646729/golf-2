@@ -6,6 +6,8 @@
     }
   ],
   "verbose": true,
+  "coordinatePrecision": 5,
+  "includeStops": true,
   "sqlitePath": "/Users/briansmith/Documents/GTD/golf-2/backend/gtfs data/Hamilton Ontario Street Railway/gtfs.db",
   "skipImport": false
 }
