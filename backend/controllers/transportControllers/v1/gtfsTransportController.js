@@ -1,6 +1,8 @@
 import { GtfsStopSchema } from "../../../models/transportModels/v1/gtfsStopSchema"
 import { GtfsReducedShapesSchema } from "../../../models/transportModels/v1/gtfsReducedShapesSchema"
 
+const fs = require("fs")
+
 // Path localhost:5000/api/gtfsTransport/
 export const gtfsTransportIndex = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)
@@ -63,12 +65,17 @@ export const gtfsGetOneReducedShape = async (req, res) => {
 
 // Path localhost:5000/api/gtfsTransport/route
 export const gtfsGetRoute = async (req, res) => {
-  console.log("In gtfsGetRoute in gtfsTransportController")
+  const rawGeojson =
+    "/Users/briansmith/Documents/GTD/golf-2/backend/geojson/Hamilton Ontario Street Railway/01_0.geojson"
 
-  // GtfsReducedShapesSchema.find({ shapeId: "25774" })
-  //   // GtfsReducedShapesSchema.find({})
-  //   .then((gtfsReducedShapesSchema) => res.json(gtfsReducedShapesSchema))
-  //   .catch((err) => res.status(400).json("Error " + err))
+  // READ
+  fs.readFile(rawGeojson, "utf8", (err, data) => {
+    if (err) {
+      throw err
+    }
+
+    res.send(JSON.parse(data))
+  })
 }
 
 // Path localhost:5000/api/gtfsTransport/stopsstations
