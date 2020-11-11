@@ -68,7 +68,6 @@ export const gtfsGetRoute = async (req, res) => {
   const rawGeojson =
     "/Users/briansmith/Documents/GTD/golf-2/backend/geojson/Hamilton Ontario Street Railway/01_0.geojson"
 
-  // READ
   fs.readFile(rawGeojson, "utf8", (err, data) => {
     if (err) {
       throw err
@@ -78,21 +77,17 @@ export const gtfsGetRoute = async (req, res) => {
   })
 }
 
-// Path localhost:5000/api/gtfsTransport/stopsstations
-// export function deleteAll(res) {
-//   StopsStationsSchema.deleteMany({})
-//     .then((data) => {
-//       res.send({
-//         message: "${data.deletedCount} BusStops were deleted successfully!",
-//       })
-//     })
-//     .catch((err) => {
-//       res.status(500).send({
-//         message:
-//           err.message || "Some error occurred while removing all BusStops",
-//       })
-//     })
-// }
+// Path localhost:5000/api/gtfsTransport/filenames
+export const gtfsGetFilenames = async (req, res) => {
+  const geojsonDirectory = "./geojson/Hamilton Ontario Street Railway"
+
+  fs.readdir(geojsonDirectory, "utf8", (err, data) => {
+    if (err) {
+      throw err
+    }
+    res.send(data)
+  })
+}
 
 // Direct call to delete all bus stops in the database
 export const directDeleteAllStops = async () => {

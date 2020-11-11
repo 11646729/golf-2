@@ -23,6 +23,9 @@ router.get("/shapes/:id", gtfs_transport_controller.gtfsGetOneReducedShape)
 // GET a route
 router.get("/route", gtfs_transport_controller.gtfsGetRoute)
 
+// GET all GeoJSON filenames in the directory
+router.get("/filenames", gtfs_transport_controller.gtfsGetFilenames)
+
 // POST a shape to the database
 // router.post("/shapes/:id", gtfs_transport_controller.create)
 

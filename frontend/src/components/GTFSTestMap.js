@@ -21,6 +21,7 @@ import LoadingTitle from "./LoadingTitle"
 import getGTFSStopsData from "./getGTFSStopsData"
 import getGTFSShapesData from "./getGTFSShapesData"
 import getGTFSRouteData from "./getGTFSRouteData"
+import getGTFSFilenames from "./getGTFSFilenames"
 import RouteListItem from "./RouteListItem"
 
 const useStyles = makeStyles({
@@ -94,7 +95,13 @@ export default function GTFSTestMapContainer() {
     //   )
     //   .catch((error) => (isSubscribed ? setLoadingError(error) : null))
 
-    getGTFSRouteData()
+    // getGTFSRouteData()
+    //   .then((busRoutesResult) =>
+    //     isSubscribed ? setBusRoutesCollection(busRoutesResult) : null
+    //   )
+    //   .catch((error) => (isSubscribed ? setLoadingError(error) : null))
+
+    getGTFSFilenames()
       .then((busRoutesResult) =>
         isSubscribed ? setBusRoutesCollection(busRoutesResult) : null
       )
