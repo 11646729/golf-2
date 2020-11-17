@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
+import axios from "axios"
 import {
   GoogleMap,
   useLoadScript,
   Marker,
-  Data,
   Polyline,
   InfoWindow,
 } from "@react-google-maps/api"
@@ -18,11 +18,7 @@ import {
 } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
-import getGTFSStopsData from "./getGTFSStopsData"
-import getGTFSShapesData from "./getGTFSShapesData"
-import getGTFSRouteData from "./getGTFSRouteData"
-import getGTFSFilenames from "./getGTFSFilenames"
-import RouteListItem from "./RouteListItem"
+import CheckboxList from "./CheckboxList"
 
 const useStyles = makeStyles({
   // polyline1: {
@@ -81,70 +77,45 @@ export default function GTFSTestMapContainer() {
   // DATA HOOKS SECTION
   // -----------------------------------------------------
   const [busStopsCollection, setBusStopsCollection] = useState([])
-  const [busShapesCollection, setBusShapesCollection] = useState([])
+  const [busRoutesFilenames, setBusRoutesFilenames] = useState([])
   const [busRoutesCollection, setBusRoutesCollection] = useState([])
   const [errorLoading, setLoadingError] = useState([])
 
-  // Fetch bus stops data
-  useEffect(() => {
-    let isSubscribed = true
-
-    // getGTFSStopsData()
-    //   .then((busStopsResult) =>
-    //     isSubscribed ? setBusStopsCollection(busStopsResult) : null
-    //   )
-    //   .catch((error) => (isSubscribed ? setLoadingError(error) : null))
-
-    // getGTFSRouteData()
-    //   .then((busRoutesResult) =>
-    //     isSubscribed ? setBusRoutesCollection(busRoutesResult) : null
-    //   )
-    //   .catch((error) => (isSubscribed ? setLoadingError(error) : null))
-
-    getGTFSFilenames()
-      .then((busRoutesResult) =>
-        isSubscribed ? setBusRoutesCollection(busRoutesResult) : null
-      )
-      .catch((error) => (isSubscribed ? setLoadingError(error) : null))
-
-    // isSubscribed = false
-    // return isSubscribed
-    return () => (isSubscribed = false)
-  }, [])
-
-  console.log(busRoutesCollection)
-
-  // Now compute bounds of map to display
-  if (mapRef && busStopsCollection != null) {
-    const bounds = new window.google.maps.LatLngBounds()
-    busStopsCollection.map((busStop) => {
-      const myLatLng = new window.google.maps.LatLng({
-        lat: busStop.stop_lat,
-        lng: busStop.stop_lon,
-      })
-      bounds.extend(myLatLng)
-      return bounds
-    })
-    mapRef.fitBounds(bounds)
+  // Fetch the list of GeoJson filenames
+  const getBusRouteFilenames = async () => {
+    const filePath = "http://localhost:5000/api/gtfsTransport/filenames"
+    const busRoutesResult = await axios.get(filePath)
+    setBusRoutesFilenames(busRoutesResult.data)
   }
 
-  // Fetch shapes data
+  const getBusRouteData = async () => {
+    const routeUrl = "http://localhost:5000/api/gtfsTransport/route"
+    const busRouteResult = await axios.get(routeUrl)
+    setBusRoutesCollection(busRouteResult)
+  }
+
   useEffect(() => {
-    let isSubscribed = true
-
-    getGTFSShapesData()
-      .then((busShapesResult) =>
-        isSubscribed ? setBusShapesCollection(busShapesResult) : null
-      )
-      .catch((error) => (isSubscribed ? setLoadingError(error) : null))
-
-    // isSubscribed = false
-    // return isSubscribed
-    return () => (isSubscribed = false)
+    getBusRouteFilenames()
+    getBusRouteData()
   }, [])
 
-  // if (busShapesCollection.length > 0) {
-  //   console.log(busShapesCollection)
+  if (busRoutesCollection.length !== 0) {
+    console.log("Filenames: " + busRoutesFilenames)
+    console.log("Bus Route: " + busRoutesCollection)
+  }
+
+  // Now compute bounds of map to display
+  // if (mapRef && busStopsCollection != null) {
+  //   const bounds = new window.google.maps.LatLngBounds()
+  //   busStopsCollection.map((busStop) => {
+  //     const myLatLng = new window.google.maps.LatLng({
+  //       lat: busStop.stop_lat,
+  //       lng: busStop.stop_lon,
+  //     })
+  //     bounds.extend(myLatLng)
+  //     return bounds
+  //   })
+  //   mapRef.fitBounds(bounds)
   // }
 
   // -----------------------------------------------------
@@ -210,21 +181,21 @@ export default function GTFSTestMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {busShapesCollection && busShapesCheckboxSelected
-              ? busShapesCollection.map((busShape) => (
-                  <Polyline
-                    key={busShape.shapeId}
-                    path={busShape.shapeCoordinates}
-                    // options={classes.polyline1}
-                    options={{ strokeColor: "#ff2343" }}
-                    onClick={() => {
-                      setBusShapeSelected(busShape)
-                      // console.log(busShape)
-                      // handleBusShapeClick()
-                    }}
-                  />
-                ))
-              : null}
+            {/* {busShapesCollection && busShapesCheckboxSelected
+              ? busShapesCollection.map((busShape) => ( */}
+            {/* <Polyline
+              key={busShape.shapeId}
+              path={busShape.shapeCoordinates}
+              // options={classes.polyline1}
+              options={{ strokeColor: "#ff2343" }}
+              onClick={() => {
+                setBusShapeSelected(busShape)
+                // console.log(busShape)
+                // handleBusShapeClick()
+              }}
+            /> */}
+            {/* ))
+              : null} */}
             {busStopsCollection && busStopsCheckboxSelected
               ? busStopsCollection.map((busStop) => (
                   <Marker
@@ -300,7 +271,8 @@ export default function GTFSTestMapContainer() {
               label="Display Bus Trip Shapes"
               labelPlacement="end"
             />
-            <RouteListItem
+            <CheckboxList />
+            {/* <RouteListItem
               // props
               busRouteNumber="28"
               busRouteName="San Rafael - Sausalito"
@@ -311,7 +283,7 @@ export default function GTFSTestMapContainer() {
               busRouteNumber="218"
               busRouteName="San Rafael - Sausalito"
               busRouteVia="via Strawberry, Mill Valley"
-            />
+            /> */}
           </Paper>
         </Grid>
       </Grid>
