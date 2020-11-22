@@ -20,8 +20,8 @@ router.get("/shapes", gtfs_transport_controller.gtfsGetAllReducedShapes)
 // GET a shape by id
 router.get("/shapes/:id", gtfs_transport_controller.gtfsGetOneReducedShape)
 
-// GET a route
-router.get("/route", gtfs_transport_controller.gtfsGetRoute)
+// GET a route by id (filename)
+router.get("/routes/:id", gtfs_transport_controller.gtfsGetOneRoute)
 
 // GET all GeoJSON filenames in the directory
 router.get("/filenames", gtfs_transport_controller.gtfsGetFilenames)
