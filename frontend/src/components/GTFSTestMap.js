@@ -76,9 +76,9 @@ export default function GTFSTestMapContainer() {
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
-  const [busStopsCollection, setBusStopsCollection] = useState([])
   const [busRoutesFilenames, setBusRoutesFilenames] = useState([])
   const [busRoutesCollection, setBusRoutesCollection] = useState([])
+  const [busStopsCollection, setBusStopsCollection] = useState([])
   const [errorLoading, setLoadingError] = useState([])
 
   // Fetch the list of GeoJson filenames
@@ -106,57 +106,35 @@ export default function GTFSTestMapContainer() {
         "Content-Type": "application/json",
       },
     })
-
-    // console.log(res.data.features[8].properties)
-    // console.log(res.data.features[0].geometry.coordinates.length)
-
     // Test for Status - 200 is a Success response code
     if (res.status === 200) {
-      console.log("Status: " + res.status)
-      if (res.data.type === "FeatureCollection") {
-        let i = 0
-        do {
-          if (res.data.features[i].geometry.type === "LineString") {
-            console.log("LineString: " + i)
-            console.log(
-              "Line Color: " + res.data.features[i].properties.route_color
-            )
-            console.log(
-              "Route Long Name: " +
-                res.data.features[i].properties.route_long_name
-            )
-            console.log(
-              "Route Short Name: " +
-                res.data.features[i].properties.route_short_name
-            )
-            // console.log(
-            //   "Coord Array Length: " +
-            //     res.data.features[i].geometry.coordinates.length
-            // )
-
-            // Coordinates Loop
-            let j = 0
-            do {
-              console.log("Coordinate No: " + j)
-              j++
-            } while (j < res.data.features[i].geometry.coordinates.length)
-          }
-
-          if (res.data.features[i].geometry.type === "Point") {
-            console.log("Point: " + i)
-
-            // console.log(res.data.features[i].geometry.coordinates)
-            // setBusRoutesCollection(myLatLng)
-          }
-
-          // tempShape_id.push(data[i].shape_id)
-          i++
-        } while (i < res.data.features.length)
-      }
+      setBusRoutesCollection(res.data.features)
+      // console.log(res.data)
     }
-    // Don't forget to return something
-    // return res.data
   }
+
+  let info = busRoutesCollection.map((busRoute, index) => {
+    if (busRoute.geometry.type === "LineString") {
+      let info = {
+        routeKey: index,
+        routeColor: busRoute.properties.route_color,
+        routeLongName: busRoute.properties.route_long_name,
+        routeShortName: busRoute.properties.route_short_name,
+        routeCoords: busRoute.geometry.coordinates,
+      }
+      return info
+    }
+    if (busRoute.geometry.type === "Point") {
+      let info = {
+        routeKey: index,
+        stopName: busRoute.properties.stop_name,
+        stopCoords: busRoute.geometry.coordinates,
+      }
+      return info
+    }
+  })
+
+  console.log(info)
 
   useEffect(() => {
     // getBusRouteFilenames()
@@ -176,8 +154,6 @@ export default function GTFSTestMapContainer() {
       i++
     } while (i < busRoutesFilenames.length)
     // setBusRoutesFilenames(uniqueBusRouteFilenames)
-
-    // console.log("Unique Bus Route: " + uniqueBusRouteFilenames.length)
   }
 
   // console.log(busRoutesCollection)
@@ -259,22 +235,21 @@ export default function GTFSTestMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {/* {busShapesCollection && busShapesCheckboxSelected
-              ? busShapesCollection.map((busShape) => ( */}
-            {/* <Polyline
-              key={busShape.shapeId}
-              path={busShape.shapeCoordinates}
-              // options={classes.polyline1}
-              options={{ strokeColor: "#ff2343" }}
-              onClick={() => {
-                setBusShapeSelected(busShape)
-                // console.log(busShape)
-                // handleBusShapeClick()
-              }}
-            /> */}
-            {/* ))
-              : null} */}
-            {busStopsCollection && busStopsCheckboxSelected
+            {busRoutesCollection.map((busRoute) => (
+              <Polyline
+                key={busRoute.routeKey}
+                path={busRoute.routeCoords}
+                // options={classes.polyline1}
+                options={{ strokeColor: busRoute.routeColor }}
+                onClick={() => {
+                  // setBusShapeSelected(busRoute)
+                  // console.log(busShape)
+                  // handleBusShapeClick()
+                }}
+              />
+            ))}
+
+            {/* {busStopsCollection && busStopsCheckboxSelected
               ? busStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stop_id}
@@ -292,7 +267,7 @@ export default function GTFSTestMapContainer() {
                     }}
                   />
                 ))
-              : null}
+              : null} */}
             {busStopSelected ? (
               <InfoWindow
                 position={{

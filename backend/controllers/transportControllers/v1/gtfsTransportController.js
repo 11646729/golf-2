@@ -67,6 +67,7 @@ export const gtfsGetOneReducedShape = async (req, res) => {
 export const gtfsGetOneRoute = async (req, res) => {
   // const id = req.params.id
   const id = "01_0.geojson"
+  // const id = "TestFile.json"
 
   console.log("Here in gtfsGetOneRoute")
 
