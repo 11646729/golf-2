@@ -129,12 +129,18 @@ export default function GTFSTestMapContainer() {
         routeKey: index,
         stopName: busRoute.properties.stop_name,
         stopCoords: busRoute.geometry.coordinates,
+        googleMapsCoords: [
+          busRoute.geometry.coordinates[1],
+          busRoute.geometry.coordinates[0],
+        ],
       }
+      console.log(info)
       return info
     }
   })
 
-  console.log(info)
+  // let test = busRoutesCollection[0]
+  // console.log(test)
 
   useEffect(() => {
     // getBusRouteFilenames()
@@ -235,10 +241,10 @@ export default function GTFSTestMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {busRoutesCollection.map((busRoute) => (
+            {/* {busRoutesCollection.map((busRoute) => (
               <Polyline
                 key={busRoute.routeKey}
-                path={busRoute.routeCoords}
+                path={busRoute.googleMapsCoords}
                 // options={classes.polyline1}
                 options={{ strokeColor: busRoute.routeColor }}
                 onClick={() => {
@@ -247,7 +253,7 @@ export default function GTFSTestMapContainer() {
                   // handleBusShapeClick()
                 }}
               />
-            ))}
+            ))} */}
 
             {/* {busStopsCollection && busStopsCheckboxSelected
               ? busStopsCollection.map((busStop) => (
