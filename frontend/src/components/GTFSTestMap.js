@@ -78,15 +78,17 @@ export default function GTFSTestMapContainer() {
   // -----------------------------------------------------
   const [busRoutesFilenames, setBusRoutesFilenames] = useState([])
   const [busRoutesCollection, setBusRoutesCollection] = useState([])
+  const [busRoute, setBusRoute] = useState([])
+  const [filteredBusRoute, setFilteredBusRoute] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
   const [errorLoading, setLoadingError] = useState([])
 
   // Fetch the list of GeoJson filenames
-  const getBusRouteFilenames = async () => {
-    const filePath = "http://localhost:5000/api/gtfsTransport/filenames"
-    const busRoutesResult = await axios.get(filePath)
-    setBusRoutesFilenames(busRoutesResult.data)
-  }
+  // const getBusRouteFilenames = async () => {
+  //   const filePath = "http://localhost:5000/api/gtfsTransport/filenames"
+  //   const busRoutesResult = await axios.get(filePath)
+  //   setBusRoutesFilenames(busRoutesResult.data)
+  // }
 
   // Fetch a unique list of GeoJson filenames irrespective of trip direction
   const getUniqueBusRouteFilenameList = async () => {
@@ -108,45 +110,76 @@ export default function GTFSTestMapContainer() {
     })
     // Test for Status - 200 is a Success response code
     if (res.status === 200) {
-      setBusRoutesCollection(res.data.features)
-      // console.log(res.data)
+      setBusRoute(res.data.features)
     }
   }
 
-  let info = busRoutesCollection.map((busRoute, index) => {
-    if (busRoute.geometry.type === "LineString") {
-      let info = {
-        routeKey: index,
-        routeColor: busRoute.properties.route_color,
-        routeLongName: busRoute.properties.route_long_name,
-        routeShortName: busRoute.properties.route_short_name,
-        routeCoords: busRoute.geometry.coordinates,
-      }
-      return info
-    }
-    if (busRoute.geometry.type === "Point") {
-      let info = {
-        routeKey: index,
-        stopName: busRoute.properties.stop_name,
-        stopCoords: busRoute.geometry.coordinates,
-        googleMapsCoords: [
-          busRoute.geometry.coordinates[1],
-          busRoute.geometry.coordinates[0],
-        ],
-      }
-      console.log(info)
-      return info
-    }
-  })
+  if (busRoute.length > 0) {
+    console.log(busRoute)
+  }
 
-  // let test = busRoutesCollection[0]
-  // console.log(test)
+  const reformatBusRoute = async (busRoute) => {
+    busRoute.map((busRouteShape, index) => {
+      if (busRouteShape.geometry.type === "LineString") {
+        let info = {
+          markerType: busRouteShape.geometry.type,
+          routeKey: index,
+          routeColor: busRouteShape.properties.route_color,
+          routeLongName: busRouteShape.properties.route_long_name,
+          routeShortName: busRouteShape.properties.route_short_name,
+          routeCoords: busRouteShape.geometry.coordinates,
+          routeCoordsLength: busRouteShape.geometry.coordinates.length,
+          googleMapsCoords: null,
+        }
+
+        let i = 0
+        let tempGoogleMapsCoords = []
+        let tempCoords = []
+        do {
+          tempCoords = [
+            busRouteShape.geometry.coordinates[i][1],
+            busRouteShape.geometry.coordinates[i][0],
+          ]
+          tempGoogleMapsCoords.push(tempCoords)
+
+          tempCoords = []
+          i++
+        } while (i < busRouteShape.geometry.coordinates.length)
+
+        info.googleMapsCoords = tempGoogleMapsCoords
+
+        // console.log(info)
+        setFilteredBusRoute(info)
+        // return info
+      }
+
+      if (busRouteShape.geometry.type === "Point") {
+        let info = {
+          markerType: busRouteShape.geometry.type,
+          routeKey: index,
+          stopName: busRouteShape.properties.stop_name,
+          stopCoords: busRouteShape.geometry.coordinates,
+          googleMapsCoords: [
+            busRouteShape.geometry.coordinates[1],
+            busRouteShape.geometry.coordinates[0],
+          ],
+        }
+        // setFilteredBusRoute(info)
+        // return info
+      }
+    })
+  }
+
+  // console.log(filteredBusRoute)
 
   useEffect(() => {
     // getBusRouteFilenames()
     getUniqueBusRouteFilenameList()
     getSingleBusRoute()
+    // reformatBusRoute(busRoute)
   }, [])
+
+  // console.log(busRoute)
 
   if (busRoutesFilenames.length !== 0) {
     let uniqueBusRouteFilenames = []
@@ -241,7 +274,7 @@ export default function GTFSTestMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {/* {busRoutesCollection.map((busRoute) => (
+            {busRoutesCollection.map((busRoute) => (
               <Polyline
                 key={busRoute.routeKey}
                 path={busRoute.googleMapsCoords}
@@ -253,7 +286,7 @@ export default function GTFSTestMapContainer() {
                   // handleBusShapeClick()
                 }}
               />
-            ))} */}
+            ))}
 
             {/* {busStopsCollection && busStopsCheckboxSelected
               ? busStopsCollection.map((busStop) => (
