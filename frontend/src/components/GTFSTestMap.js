@@ -170,7 +170,7 @@ export default function GTFSTestMapContainer() {
     })
   }
 
-  // console.log(filteredBusRoute)
+  console.log(filteredBusRoute)
 
   useEffect(() => {
     // getBusRouteFilenames()
