@@ -94,6 +94,9 @@ export default function GTFSTestMapContainer() {
   const getUniqueBusRouteFilenameList = async () => {
     const filePath = "http://localhost:5000/api/gtfsTransport/filenames"
     const busRoutesResult = await axios.get(filePath)
+
+    console.log(busRoutesResult.data)
+
     setBusRoutesFilenames(busRoutesResult.data)
   }
 
@@ -175,7 +178,10 @@ export default function GTFSTestMapContainer() {
   useEffect(() => {
     // getBusRouteFilenames()
     getUniqueBusRouteFilenameList()
-    getSingleBusRoute()
+
+    console.log(busRoutesFilenames)
+
+    // getSingleBusRoute()
     // reformatBusRoute(busRoute)
   }, [])
 
