@@ -15,6 +15,8 @@ import {
 import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/translinkTransportController"
 import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
+import { reduceGeoJsonFiles } from "./reduceGeoJsonFiles"
+
 // import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/translinkTransportController"
 
 export const runSwitchboard = (io) => {
@@ -36,7 +38,10 @@ export const runSwitchboard = (io) => {
   // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
   // deleteAllTemperatures()
   // runCron()
-  convertGtfsToGeoJSON()
+
+  // convertGtfsToGeoJSON()
+  reduceGeoJsonFiles()
+
   // createReducedShapeData()
   // importTripIdReducedShapeData()
   // console.log("Back in the switchBoard function")
