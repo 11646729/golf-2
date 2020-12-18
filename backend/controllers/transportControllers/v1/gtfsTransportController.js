@@ -65,15 +65,11 @@ export const gtfsGetOneReducedShape = async (req, res) => {
 
 // Path localhost:5000/api/gtfsTransport/routes/:id
 export const gtfsGetOneRoute = async (req, res) => {
-  // const id = req.params.id
-  const id = "01_0.geojson"
-  // const id = "TestFile.json"
-
-  console.log("Here in gtfsGetOneRoute")
+  // console.log("Here in gtfsGetOneRoute")
 
   const rawGeojson =
     "/Users/briansmith/Documents/GTD/golf-2/backend/geojson/Hamilton Ontario Street Railway/" +
-    id
+    req.query.id
 
   fs.readFile(rawGeojson, "utf8", (err, data) => {
     if (err) {

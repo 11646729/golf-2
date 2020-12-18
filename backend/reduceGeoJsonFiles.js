@@ -17,20 +17,18 @@ const selectFirstGeojsonFile = async (busRoutesResult) => {
   let singleRoute = busRoutesResult[0]
   getSingleBusRoute(singleRoute)
 
-  // console.log(busRoutesResult)
   // console.log(busRoutesResult.length)
-  // console.log(busRoutesResult[0]) // returns "01_0.geojson"
 }
 
 // Function to fetch data from a single file
 const getSingleBusRoute = async (singleRoute) => {
-  // NB singleRoute NOT USED
-  // -----------------------
-
-  console.log("Fetching first file")
+  // console.log("Fetching first file")
 
   let res = await axios({
     url: "http://localhost:5000/api/gtfsTransport/routes/:id",
+    params: {
+      id: singleRoute,
+    },
     method: "get",
     timeout: 8000,
     headers: {
@@ -39,6 +37,8 @@ const getSingleBusRoute = async (singleRoute) => {
   })
   // Test for Status - 200 is a Success response code
   if (res.status === 200) {
-    console.log(res.data.features)
+    console.log("Fetched data from file")
+
+    // console.log(res.data.features)
   }
 }
