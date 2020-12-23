@@ -1,5 +1,6 @@
 import { GtfsStopSchema } from "../../../models/transportModels/v1/gtfsStopSchema"
 import { GtfsReducedShapesSchema } from "../../../models/transportModels/v1/gtfsReducedShapesSchema"
+import { GtfsReducedRouteLineStringSchema } from "../../../models/transportModels/v1/gtfsReducedRouteSchema"
 
 const fs = require("fs")
 
@@ -90,6 +91,15 @@ export const gtfsGetFilenames = async (req, res) => {
     }
     res.send(data)
   })
+}
+
+// Path localhost:5000/api/gtfsTransport/reducedRoutesLineStrings
+export const gtfsGetAllReducedRoutes = async (req, res) => {
+  GtfsReducedRouteLineStringSchema.find({})
+    .then((gtfsReducedRouteLineStringSchema) =>
+      res.json(gtfsReducedRouteLineStringSchema)
+    )
+    .catch((err) => res.status(400).json("Error " + err))
 }
 
 // Direct call to delete all bus stops in the database

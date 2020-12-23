@@ -26,6 +26,12 @@ router.get("/routes/:id", gtfs_transport_controller.gtfsGetOneRoute)
 // GET all GeoJSON filenames in the directory
 router.get("/filenames", gtfs_transport_controller.gtfsGetFilenames)
 
+// GET all ReducedRoutes LineStrings from database
+router.get(
+  "/reducedRoutesLineStrings",
+  gtfs_transport_controller.gtfsGetAllReducedRoutes
+)
+
 // POST a shape to the database
 // router.post("/shapes/:id", gtfs_transport_controller.create)
 
