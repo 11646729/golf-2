@@ -1,6 +1,6 @@
 import gtfsToGeoJSON from "gtfs-to-geojson"
 import config from "./config.json"
-import { reduceGeoJsonFiles } from "./reduceGeoJsonFiles"
+import { createReducedRoutes } from "./createReducedRoutes"
 
 // Function to convert GTFS data to GeoJson
 export const convertGtfsToGeoJSON = async () => {
@@ -8,7 +8,7 @@ export const convertGtfsToGeoJSON = async () => {
     gtfsToGeoJSON(config)
       .then(() => {
         console.log("\n\nGeoJSON Generation Successful")
-        reduceGeoJsonFiles()
+        createReducedRoutes()
       })
       .catch((err) => {
         console.error(err)
