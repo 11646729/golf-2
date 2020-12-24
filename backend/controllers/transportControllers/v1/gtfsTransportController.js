@@ -3,6 +3,7 @@ import { GtfsReducedShapesSchema } from "../../../models/transportModels/v1/gtfs
 import { GtfsReducedRouteLineStringSchema } from "../../../models/transportModels/v1/gtfsReducedRouteSchema"
 
 const fs = require("fs")
+var path = require("path")
 
 // Path localhost:5000/api/gtfsTransport/
 export const gtfsTransportIndex = async (req, res) => {
@@ -82,14 +83,20 @@ export const gtfsGetOneRoute = async (req, res) => {
 }
 
 // Path localhost:5000/api/gtfsTransport/filenames
-export const gtfsGetFilenames = async (req, res) => {
-  const geojsonDirectory = "./geojson/Hamilton Ontario Street Railway"
+export const gtfsGetGeojsonFilenames = async (req, res) => {
+  var geojsonDirectory = path.resolve(
+    "./geojson/Hamilton Ontario Street Railway"
+  )
 
-  fs.readdir(geojsonDirectory, "utf8", (err, data) => {
+  fs.readdir(geojsonDirectory, function (err, files) {
+    var filesList = files.filter(function (e) {
+      return path.extname(e).toLowerCase() === ".geojson"
+    })
     if (err) {
       throw err
     }
-    res.send(data)
+
+    res.send(filesList)
   })
 }
 

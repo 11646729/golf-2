@@ -24,7 +24,7 @@ router.get("/shapes/:id", gtfs_transport_controller.gtfsGetOneReducedShape)
 router.get("/routes/:id", gtfs_transport_controller.gtfsGetOneRoute)
 
 // GET all GeoJSON filenames in the directory
-router.get("/filenames", gtfs_transport_controller.gtfsGetFilenames)
+router.get("/filenames", gtfs_transport_controller.gtfsGetGeojsonFilenames)
 
 // GET all ReducedRoutes LineStrings from database
 router.get(
