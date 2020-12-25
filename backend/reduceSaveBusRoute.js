@@ -13,17 +13,39 @@ export const reduceSaveBusRoute = async (busRoute, index) => {
       // Change order of coordinates
       let i = 0
       let googleMapsCoords = []
-      let tempCoords = []
+      // let tempCoords = []
       do {
-        tempCoords = [
-          busRoute.features[loop].geometry.coordinates[i][1],
-          busRoute.features[loop].geometry.coordinates[i][0],
-        ]
-        googleMapsCoords.push(tempCoords)
+        // tempCoords = [
+        const coordsSchema = new CoordsSchema({
+          lat: busRoute.features[loop].geometry.coordinates[i][1],
+          lng: busRoute.features[loop].geometry.coordinates[i][0],
+        })
 
-        tempCoords = []
+        // ]
+        googleMapsCoords.push(coordsSchema)
+
+        // tempCoords = []
         i++
       } while (i < busRoute.features[loop].geometry.coordinates.length)
+
+      // Imported
+
+      // Step 4: Store all the sequential sets of coordinates
+      // in the pathArray as a CoordsSchema model
+      // let l = 0
+      // let pathArray = []
+      // do {
+      //   const coordsSchema = new CoordsSchema({
+      //     lat: unsortedShape_id[l].shape_pt_lat,
+      //     lng: unsortedShape_id[l].shape_pt_lon,
+      //   })
+
+      //   pathArray.push(coordsSchema)
+
+      //   l++
+      // } while (l < unsortedShape_id.length)
+
+      // End of Imported
 
       // And save it in a gtfsReducedShapesSchema collection
       const gtfsReducedRouteSchema = new GtfsReducedRouteLineStringSchema({
@@ -33,7 +55,7 @@ export const reduceSaveBusRoute = async (busRoute, index) => {
         routeColor: busRoute.features[loop].properties.route_color,
         routeLongName: busRoute.features[loop].properties.route_long_name,
         routeShortName: busRoute.features[loop].properties.route_short_name,
-        // shapeCoordinates: googleMapsCoords,
+        shapeCoordinates: googleMapsCoords,
       })
 
       // Save the reducedShapes in the database

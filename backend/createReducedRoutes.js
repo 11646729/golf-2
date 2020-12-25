@@ -5,16 +5,31 @@ import { getSingleBusRoute } from "./getSingleBusRoute"
 export const createReducedRoutes = async () => {
   console.log("Fetching list of geojson filenames in a directory")
 
-  const filePath = "http://localhost:5000/api/gtfsTransport/filenames"
-  const busRoutesResult = await axios.get(filePath)
+  let res = await axios({
+    url: "http://localhost:5000/api/gtfsTransport/filenames",
+    method: "get",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
 
-  let i = 0
-  // do {
+  // Test for Status - 200 is a Success response code
+  if (res.status === 200) {
+    console.log("Fetched list of geojson filenames")
 
-  let singleRoute = busRoutesResult.data[i]
-  getSingleBusRoute(singleRoute)
-  console.log(singleRoute)
+    let i = 0
+    do {
+      let singleRouteFilename = res.data[i]
 
-  //   i++
-  // } while (i < busRoutesResult.data.length)
+      // Next line is for testing only
+      getSingleBusRoute(singleRouteFilename)
+
+      // console.log("Filename is: " + singleRouteFilename)
+
+      i++
+    } while (i < res.data.length)
+  } else {
+    console.log("Error fetching list of geojson filenames")
+  }
 }
