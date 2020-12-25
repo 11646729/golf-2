@@ -32,6 +32,12 @@ router.get(
   gtfs_transport_controller.gtfsGetAllReducedRoutes
 )
 
+// DELETE all ReducedRoutes LineStrings in the database
+router.delete(
+  "/reducedRoutesLineStrings",
+  gtfs_transport_controller.deleteAllReducedRoutes
+)
+
 // POST a shape to the database
 // router.post("/shapes/:id", gtfs_transport_controller.create)
 

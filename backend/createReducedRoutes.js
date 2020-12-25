@@ -1,8 +1,12 @@
 import axios from "axios"
 import { getSingleBusRoute } from "./getSingleBusRoute"
+import { deleteAllReducedRoutes } from "./controllers/transportControllers/v1/gtfsTransportController"
 
 // Function to fetch all the GeoJson route filenames in a directory irrespective of trip direction
 export const createReducedRoutes = async () => {
+  console.log("First delete old Reduced Route data in the database")
+  deleteAllReducedRoutes()
+
   console.log("Fetching list of geojson filenames in a directory")
 
   let res = await axios({

@@ -109,6 +109,17 @@ export const gtfsGetAllReducedRoutes = async (req, res) => {
     .catch((err) => res.status(400).json("Error " + err))
 }
 
+// Direct call to delete all route shapes in the database
+export const deleteAllReducedRoutes = async () => {
+  GtfsReducedRouteLineStringSchema.deleteMany({}, (err) => {
+    if (err) {
+      console.log("Some error occurred while removing all Reduced Routes")
+    } else {
+      console.log("All Reduced Routes were deleted successfully!")
+    }
+  })
+}
+
 // Direct call to delete all bus stops in the database
 export const directDeleteAllStops = async () => {
   GtfsStopSchema.deleteMany({}, (err) => {
