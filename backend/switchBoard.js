@@ -16,6 +16,7 @@ import { directDeleteAll as deleteAllBusStops } from "./controllers/transportCon
 import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
 import { createReducedRoutes } from "./createReducedRoutes"
+import { deleteOldReducedRoutes } from "./deleteOldReducedRoutes"
 
 // import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/translinkTransportController"
 
@@ -40,6 +41,7 @@ export const runSwitchboard = (io) => {
   // runCron()
 
   // convertGtfsToGeoJSON()
+  deleteOldReducedRoutes()
   createReducedRoutes()
 
   // createReducedShapeData()

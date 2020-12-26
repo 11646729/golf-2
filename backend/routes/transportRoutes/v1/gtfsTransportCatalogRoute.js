@@ -34,7 +34,7 @@ router.get(
 
 // DELETE all ReducedRoutes LineStrings in the database
 router.delete(
-  "/reducedRoutesLineStrings",
+  "/deleteReducedRoutesLineStrings",
   gtfs_transport_controller.deleteAllReducedRoutes
 )
 
