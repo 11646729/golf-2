@@ -1,6 +1,6 @@
 import { GtfsStopSchema } from "../../../models/transportModels/v1/gtfsStopSchema"
 import { GtfsReducedShapesSchema } from "../../../models/transportModels/v1/gtfsReducedShapesSchema"
-import { GtfsReducedRoutesSchema } from "../../../models/transportModels/v1/gtfsReducedRoutesSchema"
+import { GtfsReducedRouteSchema } from "../../../models/transportModels/v1/gtfsReducedRouteSchema"
 
 const fs = require("fs")
 var path = require("path")
@@ -102,14 +102,14 @@ export const gtfsGetGeojsonFilenames = async (req, res) => {
 
 // Path localhost:5000/api/gtfsTransport/reducedRoutes
 export const gtfsGetAllReducedRoutes = async (req, res) => {
-  GtfsReducedRoutesSchema.find({})
-    .then((gtfsReducedRoutesSchema) => res.json(gtfsReducedRoutesSchema))
+  GtfsReducedRouteSchema.find({})
+    .then((gtfsReducedRouteSchema) => res.json(gtfsReducedRoutesSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
 // Path localhost:5000/api/gtfsTransport/reducedRoutes
 export const deleteAllReducedRoutes = async (req, res) => {
-  GtfsReducedRoutesSchema.deleteMany({}, (err) => {
+  GtfsReducedRouteSchema.deleteMany({}, (err) => {
     if (err) {
       res
         .status(500)

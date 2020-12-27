@@ -1,4 +1,4 @@
-import { GtfsReducedRoutesSchema } from "./models/transportModels/v1/gtfsReducedRoutesSchema"
+import { GtfsReducedRouteSchema } from "./models/transportModels/v1/gtfsReducedRouteSchema"
 import { GtfsReducedStopSchema } from "./models/transportModels/v1/gtfsReducedStopSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
@@ -24,7 +24,7 @@ export const reduceSaveBusRoute = async (busRoute) => {
       } while (i < busRoute.features[loop].geometry.coordinates.length)
 
       // And save it in a gtfsReducedRouteSchema collection
-      const gtfsReducedRoutesSchema = new GtfsReducedRoutesSchema({
+      const gtfsReducedRouteSchema = new GtfsReducedRouteSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         markerType: busRoute.features[loop].geometry.type,
         shapeKey: loop,
@@ -35,7 +35,7 @@ export const reduceSaveBusRoute = async (busRoute) => {
       })
 
       // Save the gtfsReducedRouteSchema in the database
-      gtfsReducedRoutesSchema
+      gtfsReducedRouteSchema
         .save()
         .then(() => {
           console.log("gtfsReducedRouteSchema collection saved successfully")
