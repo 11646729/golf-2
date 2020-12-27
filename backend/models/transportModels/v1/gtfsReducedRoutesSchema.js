@@ -1,11 +1,11 @@
 import mongoose, { Schema } from "mongoose"
 import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 
-const gtfsReducedRouteLineStringSchema = new Schema(
+const gtfsReducedRoutesSchema = new Schema(
   {
     databaseVersion: { type: Number },
     markerType: { type: String },
-    routeKey: { type: String },
+    shapeKey: { type: String },
     routeColor: { type: String },
     routeLongName: { type: String },
     routeShortName: { type: String },
@@ -16,14 +16,14 @@ const gtfsReducedRouteLineStringSchema = new Schema(
   }
 )
 
-gtfsReducedRouteLineStringSchema.method("toJSON", function () {
+gtfsReducedRoutesSchema.method("toJSON", function () {
   const { __v, _id, ...object } = this.toObject()
   object.id = _id
   return object
 })
 
 // Export model
-export const GtfsReducedRouteLineStringSchema = mongoose.model(
-  "reducedRouteLineString",
-  gtfsReducedRouteLineStringSchema
+export const GtfsReducedRoutesSchema = mongoose.model(
+  "reducedRoutes",
+  gtfsReducedRoutesSchema
 )

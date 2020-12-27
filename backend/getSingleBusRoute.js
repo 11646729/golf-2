@@ -21,10 +21,7 @@ export const getSingleBusRoute = async (singleRoute) => {
   // Test for Status - 200 is a Success response code
   if (res.status === 200) {
     console.log("Fetched data from a single geojson file")
-
-    let index = singleRoute.substring(0, singleRoute.indexOf("."))
-
-    reduceSaveBusRoute(res.data, index)
+    reduceSaveBusRoute(res.data)
   } else {
     console.log("Error fetching data from a single geojson file")
   }

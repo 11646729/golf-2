@@ -5,8 +5,7 @@ export const deleteOldReducedRoutes = async (req, res) => {
   console.log("Step 1: Delete Reduced Route data in the mongodb database")
 
   res = await axios({
-    url:
-      "http://localhost:5000/api/gtfsTransport/deleteReducedRoutesLineStrings",
+    url: "http://localhost:5000/api/gtfsTransport/reducedRoutes",
     method: "delete",
     timeout: 8000,
     headers: {

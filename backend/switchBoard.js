@@ -39,11 +39,9 @@ export const runSwitchboard = (io) => {
   // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
   // deleteAllTemperatures()
   // runCron()
-
   // convertGtfsToGeoJSON()
   deleteOldReducedRoutes()
   createReducedRoutes()
-
   // createReducedShapeData()
   // importTripIdReducedShapeData()
   // console.log("Back in the switchBoard function")

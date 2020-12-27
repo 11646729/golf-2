@@ -76,130 +76,13 @@ export default function GTFSTestMapContainer() {
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
-  const [busRoutesFilenames, setBusRoutesFilenames] = useState([])
   const [busRoutesCollection, setBusRoutesCollection] = useState([])
-  const [busRoute, setBusRoute] = useState([])
-  const [filteredBusRoute, setFilteredBusRoute] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
   const [errorLoading, setLoadingError] = useState([])
 
-  // Fetch the list of GeoJson filenames
-  // const getBusRouteFilenames = async () => {
-  //   const filePath = "http://localhost:5000/api/gtfsTransport/filenames"
-  //   const busRoutesResult = await axios.get(filePath)
-  //   setBusRoutesFilenames(busRoutesResult.data)
-  // }
-
-  // Fetch a unique list of GeoJson filenames irrespective of trip direction
-  // const getUniqueBusRouteFilenameList = async () => {
-  //   const filePath = "http://localhost:5000/api/gtfsTransport/filenames"
-  //   const busRoutesResult = await axios.get(filePath)
-
-  //   console.log(busRoutesResult.data)
-
-  //   setBusRoutesFilenames(busRoutesResult.data)
-  // }
-
-  // let selectedRoute = busRoutesFilenames[0]
-
-  // const getSingleBusRoute = async () => {
-  //   let res = await axios({
-  //     url: "http://localhost:5000/api/gtfsTransport/routes/:id",
-  //     method: "get",
-  //     timeout: 8000,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //   // Test for Status - 200 is a Success response code
-  //   if (res.status === 200) {
-  //     setBusRoute(res.data.features)
-  //   }
-  // }
-
-  // if (busRoute.length > 0) {
-  //   console.log(busRoute)
-  // }
-
-  // const reformatBusRoute = async (busRoute) => {
-  //   busRoute.map((busRouteShape, index) => {
-  //     if (busRouteShape.geometry.type === "LineString") {
-  //       let info = {
-  //         markerType: busRouteShape.geometry.type,
-  //         routeKey: index,
-  //         routeColor: busRouteShape.properties.route_color,
-  //         routeLongName: busRouteShape.properties.route_long_name,
-  //         routeShortName: busRouteShape.properties.route_short_name,
-  //         routeCoords: busRouteShape.geometry.coordinates,
-  //         routeCoordsLength: busRouteShape.geometry.coordinates.length,
-  //         googleMapsCoords: null,
-  //       }
-
-  //       let i = 0
-  //       let tempGoogleMapsCoords = []
-  //       let tempCoords = []
-  //       do {
-  //         tempCoords = [
-  //           busRouteShape.geometry.coordinates[i][1],
-  //           busRouteShape.geometry.coordinates[i][0],
-  //         ]
-  //         tempGoogleMapsCoords.push(tempCoords)
-
-  //         tempCoords = []
-  //         i++
-  //       } while (i < busRouteShape.geometry.coordinates.length)
-
-  //       info.googleMapsCoords = tempGoogleMapsCoords
-
-  //       // console.log(info)
-  //       setFilteredBusRoute(info)
-  //       // return info
-  //     }
-
-  //     if (busRouteShape.geometry.type === "Point") {
-  //       let info = {
-  //         markerType: busRouteShape.geometry.type,
-  //         routeKey: index,
-  //         stopName: busRouteShape.properties.stop_name,
-  //         stopCoords: busRouteShape.geometry.coordinates,
-  //         googleMapsCoords: [
-  //           busRouteShape.geometry.coordinates[1],
-  //           busRouteShape.geometry.coordinates[0],
-  //         ],
-  //       }
-  //       // setFilteredBusRoute(info)
-  //       // return info
-  //     }
-  //   })
-  // }
-
-  // console.log(filteredBusRoute)
-
   useEffect(() => {
-    // getBusRouteFilenames()
-    // getUniqueBusRouteFilenameList()
-    // console.log(busRoutesFilenames)
-    // getSingleBusRoute()
-    // reformatBusRoute(busRoute)
+    // getReducedRoutes()
   }, [])
-
-  // console.log(busRoute)
-
-  if (busRoutesFilenames.length !== 0) {
-    let uniqueBusRouteFilenames = []
-    let i = 0
-    const substring = "_0.geojson"
-
-    do {
-      if (busRoutesFilenames[i].indexOf(substring) !== -1) {
-        uniqueBusRouteFilenames.push(busRoutesFilenames[i])
-      }
-      i++
-    } while (i < busRoutesFilenames.length)
-    // setBusRoutesFilenames(uniqueBusRouteFilenames)
-  }
-
-  // console.log(busRoutesCollection)
 
   // Now compute bounds of map to display
   // if (mapRef && busStopsCollection != null) {

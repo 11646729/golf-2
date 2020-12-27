@@ -26,17 +26,26 @@ router.get("/routes/:id", gtfs_transport_controller.gtfsGetOneRoute)
 // GET all GeoJSON filenames in the directory
 router.get("/filenames", gtfs_transport_controller.gtfsGetGeojsonFilenames)
 
-// GET all ReducedRoutes LineStrings from database
-router.get(
-  "/reducedRoutesLineStrings",
-  gtfs_transport_controller.gtfsGetAllReducedRoutes
-)
+// GET all ReducedRouteS from database
+router.get("/reducedRoutes", gtfs_transport_controller.gtfsGetAllReducedRoutes)
 
-// DELETE all ReducedRoutes LineStrings in the database
+// DELETE all ReducedRoutes in the database
 router.delete(
-  "/deleteReducedRoutesLineStrings",
+  "/reducedRoutes",
   gtfs_transport_controller.deleteAllReducedRoutes
 )
+
+// GET all ReducedStops from database
+// router.get(
+//   "/reducedStops",
+//   gtfs_transport_controller.gtfsGetAllReducedStops
+// )
+
+// DELETE all ReducedStops in the database
+// router.delete(
+//   "/reducedStops",
+//   gtfs_transport_controller.deleteAllReducedStops
+// )
 
 // POST a shape to the database
 // router.post("/shapes/:id", gtfs_transport_controller.create)

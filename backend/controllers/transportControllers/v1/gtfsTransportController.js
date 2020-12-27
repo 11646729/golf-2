@@ -1,6 +1,6 @@
 import { GtfsStopSchema } from "../../../models/transportModels/v1/gtfsStopSchema"
 import { GtfsReducedShapesSchema } from "../../../models/transportModels/v1/gtfsReducedShapesSchema"
-import { GtfsReducedRouteLineStringSchema } from "../../../models/transportModels/v1/gtfsReducedRouteSchema"
+import { GtfsReducedRoutesSchema } from "../../../models/transportModels/v1/gtfsReducedRoutesSchema"
 
 const fs = require("fs")
 var path = require("path")
@@ -100,18 +100,16 @@ export const gtfsGetGeojsonFilenames = async (req, res) => {
   })
 }
 
-// Path localhost:5000/api/gtfsTransport/reducedRoutesLineStrings
+// Path localhost:5000/api/gtfsTransport/reducedRoutes
 export const gtfsGetAllReducedRoutes = async (req, res) => {
-  GtfsReducedRouteLineStringSchema.find({})
-    .then((gtfsReducedRouteLineStringSchema) =>
-      res.json(gtfsReducedRouteLineStringSchema)
-    )
+  GtfsReducedRoutesSchema.find({})
+    .then((gtfsReducedRoutesSchema) => res.json(gtfsReducedRoutesSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Direct call to delete all Reduced Routes in the database
+// Path localhost:5000/api/gtfsTransport/reducedRoutes
 export const deleteAllReducedRoutes = async (req, res) => {
-  GtfsReducedRouteLineStringSchema.deleteMany({}, (err) => {
+  GtfsReducedRoutesSchema.deleteMany({}, (err) => {
     if (err) {
       res
         .status(500)
@@ -125,6 +123,11 @@ export const deleteAllReducedRoutes = async (req, res) => {
     }
   })
 }
+
+// ------------------
+// GET POINTS HERE
+// DELETE POINTS HERE
+// ------------------
 
 // Direct call to delete all bus stops in the database
 export const directDeleteAllStops = async () => {
