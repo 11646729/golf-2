@@ -1,11 +1,11 @@
 import axios from "axios"
-import { reduceSaveBusRoute } from "./reduceSaveBusRoute"
+import { reduceSaveBusRouteAndStops } from "./reduceSaveBusRouteAndStops"
 
 // This routine is called from the individual route button
 // -------------------------------------------------------
 
 // Function to fetch data from a single GeoJson file
-export const getSingleBusRoute = async (singleRoute) => {
+export const getSingleBusRouteAndStops = async (singleRoute) => {
   let res = await axios({
     url: "http://localhost:5000/api/gtfsTransport/routes/:id",
     params: {
@@ -21,7 +21,7 @@ export const getSingleBusRoute = async (singleRoute) => {
   // Test for Status - 200 is a Success response code
   if (res.status === 200) {
     console.log("Fetched data from a single geojson file")
-    reduceSaveBusRoute(res.data)
+    reduceSaveBusRouteAndStops(res.data)
   } else {
     console.log("Error fetching data from a single geojson file")
   }

@@ -1,11 +1,11 @@
 import axios from "axios"
 
-// Function to delete old Reduced Routes data in the mongodb database
-export const deleteOldReducedRoutes = async (req, res) => {
-  console.log("Step 1: Delete Reduced Routes data in the mongodb database")
+// Function to delete old Reduced Stops data in the mongodb database
+export const deleteOldReducedStops = async (req, res) => {
+  console.log("Step 1: Delete Reduced Stops data in the mongodb database")
 
   res = await axios({
-    url: "http://localhost:5000/api/gtfsTransport/reducedRoutes",
+    url: "http://localhost:5000/api/gtfsTransport/reducedStops",
     method: "delete",
     timeout: 8000,
     headers: {

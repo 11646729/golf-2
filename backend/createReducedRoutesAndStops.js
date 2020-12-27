@@ -1,8 +1,8 @@
 import axios from "axios"
-import { getSingleBusRoute } from "./getSingleBusRoute"
+import { getSingleBusRouteAndStops } from "./getSingleBusRouteAndStops"
 
 // Function to fetch all the GeoJson route filenames in a directory irrespective of trip direction
-export const createReducedRoutes = async (req, res) => {
+export const createReducedRoutesAndStops = async (req, res) => {
   console.log("Step 2: Fetch all the GeoJson route filenames in a directory")
 
   res = await axios({
@@ -25,7 +25,7 @@ export const createReducedRoutes = async (req, res) => {
     let singleRouteFilename = res.data[i]
 
     // Next line is for testing only
-    getSingleBusRoute(singleRouteFilename)
+    getSingleBusRouteAndStops(singleRouteFilename)
 
     // console.log("Filename is: " + singleRouteFilename)
 

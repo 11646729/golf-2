@@ -3,7 +3,7 @@ import { GtfsReducedStopSchema } from "./models/transportModels/v1/gtfsReducedSt
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to extract data for reduced dataset then save it in the mongodb database
-export const reduceSaveBusRoute = async (busRoute) => {
+export const reduceSaveBusRouteAndStops = async (busRoute) => {
   console.log("Extract data for reduced dataset")
 
   let loop = 0
