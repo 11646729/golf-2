@@ -1,4 +1,5 @@
 import { GtfsReducedRoutesSchema } from "./models/transportModels/v1/gtfsReducedRoutesSchema"
+import { GtfsReducedStopSchema } from "./models/transportModels/v1/gtfsReducedStopSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to extract data for reduced dataset then save it in the mongodb database
@@ -8,7 +9,7 @@ export const reduceSaveBusRoute = async (busRoute) => {
   let loop = 0
   do {
     if (busRoute.features[loop].geometry.type === "LineString") {
-      // step 1: Change order of coordinates
+      // Change order of coordinates
       let i = 0
       let googleMapsCoords = []
       do {
@@ -22,7 +23,7 @@ export const reduceSaveBusRoute = async (busRoute) => {
         i++
       } while (i < busRoute.features[loop].geometry.coordinates.length)
 
-      // And save it in a gtfsReducedSRouteLineStringSchema collection
+      // And save it in a gtfsReducedRouteSchema collection
       const gtfsReducedRoutesSchema = new GtfsReducedRoutesSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         markerType: busRoute.features[loop].geometry.type,
@@ -33,7 +34,7 @@ export const reduceSaveBusRoute = async (busRoute) => {
         shapeCoordinates: googleMapsCoords,
       })
 
-      // Save the reducedShapes in the database
+      // Save the gtfsReducedRouteSchema in the database
       gtfsReducedRoutesSchema
         .save()
         .then(() => {
@@ -50,32 +51,27 @@ export const reduceSaveBusRoute = async (busRoute) => {
         lng: busRoute.features[loop].geometry.coordinates[0],
       })
 
-      // And save it in a gtfsReducedSRouteLineStringSchema collection
-      const gtfsReducedRoutesSchema = new GtfsReducedRoutesSchema({
+      // And save it in a gtfsReducedStopsSchema collection
+      const gtfsReducedStopSchema = new GtfsReducedStopSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         markerType: busRoute.features[loop].geometry.type,
         shapeKey: loop,
-        routeColor: busRoute.features[loop].properties.routes[0].route_color,
-        routeLongName:
-          busRoute.features[loop].properties.routes[0].route_long_name,
-        routeShortName:
-          busRoute.features[loop].properties.routes[0].route_short_name,
+        stopCode: busRoute.features[loop].properties.stop_code,
+        stopID: busRoute.features[loop].properties.stop_id,
+        stopColor: busRoute.features[loop].properties.routes[0].route_color,
+        stopName: busRoute.features[loop].properties.stop_Name,
         shapeCoordinates: coordsSchema,
       })
 
-      console.log(gtfsReducedRoutesSchema)
-
-      //   let markerType = busRoute.features[loop].geometry.type
-      //   let routeKey = index
-      //   let stopName = busRoute.features[loop].properties.stop_name
-      //   let stopCoords = busRoute.features[loop].geometry.coordinates
-      //   let googleMapsCoords = [
-      //     busRoute.features[loop].geometry.coordinates[1],
-      //     busRoute.features[loop].geometry.coordinates[0],
-      //   ]
-      //   // }
-
-      // console.log(loop)
+      // Save the gtfsReducedStopsSchema in the database
+      gtfsReducedStopSchema
+        .save()
+        .then(() => {
+          console.log("gtfsReducedStopSchema collection saved successfully")
+        })
+        .catch((err) => {
+          console.error(err)
+        })
     }
 
     loop++
