@@ -19,6 +19,8 @@ import {
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import CheckboxList from "./CheckboxList"
+import { getAllReducedRoutes } from "./getAllReducedRoutes"
+import { getAllReducedStops } from "./getAllReducedStops"
 
 const useStyles = makeStyles({
   // polyline1: {
@@ -81,7 +83,7 @@ export default function GTFSTestMapContainer() {
   const [errorLoading, setLoadingError] = useState([])
 
   useEffect(() => {
-    // getReducedRoutes()
+    getAllReducedRoutes()
   }, [])
 
   // Now compute bounds of map to display

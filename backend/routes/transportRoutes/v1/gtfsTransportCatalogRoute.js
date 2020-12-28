@@ -27,7 +27,7 @@ router.get("/routes/:id", gtfs_transport_controller.gtfsGetOneRoute)
 router.get("/filenames", gtfs_transport_controller.gtfsGetGeojsonFilenames)
 
 // GET all ReducedRoutes from database
-// router.get("/reducedRoutes", gtfs_transport_controller.gtfsGetAllReducedRoutes)
+router.get("/reducedRoutes", gtfs_transport_controller.gtfsGetAllReducedRoutes)
 
 // DELETE all ReducedRoutes in the database
 router.delete(
