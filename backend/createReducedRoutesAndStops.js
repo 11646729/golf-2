@@ -21,18 +21,16 @@ export const createReducedRoutesAndStops = async (req, res) => {
     )
 
     let i = 0
-    // do {
-    let singleRouteFilename = res.data[i]
+    do {
+      let singleRouteFilename = res.data[i]
+      getSingleBusRouteAndStops(singleRouteFilename)
 
-    // Next line is for testing only
-    getSingleBusRouteAndStops(singleRouteFilename)
+      // Next line is for testing only
+      // console.log("Filename is: " + singleRouteFilename)
 
-    // console.log("Filename is: " + singleRouteFilename)
-
-    i++
-    //   } while (i < res.data.length)
-    // } else {
-    //   console.log("Error fetching list of geojson filenames")
-    // }
+      i++
+    } while (i < res.data.length)
+  } else {
+    console.log("Error fetching list of geojson filenames")
   }
 }

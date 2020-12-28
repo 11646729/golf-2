@@ -10,7 +10,7 @@ const gtfsReducedStopSchema = new Schema(
     stopID: { type: Number },
     stopColor: { type: String },
     stopName: { type: String },
-    shapeCoordinates: [{ type: CoordsSchema.schema }],
+    shapeCoordinates: { type: CoordsSchema.schema },
   },
   {
     timestamps: true,

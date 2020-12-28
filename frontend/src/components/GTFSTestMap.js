@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios"
 import {
   GoogleMap,
   useLoadScript,
@@ -19,8 +18,8 @@ import {
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import CheckboxList from "./CheckboxList"
-import { getAllReducedRoutes } from "./getAllReducedRoutes"
-import { getAllReducedStops } from "./getAllReducedStops"
+import getAllReducedRoutes from "./getAllReducedRoutes"
+import getAllReducedStops from "./getAllReducedStops"
 
 const useStyles = makeStyles({
   // polyline1: {
@@ -83,22 +82,53 @@ export default function GTFSTestMapContainer() {
   const [errorLoading, setLoadingError] = useState([])
 
   useEffect(() => {
-    getAllReducedRoutes()
+    let isSubscribed = true
+
+    getAllReducedStops()
+      .then((busStopsResult) =>
+        isSubscribed ? setBusStopsCollection(busStopsResult) : null
+      )
+      .catch((error) => (isSubscribed ? setLoadingError(error) : null))
+
+    // isSubscribed = false
+    // return isSubscribed
+    return () => (isSubscribed = false)
   }, [])
 
+  console.log(busStopsCollection)
+
   // Now compute bounds of map to display
-  // if (mapRef && busStopsCollection != null) {
-  //   const bounds = new window.google.maps.LatLngBounds()
-  //   busStopsCollection.map((busStop) => {
-  //     const myLatLng = new window.google.maps.LatLng({
-  //       lat: busStop.stop_lat,
-  //       lng: busStop.stop_lon,
-  //     })
-  //     bounds.extend(myLatLng)
-  //     return bounds
-  //   })
-  //   mapRef.fitBounds(bounds)
-  // }
+  if (mapRef && busStopsCollection != null) {
+    const bounds = new window.google.maps.LatLngBounds()
+
+    // console.log(busStopsCollection[0].shapeCoordinates[0].lat)
+
+    busStopsCollection.map((busStop) => {
+      const myLatLng = new window.google.maps.LatLng({
+        lat: busStop.shapeCoordinates.lat,
+        lng: busStop.shapeCoordinates.lng,
+      })
+      bounds.extend(myLatLng)
+      return bounds
+    })
+    mapRef.fitBounds(bounds)
+  }
+
+  useEffect(() => {
+    let isSubscribed = true
+
+    getAllReducedRoutes()
+      .then((busRoutesResult) =>
+        isSubscribed ? setBusRoutesCollection(busRoutesResult) : null
+      )
+      .catch((error) => (isSubscribed ? setLoadingError(error) : null))
+
+    // isSubscribed = false
+    // return isSubscribed
+    return () => (isSubscribed = false)
+  }, [])
+
+  // console.log(busRoutesCollection)
 
   // -----------------------------------------------------
   // EVENT HANDLERS SECTION
@@ -163,7 +193,7 @@ export default function GTFSTestMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {busRoutesCollection.map((busRoute) => (
+            {/* {busRoutesCollection.map((busRoute) => (
               <Polyline
                 key={busRoute.routeKey}
                 path={busRoute.googleMapsCoords}
@@ -175,15 +205,15 @@ export default function GTFSTestMapContainer() {
                   // handleBusShapeClick()
                 }}
               />
-            ))}
+            ))} */}
 
-            {/* {busStopsCollection && busStopsCheckboxSelected
+            {busStopsCollection && busStopsCheckboxSelected
               ? busStopsCollection.map((busStop) => (
                   <Marker
-                    key={busStop.stop_id}
+                    key={busStop.shapeKey}
                     position={{
-                      lat: busStop.stop_lat,
-                      lng: busStop.stop_lon,
+                      lat: busStop.shapeCoordinates.lat,
+                      lng: busStop.shapeCoordinates.lng,
                     }}
                     icon={{
                       url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
@@ -195,7 +225,7 @@ export default function GTFSTestMapContainer() {
                     }}
                   />
                 ))
-              : null} */}
+              : null}
             {busStopSelected ? (
               <InfoWindow
                 position={{
