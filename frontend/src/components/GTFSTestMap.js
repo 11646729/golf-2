@@ -100,9 +100,6 @@ export default function GTFSTestMapContainer() {
   // Now compute bounds of map to display
   if (mapRef && busStopsCollection != null) {
     const bounds = new window.google.maps.LatLngBounds()
-
-    // console.log(busStopsCollection[0].shapeCoordinates[0].lat)
-
     busStopsCollection.map((busStop) => {
       const myLatLng = new window.google.maps.LatLng({
         lat: busStop.shapeCoordinates.lat,
@@ -128,7 +125,7 @@ export default function GTFSTestMapContainer() {
     return () => (isSubscribed = false)
   }, [])
 
-  // console.log(busRoutesCollection)
+  console.log(busRoutesCollection)
 
   // -----------------------------------------------------
   // EVENT HANDLERS SECTION
@@ -193,10 +190,10 @@ export default function GTFSTestMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {/* {busRoutesCollection.map((busRoute) => (
+            {busRoutesCollection.map((busRoute) => (
               <Polyline
-                key={busRoute.routeKey}
-                path={busRoute.googleMapsCoords}
+                key={busRoute.shapeKey}
+                path={busRoute.shapeCoordinates}
                 // options={classes.polyline1}
                 options={{ strokeColor: busRoute.routeColor }}
                 onClick={() => {
@@ -205,9 +202,8 @@ export default function GTFSTestMapContainer() {
                   // handleBusShapeClick()
                 }}
               />
-            ))} */}
-
-            {busStopsCollection && busStopsCheckboxSelected
+            ))}
+            {/* {busStopsCollection && busStopsCheckboxSelected
               ? busStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.shapeKey}
@@ -225,7 +221,7 @@ export default function GTFSTestMapContainer() {
                     }}
                   />
                 ))
-              : null}
+              : null} */}
             {busStopSelected ? (
               <InfoWindow
                 position={{

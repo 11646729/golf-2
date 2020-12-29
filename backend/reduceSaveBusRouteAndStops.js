@@ -3,8 +3,11 @@ import { GtfsReducedStopSchema } from "./models/transportModels/v1/gtfsReducedSt
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to extract data for reduced dataset then save it in the mongodb database
-export const reduceSaveBusRouteAndStops = async (busRoute) => {
-  console.log("Extract data for reduced dataset")
+export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
+  console.log("Extracting data for reduced dataset")
+
+  let reducedRoute = singleRoute.substr(0, singleRoute.indexOf("."))
+  console.log(reducedRoute)
 
   let loop = 0
   do {
@@ -27,7 +30,7 @@ export const reduceSaveBusRouteAndStops = async (busRoute) => {
       const gtfsReducedRouteSchema = new GtfsReducedRouteSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         markerType: busRoute.features[loop].geometry.type,
-        shapeKey: loop,
+        shapeKey: reducedRoute + "+" + loop,
         routeColor: busRoute.features[loop].properties.route_color,
         routeLongName: busRoute.features[loop].properties.route_long_name,
         routeShortName: busRoute.features[loop].properties.route_short_name,
@@ -38,7 +41,7 @@ export const reduceSaveBusRouteAndStops = async (busRoute) => {
       gtfsReducedRouteSchema
         .save()
         .then(() => {
-          console.log("gtfsReducedRouteSchema collection saved successfully")
+          // console.log("gtfsReducedRouteSchema collection saved successfully")
         })
         .catch((err) => {
           console.error(err)
@@ -55,7 +58,7 @@ export const reduceSaveBusRouteAndStops = async (busRoute) => {
       const gtfsReducedStopSchema = new GtfsReducedStopSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         markerType: busRoute.features[loop].geometry.type,
-        shapeKey: loop,
+        shapeKey: reducedRoute + "+" + loop,
         stopCode: busRoute.features[loop].properties.stop_code,
         stopID: busRoute.features[loop].properties.stop_id,
         stopColor: busRoute.features[loop].properties.routes[0].route_color,
@@ -67,7 +70,7 @@ export const reduceSaveBusRouteAndStops = async (busRoute) => {
       gtfsReducedStopSchema
         .save()
         .then(() => {
-          console.log("gtfsReducedStopSchema collection saved successfully")
+          // console.log("gtfsReducedStopSchema collection saved successfully")
         })
         .catch((err) => {
           console.error(err)
@@ -76,4 +79,5 @@ export const reduceSaveBusRouteAndStops = async (busRoute) => {
 
     loop++
   } while (loop < busRoute.features.length)
+  console.log("All Data extracted")
 }
