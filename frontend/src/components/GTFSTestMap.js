@@ -22,11 +22,11 @@ import getAllReducedRoutes from "./getAllReducedRoutes"
 import getAllReducedStops from "./getAllReducedStops"
 
 const useStyles = makeStyles({
-  // polyline1: {
-  //   strokeColor: "#ff2343",
-  //   strokeOpacity: "1.0",
-  //   strokeWeight: 2,
-  // },
+  polyline1: {
+    // strokeColor: "#ff2343",
+    strokeOpacity: "1.0",
+    strokeWeight: 2,
+  },
   polyline2: {
     strokeColor: "#0000ff",
     strokeOpacity: "1.0",
@@ -69,10 +69,10 @@ export default function GTFSTestMapContainer() {
   })
 
   const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
-  const [busShapesCheckboxSelected, setBusShapesCheckbox] = useState(true)
+  const [busRoutesCheckboxSelected, setBusRoutesCheckbox] = useState(true)
 
   const [busStopSelected, setBusStopSelected] = useState(null)
-  const [busShapeSelected, setBusShapeSelected] = useState(null)
+  const [busRouteSelected, setBusRouteSelected] = useState(null)
 
   // -----------------------------------------------------
   // DATA HOOKS SECTION
@@ -144,8 +144,8 @@ export default function GTFSTestMapContainer() {
     setBusStopsCheckbox(event.target.checked)
   }
 
-  const handleBusShapesCheckboxChange = (event) => {
-    setBusShapesCheckbox(event.target.checked)
+  const handleBusRoutesCheckboxChange = (event) => {
+    setBusRoutesCheckbox(event.target.checked)
   }
 
   // const handleBusStopClick = (event) => {
@@ -190,20 +190,22 @@ export default function GTFSTestMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {busRoutesCollection.map((busRoute) => (
-              <Polyline
-                key={busRoute.shapeKey}
-                path={busRoute.shapeCoordinates}
-                // options={classes.polyline1}
-                options={{ strokeColor: busRoute.routeColor }}
-                onClick={() => {
-                  // setBusShapeSelected(busRoute)
-                  // console.log(busShape)
-                  // handleBusShapeClick()
-                }}
-              />
-            ))}
-            {/* {busStopsCollection && busStopsCheckboxSelected
+            {busRoutesCollection && busRoutesCheckboxSelected
+              ? busRoutesCollection.map((busRoute) => (
+                  <Polyline
+                    key={busRoute.shapeKey}
+                    path={busRoute.shapeCoordinates}
+                    // options={classes.polyline1}
+                    options={{ strokeColor: busRoute.routeColor }}
+                    onClick={() => {
+                      setBusRouteSelected(busRoute)
+                      // console.log(busShape)
+                      // handleBusShapeClick()
+                    }}
+                  />
+                ))
+              : null}
+            {busStopsCollection && busStopsCheckboxSelected
               ? busStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.shapeKey}
@@ -212,7 +214,9 @@ export default function GTFSTestMapContainer() {
                       lng: busStop.shapeCoordinates.lng,
                     }}
                     icon={{
-                      url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
+                      path: window.google.maps.SymbolPath.CIRCLE,
+                      scale: 2,
+                      // url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
                     }}
                     onClick={() => {
                       setBusStopSelected(busStop)
@@ -221,7 +225,7 @@ export default function GTFSTestMapContainer() {
                     }}
                   />
                 ))
-              : null} */}
+              : null}
             {busStopSelected ? (
               <InfoWindow
                 position={{
@@ -270,12 +274,12 @@ export default function GTFSTestMapContainer() {
               control={
                 <Checkbox
                   color="primary"
-                  checked={busShapesCheckboxSelected}
-                  onChange={handleBusShapesCheckboxChange}
-                  name="busShapesCheckbox"
+                  checked={busRoutesCheckboxSelected}
+                  onChange={handleBusRoutesCheckboxChange}
+                  name="busRoutesCheckbox"
                 />
               }
-              label="Display Bus Trip Shapes"
+              label="Display Bus Trip Routes"
               labelPlacement="end"
             />
             <CheckboxList />
