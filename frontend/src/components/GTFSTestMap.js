@@ -22,21 +22,16 @@ import getAllReducedRoutes from "./getAllReducedRoutes"
 import getAllReducedStops from "./getAllReducedStops"
 
 const useStyles = makeStyles({
-  polyline1: {
-    // strokeColor: "#ff2343",
-    strokeOpacity: "1.0",
-    strokeWeight: 2,
-  },
-  polyline2: {
-    strokeColor: "#0000ff",
-    strokeOpacity: "1.0",
-    strokeWeight: 2,
-  },
-  divStyle: {
-    background: "white",
-    border: "1px solid #ccc",
-    padding: 15,
-  },
+  // polyline2: {
+  //   strokeColor: "#0000ff",
+  //   strokeOpacity: "1.0",
+  //   strokeWeight: 2,
+  // },
+  // divStyle: {
+  //   background: "white",
+  //   border: "1px solid #ccc",
+  //   padding: 15,
+  // },
   headerSelection: {
     marginTop: 55,
     marginLeft: 20,
@@ -68,7 +63,7 @@ export default function GTFSTestMapContainer() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
 
-  const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
+  const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(false)
   const [busRoutesCheckboxSelected, setBusRoutesCheckbox] = useState(true)
 
   const [busStopSelected, setBusStopSelected] = useState(null)
@@ -95,7 +90,7 @@ export default function GTFSTestMapContainer() {
     return () => (isSubscribed = false)
   }, [])
 
-  console.log(busStopsCollection)
+  // console.log(busStopsCollection)
 
   // Now compute bounds of map to display
   if (mapRef && busStopsCollection != null) {
@@ -125,7 +120,7 @@ export default function GTFSTestMapContainer() {
     return () => (isSubscribed = false)
   }, [])
 
-  console.log(busRoutesCollection)
+  // console.log(busRoutesCollection)
 
   // -----------------------------------------------------
   // EVENT HANDLERS SECTION
@@ -195,8 +190,11 @@ export default function GTFSTestMapContainer() {
                   <Polyline
                     key={busRoute.shapeKey}
                     path={busRoute.shapeCoordinates}
-                    // options={classes.polyline1}
-                    options={{ strokeColor: busRoute.routeColor }}
+                    options={{
+                      strokeColor: busRoute.routeColor,
+                      strokeOpacity: "1.0",
+                      strokeWeight: 2,
+                    }}
                     onClick={() => {
                       setBusRouteSelected(busRoute)
                       // console.log(busShape)
@@ -283,18 +281,6 @@ export default function GTFSTestMapContainer() {
               labelPlacement="end"
             />
             <CheckboxList />
-            {/* <RouteListItem
-              // props
-              busRouteNumber="28"
-              busRouteName="San Rafael - Sausalito"
-              busRouteVia="via Strawberry, Mill Valley"
-            />
-            <RouteListItem
-              // props
-              busRouteNumber="218"
-              busRouteName="San Rafael - Sausalito"
-              busRouteVia="via Strawberry, Mill Valley"
-            /> */}
           </Paper>
         </Grid>
       </Grid>
