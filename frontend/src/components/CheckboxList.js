@@ -1,14 +1,13 @@
 import React from "react"
 import {
   makeStyles,
-  Button,
   List,
   ListItem,
-  ListItemIcon,
   ListItemText,
-  Checkbox,
   Typography,
 } from "@material-ui/core"
+import BandButton from "./BandButton"
+import BandCheckbox from "./BandCheckbox"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,22 +31,10 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 50,
     // variant: "caption",
   },
-  captionButton: {
-    maxWidth: "40px",
-    maxHeight: "30px",
-    minWidth: "40px",
-    minHeight: "30px",
-    color: "#ffffff",
-    backgroundColor: "#87cefa",
-    padding: "12px 22px",
-    fontSize: "18px",
-  },
-  checkbox: {
-    color: "#42cef5",
-  },
 }))
 
 CheckboxList.defaultProps = {
+  busRouteColor: "#87cefa",
   busRouteNumber: "18",
   busRouteName: "San Rafael - Sausalito",
   busRouteVia: "via Strawberry, Mill Valley",
@@ -73,7 +60,7 @@ export default function CheckboxList(props) {
   return (
     <List className={classes.root}>
       {[0, 1, 2].map((value) => {
-        const labelId = `checkbox-list-label-${value}`
+        // const labelId = `checkbox-list-label-${value}`
 
         return (
           <ListItem
@@ -83,19 +70,12 @@ export default function CheckboxList(props) {
             button
             onClick={handleToggle(value)}
           >
-            <ListItemIcon>
-              <Checkbox
-                className={classes.checkbox}
-                edge="start"
-                checked={checked.indexOf(value) !== -1}
-                tabIndex={-1}
-                disableRipple
-                inputProps={{ "aria-labelledby": labelId }}
-              />
-              <Button className={classes.captionButton}>
-                {props.busRouteNumber}
-              </Button>
-            </ListItemIcon>
+            <BandCheckbox />
+            <BandButton
+              title="Here I am"
+              backgroundColor="#87cefa"
+              busRouteNumber="100"
+            ></BandButton>
             <ListItemText
               primary={
                 <Typography className={classes.busRouteNameId}>

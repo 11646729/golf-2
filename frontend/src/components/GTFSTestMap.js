@@ -22,16 +22,11 @@ import getAllReducedRoutes from "./getAllReducedRoutes"
 import getAllReducedStops from "./getAllReducedStops"
 
 const useStyles = makeStyles({
-  // polyline2: {
-  //   strokeColor: "#0000ff",
-  //   strokeOpacity: "1.0",
-  //   strokeWeight: 2,
-  // },
-  // divStyle: {
-  //   background: "white",
-  //   border: "1px solid #ccc",
-  //   padding: 15,
-  // },
+  divStyle: {
+    background: "white",
+    border: "1px solid #ccc",
+    padding: 15,
+  },
   headerSelection: {
     marginTop: 55,
     marginLeft: 20,
@@ -143,13 +138,17 @@ export default function GTFSTestMapContainer() {
     setBusRoutesCheckbox(event.target.checked)
   }
 
-  // const handleBusStopClick = (event) => {
-  //   console.log(busStopSelected)
-  // }
+  const handleBusStopClick = (event) => {
+    console.log(event)
+    // console.log(busStopSelected)
+    // setBusStopSelected(busStop)
+  }
 
-  // const handleBusShapeClick = (event) => {
-  //   console.log(busShapeSelected)
-  // }
+  const handleBusRouteClick = (event) => {
+    console.log(event)
+    // console.log(busRouteSelected)
+    // setBusRouteSelected(busRoute)
+  }
 
   // -----------------------------------------------------
   // VIEW SECTION
@@ -196,9 +195,7 @@ export default function GTFSTestMapContainer() {
                       strokeWeight: 2,
                     }}
                     onClick={() => {
-                      setBusRouteSelected(busRoute)
-                      // console.log(busShape)
-                      // handleBusShapeClick()
+                      handleBusRouteClick()
                     }}
                   />
                 ))
@@ -217,9 +214,7 @@ export default function GTFSTestMapContainer() {
                       // url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
                     }}
                     onClick={() => {
-                      setBusStopSelected(busStop)
-                      // console.log(busStop)
-                      // handleBusStopClick()
+                      handleBusStopClick()
                     }}
                   />
                 ))
@@ -255,7 +250,6 @@ export default function GTFSTestMapContainer() {
               }}
               control={
                 <Checkbox
-                  color="primary"
                   checked={busStopsCheckboxSelected}
                   onChange={handleBusStopsCheckboxChange}
                   name="busStopsCheckbox"
@@ -277,10 +271,15 @@ export default function GTFSTestMapContainer() {
                   name="busRoutesCheckbox"
                 />
               }
-              label="Display Bus Trip Routes"
+              label="Display Bus Routes"
               labelPlacement="end"
             />
-            <CheckboxList />
+            <CheckboxList
+              // Parameters
+              busRouteNumber="200"
+              busRouteName="Route Name Test"
+              busRouteVia="Route via Test"
+            />
           </Paper>
         </Grid>
       </Grid>
