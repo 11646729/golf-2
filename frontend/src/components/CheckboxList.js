@@ -1,13 +1,8 @@
 import React from "react"
-import {
-  makeStyles,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from "@material-ui/core"
+import { makeStyles, List, ListItem } from "@material-ui/core"
 import BandButton from "./BandButton"
 import BandCheckbox from "./BandCheckbox"
+import BandListItemText from "./BandListItemText"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,30 +10,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
-  busRouteNameId: {
-    // marginBottom: 0,
-    paddingLeft: 10,
-    fontSize: 16,
-    fontWeight: 500,
-    variant: "caption",
-  },
-  busRouteViaId: {
-    // textalign: "top",
-    // marginTop: 0,
-    paddingLeft: 10,
-    // paddingTop: 0,
-    fontSize: 12,
-    fontWeight: 50,
-    // variant: "caption",
-  },
 }))
-
-CheckboxList.defaultProps = {
-  // busRouteColor: "#87cefa",
-  // busRouteNumber: "18",
-  busRouteName: "San Rafael - Sausalito",
-  busRouteVia: "via Strawberry, Mill Valley",
-}
 
 export default function CheckboxList(props) {
   const classes = useStyles()
@@ -61,7 +33,6 @@ export default function CheckboxList(props) {
     <List className={classes.root}>
       {[0, 1, 2].map((value) => {
         // const labelId = `checkbox-list-label-${value}`
-
         return (
           <ListItem
             key={value}
@@ -74,18 +45,10 @@ export default function CheckboxList(props) {
             <BandButton
               busRouteColor={props.busRouteColor}
               busRouteNumber={props.busRouteNumber}
-            ></BandButton>
-            <ListItemText
-              primary={
-                <Typography className={classes.busRouteNameId}>
-                  {props.busRouteName}
-                </Typography>
-              }
-              secondary={
-                <Typography className={classes.busRouteViaId}>
-                  {props.busRouteVia}
-                </Typography>
-              }
+            />
+            <BandListItemText
+              busRouteName={props.busRouteName}
+              busRouteVia={props.busRouteVia}
             />
           </ListItem>
         )
