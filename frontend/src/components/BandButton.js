@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     color: "#ffffff", // white
     fontSize: "16px",
     title: props.title,
-    backgroundColor: props.backgroundColor,
+    backgroundColor: props.busRouteColor,
   }),
 })
 

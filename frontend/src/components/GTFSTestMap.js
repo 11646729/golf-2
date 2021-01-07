@@ -276,7 +276,8 @@ export default function GTFSTestMapContainer() {
             />
             <CheckboxList
               // Parameters
-              busRouteNumber="200"
+              busRouteNumber="300"
+              busRouteColor="#87cefa"
               busRouteName="Route Name Test"
               busRouteVia="Route via Test"
             />

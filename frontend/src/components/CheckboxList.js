@@ -34,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 CheckboxList.defaultProps = {
-  busRouteColor: "#87cefa",
-  busRouteNumber: "18",
+  // busRouteColor: "#87cefa",
+  // busRouteNumber: "18",
   busRouteName: "San Rafael - Sausalito",
   busRouteVia: "via Strawberry, Mill Valley",
 }
@@ -72,9 +72,8 @@ export default function CheckboxList(props) {
           >
             <BandCheckbox />
             <BandButton
-              title="Here I am"
-              backgroundColor="#87cefa"
-              busRouteNumber="100"
+              busRouteColor={props.busRouteColor}
+              busRouteNumber={props.busRouteNumber}
             ></BandButton>
             <ListItemText
               primary={

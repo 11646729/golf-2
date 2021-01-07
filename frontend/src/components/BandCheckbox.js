@@ -29,6 +29,7 @@ function CustomCheckbox() {
   return (
     <Checkbox
       defaultChecked
+      // checked={true}
       classes={{
         root: classes.root,
         checked: classes.checked,
