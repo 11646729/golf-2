@@ -274,6 +274,7 @@ export default function GTFSTestMapContainer() {
               label="Display Bus Routes"
               labelPlacement="end"
             />
+            {/* console.log(busRoutesCollection[0]) */}
             <CheckboxList
               // Parameters
               busRouteColor="#87cefa"

@@ -3,8 +3,10 @@ import { Button, makeStyles } from "@material-ui/core"
 
 const useStyles = makeStyles({
   button: (props) => ({
-    height: "40",
-    width: "40",
+    maxWidth: "40px",
+    maxHeight: "40px",
+    minWidth: "40px",
+    minHeight: "40px",
     position: "relative",
     color: "#ffffff", // white
     fontSize: "16px",
