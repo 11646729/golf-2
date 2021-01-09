@@ -1,8 +1,6 @@
 import React from "react"
-import { makeStyles, List, ListItem } from "@material-ui/core"
-import BandButton from "./BandButton"
-import BandCheckbox from "./BandCheckbox"
-import BandListItemText from "./BandListItemText"
+import { makeStyles, List } from "@material-ui/core"
+import BandListItem from "./BandListItem"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,23 +32,12 @@ export default function CheckboxList(props) {
       {[0, 1, 2].map((value) => {
         // const labelId = `checkbox-list-label-${value}`
         return (
-          <ListItem
-            key={value}
-            role={undefined}
-            dense
-            button
-            onClick={handleToggle(value)}
-          >
-            <BandCheckbox />
-            <BandButton
-              busRouteColor={props.busRouteColor}
-              busRouteNumber={props.busRouteNumber}
-            />
-            <BandListItemText
-              busRouteName={props.busRouteName}
-              busRouteVia={props.busRouteVia}
-            />
-          </ListItem>
+          <BandListItem
+            busRouteColor={props.busRouteColor}
+            busRouteNumber={props.busRouteNumber}
+            busRouteName={props.busRouteName}
+            busRouteVia={props.busRouteVia}
+          />
         )
       })}
     </List>

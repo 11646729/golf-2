@@ -278,7 +278,7 @@ export default function GTFSTestMapContainer() {
             <CheckboxList
               // Parameters
               busRouteColor="#87cefa"
-              busRouteNumber="300"
+              busRouteNumber="200"
               busRouteName="San Rafael - Sausalito"
               busRouteVia="via Strawberry, Mill Valley"
             />
