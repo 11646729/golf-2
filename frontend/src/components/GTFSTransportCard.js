@@ -35,14 +35,15 @@ export default function GTFSTransportCard() {
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        image="/static/images/HamiltonBus.jpg"
+        image="/static/images/GTFS_UI.png"
+        // image="/static/images/HamiltonBus.jpg"
         title="Transport Map"
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          Hamilton GTFS Bus Transport Test
+          GTFS Hamilton UI Test
         </Typography>
-        <Typography>GTFS Test using local mongodb instance</Typography>
+        <Typography>GTFS UI Test</Typography>
       </CardContent>
       <CardActions>
         <Button

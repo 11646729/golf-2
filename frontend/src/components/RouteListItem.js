@@ -11,10 +11,6 @@ import {
 
 const theme = createMuiTheme({
   typography: {
-    // button: {
-    //   fontSize: 16,
-    //   fontStyle: "bold",
-    // },
     body1: {
       fontWeight: 500,
     },

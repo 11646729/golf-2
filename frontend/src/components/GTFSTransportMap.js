@@ -12,20 +12,44 @@ import {
   Grid,
   FormControlLabel,
   Checkbox,
+  Paper,
+  makeStyles,
 } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
-import getGTFSStopsData from "./getGTFSStopsData"
-import getGTFSShapesData from "./getGTFSShapesData"
+import CheckboxList from "./CheckboxList"
+import getAllReducedRoutes from "./getAllReducedRoutes"
+import getAllReducedStops from "./getAllReducedStops"
+
+const useStyles = makeStyles({
+  divStyle: {
+    background: "white",
+    border: "1px solid #ccc",
+    padding: 15,
+  },
+  headerSelection: {
+    marginTop: 55,
+    marginLeft: 20,
+  },
+  routeSelection: {
+    marginRight: 20,
+    marginBottom: 50,
+    height: "600px",
+    square: true,
+    border: "1px solid #ccc",
+    backgroundColor: "none", // "red",
+  },
+})
 
 export default function GTFSTransportMapContainer() {
+  const classes = useStyles()
+
   // -----------------------------------------------------
   // STATE HOOKS
   // -----------------------------------------------------
   const [mapRef, setMapRef] = useState(null)
-  const [mapZoom] = useState(
-    parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
-  )
+  const newLocal = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
+  const [mapZoom] = useState(newLocal)
   const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
@@ -34,24 +58,23 @@ export default function GTFSTransportMapContainer() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
 
-  const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
-  const [busShapesCheckboxSelected, setBusShapesCheckbox] = useState(true)
+  const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(false)
+  const [busRoutesCheckboxSelected, setBusRoutesCheckbox] = useState(true)
 
   const [busStopSelected, setBusStopSelected] = useState(null)
-  const [busShapeSelected, setBusShapeSelected] = useState(null)
+  const [busRouteSelected, setBusRouteSelected] = useState(null)
 
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
+  const [busRoutesCollection, setBusRoutesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
-  const [busShapesCollection, setBusShapesCollection] = useState([])
   const [errorLoading, setLoadingError] = useState([])
 
-  // Fetch bus stops data
   useEffect(() => {
     let isSubscribed = true
 
-    getGTFSStopsData()
+    getAllReducedStops()
       .then((busStopsResult) =>
         isSubscribed ? setBusStopsCollection(busStopsResult) : null
       )
@@ -62,13 +85,15 @@ export default function GTFSTransportMapContainer() {
     return () => (isSubscribed = false)
   }, [])
 
+  // console.log(busStopsCollection)
+
   // Now compute bounds of map to display
   if (mapRef && busStopsCollection != null) {
     const bounds = new window.google.maps.LatLngBounds()
     busStopsCollection.map((busStop) => {
       const myLatLng = new window.google.maps.LatLng({
-        lat: busStop.stop_lat,
-        lng: busStop.stop_lon,
+        lat: busStop.shapeCoordinates.lat,
+        lng: busStop.shapeCoordinates.lng,
       })
       bounds.extend(myLatLng)
       return bounds
@@ -76,13 +101,12 @@ export default function GTFSTransportMapContainer() {
     mapRef.fitBounds(bounds)
   }
 
-  // Fetch shapes data
   useEffect(() => {
     let isSubscribed = true
 
-    getGTFSShapesData()
-      .then((busShapesResult) =>
-        isSubscribed ? setBusShapesCollection(busShapesResult) : null
+    getAllReducedRoutes()
+      .then((busRoutesResult) =>
+        isSubscribed ? setBusRoutesCollection(busRoutesResult) : null
       )
       .catch((error) => (isSubscribed ? setLoadingError(error) : null))
 
@@ -90,6 +114,8 @@ export default function GTFSTransportMapContainer() {
     // return isSubscribed
     return () => (isSubscribed = false)
   }, [])
+
+  // console.log(busRoutesCollection)
 
   // -----------------------------------------------------
   // EVENT HANDLERS SECTION
@@ -108,46 +134,32 @@ export default function GTFSTransportMapContainer() {
     setBusStopsCheckbox(event.target.checked)
   }
 
-  const handleBusShapesCheckboxChange = (event) => {
-    setBusShapesCheckbox(event.target.checked)
+  const handleBusRoutesCheckboxChange = (event) => {
+    setBusRoutesCheckbox(event.target.checked)
   }
 
-  // const handleBusStopClick = (event) => {
-  //   console.log(busStopSelected)
-  // }
+  const handleBusStopClick = (event) => {
+    console.log(event)
+    // console.log(busStopSelected)
+    // setBusStopSelected(busStop)
+  }
 
-  // const handleBusShapeClick = (event) => {
-  //   console.log(busShapeSelected)
-  // }
+  const handleBusRouteClick = (event) => {
+    console.log(event)
+    // console.log(busRouteSelected)
+    // setBusRouteSelected(busRoute)
+  }
 
   // -----------------------------------------------------
   // VIEW SECTION
   // -----------------------------------------------------
-  const polylineOptions = {
-    polyline1: {
-      strokeColor: "#ff2343",
-      strokeOpacity: "1.0",
-      strokeWeight: 2,
-    },
-    polyline2: {
-      strokeColor: "#0000ff",
-      strokeOpacity: "1.0",
-      strokeWeight: 2,
-    },
-    divStyle: {
-      background: `white`,
-      border: `1px solid #ccc`,
-      padding: 15,
-    },
-  }
-
   const renderMap = () => (
     <div>
       <CssBaseline />
       <Grid container spacing={1}>
-        <Grid item xs={12} sm={12} style={{ marginTop: 50, marginLeft: 20 }}>
-          <div style={{ width: "100%" }}>
-            <Title>GTFS Transport Test</Title>
+        <Grid item xs={12} sm={12}>
+          <div className={classes.headerSelection}>
+            <Title>GTFS Transport UI Test</Title>
             {!errorLoading ? (
               <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
@@ -156,9 +168,10 @@ export default function GTFSTransportMapContainer() {
         <Grid item xs={12} sm={9}>
           <GoogleMap
             mapContainerStyle={{
-              height: "580px",
-              width: "97%",
+              height: "600px",
+              border: "1px solid #ccc",
               marginLeft: 20,
+              marginRight: 10,
               marginBottom: 50,
             }}
             center={mapCenter}
@@ -171,16 +184,18 @@ export default function GTFSTransportMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {busShapesCollection && busShapesCheckboxSelected
-              ? busShapesCollection.map((busShape) => (
+            {busRoutesCollection && busRoutesCheckboxSelected
+              ? busRoutesCollection.map((busRoute) => (
                   <Polyline
-                    key={busShape.shapeId}
-                    path={busShape.shapeCoordinates}
-                    options={polylineOptions.polyline1}
+                    key={busRoute.shapeKey}
+                    path={busRoute.shapeCoordinates}
+                    options={{
+                      strokeColor: busRoute.routeColor,
+                      strokeOpacity: "1.0",
+                      strokeWeight: 2,
+                    }}
                     onClick={() => {
-                      setBusShapeSelected(busShape)
-                      // console.log(busShape)
-                      // handleBusShapeClick()
+                      handleBusRouteClick()
                     }}
                   />
                 ))
@@ -188,18 +203,18 @@ export default function GTFSTransportMapContainer() {
             {busStopsCollection && busStopsCheckboxSelected
               ? busStopsCollection.map((busStop) => (
                   <Marker
-                    key={busStop.stop_id}
+                    key={busStop.shapeKey}
                     position={{
-                      lat: busStop.stop_lat,
-                      lng: busStop.stop_lon,
+                      lat: busStop.shapeCoordinates.lat,
+                      lng: busStop.shapeCoordinates.lng,
                     }}
                     icon={{
-                      url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
+                      path: window.google.maps.SymbolPath.CIRCLE,
+                      scale: 2,
+                      // url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
                     }}
                     onClick={() => {
-                      setBusStopSelected(busStop)
-                      // console.log(busStop)
-                      // handleBusStopClick()
+                      handleBusStopClick()
                     }}
                   />
                 ))
@@ -214,7 +229,7 @@ export default function GTFSTransportMapContainer() {
                   setBusStopSelected(null)
                 }}
               >
-                <div style={polylineOptions.divStyle}>
+                <div style={classes.divStyle}>
                   <Typography gutterBottom variant="h5" component="h2">
                     {busStopSelected.stop_name}
                   </Typography>
@@ -223,15 +238,15 @@ export default function GTFSTransportMapContainer() {
             ) : null}
           </GoogleMap>
         </Grid>
-        <Grid item xs={12} sm={3} style={{ marginTop: 50 }}>
-          <div style={{ width: "100%" }}>
+        <Grid item xs={12} sm={3}>
+          <Paper className={classes.routeSelection}>
             {!errorLoading ? (
               <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
             <FormControlLabel
               style={{
-                marginTop: "0px",
-                marginLeft: "100px",
+                marginTop: "10px",
+                marginLeft: "20px",
               }}
               control={
                 <Checkbox
@@ -247,20 +262,28 @@ export default function GTFSTransportMapContainer() {
             <FormControlLabel
               style={{
                 marginTop: "0px",
-                marginLeft: "100px",
+                marginLeft: "20px",
               }}
               control={
                 <Checkbox
                   color="primary"
-                  checked={busShapesCheckboxSelected}
-                  onChange={handleBusShapesCheckboxChange}
-                  name="busShapesCheckbox"
+                  checked={busRoutesCheckboxSelected}
+                  onChange={handleBusRoutesCheckboxChange}
+                  name="busRoutesCheckbox"
                 />
               }
-              label="Display Bus Trip Shapes"
+              label="Display Bus Routes"
               labelPlacement="end"
             />
-          </div>
+            {/* console.log(busRoutesCollection[0]) */}
+            <CheckboxList
+              // Parameters
+              busRouteColor="#87cefa"
+              busRouteNumber="200"
+              busRouteName="San Rafael - Sausalito"
+              busRouteVia="via Strawberry, Mill Valley"
+            />
+          </Paper>
         </Grid>
       </Grid>
     </div>
