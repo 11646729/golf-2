@@ -29,17 +29,12 @@ export default function CheckboxList(props) {
 
   return (
     <List className={classes.root}>
-      {[0, 1, 2].map((value) => {
-        // const labelId = `checkbox-list-label-${value}`
-        return (
-          <BandListItem
-            busRouteColor={props.busRouteColor}
-            busRouteNumber={props.busRouteNumber}
-            busRouteName={props.busRouteName}
-            busRouteVia={props.busRouteVia}
-          />
-        )
-      })}
+      <BandListItem
+        busRouteColor={props.busRouteColor}
+        busRouteNumber={props.busRouteNumber}
+        busRouteName={props.busRouteName}
+        busRouteVia={props.busRouteVia}
+      />
     </List>
   )
 }

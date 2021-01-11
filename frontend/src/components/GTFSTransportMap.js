@@ -20,6 +20,7 @@ import LoadingTitle from "./LoadingTitle"
 import CheckboxList from "./CheckboxList"
 import getAllReducedRoutes from "./getAllReducedRoutes"
 import getAllReducedStops from "./getAllReducedStops"
+// import RenderMap from "./showGoogleMap"
 
 const useStyles = makeStyles({
   divStyle: {
@@ -74,6 +75,43 @@ export default function GTFSTransportMapContainer() {
   useEffect(() => {
     let isSubscribed = true
 
+    getAllReducedRoutes()
+      .then((busRoutesResult) =>
+        isSubscribed ? setBusRoutesCollection(busRoutesResult) : null
+      )
+      .catch((error) => (isSubscribed ? setLoadingError(error) : null))
+
+    // isSubscribed = false
+    // return isSubscribed
+    return () => (isSubscribed = false)
+  }, [])
+
+  console.log(busRoutesCollection)
+
+  // PUT THE ARRAY DEDUPLICATION ROUTINE HERE
+  function removeDuplicates(originalArray, prop) {
+    var newArray = []
+    var lookupObject = {}
+
+    for (var i in originalArray) {
+      lookupObject[originalArray[i][prop]] = originalArray[i]
+    }
+
+    for (i in lookupObject) {
+      newArray.push(lookupObject[i])
+    }
+    return newArray
+  }
+
+  var uniquebusRoutesCollection = removeDuplicates(
+    busRoutesCollection,
+    "routeShortName"
+  )
+  console.log(uniquebusRoutesCollection)
+
+  useEffect(() => {
+    let isSubscribed = true
+
     getAllReducedStops()
       .then((busStopsResult) =>
         isSubscribed ? setBusStopsCollection(busStopsResult) : null
@@ -84,8 +122,6 @@ export default function GTFSTransportMapContainer() {
     // return isSubscribed
     return () => (isSubscribed = false)
   }, [])
-
-  // console.log(busStopsCollection)
 
   // Now compute bounds of map to display
   if (mapRef && busStopsCollection != null) {
@@ -100,22 +136,6 @@ export default function GTFSTransportMapContainer() {
     })
     mapRef.fitBounds(bounds)
   }
-
-  useEffect(() => {
-    let isSubscribed = true
-
-    getAllReducedRoutes()
-      .then((busRoutesResult) =>
-        isSubscribed ? setBusRoutesCollection(busRoutesResult) : null
-      )
-      .catch((error) => (isSubscribed ? setLoadingError(error) : null))
-
-    // isSubscribed = false
-    // return isSubscribed
-    return () => (isSubscribed = false)
-  }, [])
-
-  // console.log(busRoutesCollection)
 
   // -----------------------------------------------------
   // EVENT HANDLERS SECTION
@@ -153,6 +173,10 @@ export default function GTFSTransportMapContainer() {
   // -----------------------------------------------------
   // VIEW SECTION
   // -----------------------------------------------------
+  // const renderMap = () => (
+  //   <RenderMap busRoutesCollection busStopsCollection errorLoading />
+  // )
+
   const renderMap = () => (
     <div>
       <CssBaseline />
@@ -275,14 +299,18 @@ export default function GTFSTransportMapContainer() {
               label="Display Bus Routes"
               labelPlacement="end"
             />
-            {/* console.log(busRoutesCollection[0]) */}
-            <CheckboxList
-              // Parameters
-              busRouteColor="#87cefa"
-              busRouteNumber="200"
-              busRouteName="San Rafael - Sausalito"
-              busRouteVia="via Strawberry, Mill Valley"
-            />
+            {uniquebusRoutesCollection && busRoutesCheckboxSelected
+              ? uniquebusRoutesCollection.map((busRoute) => (
+                  <CheckboxList
+                    // Parameters
+                    key={busRoute.shapeKey}
+                    busRouteColor={busRoute.routeColor} // "#87cefa"
+                    busRouteNumber={busRoute.busRouteNumber} //"200"
+                    busRouteName={busRoute.routeLongName} // "San Rafael - Sausalito"
+                    busRouteVia={busRoute.routeShortName} //"via Strawberry, Mill Valley"
+                  />
+                ))
+              : null}
           </Paper>
         </Grid>
       </Grid>
