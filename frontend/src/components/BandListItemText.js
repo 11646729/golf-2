@@ -25,16 +25,17 @@ export default function BandListItemText(props) {
 
   return (
     <ListItemText
-      primary={
-        <Typography className={classes.busRouteNameId}>
-          {props.busRouteName}
-        </Typography>
-      }
-      secondary={
-        <Typography className={classes.busRouteViaId}>
-          {props.busRouteVia}
-        </Typography>
-      }
+      primary={props.busRouteName}
+      // primary={
+      //   <Typography className={classes.busRouteNameId}>
+      //     {props.busRouteName}
+      //   </Typography>
+      // }
+      // secondary={
+      //   <Typography className={classes.busRouteViaId}>
+      //     {props.busRouteVia}
+      //   </Typography>
+      // }
     />
   )
 }

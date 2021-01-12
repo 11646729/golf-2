@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
+  item: {
+    padding: 0,
+  },
 }))
 
 export default function BandListItem(props) {
@@ -18,9 +21,10 @@ export default function BandListItem(props) {
   return (
     <ListItem
       // key={value}
-      role={undefined}
-      dense
+      // role={undefined}
+      // dense
       button
+      classes={{ root: classes.item }}
       // onClick={handleToggle(value)}
     >
       <BandCheckbox />

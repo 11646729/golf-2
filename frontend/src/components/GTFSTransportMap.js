@@ -20,7 +20,6 @@ import LoadingTitle from "./LoadingTitle"
 import CheckboxList from "./CheckboxList"
 import getAllReducedRoutes from "./getAllReducedRoutes"
 import getAllReducedStops from "./getAllReducedStops"
-// import RenderMap from "./showGoogleMap"
 
 const useStyles = makeStyles({
   divStyle: {
@@ -173,10 +172,6 @@ export default function GTFSTransportMapContainer() {
   // -----------------------------------------------------
   // VIEW SECTION
   // -----------------------------------------------------
-  // const renderMap = () => (
-  //   <RenderMap busRoutesCollection busStopsCollection errorLoading />
-  // )
-
   const renderMap = () => (
     <div>
       <CssBaseline />
@@ -305,7 +300,7 @@ export default function GTFSTransportMapContainer() {
                     // Parameters
                     key={busRoute.shapeKey}
                     busRouteColor={busRoute.routeColor} // "#87cefa"
-                    busRouteNumber={busRoute.busRouteNumber} //"200"
+                    busRouteNumber={busRoute.routeShortName} //"200"
                     busRouteName={busRoute.routeLongName} // "San Rafael - Sausalito"
                     busRouteVia={busRoute.routeShortName} //"via Strawberry, Mill Valley"
                   />
