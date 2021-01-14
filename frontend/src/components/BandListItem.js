@@ -18,14 +18,18 @@ const useStyles = makeStyles((theme) => ({
 export default function BandListItem(props) {
   const classes = useStyles(props)
 
+  // const [selectedIndex, setSelectedIndex] = React.useState(1)
+
+  const handleListItemClick = (event, index) => {
+    // setSelectedIndex(index)
+    console.log(index)
+  }
+
   return (
     <ListItem
-      // key={value}
-      // role={undefined}
-      // dense
       button
       classes={{ root: classes.item }}
-      // onClick={handleToggle(value)}
+      onClick={(event) => handleListItemClick(event, props.busRouteNumber)}
     >
       <BandCheckbox />
       <BandButton

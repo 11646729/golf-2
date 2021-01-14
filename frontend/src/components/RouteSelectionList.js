@@ -19,25 +19,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RouteSelectionList(props) {
   const classes = useStyles()
-  const [checked, setChecked] = React.useState([0])
+  // const [checked, setChecked] = React.useState([0])
 
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value)
-    const newChecked = [...checked]
+  // const handleToggle = (value) => () => {
+  //   const currentIndex = checked.indexOf(value)
+  //   const newChecked = [...checked]
 
-    if (currentIndex === -1) {
-      newChecked.push(value)
-    } else {
-      newChecked.splice(currentIndex, 1)
-    }
+  //   if (currentIndex === -1) {
+  //     newChecked.push(value)
+  //   } else {
+  //     newChecked.splice(currentIndex, 1)
+  //   }
 
-    setChecked(newChecked)
-  }
+  //   setChecked(newChecked)
+  // }
 
   return (
     <div className={classes.root}>
       <Paper className={classes.yellowPaper}>
-        <List>
+        <List dense={true}>
           <BandListItem
             // classes={{ root: classes.item }}
             busRouteColor={props.busRouteColor}
