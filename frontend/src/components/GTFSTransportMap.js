@@ -11,13 +11,13 @@ import {
   CssBaseline,
   Grid,
   FormControlLabel,
-  Checkbox,
   Paper,
   makeStyles,
 } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
-import CheckboxList from "./CheckboxList"
+import RouteSelectionList from "./RouteSelectionList"
+import BandCheckbox from "./BandCheckbox"
 import getAllReducedRoutes from "./getAllReducedRoutes"
 import getAllReducedStops from "./getAllReducedStops"
 
@@ -31,13 +31,15 @@ const useStyles = makeStyles({
     marginTop: 55,
     marginLeft: 20,
   },
-  routeSelection: {
+  routeSelectionList: {
     marginRight: 20,
     marginBottom: 50,
-    height: "600px",
+    height: "540px",
     square: true,
     border: "1px solid #ccc",
     backgroundColor: "none", // "red",
+    maxHeight: "100%",
+    overflow: "auto",
   },
 })
 
@@ -258,18 +260,17 @@ export default function GTFSTransportMapContainer() {
           </GoogleMap>
         </Grid>
         <Grid item xs={12} sm={3}>
-          <Paper className={classes.routeSelection}>
+          <Paper>
             {!errorLoading ? (
               <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
             <FormControlLabel
               style={{
                 marginTop: "10px",
-                marginLeft: "20px",
+                marginLeft: "0px",
               }}
               control={
-                <Checkbox
-                  color="primary"
+                <BandCheckbox
                   checked={busStopsCheckboxSelected}
                   onChange={handleBusStopsCheckboxChange}
                   name="busStopsCheckbox"
@@ -280,12 +281,11 @@ export default function GTFSTransportMapContainer() {
             />
             <FormControlLabel
               style={{
-                marginTop: "0px",
-                marginLeft: "20px",
+                marginTop: "10px",
+                marginLeft: "0px",
               }}
               control={
-                <Checkbox
-                  color="primary"
+                <BandCheckbox
                   checked={busRoutesCheckboxSelected}
                   onChange={handleBusRoutesCheckboxChange}
                   name="busRoutesCheckbox"
@@ -294,18 +294,21 @@ export default function GTFSTransportMapContainer() {
               label="Display Bus Routes"
               labelPlacement="end"
             />
-            {uniquebusRoutesCollection && busRoutesCheckboxSelected
-              ? uniquebusRoutesCollection.map((busRoute) => (
-                  <CheckboxList
-                    // Parameters
-                    key={busRoute.shapeKey}
-                    busRouteColor={busRoute.routeColor} // "#87cefa"
-                    busRouteNumber={busRoute.routeShortName} //"200"
-                    busRouteName={busRoute.routeLongName} // "San Rafael - Sausalito"
-                    busRouteVia={busRoute.routeShortName} //"via Strawberry, Mill Valley"
-                  />
-                ))
-              : null}
+
+            {/* Route Selection Listbox */}
+            <Paper className={classes.routeSelectionList}>
+              {uniquebusRoutesCollection && busRoutesCheckboxSelected
+                ? uniquebusRoutesCollection.map((busRoute) => (
+                    <RouteSelectionList
+                      key={busRoute.shapeKey}
+                      busRouteColor={busRoute.routeColor}
+                      busRouteNumber={busRoute.routeShortName}
+                      busRouteName={busRoute.routeLongName}
+                      busRouteVia={busRoute.routeShortName}
+                    />
+                  ))
+                : null}
+            </Paper>
           </Paper>
         </Grid>
       </Grid>
