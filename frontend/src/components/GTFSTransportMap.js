@@ -6,18 +6,12 @@ import {
   Polyline,
   InfoWindow,
 } from "@react-google-maps/api"
-import {
-  Typography,
-  CssBaseline,
-  Grid,
-  FormControlLabel,
-  Paper,
-  makeStyles,
-} from "@material-ui/core"
+import { Typography, CssBaseline, Grid, makeStyles } from "@material-ui/core"
+
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
-import RouteSelectionList from "./RouteSelectionList"
-import BandCheckbox from "./BandCheckbox"
+import RouteSelectionPanel from "./RouteSelectionPanel"
+
 import getAllReducedRoutes from "./getAllReducedRoutes"
 import getAllReducedStops from "./getAllReducedStops"
 
@@ -30,16 +24,6 @@ const useStyles = makeStyles({
   headerSelection: {
     marginTop: 55,
     marginLeft: 20,
-  },
-  routeSelectionList: {
-    marginRight: 20,
-    marginBottom: 50,
-    height: "540px",
-    square: true,
-    border: "1px solid #ccc",
-    backgroundColor: "none", // "red",
-    maxHeight: "100%",
-    overflow: "auto",
   },
 })
 
@@ -59,9 +43,6 @@ export default function GTFSTransportMapContainer() {
   const { isLoaded, mapLoadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
-
-  const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(false)
-  const [busRoutesCheckboxSelected, setBusRoutesCheckbox] = useState(true)
 
   const [busStopSelected, setBusStopSelected] = useState(null)
   const [busRouteSelected, setBusRouteSelected] = useState(null)
@@ -108,7 +89,6 @@ export default function GTFSTransportMapContainer() {
     busRoutesCollection,
     "routeShortName"
   )
-  console.log(uniquebusRoutesCollection)
 
   useEffect(() => {
     let isSubscribed = true
@@ -149,14 +129,6 @@ export default function GTFSTransportMapContainer() {
   // Clear the reference to the google map instance
   const onUnmountHandler = () => {
     setMapRef(null)
-  }
-
-  const handleBusStopsCheckboxChange = (event) => {
-    setBusStopsCheckbox(event.target.checked)
-  }
-
-  const handleBusRoutesCheckboxChange = (event) => {
-    setBusRoutesCheckbox(event.target.checked)
   }
 
   const handleBusStopClick = (event) => {
@@ -205,7 +177,8 @@ export default function GTFSTransportMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {busRoutesCollection && busRoutesCheckboxSelected
+            {/* {busRoutesCollection && busRoutesCheckboxSelected */}
+            {busRoutesCollection
               ? busRoutesCollection.map((busRoute) => (
                   <Polyline
                     key={busRoute.shapeKey}
@@ -221,7 +194,8 @@ export default function GTFSTransportMapContainer() {
                   />
                 ))
               : null}
-            {busStopsCollection && busStopsCheckboxSelected
+            {/* {busStopsCollection && busStopsCheckboxSelected */}
+            {/* {busStopsCollection
               ? busStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.shapeKey}
@@ -239,7 +213,7 @@ export default function GTFSTransportMapContainer() {
                     }}
                   />
                 ))
-              : null}
+              : null} */}
             {busStopSelected ? (
               <InfoWindow
                 position={{
@@ -260,56 +234,12 @@ export default function GTFSTransportMapContainer() {
           </GoogleMap>
         </Grid>
         <Grid item xs={12} sm={3}>
-          <Paper>
-            {!errorLoading ? (
-              <LoadingTitle>Error Loading...</LoadingTitle>
-            ) : null}
-            <FormControlLabel
-              style={{
-                marginTop: "10px",
-                marginLeft: "0px",
-              }}
-              control={
-                <BandCheckbox
-                  checked={busStopsCheckboxSelected}
-                  onChange={handleBusStopsCheckboxChange}
-                  name="busStopsCheckbox"
-                />
-              }
-              label="Display Bus Stops"
-              labelPlacement="end"
-            />
-            <FormControlLabel
-              style={{
-                marginTop: "10px",
-                marginLeft: "0px",
-              }}
-              control={
-                <BandCheckbox
-                  checked={busRoutesCheckboxSelected}
-                  onChange={handleBusRoutesCheckboxChange}
-                  name="busRoutesCheckbox"
-                />
-              }
-              label="Display Bus Routes"
-              labelPlacement="end"
-            />
+          {!errorLoading ? <LoadingTitle>Error Loading...</LoadingTitle> : null}
 
-            {/* Route Selection Listbox */}
-            <Paper className={classes.routeSelectionList}>
-              {uniquebusRoutesCollection && busRoutesCheckboxSelected
-                ? uniquebusRoutesCollection.map((busRoute) => (
-                    <RouteSelectionList
-                      key={busRoute.shapeKey}
-                      busRouteColor={busRoute.routeColor}
-                      busRouteNumber={busRoute.routeShortName}
-                      busRouteName={busRoute.routeLongName}
-                      busRouteVia={busRoute.routeShortName}
-                    />
-                  ))
-                : null}
-            </Paper>
-          </Paper>
+          <RouteSelectionPanel
+            busRoutesCollection={uniquebusRoutesCollection}
+            // busStopsCollection={busStopsCollection}
+          />
         </Grid>
       </Grid>
     </div>

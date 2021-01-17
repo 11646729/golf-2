@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { makeStyles, ListItem } from "@material-ui/core"
 import BandButton from "./BandButton"
 import BandCheckbox from "./BandCheckbox"
@@ -18,10 +18,11 @@ const useStyles = makeStyles((theme) => ({
 export default function BandListItem(props) {
   const classes = useStyles(props)
 
-  // const [selectedIndex, setSelectedIndex] = React.useState(1)
+  const [checkboxSelected, setCheckbox] = useState(false)
 
   const handleListItemClick = (event, index) => {
-    // setSelectedIndex(index)
+    // TODO flip-flop next line
+    setCheckbox(true)
     console.log(index)
   }
 
@@ -31,7 +32,7 @@ export default function BandListItem(props) {
       classes={{ root: classes.item }}
       onClick={(event) => handleListItemClick(event, props.busRouteNumber)}
     >
-      <BandCheckbox />
+      <BandCheckbox checked={checkboxSelected} />
       <BandButton
         busRouteColor={props.busRouteColor}
         busRouteNumber={props.busRouteNumber}

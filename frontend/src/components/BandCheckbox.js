@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Checkbox from "@material-ui/core/Checkbox"
 import {
   createMuiTheme,
@@ -23,13 +23,12 @@ const useStyles = makeStyles((theme) => ({
   checked: {},
 }))
 
-function CustomCheckbox() {
+function CustomCheckbox(props) {
   const classes = useStyles()
 
   return (
     <Checkbox
-      defaultChecked
-      // checked={true}
+      checked={props.checked}
       classes={{
         root: classes.root,
         checked: classes.checked,
@@ -38,10 +37,10 @@ function CustomCheckbox() {
   )
 }
 
-export default function BandCheckbox() {
+export default function BandCheckbox(props) {
   return (
     <ThemeProvider theme={theme}>
-      <CustomCheckbox />
+      <CustomCheckbox checked={props.checked} />
     </ThemeProvider>
   )
 }
