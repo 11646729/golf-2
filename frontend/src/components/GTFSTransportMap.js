@@ -7,13 +7,11 @@ import {
   InfoWindow,
 } from "@react-google-maps/api"
 import { Typography, CssBaseline, Grid, makeStyles } from "@material-ui/core"
+import axios from "axios"
 
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
-
-import getAllReducedRoutes from "./getAllReducedRoutes"
-import getAllReducedStops from "./getAllReducedStops"
 
 const useStyles = makeStyles({
   divStyle: {
@@ -54,14 +52,22 @@ export default function GTFSTransportMapContainer() {
   const [busStopsCollection, setBusStopsCollection] = useState([])
   const [errorLoading, setLoadingError] = useState([])
 
+  let temp = []
+
   useEffect(() => {
     let isSubscribed = true
 
-    getAllReducedRoutes()
-      .then((busRoutesResult) =>
-        isSubscribed ? setBusRoutesCollection(busRoutesResult) : null
+    axios
+      .all([
+        axios.get("http://localhost:5000/api/gtfsTransport/reducedRoutes"),
+        axios.get("http://localhost:5000/api/gtfsTransport/reducedStops"),
+      ])
+      .then(
+        axios.spread(function (routesResponse, stopsResponse) {
+          setBusRoutesCollection(routesResponse.data)
+          setBusStopsCollection(stopsResponse.data)
+        })
       )
-      .catch((error) => (isSubscribed ? setLoadingError(error) : null))
 
     // isSubscribed = false
     // return isSubscribed
@@ -90,20 +96,6 @@ export default function GTFSTransportMapContainer() {
     "routeShortName"
   )
 
-  useEffect(() => {
-    let isSubscribed = true
-
-    getAllReducedStops()
-      .then((busStopsResult) =>
-        isSubscribed ? setBusStopsCollection(busStopsResult) : null
-      )
-      .catch((error) => (isSubscribed ? setLoadingError(error) : null))
-
-    // isSubscribed = false
-    // return isSubscribed
-    return () => (isSubscribed = false)
-  }, [])
-
   // Now compute bounds of map to display
   if (mapRef && busStopsCollection != null) {
     const bounds = new window.google.maps.LatLngBounds()
@@ -131,11 +123,11 @@ export default function GTFSTransportMapContainer() {
     setMapRef(null)
   }
 
-  const handleBusStopClick = (event) => {
-    console.log(event)
-    // console.log(busStopSelected)
-    // setBusStopSelected(busStop)
-  }
+  // const handleBusStopClick = (event) => {
+  //   console.log(event)
+  //   // console.log(busStopSelected)
+  //   // setBusStopSelected(busStop)
+  // }
 
   const handleBusRouteClick = (event) => {
     console.log(event)
@@ -177,7 +169,6 @@ export default function GTFSTransportMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {/* {busRoutesCollection && busRoutesCheckboxSelected */}
             {busRoutesCollection
               ? busRoutesCollection.map((busRoute) => (
                   <Polyline
@@ -194,7 +185,6 @@ export default function GTFSTransportMapContainer() {
                   />
                 ))
               : null}
-            {/* {busStopsCollection && busStopsCheckboxSelected */}
             {/* {busStopsCollection
               ? busStopsCollection.map((busStop) => (
                   <Marker
@@ -234,8 +224,6 @@ export default function GTFSTransportMapContainer() {
           </GoogleMap>
         </Grid>
         <Grid item xs={12} sm={3}>
-          {!errorLoading ? <LoadingTitle>Error Loading...</LoadingTitle> : null}
-
           <RouteSelectionPanel
             busRoutesCollection={uniquebusRoutesCollection}
             // busStopsCollection={busStopsCollection}
