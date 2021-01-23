@@ -30,6 +30,7 @@ export const createReducedRoutesAndStops = async (req, res) => {
 
       i++
     } while (i < res.data.length)
+    console.log("All Data extracted")
   } else {
     console.log("Error fetching list of geojson filenames")
   }

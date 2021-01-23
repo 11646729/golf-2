@@ -79,5 +79,4 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
 
     loop++
   } while (loop < busRoute.features.length)
-  // console.log("All Data extracted")
 }
