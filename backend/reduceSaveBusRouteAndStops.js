@@ -4,10 +4,10 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to extract data for reduced dataset then save it in the mongodb database
 export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
-  console.log("Extracting data for reduced dataset")
+  // console.log("Extracting data for reduced dataset")
 
   let reducedRoute = singleRoute.substr(0, singleRoute.indexOf("."))
-  console.log(reducedRoute)
+  // console.log(reducedRoute)
 
   let loop = 0
   do {
@@ -79,5 +79,5 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
 
     loop++
   } while (loop < busRoute.features.length)
-  console.log("All Data extracted")
+  // console.log("All Data extracted")
 }

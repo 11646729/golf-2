@@ -20,8 +20,6 @@ const useStyles = makeStyles((theme) => ({
 export default function RouteSelectionList(props) {
   const classes = useStyles()
 
-  console.log(props.busRouteColor)
-
   return (
     <div className={classes.root}>
       <Paper className={classes.yellowPaper}>

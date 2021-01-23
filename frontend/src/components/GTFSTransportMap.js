@@ -12,6 +12,7 @@ import axios from "axios"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
+// import removeDuplicates from "./removeDuplicates"
 
 const useStyles = makeStyles({
   divStyle: {
@@ -50,9 +51,8 @@ export default function GTFSTransportMapContainer() {
   // -----------------------------------------------------
   const [busRoutesCollection, setBusRoutesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
+  // const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
   const [errorLoading, setLoadingError] = useState([])
-
-  let temp = []
 
   useEffect(() => {
     let isSubscribed = true
@@ -61,22 +61,24 @@ export default function GTFSTransportMapContainer() {
       .all([
         axios.get("http://localhost:5000/api/gtfsTransport/reducedRoutes"),
         axios.get("http://localhost:5000/api/gtfsTransport/reducedStops"),
+        // axios.get("http://localhost:5000/api/gtfsTransport/uniqueReducedRoutes"),
       ])
       .then(
-        axios.spread(function (routesResponse, stopsResponse) {
+        axios.spread((routesResponse, stopsResponse) => {
           setBusRoutesCollection(routesResponse.data)
           setBusStopsCollection(stopsResponse.data)
+          // setUniqueBusRoutesCollection(uniqueRoutesResponse.data)
         })
       )
+      .catch((errors) => {
+        console.log(errors)
+      })
 
     // isSubscribed = false
     // return isSubscribed
     return () => (isSubscribed = false)
   }, [])
 
-  console.log(busRoutesCollection)
-
-  // PUT THE ARRAY DEDUPLICATION ROUTINE HERE
   function removeDuplicates(originalArray, prop) {
     var newArray = []
     var lookupObject = {}
@@ -88,13 +90,17 @@ export default function GTFSTransportMapContainer() {
     for (i in lookupObject) {
       newArray.push(lookupObject[i])
     }
+
     return newArray
   }
 
-  var uniquebusRoutesCollection = removeDuplicates(
+  // PUT THE ARRAY DEDUPLICATION ROUTINE HERE
+  let uniqueBusRoutesCollection = removeDuplicates(
     busRoutesCollection,
     "routeShortName"
   )
+
+  // console.log("Unique Bus Routes Collection: ", uniqueBusRoutesCollection[0])
 
   // Now compute bounds of map to display
   if (mapRef && busStopsCollection != null) {
@@ -225,7 +231,7 @@ export default function GTFSTransportMapContainer() {
         </Grid>
         <Grid item xs={12} sm={3}>
           <RouteSelectionPanel
-            busRoutesCollection={uniquebusRoutesCollection}
+            busRoutesCollection={uniqueBusRoutesCollection}
             // busStopsCollection={busStopsCollection}
           />
         </Grid>
