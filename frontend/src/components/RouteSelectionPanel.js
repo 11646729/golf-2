@@ -33,6 +33,10 @@ export default function RouteSelectionPanel(props) {
     setBusRoutesCheckbox(event.target.checked)
   }
 
+  // Sort the busRoutesCollection array by increasing busRouteNumber
+  let myArray = props.busRoutesCollection
+  myArray.sort((a, b) => (a.busRouteNumber > b.busRouteNumber ? 1 : -1))
+
   return (
     <Paper className={classes.routeSelectionList}>
       {/* <FormControlLabel
@@ -66,8 +70,8 @@ export default function RouteSelectionPanel(props) {
         labelPlacement="end"
       />
 
-      {props.busRoutesCollection && busRoutesCheckboxSelected
-        ? props.busRoutesCollection.map((busRoute) => (
+      {myArray && busRoutesCheckboxSelected
+        ? myArray.map((busRoute) => (
             <RouteSelectionList
               key={busRoute.shapeKey}
               busRouteColor={busRoute.routeColor}
