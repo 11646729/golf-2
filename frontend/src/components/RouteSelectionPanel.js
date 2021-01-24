@@ -71,9 +71,9 @@ export default function RouteSelectionPanel(props) {
             <RouteSelectionList
               key={busRoute.shapeKey}
               busRouteColor={busRoute.routeColor}
-              busRouteNumber={busRoute.routeShortName}
+              busRouteNumber={busRoute.busRouteNumber}
               busRouteName={busRoute.routeLongName}
-              busRouteVia={busRoute.routeShortName}
+              busRouteVia={busRoute.busRouteNumber}
             />
           ))
         : null}

@@ -15,9 +15,10 @@ import {
 import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/translinkTransportController"
 import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
-import { createReducedRoutesAndStops } from "./createReducedRoutesAndStops"
 import { deleteOldReducedRoutes } from "./deleteOldReducedRoutes"
 import { deleteOldReducedStops } from "./deleteOldReducedStops"
+import { createReducedRoutesAndStops } from "./createReducedRoutesAndStops"
+// import { createRoutesPanelData } from "./createRoutesPanelData"
 
 // import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/translinkTransportController"
 
@@ -45,6 +46,7 @@ export const runSwitchboard = (io) => {
   // deleteOldReducedRoutes()
   // deleteOldReducedStops()
   // createReducedRoutesAndStops()
+  // createRoutesPanelData()
   // -----------------------------
   // createReducedShapeData()
   // importTripIdReducedShapeData()

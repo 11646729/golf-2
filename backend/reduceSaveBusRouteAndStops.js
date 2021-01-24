@@ -33,7 +33,7 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
         shapeKey: reducedRoute + "+" + loop,
         routeColor: busRoute.features[loop].properties.route_color,
         routeLongName: busRoute.features[loop].properties.route_long_name,
-        routeShortName: busRoute.features[loop].properties.route_short_name,
+        busRouteNumber: busRoute.features[loop].properties.route_short_name,
         shapeCoordinates: googleMapsCoords,
       })
 

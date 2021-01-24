@@ -12,7 +12,6 @@ import axios from "axios"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
-// import removeDuplicates from "./removeDuplicates"
 
 const useStyles = makeStyles({
   divStyle: {
@@ -97,10 +96,8 @@ export default function GTFSTransportMapContainer() {
   // PUT THE ARRAY DEDUPLICATION ROUTINE HERE
   let uniqueBusRoutesCollection = removeDuplicates(
     busRoutesCollection,
-    "routeShortName"
+    "busRouteNumber"
   )
-
-  // console.log("Unique Bus Routes Collection: ", uniqueBusRoutesCollection[0])
 
   // Now compute bounds of map to display
   if (mapRef && busStopsCollection != null) {

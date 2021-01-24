@@ -20,10 +20,14 @@ export default function BandListItem(props) {
 
   const [checkboxSelected, setCheckbox] = useState(false)
 
-  const handleListItemClick = (event, index) => {
-    // TODO flip-flop next line
-    setCheckbox(true)
-    console.log(index)
+  const handleListItemClick = (event, busRouteNumber) => {
+    if (checkboxSelected === true) {
+      setCheckbox(false)
+    } else {
+      setCheckbox(true)
+      // Next line is for testing only
+      console.log(busRouteNumber)
+    }
   }
 
   return (
