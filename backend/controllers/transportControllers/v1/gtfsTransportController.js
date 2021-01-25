@@ -134,8 +134,6 @@ export const gtfsGetAllReducedStops = async (req, res) => {
 
 // Path localhost:5000/api/gtfsTransport/reducedStops
 export const deleteAllReducedStops = async (req, res) => {
-  console.log("In ReducedStops routine")
-
   GtfsReducedStopSchema.deleteMany({}, (err) => {
     if (err) {
       res

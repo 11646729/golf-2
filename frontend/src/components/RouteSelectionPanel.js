@@ -34,8 +34,10 @@ export default function RouteSelectionPanel(props) {
   }
 
   // Sort the busRoutesCollection array by increasing busRouteNumber
-  let myArray = props.busRoutesCollection
-  myArray.sort((a, b) => (a.busRouteNumber > b.busRouteNumber ? 1 : -1))
+  let sortedBusRoutesCollection = props.busRoutesCollection
+  sortedBusRoutesCollection.sort((a, b) =>
+    a.busRouteNumber > b.busRouteNumber ? 1 : -1
+  )
 
   return (
     <Paper className={classes.routeSelectionList}>
@@ -70,8 +72,8 @@ export default function RouteSelectionPanel(props) {
         labelPlacement="end"
       />
 
-      {myArray && busRoutesCheckboxSelected
-        ? myArray.map((busRoute) => (
+      {sortedBusRoutesCollection && busRoutesCheckboxSelected
+        ? sortedBusRoutesCollection.map((busRoute) => (
             <RouteSelectionList
               key={busRoute.shapeKey}
               busRouteColor={busRoute.routeColor}

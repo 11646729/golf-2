@@ -3,8 +3,6 @@ import { getSingleBusRouteAndStops } from "./getSingleBusRouteAndStops"
 
 // Function to fetch all the GeoJson route filenames in a directory irrespective of trip direction
 export const createReducedRoutesAndStops = async (req, res) => {
-  console.log("Step 3: Fetch all the GeoJson route filenames in a directory")
-
   res = await axios({
     url: "http://localhost:5000/api/gtfsTransport/filenames",
     method: "get",
@@ -30,7 +28,11 @@ export const createReducedRoutesAndStops = async (req, res) => {
 
       i++
     } while (i < res.data.length)
-    console.log("All Data extracted")
+    console.log(
+      "Html Status " +
+        res.status +
+        ": Created mongodb documents from geojson files"
+    )
   } else {
     console.log("Error fetching list of geojson filenames")
   }

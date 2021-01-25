@@ -15,18 +15,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+export function selectedRoutesAdd(selectedBusRouteNumber) {
+  console.log("Bus Route to add: ", selectedBusRouteNumber)
+}
+
+export function selectedRoutesRemove(selectedBusRouteNumber) {
+  console.log("Bus Route to remove: ", selectedBusRouteNumber)
+}
+
 export default function BandListItem(props) {
   const classes = useStyles(props)
 
-  const [checkboxSelected, setCheckbox] = useState(false)
+  const [routeDisplayCheckbox, setRouteDisplayCheckbox] = useState(false)
 
   const handleListItemClick = (event, busRouteNumber) => {
-    if (checkboxSelected === true) {
-      setCheckbox(false)
+    if (routeDisplayCheckbox === true) {
+      setRouteDisplayCheckbox(false)
+      selectedRoutesRemove(busRouteNumber)
     } else {
-      setCheckbox(true)
-      // Next line is for testing only
-      console.log(busRouteNumber)
+      setRouteDisplayCheckbox(true)
+      selectedRoutesAdd(busRouteNumber)
     }
   }
 
@@ -36,7 +44,7 @@ export default function BandListItem(props) {
       classes={{ root: classes.item }}
       onClick={(event) => handleListItemClick(event, props.busRouteNumber)}
     >
-      <BandCheckbox checked={checkboxSelected} />
+      <BandCheckbox checked={routeDisplayCheckbox} />
       <BandButton
         busRouteColor={props.busRouteColor}
         busRouteNumber={props.busRouteNumber}

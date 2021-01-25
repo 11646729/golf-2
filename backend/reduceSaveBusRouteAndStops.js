@@ -29,6 +29,7 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
       // And save it in a gtfsReducedRouteSchema collection
       const gtfsReducedRouteSchema = new GtfsReducedRouteSchema({
         databaseVersion: process.env.DATABASE_VERSION,
+        routeVisible: false,
         markerType: busRoute.features[loop].geometry.type,
         shapeKey: reducedRoute + "+" + loop,
         routeColor: busRoute.features[loop].properties.route_color,

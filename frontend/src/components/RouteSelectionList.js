@@ -17,8 +17,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+// TODO
+export function selectedRoutesInitialise() {
+  console.log("Initialise function")
+}
+
 export default function RouteSelectionList(props) {
   const classes = useStyles()
+
+  // selectedRoutesInitialise()
 
   return (
     <div className={classes.root}>
