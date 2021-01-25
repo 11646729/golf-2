@@ -43,9 +43,9 @@ export const runSwitchboard = (io) => {
   // runCron()
   // -----------------------------
   // convertGtfsToGeoJSON()
-  deleteOldReducedRoutes()
-  deleteOldReducedStops()
-  createReducedRoutesAndStops()
+  // deleteOldReducedRoutes()
+  // deleteOldReducedStops()
+  // createReducedRoutesAndStops()
   // createRoutesPanelData()
   // -----------------------------
   // createReducedShapeData()

@@ -56,7 +56,7 @@ export default function RouteSelectionPanel(props) {
         label="Display Bus Stops"
         labelPlacement="end"
       /> */}
-      <FormControlLabel
+      {/* <FormControlLabel
         style={{
           marginTop: "10px",
           marginLeft: "0px",
@@ -70,12 +70,14 @@ export default function RouteSelectionPanel(props) {
         }
         label="Display Bus Routes"
         labelPlacement="end"
-      />
+      /> */}
 
-      {sortedBusRoutesCollection && busRoutesCheckboxSelected
-        ? sortedBusRoutesCollection.map((busRoute) => (
+      {sortedBusRoutesCollection
+        ? //  && busRoutesCheckboxSelected
+          sortedBusRoutesCollection.map((busRoute) => (
             <RouteSelectionList
               key={busRoute.shapeKey}
+              busRouteVisible={busRoute.busRouteVisible}
               busRouteColor={busRoute.routeColor}
               busRouteNumber={busRoute.busRouteNumber}
               busRouteName={busRoute.routeLongName}

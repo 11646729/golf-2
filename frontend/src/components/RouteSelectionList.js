@@ -17,21 +17,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-// TODO
-export function selectedRoutesInitialise() {
-  console.log("Initialise function")
-}
-
 export default function RouteSelectionList(props) {
   const classes = useStyles()
-
-  // selectedRoutesInitialise()
 
   return (
     <div className={classes.root}>
       <Paper className={classes.yellowPaper}>
         <List>
           <BandListItem
+            busRouteVisible={props.busRouteVisible}
             busRouteColor={props.busRouteColor}
             busRouteNumber={props.busRouteNumber}
             busRouteName={props.busRouteName}

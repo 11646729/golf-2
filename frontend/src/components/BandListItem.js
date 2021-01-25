@@ -44,7 +44,7 @@ export default function BandListItem(props) {
       classes={{ root: classes.item }}
       onClick={(event) => handleListItemClick(event, props.busRouteNumber)}
     >
-      <BandCheckbox checked={routeDisplayCheckbox} />
+      <BandCheckbox checked={props.busRouteVisible} />
       <BandButton
         busRouteColor={props.busRouteColor}
         busRouteNumber={props.busRouteNumber}
