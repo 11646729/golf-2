@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import axios from "axios"
 import { makeStyles, ListItem } from "@material-ui/core"
 import BandButton from "./BandButton"
 import BandCheckbox from "./BandCheckbox"
@@ -15,12 +16,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export function selectedRoutesAdd(selectedBusRouteNumber) {
+export async function selectedRoutesAdd(selectedBusRouteNumber) {
   console.log("Bus Route to add: ", selectedBusRouteNumber)
+
+  let res = await axios({
+    url: "http://localhost:5000/api/gtfsTransport/reducedRoutes",
+    data: {
+      busRouteNumber: selectedBusRouteNumber,
+      routeVisible: true,
+    },
+    method: "PUT",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
 }
 
-export function selectedRoutesRemove(selectedBusRouteNumber) {
+export async function selectedRoutesRemove(selectedBusRouteNumber) {
   console.log("Bus Route to remove: ", selectedBusRouteNumber)
+
+  let res = await axios({
+    url: "http://localhost:5000/api/gtfsTransport/reducedRoutes",
+    data: {
+      busRouteNumber: selectedBusRouteNumber,
+      routeVisible: false,
+    },
+    method: "PUT",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
 }
 
 export default function BandListItem(props) {

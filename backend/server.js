@@ -24,7 +24,7 @@ const port = process.env.PORT || 5000
 app.use(
   cors({
     origin: ["http://localhost:" + process.env.REACT_SERVER_PORT],
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 )

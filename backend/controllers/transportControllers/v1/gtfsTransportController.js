@@ -68,8 +68,6 @@ export const gtfsGetOneReducedShape = async (req, res) => {
 
 // Path localhost:5000/api/gtfsTransport/routes/:id
 export const gtfsGetOneRoute = async (req, res) => {
-  // console.log("Here in gtfsGetOneRoute")
-
   const rawGeojson =
     "/Users/briansmith/Documents/GTD/golf-2/backend/geojson/Hamilton Ontario Street Railway/" +
     req.query.id
@@ -106,6 +104,15 @@ export const gtfsGetAllReducedRoutes = async (req, res) => {
   GtfsReducedRouteSchema.find({})
     .then((gtfsReducedRouteSchema) => res.json(gtfsReducedRouteSchema))
     .catch((err) => res.status(400).json("Error " + err))
+}
+
+// Path localhost:5000/api/gtfsTransport/reducedRoutes
+export const gtfsPutOneReducedRoutes = async (req, res) => {
+  console.log("In gtfsTransportController", req.body)
+
+  // GtfsReducedRouteSchema.find({})
+  //   .then((gtfsReducedRouteSchema) => res.json(gtfsReducedRouteSchema))
+  //   .catch((err) => res.status(400).json("Error " + err))
 }
 
 // Path localhost:5000/api/gtfsTransport/reducedRoutes

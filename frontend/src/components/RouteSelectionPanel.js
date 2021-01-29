@@ -5,6 +5,7 @@ import {
   Paper,
   makeStyles,
 } from "@material-ui/core"
+import LoadingTitle from "./LoadingTitle"
 import RouteSelectionList from "./RouteSelectionList"
 
 const useStyles = makeStyles({
@@ -71,7 +72,7 @@ export default function RouteSelectionPanel(props) {
         label="Display Bus Routes"
         labelPlacement="end"
       /> */}
-
+      <LoadingTitle> Local Routes</LoadingTitle>
       {sortedBusRoutesCollection
         ? //  && busRoutesCheckboxSelected
           sortedBusRoutesCollection.map((busRoute) => (
