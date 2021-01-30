@@ -16,11 +16,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export async function selectedRoutesAdd(selectedBusRouteNumber) {
+export async function selectedUniqueRoutesAdd(selectedBusRouteNumber) {
   console.log("Bus Route to add: ", selectedBusRouteNumber)
 
   let res = await axios({
-    url: "http://localhost:5000/api/gtfsTransport/reducedRoutes",
+    url: "http://localhost:5000/api/gtfsTransport/uniqueReducedRoutes",
     data: {
       busRouteNumber: selectedBusRouteNumber,
       routeVisible: true,
@@ -35,11 +35,11 @@ export async function selectedRoutesAdd(selectedBusRouteNumber) {
   console.log(res)
 }
 
-export async function selectedRoutesRemove(selectedBusRouteNumber) {
+export async function selectedUniqueRoutesRemove(selectedBusRouteNumber) {
   console.log("Bus Route to remove: ", selectedBusRouteNumber)
 
   let res = await axios({
-    url: "http://localhost:5000/api/gtfsTransport/reducedRoutes",
+    url: "http://localhost:5000/api/gtfsTransport/uniqueReducedRoutes",
     data: {
       busRouteNumber: selectedBusRouteNumber,
       routeVisible: false,
@@ -60,10 +60,10 @@ export default function BandListItem(props) {
   const handleListItemClick = (event, busRouteNumber) => {
     if (routeDisplayCheckbox === true) {
       setRouteDisplayCheckbox(false)
-      selectedRoutesRemove(busRouteNumber)
+      selectedUniqueRoutesRemove(busRouteNumber)
     } else {
       setRouteDisplayCheckbox(true)
-      selectedRoutesAdd(busRouteNumber)
+      selectedUniqueRoutesAdd(busRouteNumber)
     }
   }
 

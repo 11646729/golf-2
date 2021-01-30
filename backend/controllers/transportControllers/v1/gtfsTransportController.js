@@ -107,15 +107,15 @@ export const gtfsGetAllReducedRoutes = async (req, res) => {
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Path localhost:5000/api/gtfsTransport/reducedRoutes
+// Path localhost:5000/api/gtfsTransport/uniqueReducedRoutes
 export const gtfsPutOneReducedRoutes = async (req, res) => {
-  console.log("In gtfsTransportController", req.body)
-
-  const filter = { busReducedRoutes: req.body.busRouteNumber }
+  const filter = { busRouteNumber: req.body.busRouteNumber }
   const update = { routeVisible: req.body.routeVisible }
 
-  GtfsReducedRouteSchema.findOneAndUpdate(filter, update)
-    .then((gtfsReducedRouteSchema) => res.json(gtfsReducedRouteSchema))
+  GtfsUniqueReducedRouteSchema.findOneAndUpdate(filter, update)
+    .then((gtfsUniqueReducedRouteSchema) =>
+      res.json(gtfsUniqueReducedRouteSchema)
+    )
     .catch((err) => res.status(400).json("Error " + err))
 }
 

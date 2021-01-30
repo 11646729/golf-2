@@ -29,9 +29,6 @@ router.get("/filenames", gtfs_transport_controller.gtfsGetGeojsonFilenames)
 // GET all ReducedRoutes from database
 router.get("/reducedRoutes", gtfs_transport_controller.gtfsGetAllReducedRoutes)
 
-// PUT a Checkbox Selected/Non-Selected in the ReducedRoutes Document
-router.put("/reducedRoutes", gtfs_transport_controller.gtfsPutOneReducedRoutes)
-
 // DELETE all ReducedRoutes in the database
 router.delete(
   "/reducedRoutes",
@@ -42,6 +39,12 @@ router.delete(
 router.get(
   "/uniqueReducedRoutes",
   gtfs_transport_controller.gtfsGetAllUniqueReducedRoutes
+)
+
+// PUT a Checkbox Selected/Non-Selected in the ReducedRoutes Document
+router.put(
+  "/uniqueReducedRoutes",
+  gtfs_transport_controller.gtfsPutOneReducedRoutes
 )
 
 // GET all ReducedStops from database
