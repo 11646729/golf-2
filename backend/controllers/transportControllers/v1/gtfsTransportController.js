@@ -2,6 +2,7 @@ import { GtfsStopSchema } from "../../../models/transportModels/v1/gtfsStopSchem
 import { GtfsReducedShapesSchema } from "../../../models/transportModels/v1/gtfsReducedShapesSchema"
 import { GtfsReducedRouteSchema } from "../../../models/transportModels/v1/gtfsReducedRouteSchema"
 import { GtfsReducedStopSchema } from "../../../models/transportModels/v1/gtfsReducedStopSchema"
+import { GtfsUniqueReducedRouteSchema } from "../../../models/transportModels/v1/gtfsUniqueReducedRouteSchema"
 
 const fs = require("fs")
 var path = require("path")
@@ -110,9 +111,12 @@ export const gtfsGetAllReducedRoutes = async (req, res) => {
 export const gtfsPutOneReducedRoutes = async (req, res) => {
   console.log("In gtfsTransportController", req.body)
 
-  // GtfsReducedRouteSchema.find({})
-  //   .then((gtfsReducedRouteSchema) => res.json(gtfsReducedRouteSchema))
-  //   .catch((err) => res.status(400).json("Error " + err))
+  const filter = { busReducedRoutes: req.body.busRouteNumber }
+  const update = { routeVisible: req.body.routeVisible }
+
+  GtfsReducedRouteSchema.findOneAndUpdate(filter, update)
+    .then((gtfsReducedRouteSchema) => res.json(gtfsReducedRouteSchema))
+    .catch((err) => res.status(400).json("Error " + err))
 }
 
 // Path localhost:5000/api/gtfsTransport/reducedRoutes
@@ -130,6 +134,15 @@ export const deleteAllReducedRoutes = async (req, res) => {
         .send("All Reduced Route data was deleted in the mongodb database")
     }
   })
+}
+
+// Path localhost:5000/api/gtfsTransport/uniqueReducedRoutes
+export const gtfsGetAllUniqueReducedRoutes = async (req, res) => {
+  GtfsUniqueReducedRouteSchema.find({})
+    .then((gtfsUniqueReducedRouteSchema) =>
+      res.json(gtfsUniqueReducedRouteSchema)
+    )
+    .catch((err) => res.status(400).json("Error " + err))
 }
 
 // Path localhost:5000/api/gtfsTransport/reducedStops

@@ -38,6 +38,12 @@ router.delete(
   gtfs_transport_controller.deleteAllReducedRoutes
 )
 
+// GET all uniqueReducedRoutes from database
+router.get(
+  "/uniqueReducedRoutes",
+  gtfs_transport_controller.gtfsGetAllUniqueReducedRoutes
+)
+
 // GET all ReducedStops from database
 router.get("/reducedStops", gtfs_transport_controller.gtfsGetAllReducedStops)
 

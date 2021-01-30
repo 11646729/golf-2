@@ -24,7 +24,6 @@ export const createReducedRoutesAndStops = async (req, res) => {
       let singleRouteFilename = res.data[i]
 
       getSingleBusRouteAndStops(singleRouteFilename)
-      // console.log(singleRouteFilename)
 
       i++
     } while (i < res.data.length)

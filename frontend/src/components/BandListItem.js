@@ -31,6 +31,8 @@ export async function selectedRoutesAdd(selectedBusRouteNumber) {
       "Content-Type": "application/json",
     },
   })
+
+  console.log(res)
 }
 
 export async function selectedRoutesRemove(selectedBusRouteNumber) {

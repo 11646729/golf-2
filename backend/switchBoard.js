@@ -18,7 +18,7 @@ import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
 import { deleteOldReducedRoutes } from "./deleteOldReducedRoutes"
 import { deleteOldReducedStops } from "./deleteOldReducedStops"
 import { createReducedRoutesAndStops } from "./createReducedRoutesAndStops"
-// import { createRoutesPanelData } from "./createRoutesPanelData"
+import { createUniqueReducedRoutes } from "./createUniqueReducedRoutes"
 
 // import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/translinkTransportController"
 
@@ -46,7 +46,7 @@ export const runSwitchboard = (io) => {
   // deleteOldReducedRoutes()
   // deleteOldReducedStops()
   // createReducedRoutesAndStops()
-  // createRoutesPanelData()
+  // createUniqueReducedRoutes()
   // -----------------------------
   // createReducedShapeData()
   // importTripIdReducedShapeData()

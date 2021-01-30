@@ -50,7 +50,7 @@ export default function GTFSTransportMapContainer() {
   // -----------------------------------------------------
   const [busRoutesCollection, setBusRoutesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
-  // const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
+  const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
   const [errorLoading, setLoadingError] = useState([])
 
   useEffect(() => {
@@ -60,13 +60,15 @@ export default function GTFSTransportMapContainer() {
       .all([
         axios.get("http://localhost:5000/api/gtfsTransport/reducedRoutes"),
         axios.get("http://localhost:5000/api/gtfsTransport/reducedStops"),
-        // axios.get("http://localhost:5000/api/gtfsTransport/uniqueReducedRoutes"),
+        axios.get(
+          "http://localhost:5000/api/gtfsTransport/uniqueReducedRoutes"
+        ),
       ])
       .then(
-        axios.spread((routesResponse, stopsResponse) => {
+        axios.spread((routesResponse, stopsResponse, uniqueRoutesResponse) => {
           setBusRoutesCollection(routesResponse.data)
           setBusStopsCollection(stopsResponse.data)
-          // setUniqueBusRoutesCollection(uniqueRoutesResponse.data)
+          setUniqueBusRoutesCollection(uniqueRoutesResponse.data)
         })
       )
       .catch((errors) => {
@@ -77,27 +79,6 @@ export default function GTFSTransportMapContainer() {
     // return isSubscribed
     return () => (isSubscribed = false)
   }, [])
-
-  function removeDuplicates(originalArray, prop) {
-    var newArray = []
-    var lookupObject = {}
-
-    for (var i in originalArray) {
-      lookupObject[originalArray[i][prop]] = originalArray[i]
-    }
-
-    for (i in lookupObject) {
-      newArray.push(lookupObject[i])
-    }
-
-    return newArray
-  }
-
-  // PUT THE ARRAY DEDUPLICATION ROUTINE HERE
-  let uniqueBusRoutesCollection = removeDuplicates(
-    busRoutesCollection,
-    "busRouteNumber"
-  )
 
   // Now compute bounds of map to display
   if (mapRef && busStopsCollection != null) {
