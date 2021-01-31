@@ -2,13 +2,13 @@ import React from "react"
 import { makeStyles, ListItemText, Typography } from "@material-ui/core"
 
 const useStyles = makeStyles({
-  busRouteNameId: (props) => ({
+  routeNameId: (props) => ({
     paddingLeft: 10,
     fontSize: 16,
     fontWeight: 500,
     variant: "caption",
   }),
-  busRouteViaId: (props) => ({
+  routeViaId: (props) => ({
     paddingLeft: 10,
     fontSize: 12,
     fontWeight: 50,
@@ -21,14 +21,12 @@ export default function BandListItemText(props) {
   return (
     <ListItemText
       primary={
-        <Typography className={classes.busRouteNameId}>
-          {props.busRouteName}
+        <Typography className={classes.routeNameId}>
+          {props.routeName}
         </Typography>
       }
       secondary={
-        <Typography className={classes.busRouteViaId}>
-          {props.busRouteVia}
-        </Typography>
+        <Typography className={classes.routeViaId}>{props.routeVia}</Typography>
       }
     />
   )

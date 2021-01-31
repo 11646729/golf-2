@@ -28,7 +28,7 @@ export const createUniqueReducedRoutes = async (req, res) => {
   })
 
   // Remove Duplicates from the array
-  let uniqueBusRoutesCollection = removeDuplicates(res.data, "busRouteNumber")
+  let uniqueBusRoutesCollection = removeDuplicates(res.data, "routeNumber")
 
   // And save it in a gtfsReducedShapesSchema collection
   let j = 0
@@ -40,7 +40,7 @@ export const createUniqueReducedRoutes = async (req, res) => {
       shapeKey: uniqueBusRoutesCollection[j].shapeKey,
       routeColor: uniqueBusRoutesCollection[j].routeColor,
       routeLongName: uniqueBusRoutesCollection[j].routeLongName,
-      busRouteNumber: uniqueBusRoutesCollection[j].busRouteNumber,
+      routeNumber: uniqueBusRoutesCollection[j].routeNumber,
     })
 
     // Save the uniqueReducedRoutes in the database

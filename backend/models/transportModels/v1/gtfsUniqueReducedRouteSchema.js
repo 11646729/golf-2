@@ -8,7 +8,7 @@ const gtfsUniqueReducedRouteSchema = new Schema(
     shapeKey: { type: String },
     routeColor: { type: String },
     routeLongName: { type: String },
-    busRouteNumber: { type: String },
+    routeNumber: { type: String },
   },
   {
     timestamps: true,

@@ -11,12 +11,12 @@ const useStyles = makeStyles({
     color: "#ffffff", // white
     fontSize: "16px",
     title: props.title,
-    backgroundColor: props.busRouteColor,
+    backgroundColor: props.routeColor,
   }),
 })
 
 export default function BandButton(props) {
   const classes = useStyles(props)
 
-  return <Button className={classes.button}>{props.busRouteNumber}</Button>
+  return <Button className={classes.button}>{props.routeNumber}</Button>
 }

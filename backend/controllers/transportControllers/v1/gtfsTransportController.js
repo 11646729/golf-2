@@ -108,8 +108,17 @@ export const gtfsGetAllReducedRoutes = async (req, res) => {
 }
 
 // Path localhost:5000/api/gtfsTransport/uniqueReducedRoutes
-export const gtfsPutOneReducedRoutes = async (req, res) => {
-  const filter = { busRouteNumber: req.body.busRouteNumber }
+export const gtfsGetAllUniqueReducedRoutes = async (req, res) => {
+  GtfsUniqueReducedRouteSchema.find({})
+    .then((gtfsUniqueReducedRouteSchema) =>
+      res.json(gtfsUniqueReducedRouteSchema)
+    )
+    .catch((err) => res.status(400).json("Error " + err))
+}
+
+// Path localhost:5000/api/gtfsTransport/uniqueReducedRoutes
+export const gtfsPutOneUniqueReducedRoutes = async (req, res) => {
+  const filter = { routeNumber: req.body.routeNumber }
   const update = { routeVisible: req.body.routeVisible }
 
   GtfsUniqueReducedRouteSchema.findOneAndUpdate(filter, update)
@@ -117,6 +126,25 @@ export const gtfsPutOneReducedRoutes = async (req, res) => {
       res.json(gtfsUniqueReducedRouteSchema)
     )
     .catch((err) => res.status(400).json("Error " + err))
+}
+
+// Path localhost:5000/api/gtfsTransport/uniqueReducedRoutes
+export const deleteAllUniqueReducedRoutes = async (req, res) => {
+  GtfsUniqueReducedRouteSchema.deleteMany({}, (err) => {
+    if (err) {
+      res
+        .status(500)
+        .send(
+          "An unspecified error occurred while removing all Unique Reduced Routes!"
+        )
+    } else {
+      res
+        .status(200)
+        .send(
+          "All Unique Reduced Route data was deleted in the mongodb database"
+        )
+    }
+  })
 }
 
 // Path localhost:5000/api/gtfsTransport/reducedRoutes
@@ -134,15 +162,6 @@ export const deleteAllReducedRoutes = async (req, res) => {
         .send("All Reduced Route data was deleted in the mongodb database")
     }
   })
-}
-
-// Path localhost:5000/api/gtfsTransport/uniqueReducedRoutes
-export const gtfsGetAllUniqueReducedRoutes = async (req, res) => {
-  GtfsUniqueReducedRouteSchema.find({})
-    .then((gtfsUniqueReducedRouteSchema) =>
-      res.json(gtfsUniqueReducedRouteSchema)
-    )
-    .catch((err) => res.status(400).json("Error " + err))
 }
 
 // Path localhost:5000/api/gtfsTransport/reducedStops

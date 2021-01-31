@@ -19,10 +19,11 @@ const useStyles = makeStyles((theme) => ({
 export async function selectedUniqueRoutesAdd(selectedBusRouteNumber) {
   console.log("Bus Route to add: ", selectedBusRouteNumber)
 
-  let res = await axios({
+  // let res =
+  await axios({
     url: "http://localhost:5000/api/gtfsTransport/uniqueReducedRoutes",
     data: {
-      busRouteNumber: selectedBusRouteNumber,
+      routeNumber: selectedBusRouteNumber,
       routeVisible: true,
     },
     method: "PUT",
@@ -31,17 +32,16 @@ export async function selectedUniqueRoutesAdd(selectedBusRouteNumber) {
       "Content-Type": "application/json",
     },
   })
-
-  console.log(res)
 }
 
 export async function selectedUniqueRoutesRemove(selectedBusRouteNumber) {
   console.log("Bus Route to remove: ", selectedBusRouteNumber)
 
-  let res = await axios({
+  // let res =
+  await axios({
     url: "http://localhost:5000/api/gtfsTransport/uniqueReducedRoutes",
     data: {
-      busRouteNumber: selectedBusRouteNumber,
+      routeNumber: selectedBusRouteNumber,
       routeVisible: false,
     },
     method: "PUT",
@@ -55,15 +55,18 @@ export async function selectedUniqueRoutesRemove(selectedBusRouteNumber) {
 export default function BandListItem(props) {
   const classes = useStyles(props)
 
-  const [routeDisplayCheckbox, setRouteDisplayCheckbox] = useState(false)
+  const [routeVisibleCheckbox, setRouteVisibleCheckbox] = useState(
+    props.routeVisible
+  )
 
-  const handleListItemClick = (event, busRouteNumber) => {
-    if (routeDisplayCheckbox === true) {
-      setRouteDisplayCheckbox(false)
-      selectedUniqueRoutesRemove(busRouteNumber)
+  const handleListItemClick = (event, routeNumber) => {
+    // These if choices refer to checkbox state before changes
+    if (routeVisibleCheckbox === true) {
+      setRouteVisibleCheckbox(false)
+      selectedUniqueRoutesRemove(routeNumber)
     } else {
-      setRouteDisplayCheckbox(true)
-      selectedUniqueRoutesAdd(busRouteNumber)
+      setRouteVisibleCheckbox(true)
+      selectedUniqueRoutesAdd(routeNumber)
     }
   }
 
@@ -71,17 +74,14 @@ export default function BandListItem(props) {
     <ListItem
       button
       classes={{ root: classes.item }}
-      onClick={(event) => handleListItemClick(event, props.busRouteNumber)}
+      onClick={(event) => handleListItemClick(event, props.routeNumber)}
     >
-      <BandCheckbox checked={props.busRouteVisible} />
+      <BandCheckbox checked={routeVisibleCheckbox} />
       <BandButton
-        busRouteColor={props.busRouteColor}
-        busRouteNumber={props.busRouteNumber}
+        routeColor={props.routeColor}
+        routeNumber={props.routeNumber}
       />
-      <BandListItemText
-        busRouteName={props.busRouteName}
-        busRouteVia={props.busRouteVia}
-      />
+      <BandListItemText routeName={props.routeName} routeVia={props.routeVia} />
     </ListItem>
   )
 }

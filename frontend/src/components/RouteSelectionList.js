@@ -25,11 +25,11 @@ export default function RouteSelectionList(props) {
       <Paper className={classes.yellowPaper}>
         <List>
           <BandListItem
-            busRouteVisible={props.busRouteVisible}
-            busRouteColor={props.busRouteColor}
-            busRouteNumber={props.busRouteNumber}
-            busRouteName={props.busRouteName}
-            busRouteVia={props.busRouteVia}
+            routeVisible={props.routeVisible}
+            routeColor={props.routeColor}
+            routeNumber={props.routeNumber}
+            routeName={props.routeName}
+            routeVia={props.routeVia}
           />
         </List>
       </Paper>

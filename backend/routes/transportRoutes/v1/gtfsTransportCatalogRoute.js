@@ -44,7 +44,13 @@ router.get(
 // PUT a Checkbox Selected/Non-Selected in the ReducedRoutes Document
 router.put(
   "/uniqueReducedRoutes",
-  gtfs_transport_controller.gtfsPutOneReducedRoutes
+  gtfs_transport_controller.gtfsPutOneUniqueReducedRoutes
+)
+
+// DELETE all ReducedRoutes in the database
+router.delete(
+  "/uniqueReducedRoutes",
+  gtfs_transport_controller.deleteAllUniqueReducedRoutes
 )
 
 // GET all ReducedStops from database
