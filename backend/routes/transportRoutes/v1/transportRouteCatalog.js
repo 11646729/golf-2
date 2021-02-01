@@ -2,7 +2,7 @@ import express from "express"
 var router = express.Router()
 
 // Require transport controller module
-const transport_controller = require("../../../controllers/transportControllers/v1/translinkTransportController")
+const transport_controller = require("../../../controllers/transportControllers/v1/translinkController")
 
 /// Transport Routes ///
 // GET catalogue home page
