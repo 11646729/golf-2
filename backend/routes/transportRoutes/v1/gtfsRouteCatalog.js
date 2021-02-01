@@ -1,90 +1,74 @@
 import express from "express"
 const router = express.Router()
-const gtfs_transport_controller = require("../../../controllers/transportControllers/v1/gtfsTransportController")
+const gtfsController = require("../../../controllers/transportControllers/v1/gtfsController")
 
 // -------------------------------------------------------
-// Catalogue home page
+// Route Catalogue home page
 // -------------------------------------------------------
-
-router.get("/", gtfs_transport_controller.transportIndex)
+// GET index
+router.get("/", gtfsController.transportIndex)
 
 // -------------------------------------------------------
 // Stops
 // -------------------------------------------------------
-
 // GET all Stops
-router.get("/stops", gtfs_transport_controller.getAllStops)
+router.get("/stops", gtfsController.getAllStops)
 
 // GET a Stop by id
-router.get("/stops/:id", gtfs_transport_controller.getOneStop)
+router.get("/stops/:id", gtfsController.getOneStop)
 
 // -------------------------------------------------------
 // Reduced Shapes
 // -------------------------------------------------------
-
 // GET all Reduced Shapes from the database
-router.get("/shapes", gtfs_transport_controller.getAllReducedShapes)
+router.get("/shapes", gtfsController.getAllReducedShapes)
 
 // GET a Reduced Shape by id
-router.get("/shapes/:id", gtfs_transport_controller.getOneReducedShape)
+router.get("/shapes/:id", gtfsController.getOneReducedShape)
 
 // -------------------------------------------------------
 // Routes
 // -------------------------------------------------------
-
 // GET a Route by id (filename)
-router.get("/routes/:id", gtfs_transport_controller.getOneRoute)
+router.get("/routes/:id", gtfsController.getOneRoute)
 
 // -------------------------------------------------------
 // Filenames
 // -------------------------------------------------------
-
 // GET all GeoJSON filenames in the directory
-router.get("/filenames", gtfs_transport_controller.getGeojsonFilenames)
+router.get("/filenames", gtfsController.getGeojsonFilenames)
 
 // -------------------------------------------------------
 // Reduced Routes
 // -------------------------------------------------------
-
 // GET all Reduced Routes from database
-router.get("/reducedRoutes", gtfs_transport_controller.getAllReducedRoutes)
+router.get("/reducedRoutes", gtfsController.getAllReducedRoutes)
 
 // DELETE all Reduced Routes in the database
-router.delete(
-  "/reducedRoutes",
-  gtfs_transport_controller.deleteAllReducedRoutes
-)
+router.delete("/reducedRoutes", gtfsController.deleteAllReducedRoutes)
 
 // -------------------------------------------------------
 // Unique Reduced Routes
 // -------------------------------------------------------
-
 // GET all Unique Reduced Routes from database
-router.get(
-  "/uniqueReducedRoutes",
-  gtfs_transport_controller.getAllUniqueReducedRoutes
-)
+router.get("/uniqueReducedRoutes", gtfsController.getAllUniqueReducedRoutes)
 
 // PUT a Checkbox Selected/Non-Selected in the Unique Reduced Routes Documents
-router.put(
-  "/uniqueReducedRoutes",
-  gtfs_transport_controller.putOneUniqueReducedRoutes
-)
+router.put("/uniqueReducedRoutes", gtfsController.putOneUniqueReducedRoutes)
 
 // DELETE all Unique Reduced Routes in the database
 router.delete(
   "/uniqueReducedRoutes",
-  gtfs_transport_controller.deleteAllUniqueReducedRoutes
+  gtfsController.deleteAllUniqueReducedRoutes
 )
 
 // -------------------------------------------------------
 // Reduced Stops
 // -------------------------------------------------------
-
 // GET all Reduced Stops from database
-router.get("/reducedStops", gtfs_transport_controller.getAllReducedStops)
+router.get("/reducedStops", gtfsController.getAllReducedStops)
 
 // DELETE all Reduced Stops in the database
-router.delete("/reducedStops", gtfs_transport_controller.deleteAllReducedStops)
+router.delete("/reducedStops", gtfsController.deleteAllReducedStops)
 
 module.exports = router

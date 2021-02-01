@@ -67,15 +67,15 @@ connection.once("open", () => {
 const golfRouter = require("./routes/golfRoutes/v2/golfCatalogRoute")
 const weatherRouter = require("./routes/weatherRoutes/v1/weatherCatalogRoute")
 const cruiseRouter = require("./routes/cruiseRoutes/v1/cruiseCatalogRoute")
-const transportRouter = require("./routes/transportRoutes/v1/transportCatalogRoute")
-const gtfsTransportRouter = require("./routes/transportRoutes/v1/gtfsTransportCatalogRoute")
+const transportRouter = require("./routes/transportRoutes/v1/transportRouteCatalog")
+const gtfsRouter = require("./routes/transportRoutes/v1/gtfsRouteCatalog")
 
 // Routes
 app.use("/api/golf", golfRouter)
 app.use("/api/weather", weatherRouter)
 app.use("/api/cruise", cruiseRouter)
 app.use("/api/transport", transportRouter)
-app.use("/api/gtfsTransport", gtfsTransportRouter)
+app.use("/api/gtfsTransport", gtfsRouter)
 
 runSwitchboard(io)
 
