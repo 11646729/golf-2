@@ -1,26 +1,34 @@
+const fs = require("fs")
+const path = require("path")
 import { GtfsStopSchema } from "../../../models/transportModels/v1/gtfsStopSchema"
 import { GtfsReducedShapesSchema } from "../../../models/transportModels/v1/gtfsReducedShapesSchema"
 import { GtfsReducedRouteSchema } from "../../../models/transportModels/v1/gtfsReducedRouteSchema"
 import { GtfsReducedStopSchema } from "../../../models/transportModels/v1/gtfsReducedStopSchema"
 import { GtfsUniqueReducedRouteSchema } from "../../../models/transportModels/v1/gtfsUniqueReducedRouteSchema"
 
-const fs = require("fs")
-var path = require("path")
-
-// Path localhost:5000/api/gtfsTransport/
-export const gtfsTransportIndex = async (req, res) => {
+// -------------------------------------------------------
+// Catalogue home page
+// Path: localhost:5000/api/gtfsTransport/
+// -------------------------------------------------------
+export const transportIndex = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)
 }
 
-// Path localhost:5000/api/gtfsTransport/stops
-export const gtfsGetAllStops = async (req, res) => {
+// -------------------------------------------------------
+// Stops
+// Path: localhost:5000/api/gtfsTransport/stops
+// -------------------------------------------------------
+export const getAllStops = async (req, res) => {
   GtfsStopSchema.find({})
     .then((gtfsStopSchema) => res.json(gtfsStopSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Path localhost:5000/api/gtfsTransport/stops/:id
-export const gtfsGetOneStop = async (req, res) => {
+// -------------------------------------------------------
+// Stops
+// Path: localhost:5000/api/gtfsTransport/stops/:id
+// -------------------------------------------------------
+export const getOneStop = async (req, res) => {
   const id = req.params.id
 
   GtfsStopSchema.findById(id)
@@ -39,16 +47,22 @@ export const gtfsGetOneStop = async (req, res) => {
     })
 }
 
-// Path localhost:5000/api/gtfsTransport/shapes
-export const gtfsGetAllReducedShapes = async (req, res) => {
+// -------------------------------------------------------
+// Reduced Shapes
+// Path: localhost:5000/api/gtfsTransport/shapes
+// -------------------------------------------------------
+export const getAllReducedShapes = async (req, res) => {
   GtfsReducedShapesSchema.find({ shapeId: "25774" })
     // GtfsReducedShapesSchema.find({})
     .then((gtfsReducedShapesSchema) => res.json(gtfsReducedShapesSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Path localhost:5000/api/gtfsTransport/shapes/:id
-export const gtfsGetOneReducedShape = async (req, res) => {
+// -------------------------------------------------------
+// Reduced Shapes
+// Path: localhost:5000/api/gtfsTransport/shapes/:id
+// -------------------------------------------------------
+export const getOneReducedShape = async (req, res) => {
   const id = req.params.id
 
   GtfsReducedShapesSchema.findById(id)
@@ -67,8 +81,11 @@ export const gtfsGetOneReducedShape = async (req, res) => {
     })
 }
 
-// Path localhost:5000/api/gtfsTransport/routes/:id
-export const gtfsGetOneRoute = async (req, res) => {
+// -------------------------------------------------------
+// Routes
+// Path: localhost:5000/api/gtfsTransport/routes/:id
+// -------------------------------------------------------
+export const getOneRoute = async (req, res) => {
   const rawGeojson =
     "/Users/briansmith/Documents/GTD/golf-2/backend/geojson/Hamilton Ontario Street Railway/" +
     req.query.id
@@ -82,8 +99,11 @@ export const gtfsGetOneRoute = async (req, res) => {
   })
 }
 
-// Path localhost:5000/api/gtfsTransport/filenames
-export const gtfsGetGeojsonFilenames = async (req, res) => {
+// -------------------------------------------------------
+// Filenames
+// Path: localhost:5000/api/gtfsTransport/filenames
+// -------------------------------------------------------
+export const getGeojsonFilenames = async (req, res) => {
   var geojsonDirectory = path.resolve(
     "./geojson/Hamilton Ontario Street Railway"
   )
@@ -100,15 +120,41 @@ export const gtfsGetGeojsonFilenames = async (req, res) => {
   })
 }
 
-// Path localhost:5000/api/gtfsTransport/reducedRoutes
-export const gtfsGetAllReducedRoutes = async (req, res) => {
+// -------------------------------------------------------
+// Reduced Routes
+// Path: localhost:5000/api/gtfsTransport/reducedRoutes
+// -------------------------------------------------------
+export const getAllReducedRoutes = async (req, res) => {
   GtfsReducedRouteSchema.find({})
     .then((gtfsReducedRouteSchema) => res.json(gtfsReducedRouteSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Path localhost:5000/api/gtfsTransport/uniqueReducedRoutes
-export const gtfsGetAllUniqueReducedRoutes = async (req, res) => {
+// -------------------------------------------------------
+// Reduced Routes
+// Path: localhost:5000/api/gtfsTransport/reducedRoutes
+// -------------------------------------------------------
+export const deleteAllReducedRoutes = async (req, res) => {
+  GtfsReducedRouteSchema.deleteMany({}, (err) => {
+    if (err) {
+      res
+        .status(500)
+        .send(
+          "An unspecified error occurred while removing all Reduced Routes!"
+        )
+    } else {
+      res
+        .status(200)
+        .send("All Reduced Route data was deleted in the mongodb database")
+    }
+  })
+}
+
+// -------------------------------------------------------
+// Unique Reduced Routes
+// Path: localhost:5000/api/gtfsTransport/uniqueReducedRoutes
+// -------------------------------------------------------
+export const getAllUniqueReducedRoutes = async (req, res) => {
   GtfsUniqueReducedRouteSchema.find({})
     .then((gtfsUniqueReducedRouteSchema) =>
       res.json(gtfsUniqueReducedRouteSchema)
@@ -116,8 +162,11 @@ export const gtfsGetAllUniqueReducedRoutes = async (req, res) => {
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Path localhost:5000/api/gtfsTransport/uniqueReducedRoutes
-export const gtfsPutOneUniqueReducedRoutes = async (req, res) => {
+// -------------------------------------------------------
+// Unique Reduced Routes
+// Path: localhost:5000/api/gtfsTransport/uniqueReducedRoutes
+// -------------------------------------------------------
+export const putOneUniqueReducedRoutes = async (req, res) => {
   const filter = { routeNumber: req.body.routeNumber }
   const update = { routeVisible: req.body.routeVisible }
 
@@ -128,7 +177,10 @@ export const gtfsPutOneUniqueReducedRoutes = async (req, res) => {
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Path localhost:5000/api/gtfsTransport/uniqueReducedRoutes
+// -------------------------------------------------------
+// Unique Reduced Routes
+// Path: localhost:5000/api/gtfsTransport/uniqueReducedRoutes
+// -------------------------------------------------------
 export const deleteAllUniqueReducedRoutes = async (req, res) => {
   GtfsUniqueReducedRouteSchema.deleteMany({}, (err) => {
     if (err) {
@@ -147,31 +199,20 @@ export const deleteAllUniqueReducedRoutes = async (req, res) => {
   })
 }
 
-// Path localhost:5000/api/gtfsTransport/reducedRoutes
-export const deleteAllReducedRoutes = async (req, res) => {
-  GtfsReducedRouteSchema.deleteMany({}, (err) => {
-    if (err) {
-      res
-        .status(500)
-        .send(
-          "An unspecified error occurred while removing all Reduced Routes!"
-        )
-    } else {
-      res
-        .status(200)
-        .send("All Reduced Route data was deleted in the mongodb database")
-    }
-  })
-}
-
-// Path localhost:5000/api/gtfsTransport/reducedStops
-export const gtfsGetAllReducedStops = async (req, res) => {
+// -------------------------------------------------------
+// Reduced Stops
+// Path: localhost:5000/api/gtfsTransport/reducedStops
+// -------------------------------------------------------
+export const getAllReducedStops = async (req, res) => {
   GtfsReducedStopSchema.find({})
     .then((gtfsReducedStopSchema) => res.json(gtfsReducedStopSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Path localhost:5000/api/gtfsTransport/reducedStops
+// -------------------------------------------------------
+// Reduced Stops
+// Path: localhost:5000/api/gtfsTransport/reducedStops
+// -------------------------------------------------------
 export const deleteAllReducedStops = async (req, res) => {
   GtfsReducedStopSchema.deleteMany({}, (err) => {
     if (err) {
@@ -186,24 +227,30 @@ export const deleteAllReducedStops = async (req, res) => {
   })
 }
 
-// Direct call to delete all bus stops in the database
-export const directDeleteAllStops = async () => {
-  GtfsStopSchema.deleteMany({}, (err) => {
-    if (err) {
-      console.log("Some error occurred while removing all bus stops")
-    } else {
-      console.log("All bus stops were deleted successfully!")
-    }
-  })
-}
+// -------------------------------------------------------
+// Stops
+// Path: localhost:5000/api/gtfsTransport/stops/
+// -------------------------------------------------------
+// export const directDeleteAllStops = async () => {
+//   GtfsStopSchema.deleteMany({}, (err) => {
+//     if (err) {
+//       console.log("Some error occurred while removing all bus stops")
+//     } else {
+//       console.log("All bus stops were deleted successfully!")
+//     }
+//   })
+// }
 
-// Direct call to delete all route shapes in the database
-export const directDeleteAllShapes = async () => {
-  GtfsReducedShapesSchema.deleteMany({}, (err) => {
-    if (err) {
-      console.log("Some error occurred while removing all route shapes")
-    } else {
-      console.log("All route shapes were deleted successfully!")
-    }
-  })
-}
+// -------------------------------------------------------
+// Reduced Shapes
+// Path: localhost:5000/api/gtfsTransport/shapes/:id
+// -------------------------------------------------------
+// export const directDeleteAllShapes = async () => {
+//   GtfsReducedShapesSchema.deleteMany({}, (err) => {
+//     if (err) {
+//       console.log("Some error occurred while removing all route shapes")
+//     } else {
+//       console.log("All route shapes were deleted successfully!")
+//     }
+//   })
+// }
