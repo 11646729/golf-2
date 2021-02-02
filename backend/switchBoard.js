@@ -12,7 +12,7 @@ import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
-import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/translinkTransportController"
+import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/translinkController"
 import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
 import { deleteOldReducedRoutes } from "./deleteOldReducedRoutes"
@@ -21,7 +21,7 @@ import { deleteOldUniqueReducedRoutes } from "./deleteOldUniqueReducedRoutes"
 import { createReducedRoutesAndStops } from "./createReducedRoutesAndStops"
 import { createUniqueReducedRoutes } from "./createUniqueReducedRoutes"
 
-// import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/translinkTransportController"
+// import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/translinkController"
 
 export const runSwitchboard = (io) => {
   // Using socket.io for realtime

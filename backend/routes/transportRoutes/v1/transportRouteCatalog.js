@@ -1,35 +1,41 @@
 import express from "express"
 var router = express.Router()
+const translinkController = require("../../../controllers/transportControllers/v1/translinkController")
 
-// Require transport controller module
-const transport_controller = require("../../../controllers/transportControllers/v1/translinkController")
+// -------------------------------------------------------
+// Translink Route Catalogue home page
+// -------------------------------------------------------
+// GET index
+router.get("/", translinkController.transportIndex)
 
-/// Transport Routes ///
-// GET catalogue home page
-router.get("/", transport_controller.transportIndex)
+// -------------------------------------------------------
+// Translink Stops
+// -------------------------------------------------------
+// GET all Stops
+router.get("/translinkstops", translinkController.getAllStops)
 
-// GET all Translink bus stops from the database
-router.get("/translinkstops", transport_controller.getAllStops)
+// -------------------------------------------------------
+// Translink Shapes
+// -------------------------------------------------------
+// GET all Translink Shapes
+router.get("/translinkshapes", translinkController.getAllModifiedShapes)
 
 // GET a Translink bus stop by id
-// router.get("/translinkstops/:id", transport_controller.getOneStop)
-
-// GET all Translink shapes from the database
-router.get("/translinkshapes", transport_controller.getAllModifiedShapes)
+// router.get("/translinkstops/:id", translinkController.getOneStop)
 
 // GET a Translink shape by id
-// router.get("/translinkshapes/:id", transport_controller.getOneModifiedShape)
+// router.get("/translinkshapes/:id", translinkController.getOneModifiedShape)
 
 // POST a temperature reading to the database
-// router.post("/temperatureReadings/:id", transport_controller.create)
+// router.post("/temperatureReadings/:id", translinkController.create)
 
 // UPDATE a temperature reading by id
-// router.put("/temperatureReadings/:id", transport_controller.updateOne)
+// router.put("/temperatureReadings/:id", translinkController.updateOne)
 
 // DELETE all temperature readings
-// router.delete("/temperatureReadings", transport_controller.deleteAll)
+// router.delete("/temperatureReadings", translinkController.deleteAll)
 
 // DELETE a temperature reading by id
-// router.delete("/temperatureReadings/:id", transport_controller.deleteOne)
+// router.delete("/temperatureReadings/:id", translinkController.deleteOne)
 
 module.exports = router

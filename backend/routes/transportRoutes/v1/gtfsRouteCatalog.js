@@ -3,22 +3,13 @@ const router = express.Router()
 const gtfsController = require("../../../controllers/transportControllers/v1/gtfsController")
 
 // -------------------------------------------------------
-// Route Catalogue home page
+// GTFS Route Catalogue home page
 // -------------------------------------------------------
 // GET index
 router.get("/", gtfsController.transportIndex)
 
 // -------------------------------------------------------
-// Stops
-// -------------------------------------------------------
-// GET all Stops
-router.get("/stops", gtfsController.getAllStops)
-
-// GET a Stop by id
-router.get("/stops/:id", gtfsController.getOneStop)
-
-// -------------------------------------------------------
-// Reduced Shapes
+// GTFS Reduced Shapes
 // -------------------------------------------------------
 // GET all Reduced Shapes from the database
 router.get("/shapes", gtfsController.getAllReducedShapes)
@@ -27,19 +18,19 @@ router.get("/shapes", gtfsController.getAllReducedShapes)
 router.get("/shapes/:id", gtfsController.getOneReducedShape)
 
 // -------------------------------------------------------
-// Routes
+// GTFS Routes
 // -------------------------------------------------------
 // GET a Route by id (filename)
 router.get("/routes/:id", gtfsController.getOneRoute)
 
 // -------------------------------------------------------
-// Filenames
+// GTFS Route Filenames
 // -------------------------------------------------------
-// GET all GeoJSON filenames in the directory
+// GET all GeoJSON Route filenames in the directory
 router.get("/filenames", gtfsController.getGeojsonFilenames)
 
 // -------------------------------------------------------
-// Reduced Routes
+// GTFS Reduced Routes
 // -------------------------------------------------------
 // GET all Reduced Routes from database
 router.get("/reducedRoutes", gtfsController.getAllReducedRoutes)
@@ -48,7 +39,7 @@ router.get("/reducedRoutes", gtfsController.getAllReducedRoutes)
 router.delete("/reducedRoutes", gtfsController.deleteAllReducedRoutes)
 
 // -------------------------------------------------------
-// Unique Reduced Routes
+// GTFS Unique Reduced Routes
 // -------------------------------------------------------
 // GET all Unique Reduced Routes from database
 router.get("/uniqueReducedRoutes", gtfsController.getAllUniqueReducedRoutes)
@@ -63,7 +54,16 @@ router.delete(
 )
 
 // -------------------------------------------------------
-// Reduced Stops
+// GTFS Stops
+// -------------------------------------------------------
+// GET all Stops
+router.get("/stops", gtfsController.getAllStops)
+
+// GET a Stop by id
+router.get("/stops/:id", gtfsController.getOneStop)
+
+// -------------------------------------------------------
+// GTFS Reduced Stops
 // -------------------------------------------------------
 // GET all Reduced Stops from database
 router.get("/reducedStops", gtfsController.getAllReducedStops)
