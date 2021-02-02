@@ -72,11 +72,10 @@ export default function GTFSTransportMapContainer() {
         })
       )
       .catch((errors) => {
-        console.log(errors)
+        setLoadingError(errors)
+        console.log(errorLoading)
       })
 
-    // isSubscribed = false
-    // return isSubscribed
     return () => (isSubscribed = false)
   }, [])
 

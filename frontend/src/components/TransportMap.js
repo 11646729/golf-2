@@ -41,27 +41,29 @@ export default function TransportMapContainer() {
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
-  const [busStopsCollection, setBusStopsCollection] = useState([])
   const [busShapesCollection, setBusShapesCollection] = useState([])
-  const [dataLoading, setDataLoading] = useState(true)
+  const [busStopsCollection, setBusStopsCollection] = useState([])
   const [errorLoading, setLoadingError] = useState(false)
-  const [errorLoadingMessage, setLoadingErrorMessage] = useState([])
-
-  // Fetch bus stops data
   useEffect(() => {
-    const stopsUrl = "http://localhost:5000/api/transport/translinkstops"
-    const fetchData = async () => {
-      try {
-        setDataLoading(true)
-        const result = await axios(stopsUrl)
+    let isSubscribed = true
 
-        setBusStopsCollection(result.data)
-      } catch (err) {
-        setLoadingError(err)
-      }
-      setDataLoading(false)
-    }
-    fetchData()
+    axios
+      .all([
+        axios.get("http://localhost:5000/api/transport/translinkshapes"),
+        axios.get("http://localhost:5000/api/transport/translinkstops"),
+      ])
+      .then(
+        axios.spread((shapesResponse, stopsResponse) => {
+          setBusShapesCollection(shapesResponse.data)
+          setBusStopsCollection(stopsResponse.data)
+        })
+      )
+      .catch((errors) => {
+        setLoadingError(errors)
+        console.log(errorLoading)
+      })
+
+    return () => (isSubscribed = false)
   }, [])
 
   // Now compute bounds of map to display
@@ -78,24 +80,6 @@ export default function TransportMapContainer() {
     })
     mapRef.fitBounds(bounds)
   }
-
-  // Fetch shapes data
-  useEffect(() => {
-    const shapesUrl = "http://localhost:5000/api/transport/translinkshapes"
-    const fetchBusShapesData = async () => {
-      try {
-        setDataLoading(true)
-        const busShapesResult = await axios(shapesUrl)
-
-        setBusShapesCollection(busShapesResult.data)
-      } catch (err) {
-        setLoadingError(true)
-        setLoadingErrorMessage(err)
-      }
-      setDataLoading(false)
-    }
-    fetchBusShapesData()
-  }, [])
 
   // -----------------------------------------------------
   // EVENT HANDLERS SECTION
@@ -153,12 +137,8 @@ export default function TransportMapContainer() {
         <Container maxWidth="xl">
           <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
             <Title>Transport Dashboard</Title>
-            {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
-            {errorLoading ? (
-              <LoadingTitle>
-                Error Loading...
-                {errorLoadingMessage}
-              </LoadingTitle>
+            {!errorLoading ? (
+              <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
             <FormControlLabel
               // style={styles.displayHomeLocationCheckBox}
