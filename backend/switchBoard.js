@@ -12,7 +12,7 @@ import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
-import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/translinkController"
+// import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/translinkController"
 import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
 import { deleteOldReducedRoutes } from "./deleteOldReducedRoutes"

@@ -181,7 +181,6 @@ export default function GTFSTransportMapContainer() {
                     icon={{
                       path: window.google.maps.SymbolPath.CIRCLE,
                       scale: 2,
-                      // url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
                     }}
                     onClick={() => {
                       handleBusStopClick()

@@ -20,12 +20,12 @@ export const getAllStops = async (req, res) => {
 }
 
 // -------------------------------------------------------
-// Stops
+// Shapes
 // Path: localhost:5000/api/transport/shapes
 // -------------------------------------------------------
 export const getAllModifiedShapes = async (req, res) => {
-  // TranslinkModifiedShapeSchema.find({ shapeId: "25774" })
-  TranslinkModifiedShapeSchema.find({})
+  TranslinkModifiedShapeSchema.find({ shapeId: "25774" })
+    // TranslinkModifiedShapeSchema.find({})
     .then((TranslinkModifiedShapeSchema) =>
       res.json(TranslinkModifiedShapeSchema)
     )

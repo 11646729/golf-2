@@ -137,6 +137,8 @@ export default function TransportMapContainer() {
   //   console.log(busShapeSelected)
   // }
 
+  // console.log(busStopsCollection.length) // 15680 stops
+
   // -----------------------------------------------------
   // VIEW SECTION
   // -----------------------------------------------------
