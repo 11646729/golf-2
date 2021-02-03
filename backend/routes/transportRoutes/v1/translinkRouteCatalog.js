@@ -12,19 +12,19 @@ router.get("/", translinkController.transportIndex)
 // Translink Stops
 // -------------------------------------------------------
 // GET all Stops
-router.get("/translinkstops", translinkController.getAllStops)
+router.get("/stops", translinkController.getAllStops)
 
 // -------------------------------------------------------
 // Translink Shapes
 // -------------------------------------------------------
 // GET all Translink Shapes
-router.get("/translinkshapes", translinkController.getAllModifiedShapes)
+router.get("/shapes", translinkController.getAllModifiedShapes)
 
 // GET a Translink bus stop by id
-// router.get("/translinkstops/:id", translinkController.getOneStop)
+// router.get("/stops/:id", translinkController.getOneStop)
 
 // GET a Translink shape by id
-// router.get("/translinkshapes/:id", translinkController.getOneModifiedShape)
+// router.get("/shapes/:id", translinkController.getOneModifiedShape)
 
 // POST a temperature reading to the database
 // router.post("/temperatureReadings/:id", translinkController.create)

@@ -243,7 +243,7 @@ export const deleteAllReducedStops = async (req, res) => {
 
 // -------------------------------------------------------
 // Reduced Shapes
-// Path: localhost:5000/api/gtfsTransport/shapes/:id
+// Path: localhost:5000/api/gtfsTransport/shapes/
 // -------------------------------------------------------
 // export const directDeleteAllShapes = async () => {
 //   GtfsReducedShapesSchema.deleteMany({}, (err) => {
