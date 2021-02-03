@@ -1,5 +1,6 @@
 import gtfsToGeoJSON from "gtfs-to-geojson"
 import config from "./config.json"
+// import config from "./configMetro.json"
 import { createReducedRoutesAndStops } from "./createReducedRoutesAndStops"
 
 // Function to convert GTFS data to GeoJson

@@ -2,8 +2,7 @@
   "agencies": [
     {
       "agency_key": "Hamilton Ontario Street Railway",
-      "url": "http://transitfeeds.com/p/hamilton-street-railway/31/20201111/download",
-      "__comment__": "url: http://transitfeeds.com/p/hamilton-street-railway/31/latest/download,"
+      "url": "http://transitfeeds.com/p/hamilton-street-railway/31/latest/download"
     }
   ],
   "verbose": true,

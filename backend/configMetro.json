@@ -1,0 +1,13 @@
+{
+  "agencies": [
+    {
+      "agency_key": "Translink Metro Buses",
+      "path": "/Users/briansmith/Documents/GTD/golf-2/backend/gtfs data/metrogtfs"
+    }
+  ],
+  "verbose": true,
+  "coordinatePrecision": 5,
+  "includeStops": true,
+  "sqlitePath": "/Users/briansmith/Documents/GTD/golf-2/backend/gtfs data/metrogtfs/gtfs.db",
+  "skipImport": false
+}
