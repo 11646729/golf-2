@@ -1,0 +1,96 @@
+{
+  "comment1": "Reduction of Hamilton Ontario 01_01.geojson file",
+  "comment2": "To show an example of one Line String & one Point",
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "agency_name": "Hamilton Street Railway",
+        "route_id": "4301",
+        "agency_id": "HSR",
+        "route_short_name": "01",
+        "route_long_name": "KING",
+        "route_type": 3,
+        "route_color": "#0093DD",
+        "route_text_color": "#000000"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-79.8684, 43.25244],
+          [-79.86804, 43.25234],
+          [-79.86773, 43.25316],
+          [-79.86703, 43.25474],
+          [-79.86476, 43.25418],
+          [-79.85983, 43.25282],
+          [-79.85846, 43.25246],
+          [-79.855, 43.25159],
+          [-79.8461, 43.2493],
+          [-79.84313, 43.24856],
+          [-79.83894, 43.24747],
+          [-79.82978, 43.24499],
+          [-79.82581, 43.24402],
+          [-79.82439, 43.24365],
+          [-79.82364, 43.24349],
+          [-79.81991, 43.2426],
+          [-79.81487, 43.24143],
+          [-79.80998, 43.24047],
+          [-79.80498, 43.23921],
+          [-79.80222, 43.23838],
+          [-79.80193, 43.23826],
+          [-79.80169, 43.23814],
+          [-79.80154, 43.23803],
+          [-79.80134, 43.23784],
+          [-79.80104, 43.23747],
+          [-79.80001, 43.23627],
+          [-79.79988, 43.23616],
+          [-79.79973, 43.23608],
+          [-79.79944, 43.23597],
+          [-79.79264, 43.23442],
+          [-79.78534, 43.23252],
+          [-79.78445, 43.23232],
+          [-79.78241, 43.23198],
+          [-79.78072, 43.23165],
+          [-79.77449, 43.23014],
+          [-79.77366, 43.22996],
+          [-79.76648, 43.22855],
+          [-79.76636, 43.22884],
+          [-79.76547, 43.22865]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1971",
+        "stop_code": "2749",
+        "stop_name": "KING at MARION",
+        "stop_desc": "KING ST W & MARION AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.90467, 43.2623] }
+    }
+  ]
+}

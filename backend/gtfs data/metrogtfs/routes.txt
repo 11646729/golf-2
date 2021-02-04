@@ -1,0 +1,105 @@
+agency_id,route_id,route_short_name,route_long_name,route_type
+MET,MET-10A,10A,Ladybrook - City Centre,3
+MET,MET-10B,10B,Poleglass - City Centre,3
+MET,MET-10C,10C,Poleglass - City Centre,3
+MET,MET-10D,10D,Lagmore (Mount Eagles) - City Centre,3
+MET,MET-10E,10E,Lagmore (Mount Eagles) - City Centre,3
+MET,MET-10F,10F,Lagmore View - City Centre,3
+MET,MET-10G,10G,Lagmore (Mount Eagles) - City Centre,3
+MET,MET-10H,10H,Black's Road - City Centre,3
+MET,MET-10X,10X,Lagmore - Belsteele Road - Black's Road - City Centre,3
+MET,MET-11A,11A,Silverstream - City Centre,3
+MET,MET-11B,11B,Springmartin - City Centre,3
+MET,MET-11C,11C,Glencairn - City Centre,3
+MET,MET-11D,11D,Glencairn - Springmartin - City Centre,3
+MET,MET-12A,12A,Carr's Glen - City Centre,3
+MET,MET-12B,12B,Carr's Glen - City Centre,3
+MET,MET-12C,12C,Ligoniel - Carr's Glen - City Centre,3
+MET,MET-13,13,City Centre - Newtownabbey - City Centre (Circular),3
+MET,MET-13A,13A,City Centre - Newtownabbey - City Centre (Circular),3
+MET,MET-13B,13B,City Centre - Glenville,3
+MET,MET-13C,13C,Hydepark - Cloughfern - City Centre,3
+MET,MET-14,14,City Centre - Newtownabbey - City Centre (Circular),3
+MET,MET-14A,14A,City Centre - Newtownabbey - City Centre (Circular),3
+MET,MET-14B,14B,Glenville - City Centre,3
+MET,MET-14C,14C,Cloughfern - Hydepark,3
+MET,MET-18,18,Gilnahirk - City Centre,3
+MET,MET-19,19,Dundonald - Tullycarnet - City Centre,3
+MET,MET-19A,19A,Millmount - Tullycarnet - City Centre,3
+MET,MET-1A,1A,Glenville - Fairview Road - Carnmoney - City Centre,3
+MET,MET-1C,1C,Glenville - Fairview Road - New Mossley - City Centre,3
+MET,MET-1D,1D,Mossley Glade - New Mossley - City Centre,3
+MET,MET-1E,1E,Roughfort - City Centre,3
+MET,MET-1F,1F,Blackrock - Mayfield - City Centre,3
+MET,MET-1G,1G,Manse Way - New Mossley - City Centre,3
+MET,MET-1J,1J,Royal Mail (Mallusk) - City Centre,3
+MET,MET-20,20,Dundonald - City Centre,3
+MET,MET-20A,20A,Dundonald - City Centre,3
+MET,MET-23,23,Stormont - City Centre,3
+MET,MET-26,26,Holywood Exchange - Titanic Quarter (Belfast Met) - City Centre,3
+MET,MET-26A,26A,Holywood Exchange - City Centre,3
+MET,MET-26B,26B,Queen's Road - Titanic Quarter (Belfast Met) - City Centre,3
+MET,MET-26C,26C,Titanic Quarter (Belfast Met) - City Centre,3
+MET,MET-27,27,Holywood Exchange - Old Holywood Road - City Centre,3
+MET,MET-28,28,Holywood Exchange - Garnerville Road - City Centre,3
+MET,MET-28A,28A,Holywood Exchange - City Centre,3
+MET,MET-29,29,Stormont - Mount Merrion - Forestside - City Centre,3
+MET,MET-29C,29C,Braniel - Mount Merrion - City Centre,3
+MET,MET-2A,2A,Fairview Road - City Centre,3
+MET,MET-2B,2B,Fairview Road - City Centre,3
+MET,MET-2C,2C,Monkstown - City Centre,3
+MET,MET-2D,2D,Monkstown - City Centre,3
+MET,MET-2E,2E,Monkstown - Rathcoole - City Centre,3
+MET,MET-2G,2G,Monkstown - City Centre,3
+MET,MET-2H,2H,Rathfern - Rathcoole - City Centre,3
+MET,MET-30,30,Upper Knockbreda Road - Mount Merrion - City Centre,3
+MET,MET-30A,30A,Upper Knockbreda Road - Mount Merrion - City Centre,3
+MET,MET-31,31,Forestside - City Centre,3
+MET,MET-3A,3A,Knocknagoney - Holywood Road - City Centre,3
+MET,MET-4A,4A,Ballybeen - Dundonald - City Centre,3
+MET,MET-4B,4B,Coopers Mill - Dundonald - City Centre,3
+MET,MET-4X,4X,Dundonald Park & Ride - Dundonald - City Centre,3
+MET,MET-57,57,Ligoniel - City Centre,3
+MET,MET-57A,57A,City Centre - Ligoniel,3
+MET,MET-5A,5A,Braniel - City Centre,3
+MET,MET-5B,5B,Braniel - City Centre,3
+MET,MET-600,600,Belfast City Airport - City Centre - Europa Buscentre,3
+MET,MET-600A,600A,Belfast City Airport - City Centre - Europa Buscentre,3
+MET,MET-600B,600B,Belfast City Airport - City Centre - Europa Buscentre,3
+MET,MET-61,61,Carr's Glen - City Centre,3
+MET,MET-64,64,Abbeycentre - Downview - City Centre,3
+MET,MET-648,648,City Centre - Northside Park + Ride,3
+MET,MET-649,649,Eastside Park + Ride - City Centre - Eastside Park + Ride,3
+MET,MET-64B,64B,Downview - City Centre,3
+MET,MET-650,650,Black's Road (Park + Ride) - Europa Buscentre,3
+MET,MET-650A,650A,Black's Road (Park + Ride) - Europa Buscentre,3
+MET,MET-6A,6A,Forestside - City Centre,3
+MET,MET-77,77,Newtownbreda Tesco - Beechill Road - Belvoir - City Centre,3
+MET,MET-78,78,Newtownbreda Tesco - Belvoir - City Centre,3
+MET,MET-79,79,Four Winds - Mount Merrion - City Centre,3
+MET,MET-7A,7A,Four Winds - City Centre,3
+MET,MET-7B,7B,Laurelgrove - Four Winds - City Centre,3
+MET,MET-7C,7C,Four Winds - Mount Merrion - City Centre,3
+MET,MET-7D,7D,Laurelgrove - Four Winds - Mount Merrion - City Centre,3
+MET,MET-80,80,Oldpark (Westland Road) - Ardoyne - City Centre,3
+MET,MET-80A,80A,City Centre - Ardoyne - Carr's Glen,3
+MET,MET-81,81,Hannahstown Hill - Glen Road - Turf Lodge - City Centre,3
+MET,MET-81A,81A,Poleglass - Glen Road - Turf Lodge - City Centre,3
+MET,MET-82,82,Hannahstown Hill - Glen Road - Turf Lodge - City Centre,3
+MET,MET-89,89,City Centre - Donegall Road - Falls Park,3
+MET,MET-8A,8A,Malone - Stranmillis - City Centre,3
+MET,MET-8B,8B,Erinvale - Malone - City Centre,3
+MET,MET-8C,8C,Ladybrook - Malone - City Centre,3
+MET,MET-8D,8D,Stranmillis - City Centre,3
+MET,MET-90,90,Ladybrook - Donegall Road - City Centre,3
+MET,MET-91,91,Park Centre - City Centre,3
+MET,MET-92,92,Musgrave Park Hospital - Boucher Road - City Centre,3
+MET,MET-92A,92A,Ladybrook - Boucher Road - City Centre,3
+MET,MET-92B,92B,Musgrave Park Hospital - Boucher Road - City Centre,3
+MET,MET-93,93,Newforge Lane - City Centre,3
+MET,MET-95,95,Royal Hospitals - City Centre,3
+MET,MET-95A,95A,Royal Hospitals - City Centre,3
+MET,MET-96,96,Stena Line Terminal - Westbank Road - Duncrue Road - City Centre,3
+MET,MET-9A,9A,Conway - City Centre,3
+MET,MET-9B,9B,Balmoral (Sicily Park) - City Centre,3
+MET,MET-9C,9C,Conway - Balmoral (Sicily Park) - City Centre,3

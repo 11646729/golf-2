@@ -1,0 +1,137 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "700000000066",
+        "stop_name": "Black's Road (M1 Onslip)",
+        "routes": [
+          {
+            "route_id": "MET-10X",
+            "agency_id": "MET",
+            "route_short_name": "10X",
+            "route_long_name": "Lagmore - Belsteele Road - Black's Road - City Centre",
+            "route_type": 3
+          },
+          {
+            "route_id": "MET-650A",
+            "agency_id": "MET",
+            "route_short_name": "650A",
+            "route_long_name": "Black's Road (Park + Ride) - Europa Buscentre",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Translink"
+      },
+      "geometry": { "type": "Point", "coordinates": [-5.99724, 54.55935] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "700000001800",
+        "stop_name": "Europa Busway",
+        "routes": [
+          {
+            "route_id": "MET-10X",
+            "agency_id": "MET",
+            "route_short_name": "10X",
+            "route_long_name": "Lagmore - Belsteele Road - Black's Road - City Centre",
+            "route_type": 3
+          },
+          {
+            "route_id": "MET-650",
+            "agency_id": "MET",
+            "route_short_name": "650",
+            "route_long_name": "Black's Road (Park + Ride) - Europa Buscentre",
+            "route_type": 3
+          },
+          {
+            "route_id": "MET-650A",
+            "agency_id": "MET",
+            "route_short_name": "650A",
+            "route_long_name": "Black's Road (Park + Ride) - Europa Buscentre",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Translink"
+      },
+      "geometry": { "type": "Point", "coordinates": [-5.94828, 54.59177] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "700000014715",
+        "stop_name": "Black's Road (Oakhurst)",
+        "routes": [
+          {
+            "route_id": "MET-10H",
+            "agency_id": "MET",
+            "route_short_name": "10H",
+            "route_long_name": "Black's Road - City Centre",
+            "route_type": 3
+          },
+          {
+            "route_id": "MET-650A",
+            "agency_id": "MET",
+            "route_short_name": "650A",
+            "route_long_name": "Black's Road (Park + Ride) - Europa Buscentre",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Translink"
+      },
+      "geometry": { "type": "Point", "coordinates": [-5.99755, 54.56006] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "700000015109",
+        "stop_name": "Black's Road P&R",
+        "routes": [
+          {
+            "route_id": "MET-650",
+            "agency_id": "MET",
+            "route_short_name": "650",
+            "route_long_name": "Black's Road (Park + Ride) - Europa Buscentre",
+            "route_type": 3
+          },
+          {
+            "route_id": "MET-650A",
+            "agency_id": "MET",
+            "route_short_name": "650A",
+            "route_long_name": "Black's Road (Park + Ride) - Europa Buscentre",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Translink"
+      },
+      "geometry": { "type": "Point", "coordinates": [-5.99454, 54.55678] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "700000015363",
+        "stop_name": "Europa Buscentre",
+        "routes": [
+          {
+            "route_id": "MET-650",
+            "agency_id": "MET",
+            "route_short_name": "650",
+            "route_long_name": "Black's Road (Park + Ride) - Europa Buscentre",
+            "route_type": 3
+          },
+          {
+            "route_id": "MET-650A",
+            "agency_id": "MET",
+            "route_short_name": "650A",
+            "route_long_name": "Black's Road (Park + Ride) - Europa Buscentre",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Translink"
+      },
+      "geometry": { "type": "Point", "coordinates": [-5.93614, 54.59449] }
+    }
+  ]
+}
