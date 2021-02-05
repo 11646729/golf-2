@@ -5,6 +5,7 @@ const gtfsReducedRouteSchema = new Schema(
   {
     databaseVersion: { type: Number },
     routeVisible: { type: Boolean },
+    agencyName: { type: String },
     markerType: { type: String },
     shapeKey: { type: String },
     routeColor: { type: String },

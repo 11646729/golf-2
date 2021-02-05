@@ -36,6 +36,7 @@ export const createUniqueReducedRoutes = async (req, res) => {
     const gtfsUniqueReducedRouteSchema = new GtfsUniqueReducedRouteSchema({
       databaseVersion: uniqueBusRoutesCollection[j].databaseVersion,
       routeVisible: uniqueBusRoutesCollection[j].routeVisible,
+      agencyName: uniqueBusRoutesCollection[j].agencyName,
       markerType: uniqueBusRoutesCollection[j].markerType,
       shapeKey: uniqueBusRoutesCollection[j].shapeKey,
       routeColor: uniqueBusRoutesCollection[j].routeColor,

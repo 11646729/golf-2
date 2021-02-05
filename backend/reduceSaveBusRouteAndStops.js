@@ -30,6 +30,7 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
       const gtfsReducedRouteSchema = new GtfsReducedRouteSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         routeVisible: false,
+        agencyName: "Hamilton Ontario Street Railway",
         markerType: busRoute.features[loop].geometry.type,
         shapeKey: reducedRoute + "+" + loop,
         routeColor: busRoute.features[loop].properties.route_color,

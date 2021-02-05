@@ -59,8 +59,8 @@ export default function TransportMapContainer() {
   // const [busStopSelected, setBusStopSelected] = useState(null)
   // const [busShapeSelected, setBusShapeSelected] = useState(null)
 
-  const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
-  const [busShapesCheckboxSelected, setBusShapesCheckbox] = useState(false)
+  const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(false)
+  const [busShapesCheckboxSelected, setBusShapesCheckbox] = useState(true)
 
   // -----------------------------------------------------
   // DATA HOOKS SECTION
