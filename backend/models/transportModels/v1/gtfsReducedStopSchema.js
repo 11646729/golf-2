@@ -25,6 +25,6 @@ gtfsReducedStopSchema.method("toJSON", function () {
 
 // Export model
 export const GtfsReducedStopSchema = mongoose.model(
-  "reducedStops",
+  "gtfsReducedStops",
   gtfsReducedStopSchema
 )

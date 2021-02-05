@@ -19,7 +19,7 @@ function removeDuplicates(originalArray, prop) {
 
 export const createUniqueReducedRoutes = async (req, res) => {
   res = await axios({
-    url: "http://localhost:5000/api/gtfsTransport/reducedRoutes",
+    url: "http://localhost:5000/api/gtfsTransport/gtfsReducedRoutes",
     method: "get",
     timeout: 8000,
     headers: {
@@ -43,7 +43,7 @@ export const createUniqueReducedRoutes = async (req, res) => {
       routeNumber: uniqueBusRoutesCollection[j].routeNumber,
     })
 
-    // Save the uniqueReducedRoutes in the database
+    // Save the gtfsUniqueReducedRoutes in the database
     gtfsUniqueReducedRouteSchema
       .save()
       .then(() => {

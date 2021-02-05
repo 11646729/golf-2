@@ -122,7 +122,7 @@ export const getGeojsonFilenames = async (req, res) => {
 
 // -------------------------------------------------------
 // Reduced Routes
-// Path: localhost:5000/api/gtfsTransport/reducedRoutes
+// Path: localhost:5000/api/gtfsTransport/gtfsReducedRoutes
 // -------------------------------------------------------
 export const getAllReducedRoutes = async (req, res) => {
   GtfsReducedRouteSchema.find({})
@@ -132,7 +132,7 @@ export const getAllReducedRoutes = async (req, res) => {
 
 // -------------------------------------------------------
 // Reduced Routes
-// Path: localhost:5000/api/gtfsTransport/reducedRoutes
+// Path: localhost:5000/api/gtfsTransport/gtfsReducedRoutes
 // -------------------------------------------------------
 export const deleteAllReducedRoutes = async (req, res) => {
   GtfsReducedRouteSchema.deleteMany({}, (err) => {
@@ -152,7 +152,7 @@ export const deleteAllReducedRoutes = async (req, res) => {
 
 // -------------------------------------------------------
 // Unique Reduced Routes
-// Path: localhost:5000/api/gtfsTransport/uniqueReducedRoutes
+// Path: localhost:5000/api/gtfsTransport/gtfsUniqueReducedRoutes
 // -------------------------------------------------------
 export const getAllUniqueReducedRoutes = async (req, res) => {
   GtfsUniqueReducedRouteSchema.find({})
@@ -164,7 +164,7 @@ export const getAllUniqueReducedRoutes = async (req, res) => {
 
 // -------------------------------------------------------
 // Unique Reduced Routes
-// Path: localhost:5000/api/gtfsTransport/uniqueReducedRoutes
+// Path: localhost:5000/api/gtfsTransport/gtfsUniqueReducedRoutes
 // -------------------------------------------------------
 export const putOneUniqueReducedRoutes = async (req, res) => {
   const filter = { routeNumber: req.body.routeNumber }
@@ -179,7 +179,7 @@ export const putOneUniqueReducedRoutes = async (req, res) => {
 
 // -------------------------------------------------------
 // Unique Reduced Routes
-// Path: localhost:5000/api/gtfsTransport/uniqueReducedRoutes
+// Path: localhost:5000/api/gtfsTransport/gtfsUniqueReducedRoutes
 // -------------------------------------------------------
 export const deleteAllUniqueReducedRoutes = async (req, res) => {
   GtfsUniqueReducedRouteSchema.deleteMany({}, (err) => {
@@ -201,7 +201,7 @@ export const deleteAllUniqueReducedRoutes = async (req, res) => {
 
 // -------------------------------------------------------
 // Reduced Stops
-// Path: localhost:5000/api/gtfsTransport/reducedStops
+// Path: localhost:5000/api/gtfsTransport/gtfsReducedStops
 // -------------------------------------------------------
 export const getAllReducedStops = async (req, res) => {
   GtfsReducedStopSchema.find({})
@@ -211,7 +211,7 @@ export const getAllReducedStops = async (req, res) => {
 
 // -------------------------------------------------------
 // Reduced Stops
-// Path: localhost:5000/api/gtfsTransport/reducedStops
+// Path: localhost:5000/api/gtfsTransport/gtfsReducedStops
 // -------------------------------------------------------
 export const deleteAllReducedStops = async (req, res) => {
   GtfsReducedStopSchema.deleteMany({}, (err) => {

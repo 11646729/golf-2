@@ -23,6 +23,6 @@ gtfsUniqueReducedRouteSchema.method("toJSON", function () {
 
 // Export model
 export const GtfsUniqueReducedRouteSchema = mongoose.model(
-  "uniqueReducedRoutes",
+  "gtfsUniqueReducedRoutes",
   gtfsUniqueReducedRouteSchema
 )

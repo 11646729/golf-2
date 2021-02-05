@@ -3,7 +3,7 @@ import axios from "axios"
 // Function to delete old Unique Reduced Routes data in the mongodb database
 export const deleteOldUniqueReducedRoutes = async (req, res) => {
   res = await axios({
-    url: "http://localhost:5000/api/gtfsTransport/uniqueReducedRoutes",
+    url: "http://localhost:5000/api/gtfsTransport/gtfsUniqueReducedRoutes",
     method: "delete",
     timeout: 8000,
     headers: {
