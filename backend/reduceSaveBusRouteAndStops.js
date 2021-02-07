@@ -5,9 +5,6 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 // Function to extract data for reduced dataset then save it in the mongodb database
 export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
   let reducedRoute = singleRoute.substr(0, singleRoute.indexOf("."))
-  // console.log(reducedRoute)
-
-  // console.log(process.env.DATABASE_VERSION)
 
   let loop = 0
   do {
@@ -30,7 +27,7 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
       const gtfsReducedRouteSchema = new GtfsReducedRouteSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         routeVisible: false,
-        agencyName: "Hamilton Ontario Street Railway",
+        agencyName: busRoute.features[loop].properties.agency_name,
         markerType: busRoute.features[loop].geometry.type,
         shapeKey: reducedRoute + "+" + loop,
         routeColor: busRoute.features[loop].properties.route_color,

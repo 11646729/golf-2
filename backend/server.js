@@ -74,7 +74,7 @@ const gtfsRouter = require("./routes/transportRoutes/v1/gtfsRouteCatalog")
 app.use("/api/golf", golfRouter)
 app.use("/api/weather", weatherRouter)
 app.use("/api/cruise", cruiseRouter)
-app.use("/api/transport", translinkRouter)
+app.use("/api/translinkTransport", translinkRouter)
 app.use("/api/gtfsTransport", gtfsRouter)
 
 runSwitchboard(io)

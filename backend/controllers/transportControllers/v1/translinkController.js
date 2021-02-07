@@ -1,9 +1,10 @@
+const fs = require("fs")
 import { TranslinkStopSchema } from "../../../models/transportModels/v1/translinkStopSchema"
 import { TranslinkModifiedShapeSchema } from "../../../models/transportModels/v1/translinkModifiedShapeSchema"
 
 // -------------------------------------------------------
 // Catalogue home page
-// Path: localhost:5000/api/transport/
+// Path: localhost:5000/api/Translinktransport/
 // -------------------------------------------------------
 export const transportIndex = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)
@@ -11,7 +12,7 @@ export const transportIndex = async (req, res) => {
 
 // -------------------------------------------------------
 // Stops
-// Path: localhost:5000/api/transport/stops
+// Path: localhost:5000/api/Translinktransport/stops
 // -------------------------------------------------------
 export const getAllStops = async (req, res) => {
   TranslinkStopSchema.find({})
@@ -20,9 +21,23 @@ export const getAllStops = async (req, res) => {
 }
 
 // -------------------------------------------------------
-// Shapes
-// Path: localhost:5000/api/transport/shapes
+// Routes
+// Path: localhost:5000/api/Translinktransport/rawRoutes
 // -------------------------------------------------------
+export const getAllRawTranslinkRoutes = async (req, res) => {
+  fs.readFile(
+    "./rawData/translink_ulsterbus_routes.json",
+    "utf8",
+    (err, data) => {
+      if (err) {
+        throw err
+      }
+
+      res.send(JSON.parse(data))
+    }
+  )
+}
+
 export const getAllModifiedShapes = async (req, res) => {
   TranslinkModifiedShapeSchema.find({ shapeId: "25774" })
     // TranslinkModifiedShapeSchema.find({})
@@ -32,7 +47,7 @@ export const getAllModifiedShapes = async (req, res) => {
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Path localhost:5000/api/transport/stopsstations
+// Path localhost:5000/api/Translinktransport/stopsstations
 // export function deleteAll(res) {
 //   StopsStationsSchema.deleteMany({})
 //     .then((data) => {
@@ -50,7 +65,7 @@ export const getAllModifiedShapes = async (req, res) => {
 
 // -------------------------------------------------------
 // Stops
-// Path: localhost:5000/api/transport/stops
+// Path: localhost:5000/api/Translinktransport/stops
 // -------------------------------------------------------
 // export const directDeleteAll = async () => {
 //   TranslinkStopSchema.deleteMany({}, (err) => {

@@ -6,7 +6,7 @@ import { runCron } from "./cronRoutines"
 import { createReducedShapeData } from "./createReducedShapeData"
 import { importTripIdReducedShapeData } from "./importTripIdIntoReducedShapeData"
 import { importTranslinkStopData } from "./importTranslinkStopData"
-import { importTranslinkShapeData } from "./importTranslinkShapeData"
+import { importConvertSaveTranslinkRoutes } from "./importConvertSaveTranslinkRoutes"
 import { importAndReduceTranslinkShapeData } from "./importAndReduceTranslinkShapeData"
 import {
   getAndSaveDarkSkiesData,
@@ -52,8 +52,7 @@ export const runSwitchboard = (io) => {
   // -----------------------------
   // createReducedShapeData()
   // importTripIdReducedShapeData()
-  // console.log("Back in the switchBoard function")
-  // importTranslinkStopData()
+  // importConvertSaveTranslinkRoutes()
   // importTranslinkShapeData()
   // importAndReduceTranslinkShapeData()
   // })
