@@ -30,7 +30,7 @@ export default function RouteSelectionPanel(props) {
       {sortedBusRoutesCollection
         ? sortedBusRoutesCollection.map((busRoute) => (
             <RouteSelectionList
-              key={busRoute.shapeKey}
+              key={busRoute.stopKey}
               routeVisible={busRoute.routeVisible}
               routeColor={busRoute.routeColor}
               routeNumber={busRoute.routeNumber}

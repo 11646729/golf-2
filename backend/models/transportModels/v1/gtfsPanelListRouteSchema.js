@@ -6,7 +6,7 @@ const gtfsPanelListRouteSchema = new Schema(
     routeVisible: { type: Boolean },
     agencyName: { type: String },
     markerType: { type: String },
-    shapeKey: { type: String },
+    routeKey: { type: String },
     routeColor: { type: String },
     routeLongName: { type: String },
     routeNumber: { type: String },

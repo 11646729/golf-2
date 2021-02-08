@@ -38,7 +38,7 @@ export const createPanelListRoutes = async (req, res) => {
       routeVisible: uniqueBusRoutesCollection[j].routeVisible,
       agencyName: uniqueBusRoutesCollection[j].agencyName,
       markerType: uniqueBusRoutesCollection[j].markerType,
-      shapeKey: uniqueBusRoutesCollection[j].shapeKey,
+      routeKey: uniqueBusRoutesCollection[j].routeKey,
       routeColor: uniqueBusRoutesCollection[j].routeColor,
       routeLongName: uniqueBusRoutesCollection[j].routeLongName,
       routeNumber: uniqueBusRoutesCollection[j].routeNumber,

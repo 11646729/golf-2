@@ -86,8 +86,8 @@ export default function GTFSTransportMapContainer() {
     const bounds = new window.google.maps.LatLngBounds()
     busStopsCollection.map((busStop) => {
       const myLatLng = new window.google.maps.LatLng({
-        lat: busStop.shapeCoordinates.lat,
-        lng: busStop.shapeCoordinates.lng,
+        lat: busStop.stopCoordinates.lat,
+        lng: busStop.stopCoordinates.lng,
       })
       bounds.extend(myLatLng)
       return bounds
@@ -157,8 +157,8 @@ export default function GTFSTransportMapContainer() {
             {busRoutesCollection
               ? busRoutesCollection.map((busRoute) => (
                   <Polyline
-                    key={busRoute.shapeKey}
-                    path={busRoute.shapeCoordinates}
+                    key={busRoute.routeKey}
+                    path={busRoute.routeCoordinates}
                     options={{
                       strokeColor: busRoute.routeColor,
                       strokeOpacity: "1.0",
@@ -173,7 +173,7 @@ export default function GTFSTransportMapContainer() {
             {/* {busStopsCollection
               ? busStopsCollection.map((busStop) => (
                   <Marker
-                    key={busStop.shapeKey}
+                    key={busStop.stopKey}
                     position={{
                       lat: busStop.shapeCoordinates.lat,
                       lng: busStop.shapeCoordinates.lng,

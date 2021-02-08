@@ -5,12 +5,12 @@ const gtfsReducedStopSchema = new Schema(
   {
     databaseVersion: { type: Number },
     markerType: { type: String },
-    shapeKey: { type: String },
+    stopKey: { type: String },
     stopCode: { type: Number },
     stopID: { type: Number },
     stopColor: { type: String },
     stopName: { type: String },
-    shapeCoordinates: { type: CoordsSchema.schema },
+    stopCoordinates: { type: CoordsSchema.schema },
   },
   {
     timestamps: true,

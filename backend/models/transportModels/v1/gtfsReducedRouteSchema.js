@@ -7,11 +7,11 @@ const gtfsReducedRouteSchema = new Schema(
     routeVisible: { type: Boolean },
     agencyName: { type: String },
     markerType: { type: String },
-    shapeKey: { type: String },
+    routeKey: { type: String },
     routeColor: { type: String },
     routeLongName: { type: String },
     routeNumber: { type: String },
-    shapeCoordinates: [{ type: CoordsSchema.schema }],
+    routeCoordinates: [{ type: CoordsSchema.schema }],
   },
   {
     timestamps: true,

@@ -29,11 +29,11 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
         routeVisible: false,
         agencyName: busRoute.features[loop].properties.agency_name,
         markerType: busRoute.features[loop].geometry.type,
-        shapeKey: reducedRoute + "+" + loop,
+        routeKey: reducedRoute + "+" + loop,
         routeColor: busRoute.features[loop].properties.route_color,
         routeLongName: busRoute.features[loop].properties.route_long_name,
         routeNumber: busRoute.features[loop].properties.route_short_name,
-        shapeCoordinates: googleMapsCoords,
+        routeCoordinates: googleMapsCoords,
       })
 
       // Save the gtfsReducedRouteSchema in the database
@@ -57,12 +57,12 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
       const gtfsReducedStopSchema = new GtfsReducedStopSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         markerType: busRoute.features[loop].geometry.type,
-        shapeKey: reducedRoute + "+" + loop,
+        stopKey: reducedRoute + "+" + loop,
         stopCode: busRoute.features[loop].properties.stop_code,
         stopID: busRoute.features[loop].properties.stop_id,
         stopColor: busRoute.features[loop].properties.routes[0].route_color,
         stopName: busRoute.features[loop].properties.stop_Name,
-        shapeCoordinates: coordsSchema,
+        stopCoordinates: coordsSchema,
       })
 
       // Save the gtfsReducedStopsSchema in the database
