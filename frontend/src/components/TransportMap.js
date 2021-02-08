@@ -59,13 +59,13 @@ export default function TransportMapContainer() {
   // const [busStopSelected, setBusStopSelected] = useState(null)
   // const [busShapeSelected, setBusShapeSelected] = useState(null)
 
-  const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(false)
-  const [busShapesCheckboxSelected, setBusShapesCheckbox] = useState(true)
+  const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
+  const [busRoutesCheckboxSelected, setBusRoutesCheckbox] = useState(true)
 
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
-  const [busShapesCollection, setBusShapesCollection] = useState([])
+  const [busRoutesCollection, setBusRoutesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
   const [errorLoading, setLoadingError] = useState([])
 
@@ -74,12 +74,14 @@ export default function TransportMapContainer() {
 
     axios
       .all([
-        axios.get("http://localhost:5000/api/Translinktransport/shapes"),
-        axios.get("http://localhost:5000/api/Translinktransport/stops"),
+        axios.get(
+          "http://localhost:5000/api/translinkTransport/modifiedRoutes"
+        ),
+        axios.get("http://localhost:5000/api/translinkTransport/stops"),
       ])
       .then(
-        axios.spread((shapesResponse, stopsResponse) => {
-          setBusShapesCollection(shapesResponse.data)
+        axios.spread((routesResponse, stopsResponse) => {
+          setBusRoutesCollection(routesResponse.data)
           setBusStopsCollection(stopsResponse.data)
         })
       )
@@ -125,19 +127,19 @@ export default function TransportMapContainer() {
     setBusStopsCheckbox(event.target.checked)
   }
 
-  const handleBusShapesCheckboxChange = (event) => {
-    setBusShapesCheckbox(event.target.checked)
+  const handleBusRoutesCheckboxChange = (event) => {
+    setBusRoutesCheckbox(event.target.checked)
   }
 
   // const handleBusStopClick = (event) => {
   //   console.log(busStopSelected)
   // }
 
-  // const handleBusShapeClick = (event) => {
-  //   console.log(busShapeSelected)
+  // const handleBusRouteClick = (event) => {
+  //   console.log(busRouteSelected)
   // }
 
-  // console.log(busStopsCollection.length) // 15680 stops
+  console.log(busStopsCollection.length) // 15680 stops
 
   // -----------------------------------------------------
   // VIEW SECTION
@@ -177,12 +179,12 @@ export default function TransportMapContainer() {
             control={
               <Checkbox
                 color="primary"
-                checked={busShapesCheckboxSelected}
-                onChange={handleBusShapesCheckboxChange}
-                name="busShapesCheckbox"
+                checked={busRoutesCheckboxSelected}
+                onChange={handleBusRoutesCheckboxChange}
+                name="busRoutesCheckbox"
               />
             }
-            label="Display Bus Trip Shapes"
+            label="Display Bus Routes"
             labelPlacement="end"
           /> */}
         </Grid>
@@ -205,26 +207,28 @@ export default function TransportMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {busShapesCollection
-              ? busShapesCollection.map((busShape) => (
+            {busRoutesCollection
+              ? // && busRoutesCheckboxSelected
+                busRoutesCollection.map((busRoute) => (
                   <Polyline
-                    key={busShape.shapeId}
-                    path={busShape.shapeCoordinates}
+                    key={busRoute.shapeId}
+                    path={busRoute.shapeCoordinates}
                     options={{
-                      strokeColor: busShape.routeColor,
+                      strokeColor: busRoute.routeColor,
                       strokeOpacity: "1.0",
                       strokeWeight: 2,
                     }}
                     onClick={() => {
-                      // setBusShapeSelected(busShape)
-                      // console.log(busShape)
-                      // handleBusShapeClick()
+                      // setBusRouteSelected(busRoute)
+                      // console.log(busRoute)
+                      // handleBusRouteClick()
                     }}
                   />
                 ))
               : null}
-            {busStopsCollection && busStopsCheckboxSelected
-              ? busStopsCollection.map((busStop) => (
+            {busStopsCollection
+              ? // && busStopsCheckboxSelected
+                busStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stop_id}
                     position={{

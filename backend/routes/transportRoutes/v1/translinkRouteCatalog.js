@@ -17,11 +17,11 @@ router.get("/stops", translinkController.getAllStops)
 // -------------------------------------------------------
 // Translink Shapes
 // -------------------------------------------------------
-// GET all Translink Shapes
+// GET all Translink Routes
 router.get("/rawRoutes", translinkController.getAllRawTranslinkRoutes)
 
-// GET all Translink Modified Shapes
-router.get("/modifiedshapes", translinkController.getAllModifiedShapes)
+// GET all Translink Modified Routes
+router.get("/modifiedRoutes", translinkController.getAllModifiedShapes)
 
 // GET a Translink bus stop by id
 // router.get("/stops/:id", translinkController.getOneStop)
