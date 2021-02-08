@@ -17,9 +17,9 @@ import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfController
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
 import { deleteOldReducedRoutes } from "./deleteOldReducedRoutes"
 import { deleteOldReducedStops } from "./deleteOldReducedStops"
-import { deleteOldUniqueReducedRoutes } from "./deleteOldUniqueReducedRoutes"
+import { deleteOldPanelListRoutes } from "./deleteOldPanelListRoutes"
 import { createReducedRoutesAndStops } from "./createReducedRoutesAndStops"
-import { createUniqueReducedRoutes } from "./createUniqueReducedRoutes"
+import { createPanelListRoutes } from "./createPanelListRoutes"
 
 // import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/translinkController"
 
@@ -46,9 +46,9 @@ export const runSwitchboard = (io) => {
   // convertGtfsToGeoJSON()
   // deleteOldReducedRoutes()
   // deleteOldReducedStops()
-  // deleteOldUniqueReducedRoutes()
+  // deleteOldPanelListRoutes()
   // createReducedRoutesAndStops()
-  // createUniqueReducedRoutes()
+  // createPanelListRoutes()
   // -----------------------------
   // createReducedShapeData()
   // importTripIdReducedShapeData()

@@ -61,7 +61,7 @@ export default function GTFSTransportMapContainer() {
         axios.get("http://localhost:5000/api/gtfsTransport/gtfsReducedRoutes"),
         axios.get("http://localhost:5000/api/gtfsTransport/gtfsReducedStops"),
         axios.get(
-          "http://localhost:5000/api/gtfsTransport/gtfsUniqueReducedRoutes"
+          "http://localhost:5000/api/gtfsTransport/gtfsPanelListRoutes"
         ),
       ])
       .then(

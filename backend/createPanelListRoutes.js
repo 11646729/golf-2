@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GtfsUniqueReducedRouteSchema } from "./models/transportModels/v1/gtfsUniqueReducedRouteSchema"
+import { GtfsPanelListRouteSchema } from "./models/transportModels/v1/gtfsPanelListRouteSchema"
 
 // Function to remove duplicates from array
 function removeDuplicates(originalArray, prop) {
@@ -17,7 +17,7 @@ function removeDuplicates(originalArray, prop) {
   return newArray
 }
 
-export const createUniqueReducedRoutes = async (req, res) => {
+export const createPanelListRoutes = async (req, res) => {
   res = await axios({
     url: "http://localhost:5000/api/gtfsTransport/gtfsReducedRoutes",
     method: "get",
@@ -30,10 +30,10 @@ export const createUniqueReducedRoutes = async (req, res) => {
   // Remove Duplicates from the array
   let uniqueBusRoutesCollection = removeDuplicates(res.data, "routeNumber")
 
-  // And save it in a gtfsReducedShapesSchema collection
+  // And save it in a gtfsPanelListRouteSchema collection
   let j = 0
   do {
-    const gtfsUniqueReducedRouteSchema = new GtfsUniqueReducedRouteSchema({
+    const gtfsPanelListRouteSchema = new GtfsPanelListRouteSchema({
       databaseVersion: uniqueBusRoutesCollection[j].databaseVersion,
       routeVisible: uniqueBusRoutesCollection[j].routeVisible,
       agencyName: uniqueBusRoutesCollection[j].agencyName,
@@ -44,11 +44,11 @@ export const createUniqueReducedRoutes = async (req, res) => {
       routeNumber: uniqueBusRoutesCollection[j].routeNumber,
     })
 
-    // Save the gtfsUniqueReducedRoutes in the database
-    gtfsUniqueReducedRouteSchema
+    // Save the gtfsPanelListRoutes in the database
+    gtfsPanelListRouteSchema
       .save()
       .then(() => {
-        console.log("gtfsUniqueReducedRouteSchema collection saved successful")
+        console.log("gtfsPanelListRouteSchema collection saved successful")
       })
       .catch((err) => {
         console.error(err)

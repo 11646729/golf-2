@@ -39,19 +39,16 @@ router.get("/gtfsReducedRoutes", gtfsController.getAllReducedRoutes)
 router.delete("/gtfsReducedRoutes", gtfsController.deleteAllReducedRoutes)
 
 // -------------------------------------------------------
-// GTFS Unique Reduced Routes
+// GTFS Panel List Routes
 // -------------------------------------------------------
-// GET all Unique Reduced Routes from database
-router.get("/gtfsUniqueReducedRoutes", gtfsController.getAllUniqueReducedRoutes)
+// GET all Panel List Routes from database
+router.get("/gtfsPanelListRoutes", gtfsController.getAllPanelListRoutes)
 
-// PUT a Checkbox Selected/Non-Selected in the Unique Reduced Routes Documents
-router.put("/gtfsUniqueReducedRoutes", gtfsController.putOneUniqueReducedRoutes)
+// PUT a Checkbox Selected/Non-Selected in the Panel List Routes Documents
+router.put("/gtfsPanelListRoutes", gtfsController.putOnePanelListRoutes)
 
-// DELETE all Unique Reduced Routes in the database
-router.delete(
-  "/gtfsUniqueReducedRoutes",
-  gtfsController.deleteAllUniqueReducedRoutes
-)
+// DELETE all Panel List Routes in the database
+router.delete("/gtfsPanelListRoutes", gtfsController.deleteAllPanelListRoutes)
 
 // -------------------------------------------------------
 // GTFS Stops

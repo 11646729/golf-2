@@ -4,7 +4,7 @@ import { GtfsStopSchema } from "../../../models/transportModels/v1/gtfsStopSchem
 import { GtfsReducedShapesSchema } from "../../../models/transportModels/v1/gtfsReducedShapesSchema"
 import { GtfsReducedRouteSchema } from "../../../models/transportModels/v1/gtfsReducedRouteSchema"
 import { GtfsReducedStopSchema } from "../../../models/transportModels/v1/gtfsReducedStopSchema"
-import { GtfsUniqueReducedRouteSchema } from "../../../models/transportModels/v1/gtfsUniqueReducedRouteSchema"
+import { GtfsPanelListRouteSchema } from "../../../models/transportModels/v1/gtfsPanelListRouteSchema"
 
 // -------------------------------------------------------
 // Catalogue home page
@@ -151,50 +151,44 @@ export const deleteAllReducedRoutes = async (req, res) => {
 }
 
 // -------------------------------------------------------
-// Unique Reduced Routes
-// Path: localhost:5000/api/gtfsTransport/gtfsUniqueReducedRoutes
+// Panel List Routes
+// Path: localhost:5000/api/gtfsTransport/gtfsPanelListRoutes
 // -------------------------------------------------------
-export const getAllUniqueReducedRoutes = async (req, res) => {
-  GtfsUniqueReducedRouteSchema.find({})
-    .then((gtfsUniqueReducedRouteSchema) =>
-      res.json(gtfsUniqueReducedRouteSchema)
-    )
+export const getAllPanelListRoutes = async (req, res) => {
+  GtfsPanelListRouteSchema.find({})
+    .then((gtfsPanelListRouteSchema) => res.json(gtfsPanelListRouteSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
 // -------------------------------------------------------
-// Unique Reduced Routes
-// Path: localhost:5000/api/gtfsTransport/gtfsUniqueReducedRoutes
+// Panel List Routes
+// Path: localhost:5000/api/gtfsTransport/gtfsPanelListRoutes
 // -------------------------------------------------------
-export const putOneUniqueReducedRoutes = async (req, res) => {
+export const putOnePanelListRoutes = async (req, res) => {
   const filter = { routeNumber: req.body.routeNumber }
   const update = { routeVisible: req.body.routeVisible }
 
-  GtfsUniqueReducedRouteSchema.findOneAndUpdate(filter, update)
-    .then((gtfsUniqueReducedRouteSchema) =>
-      res.json(gtfsUniqueReducedRouteSchema)
-    )
+  GtfsPanelListRouteSchema.findOneAndUpdate(filter, update)
+    .then((gtfsPanelListRouteSchema) => res.json(gtfsPanelListRouteSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
 // -------------------------------------------------------
-// Unique Reduced Routes
-// Path: localhost:5000/api/gtfsTransport/gtfsUniqueReducedRoutes
+// Panel List Routes
+// Path: localhost:5000/api/gtfsTransport/gtfsPanelListRoutes
 // -------------------------------------------------------
-export const deleteAllUniqueReducedRoutes = async (req, res) => {
-  GtfsUniqueReducedRouteSchema.deleteMany({}, (err) => {
+export const deleteAllPanelListRoutes = async (req, res) => {
+  GtfsPanelListRouteSchema.deleteMany({}, (err) => {
     if (err) {
       res
         .status(500)
         .send(
-          "An unspecified error occurred while removing all Unique Reduced Routes!"
+          "An unspecified error occurred while removing all Panel List Routes!"
         )
     } else {
       res
         .status(200)
-        .send(
-          "All Unique Reduced Route data was deleted in the mongodb database"
-        )
+        .send("All Panel List Route data was deleted in the mongodb database")
     }
   })
 }

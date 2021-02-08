@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose"
 
-const gtfsUniqueReducedRouteSchema = new Schema(
+const gtfsPanelListRouteSchema = new Schema(
   {
     databaseVersion: { type: Number },
     routeVisible: { type: Boolean },
@@ -16,14 +16,14 @@ const gtfsUniqueReducedRouteSchema = new Schema(
   }
 )
 
-gtfsUniqueReducedRouteSchema.method("toJSON", function () {
+gtfsPanelListRouteSchema.method("toJSON", function () {
   const { __v, _id, ...object } = this.toObject()
   object.id = _id
   return object
 })
 
 // Export model
-export const GtfsUniqueReducedRouteSchema = mongoose.model(
-  "gtfsUniqueReducedRoutes",
-  gtfsUniqueReducedRouteSchema
+export const GtfsPanelListRouteSchema = mongoose.model(
+  "gtfsPanelListRoutes",
+  gtfsPanelListRouteSchema
 )
