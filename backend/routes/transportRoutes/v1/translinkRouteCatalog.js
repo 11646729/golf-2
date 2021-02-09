@@ -3,42 +3,21 @@ var router = express.Router()
 const translinkController = require("../../../controllers/transportControllers/v1/translinkController")
 
 // -------------------------------------------------------
-// Translink Route Catalogue home page
+// Translink Bus Route Catalogue Home Page
 // -------------------------------------------------------
 // GET index
 router.get("/", translinkController.transportIndex)
 
 // -------------------------------------------------------
-// Translink Stops
+// Translink Bus Routes
 // -------------------------------------------------------
-// GET all Stops
-router.get("/stops", translinkController.getAllStops)
+// GET all Bus Routes
+router.get("/translinkRoutes", translinkController.getAllTranslinkRoutes)
 
 // -------------------------------------------------------
-// Translink Shapes
+// Translink Bus Stops
 // -------------------------------------------------------
-// GET all Translink Routes
-router.get("/rawRoutes", translinkController.getAllRawTranslinkRoutes)
-
-// GET all Translink Modified Routes
-router.get("/modifiedRoutes", translinkController.getAllModifiedShapes)
-
-// GET a Translink bus stop by id
-// router.get("/stops/:id", translinkController.getOneStop)
-
-// GET a Translink shape by id
-// router.get("/shapes/:id", translinkController.getOneModifiedShape)
-
-// POST a temperature reading to the database
-// router.post("/temperatureReadings/:id", translinkController.create)
-
-// UPDATE a temperature reading by id
-// router.put("/temperatureReadings/:id", translinkController.updateOne)
-
-// DELETE all temperature readings
-// router.delete("/temperatureReadings", translinkController.deleteAll)
-
-// DELETE a temperature reading by id
-// router.delete("/temperatureReadings/:id", translinkController.deleteOne)
+// GET all Bus Stops
+router.get("/translinkStops", translinkController.getAllTranslinkStops)
 
 module.exports = router

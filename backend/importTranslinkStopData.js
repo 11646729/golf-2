@@ -8,24 +8,6 @@ export const importTranslinkStopData = async () => {
   try {
     const rawjson = require("./rawData/translink_bus_stop_list_january_2018.json")
 
-    // -------------------------------------------------------
-    // Routes
-    // Path: localhost:5000/api/gtfsTransport/routes/:id
-    // -------------------------------------------------------
-    // export const getOneRoute = async (req, res) => {
-    //   const rawGeojson =
-    //     "/Users/briansmith/Documents/GTD/golf-2/backend/geojson/Hamilton Ontario Street Railway/" +
-    //     req.query.id
-
-    //   fs.readFile(rawGeojson, "utf8", (err, data) => {
-    //     if (err) {
-    //       throw err
-    //     }
-
-    //     res.send(JSON.parse(data))
-    //   })
-    // }
-
     let i = 0
     do {
       // Now create a model instance

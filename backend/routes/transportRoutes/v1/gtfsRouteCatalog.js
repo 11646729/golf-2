@@ -3,69 +3,48 @@ const router = express.Router()
 const gtfsController = require("../../../controllers/transportControllers/v1/gtfsController")
 
 // -------------------------------------------------------
-// GTFS Route Catalogue home page
+// GTFS Bus Route Catalogue home page
 // -------------------------------------------------------
 // GET index
 router.get("/", gtfsController.transportIndex)
 
 // -------------------------------------------------------
-// GTFS Reduced Shapes
-// -------------------------------------------------------
-// GET all Reduced Shapes from the database
-router.get("/shapes", gtfsController.getAllReducedShapes)
-
-// GET a Reduced Shape by id
-router.get("/shapes/:id", gtfsController.getOneReducedShape)
-
-// -------------------------------------------------------
-// GTFS Routes
-// -------------------------------------------------------
-// GET a Route by id (filename)
-router.get("/routes/:id", gtfsController.getOneRoute)
-
-// -------------------------------------------------------
-// GTFS Route Filenames
+// GTFS Bus Route GeoJSON Filenames
 // -------------------------------------------------------
 // GET all GeoJSON Route filenames in the directory
 router.get("/filenames", gtfsController.getGeojsonFilenames)
 
 // -------------------------------------------------------
-// GTFS Reduced Routes
+// GTFS Reduced Bus Routes
 // -------------------------------------------------------
-// GET all Reduced Routes from database
+// GET a Reduced Bus Route by id (filename)
+router.get("/gtfsReducedRoutes/:id", gtfsController.getOneReducedRoute)
+
+// GET all Reduced Bus Routes
 router.get("/gtfsReducedRoutes", gtfsController.getAllReducedRoutes)
 
-// DELETE all Reduced Routes in the database
+// DELETE all Reduced Bus Routes
 router.delete("/gtfsReducedRoutes", gtfsController.deleteAllReducedRoutes)
 
 // -------------------------------------------------------
-// GTFS Panel List Routes
+// GTFS Panel List Bus Routes
 // -------------------------------------------------------
-// GET all Panel List Routes from database
+// GET all Panel List Bus Routes
 router.get("/gtfsPanelListRoutes", gtfsController.getAllPanelListRoutes)
 
-// PUT a Checkbox Selected/Non-Selected in the Panel List Routes Documents
+// PUT Selected Status in the Panel List Bus Routes documents
 router.put("/gtfsPanelListRoutes", gtfsController.putOnePanelListRoutes)
 
-// DELETE all Panel List Routes in the database
+// DELETE all Panel List Bus Routes
 router.delete("/gtfsPanelListRoutes", gtfsController.deleteAllPanelListRoutes)
 
 // -------------------------------------------------------
-// GTFS Stops
+// GTFS Reduced Bus Stops
 // -------------------------------------------------------
-// GET all Stops
-router.get("/stops", gtfsController.getAllStops)
-
-// GET a Stop by id
-router.get("/stops/:id", gtfsController.getOneStop)
-
-// -------------------------------------------------------
-// GTFS Reduced Stops
-// -------------------------------------------------------
-// GET all Reduced Stops from database
+// GET all Reduced Bus Stops
 router.get("/gtfsReducedStops", gtfsController.getAllReducedStops)
 
-// DELETE all Reduced Stops in the database
+// DELETE all Reduced Bus Stops
 router.delete("/gtfsReducedStops", gtfsController.deleteAllReducedStops)
 
 module.exports = router

@@ -3,11 +3,10 @@ import { directDeleteAll as deleteAllPortArrivals } from "./controllers/cruiseCo
 import { directDeleteAll as deleteAllVesselDetails } from "./controllers/cruiseControllers/v1/vesselDetailsController"
 import { directDeleteAll as deleteAllTemperatures } from "./controllers/weatherControllers/v1/weatherController"
 import { runCron } from "./cronRoutines"
-import { createReducedShapeData } from "./createReducedShapeData"
-import { importTripIdReducedShapeData } from "./importTripIdIntoReducedShapeData"
 import { importTranslinkStopData } from "./importTranslinkStopData"
 import { importConvertSaveTranslinkRoutes } from "./importConvertSaveTranslinkRoutes"
 import { importAndReduceTranslinkShapeData } from "./importAndReduceTranslinkShapeData"
+// import { importTripIdReducedShapeData } from "./importTripIdIntoReducedShapeData"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
@@ -36,11 +35,14 @@ export const runSwitchboard = (io) => {
   // Fetch data Daily at 07:00
   // cron.schedule("0 7 * * *", () => {
   // cron.schedule("*/15 * * * *", () => {
+  // -----------------------------
   // console.log("Started getting Vessel Arrivals & Details Scraping")
   // deleteAllPortArrivals()
   // deleteAllVesselDetails()
   // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
+  // -----------------------------
   // deleteAllTemperatures()
+  // -----------------------------
   // runCron()
   // -----------------------------
   // convertGtfsToGeoJSON()
@@ -50,12 +52,11 @@ export const runSwitchboard = (io) => {
   // createReducedRoutesAndStops()
   // createPanelListRoutes()
   // -----------------------------
-  // createReducedShapeData()
-  // importTripIdReducedShapeData()
   // importConvertSaveTranslinkRoutes()
-  // importTranslinkShapeData()
+  // importTripIdReducedShapeData()
   // importAndReduceTranslinkShapeData()
   // })
+  // -----------------------------
   // Fetch data every 1 minutes
   // cron.schedule("*/1 * * * *", () => {
   //   getAndSaveDarkSkiesData().then((result) => {
