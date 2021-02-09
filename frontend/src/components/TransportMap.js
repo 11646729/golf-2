@@ -22,16 +22,6 @@ const useStyles = makeStyles({
     marginTop: 55,
     marginLeft: 20,
   },
-  // polyline1: {
-  //   strokeColor: "#ff2343",
-  //   strokeOpacity: "1.0",
-  //   strokeWeight: 2,
-  // },
-  // polyline2: {
-  //   strokeColor: "#0000ff",
-  //   strokeOpacity: "1.0",
-  //   strokeWeight: 2,
-  // },
   divStyle: {
     background: `white`,
     border: `1px solid #ccc`,
@@ -140,8 +130,6 @@ export default function TransportMapContainer() {
   // const handleBusRouteClick = (event) => {
   //   console.log(busRouteSelected)
   // }
-
-  console.log(busStopsCollection.length) // 15680 stops
 
   // -----------------------------------------------------
   // VIEW SECTION
