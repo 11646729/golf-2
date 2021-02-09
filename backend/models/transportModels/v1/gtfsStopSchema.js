@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose"
 import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 
-const gtfsReducedStopSchema = new Schema(
+const gtfsStopSchema = new Schema(
   {
     databaseVersion: { type: Number },
     markerType: { type: String },
@@ -24,7 +24,4 @@ gtfsReducedStopSchema.method("toJSON", function () {
 })
 
 // Export model
-export const GtfsReducedStopSchema = mongoose.model(
-  "gtfsReducedStops",
-  gtfsReducedStopSchema
-)
+export const GtfsStopSchema = mongoose.model("gtfsStops", gtfsStopSchema)

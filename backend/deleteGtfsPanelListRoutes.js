@@ -1,7 +1,7 @@
 import axios from "axios"
 
 // Function to delete old Panel List Routes data in the mongodb database
-export const deleteOldPanelListRoutes = async (req, res) => {
+export const deleteGtfsPanelListRoutes = async (req, res) => {
   res = await axios({
     url: "http://localhost:5000/api/gtfsTransport/gtfsPanelListRoutes",
     method: "delete",
