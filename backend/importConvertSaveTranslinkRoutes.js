@@ -1,5 +1,5 @@
 import axios from "axios"
-import { TranslinkModifiedShapeSchema } from "./models/transportModels/v1/translinkModifiedShapeSchema"
+import { TranslinkShapeSchema } from "./models/transportModels/v1/translinkShapeSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to save bus shapes data to mongodb
@@ -29,7 +29,7 @@ export const importConvertSaveTranslinkRoutes = async () => {
   //     let convertedcoords = await decodeInnerArray(oldcoords, oldcoordslength)
 
   //     // Now create a model instance
-  //     const busShapes = new TranslinkModifiedShapeSchema({
+  //     const busShapes = new TranslinkShapeSchema({
   //       agency_key: "Translink Buses",
   //       shape_id: i + 1,
   //       shapeCoordinates: convertedcoords,

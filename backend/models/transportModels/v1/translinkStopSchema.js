@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose"
+import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 
 const translinkStopSchema = new Schema(
   {
@@ -25,7 +26,8 @@ const translinkStopSchema = new Schema(
       type: String,
       required: true,
     },
-    stop_desc: String,
+    stopCoordinates: { type: CoordsSchema.schema },
+    stop_desc: { type: String },
     stop_lat: {
       type: Number,
       required: true,
@@ -42,15 +44,15 @@ const translinkStopSchema = new Schema(
       type: [Number],
       index: "2dsphere",
     },
-    zone_id: String,
-    stop_url: String,
+    zone_id: { type: String },
+    stop_url: { type: String },
     location_type: {
       type: Number,
       min: 0,
       max: 1,
     },
-    parent_station: String,
-    stop_timezone: String,
+    parent_station: { type: String },
+    stop_timezone: { type: String },
     wheelchair_boarding: {
       type: Number,
       min: 0,

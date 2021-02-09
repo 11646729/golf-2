@@ -1,6 +1,6 @@
 const fs = require("fs")
 import { TranslinkStopSchema } from "../../../models/transportModels/v1/translinkStopSchema"
-import { TranslinkModifiedShapeSchema } from "../../../models/transportModels/v1/translinkModifiedShapeSchema"
+import { TranslinkShapeSchema } from "../../../models/transportModels/v1/translinkShapeSchema"
 
 // -------------------------------------------------------
 // Catalogue home page
@@ -39,11 +39,9 @@ export const getAllRawTranslinkRoutes = async (req, res) => {
 }
 
 export const getAllModifiedShapes = async (req, res) => {
-  TranslinkModifiedShapeSchema.find({ shapeId: "25774" })
-    // TranslinkModifiedShapeSchema.find({})
-    .then((TranslinkModifiedShapeSchema) =>
-      res.json(TranslinkModifiedShapeSchema)
-    )
+  TranslinkShapeSchema.find({ shapeId: "25774" })
+    // TranslinkShapeSchema.find({})
+    .then((TranslinkShapeSchema) => res.json(TranslinkShapeSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
