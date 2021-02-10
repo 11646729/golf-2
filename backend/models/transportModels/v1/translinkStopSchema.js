@@ -3,16 +3,9 @@ import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 
 const translinkStopSchema = new Schema(
   {
-    created_at: {
-      type: Date,
-      default: Date.now,
-      required: true,
-    },
-    agency_key: {
-      type: String,
-      required: true,
-      index: true,
-    },
+    databaseVersion: { type: Number },
+    agencyName: { type: String },
+    markerType: { type: String },
     stop_id: {
       type: String,
       required: true,
@@ -28,18 +21,6 @@ const translinkStopSchema = new Schema(
     },
     stopCoordinates: { type: CoordsSchema.schema },
     stop_desc: { type: String },
-    stop_lat: {
-      type: Number,
-      required: true,
-      min: -90,
-      max: 90,
-    },
-    stop_lon: {
-      type: Number,
-      required: true,
-      min: -180,
-      max: 180,
-    },
     loc: {
       type: [Number],
       index: "2dsphere",
@@ -60,7 +41,7 @@ const translinkStopSchema = new Schema(
     },
   },
   {
-    timestamps: false,
+    timestamps: true,
   }
 )
 

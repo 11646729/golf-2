@@ -1,8 +1,9 @@
 import { TranslinkStopSchema } from "./models/transportModels/v1/translinkStopSchema"
+import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to save Translink busStop data to mongodb
 // Longitude first in Javascript
-export const importTranslinkStopData = async () => {
+export const createTranslinkStops = async () => {
   console.log("In importTranslinkStopData")
 
   try {
@@ -10,15 +11,21 @@ export const importTranslinkStopData = async () => {
 
     let i = 0
     do {
+      const coordsSchema = new CoordsSchema({
+        lat: rawjson.features[i].properties.Latitude,
+        lng: rawjson.features[i].properties.Longitude,
+      })
+
       // Now create a model instance
       const busStop = new TranslinkStopSchema({
-        agency_key: "Translink Buses",
+        databaseVersion: process.env.DATABASE_VERSION,
+        agencyName: "Translink Buses",
+        markerType: "Point",
         stop_id: rawjson.features[i].properties.LocationID,
         stop_code: "No data",
         stop_name: rawjson.features[i].properties.Stop_Name,
         stop_desc: "No data",
-        stop_lat: rawjson.features[i].properties.Latitude,
-        stop_lon: rawjson.features[i].properties.Longitude,
+        stopCoordinates: coordsSchema,
         zone_id: rawjson.features[i].properties.Fare_Stage,
         stop_url: "No data",
         location_type: 0,

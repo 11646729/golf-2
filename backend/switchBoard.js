@@ -3,7 +3,6 @@ import { directDeleteAll as deleteAllPortArrivals } from "./controllers/cruiseCo
 import { directDeleteAll as deleteAllVesselDetails } from "./controllers/cruiseControllers/v1/vesselDetailsController"
 import { directDeleteAll as deleteAllTemperatures } from "./controllers/weatherControllers/v1/weatherController"
 import { runCron } from "./cronRoutines"
-import { importTranslinkStopData } from "./importTranslinkStopData"
 import { importConvertSaveTranslinkRoutes } from "./importConvertSaveTranslinkRoutes"
 import { importAndReduceTranslinkShapeData } from "./importAndReduceTranslinkShapeData"
 // import { importTripIdReducedShapeData } from "./importTripIdIntoReducedShapeData"
@@ -19,6 +18,7 @@ import { deleteGtfsStops } from "./deleteGtfsStops"
 import { deleteGtfsPanelListRoutes } from "./deleteGtfsPanelListRoutes"
 import { createGtfsRoutesAndGtfsStops } from "./createGtfsRoutesAndGtfsStops"
 import { createPanelListRoutes } from "./createPanelListRoutes"
+import { createTranslinkStops } from "./createTranslinkStops"
 
 // import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/translinkController"
 
@@ -52,6 +52,7 @@ export const runSwitchboard = (io) => {
   // createGtfsRoutesAndGtfsStops()
   // createPanelListRoutes()
   // -----------------------------
+  // createTranslinkStops()
   // importConvertSaveTranslinkRoutes()
   // importTripIdReducedShapeData()
   // importAndReduceTranslinkShapeData()
