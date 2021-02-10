@@ -20,4 +20,7 @@ router.get("/translinkRoutes", translinkController.getAllTranslinkRoutes)
 // GET all Bus Stops
 router.get("/translinkStops", translinkController.getAllTranslinkStops)
 
+// DELETE all Bus Stops
+router.delete("/translinkStops", translinkController.deleteAllStops)
+
 module.exports = router
