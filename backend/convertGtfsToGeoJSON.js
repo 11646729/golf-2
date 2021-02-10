@@ -1,7 +1,7 @@
 import gtfsToGeoJSON from "gtfs-to-geojson"
 import config from "./config.json"
 // import config from "./configMetro.json"
-import { createReducedRoutesAndStops } from "./createReducedRoutesAndStops"
+import { createGtfsRoutesAndGtfsStops } from "./createGtfsRoutesAndGtfsStops"
 
 // Function to convert GTFS data to GeoJson
 export const convertGtfsToGeoJSON = async () => {
@@ -9,7 +9,7 @@ export const convertGtfsToGeoJSON = async () => {
     gtfsToGeoJSON(config)
       .then(() => {
         console.log("\n\nGeoJSON Generation Successful")
-        createReducedRoutesAndStops()
+        createGtfsRoutesAndGtfsStops()
       })
       .catch((err) => {
         console.error(err)

@@ -2,7 +2,7 @@ import axios from "axios"
 import { getSingleBusRouteAndStops } from "./getSingleBusRouteAndStops"
 
 // Function to fetch all the GeoJson route filenames in a directory irrespective of trip direction
-export const createReducedRoutesAndStops = async (req, res) => {
+export const createGtfsRoutesAndGtfsStops = async (req, res) => {
   res = await axios({
     url: "http://localhost:5000/api/gtfsTransport/filenames",
     method: "get",

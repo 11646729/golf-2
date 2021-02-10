@@ -1,5 +1,5 @@
-import { GtfsReducedRouteSchema } from "./models/transportModels/v1/gtfsReducedRouteSchema"
-import { GtfsReducedStopSchema } from "./models/transportModels/v1/gtfsReducedStopSchema"
+import { GtfsRouteSchema } from "./models/transportModels/v1/gtfsRouteSchema"
+import { GtfsStopSchema } from "./models/transportModels/v1/gtfsStopSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to extract data for reduced dataset then save it in the mongodb database
@@ -23,8 +23,8 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
         i++
       } while (i < busRoute.features[loop].geometry.coordinates.length)
 
-      // And save it in a gtfsReducedRouteSchema collection
-      const gtfsReducedRouteSchema = new GtfsReducedRouteSchema({
+      // And save it in a gtfsRouteSchema collection
+      const gtfsRouteSchema = new GtfsRouteSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         routeVisible: false,
         agencyName: busRoute.features[loop].properties.agency_name,
@@ -36,11 +36,11 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
         routeCoordinates: googleMapsCoords,
       })
 
-      // Save the gtfsReducedRouteSchema in the database
-      gtfsReducedRouteSchema
+      // Save the gtfsRouteSchema in the database
+      gtfsRouteSchema
         .save()
         .then(() => {
-          // console.log("gtfsReducedRouteSchema collection saved successfully")
+          // console.log("gtfsRouteSchema collection saved successfully")
         })
         .catch((err) => {
           console.error(err)
@@ -53,8 +53,8 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
         lng: busRoute.features[loop].geometry.coordinates[0],
       })
 
-      // And save it in a gtfsReducedStopsSchema collection
-      const gtfsReducedStopSchema = new GtfsReducedStopSchema({
+      // And save it in a gtfsStopsSchema collection
+      const gtfsStopSchema = new GtfsStopSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         markerType: busRoute.features[loop].geometry.type,
         stopKey: reducedRoute + "+" + loop,
@@ -65,11 +65,11 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
         stopCoordinates: coordsSchema,
       })
 
-      // Save the gtfsReducedStopsSchema in the database
-      gtfsReducedStopSchema
+      // Save the gtfsStopsSchema in the database
+      gtfsStopSchema
         .save()
         .then(() => {
-          // console.log("gtfsReducedStopSchema collection saved successfully")
+          // console.log("gtfsStopSchema collection saved successfully")
         })
         .catch((err) => {
           console.error(err)

@@ -19,7 +19,7 @@ function removeDuplicates(originalArray, prop) {
 
 export const createPanelListRoutes = async (req, res) => {
   res = await axios({
-    url: "http://localhost:5000/api/gtfsTransport/gtfsReducedRoutes",
+    url: "http://localhost:5000/api/gtfsTransport/gtfsRoutes",
     method: "get",
     timeout: 8000,
     headers: {

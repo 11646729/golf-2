@@ -15,16 +15,16 @@ router.get("/", gtfsController.transportIndex)
 router.get("/filenames", gtfsController.getGeojsonFilenames)
 
 // -------------------------------------------------------
-// GTFS Reduced Bus Routes
+// GTFS Bus Routes
 // -------------------------------------------------------
-// GET a Reduced Bus Route by id (filename)
-router.get("/gtfsReducedRoutes/:id", gtfsController.getOneReducedRoute)
+// GET a Bus Route by id (filename)
+router.get("/gtfsRoutes/:id", gtfsController.getOneRoute)
 
-// GET all Reduced Bus Routes
-router.get("/gtfsReducedRoutes", gtfsController.getAllReducedRoutes)
+// GET all Bus Routes
+router.get("/gtfsRoutes", gtfsController.getAllRoutes)
 
-// DELETE all Reduced Bus Routes
-router.delete("/gtfsReducedRoutes", gtfsController.deleteAllReducedRoutes)
+// DELETE all Bus Routes
+router.delete("/gtfsRoutes", gtfsController.deleteAllRoutes)
 
 // -------------------------------------------------------
 // GTFS Panel List Bus Routes
@@ -39,12 +39,12 @@ router.put("/gtfsPanelListRoutes", gtfsController.putOnePanelListRoutes)
 router.delete("/gtfsPanelListRoutes", gtfsController.deleteAllPanelListRoutes)
 
 // -------------------------------------------------------
-// GTFS Reduced Bus Stops
+// GTFS Bus Stops
 // -------------------------------------------------------
-// GET all Reduced Bus Stops
-router.get("/gtfsReducedStops", gtfsController.getAllReducedStops)
+// GET all Bus Stops
+router.get("/gtfsStops", gtfsController.getAllStops)
 
-// DELETE all Reduced Bus Stops
-router.delete("/gtfsReducedStops", gtfsController.deleteAllReducedStops)
+// DELETE all Bus Stops
+router.delete("/gtfsStops", gtfsController.deleteAllStops)
 
 module.exports = router
