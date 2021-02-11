@@ -19,10 +19,12 @@ export const createTranslinkStops = async () => {
       // Now create a model instance
       const busStop = new TranslinkStopSchema({
         databaseVersion: process.env.DATABASE_VERSION,
-        agencyName: "Translink Buses",
+        agencyName: rawjson.features[i].properties.DepotOpsArea,
         markerType: "Point",
         stopKey: i,
+        stopCode: "No Data",
         stopId: rawjson.features[i].properties.LocationID,
+        stopColor: "#0093DD",
         stopName: rawjson.features[i].properties.Stop_Name,
         stopCoordinates: coordsSchema,
         zone_id: rawjson.features[i].properties.Fare_Stage,

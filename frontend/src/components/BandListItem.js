@@ -77,6 +77,8 @@ export default function BandListItem(props) {
       onClick={(event) => handleListItemClick(event, props.routeNumber)}
     >
       <BandCheckbox checked={routeVisibleCheckbox} />
+      {/* This is for Display Stops */}
+      <BandCheckbox checked={false} />
       <BandButton
         routeColor={props.routeColor}
         routeNumber={props.routeNumber}
