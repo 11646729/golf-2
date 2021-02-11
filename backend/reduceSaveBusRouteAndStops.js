@@ -60,7 +60,7 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
         markerType: busRoute.features[loop].geometry.type,
         stopKey: reducedRoute + "+" + loop,
         stopCode: busRoute.features[loop].properties.stop_code,
-        stopID: busRoute.features[loop].properties.stop_id,
+        stopId: busRoute.features[loop].properties.stop_id,
         stopColor: busRoute.features[loop].properties.routes[0].route_color,
         stopName: "No Data",
         stopCoordinates: coordsSchema,

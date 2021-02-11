@@ -8,7 +8,7 @@ const gtfsStopSchema = new Schema(
     markerType: { type: String },
     stopKey: { type: String },
     stopCode: { type: Number },
-    stopID: { type: Number },
+    stopId: { type: Number },
     stopColor: { type: String },
     stopName: { type: String },
     stopCoordinates: { type: CoordsSchema.schema },
