@@ -57,6 +57,7 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
       const gtfsStopSchema = new GtfsStopSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         markerType: busRoute.features[loop].geometry.type,
+        agencyName: busRoute.features[loop].properties.agency_name,
         stopKey: reducedRoute + "+" + loop,
         stopCode: busRoute.features[loop].properties.stop_code,
         stopID: busRoute.features[loop].properties.stop_id,

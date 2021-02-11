@@ -92,13 +92,14 @@ export default function TransportMapContainer() {
     const bounds = new window.google.maps.LatLngBounds()
     busStopsCollection.map((busStop) => {
       const myLatLng = new window.google.maps.LatLng({
-        lat: busStop.stop_lat,
-        lng: busStop.stop_lon,
+        lat: busStop.stopCoordinates.lat,
+        lng: busStop.stopCoordinates.lng,
       })
 
       bounds.extend(myLatLng)
       return bounds
     })
+    // console.log(bounds)
     mapRef.fitBounds(bounds)
   }
 
@@ -220,10 +221,10 @@ export default function TransportMapContainer() {
               ? // && busStopsCheckboxSelected
                 busStopsCollection.map((busStop) => (
                   <Marker
-                    key={busStop.stop_id}
+                    key={busStop.stopKey}
                     position={{
-                      lat: busStop.stop_lat,
-                      lng: busStop.stop_lon,
+                      lat: busStop.stopCoordinates.lat,
+                      lng: busStop.stopCoordinates.lng,
                     }}
                     icon={{
                       url: "http://maps.google.com/mapfiles/ms/icons/blue.png",

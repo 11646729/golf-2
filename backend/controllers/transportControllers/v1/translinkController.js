@@ -17,7 +17,7 @@ export const transportIndex = async (req, res) => {
 export const getAllTranslinkRoutes = async (req, res) => {
   TranslinkShapeSchema.find({ shapeId: "25774" })
     // TranslinkShapeSchema.find({})
-    .then((TranslinkShapeSchema) => res.json(TranslinkShapeSchema))
+    .then((translinkShapeSchema) => res.json(translinkShapeSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
@@ -27,7 +27,7 @@ export const getAllTranslinkRoutes = async (req, res) => {
 // -------------------------------------------------------
 export const getAllTranslinkStops = async (req, res) => {
   TranslinkStopSchema.find({})
-    .then((stopsSchema) => res.json(stopsSchema))
+    .then((translinkStopSchema) => res.json(translinkStopSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 

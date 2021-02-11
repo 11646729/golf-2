@@ -6,34 +6,17 @@ const translinkStopSchema = new Schema(
     databaseVersion: { type: Number },
     agencyName: { type: String },
     markerType: { type: String },
-    stop_id: {
-      type: String,
-      required: true,
-      index: true,
-    },
-    stop_code: {
-      type: String,
-      index: true,
-    },
-    stop_name: {
-      type: String,
-      required: true,
-    },
+    stopKey: { type: String },
+    stopId: { type: Number },
+    stopColor: { type: String },
+    stopName: { type: String },
     stopCoordinates: { type: CoordsSchema.schema },
-    stop_desc: { type: String },
-    loc: {
-      type: [Number],
-      index: "2dsphere",
-    },
     zone_id: { type: String },
-    stop_url: { type: String },
     location_type: {
       type: Number,
       min: 0,
       max: 1,
     },
-    parent_station: { type: String },
-    stop_timezone: { type: String },
     wheelchair_boarding: {
       type: Number,
       min: 0,
