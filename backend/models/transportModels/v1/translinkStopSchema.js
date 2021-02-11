@@ -7,6 +7,7 @@ const translinkStopSchema = new Schema(
     agencyName: { type: String },
     markerType: { type: String },
     stopKey: { type: String },
+    stopCode: { type: Number },
     stopId: { type: Number },
     stopColor: { type: String },
     stopName: { type: String },

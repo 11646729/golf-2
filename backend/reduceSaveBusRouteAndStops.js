@@ -62,8 +62,11 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
         stopCode: busRoute.features[loop].properties.stop_code,
         stopID: busRoute.features[loop].properties.stop_id,
         stopColor: busRoute.features[loop].properties.routes[0].route_color,
-        stopName: busRoute.features[loop].properties.stop_Name,
+        stopName: "No Data",
         stopCoordinates: coordsSchema,
+        zone_id: "No Data",
+        location_type: 0,
+        wheelchair_boarding: 0,
       })
 
       // Save the gtfsStopsSchema in the database

@@ -12,6 +12,17 @@ const gtfsStopSchema = new Schema(
     stopColor: { type: String },
     stopName: { type: String },
     stopCoordinates: { type: CoordsSchema.schema },
+    zone_id: { type: String },
+    location_type: {
+      type: Number,
+      min: 0,
+      max: 1,
+    },
+    wheelchair_boarding: {
+      type: Number,
+      min: 0,
+      max: 2,
+    },
   },
   {
     timestamps: true,

@@ -22,7 +22,7 @@ export const createTranslinkStops = async () => {
         agencyName: rawjson.features[i].properties.DepotOpsArea,
         markerType: "Point",
         stopKey: i,
-        stopCode: "No Data",
+        stopCode: 0,
         stopId: rawjson.features[i].properties.LocationID,
         stopColor: "#0093DD",
         stopName: rawjson.features[i].properties.Stop_Name,
