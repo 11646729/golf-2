@@ -108,11 +108,11 @@ export default function GTFSTransportMapContainer() {
     setMapRef(null)
   }
 
-  // const handleBusStopClick = (event) => {
-  //   console.log(event)
-  //   // console.log(busStopSelected)
-  //   // setBusStopSelected(busStop)
-  // }
+  const handleBusStopClick = (event) => {
+    console.log(event)
+    //   // console.log(busStopSelected)
+    //   // setBusStopSelected(busStop)
+  }
 
   const handleBusRouteClick = (event) => {
     console.log(event)
@@ -175,12 +175,13 @@ export default function GTFSTransportMapContainer() {
                   <Marker
                     key={busStop.stopKey}
                     position={{
-                      lat: busStop.shapeCoordinates.lat,
-                      lng: busStop.shapeCoordinates.lng,
+                      lat: busStop.stopCoordinates.lat,
+                      lng: busStop.stopCoordinates.lng,
                     }}
                     icon={{
-                      path: window.google.maps.SymbolPath.CIRCLE,
-                      scale: 2,
+                      // path: window.google.maps.SymbolPath.CIRCLE,
+                      // scale: 2,
+                      url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
                     }}
                     onClick={() => {
                       handleBusStopClick()
