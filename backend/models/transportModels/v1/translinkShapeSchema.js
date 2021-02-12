@@ -3,20 +3,11 @@ import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 
 const translinkShapeSchema = new Schema(
   {
-    created_at: {
-      type: Date,
-      default: Date.now,
-      required: true,
-    },
-    agency_key: {
+    databaseVersion: { type: Number },
+    agencyName: { type: String },
+    markerType: { type: String },
+    shapeId: {
       type: String,
-      required: true,
-      index: true,
-    },
-    shape_id: {
-      type: String,
-      required: true,
-      index: true,
     },
     from_stop_id: {
       type: Number,
@@ -24,23 +15,7 @@ const translinkShapeSchema = new Schema(
     to_stop_id: {
       type: Number,
     },
-    // shape_pt_lat: {
-    //   type: Number,
-    //   required: true,
-    //   min: -90,
-    //   max: 90,
-    // },
-    // shape_pt_lon: {
-    //   type: Number,
-    //   required: true,
-    //   min: -180,
-    //   max: 180,
-    // },
     shapeCoordinates: [{ type: CoordsSchema.schema }],
-    // loc: {
-    //   type: [Number],
-    //   index: "2dsphere",
-    // },
     // shape_pt_sequence: {
     //   type: Number,
     //   required: true,
@@ -59,7 +34,7 @@ const translinkShapeSchema = new Schema(
     },
   },
   {
-    timestamps: false,
+    timestamps: true,
   }
 )
 

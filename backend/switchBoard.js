@@ -3,25 +3,21 @@ import { directDeleteAll as deleteAllPortArrivals } from "./controllers/cruiseCo
 import { directDeleteAll as deleteAllVesselDetails } from "./controllers/cruiseControllers/v1/vesselDetailsController"
 import { directDeleteAll as deleteAllTemperatures } from "./controllers/weatherControllers/v1/weatherController"
 import { runCron } from "./cronRoutines"
-import { importConvertSaveTranslinkRoutes } from "./importConvertSaveTranslinkRoutes"
-import { importAndReduceTranslinkShapeData } from "./importAndReduceTranslinkShapeData"
-// import { importTripIdReducedShapeData } from "./importTripIdIntoReducedShapeData"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
-// import { directDeleteAll as deleteAllBusStops } from "./controllers/transportControllers/v1/translinkController"
 import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
 import { deleteGtfsRoutes } from "./deleteGtfsRoutes"
 import { deleteGtfsStops } from "./deleteGtfsStops"
-import { deleteTranslinkStops } from "./deleteTranslinkStops"
 import { deleteGtfsPanelListRoutes } from "./deleteGtfsPanelListRoutes"
 import { createGtfsRoutesAndGtfsStops } from "./createGtfsRoutesAndGtfsStops"
 import { createPanelListRoutes } from "./createPanelListRoutes"
+import { deleteTranslinkStops } from "./deleteTranslinkStops"
+import { deleteTranslinkShapes } from "./deleteTranslinkShapes"
 import { createTranslinkStops } from "./createTranslinkStops"
-
-// import { directDeleteAll as deleteAllRouteShapes } from "./controllers/transportControllers/v1/translinkController"
+import { importTranslinkRawShapes } from "./importTranslinkRawShapes"
 
 export const runSwitchboard = (io) => {
   // Using socket.io for realtime
@@ -54,10 +50,9 @@ export const runSwitchboard = (io) => {
   // createPanelListRoutes()
   // -----------------------------
   // deleteTranslinkStops()
+  // deleteTranslinkShapes()
   // createTranslinkStops()
-  // importConvertSaveTranslinkRoutes()
-  // importTripIdReducedShapeData()
-  // importAndReduceTranslinkShapeData()
+  // importTranslinkRawShapes()
   // })
   // -----------------------------
   // Fetch data every 1 minutes

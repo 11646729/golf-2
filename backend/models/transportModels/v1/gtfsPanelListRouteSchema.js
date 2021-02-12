@@ -3,9 +3,9 @@ import mongoose, { Schema } from "mongoose"
 const gtfsPanelListRouteSchema = new Schema(
   {
     databaseVersion: { type: Number },
-    routeVisible: { type: Boolean },
     agencyName: { type: String },
     markerType: { type: String },
+    routeVisible: { type: Boolean },
     routeKey: { type: String },
     routeColor: { type: String },
     routeLongName: { type: String },
