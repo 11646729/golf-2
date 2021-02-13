@@ -102,19 +102,15 @@ export const putOnePanelListRoutes = async (req, res) => {
 // Path: localhost:5000/api/gtfsTransport/gtfsPanelListRoutes
 // -------------------------------------------------------
 export const deleteAllPanelListRoutes = async (req, res) => {
-  GtfsPanelListRouteSchema.deleteMany({}, (err) => {
-    if (err) {
-      res
-        .status(500)
-        .send(
-          "An unspecified error occurred while removing all Panel List Routes!"
-        )
-    } else {
-      res
-        .status(200)
-        .send("All Panel List Routes were deleted in the mongodb database")
-    }
-  })
+  GtfsPanelListRouteSchema.deleteMany({})
+    .then((res) => {
+      console.log("No of Panel Routes successfully deleted: ", res.deletedCount)
+    })
+    .catch((err) => {
+      console.log(
+        err.message || "An error occurred while removing all Panel Routes"
+      )
+    })
 }
 
 // -------------------------------------------------------

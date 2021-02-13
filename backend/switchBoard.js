@@ -11,7 +11,7 @@ import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfController
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
 import { deleteAllRoutes as deleteGtfsRoutes } from "./controllers/transportControllers/v1/gtfsController"
 import { deleteAllStops as deleteGtfsStops } from "./controllers/transportControllers/v1/gtfsController"
-import { deleteGtfsPanelListRoutes } from "./deleteGtfsPanelListRoutes"
+import { deleteAllPanelListRoutes as deleteGtfsPanelListRoutes } from "./controllers/transportControllers/v1/gtfsController"
 import { createGtfsRoutesAndGtfsStops } from "./createGtfsRoutesAndGtfsStops"
 import { createPanelListRoutes } from "./createPanelListRoutes"
 import { deleteAllStops as deleteTranslinkStops } from "./controllers/transportControllers/v1/translinkController"
