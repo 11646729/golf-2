@@ -65,15 +65,13 @@ export const getAllRoutes = async (req, res) => {
 // Path: localhost:5000/api/gtfsTransport/gtfsRoutes
 // -------------------------------------------------------
 export const deleteAllRoutes = async (req, res) => {
-  GtfsRouteSchema.deleteMany({}, (err) => {
-    if (err) {
-      res
-        .status(500)
-        .send("An unspecified error occurred while removing all Routes!")
-    } else {
-      res.status(200).send("All Routes were deleted in the mongodb database")
-    }
-  })
+  GtfsRouteSchema.deleteMany({})
+    .then((res) => {
+      console.log("No of Routes successfully deleted: ", res.deletedCount)
+    })
+    .catch((err) => {
+      console.log(err.message || "An error occurred while removing all Routes")
+    })
 }
 
 // -------------------------------------------------------
@@ -134,13 +132,11 @@ export const getAllStops = async (req, res) => {
 // Path: localhost:5000/api/gtfsTransport/gtfsStops
 // -------------------------------------------------------
 export const deleteAllStops = async (req, res) => {
-  GtfsStopSchema.deleteMany({}, (err) => {
-    if (err) {
-      res
-        .status(500)
-        .send("An unspecified error occurred while removing all Stops!")
-    } else {
-      res.status(200).send("All Stops were deleted in the mongodb database")
-    }
-  })
+  GtfsStopSchema.deleteMany({})
+    .then((res) => {
+      console.log("No of Stops successfully deleted: ", res.deletedCount)
+    })
+    .catch((err) => {
+      console.log(err.message || "An error occurred while removing all Stops")
+    })
 }
