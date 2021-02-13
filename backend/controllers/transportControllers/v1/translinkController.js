@@ -27,6 +27,20 @@ export const getAllShapes = async (req, res) => {
 }
 
 // -------------------------------------------------------
+// Bus Shapes
+// Path: localhost:5000/api/translinkTransport/translinkShapes
+// -------------------------------------------------------
+export function deleteAllShapes(req, res) {
+  TranslinkShapeSchema.deleteMany({})
+    .then((res) => {
+      console.log("No of Shapes successfully deleted: ", res.deletedCount)
+    })
+    .catch((err) => {
+      console.log(err.message || "An error occurred while removing all Shapes")
+    })
+}
+
+// -------------------------------------------------------
 // Bus Routes
 // Path: localhost:5000/api/translinkTransport/translinkRoutes
 // -------------------------------------------------------
@@ -35,18 +49,6 @@ export const getAllRoutes = async (req, res) => {
     // TranslinkShapeSchema.find({})
     .then((translinkShapeSchema) => res.json(translinkShapeSchema))
     .catch((err) => res.status(400).json("Error " + err))
-}
-
-export const deleteAllShapes = async (req, res) => {
-  TranslinkShapeSchema.deleteMany({}, (err) => {
-    if (err) {
-      res
-        .status(500)
-        .send("An unspecified error occurred while removing all Shapes!")
-    } else {
-      res.status(200).send("All Shapes were deleted in the mongodb database")
-    }
-  })
 }
 
 // -------------------------------------------------------
@@ -63,14 +65,12 @@ export const getAllTranslinkStops = async (req, res) => {
 // Bus Stops
 // Path: localhost:5000/api/translinkTransport/translinkStops
 // -------------------------------------------------------
-export const deleteAllStops = async (req, res) => {
-  TranslinkStopSchema.deleteMany({}, (err) => {
-    if (err) {
-      res
-        .status(500)
-        .send("An unspecified error occurred while removing all Stops!")
-    } else {
-      res.status(200).send("All Stops were deleted in the mongodb database")
-    }
-  })
+export function deleteAllStops(req, res) {
+  TranslinkStopSchema.deleteMany({})
+    .then((res) => {
+      console.log("No of Stops successfully deleted: ", res.deletedCount)
+    })
+    .catch((err) => {
+      console.log(err.message || "An error occurred while removing all Stops")
+    })
 }

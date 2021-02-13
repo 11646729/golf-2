@@ -11,10 +11,10 @@ router.get("/", translinkController.transportIndex)
 // -------------------------------------------------------
 // Translink Bus Routes
 // -------------------------------------------------------
-// GET all Raw Shape Data
+// GET all Shape Data
 router.get("/translinkShapes", translinkController.getAllShapes)
 
-// DELETE all Raw Shape Data
+// DELETE all Shape Data
 router.delete("/translinkShapes", translinkController.deleteAllShapes)
 
 // -------------------------------------------------------

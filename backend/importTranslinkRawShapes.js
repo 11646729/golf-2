@@ -6,7 +6,7 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 // Longitude first in Javascript
 export const importTranslinkRawShapes = async () => {
   const rawjson = await axios({
-    url: "http://localhost:5000/api/translinkTransport/rawShapes",
+    url: "http://localhost:5000/api/translinkTransport/translinkShapes",
     method: "get",
     timeout: 8000,
     headers: {
