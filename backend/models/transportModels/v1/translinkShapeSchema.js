@@ -6,7 +6,7 @@ const translinkShapeSchema = new Schema(
     databaseVersion: { type: Number },
     agencyName: { type: String },
     markerType: { type: String },
-    shapeId: {
+    shapeKey: {
       type: String,
     },
     from_stop_id: {

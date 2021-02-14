@@ -9,27 +9,27 @@ const translinkController = require("../../../controllers/transportControllers/v
 router.get("/", translinkController.transportIndex)
 
 // -------------------------------------------------------
-// Translink Bus Routes
+// Translink Bus Shapes
 // -------------------------------------------------------
-// GET all Shape Data
-router.get("/translinkShapes", translinkController.getAllShapes)
+// GET all Raw Translink Shapes
+router.get("/createTranslinkShapes", translinkController.createTranslinkShapes)
 
-// DELETE all Shape Data
-router.delete("/translinkShapes", translinkController.deleteAllShapes)
+// GET all Shapes
+router.get("/translinkShapes", translinkController.getAllTranslinkShapes)
 
 // -------------------------------------------------------
 // Translink Bus Routes
 // -------------------------------------------------------
 // GET all Bus Routes
-router.get("/translinkRoutes", translinkController.getAllRoutes)
+// router.get("/translinkRoutes", translinkController.getAllRoutes)
 
 // -------------------------------------------------------
 // Translink Bus Stops
 // -------------------------------------------------------
+// GET all Raw Translink Bus Stops
+router.get("/createTranslinkStops", translinkController.createTranslinkStops)
+
 // GET all Bus Stops
 router.get("/translinkStops", translinkController.getAllTranslinkStops)
-
-// DELETE all Bus Stops
-router.delete("/translinkStops", translinkController.deleteAllStops)
 
 module.exports = router

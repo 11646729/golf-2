@@ -12,9 +12,9 @@ export const transportIndex = async (req, res) => {
 
 // -------------------------------------------------------
 // Bus Shapes
-// Path: localhost:5000/api/translinkTransport/translinkShapes
+// Path: localhost:5000/api/translinkTransport/createTranslinkShapes
 // -------------------------------------------------------
-export const getAllShapes = async (req, res) => {
+export const createTranslinkShapes = async (req, res) => {
   const rawGeojson = "./rawData/translink_ulsterbus_routes.json"
 
   fs.readFile(rawGeojson, "utf8", (err, data) => {
@@ -27,28 +27,30 @@ export const getAllShapes = async (req, res) => {
 }
 
 // -------------------------------------------------------
-// Bus Shapes
+// Bus Routes
 // Path: localhost:5000/api/translinkTransport/translinkShapes
 // -------------------------------------------------------
-export function deleteAllShapes(req, res) {
-  TranslinkShapeSchema.deleteMany({})
-    .then((res) => {
-      console.log("No of Shapes successfully deleted: ", res.deletedCount)
-    })
-    .catch((err) => {
-      console.log(err.message || "An error occurred while removing all Shapes")
-    })
-}
-
-// -------------------------------------------------------
-// Bus Routes
-// Path: localhost:5000/api/translinkTransport/translinkRoutes
-// -------------------------------------------------------
-export const getAllRoutes = async (req, res) => {
+export const getAllTranslinkShapes = async (req, res) => {
   TranslinkShapeSchema.find({ shapeId: "25774" })
     // TranslinkShapeSchema.find({})
     .then((translinkShapeSchema) => res.json(translinkShapeSchema))
     .catch((err) => res.status(400).json("Error " + err))
+}
+
+// -------------------------------------------------------
+// Bus Stops
+// Path: localhost:5000/api/translinkTransport/createTranslinkStops
+// -------------------------------------------------------
+export const createTranslinkStops = async (req, res) => {
+  const rawGeojson = "./rawData/translink_bus_stop_list_january_2018.json"
+
+  fs.readFile(rawGeojson, "utf8", (err, data) => {
+    if (err) {
+      throw err
+    }
+
+    res.send(JSON.parse(data))
+  })
 }
 
 // -------------------------------------------------------
@@ -59,18 +61,4 @@ export const getAllTranslinkStops = async (req, res) => {
   TranslinkStopSchema.find({})
     .then((translinkStopSchema) => res.json(translinkStopSchema))
     .catch((err) => res.status(400).json("Error " + err))
-}
-
-// -------------------------------------------------------
-// Bus Stops
-// Path: localhost:5000/api/translinkTransport/translinkStops
-// -------------------------------------------------------
-export function deleteAllStops(req, res) {
-  TranslinkStopSchema.deleteMany({})
-    .then((res) => {
-      console.log("No of Stops successfully deleted: ", res.deletedCount)
-    })
-    .catch((err) => {
-      console.log(err.message || "An error occurred while removing all Stops")
-    })
 }

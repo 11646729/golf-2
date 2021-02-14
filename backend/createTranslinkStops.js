@@ -1,48 +1,66 @@
+import axios from "axios"
 import { TranslinkStopSchema } from "./models/transportModels/v1/translinkStopSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to save Translink busStop data to mongodb
 // Longitude first in Javascript
 export const createTranslinkStops = async () => {
-  console.log("In importTranslinkStopData")
+  // Firstly delete all existing Stops in the database
+  TranslinkStopSchema.deleteMany({})
+    .then((res) => {
+      console.log("No of Stops successfully deleted: ", res.deletedCount)
+    })
+    .catch((err) => {
+      console.log(err.message || "An error occurred while removing all Stops")
+    })
 
-  try {
-    const rawjson = require("./rawData/translink_bus_stop_list_january_2018.json")
+  // Now fetch the raw json file & decode it
+  const rawjson = await axios({
+    url: "http://localhost:5000/api/translinkTransport/createTranslinkStops",
+    method: "get",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
 
-    let i = 0
-    do {
-      const coordsSchema = new CoordsSchema({
-        lat: rawjson.features[i].properties.Latitude,
-        lng: rawjson.features[i].properties.Longitude,
-      })
+  const endloop = rawjson.data.features.length
 
-      // Now create a model instance
-      const busStop = new TranslinkStopSchema({
-        databaseVersion: process.env.DATABASE_VERSION,
-        agencyName: rawjson.features[i].properties.DepotOpsArea,
-        markerType: "Point",
-        stopKey: i,
-        stopCode: 0,
-        stopId: rawjson.features[i].properties.LocationID,
-        stopColor: "#0093DD",
-        stopName: rawjson.features[i].properties.Stop_Name,
-        stopCoordinates: coordsSchema,
-        zone_id: rawjson.features[i].properties.Fare_Stage,
-        location_type: 0,
-        wheelchair_boarding: 0,
-      })
+  let loop = 0
+  do {
+    const coordsSchema = new CoordsSchema({
+      lat: rawjson.data.features[loop].properties.Latitude,
+      lng: rawjson.data.features[loop].properties.Longitude,
+    })
 
-      // Now save in mongoDB
-      busStop
-        .save()
-        // .then(() => console.log(i + " busStops saved to mongoDB"))
-        .catch((err) => console.log("Error saving busStops to mongoDB " + err))
+    if (rawjson.data.features[loop].geometry.length > 1) {
+      console.log("More than 1 point is stored for this feature")
+    }
 
-      i++
-    } while (i < rawjson.features.length)
-    console.log("Import ended " + i)
-  } catch (error) {
-    // handle error
-    console.log("Error in importTranslinkStopData ", error)
-  }
+    console.log("Loop: ", loop)
+
+    // Now create a model instance
+    const busStop = new TranslinkStopSchema({
+      databaseVersion: process.env.DATABASE_VERSION,
+      agencyName: rawjson.data.features[loop].properties.DepotOpsArea,
+      markerType: rawjson.data.features[loop].geometry.type,
+      stopKey: loop + 1,
+      // stopCode: 0,
+      stopId: rawjson.data.features[loop].properties.LocationID,
+      stopColor: "#0093DD",
+      stopName: rawjson.data.features[loop].properties.Stop_Name,
+      stopCoordinates: coordsSchema,
+      zone_id: rawjson.data.features[loop].properties.Fare_Stage,
+      location_type: 0,
+      wheelchair_boarding: 0,
+    })
+
+    // Now save in mongoDB
+    busStop
+      .save()
+      .then(() => console.log(loop + " busStops saved to mongoDB"))
+      .catch((err) => console.log("Error saving busStops to mongoDB " + err))
+
+    loop++
+  } while (loop < endloop)
 }

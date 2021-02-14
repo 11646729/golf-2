@@ -4,9 +4,19 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // Function to save bus shapes data to mongodb
 // Longitude first in Javascript
-export const importTranslinkRawShapes = async () => {
+export const createTranslinkShapes = async (req, res) => {
+  // Firstly delete all existing Shapes in the database
+  TranslinkShapeSchema.deleteMany({})
+    .then((res) => {
+      console.log("No of Shapes successfully deleted: ", res.deletedCount)
+    })
+    .catch((err) => {
+      console.log(err.message || "An error occurred while removing all Shapes")
+    })
+
+  // Now fetch the raw json file & decode it
   const rawjson = await axios({
-    url: "http://localhost:5000/api/translinkTransport/translinkShapes",
+    url: "http://localhost:5000/api/translinkTransport/createTranslinkShapes",
     method: "get",
     timeout: 8000,
     headers: {
@@ -28,8 +38,9 @@ export const importTranslinkRawShapes = async () => {
     // Now create a model instance
     const busShapes = new TranslinkShapeSchema({
       databaseVersion: process.env.DATABASE_VERSION,
-      agency_key: "Translink Buses",
-      shapeId: loop + 1,
+      agencyName: "Translink Buses",
+      markerType: rawjson.data.features[loop].geometry.type,
+      shapeKey: loop + 1,
       shapeCoordinates: convertedcoords,
       from_stop_id: rawjson.data.features[loop].properties.FromStopID,
       to_stop_id: rawjson.data.features[loop].properties.ToStopID,

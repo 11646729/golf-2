@@ -14,10 +14,8 @@ import { deleteAllStops as deleteGtfsStops } from "./controllers/transportContro
 import { deleteAllPanelListRoutes as deleteGtfsPanelListRoutes } from "./controllers/transportControllers/v1/gtfsController"
 import { createGtfsRoutesAndGtfsStops } from "./createGtfsRoutesAndGtfsStops"
 import { createPanelListRoutes } from "./createPanelListRoutes"
-import { deleteAllStops as deleteTranslinkStops } from "./controllers/transportControllers/v1/translinkController"
-import { deleteAllShapes as deleteTranslinkShapes } from "./controllers/transportControllers/v1/translinkController"
+import { createTranslinkShapes } from "./createTranslinkShapes"
 import { createTranslinkStops } from "./createTranslinkStops"
-import { importTranslinkRawShapes } from "./importTranslinkRawShapes"
 
 export const runSwitchboard = (io) => {
   // Using socket.io for realtime
@@ -49,10 +47,8 @@ export const runSwitchboard = (io) => {
   // createGtfsRoutesAndGtfsStops()
   // createPanelListRoutes()
   // -----------------------------
-  // deleteTranslinkStops()
-  // deleteTranslinkShapes()
+  // createTranslinkShapes()
   // createTranslinkStops()
-  // importTranslinkRawShapes()
   // })
   // -----------------------------
   // Fetch data every 1 minutes
