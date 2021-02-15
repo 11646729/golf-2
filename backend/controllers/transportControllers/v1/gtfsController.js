@@ -61,20 +61,6 @@ export const getAllRoutes = async (req, res) => {
 }
 
 // -------------------------------------------------------
-// Bus Routes
-// Path: localhost:5000/api/gtfsTransport/gtfsRoutes
-// -------------------------------------------------------
-export const deleteAllRoutes = async (req, res) => {
-  GtfsRouteSchema.deleteMany({})
-    .then((res) => {
-      console.log("No of Routes successfully deleted: ", res.deletedCount)
-    })
-    .catch((err) => {
-      console.log(err.message || "An error occurred while removing all Routes")
-    })
-}
-
-// -------------------------------------------------------
 // Panel List Bus Routes
 // Path: localhost:5000/api/gtfsTransport/gtfsPanelListRoutes
 // -------------------------------------------------------
@@ -98,22 +84,6 @@ export const putOnePanelListRoutes = async (req, res) => {
 }
 
 // -------------------------------------------------------
-// Panel List Bus Routes
-// Path: localhost:5000/api/gtfsTransport/gtfsPanelListRoutes
-// -------------------------------------------------------
-export const deleteAllPanelListRoutes = async (req, res) => {
-  GtfsPanelListRouteSchema.deleteMany({})
-    .then((res) => {
-      console.log("No of Panel Routes successfully deleted: ", res.deletedCount)
-    })
-    .catch((err) => {
-      console.log(
-        err.message || "An error occurred while removing all Panel Routes"
-      )
-    })
-}
-
-// -------------------------------------------------------
 // Bus Stops
 // Path: localhost:5000/api/gtfsTransport/gtfsStops
 // -------------------------------------------------------
@@ -121,18 +91,4 @@ export const getAllStops = async (req, res) => {
   GtfsStopSchema.find({})
     .then((gtfsStopSchema) => res.json(gtfsStopSchema))
     .catch((err) => res.status(400).json("Error " + err))
-}
-
-// -------------------------------------------------------
-// Bus Stops
-// Path: localhost:5000/api/gtfsTransport/gtfsStops
-// -------------------------------------------------------
-export const deleteAllStops = async (req, res) => {
-  GtfsStopSchema.deleteMany({})
-    .then((res) => {
-      console.log("No of Stops successfully deleted: ", res.deletedCount)
-    })
-    .catch((err) => {
-      console.log(err.message || "An error occurred while removing all Stops")
-    })
 }

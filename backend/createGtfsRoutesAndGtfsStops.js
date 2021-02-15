@@ -1,8 +1,28 @@
 import axios from "axios"
+import { GtfsStopSchema } from "./models/transportModels/v1/gtfsStopSchema"
+import { GtfsRouteSchema } from "./models/transportModels/v1/gtfsRouteSchema"
 import { getSingleBusRouteAndStops } from "./getSingleBusRouteAndStops"
 
 // Function to fetch all the GeoJson route filenames in a directory irrespective of trip direction
 export const createGtfsRoutesAndGtfsStops = async (req, res) => {
+  // Firstly delete all existing Routes in the database
+  GtfsRouteSchema.deleteMany({})
+    .then((res) => {
+      console.log("No of Routes successfully deleted: ", res.deletedCount)
+    })
+    .catch((err) => {
+      console.log(err.message || "An error occurred while removing all Routes")
+    })
+
+  // Firstly delete all existing Stops in the database
+  GtfsStopSchema.deleteMany({})
+    .then((res) => {
+      console.log("No of Stops successfully deleted: ", res.deletedCount)
+    })
+    .catch((err) => {
+      console.log(err.message || "An error occurred while removing all Stops")
+    })
+
   res = await axios({
     url: "http://localhost:5000/api/gtfsTransport/filenames",
     method: "get",

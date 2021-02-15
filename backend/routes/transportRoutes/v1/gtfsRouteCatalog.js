@@ -23,9 +23,6 @@ router.get("/gtfsRoutes/:id", gtfsController.getOneRoute)
 // GET all Bus Routes
 router.get("/gtfsRoutes", gtfsController.getAllRoutes)
 
-// DELETE all Bus Routes
-router.delete("/gtfsRoutes", gtfsController.deleteAllRoutes)
-
 // -------------------------------------------------------
 // GTFS Panel List Bus Routes
 // -------------------------------------------------------
@@ -35,16 +32,10 @@ router.get("/gtfsPanelListRoutes", gtfsController.getAllPanelListRoutes)
 // PUT Selected Status in the Panel List Bus Routes documents
 router.put("/gtfsPanelListRoutes", gtfsController.putOnePanelListRoutes)
 
-// DELETE all Panel List Bus Routes
-router.delete("/gtfsPanelListRoutes", gtfsController.deleteAllPanelListRoutes)
-
 // -------------------------------------------------------
 // GTFS Bus Stops
 // -------------------------------------------------------
 // GET all Bus Stops
 router.get("/gtfsStops", gtfsController.getAllStops)
-
-// DELETE all Bus Stops
-router.delete("/gtfsStops", gtfsController.deleteAllStops)
 
 module.exports = router

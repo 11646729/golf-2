@@ -18,6 +18,17 @@ function removeDuplicates(originalArray, prop) {
 }
 
 export const createPanelListRoutes = async (req, res) => {
+  // Firstly delete all existing Panel List Routes in the database
+  GtfsPanelListRouteSchema.deleteMany({})
+    .then((res) => {
+      console.log("No of Panel Routes successfully deleted: ", res.deletedCount)
+    })
+    .catch((err) => {
+      console.log(
+        err.message || "An error occurred while removing all Panel Routes"
+      )
+    })
+
   res = await axios({
     url: "http://localhost:5000/api/gtfsTransport/gtfsRoutes",
     method: "get",

@@ -9,9 +9,6 @@ import {
 } from "./getDarkSkiesDataAndEmit"
 import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
-import { deleteAllRoutes as deleteGtfsRoutes } from "./controllers/transportControllers/v1/gtfsController"
-import { deleteAllStops as deleteGtfsStops } from "./controllers/transportControllers/v1/gtfsController"
-import { deleteAllPanelListRoutes as deleteGtfsPanelListRoutes } from "./controllers/transportControllers/v1/gtfsController"
 import { createGtfsRoutesAndGtfsStops } from "./createGtfsRoutesAndGtfsStops"
 import { createPanelListRoutes } from "./createPanelListRoutes"
 import { createTranslinkShapes } from "./createTranslinkShapes"
@@ -41,9 +38,6 @@ export const runSwitchboard = (io) => {
   // runCron()
   // -----------------------------
   // convertGtfsToGeoJSON()
-  // deleteGtfsRoutes()
-  // deleteGtfsStops()
-  // deleteGtfsPanelListRoutes()
   // createGtfsRoutesAndGtfsStops()
   // createPanelListRoutes()
   // -----------------------------

@@ -51,6 +51,14 @@ export const createTranslinkStops = async (req, res) => {
 
     res.send(JSON.parse(data))
   })
+
+  // fs.readFile(rawGeojson, function (err, data) {
+  //   if (err) {
+  //     throw err
+  //   }
+
+  //   res.send(data)
+  // })
 }
 
 // -------------------------------------------------------
