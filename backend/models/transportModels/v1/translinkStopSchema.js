@@ -11,7 +11,8 @@ const translinkStopSchema = new Schema(
     // stopId: { type: Number },
     stopColor: { type: String },
     stopName: { type: String },
-    stopCoordinates: [{ type: CoordsSchema.schema }],
+    stopCoordinates: { type: CoordsSchema.schema },
+    coordsString: { type: String },
     zone_id: { type: String },
     location_type: {
       type: Number,

@@ -50,6 +50,8 @@ export const createTranslinkStops = async () => {
       stopColor: "#0093DD",
       stopName: rawjson.data.features[loop].properties.Stop_Name,
       stopCoordinates: coordsSchema,
+      coordsString:
+        coordsSchema.lat.toFixed(8) + ":" + coordsSchema.lng.toFixed(8), // For removing duplicates
       zone_id: rawjson.data.features[loop].properties.Fare_Stage,
       location_type: 0,
       wheelchair_boarding: 0,

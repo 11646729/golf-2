@@ -29,6 +29,22 @@ const useStyles = makeStyles({
   },
 })
 
+// Function to remove duplicates from array
+function removeDuplicates(originalArray, prop) {
+  var newArray = []
+  var lookupObject = {}
+
+  for (var i in originalArray) {
+    lookupObject[originalArray[i][prop]] = originalArray[i]
+  }
+
+  for (i in lookupObject) {
+    newArray.push(lookupObject[i])
+  }
+
+  return newArray
+}
+
 export default function TransportMapContainer() {
   const classes = useStyles()
 
@@ -64,16 +80,16 @@ export default function TransportMapContainer() {
 
     axios
       .all([
-        axios.get(
-          "http://localhost:5000/api/translinkTransport/translinkRoutes"
-        ),
+        // axios.get(
+        // "http://localhost:5000/api/translinkTransport/translinkRoutes"
+        // ),
         axios.get(
           "http://localhost:5000/api/translinkTransport/translinkStops"
         ),
       ])
       .then(
-        axios.spread((routesResponse, stopsResponse) => {
-          setBusRoutesCollection(routesResponse.data)
+        axios.spread((stopsResponse) => {
+          // setBusRoutesCollection(routesResponse.data)
           setBusStopsCollection(stopsResponse.data)
         })
       )
@@ -87,6 +103,13 @@ export default function TransportMapContainer() {
     return () => (isSubscribed = false)
   }, [])
 
+  // Remove Duplicates from the array
+  let uniqueBusRoutesCollection = removeDuplicates(
+    busStopsCollection,
+    "coordsString"
+  )
+  console.log(uniqueBusRoutesCollection.length)
+
   // Now compute bounds of map to display
   if (mapRef && busStopsCollection != null) {
     const bounds = new window.google.maps.LatLngBounds()
@@ -99,7 +122,6 @@ export default function TransportMapContainer() {
       bounds.extend(myLatLng)
       return bounds
     })
-    // console.log(bounds)
     mapRef.fitBounds(bounds)
   }
 
@@ -198,7 +220,7 @@ export default function TransportMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {busRoutesCollection
+            {/* {busRoutesCollection
               ? // && busRoutesCheckboxSelected
                 busRoutesCollection.map((busRoute) => (
                   <Polyline
@@ -216,7 +238,7 @@ export default function TransportMapContainer() {
                     }}
                   />
                 ))
-              : null}
+              : null} */}
             {busStopsCollection
               ? // && busStopsCheckboxSelected
                 busStopsCollection.map((busStop) => (
