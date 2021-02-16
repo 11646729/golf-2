@@ -16,6 +16,7 @@ import axios from "axios"
 
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
+import removeDuplicates from "./utilities"
 
 const useStyles = makeStyles({
   headerSelection: {
@@ -28,22 +29,6 @@ const useStyles = makeStyles({
     padding: 15,
   },
 })
-
-// Function to remove duplicates from array
-function removeDuplicates(originalArray, prop) {
-  var newArray = []
-  var lookupObject = {}
-
-  for (var i in originalArray) {
-    lookupObject[originalArray[i][prop]] = originalArray[i]
-  }
-
-  for (i in lookupObject) {
-    newArray.push(lookupObject[i])
-  }
-
-  return newArray
-}
 
 export default function TransportMapContainer() {
   const classes = useStyles()
@@ -64,9 +49,6 @@ export default function TransportMapContainer() {
 
   // const [busStopSelected, setBusStopSelected] = useState(null)
   // const [busShapeSelected, setBusShapeSelected] = useState(null)
-
-  const [busStopsCheckboxSelected, setBusStopsCheckbox] = useState(true)
-  const [busRoutesCheckboxSelected, setBusRoutesCheckbox] = useState(true)
 
   // -----------------------------------------------------
   // DATA HOOKS SECTION
@@ -109,8 +91,6 @@ export default function TransportMapContainer() {
     "coordsString"
   )
 
-  console.log(uniqueBusStopsCollection.length)
-
   // Now compute bounds of map to display
   if (mapRef && uniqueBusStopsCollection != null) {
     const bounds = new window.google.maps.LatLngBounds()
@@ -137,14 +117,6 @@ export default function TransportMapContainer() {
   // Clear the reference to the google map instance
   const onUnmountHandler = () => {
     setMapRef(null)
-  }
-
-  const handleBusStopsCheckboxChange = (event) => {
-    setBusStopsCheckbox(event.target.checked)
-  }
-
-  const handleBusRoutesCheckboxChange = (event) => {
-    setBusRoutesCheckbox(event.target.checked)
   }
 
   // const handleBusStopClick = (event) => {
@@ -216,8 +188,6 @@ export default function TransportMapContainer() {
                       lng: busStop.stopCoordinates.lng,
                     }}
                     icon={{
-                      // path: window.google.maps.SymbolPath.CIRCLE,
-                      // scale: 2,
                       url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
                     }}
                     onClick={() => {

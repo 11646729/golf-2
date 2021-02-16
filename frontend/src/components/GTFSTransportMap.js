@@ -12,6 +12,7 @@ import axios from "axios"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
+import removeDuplicates from "./utilities"
 
 const useStyles = makeStyles({
   divStyle: {
@@ -24,22 +25,6 @@ const useStyles = makeStyles({
     marginLeft: 20,
   },
 })
-
-// Function to remove duplicates from array
-function removeDuplicates(originalArray, prop) {
-  var newArray = []
-  var lookupObject = {}
-
-  for (var i in originalArray) {
-    lookupObject[originalArray[i][prop]] = originalArray[i]
-  }
-
-  for (i in lookupObject) {
-    newArray.push(lookupObject[i])
-  }
-
-  return newArray
-}
 
 export default function GTFSTransportMapContainer() {
   const classes = useStyles()
@@ -202,8 +187,6 @@ export default function GTFSTransportMapContainer() {
                       lng: busStop.stopCoordinates.lng,
                     }}
                     icon={{
-                      // path: window.google.maps.SymbolPath.CIRCLE,
-                      // scale: 2,
                       url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
                     }}
                     onClick={() => {
