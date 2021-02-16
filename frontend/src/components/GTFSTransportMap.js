@@ -25,6 +25,22 @@ const useStyles = makeStyles({
   },
 })
 
+// Function to remove duplicates from array
+function removeDuplicates(originalArray, prop) {
+  var newArray = []
+  var lookupObject = {}
+
+  for (var i in originalArray) {
+    lookupObject[originalArray[i][prop]] = originalArray[i]
+  }
+
+  for (i in lookupObject) {
+    newArray.push(lookupObject[i])
+  }
+
+  return newArray
+}
+
 export default function GTFSTransportMapContainer() {
   const classes = useStyles()
 
@@ -81,10 +97,17 @@ export default function GTFSTransportMapContainer() {
     return () => (isSubscribed = false)
   }, [])
 
+  // Remove Duplicates from the array
+  let uniqueBusStopsCollection = removeDuplicates(
+    busStopsCollection,
+    "coordsString"
+  )
+  console.log(uniqueBusStopsCollection.length)
+
   // Now compute bounds of map to display
-  if (mapRef && busStopsCollection != null) {
+  if (mapRef && uniqueBusStopsCollection != null) {
     const bounds = new window.google.maps.LatLngBounds()
-    busStopsCollection.map((busStop) => {
+    uniqueBusStopsCollection.map((busStop) => {
       const myLatLng = new window.google.maps.LatLng({
         lat: busStop.stopCoordinates.lat,
         lng: busStop.stopCoordinates.lng,
@@ -170,8 +193,8 @@ export default function GTFSTransportMapContainer() {
                   />
                 ))
               : null}
-            {/* {busStopsCollection
-              ? busStopsCollection.map((busStop) => (
+            {/* {uniqueBusStopsCollection
+              ? uniqueBusStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stopKey}
                     position={{

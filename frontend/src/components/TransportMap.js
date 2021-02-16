@@ -104,16 +104,16 @@ export default function TransportMapContainer() {
   }, [])
 
   // Remove Duplicates from the array
-  let uniqueBusRoutesCollection = removeDuplicates(
+  let uniqueBusStopsCollection = removeDuplicates(
     busStopsCollection,
     "coordsString"
   )
-  console.log(uniqueBusRoutesCollection.length)
+  console.log(uniqueBusStopsCollection.length)
 
   // Now compute bounds of map to display
-  if (mapRef && busStopsCollection != null) {
+  if (mapRef && uniqueBusStopsCollection != null) {
     const bounds = new window.google.maps.LatLngBounds()
-    busStopsCollection.map((busStop) => {
+    uniqueBusStopsCollection.map((busStop) => {
       const myLatLng = new window.google.maps.LatLng({
         lat: busStop.stopCoordinates.lat,
         lng: busStop.stopCoordinates.lng,
@@ -239,9 +239,9 @@ export default function TransportMapContainer() {
                   />
                 ))
               : null} */}
-            {busStopsCollection
+            {uniqueBusStopsCollection
               ? // && busStopsCheckboxSelected
-                busStopsCollection.map((busStop) => (
+                uniqueBusStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stopKey}
                     position={{

@@ -64,6 +64,8 @@ export const reduceSaveBusRouteAndStops = async (busRoute, singleRoute) => {
         stopColor: busRoute.features[loop].properties.routes[0].route_color,
         stopName: "No Data",
         stopCoordinates: coordsSchema,
+        coordsString:
+          coordsSchema.lat.toFixed(8) + ":" + coordsSchema.lng.toFixed(8), // For removing duplicates
         zone_id: "No Data",
         location_type: 0,
         wheelchair_boarding: 0,
