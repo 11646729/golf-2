@@ -39,7 +39,6 @@
     "sass": "^1.23.7",
     "socket.io-client": "^2.4.0",
     "supercluster": "^7.1.0",
-    "swr": "^0.2.3",
     "typescript": "^3.7.3",
     "use-position": "0.0.6",
     "use-supercluster": "^0.2.8"
