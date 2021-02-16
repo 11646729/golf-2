@@ -108,6 +108,7 @@ export default function TransportMapContainer() {
     busStopsCollection,
     "coordsString"
   )
+
   console.log(uniqueBusStopsCollection.length)
 
   // Now compute bounds of map to display
@@ -168,38 +169,6 @@ export default function TransportMapContainer() {
               <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
           </div>
-          {/* <FormControlLabel
-            style={{
-              marginTop: "0px",
-              marginLeft: "100px",
-            }}
-            control={
-              <Checkbox
-                color="primary"
-                checked={busStopsCheckboxSelected}
-                onChange={handleBusStopsCheckboxChange}
-                name="homeCheckbox"
-              />
-            }
-            label="Display Bus Stops"
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            style={{
-              marginTop: "0px",
-              marginLeft: "100px",
-            }}
-            control={
-              <Checkbox
-                color="primary"
-                checked={busRoutesCheckboxSelected}
-                onChange={handleBusRoutesCheckboxChange}
-                name="busRoutesCheckbox"
-              />
-            }
-            label="Display Bus Routes"
-            labelPlacement="end"
-          /> */}
         </Grid>
         <Grid item xs={12} sm={9}>
           <GoogleMap
@@ -221,8 +190,7 @@ export default function TransportMapContainer() {
             onUnmount={onUnmountHandler}
           >
             {/* {busRoutesCollection
-              ? // && busRoutesCheckboxSelected
-                busRoutesCollection.map((busRoute) => (
+              ? busRoutesCollection.map((busRoute) => (
                   <Polyline
                     key={busRoute.shapeId}
                     path={busRoute.shapeCoordinates}
@@ -240,8 +208,7 @@ export default function TransportMapContainer() {
                 ))
               : null} */}
             {uniqueBusStopsCollection
-              ? // && busStopsCheckboxSelected
-                uniqueBusStopsCollection.map((busStop) => (
+              ? uniqueBusStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stopKey}
                     position={{
@@ -249,6 +216,8 @@ export default function TransportMapContainer() {
                       lng: busStop.stopCoordinates.lng,
                     }}
                     icon={{
+                      // path: window.google.maps.SymbolPath.CIRCLE,
+                      // scale: 2,
                       url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
                     }}
                     onClick={() => {
