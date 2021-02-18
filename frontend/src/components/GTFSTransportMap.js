@@ -45,6 +45,8 @@ export default function GTFSTransportMapContainer() {
   const [busStopSelected, setBusStopSelected] = useState(null)
   const [busRouteSelected, setBusRouteSelected] = useState(null)
 
+  const [busRouteAgencyName, setbusRouteAgencyName] = useState(null)
+
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
@@ -69,6 +71,7 @@ export default function GTFSTransportMapContainer() {
           setBusRoutesCollection(routesResponse.data)
           setBusStopsCollection(stopsResponse.data)
           setUniqueBusRoutesCollection(uniqueRoutesResponse.data)
+          setbusRouteAgencyName(routesResponse.data[0].agencyName)
         })
       )
       .catch((errors) => {
@@ -86,7 +89,6 @@ export default function GTFSTransportMapContainer() {
     busStopsCollection,
     "coordsString"
   )
-  console.log(uniqueBusStopsCollection.length)
 
   // Now compute bounds of map to display
   if (mapRef && uniqueBusStopsCollection != null) {
@@ -216,6 +218,7 @@ export default function GTFSTransportMapContainer() {
         <Grid item xs={12} sm={3}>
           <RouteSelectionPanel
             busRoutesCollection={uniqueBusRoutesCollection}
+            busRoutesSelectedAgency={busRouteAgencyName}
             // busStopsCollection={busStopsCollection}
           />
         </Grid>

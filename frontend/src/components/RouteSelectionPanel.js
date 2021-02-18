@@ -25,13 +25,13 @@ const useStyles = makeStyles({
 export default function RouteSelectionPanel(props) {
   const classes = useStyles()
 
-  const [radioButtonValue, setRadioButtonValue] = React.useState("Hamilton")
+  const [radioButtonValue, setRadioButtonValue] = React.useState(
+    props.busRoutesSelectedAgency
+  )
 
   const handleRadioChange = (event) => {
     setRadioButtonValue(event.target.value)
   }
-
-  console.log("Radio Button: ", radioButtonValue)
 
   // Sort the busRoutesCollection array by increasing busRouteNumber
   let sortedBusRoutesCollection = props.busRoutesCollection
@@ -41,13 +41,18 @@ export default function RouteSelectionPanel(props) {
 
   return (
     <Paper className={classes.routeSelectionList}>
-      {/* <LoadingTitle> Local Routes</LoadingTitle> */}
+      <LoadingTitle> Available Bus Routes</LoadingTitle>
       <FormControl component="fieldset" className={classes.radioButtonGroup}>
-        <RadioGroup row defaultValue="Hamilton" onChange={handleRadioChange}>
+        <RadioGroup
+          row
+          defaultValue="Hamilton Street Railway"
+          // defaultValue={props.busRoutesSelectedAgency}
+          onChange={handleRadioChange}
+        >
           <FormControlLabel
-            value="Hamilton"
+            value={props.busRoutesSelectedAgency}
             control={<Radio color="primary" />}
-            label="Hamilton"
+            label={props.busRoutesSelectedAgency}
             labelPlacement="end"
           />
           <FormControlLabel
