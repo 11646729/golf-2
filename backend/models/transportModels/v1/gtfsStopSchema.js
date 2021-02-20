@@ -5,6 +5,7 @@ const gtfsStopSchema = new Schema(
   {
     databaseVersion: { type: Number },
     agencyName: { type: String },
+    agencyId: { type: String },
     markerType: { type: String },
     stopKey: { type: String },
     stopCode: { type: Number },

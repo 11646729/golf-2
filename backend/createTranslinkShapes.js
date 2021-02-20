@@ -39,6 +39,7 @@ export const createTranslinkShapes = async (req, res) => {
     const busShapes = new TranslinkShapeSchema({
       databaseVersion: process.env.DATABASE_VERSION,
       agencyName: "Translink Buses",
+      agencyId: "MET",
       markerType: rawjson.data.features[loop].geometry.type,
       shapeKey: loop + 1,
       shapeCoordinates: convertedcoords,

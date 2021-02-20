@@ -43,6 +43,7 @@ export const createTranslinkStops = async () => {
     const busStop = new TranslinkStopSchema({
       databaseVersion: process.env.DATABASE_VERSION,
       agencyName: rawjson.data.features[loop].properties.DepotOpsArea,
+      agencyId: "MET",
       markerType: rawjson.data.features[loop].geometry.type,
       stopKey: loop + 1,
       // stopCode: 0,

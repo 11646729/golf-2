@@ -1,11 +1,8 @@
 import React from "react"
 import { Paper, makeStyles } from "@material-ui/core"
-import Radio from "@material-ui/core/Radio"
-import RadioGroup from "@material-ui/core/RadioGroup"
-import FormControlLabel from "@material-ui/core/FormControlLabel"
-import FormControl from "@material-ui/core/FormControl"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionList from "./RouteSelectionList"
+import PanelRadioButtons from "./PanelRadioButtons"
 
 const useStyles = makeStyles({
   routeSelectionList: {
@@ -17,21 +14,10 @@ const useStyles = makeStyles({
     maxHeight: "100%",
     overflow: "auto",
   },
-  radioButtonGroup: {
-    marginLeft: 70,
-  },
 })
 
 export default function RouteSelectionPanel(props) {
   const classes = useStyles()
-
-  const [radioButtonValue, setRadioButtonValue] = React.useState(
-    props.busRoutesSelectedAgency
-  )
-
-  const handleRadioChange = (event) => {
-    setRadioButtonValue(event.target.value)
-  }
 
   // Sort the busRoutesCollection array by increasing busRouteNumber
   let sortedBusRoutesCollection = props.busRoutesCollection
@@ -42,27 +28,10 @@ export default function RouteSelectionPanel(props) {
   return (
     <Paper className={classes.routeSelectionList}>
       <LoadingTitle> Available Bus Routes</LoadingTitle>
-      <FormControl component="fieldset" className={classes.radioButtonGroup}>
-        <RadioGroup
-          row
-          defaultValue="Hamilton Street Railway"
-          // defaultValue={props.busRoutesSelectedAgency}
-          onChange={handleRadioChange}
-        >
-          <FormControlLabel
-            value={props.busRoutesSelectedAgency}
-            control={<Radio color="primary" />}
-            label={props.busRoutesSelectedAgency}
-            labelPlacement="end"
-          />
-          <FormControlLabel
-            value="Translink"
-            control={<Radio color="primary" />}
-            label="Translink"
-            labelPlacement="end"
-          />
-        </RadioGroup>
-      </FormControl>
+      <PanelRadioButtons
+        busRoutesSelectedAgency={props.busRoutesSelectedAgency}
+      />
+
       {sortedBusRoutesCollection
         ? sortedBusRoutesCollection.map((busRoute) => (
             <RouteSelectionList
