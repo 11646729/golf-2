@@ -17,9 +17,6 @@ router.get("/filenames", gtfsController.getGeojsonFilenames)
 // -------------------------------------------------------
 // GTFS Bus Routes
 // -------------------------------------------------------
-// GET a Bus Route by id (filename)
-router.get("/gtfsRoutes/:id", gtfsController.getOneRoute)
-
 // GET all Bus Routes
 router.get("/gtfsRoutes", gtfsController.getAllRoutes)
 

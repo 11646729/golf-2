@@ -32,23 +32,6 @@ export const getGeojsonFilenames = async (req, res) => {
     res.send(filesList)
   })
 }
-// -------------------------------------------------------
-// Bus Routes
-// Path: localhost:5000/api/gtfsTransport/gtfsRoutes/:id
-// -------------------------------------------------------
-export const getOneRoute = async (req, res) => {
-  const rawGeojson =
-    "/Users/briansmith/Documents/GTD/golf-2/backend/geojson/Hamilton Ontario Street Railway/" +
-    req.query.id
-
-  fs.readFile(rawGeojson, "utf8", (err, data) => {
-    if (err) {
-      throw err
-    }
-
-    res.send(JSON.parse(data))
-  })
-}
 
 // -------------------------------------------------------
 // Bus Routes
