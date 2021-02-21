@@ -53,7 +53,7 @@ export default function TransportMapContainer() {
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
-  const [busRoutesCollection, setBusRoutesCollection] = useState([])
+  const [busShapesCollection, setBusShapesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
   const [errorLoading, setLoadingError] = useState([])
 
@@ -62,16 +62,16 @@ export default function TransportMapContainer() {
 
     axios
       .all([
-        // axios.get(
-        // "http://localhost:5000/api/translinkTransport/translinkRoutes"
-        // ),
+        axios.get(
+          "http://localhost:5000/api/translinkTransport/translinkShapes"
+        ),
         axios.get(
           "http://localhost:5000/api/translinkTransport/translinkStops"
         ),
       ])
       .then(
-        axios.spread((stopsResponse) => {
-          // setBusRoutesCollection(routesResponse.data)
+        axios.spread((shapesResponse, stopsResponse) => {
+          setBusShapesCollection(shapesResponse.data)
           setBusStopsCollection(stopsResponse.data)
         })
       )
@@ -161,10 +161,10 @@ export default function TransportMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {/* {busRoutesCollection
-              ? busRoutesCollection.map((busRoute) => (
+            {busShapesCollection
+              ? busShapesCollection.map((busRoute) => (
                   <Polyline
-                    key={busRoute.shapeId}
+                    key={busRoute.shapeKey}
                     path={busRoute.shapeCoordinates}
                     options={{
                       strokeColor: busRoute.routeColor,
@@ -178,8 +178,8 @@ export default function TransportMapContainer() {
                     }}
                   />
                 ))
-              : null} */}
-            {uniqueBusStopsCollection
+              : null}
+            {/* {uniqueBusStopsCollection
               ? uniqueBusStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stopKey}
@@ -197,7 +197,7 @@ export default function TransportMapContainer() {
                     }}
                   />
                 ))
-              : null}
+              : null} */}
           </GoogleMap>
         </Grid>
       </Grid>

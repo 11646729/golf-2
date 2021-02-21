@@ -39,7 +39,7 @@ export const runSwitchboard = (io) => {
   // -----------------------------
   // convertGtfsToGeoJSON()
   // createGtfsRoutesAndGtfsStops()
-  // createPanelListRoutes()
+  createPanelListRoutes()
   // -----------------------------
   // createTranslinkShapes()
   // createTranslinkStops()

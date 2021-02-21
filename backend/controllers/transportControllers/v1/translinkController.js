@@ -30,9 +30,10 @@ export const createTranslinkShapes = async (req, res) => {
 // Bus Routes
 // Path: localhost:5000/api/translinkTransport/translinkShapes
 // -------------------------------------------------------
+const Keys = ["7", "8", "9"]
+
 export const getAllTranslinkShapes = async (req, res) => {
-  TranslinkShapeSchema.find({ shapeId: "25774" })
-    // TranslinkShapeSchema.find({})
+  TranslinkShapeSchema.find({ shapeKey: Keys }) // 3 = Train, 1&2 = Route Endpoints
     .then((translinkShapeSchema) => res.json(translinkShapeSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
@@ -51,14 +52,6 @@ export const createTranslinkStops = async (req, res) => {
 
     res.send(JSON.parse(data))
   })
-
-  // fs.readFile(rawGeojson, function (err, data) {
-  //   if (err) {
-  //     throw err
-  //   }
-
-  //   res.send(data)
-  // })
 }
 
 // -------------------------------------------------------
