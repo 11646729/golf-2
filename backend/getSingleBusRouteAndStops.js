@@ -6,9 +6,7 @@ import { reduceSaveBusRouteAndStops } from "./reduceSaveBusRouteAndStops"
 
 // Function to fetch data from a single GeoJson route file
 export const getSingleBusRouteAndStops = async (singleRoute) => {
-  const rawGeojson =
-    "/Users/briansmith/Documents/GTD/golf-2/backend/geojson/Hamilton Ontario Street Railway/" +
-    singleRoute
+  const rawGeojson = process.env.GEOJSON_FILES_PATH + singleRoute
 
   fs.readFile(rawGeojson, "utf8", (err, data) => {
     if (err) {
