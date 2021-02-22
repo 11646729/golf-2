@@ -11,9 +11,6 @@ router.get("/", translinkController.transportIndex)
 // -------------------------------------------------------
 // Translink Bus Shapes
 // -------------------------------------------------------
-// GET all Raw Translink Shapes
-router.get("/createTranslinkShapes", translinkController.createTranslinkShapes)
-
 // GET all Shapes
 router.get("/translinkShapes", translinkController.getAllTranslinkShapes)
 

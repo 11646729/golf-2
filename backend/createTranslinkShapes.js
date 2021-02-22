@@ -1,4 +1,4 @@
-import axios from "axios"
+const fs = require("fs")
 import { TranslinkShapeSchema } from "./models/transportModels/v1/translinkShapeSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
@@ -14,23 +14,26 @@ export const createTranslinkShapes = async (req, res) => {
       console.log(err.message || "An error occurred while removing all Shapes")
     })
 
-  // Now fetch the raw json file & decode it
-  const rawjson = await axios({
-    url: "http://localhost:5000/api/translinkTransport/createTranslinkShapes",
-    method: "get",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  const rawGeojson = process.env.TRANSLINK_ROUTES_FILEPATH
 
+  fs.readFile(rawGeojson, "utf8", (err, data) => {
+    if (err) {
+      throw err
+    }
+
+    reducedTranslinkRoutes(JSON.parse(data))
+  })
+}
+
+// Function to extract data for reduced dataset then save it in the mongodb database
+const reducedTranslinkRoutes = async (busRoute) => {
   // Test function
-  // const endloop = rawjson.data.features.length
+  // const endloop = busRoute.data.features.length
   const endloop = 10000
 
   let loop = 0
   do {
-    let oldcoords = rawjson.data.features[loop].geometry.coordinates
+    let oldcoords = busRoute.features[loop].geometry.coordinates
     let convertedcoords = decodeInnerArray(oldcoords, oldcoords.length)
 
     console.log("Loop: ", loop)
@@ -40,11 +43,11 @@ export const createTranslinkShapes = async (req, res) => {
       databaseVersion: process.env.DATABASE_VERSION,
       agencyName: "Translink Buses",
       agencyId: "MET",
-      markerType: rawjson.data.features[loop].geometry.type,
+      markerType: busRoute.features[loop].geometry.type,
       shapeKey: loop + 1,
       shapeCoordinates: convertedcoords,
-      from_stop_id: rawjson.data.features[loop].properties.FromStopID,
-      to_stop_id: rawjson.data.features[loop].properties.ToStopID,
+      from_stop_id: busRoute.features[loop].properties.FromStopID,
+      to_stop_id: busRoute.features[loop].properties.ToStopID,
       // shape_pt_sequence: 10000, // + j
       // shape_distance_travelled: 0.0,
     })

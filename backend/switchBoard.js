@@ -41,7 +41,7 @@ export const runSwitchboard = (io) => {
   // createGtfsRoutesAndGtfsStops()
   // createPanelListRoutes()
   // -----------------------------
-  // createTranslinkShapes()
+  createTranslinkShapes()
   // createTranslinkStops()
   // })
   // -----------------------------

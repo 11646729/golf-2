@@ -11,22 +11,6 @@ export const transportIndex = async (req, res) => {
 }
 
 // -------------------------------------------------------
-// Bus Shapes
-// Path: localhost:5000/api/translinkTransport/createTranslinkShapes
-// -------------------------------------------------------
-export const createTranslinkShapes = async (req, res) => {
-  const rawGeojson = "./rawData/translink_ulsterbus_routes.json"
-
-  fs.readFile(rawGeojson, "utf8", (err, data) => {
-    if (err) {
-      throw err
-    }
-
-    res.send(JSON.parse(data))
-  })
-}
-
-// -------------------------------------------------------
 // Bus Routes
 // Path: localhost:5000/api/translinkTransport/translinkShapes
 // -------------------------------------------------------
