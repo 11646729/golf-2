@@ -21,7 +21,7 @@ export async function selectedUniqueRoutesAdd(selectedBusRouteNumber) {
 
   // let res =
   await axios({
-    url: "http://localhost:5000/api/gtfsTransport/gtfsPanelListRoutes",
+    url: "http://localhost:5000/api/transport/gtfsPanelListRoutes",
     data: {
       routeNumber: selectedBusRouteNumber,
       routeVisible: true,
@@ -39,7 +39,7 @@ export async function selectedUniqueRoutesRemove(selectedBusRouteNumber) {
 
   // let res =
   await axios({
-    url: "http://localhost:5000/api/gtfsTransport/gtfsUniqueReducedRoutes",
+    url: "http://localhost:5000/api/transport/gtfsPanelListRoutes",
     data: {
       routeNumber: selectedBusRouteNumber,
       routeVisible: false,

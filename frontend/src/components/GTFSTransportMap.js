@@ -60,11 +60,9 @@ export default function GTFSTransportMapContainer() {
 
     axios
       .all([
-        axios.get("http://localhost:5000/api/gtfsTransport/gtfsRoutes"),
-        axios.get("http://localhost:5000/api/gtfsTransport/gtfsStops"),
-        axios.get(
-          "http://localhost:5000/api/gtfsTransport/gtfsPanelListRoutes"
-        ),
+        axios.get("http://localhost:5000/api/transport/gtfsRoutes"),
+        axios.get("http://localhost:5000/api/transport/gtfsStops"),
+        axios.get("http://localhost:5000/api/transport/gtfsPanelListRoutes"),
       ])
       .then(
         axios.spread((routesResponse, stopsResponse, uniqueRoutesResponse) => {

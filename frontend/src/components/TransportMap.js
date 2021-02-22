@@ -5,13 +5,7 @@ import {
   Marker,
   Polyline,
 } from "@react-google-maps/api"
-import {
-  CssBaseline,
-  Grid,
-  FormControlLabel,
-  Checkbox,
-  makeStyles,
-} from "@material-ui/core"
+import { CssBaseline, Grid, makeStyles } from "@material-ui/core"
 import axios from "axios"
 
 import Title from "./Title"
@@ -62,12 +56,8 @@ export default function TransportMapContainer() {
 
     axios
       .all([
-        axios.get(
-          "http://localhost:5000/api/translinkTransport/translinkShapes"
-        ),
-        axios.get(
-          "http://localhost:5000/api/translinkTransport/translinkStops"
-        ),
+        axios.get("http://localhost:5000/api/transport/translinkShapes"),
+        axios.get("http://localhost:5000/api/transport/translinkStops"),
       ])
       .then(
         axios.spread((shapesResponse, stopsResponse) => {
