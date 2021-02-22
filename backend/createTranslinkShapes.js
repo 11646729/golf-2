@@ -21,12 +21,12 @@ export const createTranslinkShapes = async (req, res) => {
       throw err
     }
 
-    reducedTranslinkRoutes(JSON.parse(data))
+    reduceTranslinkRoutes(JSON.parse(data))
   })
 }
 
 // Function to extract data for reduced dataset then save it in the mongodb database
-const reducedTranslinkRoutes = async (busRoute) => {
+const reduceTranslinkRoutes = async (busRoute) => {
   // Test function
   // const endloop = busRoute.data.features.length
   const endloop = 10000
