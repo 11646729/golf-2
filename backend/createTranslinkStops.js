@@ -14,7 +14,7 @@ export const createTranslinkStops = async () => {
       console.log(err.message || "An error occurred while removing all Stops")
     })
 
-  const rawGeojson = "./rawData/translink_bus_stop_list_january_2018.json"
+  const rawGeojson = process.env.TRANSLINK_STOPS_FILEPATH
 
   fs.readFile(rawGeojson, "utf8", (err, data) => {
     if (err) {
