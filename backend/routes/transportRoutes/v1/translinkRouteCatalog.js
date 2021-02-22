@@ -23,9 +23,6 @@ router.get("/translinkShapes", translinkController.getAllTranslinkShapes)
 // -------------------------------------------------------
 // Translink Bus Stops
 // -------------------------------------------------------
-// GET all Raw Translink Bus Stops
-router.get("/createTranslinkStops", translinkController.createTranslinkStops)
-
 // GET all Bus Stops
 router.get("/translinkStops", translinkController.getAllTranslinkStops)
 

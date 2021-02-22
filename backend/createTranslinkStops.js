@@ -1,4 +1,4 @@
-import axios from "axios"
+const fs = require("fs")
 import { TranslinkStopSchema } from "./models/transportModels/v1/translinkStopSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
@@ -14,26 +14,29 @@ export const createTranslinkStops = async () => {
       console.log(err.message || "An error occurred while removing all Stops")
     })
 
-  // Now fetch the raw json file & decode it
-  const rawjson = await axios({
-    url: "http://localhost:5000/api/translinkTransport/createTranslinkStops",
-    method: "get",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  const rawGeojson = "./rawData/translink_bus_stop_list_january_2018.json"
 
-  const endloop = rawjson.data.features.length
+  fs.readFile(rawGeojson, "utf8", (err, data) => {
+    if (err) {
+      throw err
+    }
+
+    reduceTranslinkStops(JSON.parse(data))
+  })
+}
+
+// Function to extract data for reduced dataset then save it in the mongodb database
+const reduceTranslinkStops = async (busStops) => {
+  const endloop = busStops.features.length
 
   let loop = 0
   do {
     const coordsSchema = new CoordsSchema({
-      lat: rawjson.data.features[loop].properties.Latitude,
-      lng: rawjson.data.features[loop].properties.Longitude,
+      lat: busStops.features[loop].properties.Latitude,
+      lng: busStops.features[loop].properties.Longitude,
     })
 
-    if (rawjson.data.features[loop].geometry.length > 1) {
+    if (busStops.features[loop].geometry.length > 1) {
       console.log("More than 1 point is stored for this feature")
     }
 
@@ -42,18 +45,18 @@ export const createTranslinkStops = async () => {
     // Now create a model instance
     const busStop = new TranslinkStopSchema({
       databaseVersion: process.env.DATABASE_VERSION,
-      agencyName: rawjson.data.features[loop].properties.DepotOpsArea,
+      agencyName: busStops.features[loop].properties.DepotOpsArea,
       agencyId: "MET",
-      markerType: rawjson.data.features[loop].geometry.type,
+      markerType: busStops.features[loop].geometry.type,
       stopKey: loop + 1,
       // stopCode: 0,
-      stopId: rawjson.data.features[loop].properties.LocationID,
+      stopId: busStops.features[loop].properties.LocationID,
       stopColor: "#0093DD",
-      stopName: rawjson.data.features[loop].properties.Stop_Name,
+      stopName: busStops.features[loop].properties.Stop_Name,
       stopCoordinates: coordsSchema,
       coordsString:
         coordsSchema.lat.toFixed(8) + ":" + coordsSchema.lng.toFixed(8), // For removing duplicates
-      zone_id: rawjson.data.features[loop].properties.Fare_Stage,
+      zone_id: busStops.features[loop].properties.Fare_Stage,
       location_type: 0,
       wheelchair_boarding: 0,
     })

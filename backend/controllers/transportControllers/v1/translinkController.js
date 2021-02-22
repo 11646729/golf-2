@@ -1,6 +1,5 @@
-const fs = require("fs")
-import { TranslinkStopSchema } from "../../../models/transportModels/v1/translinkStopSchema"
 import { TranslinkShapeSchema } from "../../../models/transportModels/v1/translinkShapeSchema"
+import { TranslinkStopSchema } from "../../../models/transportModels/v1/translinkStopSchema"
 
 // -------------------------------------------------------
 // Catalogue home page
@@ -20,22 +19,6 @@ export const getAllTranslinkShapes = async (req, res) => {
   TranslinkShapeSchema.find({ shapeKey: Keys }) // 3 = Train, 1&2 = Route Endpoints
     .then((translinkShapeSchema) => res.json(translinkShapeSchema))
     .catch((err) => res.status(400).json("Error " + err))
-}
-
-// -------------------------------------------------------
-// Bus Stops
-// Path: localhost:5000/api/translinkTransport/createTranslinkStops
-// -------------------------------------------------------
-export const createTranslinkStops = async (req, res) => {
-  const rawGeojson = "./rawData/translink_bus_stop_list_january_2018.json"
-
-  fs.readFile(rawGeojson, "utf8", (err, data) => {
-    if (err) {
-      throw err
-    }
-
-    res.send(JSON.parse(data))
-  })
 }
 
 // -------------------------------------------------------
