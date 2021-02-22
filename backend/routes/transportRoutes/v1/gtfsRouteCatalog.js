@@ -9,12 +9,6 @@ const gtfsController = require("../../../controllers/transportControllers/v1/gtf
 router.get("/", gtfsController.transportIndex)
 
 // -------------------------------------------------------
-// GTFS Bus Route GeoJSON Filenames
-// -------------------------------------------------------
-// GET all GeoJSON Route filenames in the directory
-router.get("/filenames", gtfsController.getGeojsonFilenames)
-
-// -------------------------------------------------------
 // GTFS Bus Routes
 // -------------------------------------------------------
 // GET all Bus Routes

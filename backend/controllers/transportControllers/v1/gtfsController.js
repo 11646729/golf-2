@@ -1,5 +1,3 @@
-const fs = require("fs")
-const path = require("path")
 import { GtfsRouteSchema } from "../../../models/transportModels/v1/gtfsRouteSchema"
 import { GtfsPanelListRouteSchema } from "../../../models/transportModels/v1/gtfsPanelListRouteSchema"
 import { GtfsStopSchema } from "../../../models/transportModels/v1/gtfsStopSchema"
@@ -10,27 +8,6 @@ import { GtfsStopSchema } from "../../../models/transportModels/v1/gtfsStopSchem
 // -------------------------------------------------------
 export const transportIndex = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)
-}
-
-// -------------------------------------------------------
-// Filenames
-// Path: localhost:5000/api/gtfsTransport/filenames
-// -------------------------------------------------------
-export const getGeojsonFilenames = async (req, res) => {
-  var geojsonDirectory = path.resolve(
-    "./geojson/Hamilton Ontario Street Railway"
-  )
-
-  fs.readdir(geojsonDirectory, function (err, files) {
-    var filesList = files.filter(function (e) {
-      return path.extname(e).toLowerCase() === ".geojson"
-    })
-    if (err) {
-      throw err
-    }
-
-    res.send(filesList)
-  })
 }
 
 // -------------------------------------------------------

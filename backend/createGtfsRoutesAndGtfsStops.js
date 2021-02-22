@@ -1,4 +1,5 @@
-import axios from "axios"
+const fs = require("fs")
+const path = require("path")
 import { GtfsStopSchema } from "./models/transportModels/v1/gtfsStopSchema"
 import { GtfsRouteSchema } from "./models/transportModels/v1/gtfsRouteSchema"
 import { getSingleBusRouteAndStops } from "./getSingleBusRouteAndStops"
@@ -23,36 +24,24 @@ export const createGtfsRoutesAndGtfsStops = async (req, res) => {
       console.log(err.message || "An error occurred while removing all Stops")
     })
 
-  res = await axios({
-    url: "http://localhost:5000/api/gtfsTransport/filenames",
-    method: "get",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  const geojsonDirectory = process.env.GEOJSON_FILES_PATH
 
-  // Test for Status - 200 is a Success response code
-  if (res.status === 200) {
-    console.log(
-      "Html Status " + res.status + ": Fetched list of geojson filenames"
-    )
+  fs.readdir(geojsonDirectory, function (err, files) {
+    var filesList = files.filter(function (e) {
+      return path.extname(e).toLowerCase() === ".geojson"
+    })
+    if (err) {
+      throw err
+    }
 
-    // Now pass each GeoJson route filename to getSingleBusRouteAndStops function one at a time
+    // Now pass a single GeoJson route filename to getSingleBusRouteAndStops
     let i = 0
     do {
-      let singleRouteFilename = res.data[i]
+      let singleRouteFilename = filesList[i]
 
       getSingleBusRouteAndStops(singleRouteFilename)
 
       i++
-    } while (i < res.data.length)
-    console.log(
-      "Html Status " +
-        res.status +
-        ": Created mongodb documents from geojson files"
-    )
-  } else {
-    console.log("Error fetching list of geojson filenames")
-  }
+    } while (i < filesList.length)
+  })
 }
