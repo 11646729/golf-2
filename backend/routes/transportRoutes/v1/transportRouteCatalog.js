@@ -1,57 +1,56 @@
 import express from "express"
 var router = express.Router()
-const translinkController = require("../../../controllers/transportControllers/v1/translinkController")
-const gtfsController = require("../../../controllers/transportControllers/v1/gtfsController")
+const transportController = require("../../../controllers/transportControllers/v1/transportController")
 
 // -------------------------------------------------------
 // Translink Bus Route Catalogue Home Page
 // -------------------------------------------------------
 // GET index
-router.get("/", translinkController.transportIndex)
+router.get("/", transportController.transportIndex)
 
 // -------------------------------------------------------
 // Translink Bus Shapes
 // -------------------------------------------------------
 // GET all Shapes
-router.get("/translinkShapes", translinkController.getAllTranslinkShapes)
+router.get("/translinkShapes", transportController.getAllTranslinkShapes)
 
 // -------------------------------------------------------
 // Translink Bus Routes
 // -------------------------------------------------------
 // GET all Bus Routes
-// router.get("/translinkRoutes", translinkController.getAllRoutes)
+// router.get("/translinkRoutes", transportController.getAllTranslinkRoutes)
 
 // -------------------------------------------------------
 // Translink Bus Stops
 // -------------------------------------------------------
 // GET all Bus Stops
-router.get("/translinkStops", translinkController.getAllTranslinkStops)
-
-// -------------------------------------------------------
-// GTFS Bus Route Catalogue home page
-// -------------------------------------------------------
-// GET index
-router.get("/", gtfsController.transportIndex)
+router.get("/translinkStops", transportController.getAllTranslinkStops)
 
 // -------------------------------------------------------
 // GTFS Bus Routes
 // -------------------------------------------------------
 // GET all Bus Routes
-router.get("/gtfsRoutes", gtfsController.getAllRoutes)
+router.get("/gtfsRoutes", transportController.getAllGtfsRoutes)
 
 // -------------------------------------------------------
 // GTFS Panel List Bus Routes
 // -------------------------------------------------------
 // GET all Panel List Bus Routes
-router.get("/gtfsPanelListRoutes", gtfsController.getAllPanelListRoutes)
+router.get(
+  "/gtfsPanelListRoutes",
+  transportController.getAllPanelListGtfsRoutes
+)
 
 // PUT Selected Status in the Panel List Bus Routes documents
-router.put("/gtfsPanelListRoutes", gtfsController.putOnePanelListRoutes)
+router.put(
+  "/gtfsPanelListRoutes",
+  transportController.putOnePanelListGtfsRoutes
+)
 
 // -------------------------------------------------------
 // GTFS Bus Stops
 // -------------------------------------------------------
 // GET all Bus Stops
-router.get("/gtfsStops", gtfsController.getAllStops)
+router.get("/gtfsStops", transportController.getAllGtfsStops)
 
 module.exports = router
