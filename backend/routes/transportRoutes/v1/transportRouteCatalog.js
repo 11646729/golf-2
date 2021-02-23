@@ -1,5 +1,5 @@
 import express from "express"
-var router = express.Router()
+const router = express.Router()
 const transportController = require("../../../controllers/transportControllers/v1/transportController")
 
 // -------------------------------------------------------

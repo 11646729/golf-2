@@ -41,7 +41,7 @@ export default function CoursesMapContainer() {
 
   // Now fetch golf courses data
   useEffect(() => {
-    const url = "http://localhost:5000/api/golf/nearbyGolfCourses"
+    const url = "http://localhost:5000/api/golf/nearbycourse/"
 
     const fetchData = async () => {
       try {

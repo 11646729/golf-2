@@ -45,14 +45,13 @@ export default function GTFSTransportMapContainer() {
   const [busStopSelected, setBusStopSelected] = useState(null)
   const [busRouteSelected, setBusRouteSelected] = useState(null)
 
-  const [busRouteAgencyName, setbusRouteAgencyName] = useState(null)
-
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
   const [busRoutesCollection, setBusRoutesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
   const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
+  const [busRouteAgencyName, setbusRouteAgencyName] = useState(null)
   const [errorLoading, setLoadingError] = useState([])
 
   useEffect(() => {
@@ -115,11 +114,11 @@ export default function GTFSTransportMapContainer() {
     setMapRef(null)
   }
 
-  const handleBusStopClick = (event) => {
-    console.log(event)
-    //   // console.log(busStopSelected)
-    //   // setBusStopSelected(busStop)
-  }
+  // const handleBusStopClick = (event) => {
+  //   console.log(event)
+  //     // console.log(busStopSelected)
+  //     // setBusStopSelected(busStop)
+  // }
 
   const handleBusRouteClick = (event) => {
     console.log(event)
