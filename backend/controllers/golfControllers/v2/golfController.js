@@ -1,16 +1,20 @@
 import { NearbyGolfCourseSchema } from "../../../models/golfModels/v2/nearbyGolfCourseSchema"
 import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
 
-// Path localhost:5000/api/golf/
-export const golfIndex = async (req, res) => {
+// -------------------------------------------------------
+// Catalogue Home page
+// Path: localhost:5000/api/golf/
+// -------------------------------------------------------
+export const index = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)
 }
 
-// Path localhost:5000/api/golf/nearbyGolfCourses
-export const findAll = async (req, res) => {
+// -------------------------------------------------------
+// Path: localhost:5000/api/golf/nearbycourses
+// -------------------------------------------------------
+export const getAllCourses = async (req, res) => {
   NearbyGolfCourseSchema.find({})
     .then((data) => {
-      // console.log("Data received from database is: " + data)
       res.send(data)
     })
     .catch((err) => {
@@ -22,8 +26,10 @@ export const findAll = async (req, res) => {
     })
 }
 
-// Path localhost:5000/api/golf/nearbyGolfCourses/:id
-export const findOne = async (req, res) => {
+// -------------------------------------------------------
+// Path: localhost:5000/api/golf/nearbycourses/:id
+// -------------------------------------------------------
+export const getCourse = async (req, res) => {
   const id = req.params.id
 
   NearbyGolfCourseSchema.findById(id)
@@ -42,7 +48,9 @@ export const findOne = async (req, res) => {
     })
 }
 
-// Path localhost:5000/api/golf/nearbyGolfCourses
+// -------------------------------------------------------
+// Path: localhost:5000/api/golf/nearbycourses
+// -------------------------------------------------------
 export const create = async (req, res) => {
   // Validate request
   if (!req.body.location_lat || !req.body.location_lng) {
@@ -83,7 +91,9 @@ export const create = async (req, res) => {
     )
 }
 
-// Path localhost:5000/api/golf/nearbyGolfCourses/:id
+// -------------------------------------------------------
+// Path: localhost:5000/api/golf/nearbycourses/:id
+// -------------------------------------------------------
 export const updateOne = async (req, res) => {
   if (!req.body) {
     return res.status(400).send({
@@ -112,7 +122,9 @@ export const updateOne = async (req, res) => {
     })
 }
 
-// Path localhost:5000/api/golf/nearbyGolfCourses
+// -------------------------------------------------------
+// Path: localhost:5000/api/golf/nearbycourses
+// -------------------------------------------------------
 export const deleteAll = async (req, res) => {
   NearbyGolfCourseSchema.deleteMany({})
     .then((data) => {
@@ -130,25 +142,27 @@ export const deleteAll = async (req, res) => {
     })
 }
 
-// Path localhost:5000/api/golf/nearbyGolfCourses/:id
-export const deleteOne = async (req, res) => {
-  const id = req.params.id
+// -------------------------------------------------------
+// Path: localhost:5000/api/golf/nearbycourses/:id
+// -------------------------------------------------------
+// export const deleteOne = async (req, res) => {
+//   const id = req.params.id
 
-  NearbyGolfCourseSchema.findByIdAndRemove(id)
-    .then((data) => {
-      if (!data) {
-        res.status(404).send({
-          message:
-            "Cannot delete nearbyGolfCourse with id=${id}. Maybe nearbyGolfCourse was not found!",
-        })
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: "Could not delete nearbyGolfCourse with id=" + id,
-      })
-    })
-}
+//   NearbyGolfCourseSchema.findByIdAndRemove(id)
+//     .then((data) => {
+//       if (!data) {
+//         res.status(404).send({
+//           message:
+//             "Cannot delete nearbyGolfCourse with id=${id}. Maybe nearbyGolfCourse was not found!",
+//         })
+//       }
+//     })
+//     .catch((err) => {
+//       res.status(500).send({
+//         message: "Could not delete nearbyGolfCourse with id=" + id,
+//       })
+//     })
+// }
 
 // Function to save nearby golf course data to mongodb
 // Longitude first in Javascript

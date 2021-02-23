@@ -17,11 +17,22 @@ import {
   Button,
   Link,
   CardActions,
+  makeStyles,
 } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 
+const useStyles = makeStyles({
+  headerSelection: {
+    marginTop: 55,
+    marginLeft: 20,
+    width: "100%",
+  },
+})
+
 export default function CoursesMapContainer() {
+  const classes = useStyles()
+
   // -----------------------------------------------------
   // STATE HOOKS
   // -----------------------------------------------------
@@ -41,13 +52,13 @@ export default function CoursesMapContainer() {
 
   // Now fetch golf courses data
   useEffect(() => {
-    const url = "http://localhost:5000/api/golf/nearbycourse/"
-
     const fetchData = async () => {
       try {
         setDataLoading(true)
 
-        const result = await axios(url)
+        const result = await axios(
+          "http://localhost:5000/api/golf/nearbycourse/"
+        )
 
         setData(result.data)
       } catch (err) {
@@ -104,24 +115,29 @@ export default function CoursesMapContainer() {
   const renderMap = () => (
     <div>
       <CssBaseline />
-      <Grid container>
+      <Grid container spacing={1}>
         <Container maxWidth="xl">
-          <Grid item xs={12} sm={12} style={{ marginTop: 50, width: "100%" }}>
-            <Title>Nearby Golf Courses</Title>
-            {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
-            {errorLoading ? (
-              <LoadingTitle>
-                Error Loading...
-                {errorLoadingMessage}
-              </LoadingTitle>
-            ) : null}
+          <Grid item xs={12}>
+            <div className={classes.headerSelection}>
+              <Title>Nearby Golf Courses</Title>
+              {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
+              {errorLoading ? (
+                <LoadingTitle>
+                  Error Loading...
+                  {errorLoadingMessage}
+                </LoadingTitle>
+              ) : null}
+            </div>
           </Grid>
           <Grid item xs={12} sm={12}>
             <GoogleMap
               mapContainerStyle={{
-                height: "600px",
+                height: "580px",
                 width: "97%",
-                margin: 20,
+                border: "1px solid #ccc",
+                marginLeft: 20,
+                marginRight: 10,
+                marginBottom: 50,
               }}
               center={mapCenter}
               zoom={mapZoom}
