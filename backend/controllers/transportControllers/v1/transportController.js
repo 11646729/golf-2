@@ -6,15 +6,26 @@ import { TranslinkStopSchema } from "../../../models/transportModels/v1/translin
 
 // -------------------------------------------------------
 // Catalogue Home page
-// Path: localhost:5000/api/gtfsTransport/
+// Path: localhost:5000/api/transport/
 // -------------------------------------------------------
-export const transportIndex = async (req, res) => {
+export const index = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)
 }
 
 // -------------------------------------------------------
+// Bus Shapes
+// Path: localhost:5000/api/transport/tshapes/
+// -------------------------------------------------------
+const Keys = ["7", "8", "9"]
+
+export const getAllTranslinkShapes = async (req, res) => {
+  TranslinkShapeSchema.find({ shapeKey: Keys }) // 3 = Train, 1&2 = Route Endpoints
+    .then((translinkShapeSchema) => res.json(translinkShapeSchema))
+    .catch((err) => res.status(400).json("Error " + err))
+}
+// -------------------------------------------------------
 // Bus Routes
-// Path: localhost:5000/api/gtfsTransport/gtfsRoutes
+// Path: localhost:5000/api/transport/groutes/
 // -------------------------------------------------------
 export const getAllGtfsRoutes = async (req, res) => {
   GtfsRouteSchema.find({})
@@ -24,7 +35,7 @@ export const getAllGtfsRoutes = async (req, res) => {
 
 // -------------------------------------------------------
 // Panel List Bus Routes
-// Path: localhost:5000/api/gtfsTransport/gtfsPanelListRoutes
+// Path: localhost:5000/api/transport/gplroutes/
 // -------------------------------------------------------
 export const getAllPanelListGtfsRoutes = async (req, res) => {
   GtfsPanelListRouteSchema.find({})
@@ -32,10 +43,6 @@ export const getAllPanelListGtfsRoutes = async (req, res) => {
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// -------------------------------------------------------
-// Panel List Bus Routes
-// Path: localhost:5000/api/gtfsTransport/gtfsPanelListRoutes
-// -------------------------------------------------------
 export const putOnePanelListGtfsRoutes = async (req, res) => {
   const filter = { routeNumber: req.body.routeNumber }
   const update = { routeVisible: req.body.routeVisible }
@@ -47,7 +54,7 @@ export const putOnePanelListGtfsRoutes = async (req, res) => {
 
 // -------------------------------------------------------
 // Bus Stops
-// Path: localhost:5000/api/gtfsTransport/gtfsStops
+// Path: localhost:5000/api/transport/gstops/
 // -------------------------------------------------------
 export const getAllGtfsStops = async (req, res) => {
   GtfsStopSchema.find({})
@@ -55,22 +62,6 @@ export const getAllGtfsStops = async (req, res) => {
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// -------------------------------------------------------
-// Bus Routes
-// Path: localhost:5000/api/translinkTransport/translinkShapes
-// -------------------------------------------------------
-const Keys = ["7", "8", "9"]
-
-export const getAllTranslinkShapes = async (req, res) => {
-  TranslinkShapeSchema.find({ shapeKey: Keys }) // 3 = Train, 1&2 = Route Endpoints
-    .then((translinkShapeSchema) => res.json(translinkShapeSchema))
-    .catch((err) => res.status(400).json("Error " + err))
-}
-
-// -------------------------------------------------------
-// Bus Stops
-// Path: localhost:5000/api/translinkTransport/translinkStops
-// -------------------------------------------------------
 export const getAllTranslinkStops = async (req, res) => {
   TranslinkStopSchema.find({})
     .then((translinkStopSchema) => res.json(translinkStopSchema))
