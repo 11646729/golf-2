@@ -14,7 +14,7 @@ export const index = async (req, res) => {
 
 // -------------------------------------------------------
 // Bus Shapes
-// Path: localhost:5000/api/transport/tshapes/
+// Path: localhost:5000/api/transport/tshape/
 // -------------------------------------------------------
 const Keys = ["7", "8", "9"]
 
@@ -25,7 +25,7 @@ export const getAllTranslinkShapes = async (req, res) => {
 }
 // -------------------------------------------------------
 // Bus Routes
-// Path: localhost:5000/api/transport/groutes/
+// Path: localhost:5000/api/transport/groute/
 // -------------------------------------------------------
 export const getAllGtfsRoutes = async (req, res) => {
   GtfsRouteSchema.find({})
@@ -35,7 +35,7 @@ export const getAllGtfsRoutes = async (req, res) => {
 
 // -------------------------------------------------------
 // Panel List Bus Routes
-// Path: localhost:5000/api/transport/gplroutes/
+// Path: localhost:5000/api/transport/gplroute/
 // -------------------------------------------------------
 export const getAllPanelListGtfsRoutes = async (req, res) => {
   GtfsPanelListRouteSchema.find({})
@@ -54,7 +54,7 @@ export const putOnePanelListGtfsRoutes = async (req, res) => {
 
 // -------------------------------------------------------
 // Bus Stops
-// Path: localhost:5000/api/transport/gstops/
+// Path: localhost:5000/api/transport/gstop/
 // -------------------------------------------------------
 export const getAllGtfsStops = async (req, res) => {
   GtfsStopSchema.find({})

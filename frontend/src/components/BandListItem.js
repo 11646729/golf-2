@@ -20,7 +20,7 @@ export async function selectedUniqueRoute(selectedBusRouteNumber, selected) {
   // console.log("Bus Route to change: ", selectedBusRouteNumber)
 
   await axios({
-    url: "http://localhost:5000/api/transport/gplroutes/",
+    url: "http://localhost:5000/api/transport/gplroute/",
     data: {
       routeNumber: selectedBusRouteNumber,
       routeVisible: selected,
