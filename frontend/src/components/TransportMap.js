@@ -56,8 +56,8 @@ export default function TransportMapContainer() {
 
     axios
       .all([
-        axios.get("http://localhost:5000/api/transport/translinkShapes"),
-        axios.get("http://localhost:5000/api/transport/translinkStops"),
+        axios.get("http://localhost:5000/api/transport/tshapes/"),
+        axios.get("http://localhost:5000/api/transport/tstops/"),
       ])
       .then(
         axios.spread((shapesResponse, stopsResponse) => {

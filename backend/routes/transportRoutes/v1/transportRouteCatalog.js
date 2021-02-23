@@ -12,7 +12,7 @@ router.get("/", transportController.transportIndex)
 // Translink Bus Shapes
 // -------------------------------------------------------
 // GET all Shapes
-router.get("/translinkShapes", transportController.getAllTranslinkShapes)
+router.get("/tshapes/", transportController.getAllTranslinkShapes)
 
 // -------------------------------------------------------
 // Translink Bus Routes
@@ -24,33 +24,27 @@ router.get("/translinkShapes", transportController.getAllTranslinkShapes)
 // Translink Bus Stops
 // -------------------------------------------------------
 // GET all Bus Stops
-router.get("/translinkStops", transportController.getAllTranslinkStops)
+router.get("/tstops/", transportController.getAllTranslinkStops)
 
 // -------------------------------------------------------
 // GTFS Bus Routes
 // -------------------------------------------------------
 // GET all Bus Routes
-router.get("/gtfsRoutes", transportController.getAllGtfsRoutes)
+router.get("/groutes/", transportController.getAllGtfsRoutes)
 
 // -------------------------------------------------------
 // GTFS Panel List Bus Routes
 // -------------------------------------------------------
 // GET all Panel List Bus Routes
-router.get(
-  "/gtfsPanelListRoutes",
-  transportController.getAllPanelListGtfsRoutes
-)
+router.get("/gplroutes/", transportController.getAllPanelListGtfsRoutes)
 
 // PUT Selected Status in the Panel List Bus Routes documents
-router.put(
-  "/gtfsPanelListRoutes",
-  transportController.putOnePanelListGtfsRoutes
-)
+router.put("/gplroutes/", transportController.putOnePanelListGtfsRoutes)
 
 // -------------------------------------------------------
 // GTFS Bus Stops
 // -------------------------------------------------------
 // GET all Bus Stops
-router.get("/gtfsStops", transportController.getAllGtfsStops)
+router.get("/gstops/", transportController.getAllGtfsStops)
 
 module.exports = router

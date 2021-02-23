@@ -16,33 +16,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export async function selectedUniqueRoutesAdd(selectedBusRouteNumber) {
-  console.log("Bus Route to add: ", selectedBusRouteNumber)
+export async function selectedUniqueRoute(selectedBusRouteNumber, selected) {
+  // console.log("Bus Route to change: ", selectedBusRouteNumber)
 
-  // let res =
   await axios({
-    url: "http://localhost:5000/api/transport/gtfsPanelListRoutes",
+    url: "http://localhost:5000/api/transport/gplroutes/",
     data: {
       routeNumber: selectedBusRouteNumber,
-      routeVisible: true,
-    },
-    method: "PUT",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-}
-
-export async function selectedUniqueRoutesRemove(selectedBusRouteNumber) {
-  console.log("Bus Route to remove: ", selectedBusRouteNumber)
-
-  // let res =
-  await axios({
-    url: "http://localhost:5000/api/transport/gtfsPanelListRoutes",
-    data: {
-      routeNumber: selectedBusRouteNumber,
-      routeVisible: false,
+      routeVisible: selected,
     },
     method: "PUT",
     timeout: 8000,
@@ -63,10 +44,10 @@ export default function BandListItem(props) {
     // These if choices refer to checkbox state before changes
     if (routeVisibleCheckbox === true) {
       setRouteVisibleCheckbox(false)
-      selectedUniqueRoutesRemove(routeNumber)
+      selectedUniqueRoute(routeNumber, false)
     } else {
       setRouteVisibleCheckbox(true)
-      selectedUniqueRoutesAdd(routeNumber)
+      selectedUniqueRoute(routeNumber, true)
     }
   }
 
