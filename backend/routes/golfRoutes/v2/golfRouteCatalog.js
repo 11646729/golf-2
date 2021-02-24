@@ -8,33 +8,33 @@ const golfController = require("../../../controllers/golfControllers/v2/golfCont
 router.get("/", golfController.index)
 
 // -------------------------------------------------------
-// GET all nearby Golf Courses
+// GET all Golf Courses
 // -------------------------------------------------------
-router.get("/nearbycourse/", golfController.getAllCourses)
+router.get("/course/", golfController.getAllCourses)
 
 // -------------------------------------------------------
-// GET a nearby Golf Course by id
+// GET a Golf Course by id
 // -------------------------------------------------------
-// router.get("/nearbycourse/:id", golfController.getCourse)
+// router.get("/course/:id", golfController.getCourse)
 
 // -------------------------------------------------------
-// POST a new nearby Golf Course
+// POST a new Golf Course
 // -------------------------------------------------------
-// router.post("/nearbycourse/", golfController.create)
+// router.post("/course/", golfController.create)
 
 // -------------------------------------------------------
-// UPDATE a nearby Golf Course by id
+// UPDATE a Golf Course by id
 // -------------------------------------------------------
-// router.put("/nearbycourse/:id", golfController.updateOne)
+// router.put("/course/:id", golfController.updateOne)
 
 // -------------------------------------------------------
-// DELETE all nearby Golf Courses
+// DELETE all Golf Courses
 // -------------------------------------------------------
-// router.delete("/nearbycourse/", golfController.deleteAll)
+// router.delete("/course/", golfController.deleteAll)
 
 // -------------------------------------------------------
-// DELETE a nearbyGolfCourse by id
+// DELETE a GolfCourse by id
 // -------------------------------------------------------
-// router.delete("/nearbycourse/:id", golfController.deleteOne)
+// router.delete("/course/:id", golfController.deleteOne)
 
 module.exports = router

@@ -65,8 +65,8 @@ connection.once("open", () => {
 
 // Routers use Controllers as per Express Tutorial
 const golfRouter = require("./routes/golfRoutes/v2/golfRouteCatalog")
-const weatherRouter = require("./routes/weatherRoutes/v1/weatherCatalogRoute")
-const cruiseRouter = require("./routes/cruiseRoutes/v1/cruiseCatalogRoute")
+const weatherRouter = require("./routes/weatherRoutes/v1/weatherRouteCatalog")
+const cruiseRouter = require("./routes/cruiseRoutes/v1/cruiseRouteCatalog")
 const transportRouter = require("./routes/transportRoutes/v1/transportRouteCatalog")
 
 // Routes

@@ -1,4 +1,4 @@
-import { NearbyGolfCourseSchema } from "../../models/golfModels/v1/nearbyGolfCourseSchema"
+import { GolfCourseSchema } from "../../models/golfModels/v1/golfCourseSchema"
 import { GolfCourseDetailsSchema } from "../../models/golfModels/v1/golfCourseDetailsSchema"
 import { CoordsSchema } from "../../models/commonModels/v1/coordsSchema"
 
@@ -7,15 +7,15 @@ export function index_get(req, res) {
   res.send({ response: "I am alive" }).status(200)
 }
 
-// Path localhost:5000/api/golf/nearbyGolfCourses
-export function nearby_golf_course_getAll(req, res) {
-  NearbyGolfCourseSchema.find({})
-    .then((nearbyGolfCourseSchema) => res.json(nearbyGolfCourseSchema))
+// Path localhost:5000/api/golf/golfCourses
+export function golf_course_getAll(req, res) {
+  GolfCourseSchema.find({})
+    .then((golfCourseSchema) => res.json(golfCourseSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
-// Path localhost:5000/api/golf/nearbyGolfCourses/add
-export function nearby_golf_course_add(req, res) {
+// Path localhost:5000/api/golf/golfCourses/add
+export function golf_course_add(req, res) {
   const location = new CoordsSchema({
     lat: req.body.location_lat,
     lng: req.body.location_lng,
@@ -31,16 +31,16 @@ export function nearby_golf_course_add(req, res) {
     location: location,
   })
 
-  const nearbyGolfCourse = new NearbyGolfCourseSchema({
-    databaseVersion: req.body.nearby_golf_course.database_version,
-    type: req.body.nearby_golf_course.type,
-    crsName: req.body.nearby_golf_course.crs_name,
-    crsUrn: req.body.nearby_golf_course.crs_urn,
+  const golfCourse = new GolfCourseSchema({
+    databaseVersion: req.body.golf_course.database_version,
+    type: req.body.golf_course.type,
+    crsName: req.body.golf_course.crs_name,
+    crsUrn: req.body.golf_course.crs_urn,
     courses: golfCourseDetails,
   })
 
-  nearbyGolfCourse
+  golfCourse
     .save()
-    .then(() => res.json("Nearby Golf Course Details added!"))
+    .then(() => res.json("Golf Course Details added!"))
     .catch((err) => res.status(400).json("Error: " + err))
 }

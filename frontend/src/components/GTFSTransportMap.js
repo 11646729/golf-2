@@ -22,7 +22,7 @@ const useStyles = makeStyles({
   headerSelection: {
     marginTop: 55,
     marginLeft: 20,
-    width: "100%",
+    width: "97%",
   },
 })
 
@@ -145,12 +145,12 @@ export default function GTFSTransportMapContainer() {
         <Grid item xs={12} sm={9}>
           <GoogleMap
             mapContainerStyle={{
-              height: "580px",
+              height: "600px",
               width: "97%",
               border: "1px solid #ccc",
               marginLeft: 20,
               marginRight: 10,
-              marginBottom: 50,
+              marginBottom: 20,
             }}
             center={mapCenter}
             zoom={mapZoom}

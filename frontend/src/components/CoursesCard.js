@@ -36,7 +36,7 @@ export default function CoursesCard() {
       <CardMedia
         className={classes.cardMedia}
         image="/static/images/NearbyGolfClubs.jpg"
-        title="Nearby Golf Courses"
+        title="Golf Courses"
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">

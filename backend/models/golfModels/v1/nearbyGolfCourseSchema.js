@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose"
 import { GolfCourseDetailsSchema } from "./golfCourseDetailsSchema"
 
-const nearbyGolfCourseSchema = new Schema(
+const golfCourseSchema = new Schema(
   {
     databaseVersion: { type: Number, default: 1.0 },
     type: { type: String, default: "FeatureCollection" },
@@ -14,7 +14,4 @@ const nearbyGolfCourseSchema = new Schema(
   }
 )
 
-export const NearbyGolfCourseSchema = mongoose.model(
-  "nearbyGolfCourse",
-  nearbyGolfCourseSchema
-)
+export const GolfCourseSchema = mongoose.model("golfCourse", golfCourseSchema)

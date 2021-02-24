@@ -7,7 +7,7 @@ import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
-import { saveNearbyGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
+import { saveGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
 import { createGtfsRoutesAndGtfsStops } from "./createGtfsRoutesAndGtfsStops"
 import { createPanelListRoutes } from "./createPanelListRoutes"
@@ -37,6 +37,8 @@ export const runSwitchboard = (io) => {
   // -----------------------------
   // runCron()
   // -----------------------------
+  // saveGolfCourseDataToDatabase()
+  // -----------------------------
   // convertGtfsToGeoJSON()
   // createGtfsRoutesAndGtfsStops()
   // createPanelListRoutes()
@@ -51,13 +53,6 @@ export const runSwitchboard = (io) => {
   //     emitDarkSkiesData(socket, result).then(() => {
   //       console.log("Fetched temperature value")
   //     })
-  //   })
-  // })
-  // Save data to database every 10 minutes
-  // cron.schedule("*/10 * * * *", () => {
-  //   deleteAllBusStops()
-  //   saveNearbyGolfCourseDataToDatabase().then(() => {
-  //     console.log("In switchboard function saveGolfCourseDataToDatabase")
   //   })
   // })
   // socket.off("fetchLocation", () => {
