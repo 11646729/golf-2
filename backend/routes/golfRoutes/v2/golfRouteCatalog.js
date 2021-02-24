@@ -15,26 +15,16 @@ router.get("/course/", golfController.getAllCourses)
 // -------------------------------------------------------
 // GET a Golf Course by id
 // -------------------------------------------------------
-// router.get("/course/:id", golfController.getCourse)
-
-// -------------------------------------------------------
-// POST a new Golf Course
-// -------------------------------------------------------
-// router.post("/course/", golfController.create)
-
-// -------------------------------------------------------
-// UPDATE a Golf Course by id
-// -------------------------------------------------------
-// router.put("/course/:id", golfController.updateOne)
+// router.get("/course/:id", golfController.getOneCourse)
 
 // -------------------------------------------------------
 // DELETE all Golf Courses
 // -------------------------------------------------------
-// router.delete("/course/", golfController.deleteAll)
+// router.delete("/course/", golfController.deleteAllCourses)
 
 // -------------------------------------------------------
 // DELETE a GolfCourse by id
 // -------------------------------------------------------
-// router.delete("/course/:id", golfController.deleteOne)
+// router.delete("/course/:id", golfController.deleteOneCourse)
 
 module.exports = router

@@ -29,7 +29,7 @@ export const getAllCourses = async (req, res) => {
 // -------------------------------------------------------
 // Path: localhost:5000/api/golf/courses/:id
 // -------------------------------------------------------
-// export const getCourse = async (req, res) => {
+// export const getOneCourse = async (req, res) => {
 //   const id = req.params.id
 
 //   GolfCourseSchema.findById(id)
@@ -46,39 +46,9 @@ export const getAllCourses = async (req, res) => {
 // }
 
 // -------------------------------------------------------
-// Path: localhost:5000/api/golf/courses/:id
-// -------------------------------------------------------
-// export const updateOne = async (req, res) => {
-//   if (!req.body) {
-//     return res.status(400).send({
-//       message: "Data to update cannot be empty!",
-//     })
-//   }
-
-//   const id = req.params.id
-
-//   GolfCourseSchema.findByIdAndUpdate(id, req.body, {
-//     useFindAndModify: false,
-//   })
-//     .then((data) => {
-//       if (!data)
-//         res.status(404).send({
-//           message:
-//             "Cannnot update golfCourse with id=${id}. Maybe golfCourse was not found!",
-//         })
-//       else res.send({ message: "Golf Course was updated successfully." })
-//     })
-//     .catch((err) => {
-//       res.status(500).send({
-//         message: err.message || "Error updating golfCourse with id= " + id,
-//       })
-//     })
-// }
-
-// -------------------------------------------------------
 // Path: localhost:5000/api/golf/courses
 // -------------------------------------------------------
-// export const deleteAll = async (req, res) => {
+// export const deleteAllCourses = async (req, res) => {
 //   GolfCourseSchema.deleteMany({})
 //     .then((data) => {
 //       res.send({
@@ -96,7 +66,7 @@ export const getAllCourses = async (req, res) => {
 // -------------------------------------------------------
 // Path: localhost:5000/api/golf/courses/:id
 // -------------------------------------------------------
-// export const deleteOne = async (req, res) => {
+// export const deleteOneCourse = async (req, res) => {
 //   const id = req.params.id
 
 //   GolfCourseSchema.findByIdAndRemove(id)
@@ -164,9 +134,9 @@ const reduceGolfCourses = (courses) => {
       crsUrn: "urn:ogc:def:crs:OGC:1.3:CRS84",
       name: courses.features[loop].properties.name,
       phoneNumber: courses.features[loop].properties.phoneNumber,
-      photoTitle: "TODO: photo title",
-      photoUrl: "TODO: photo url",
-      description: "TODO: photo description",
+      photoTitle: courses.features[loop].properties.photoTitle,
+      photoUrl: courses.features[loop].properties.photoUrl,
+      description: courses.features[loop].properties.description,
       coordinates: golfCourseCoords,
     })
 
