@@ -7,7 +7,7 @@ import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
-import { createGolfCourses } from "./controllers/golfControllers/v2/golfController"
+import { createGolfCourses } from "./createGolfCourses"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
 import { createGtfsRoutesAndGtfsStops } from "./createGtfsRoutesAndGtfsStops"
 import { createPanelListRoutes } from "./createPanelListRoutes"
