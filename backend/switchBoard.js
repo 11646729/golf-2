@@ -7,7 +7,7 @@ import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
-import { saveGolfCourseDataToDatabase } from "./controllers/golfControllers/v2/golfController"
+import { createGolfCourses } from "./controllers/golfControllers/v2/golfController"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
 import { createGtfsRoutesAndGtfsStops } from "./createGtfsRoutesAndGtfsStops"
 import { createPanelListRoutes } from "./createPanelListRoutes"
@@ -37,7 +37,7 @@ export const runSwitchboard = (io) => {
   // -----------------------------
   // runCron()
   // -----------------------------
-  // saveGolfCourseDataToDatabase()
+  // createGolfCourses()
   // -----------------------------
   // convertGtfsToGeoJSON()
   // createGtfsRoutesAndGtfsStops()
