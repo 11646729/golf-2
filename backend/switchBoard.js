@@ -2,11 +2,11 @@ import cron from "node-cron"
 import { directDeleteAll as deleteAllPortArrivals } from "./controllers/cruiseControllers/v1/portArrivalsController"
 import { directDeleteAll as deleteAllVesselDetails } from "./controllers/cruiseControllers/v1/vesselDetailsController"
 import { directDeleteAll as deleteAllTemperatures } from "./controllers/weatherControllers/v1/weatherController"
-import { runCron } from "./cronRoutines"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
+import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines"
 import { createGolfCourses } from "./createGolfCourses"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
 import { createGtfsRoutesAndGtfsStops } from "./createGtfsRoutesAndGtfsStops"
@@ -35,7 +35,7 @@ export const runSwitchboard = (io) => {
   // -----------------------------
   // deleteAllTemperatures()
   // -----------------------------
-  // runCron()
+  // fetchPortArrivalsAndVessels()
   // -----------------------------
   // createGolfCourses()
   // -----------------------------

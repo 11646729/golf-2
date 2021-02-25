@@ -1,12 +1,14 @@
-"use strict"
-
 import { getAllVesselArrivals } from "./scrapeArrivals"
 import { getSingleVesselDetails } from "./scrapeVessels"
 import { PortArrivalSchema } from "./models/cruiseModels/v1/portArrivalSchema"
 import { VesselDetailsSchema } from "./models/cruiseModels/v1/vesselDetailsSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
-export async function runCron() {
+// -------------------------------------------------------
+// Fetch Port Arrivals & Vessel Details
+// Path: Function called in switchBoard
+// -------------------------------------------------------
+export const fetchPortArrivalsAndVessels = async () => {
   let vesselUrls = await getAndSavePortArrivals()
 
   // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
@@ -58,7 +60,11 @@ export async function runCron() {
   console.log(DeduplicatedVesselUrlArray.length + " Vessel Details added")
 }
 
-export async function getAndSavePortArrivals() {
+// -------------------------------------------------------
+// Fetch Port Arrivals Details
+// Path: Local function called by fetchPortArrivalsAndVessels
+// -------------------------------------------------------
+const getAndSavePortArrivals = async () => {
   let allArrivalsVesselUrls = []
 
   let allArrivals = await getAllVesselArrivals()

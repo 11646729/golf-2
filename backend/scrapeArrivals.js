@@ -3,7 +3,7 @@ import cheerio from "cheerio"
 import { PortArrivalSchema } from "./models/cruiseModels/v1/portArrivalSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
-export async function getAllVesselArrivals() {
+export const getAllVesselArrivals = async () => {
   let allVesselMovements = []
   let vesselArrivals = []
 
@@ -28,7 +28,7 @@ export async function getAllVesselArrivals() {
   return allVesselMovements
 }
 
-export async function getScheduleMonths() {
+const getScheduleMonths = async () => {
   // Fetch the initial data
   const { data: html } = await axios.get(process.env.TEST_INITIAL_URL)
 
@@ -56,7 +56,7 @@ export async function getScheduleMonths() {
   return monthYearStringArray
 }
 
-export async function getVesselArrivals(period) {
+const getVesselArrivals = async (period) => {
   let arrivalUrl =
     process.env.TEST_CRUISE_MAPPER_URL +
     "?tab=schedule&month=" +
