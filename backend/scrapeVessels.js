@@ -1,8 +1,5 @@
 import axios from "axios"
 import cheerio from "cheerio"
-import dotenv from "dotenv"
-
-dotenv.config()
 
 export async function getSingleVesselDetails(VesselUrl) {
   // Fetch the initial data
