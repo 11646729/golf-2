@@ -44,7 +44,7 @@ export const runSwitchboard = (io) => {
   // createPanelListRoutes()
   // -----------------------------
   // createTranslinkShapes()
-  createTranslinkStops()
+  // createTranslinkStops()
   // })
   // -----------------------------
   // Fetch data every 1 minutes
