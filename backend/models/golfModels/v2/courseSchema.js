@@ -5,7 +5,6 @@ const golfCourseSchema = new Schema(
   {
     databaseVersion: { type: Number },
     type: { type: String },
-    crsName: { type: String },
     crsUrn: { type: String },
     name: { type: String },
     phoneNumber: { type: String },

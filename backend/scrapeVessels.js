@@ -1,5 +1,3 @@
-"use strict"
-
 import axios from "axios"
 import cheerio from "cheerio"
 import dotenv from "dotenv"

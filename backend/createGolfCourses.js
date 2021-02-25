@@ -21,20 +21,19 @@ export const createGolfCourses = () => {
             throw err
           }
 
+          // Thirdly format data then save it in the mongodb database
           reduceGolfCourses(JSON.parse(data))
         }
       )
     })
     .catch((err) => {
-      console.log(
-        err.message || "An error occurred while deleting old Golf Courses"
-      )
+      console.log(err.message)
     })
 }
 
-// ------------------------------------------------------------------
-// Local function to format data then save it in the mongodb database
-// ------------------------------------------------------------------
+// -------------------------------------------------------
+// Local function
+// -------------------------------------------------------
 const reduceGolfCourses = (courses) => {
   let loop = 0
   do {
@@ -46,9 +45,8 @@ const reduceGolfCourses = (courses) => {
     // Now create a model instance
     const golfCourse = new GolfCourseSchema({
       databaseVersion: process.env.DATABASE_VERSION,
-      type: "Golf Club",
-      crsName: "WGS84",
-      crsUrn: "urn:ogc:def:crs:OGC:1.3:CRS84",
+      type: process.env.TYPE_GOLF_CLUB,
+      crsUrn: courses.crs.properties.name,
       name: courses.features[loop].properties.name,
       phoneNumber: courses.features[loop].properties.phoneNumber,
       photoTitle: courses.features[loop].properties.photoTitle,
@@ -60,7 +58,9 @@ const reduceGolfCourses = (courses) => {
     // Now save in mongoDB
     golfCourse
       .save()
-      .catch((err) => console.log("Error saving golfCourse to mongoDB " + err))
+      .catch((err) =>
+        console.log("Error saving Golf Courses to database " + err)
+      )
 
     loop++
   } while (loop < courses.features.length)

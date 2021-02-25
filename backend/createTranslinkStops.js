@@ -2,31 +2,31 @@ const fs = require("fs")
 import { TranslinkStopSchema } from "./models/transportModels/v1/translinkStopSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
-// Function to save Translink busStop data to mongodb
-// Longitude first in Javascript
-export const createTranslinkStops = async () => {
-  // Firstly delete all existing Stops in the database
+// -------------------------------------------------------
+// Create Bus Stops in the Database
+// Path: local function called in switchBoard
+// -------------------------------------------------------
+export const createTranslinkStops = () => {
+  // Firstly delete all existing Bus Stops in the database
   TranslinkStopSchema.deleteMany({})
     .then((res) => {
       console.log("No of Stops successfully deleted: ", res.deletedCount)
+
+      fs.readFile(process.env.TRANSLINK_STOPS_FILEPATH, "utf8", (err, data) => {
+        if (err) {
+          throw err
+        }
+
+        reduceTranslinkStops(JSON.parse(data))
+      })
     })
     .catch((err) => {
-      console.log(err.message || "An error occurred while removing all Stops")
+      console.log(err.message)
     })
-
-  const rawGeojson = process.env.TRANSLINK_STOPS_FILEPATH
-
-  fs.readFile(rawGeojson, "utf8", (err, data) => {
-    if (err) {
-      throw err
-    }
-
-    reduceTranslinkStops(JSON.parse(data))
-  })
 }
 
 // Function to extract data for reduced dataset then save it in the mongodb database
-const reduceTranslinkStops = async (busStops) => {
+const reduceTranslinkStops = (busStops) => {
   const endloop = busStops.features.length
 
   let loop = 0
@@ -39,8 +39,6 @@ const reduceTranslinkStops = async (busStops) => {
     if (busStops.features[loop].geometry.length > 1) {
       console.log("More than 1 point is stored for this feature")
     }
-
-    console.log("Loop: ", loop)
 
     // Now create a model instance
     const busStop = new TranslinkStopSchema({
@@ -64,9 +62,10 @@ const reduceTranslinkStops = async (busStops) => {
     // Now save in mongoDB
     busStop
       .save()
-      .then(() => console.log(loop + " busStops saved to mongoDB"))
-      .catch((err) => console.log("Error saving busStops to mongoDB " + err))
+      .catch((err) => console.log("Error saving Bus Stops to database " + err))
 
     loop++
   } while (loop < endloop)
+
+  console.log("No of new Bus Stops created & saved: ", loop)
 }

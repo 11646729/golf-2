@@ -1,5 +1,3 @@
-"use strict"
-
 import axios from "axios"
 import { TemperatureSchema } from "./models/weatherModels/v1/temperatureSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
