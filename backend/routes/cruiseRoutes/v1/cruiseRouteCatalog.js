@@ -23,10 +23,13 @@ router.post("/portArrivals", port_arrivals_controller.create)
 router.put("/portArrivals/:id", port_arrivals_controller.updateOne)
 
 // DELETE all port arrival
-router.delete("/portArrivals", port_arrivals_controller.deleteAll)
+router.delete("/portArrivals", port_arrivals_controller.deleteAllPortArrivals)
 
 // DELETE a port arrival by id
-router.delete("/portArrivals/:id", port_arrivals_controller.deleteOne)
+router.delete(
+  "/portArrivals/:id",
+  port_arrivals_controller.deleteOnePortArrival
+)
 
 /// Vessels Routes ///
 // GET all vessel details from the database
@@ -42,9 +45,9 @@ router.post("/vesselDetails", vessel_details_controller.create)
 router.put("/vesselDetails/:id", vessel_details_controller.updateOne)
 
 // DELETE all vessel details
-router.delete("/vesselDetails", vessel_details_controller.deleteAll)
+router.delete("/vesselDetails", vessel_details_controller.deleteAllVessels)
 
 // DELETE a vessel details by id
-router.delete("/vesselDetails/:id", vessel_details_controller.deleteOne)
+router.delete("/vesselDetails/:id", vessel_details_controller.deleteOneVessel)
 
 module.exports = router
