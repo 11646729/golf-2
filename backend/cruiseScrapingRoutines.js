@@ -1,7 +1,7 @@
 import { getAllVesselArrivals } from "./scrapeArrivals"
 import { getSingleVesselDetails } from "./scrapeVessels"
 import { PortArrivalSchema } from "./models/cruiseModels/v1/portArrivalSchema"
-import { VesselDetailsSchema } from "./models/cruiseModels/v1/vesselDetailsSchema"
+import { VesselSchema } from "./models/cruiseModels/v1/vesselSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // -------------------------------------------------------
@@ -9,6 +9,13 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 // Path: Function called in switchBoard
 // -------------------------------------------------------
 export const fetchPortArrivalsAndVessels = async () => {
+  // PortArrivalSchema.deleteMany({}).then((res) => {
+  //   console.log("No of old Vessels deleted: ", res.deletedCount)
+  //   // .catch((err) => {
+  //   //   console.log(err.message)
+  //   // })
+  // })
+
   let vesselUrls = await getAndSavePortArrivals()
 
   // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
@@ -19,33 +26,32 @@ export const fetchPortArrivalsAndVessels = async () => {
 
   let k = 0
   do {
-    let vesselDetails = []
+    let vessels = []
 
     // Extract urls for vessels & store in newVessel array
-    vesselDetails = await getSingleVesselDetails(DeduplicatedVesselUrlArray[k])
+    vessel = await getSingleVesselDetails(DeduplicatedVesselUrlArray[k])
 
-    const newVessel = new VesselDetailsSchema({
-      databaseVersion: vesselDetails[0].database_version,
-      vesselNameUrl: vesselDetails[0].vessel_name_url,
-      title: vesselDetails[0].title,
-      vesselType: vesselDetails[0].vessel_type,
-      vesselName: vesselDetails[0].vessel_name,
-      vesselFlag: vesselDetails[0].vessel_flag,
-      vesselShortOperator: vesselDetails[0].vessel_short_operator,
-      vesselLongOperator: vesselDetails[0].vessel_long_operator,
-      vesselYearBuilt: vesselDetails[0].vessel_year_built,
-      vesselLengthMetres: vesselDetails[0].vessel_length_metres,
-      vesselWidthMetres: vesselDetails[0].vessel_width_metres,
-      vesselGrossTonnage: vesselDetails[0].vessel_gross_tonnage,
-      vesselAverageSpeedKnots: vesselDetails[0].vessel_average_speed_knots,
-      vesselMaxSpeedKnots: vesselDetails[0].vessel_max_speed_knots,
-      vesselAverageDraughtMetres:
-        vesselDetails[0].vessel_average_draught_metres,
-      vesselImoNumber: vesselDetails[0].vessel_imo_number,
-      vesselMmsiNumber: vesselDetails[0].vessel_mmsi_number,
-      vesselCallsign: vesselDetails[0].vessel_callsign,
-      vesselTypicalPassengers: vesselDetails[0].vessel_typical_passengers,
-      vesselTypicalCrew: vesselDetails[0].vessel_typical_crew,
+    const newVessel = new VesselSchema({
+      databaseVersion: vessel[0].database_version,
+      vesselNameUrl: vessel[0].vessel_name_url,
+      title: vessel[0].title,
+      vesselType: vessel[0].vessel_type,
+      vesselName: vessel[0].vessel_name,
+      vesselFlag: vessel[0].vessel_flag,
+      vesselShortOperator: vessel[0].vessel_short_operator,
+      vesselLongOperator: vessel[0].vessel_long_operator,
+      vesselYearBuilt: vessel[0].vessel_year_built,
+      vesselLengthMetres: vessel[0].vessel_length_metres,
+      vesselWidthMetres: vessel[0].vessel_width_metres,
+      vesselGrossTonnage: vessel[0].vessel_gross_tonnage,
+      vesselAverageSpeedKnots: vessel[0].vessel_average_speed_knots,
+      vesselMaxSpeedKnots: vessel[0].vessel_max_speed_knots,
+      vesselAverageDraughtMetres: vessel[0].vessel_average_draught_metres,
+      vesselImoNumber: vessel[0].vessel_imo_number,
+      vesselMmsiNumber: vessel[0].vessel_mmsi_number,
+      vesselCallsign: vessel[0].vessel_callsign,
+      vesselTypicalPassengers: vessel[0].vessel_typical_passengers,
+      vesselTypicalCrew: vessel[0].vessel_typical_crew,
     })
 
     // Now save in mongoDB
@@ -57,7 +63,7 @@ export const fetchPortArrivalsAndVessels = async () => {
     k++
   } while (k < DeduplicatedVesselUrlArray.length)
 
-  console.log(DeduplicatedVesselUrlArray.length + " Vessel Details added")
+  console.log(DeduplicatedVesselUrlArray.length + " Vessels added")
 }
 
 // -------------------------------------------------------

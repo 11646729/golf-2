@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose"
 
-var vesselDetailsSchema = new Schema(
+var vesselSchema = new Schema(
   {
     databaseVersion: { type: Number },
     vesselNameUrl: { type: String },
@@ -28,14 +28,11 @@ var vesselDetailsSchema = new Schema(
   }
 )
 
-vesselDetailsSchema.method("toJSON", function () {
+vesselSchema.method("toJSON", function () {
   const { __v, _id, ...object } = this.toObject()
   object.id = _id
   return object
 })
 
 // Export model
-export const VesselDetailsSchema = mongoose.model(
-  "vesselDetails",
-  vesselDetailsSchema
-)
+export const VesselSchema = mongoose.model("vessels", vesselSchema)

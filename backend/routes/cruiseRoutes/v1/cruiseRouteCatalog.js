@@ -3,7 +3,7 @@ var router = express.Router()
 
 // Require cruise controller modules
 const port_arrivals_controller = require("../../../controllers/cruiseControllers/v1/portArrivalsController")
-const vessel_details_controller = require("../../../controllers/cruiseControllers/v1/vesselDetailsController")
+const vesselController = require("../../../controllers/cruiseControllers/v1/vesselController")
 
 /// Cruise Routes ///
 // GET catalogue home page
@@ -31,23 +31,23 @@ router.delete(
   port_arrivals_controller.deleteOnePortArrival
 )
 
-/// Vessels Routes ///
-// GET all vessel details from the database
-router.get("/vesselDetails", vessel_details_controller.findAll)
+/// Vessel Routes ///
+// GET all vessels from the database
+router.get("/vessel", vesselController.findAll)
 
-// GET a vessel details by id
-router.get("/vesselDetails/:id", vessel_details_controller.findOne)
+// GET a vessel by id
+router.get("/vessel/:id", vesselController.findOne)
 
-// POST a vessel details to the database
-router.post("/vesselDetails", vessel_details_controller.create)
+// POST a vessel to the database
+router.post("/vessel", vesselController.create)
 
-// UPDATE a vessel details by id
-router.put("/vesselDetails/:id", vessel_details_controller.updateOne)
+// UPDATE a vessel by id
+router.put("/vessel/:id", vesselController.updateOne)
 
-// DELETE all vessel details
-router.delete("/vesselDetails", vessel_details_controller.deleteAllVessels)
+// DELETE all vessels from the database
+router.delete("/vessel", vesselController.deleteAllVessels)
 
-// DELETE a vessel details by id
-router.delete("/vesselDetails/:id", vessel_details_controller.deleteOneVessel)
+// DELETE a vessel by id
+router.delete("/vessel/:id", vesselController.deleteOneVessel)
 
 module.exports = router
