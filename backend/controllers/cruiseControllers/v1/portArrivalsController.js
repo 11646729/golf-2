@@ -106,24 +106,8 @@ export function updateOne(req, res) {
     })
 }
 
-// Path localhost:5000/api/cruise/portArrivals
-export function deleteAll(req, res) {
-  PortArrivalSchema.deleteMany({})
-    .then((data) => {
-      res.send({
-        message: "${data.deletedCount} PortArrivals were deleted successfully!",
-      })
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all portArrivals",
-      })
-    })
-}
-
 // Path localhost:5000/api/cruise/portArrivals/:id
-export function deleteOne(req, res) {
+export function deleteOnePortArrival(req, res) {
   const id = req.params.id
 
   PortArrivalSchema.findByIdAndRemove(id)
@@ -143,12 +127,11 @@ export function deleteOne(req, res) {
 }
 
 // Direct call to delete all port arrivals in the database
-export function directDeleteAll() {
-  PortArrivalSchema.deleteMany({}, (err) => {
-    if (err) {
-      console.log("Some error occurred while removing all port arrivals")
-    } else {
-      console.log("All port arrivals were deleted successfully!")
-    }
+export function deleteAllPortArrivals() {
+  PortArrivalSchema.deleteMany({}).then((res) => {
+    console.log("No of old Vessels deleted: ", res.deletedCount)
+    // .catch((err) => {
+    //   console.log(err.message)
+    // })
   })
 }

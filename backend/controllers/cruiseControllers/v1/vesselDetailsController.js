@@ -107,25 +107,8 @@ export function updateOne(req, res) {
     })
 }
 
-// Path localhost:5000/api/cruise/vesselDetails
-export function deleteAll(req, res) {
-  VesselDetailsSchema.deleteMany({})
-    .then((data) => {
-      res.send({
-        message:
-          "${data.deletedCount} VesselDetails were deleted successfully!",
-      })
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while removing all vesselDetails",
-      })
-    })
-}
-
 // Path localhost:5000/api/cruise/vesselDetails/:id
-export function deleteOne(req, res) {
+export function deleteOneVessel(req, res) {
   const id = req.params.id
 
   VesselDetailsSchema.findByIdAndRemove(id)
@@ -144,13 +127,12 @@ export function deleteOne(req, res) {
     })
 }
 
-// Direct call to delete all vessel details in the database
-export function directDeleteAll() {
-  VesselDetailsSchema.deleteMany({}, (err) => {
-    if (err) {
-      console.log("Some error occurred while removing all vessel details")
-    } else {
-      console.log("All vessel details were deleted successfully!")
-    }
+// Delete all Vessel Details in the database
+export function deleteAllVessels() {
+  VesselDetailsSchema.deleteMany({}).then((res) => {
+    console.log("No of old Vessels deleted: ", res.deletedCount)
+    // .catch((err) => {
+    //   console.log(err.message)
+    // })
   })
 }
