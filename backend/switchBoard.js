@@ -1,6 +1,4 @@
 import cron from "node-cron"
-import { deleteAllPortArrivals } from "./controllers/cruiseControllers/v1/portArrivalsController"
-import { deleteAllVessels } from "./controllers/cruiseControllers/v1/vesselDetailsController"
 import { directDeleteAll as deleteAllTemperatures } from "./controllers/weatherControllers/v1/weatherController"
 import {
   getAndSaveDarkSkiesData,
@@ -28,14 +26,9 @@ export const runSwitchboard = (io) => {
   // cron.schedule("0 7 * * *", () => {
   // cron.schedule("*/15 * * * *", () => {
   // -----------------------------
-  // console.log("Started getting Vessel Arrivals & Details Scraping")
-  // deleteAllPortArrivals()
-  // deleteAllVessels()
-  // console.log("Vessel Arrivals & Details Scraping done at " + Date.now())
+  // fetchPortArrivalsAndVessels()
   // -----------------------------
   // deleteAllTemperatures()
-  // -----------------------------
-  // fetchPortArrivalsAndVessels()
   // -----------------------------
   // createGolfCourses()
   // -----------------------------

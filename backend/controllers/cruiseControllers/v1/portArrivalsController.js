@@ -105,33 +105,3 @@ export function updateOne(req, res) {
       })
     })
 }
-
-// Path localhost:5000/api/cruise/portArrivals/:id
-export function deleteOnePortArrival(req, res) {
-  const id = req.params.id
-
-  PortArrivalSchema.findByIdAndRemove(id)
-    .then((data) => {
-      if (!data) {
-        res.status(404).send({
-          message:
-            "Cannot delete portArrival with id=${id}. Maybe portArrival was not found!",
-        })
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: "Could not delete portArrival with id=" + id,
-      })
-    })
-}
-
-// Direct call to delete all port arrivals in the database
-export function deleteAllPortArrivals() {
-  PortArrivalSchema.deleteMany({}).then((res) => {
-    console.log("No of old Vessels deleted: ", res.deletedCount)
-    // .catch((err) => {
-    //   console.log(err.message)
-    // })
-  })
-}

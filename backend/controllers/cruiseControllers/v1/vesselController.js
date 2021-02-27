@@ -102,33 +102,3 @@ export function updateOne(req, res) {
       })
     })
 }
-
-// Path localhost:5000/api/cruise/vessel/:id
-export function deleteOneVessel(req, res) {
-  const id = req.params.id
-
-  VesselSchema.findByIdAndRemove(id)
-    .then((data) => {
-      if (!data) {
-        res.status(404).send({
-          message:
-            "Cannot delete vesselSchema with id=${id}. Maybe vesselSchema was not found!",
-        })
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: "Could not delete vesselSchema with id=" + id,
-      })
-    })
-}
-
-// Delete all Vessels in the database
-export function deleteAllVessels() {
-  VesselSchema.deleteMany({}).then((res) => {
-    console.log("No of old Vessels deleted: ", res.deletedCount)
-    // .catch((err) => {
-    //   console.log(err.message)
-    // })
-  })
-}

@@ -1,5 +1,6 @@
 import axios from "axios"
 import cheerio from "cheerio"
+import { VesselSchema } from "./models/cruiseModels/v1/vesselSchema"
 
 export const getSingleVesselDetails = async (VesselUrl) => {
   // Fetch the initial data
@@ -15,18 +16,10 @@ export const getSingleVesselDetails = async (VesselUrl) => {
   }
 
   // Create an empty array that will store our data
-  const vessel_details = []
-
-  // Cruise Ship Data url
-  let vessel_name_url = VesselUrl
-
-  // Database version
-  const database_version = process.env.DATABASE_VERSION
+  // const vessel_details = []
 
   // Title
   let title = $("#review .title").text().trim()
-
-  let vessel_type = "Passenger Ship"
 
   // Remove " Review and Specifications" from title to get vessel_name
   let vessel_name = title.substring(0, title.length - 26)
@@ -194,38 +187,31 @@ export const getSingleVesselDetails = async (VesselUrl) => {
     .next()
     .text()
 
-  const vessel_average_speed_knots = "Not Known"
-  const vessel_average_draught_metres = "7.9"
-  const vessel_imo_number = "8217881"
-  const vessel_mmsi_number = "311000343"
-  const vessel_callsign = "C6BR5"
-
-  // Push an object with the data onto our array
-  vessel_details.push({
-    database_version,
-    vessel_name_url,
-    title,
-    vessel_type,
+  const newVessel = new VesselSchema({
+    databaseVersion: process.env.DATABASE_VERSION,
+    vesselNameUrl: VesselUrl,
+    title: title,
+    vesselType: "Passenger Ship",
     // vessel_photo,
     // vessel_ais_name,
-    vessel_name,
-    vessel_flag,
-    vessel_short_operator,
-    vessel_long_operator,
-    vessel_year_built,
-    vessel_length_metres,
-    vessel_width_metres,
-    vessel_gross_tonnage,
-    vessel_average_speed_knots,
-    vessel_max_speed_knots,
-    vessel_average_draught_metres,
-    vessel_imo_number,
-    vessel_mmsi_number,
-    vessel_callsign,
-    vessel_typical_passengers,
-    vessel_typical_crew,
+    vesselName: vessel_name,
+    vesselFlag: vessel_flag,
+    vesselShortOperator: vessel_short_operator,
+    vesselLongOperator: vessel_long_operator,
+    vesselYearBuilt: vessel_year_built,
+    vesselLengthMetres: vessel_length_metres,
+    vesselWidthMetres: vessel_width_metres,
+    vesselGrossTonnage: vessel_gross_tonnage,
+    vesselAverageSpeedKnots: "Not Known",
+    vesselMaxSpeedKnots: vessel_max_speed_knots,
+    vesselAverageDraughtMetres: "7.9",
+    vesselImoNumber: "8217881",
+    vesselMmsiNumber: "311000343",
+    vesselCallsign: "C6BR5",
+    vesselTypicalPassengers: vessel_typical_passengers,
+    vesselTypicalCrew: vessel_typical_crew,
   })
 
-  // Return our data array
-  return vessel_details
+  // Now save in mongoDB
+  newVessel.save().catch((err) => console.log("Error: " + err))
 }

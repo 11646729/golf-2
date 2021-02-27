@@ -9,12 +9,23 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 // Path: Function called in switchBoard
 // -------------------------------------------------------
 export const fetchPortArrivalsAndVessels = async () => {
-  // PortArrivalSchema.deleteMany({}).then((res) => {
-  //   console.log("No of old Vessels deleted: ", res.deletedCount)
-  //   // .catch((err) => {
-  //   //   console.log(err.message)
-  //   // })
-  // })
+  // Firstly delete all existing Port Arrivals in the database
+  PortArrivalSchema.deleteMany({})
+    .then((res) => {
+      console.log("No of old Post Arrivals deleted: ", res.deletedCount)
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+
+  // Firstly delete all existing Vessels in the database
+  VesselSchema.deleteMany({})
+    .then((res) => {
+      console.log("No of old Vessels deleted: ", res.deletedCount)
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
 
   let vesselUrls = await getAndSavePortArrivals()
 
@@ -24,44 +35,13 @@ export const fetchPortArrivalsAndVessels = async () => {
   // Sort array ascending
   DeduplicatedVesselUrlArray.sort()
 
-  let k = 0
+  let loop = 0
   do {
-    let vessels = []
-
     // Extract urls for vessels & store in newVessel array
-    vessel = await getSingleVesselDetails(DeduplicatedVesselUrlArray[k])
+    await getSingleVesselDetails(DeduplicatedVesselUrlArray[loop])
 
-    const newVessel = new VesselSchema({
-      databaseVersion: vessel[0].database_version,
-      vesselNameUrl: vessel[0].vessel_name_url,
-      title: vessel[0].title,
-      vesselType: vessel[0].vessel_type,
-      vesselName: vessel[0].vessel_name,
-      vesselFlag: vessel[0].vessel_flag,
-      vesselShortOperator: vessel[0].vessel_short_operator,
-      vesselLongOperator: vessel[0].vessel_long_operator,
-      vesselYearBuilt: vessel[0].vessel_year_built,
-      vesselLengthMetres: vessel[0].vessel_length_metres,
-      vesselWidthMetres: vessel[0].vessel_width_metres,
-      vesselGrossTonnage: vessel[0].vessel_gross_tonnage,
-      vesselAverageSpeedKnots: vessel[0].vessel_average_speed_knots,
-      vesselMaxSpeedKnots: vessel[0].vessel_max_speed_knots,
-      vesselAverageDraughtMetres: vessel[0].vessel_average_draught_metres,
-      vesselImoNumber: vessel[0].vessel_imo_number,
-      vesselMmsiNumber: vessel[0].vessel_mmsi_number,
-      vesselCallsign: vessel[0].vessel_callsign,
-      vesselTypicalPassengers: vessel[0].vessel_typical_passengers,
-      vesselTypicalCrew: vessel[0].vessel_typical_crew,
-    })
-
-    // Now save in mongoDB
-    newVessel
-      .save()
-      // .then(() => console.log("New Vessels added"))
-      .catch((err) => console.log("Error: " + err))
-
-    k++
-  } while (k < DeduplicatedVesselUrlArray.length)
+    loop++
+  } while (loop < DeduplicatedVesselUrlArray.length)
 
   console.log(DeduplicatedVesselUrlArray.length + " Vessels added")
 }
