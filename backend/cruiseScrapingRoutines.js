@@ -77,10 +77,7 @@ const getAndSavePortArrivals = async () => {
     })
 
     // Now save in mongoDB
-    portArrival
-      .save()
-      // .then(() => console.log("Port Arrival added"))
-      .catch((err) => console.log("Error: " + err))
+    portArrival.save().catch((err) => console.log("Error: " + err))
 
     i++
   } while (i < allArrivals.length)

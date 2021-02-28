@@ -145,7 +145,7 @@ export const getSingleVesselDetails = async (VesselUrl) => {
 
   // If No Vessel Average Speed Available
   // if (vessel_average_speed_knots == "") {
-  //   vessel_average_speed_knots = "Not Known"
+  vessel_average_speed_knots = "Not Known"
   // }
 
   // Vessel Maximum Speed
@@ -202,7 +202,7 @@ export const getSingleVesselDetails = async (VesselUrl) => {
     vesselLengthMetres: vessel_length_metres,
     vesselWidthMetres: vessel_width_metres,
     vesselGrossTonnage: vessel_gross_tonnage,
-    vesselAverageSpeedKnots: "Not Known",
+    vesselAverageSpeedKnots: vessel_average_speed_knots,
     vesselMaxSpeedKnots: vessel_max_speed_knots,
     vesselAverageDraughtMetres: "7.9",
     vesselImoNumber: "8217881",
