@@ -145,7 +145,7 @@ export const getSingleVesselDetails = async (VesselUrl) => {
 
   // If No Vessel Average Speed Available
   // if (vessel_average_speed_knots == "") {
-  vessel_average_speed_knots = "Not Known"
+  let vessel_average_speed_knots = "Not Known"
   // }
 
   // Vessel Maximum Speed

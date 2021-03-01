@@ -3,57 +3,62 @@ import cheerio from "cheerio"
 import { PortArrivalSchema } from "./models/cruiseModels/v1/portArrivalSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
-export const getAllVesselArrivals = async () => {
-  let allVesselMovements = []
+// -------------------------------------------------------
+// Fetch All Port Arrivals Details
+// Path: Local function called by fetchPortArrivalsAndVessels
+// -------------------------------------------------------
+export const getAndSavePortArrivals = async (scheduledPeriods) => {
+  let allArrivalsVesselUrls = []
+  let allArrivals = []
   let vesselArrivals = []
 
-  const scheduledPeriod = await getScheduleMonths()
-
-  let i = 0
-
+  let loop = 0
   do {
-    const period = String(scheduledPeriod[i].monthYearString)
+    const period = String(scheduledPeriods[loop].monthYearString)
     vesselArrivals = await getVesselArrivals(period)
 
     let j = 0
     do {
-      allVesselMovements.push(vesselArrivals[j])
+      allArrivals.push(vesselArrivals[j])
 
       j++
     } while (j < vesselArrivals.length)
 
+    loop++
+  } while (loop < scheduledPeriods.length)
+
+  // ------------------------------------------------------
+
+  // Now extract vessel details urls
+  let i = 0
+  do {
+    allArrivalsVesselUrls.push(allArrivals[i].portArrival.vesselNameUrl)
+
+    const coords = new CoordsSchema({
+      lat: allArrivals[i].portArrival.portCoordinates.lat,
+      lng: allArrivals[i].portArrival.portCoordinates.lng,
+    })
+
+    const portArrival = new PortArrivalSchema({
+      databaseVersion: allArrivals[i].portArrival.database_version,
+      portName: allArrivals[i].portArrival.portName,
+      portUnLocode: allArrivals[i].portArrival.portUnLocode,
+      portCoordinates: coords,
+      vesselShortCruiseName: allArrivals[i].portArrival.vesselShortCruiseName,
+      vesselEta: allArrivals[i].portArrival.vesselEta,
+      vesselEtd: allArrivals[i].portArrival.vesselEtd,
+      vesselNameUrl: allArrivals[i].portArrival.vesselNameUrl,
+    })
+
+    // Now save in mongoDB
+    portArrival.save().catch((err) => console.log("Error: " + err))
+
     i++
-  } while (i < scheduledPeriod.length)
+  } while (i < allArrivals.length)
 
-  return allVesselMovements
-}
+  console.log(allArrivals.length + " Port Arrivals added")
 
-const getScheduleMonths = async () => {
-  // Fetch the initial data
-  const { data: html } = await axios.get(process.env.TEST_INITIAL_URL)
-
-  // Load up cheerio
-  const $ = cheerio.load(html)
-
-  try {
-    const $ = cheerio.load(html)
-  } catch (e) {
-    console.log("Error thrown while scraping Arrivals " + e) // handle error
-  }
-
-  let monthYearStringArray = []
-
-  $("#schedule > div:nth-child(2) > div.col-xs-8.thisMonth option").each(
-    (i, item) => {
-      const monthYearString = $(item).attr("value")
-
-      monthYearStringArray.push({
-        monthYearString,
-      })
-    }
-  )
-
-  return monthYearStringArray
+  return allArrivalsVesselUrls
 }
 
 const getVesselArrivals = async (period) => {

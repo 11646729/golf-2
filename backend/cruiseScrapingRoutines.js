@@ -1,24 +1,25 @@
-import { getAllVesselArrivals } from "./scrapeArrivals"
+import axios from "axios"
+import cheerio from "cheerio"
+import { getAndSavePortArrivals } from "./scrapeArrivals"
 import { getSingleVesselDetails } from "./scrapeVessels"
 import { PortArrivalSchema } from "./models/cruiseModels/v1/portArrivalSchema"
 import { VesselSchema } from "./models/cruiseModels/v1/vesselSchema"
-import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
+// import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // -------------------------------------------------------
 // Fetch Port Arrivals & Vessel Details
 // Path: Function called in switchBoard
 // -------------------------------------------------------
 export const fetchPortArrivalsAndVessels = async () => {
-  // Firstly delete all existing Port Arrivals in the database
+  // Firstly delete all existing Port Arrivals & Vessel Details from the database
   PortArrivalSchema.deleteMany({})
     .then((res) => {
-      console.log("No of old Post Arrivals deleted: ", res.deletedCount)
+      console.log("No of old Port Arrivals deleted: ", res.deletedCount)
     })
     .catch((err) => {
       console.log(err.message)
     })
 
-  // Firstly delete all existing Vessels in the database
   VesselSchema.deleteMany({})
     .then((res) => {
       console.log("No of old Vessels deleted: ", res.deletedCount)
@@ -27,7 +28,14 @@ export const fetchPortArrivalsAndVessels = async () => {
       console.log(err.message)
     })
 
-  let vesselUrls = await getAndSavePortArrivals()
+  // Secondly get the Port Name
+  let portName = "belfast-port-114"
+
+  // Thirdly get the available Months & Years for chosen Port
+  const scheduledPeriods = await getScheduleMonths(portName)
+
+  // Fourthly get all the Vessel Arrivals per Month
+  let vesselUrls = await getAndSavePortArrivals(scheduledPeriods)
 
   // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
   const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
@@ -47,42 +55,29 @@ export const fetchPortArrivalsAndVessels = async () => {
 }
 
 // -------------------------------------------------------
-// Fetch Port Arrivals Details
+// Fetch Year & Months which show Vessel Arrival Data
 // Path: Local function called by fetchPortArrivalsAndVessels
 // -------------------------------------------------------
-const getAndSavePortArrivals = async () => {
-  let allArrivalsVesselUrls = []
+const getScheduleMonths = async (portName) => {
+  let scheduledPeriods = []
 
-  let allArrivals = await getAllVesselArrivals()
+  // Fetch the initial data
+  const { data: html } = await axios.get(process.env.INITIAL_URL)
+  // INITIAL_URL =
+  //   "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=2021-01#schedule"
 
-  // Now extract vessel details urls
-  let i = 0
-  do {
-    allArrivalsVesselUrls.push(allArrivals[i].portArrival.vesselNameUrl)
+  // Load up cheerio
+  const $ = cheerio.load(html)
 
-    const coords = new CoordsSchema({
-      lat: allArrivals[i].portArrival.portCoordinates.lat,
-      lng: allArrivals[i].portArrival.portCoordinates.lng,
-    })
+  $("#schedule > div:nth-child(2) > div.col-xs-8.thisMonth option").each(
+    (i, item) => {
+      const monthYearString = $(item).attr("value")
 
-    const portArrival = new PortArrivalSchema({
-      databaseVersion: allArrivals[i].portArrival.database_version,
-      portName: allArrivals[i].portArrival.portName,
-      portUnLocode: allArrivals[i].portArrival.portUnLocode,
-      portCoordinates: coords,
-      vesselShortCruiseName: allArrivals[i].portArrival.vesselShortCruiseName,
-      vesselEta: allArrivals[i].portArrival.vesselEta,
-      vesselEtd: allArrivals[i].portArrival.vesselEtd,
-      vesselNameUrl: allArrivals[i].portArrival.vesselNameUrl,
-    })
+      scheduledPeriods.push({
+        monthYearString,
+      })
+    }
+  )
 
-    // Now save in mongoDB
-    portArrival.save().catch((err) => console.log("Error: " + err))
-
-    i++
-  } while (i < allArrivals.length)
-
-  console.log(allArrivals.length + " Port Arrivals added")
-
-  return allArrivalsVesselUrls
+  return scheduledPeriods
 }
