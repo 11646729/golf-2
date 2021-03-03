@@ -27,8 +27,8 @@ export const fetchPortArrivalsAndVessels = async () => {
       console.log(err.message)
     })
 
-  // Secondly get the Port Name
-  // const port = "Belfast"
+  // Secondly get the Port Name & Associated values
+  // const port = "Belfast".toUpperCase()
   const port = "Geiranger".toUpperCase()
   const portUrl = port + "_PORT_URL"
   const portName = process.env[portUrl]
@@ -37,9 +37,7 @@ export const fetchPortArrivalsAndVessels = async () => {
   const scheduledPeriods = await getScheduleMonths(portName)
 
   if (scheduledPeriods.length === 0) {
-    console.log(
-      "CruiseMapper currently has no ship schedule for Port Belfast (Northern Ireland)"
-    )
+    console.log("CruiseMapper currently has no ship schedule for Selected Port")
   } else {
     // Fourthly get all the Vessel Arrivals per Month
     let vesselUrls = await getAndSavePortArrivals(
