@@ -7,14 +7,22 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 // Fetch All Port Arrivals Details
 // Path: Local function called by fetchPortArrivalsAndVessels
 // -------------------------------------------------------
-export const getAndSavePortArrivals = async (scheduledPeriods) => {
+export const getAndSavePortArrivals = async (
+  scheduledPeriods,
+  port,
+  portName
+) => {
   let allVesselArrivals = []
   let periodVesselArrivals = []
 
   let loop = 0
   do {
     const period = String(scheduledPeriods[loop].monthYearString)
-    periodVesselArrivals = await getSingleMonthPortArrival(period)
+    periodVesselArrivals = await getSingleMonthPortArrival(
+      period,
+      port,
+      portName
+    )
 
     let j = 0
     do {
@@ -33,10 +41,10 @@ export const getAndSavePortArrivals = async (scheduledPeriods) => {
 // Fetch a Single Port Arrival
 // Path: Local function called by getAndSavePortArrivals
 // -----------------------------------------------------
-const getSingleMonthPortArrival = async (period) => {
+const getSingleMonthPortArrival = async (period, port, portName) => {
   let arrivalUrl =
-    "https://www.cruisemapper.com/ports/" +
-    process.env.GEIRANGER_PORT_URL +
+    process.env.CRUISE_MAPPER_URL +
+    portName +
     "?tab=schedule&month=" +
     period +
     "#schedule"
@@ -55,16 +63,19 @@ const getSingleMonthPortArrival = async (period) => {
       // Database version
       const database_version = process.env.DATABASE_VERSION
 
-      // Port Name
-      const port_name = process.env.BELFAST_PORT_NAME
+      // Port Name Associated values
+      const port_name = portName
+      const portLat = port + "_PORT_LATITUDE"
+      const portLng = port + "_PORT_LONGITUDE"
+      const portUnLocode = port + "_PORT_UN_LOCODE"
 
       // Port UN Locode
-      const port_un_locode = process.env.BELFAST_PORT_UN_LOCODE
+      const port_un_locode = process.env[portUnLocode]
 
       // Belfast Port Coordinates in GeoJSON
       const port_coordinates = new CoordsSchema({
-        lat: process.env.BELFAST_PORT_LATITUDE,
-        lng: process.env.BELFAST_PORT_LONGITUDE,
+        lat: process.env[portLat],
+        lng: process.env[portLng],
       })
 
       // Name of Vessel

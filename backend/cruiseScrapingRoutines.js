@@ -28,8 +28,10 @@ export const fetchPortArrivalsAndVessels = async () => {
     })
 
   // Secondly get the Port Name
-  // let portName = process.env.BELFAST_PORT_URL
-  let portName = process.env.GEIRANGER_PORT_URL
+  // const port = "Belfast"
+  const port = "Geiranger".toUpperCase()
+  const portUrl = port + "_PORT_URL"
+  const portName = process.env[portUrl]
 
   // Thirdly get the available Months & Years for chosen Port
   const scheduledPeriods = await getScheduleMonths(portName)
@@ -40,7 +42,11 @@ export const fetchPortArrivalsAndVessels = async () => {
     )
   } else {
     // Fourthly get all the Vessel Arrivals per Month
-    let vesselUrls = await getAndSavePortArrivals(scheduledPeriods)
+    let vesselUrls = await getAndSavePortArrivals(
+      scheduledPeriods,
+      port,
+      portName
+    )
 
     // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
     const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
