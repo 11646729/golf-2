@@ -2,21 +2,16 @@ import axios from "axios"
 import cheerio from "cheerio"
 import { VesselSchema } from "./models/cruiseModels/v1/vesselSchema"
 
+// ----------------------------------------------------------
+// Fetch Details of a Single Vessel
+// Path: Local function called by fetchPortArrivalsAndVessels
+// ----------------------------------------------------------
 export const getSingleVesselDetails = async (VesselUrl) => {
   // Fetch the initial data
   const { data: html } = await axios.get(VesselUrl)
 
   // Load up cheerio
   const $ = cheerio.load(html)
-
-  try {
-    const $ = cheerio.load(html)
-  } catch (e) {
-    console.log("Error thrown while scraping Vessels " + e) // handle error
-  }
-
-  // Create an empty array that will store our data
-  // const vessel_details = []
 
   // Title
   let title = $("#review .title").text().trim()

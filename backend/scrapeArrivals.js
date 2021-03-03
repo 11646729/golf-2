@@ -8,62 +8,35 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 // Path: Local function called by fetchPortArrivalsAndVessels
 // -------------------------------------------------------
 export const getAndSavePortArrivals = async (scheduledPeriods) => {
-  let allArrivalsVesselUrls = []
-  let allArrivals = []
-  let vesselArrivals = []
+  let allVesselArrivals = []
+  let periodVesselArrivals = []
 
   let loop = 0
   do {
     const period = String(scheduledPeriods[loop].monthYearString)
-    vesselArrivals = await getVesselArrivals(period)
+    periodVesselArrivals = await getSingleMonthPortArrival(period)
 
     let j = 0
     do {
-      allArrivals.push(vesselArrivals[j])
+      allVesselArrivals.push(periodVesselArrivals[j])
 
       j++
-    } while (j < vesselArrivals.length)
+    } while (j < periodVesselArrivals.length)
 
     loop++
   } while (loop < scheduledPeriods.length)
 
-  // ------------------------------------------------------
-
-  // Now extract vessel details urls
-  let i = 0
-  do {
-    allArrivalsVesselUrls.push(allArrivals[i].portArrival.vesselNameUrl)
-
-    const coords = new CoordsSchema({
-      lat: allArrivals[i].portArrival.portCoordinates.lat,
-      lng: allArrivals[i].portArrival.portCoordinates.lng,
-    })
-
-    const portArrival = new PortArrivalSchema({
-      databaseVersion: allArrivals[i].portArrival.database_version,
-      portName: allArrivals[i].portArrival.portName,
-      portUnLocode: allArrivals[i].portArrival.portUnLocode,
-      portCoordinates: coords,
-      vesselShortCruiseName: allArrivals[i].portArrival.vesselShortCruiseName,
-      vesselEta: allArrivals[i].portArrival.vesselEta,
-      vesselEtd: allArrivals[i].portArrival.vesselEtd,
-      vesselNameUrl: allArrivals[i].portArrival.vesselNameUrl,
-    })
-
-    // Now save in mongoDB
-    portArrival.save().catch((err) => console.log("Error: " + err))
-
-    i++
-  } while (i < allArrivals.length)
-
-  console.log(allArrivals.length + " Port Arrivals added")
-
-  return allArrivalsVesselUrls
+  return allVesselArrivals
 }
 
-const getVesselArrivals = async (period) => {
+// -----------------------------------------------------
+// Fetch a Single Port Arrival
+// Path: Local function called by getAndSavePortArrivals
+// -----------------------------------------------------
+const getSingleMonthPortArrival = async (period) => {
   let arrivalUrl =
-    process.env.TEST_CRUISE_MAPPER_URL +
+    "https://www.cruisemapper.com/ports/" +
+    process.env.GEIRANGER_PORT_URL +
     "?tab=schedule&month=" +
     period +
     "#schedule"
@@ -73,7 +46,8 @@ const getVesselArrivals = async (period) => {
   // load up cheerio
   const $ = cheerio.load(html)
 
-  let vesselArrival = []
+  // let vesselArrival = []
+  let vesselUrls = []
 
   $(".portItemSchedule tr").each((i, item) => {
     // Ignore the table heading
@@ -82,15 +56,15 @@ const getVesselArrivals = async (period) => {
       const database_version = process.env.DATABASE_VERSION
 
       // Port Name
-      const port_name = process.env.GEIRANGER_PORT_NAME
+      const port_name = process.env.BELFAST_PORT_NAME
 
       // Port UN Locode
-      const port_un_locode = process.env.GEIRANGER_PORT_UN_LOCODE
+      const port_un_locode = process.env.BELFAST_PORT_UN_LOCODE
 
       // Belfast Port Coordinates in GeoJSON
       const port_coordinates = new CoordsSchema({
-        lat: process.env.GEIRANGER_PORT_LATITUDE,
-        lng: process.env.GEIRANGER_PORT_LONGITUDE,
+        lat: process.env.BELFAST_PORT_LATITUDE,
+        lng: process.env.BELFAST_PORT_LONGITUDE,
       })
 
       // Name of Vessel
@@ -129,6 +103,15 @@ const getVesselArrivals = async (period) => {
 
       // Url of Vessel Web Page
       const vessel_name_url = $(item).find("a").attr("href")
+      if (
+        typeof vessel_name_url === "string" ||
+        vessel_name_url instanceof String
+      ) {
+        // it's a string
+        vesselUrls.push(vessel_name_url)
+      }
+      // it's something else
+      else console.log("Error, vessel_name_url is not a string")
 
       const portArrival = new PortArrivalSchema({
         databaseVersion: database_version,
@@ -141,13 +124,11 @@ const getVesselArrivals = async (period) => {
         vesselNameUrl: vessel_name_url,
       })
 
-      // Push an object with the data onto our array
-      vesselArrival.push({
-        portArrival,
-      })
+      // Now save in mongoDB
+      portArrival.save().catch((err) => console.log("Error: " + err))
     }
   })
 
-  // Return our data array
-  return vesselArrival
+  // Return array of vessel Urls
+  return vesselUrls
 }

@@ -1,10 +1,9 @@
 import axios from "axios"
 import cheerio from "cheerio"
-import { getAndSavePortArrivals } from "./scrapeArrivals"
-import { getSingleVesselDetails } from "./scrapeVessels"
 import { PortArrivalSchema } from "./models/cruiseModels/v1/portArrivalSchema"
 import { VesselSchema } from "./models/cruiseModels/v1/vesselSchema"
-// import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
+import { getAndSavePortArrivals } from "./scrapeArrivals"
+import { getSingleVesselDetails } from "./scrapeVessels"
 
 // -------------------------------------------------------
 // Fetch Port Arrivals & Vessel Details
@@ -29,29 +28,36 @@ export const fetchPortArrivalsAndVessels = async () => {
     })
 
   // Secondly get the Port Name
-  let portName = "belfast-port-114"
+  // let portName = process.env.BELFAST_PORT_URL
+  let portName = process.env.GEIRANGER_PORT_URL
 
   // Thirdly get the available Months & Years for chosen Port
   const scheduledPeriods = await getScheduleMonths(portName)
 
-  // Fourthly get all the Vessel Arrivals per Month
-  let vesselUrls = await getAndSavePortArrivals(scheduledPeriods)
+  if (scheduledPeriods.length === 0) {
+    console.log(
+      "CruiseMapper currently has no ship schedule for Port Belfast (Northern Ireland)"
+    )
+  } else {
+    // Fourthly get all the Vessel Arrivals per Month
+    let vesselUrls = await getAndSavePortArrivals(scheduledPeriods)
 
-  // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
-  const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
+    // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
+    const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
 
-  // Sort array ascending
-  DeduplicatedVesselUrlArray.sort()
+    // Sort array ascending
+    DeduplicatedVesselUrlArray.sort()
 
-  let loop = 0
-  do {
-    // Extract urls for vessels & store in newVessel array
-    await getSingleVesselDetails(DeduplicatedVesselUrlArray[loop])
+    let loop = 0
+    do {
+      // Extract urls for vessels & store in newVessel array
+      await getSingleVesselDetails(DeduplicatedVesselUrlArray[loop])
 
-    loop++
-  } while (loop < DeduplicatedVesselUrlArray.length)
+      loop++
+    } while (loop < DeduplicatedVesselUrlArray.length)
 
-  console.log(DeduplicatedVesselUrlArray.length + " Vessels added")
+    console.log(DeduplicatedVesselUrlArray.length + " Vessels added")
+  }
 }
 
 // -------------------------------------------------------
@@ -61,10 +67,18 @@ export const fetchPortArrivalsAndVessels = async () => {
 const getScheduleMonths = async (portName) => {
   let scheduledPeriods = []
 
+  let initialPeriod = new Date().toISOString().slice(0, 7)
+  // console.log(initialPeriod)
+
+  let initialUrl =
+    process.env.CRUISE_MAPPER_URL +
+    portName +
+    "?tab=schedule&month=" +
+    initialPeriod +
+    "#schedule"
+
   // Fetch the initial data
-  const { data: html } = await axios.get(process.env.INITIAL_URL)
-  // INITIAL_URL =
-  //   "https://www.cruisemapper.com/ports/belfast-port-114?tab=schedule&month=2021-01#schedule"
+  const { data: html } = await axios.get(initialUrl)
 
   // Load up cheerio
   const $ = cheerio.load(html)
