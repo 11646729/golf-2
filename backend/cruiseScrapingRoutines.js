@@ -34,6 +34,8 @@ export const fetchPortArrivalsAndVessels = async () => {
   // Thirdly get the available Months & Years for chosen Port
   const scheduledPeriods = await getScheduleMonths(portName)
 
+  let totalVesselArrivals = 0
+
   if (scheduledPeriods.length === 0) {
     console.log(
       "CruiseMapper currently has no ship schedule for Port Belfast (Northern Ireland)"
@@ -41,6 +43,8 @@ export const fetchPortArrivalsAndVessels = async () => {
   } else {
     // Fourthly get all the Vessel Arrivals per Month
     let vesselUrls = await getAndSavePortArrivals(scheduledPeriods)
+
+    totalVesselArrivals += vesselUrls.length
 
     // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
     const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
@@ -56,6 +60,7 @@ export const fetchPortArrivalsAndVessels = async () => {
       loop++
     } while (loop < DeduplicatedVesselUrlArray.length)
 
+    console.log(totalVesselArrivals + " Port Arrivals added")
     console.log(DeduplicatedVesselUrlArray.length + " Vessels added")
   }
 }
