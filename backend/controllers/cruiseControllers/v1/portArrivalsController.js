@@ -1,13 +1,19 @@
 import { PortArrivalSchema } from "../../../models/cruiseModels/v1/portArrivalSchema"
 import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
 
-// Path localhost:5000/api/cruise/
-export function cruiseIndex(req, res) {
+// -------------------------------------------------------
+// Catalogue Home page
+// Path: localhost:5000/api/cruise/
+// -------------------------------------------------------
+export const index = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)
 }
 
+// -------------------------------------------------------
+// Port Arrivals
 // Path localhost:5000/api/cruise/portArrivals
-export function findPortArrivals(req, res) {
+// -------------------------------------------------------
+export function getPortArrivals(req, res) {
   PortArrivalSchema.find({})
     .then((data) => {
       res.send(data)
@@ -20,8 +26,11 @@ export function findPortArrivals(req, res) {
     })
 }
 
+// -------------------------------------------------------
+// Port Arrivals
 // Path localhost:5000/api/cruise/portArrivals/:id
-export function findPortArrival(req, res) {
+// -------------------------------------------------------
+export function getPortArrival(req, res) {
   const id = req.params.id
 
   PortArrivalSchema.findById(id)
@@ -39,8 +48,11 @@ export function findPortArrival(req, res) {
     })
 }
 
+// -------------------------------------------------------
+// Port Arrivals
 // Path localhost:5000/api/cruise/portArrivals
-export function createPortArrival(req, res) {
+// -------------------------------------------------------
+export function postPortArrival(req, res) {
   // Validate request
   if (!req.body.location_lat || !req.body.location_lng) {
     res.status(400).send({ message: "Coordinates cannot be empty!" })
@@ -78,8 +90,11 @@ export function createPortArrival(req, res) {
     )
 }
 
+// -------------------------------------------------------
+// Port Arrivals
 // Path localhost:5000/api/cruise/portArrivals/:id
-export function updatePortArrival(req, res) {
+// -------------------------------------------------------
+export function putPortArrival(req, res) {
   if (!req.body) {
     return res.status(400).send({
       message: "Data to update cannot be empty!",

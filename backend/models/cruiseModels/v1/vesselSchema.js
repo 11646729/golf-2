@@ -21,7 +21,7 @@ var vesselSchema = new Schema(
     vesselMmsiNumber: { type: Number },
     vesselCallsign: { type: String },
     vesselTypicalPassengers: { type: String },
-    vesselTypicalCrew: { type: String },
+    vesselTypicalCrew: { type: Number },
   },
   {
     timestamps: true,

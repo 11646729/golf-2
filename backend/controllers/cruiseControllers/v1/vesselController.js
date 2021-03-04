@@ -1,7 +1,10 @@
 import { VesselSchema } from "../../../models/cruiseModels/v1/vesselSchema"
 
+// -------------------------------------------------------
+// Vessels
 // Path localhost:5000/api/cruise/vessel
-export function findVessels(req, res) {
+// -------------------------------------------------------
+export function getVessels(req, res) {
   VesselSchema.find({})
     .then((data) => {
       res.send(data)
@@ -13,8 +16,11 @@ export function findVessels(req, res) {
     })
 }
 
+// -------------------------------------------------------
+// Vessels
 // Path localhost:5000/api/cruise/vessel/:id
-export function findVessel(req, res) {
+// -------------------------------------------------------
+export function getVessel(req, res) {
   const id = req.params.id
 
   VesselSchema.findById(id)
@@ -30,8 +36,11 @@ export function findVessel(req, res) {
     })
 }
 
+// -------------------------------------------------------
+// Vessels
 // Path localhost:5000/api/cruise/vessel
-export function createVessel(req, res) {
+// -------------------------------------------------------
+export function postVessel(req, res) {
   // Validate request
   if (!req.body.location_lat || !req.body.location_lng) {
     res.status(400).send({ message: "Coordinates cannot be empty!" })
@@ -75,8 +84,11 @@ export function createVessel(req, res) {
     )
 }
 
+// -------------------------------------------------------
+// Vessels
 // Path localhost:5000/api/cruise/vessel/:id
-export function updateVessel(req, res) {
+// -------------------------------------------------------
+export function putVessel(req, res) {
   if (!req.body) {
     return res.status(400).send({
       message: "Data to update cannot be empty!",

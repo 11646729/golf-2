@@ -8,6 +8,7 @@ import {
 } from "@react-google-maps/api"
 import { Typography, CssBaseline, Grid, makeStyles } from "@material-ui/core"
 import axios from "axios"
+
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
@@ -54,6 +55,26 @@ export default function GTFSTransportMapContainer() {
   const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
   const [busRouteAgencyName, setbusRouteAgencyName] = useState(null)
   const [errorLoading, setLoadingError] = useState([])
+
+  // Now fetch cruise arrivals & vessels data
+  // useEffect(() => {
+  //   let ignore = false
+  //   const fetchData = async () => {
+  //     try {
+  //       setDataLoading(true)
+  //       setLoadingError({})
+  //       const result = await axios(url)
+  //       if (!ignore) setData(result.data)
+  //     } catch (err) {
+  //       setLoadingError(err)
+  //     }
+  //     setDataLoading(false)
+  //   }
+  //   fetchData()
+  //   return () => {
+  //     ignore = true
+  //   }
+  // }, [])
 
   useEffect(() => {
     let isSubscribed = true

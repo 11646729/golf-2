@@ -1,38 +1,54 @@
 import express from "express"
 var router = express.Router()
-
-// Require cruise controller modules
 const portArrivalsController = require("../../../controllers/cruiseControllers/v1/portArrivalsController")
 const vesselController = require("../../../controllers/cruiseControllers/v1/vesselController")
 
-/// Cruise Routes ///
+// -------------------------------------------------------
+// Cruise Routes
 // GET catalogue home page
-router.get("/", portArrivalsController.cruiseIndex)
+// -------------------------------------------------------
+router.get("/", portArrivalsController.index)
 
+// -------------------------------------------------------
 /// PortArrivals Routes ///
-// GET all port arrivals from the database - only Belfast at present
-router.get("/portArrivals", portArrivalsController.findPortArrivals)
+// GET all port arrivals from the database
+// -------------------------------------------------------
+router.get("/portArrivals", portArrivalsController.getPortArrivals)
 
+// -------------------------------------------------------
 // GET a port arrival by id
-router.get("/portArrivals/:id", portArrivalsController.findPortArrival)
+// -------------------------------------------------------
+router.get("/portArrivals/:id", portArrivalsController.getPortArrival)
 
+// -------------------------------------------------------
 // POST a port arrival to the database
-router.post("/portArrivals", portArrivalsController.createPortArrival)
+// -------------------------------------------------------
+router.post("/portArrivals", portArrivalsController.postPortArrival)
 
-// UPDATE a port arrival by id
-router.put("/portArrivals/:id", portArrivalsController.updatePortArrival)
+// -------------------------------------------------------
+// PUT a port arrival by id
+// -------------------------------------------------------
+router.put("/portArrivals/:id", portArrivalsController.putPortArrival)
 
+// -------------------------------------------------------
 /// Vessel Routes ///
 // GET all vessels from the database
-router.get("/vessel", vesselController.findVessels)
+// -------------------------------------------------------
+router.get("/vessel", vesselController.getVessels)
 
+// -------------------------------------------------------
 // GET a vessel by id
-router.get("/vessel/:id", vesselController.findVessel)
+// -------------------------------------------------------
+router.get("/vessel/:id", vesselController.getVessel)
 
+// -------------------------------------------------------
 // POST a vessel to the database
-router.post("/vessel", vesselController.createVessel)
+// -------------------------------------------------------
+router.post("/vessel", vesselController.postVessel)
 
-// UPDATE a vessel by id
-router.put("/vessel/:id", vesselController.updateVessel)
+// -------------------------------------------------------
+// PUT a vessel by id
+// -------------------------------------------------------
+router.put("/vessel/:id", vesselController.putVessel)
 
 module.exports = router
