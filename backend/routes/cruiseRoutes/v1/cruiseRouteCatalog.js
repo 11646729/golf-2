@@ -11,28 +11,28 @@ router.get("/", portArrivalsController.cruiseIndex)
 
 /// PortArrivals Routes ///
 // GET all port arrivals from the database - only Belfast at present
-router.get("/portArrivals", portArrivalsController.findAll)
+router.get("/portArrivals", portArrivalsController.findPortArrivals)
 
 // GET a port arrival by id
-router.get("/portArrivals/:id", portArrivalsController.findOne)
+router.get("/portArrivals/:id", portArrivalsController.findPortArrival)
 
 // POST a port arrival to the database
-router.post("/portArrivals", portArrivalsController.create)
+router.post("/portArrivals", portArrivalsController.createPortArrival)
 
 // UPDATE a port arrival by id
-router.put("/portArrivals/:id", portArrivalsController.updateOne)
+router.put("/portArrivals/:id", portArrivalsController.updatePortArrival)
 
 /// Vessel Routes ///
 // GET all vessels from the database
-router.get("/vessel", vesselController.findAll)
+router.get("/vessel", vesselController.findVessels)
 
 // GET a vessel by id
-router.get("/vessel/:id", vesselController.findOne)
+router.get("/vessel/:id", vesselController.findVessel)
 
 // POST a vessel to the database
-router.post("/vessel", vesselController.create)
+router.post("/vessel", vesselController.createVessel)
 
 // UPDATE a vessel by id
-router.put("/vessel/:id", vesselController.updateOne)
+router.put("/vessel/:id", vesselController.updateVessel)
 
 module.exports = router

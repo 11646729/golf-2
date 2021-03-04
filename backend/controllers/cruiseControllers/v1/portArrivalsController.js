@@ -7,7 +7,7 @@ export function cruiseIndex(req, res) {
 }
 
 // Path localhost:5000/api/cruise/portArrivals
-export function findAll(req, res) {
+export function findPortArrivals(req, res) {
   PortArrivalSchema.find({})
     .then((data) => {
       res.send(data)
@@ -21,7 +21,7 @@ export function findAll(req, res) {
 }
 
 // Path localhost:5000/api/cruise/portArrivals/:id
-export function findOne(req, res) {
+export function findPortArrival(req, res) {
   const id = req.params.id
 
   PortArrivalSchema.findById(id)
@@ -40,7 +40,7 @@ export function findOne(req, res) {
 }
 
 // Path localhost:5000/api/cruise/portArrivals
-export function create(req, res) {
+export function createPortArrival(req, res) {
   // Validate request
   if (!req.body.location_lat || !req.body.location_lng) {
     res.status(400).send({ message: "Coordinates cannot be empty!" })
@@ -79,7 +79,7 @@ export function create(req, res) {
 }
 
 // Path localhost:5000/api/cruise/portArrivals/:id
-export function updateOne(req, res) {
+export function updatePortArrival(req, res) {
   if (!req.body) {
     return res.status(400).send({
       message: "Data to update cannot be empty!",

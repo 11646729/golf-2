@@ -26,7 +26,7 @@ export const runSwitchboard = (io) => {
   // cron.schedule("0 7 * * *", () => {
   // cron.schedule("*/15 * * * *", () => {
   // -----------------------------
-  fetchPortArrivalsAndVessels()
+  // fetchPortArrivalsAndVessels()
   // -----------------------------
   // deleteAllTemperatures()
   // -----------------------------
