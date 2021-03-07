@@ -54,53 +54,46 @@ export default function GTFSTransportMapContainer() {
   const [busStopsCollection, setBusStopsCollection] = useState([])
   const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
   const [busRouteAgencyName, setbusRouteAgencyName] = useState(null)
-  const [errorLoading, setLoadingError] = useState([])
+  const [loadingData, setLoadingData] = useState(false)
+  const [loadingError, setLoadingError] = useState("")
 
-  // Now fetch cruise arrivals & vessels data
-  // useEffect(() => {
-  //   let ignore = false
-  //   const fetchData = async () => {
-  //     try {
-  //       setDataLoading(true)
-  //       setLoadingError({})
-  //       const result = await axios(url)
-  //       if (!ignore) setData(result.data)
-  //     } catch (err) {
-  //       setLoadingError(err)
-  //     }
-  //     setDataLoading(false)
-  //   }
-  //   fetchData()
-  //   return () => {
-  //     ignore = true
-  //   }
-  // }, [])
-
-  useEffect(() => {
-    let isSubscribed = true
-
-    axios
-      .all([
-        axios.get("http://localhost:5000/api/transport/groute/"),
-        axios.get("http://localhost:5000/api/transport/gstop/"),
-        axios.get("http://localhost:5000/api/transport/gplroute/"),
-      ])
+  const getAllData = async () => {
+    const source = axios.CancelToken.source()
+    setLoadingData(true)
+    await axios
+      .all(
+        [
+          axios.get("http://localhost:5000/api/transport/groute/"),
+          axios.get("http://localhost:5000/api/transport/gstop/"),
+          axios.get("http://localhost:5000/api/transport/gplroute/"),
+        ],
+        {
+          cancelToken: source.token,
+        }
+      )
       .then(
         axios.spread((routesResponse, stopsResponse, uniqueRoutesResponse) => {
           setBusRoutesCollection(routesResponse.data)
           setBusStopsCollection(stopsResponse.data)
           setUniqueBusRoutesCollection(uniqueRoutesResponse.data)
           setbusRouteAgencyName(routesResponse.data[0].agencyName)
+          setLoadingData(false)
         })
       )
-      .catch((errors) => {
-        setLoadingError(errors)
-        // console.log(errorLoading)
+      .catch((error) => {
+        if (axios.isCancel(error)) {
+          console.log(error) // Component unmounted, request is cancelled
+        } else {
+          setLoadingError(error)
+        }
       })
+    return () => {
+      source.cancel("Component unmounted, request is cancelled")
+    }
+  }
 
-    // isSubscribed = false
-    // return isSubscribed
-    return () => (isSubscribed = false)
+  useEffect(() => {
+    getAllData()
   }, [])
 
   // Remove Duplicates from the array
@@ -158,7 +151,8 @@ export default function GTFSTransportMapContainer() {
         <Grid item xs={12} sm={12}>
           <div className={classes.headerSelection}>
             <Title>GTFS Transport UI Test</Title>
-            {!errorLoading ? (
+            {loadingData ? <LoadingTitle>Loading...</LoadingTitle> : null}
+            {loadingError ? (
               <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
           </div>

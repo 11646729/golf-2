@@ -45,26 +45,34 @@ export default function CoursesMapContainer() {
   // DATA HOOKS SECTION
   // -----------------------------------------------------
   const [golfCourses, setData] = useState([])
-  const [dataLoading, setDataLoading] = useState(true)
-  const [errorLoading, setLoadingError] = useState(false)
-  const [errorLoadingMessage, setLoadingErrorMessage] = useState([])
+  const [loadingData, setLoadingData] = useState(false)
+  const [loadingError, setLoadingError] = useState("")
 
-  // Now fetch golf courses data
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setDataLoading(true)
-
-        const result = await axios("http://localhost:5000/api/golf/course/")
-
-        setData(result.data)
-      } catch (err) {
-        setLoadingError(true)
-        setLoadingErrorMessage(err)
-      }
-      setDataLoading(false)
+  const getAllData = async () => {
+    const source = axios.CancelToken.source()
+    setLoadingData(true)
+    await axios
+      .get("http://localhost:5000/api/golf/course/", {
+        cancelToken: source.token,
+      })
+      .then((response) => {
+        setData(response.data)
+        setLoadingData(false)
+      })
+      .catch((error) => {
+        if (axios.isCancel(error)) {
+          console.log(error) // Component unmounted, request is cancelled
+        } else {
+          setLoadingError(error)
+        }
+      })
+    return () => {
+      source.cancel("Component unmounted, request is cancelled")
     }
-    fetchData()
+  }
+
+  useEffect(() => {
+    getAllData()
   }, [])
 
   // -----------------------------------------------------
@@ -119,12 +127,9 @@ export default function CoursesMapContainer() {
         <Grid item xs={12} sm={12}>
           <div className={classes.headerSelection}>
             <Title>Golf Courses</Title>
-            {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
-            {errorLoading ? (
-              <LoadingTitle>
-                Error Loading...
-                {errorLoadingMessage}
-              </LoadingTitle>
+            {loadingData ? <LoadingTitle>Loading...</LoadingTitle> : null}
+            {loadingError ? (
+              <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
           </div>
         </Grid>

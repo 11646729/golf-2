@@ -42,8 +42,8 @@ export default function CrimesMapContainer() {
   // latestDateInfoAvailable e.g. 2020-05 is the date of the latest available data ready for download
   const [latestDateInfoAvailable, setLatestDateInfoAvailable] = useState("")
   const [crimes, setData] = useState([])
-  const [dataLoading, setDataLoading] = useState(true)
-  const [errorLoading, setLoadingError] = useState([])
+  const [dataLoading, setLoadingData] = useState(true)
+  const [errorLoading, setLoadingError] = useState("")
 
   // Event Handlers
   const handleHomeCheckboxChange = (event) => {
@@ -113,24 +113,56 @@ export default function CrimesMapContainer() {
   // build Crimes Url - set dateInfo to "" to fetch most recent data
   const url = `${process.env.REACT_APP_CRIMES_ENDPOINT}?lat=${mapCenter.lat}&lng=${mapCenter.lng}${dateInfo}`
 
+  // THIS THROWS ERROR WHEREAS ONE BELOW DOES NOT
+  // --------------------------------------------
+  // const getAllData = async () => {
+  //   const source = axios.CancelToken.source()
+  //   setLoadingData(true)
+  //   await axios
+  //     .get(url, {
+  //       cancelToken: source.token,
+  //     })
+  //     .then((response) => {
+  //       setData(response.data)
+  //       setLoadingData(false)
+  //     })
+  //     .catch((error) => {
+  //       if (axios.isCancel(error)) {
+  //         console.log(error) // Component unmounted, request is cancelled
+  //       } else {
+  //         setLoadingError(error)
+  //       }
+  //     })
+  //   return () => {
+  //     source.cancel("Component unmounted, request is cancelled")
+  //   }
+  // }
+
   // Now fetch crimes data
   useEffect(() => {
-    let ignore = false
-    const fetchData = async () => {
-      try {
-        setDataLoading(true)
-        setLoadingError({})
-        const result = await axios(url)
-        if (!ignore) setData(result.data)
-      } catch (err) {
-        setLoadingError(err)
+    const getAllData = async () => {
+      const source = axios.CancelToken.source()
+      setLoadingData(true)
+      await axios
+        .get(url, {
+          cancelToken: source.token,
+        })
+        .then((response) => {
+          setData(response.data)
+          setLoadingData(false)
+        })
+        .catch((error) => {
+          if (axios.isCancel(error)) {
+            console.log(error) // Component unmounted, request is cancelled
+          } else {
+            setLoadingError(error)
+          }
+        })
+      return () => {
+        source.cancel("Component unmounted, request is cancelled")
       }
-      setDataLoading(false)
     }
-    fetchData()
-    return () => {
-      ignore = true
-    }
+    getAllData()
   }, [homeCheckbox, latestDataCheckbox, dateInfo, url])
 
   // Now reformat relevant crimes data to use with supercluster
@@ -177,7 +209,7 @@ export default function CrimesMapContainer() {
           <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
             <Title>Nearby Crimes</Title>
             {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
-            {!errorLoading ? (
+            {errorLoading ? (
               <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
             <FormControlLabel

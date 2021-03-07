@@ -41,38 +41,51 @@ export default function TransportMapContainer() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
 
-  // const [busStopSelected, setBusStopSelected] = useState(null)
-  // const [busShapeSelected, setBusShapeSelected] = useState(null)
+  const [busStopSelected, setBusStopSelected] = useState(null)
+  const [busShapeSelected, setBusShapeSelected] = useState(null)
 
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
   const [busShapesCollection, setBusShapesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
-  const [errorLoading, setLoadingError] = useState([])
+  const [loadingData, setLoadingData] = useState(false)
+  const [loadingError, setLoadingError] = useState("")
 
-  useEffect(() => {
-    let isSubscribed = true
-
-    axios
-      .all([
-        axios.get("http://localhost:5000/api/transport/tshape/"),
-        axios.get("http://localhost:5000/api/transport/tstop/"),
-      ])
+  const getAllData = async () => {
+    const source = axios.CancelToken.source()
+    setLoadingData(true)
+    await axios
+      .all(
+        [
+          axios.get("http://localhost:5000/api/transport/tshape/"),
+          axios.get("http://localhost:5000/api/transport/tstop/"),
+        ],
+        {
+          cancelToken: source.token,
+        }
+      )
       .then(
         axios.spread((shapesResponse, stopsResponse) => {
           setBusShapesCollection(shapesResponse.data)
           setBusStopsCollection(stopsResponse.data)
+          setLoadingData(false)
         })
       )
-      .catch((errors) => {
-        setLoadingError(errors)
-        // console.log(errorLoading)
+      .catch((error) => {
+        if (axios.isCancel(error)) {
+          console.log(error) // Component unmounted, request is cancelled
+        } else {
+          setLoadingError(error)
+        }
       })
+    return () => {
+      source.cancel("Component unmounted, request is cancelled")
+    }
+  }
 
-    // isSubscribed = false
-    // return isSubscribed
-    return () => (isSubscribed = false)
+  useEffect(() => {
+    getAllData()
   }, [])
 
   // Remove Duplicates from the array
@@ -127,7 +140,8 @@ export default function TransportMapContainer() {
         <Grid item xs={12} sm={12}>
           <div className={classes.headerSelection}>
             <Title>Transport UI Test</Title>
-            {!errorLoading ? (
+            {loadingData ? <LoadingTitle>Loading...</LoadingTitle> : null}
+            {loadingError ? (
               <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
           </div>

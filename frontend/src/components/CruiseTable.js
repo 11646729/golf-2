@@ -10,8 +10,11 @@ import {
   TablePagination,
   TableRow,
   makeStyles,
-  Box,
+  Grid,
 } from "@material-ui/core"
+
+import Title from "./Title"
+import LoadingTitle from "./LoadingTitle"
 
 const columns = [
   { id: "name", label: "Name", minWidth: 70 },
@@ -70,6 +73,11 @@ const useStyles = makeStyles({
     marginTop: 50,
     maxHeight: 440,
   },
+  headerSelection: {
+    marginTop: 55,
+    marginLeft: 20,
+    width: "97%",
+  },
 })
 
 export default function CruiseTableCard() {
@@ -78,33 +86,37 @@ export default function CruiseTableCard() {
   const [rowsPerPage, setRowsPerPage] = useState(10)
 
   const [portArrivals, setData] = useState([])
-  const [dataLoading, setDataLoading] = useState(true)
-  const [errorLoading, setLoadingError] = useState([])
+  const [loadingData, setLoadingData] = useState(false)
+  const [loadingError, setLoadingError] = useState("")
 
-  // Fetch data - after componentHasUpdated
-  const url = "http://localhost:5000/api/cruise/portArrivals"
-
-  // Now fetch cruise arrivals & vessels data
-  useEffect(() => {
-    let ignore = false
-    const fetchData = async () => {
-      try {
-        setDataLoading(true)
-        setLoadingError({})
-        const result = await axios(url)
-        if (!ignore) setData(result.data)
-      } catch (err) {
-        setLoadingError(err)
-      }
-      setDataLoading(false)
-    }
-    fetchData()
+  const getAllData = async () => {
+    const source = axios.CancelToken.source()
+    setLoadingData(true)
+    await axios
+      .get("http://localhost:5000/api/cruise/portArrivals", {
+        cancelToken: source.token,
+      })
+      .then((response) => {
+        setData(response.data)
+        setLoadingData(false)
+      })
+      .catch((error) => {
+        if (axios.isCancel(error)) {
+          console.log(error) // Component unmounted, request is cancelled
+        } else {
+          setLoadingError(error)
+        }
+      })
     return () => {
-      ignore = true
+      source.cancel("Component unmounted, request is cancelled")
     }
+  }
+
+  useEffect(() => {
+    getAllData()
   }, [])
 
-  // console.log(portArrivals[0])
+  console.log(portArrivals[0])
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
@@ -117,60 +129,70 @@ export default function CruiseTableCard() {
 
   return (
     <Paper className={classes.root}>
-      {dataLoading ? (
-        <Box component="div" display="inline" variant="h4" p={1} m={1}>
-          Loading...
-        </Box>
-      ) : null}
-      {!errorLoading ? (
-        <Box component="div" display="inline" variant="h4" p={1} m={1}>
-          Error Loading...
-        </Box>
-      ) : null}
-      <TableContainer className={classes.container}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row) => (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                  {columns.map((column) => {
-                    const value = row[column.id]
-                    return (
-                      <TableCell key={column.id} align={column.align}>
-                        {column.format && typeof value === "number"
-                          ? column.format(value)
-                          : value}
+      <div>
+        <Grid container spacing={1}>
+          <Grid item xs={12} sm={12}>
+            <div className={classes.headerSelection}>
+              <Title>Cruise Ship Arrivals</Title>
+              {loadingData ? <LoadingTitle>Loading...</LoadingTitle> : null}
+              {loadingError ? (
+                <LoadingTitle>Error Loading...</LoadingTitle>
+              ) : null}
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={12}>
+            <TableContainer className={classes.container}>
+              <Table stickyHeader aria-label="sticky table">
+                <TableHead>
+                  <TableRow>
+                    {columns.map((column) => (
+                      <TableCell
+                        key={column.id}
+                        align={column.align}
+                        style={{ minWidth: column.minWidth }}
+                      >
+                        {column.label}
                       </TableCell>
-                    )
-                  })}
-                </TableRow>
-              ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={rows.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
-      />
+                    ))}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((row) => (
+                      <TableRow
+                        hover
+                        role="checkbox"
+                        tabIndex={-1}
+                        key={row.code}
+                      >
+                        {columns.map((column) => {
+                          const value = row[column.id]
+                          return (
+                            <TableCell key={column.id} align={column.align}>
+                              {column.format && typeof value === "number"
+                                ? column.format(value)
+                                : value}
+                            </TableCell>
+                          )
+                        })}
+                      </TableRow>
+                    ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Grid>
+        </Grid>
+        <TablePagination
+          rowsPerPageOptions={[10, 25, 100]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onChangePage={handleChangePage}
+          onChangeRowsPerPage={handleChangeRowsPerPage}
+        />
+      </div>
     </Paper>
   )
 }
