@@ -47,6 +47,61 @@ function createData(name, code, population, size) {
   return { name, code, population, size, density }
 }
 
+// const portArrivalSchema = new Schema(
+//   {
+//     databaseVersion: { type: Number },
+//     portName: { type: String },
+//     portUnLocode: { type: String },
+//     portCoordinates: { type: CoordsSchema.schema },
+//     vesselShortCruiseName: { type: String },
+//     vesselEta: { type: String },
+//     vesselEtd: { type: String },
+//     vesselNameUrl: { type: String },
+//   },
+//   {
+//     timestamps: true,
+//   }
+// )
+
+// TODO
+// Cruise Line
+// Port Name - without code
+// Cruise Line Logo
+// Separate eta & date
+// Separate etd & data
+// Add Day of the Week
+// Add Notification of change (except End of Month rollover)
+// Details of this Cruise?
+// Current Position - to plot on a map
+
+// {
+//   "_id":
+//   {
+//     "$oid":"6040ac78f4f40d591028ebba"
+//   },
+//   "databaseVersion":1,
+//   "portName":"geiranger-port-547",
+//   "portUnLocode":"NOGNR",
+//   "portCoordinates":
+//   {
+//     "lat":62.100833,
+//     "lng":7.203439
+//   },
+//   "vesselShortCruiseName":"AIDAsol",
+//   "vesselEta":"2021-04-14T12:00:00.000Z",
+//   "vesselEtd":"2021-04-14T20:00:00.000Z",
+//   "vesselNameUrl":"https://www.cruisemapper.com/ships/AIDAsol-732",
+//   "createdAt":
+//   {
+//     "$date":"2021-03-04T09:46:32.730Z"
+//   },
+//   "updatedAt":
+//   {
+//     "$date":"2021-03-04T09:46:32.730Z"
+//   },
+//   "__v":0
+// }
+
 const rows = [
   createData("India", "IN", 1324171354, 3287263),
   createData("China", "CN", 1403500365, 9596961),

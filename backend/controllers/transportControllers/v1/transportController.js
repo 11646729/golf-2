@@ -16,7 +16,9 @@ export const index = async (req, res) => {
 // Bus Shapes
 // Path: localhost:5000/api/transport/tshape/
 // -------------------------------------------------------
-const Keys = ["7", "8", "9"]
+const Keys = ["7", "8", "9", "10", "11", "16", "17"]
+// const Keys = ["1", "2", "3", "4", "5", "6", "3195", "3196"]
+// const Keys = ["1", "2", "3", "4", "5", "6"]
 
 export const getAllTranslinkShapes = async (req, res) => {
   TranslinkShapeSchema.find({ shapeKey: Keys }) // 3 = Train, 1&2 = Route Endpoints

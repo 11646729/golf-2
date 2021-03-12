@@ -31,7 +31,8 @@ export default function PanelRadioButtons(props) {
         onChange={handleRadioChange}
       >
         <FormControlLabel
-          value={props.busRoutesSelectedAgency}
+          // value={props.busRoutesSelectedAgency}
+          value="Hamilton Street Railway"
           control={<Radio color="primary" />}
           label={props.busRoutesSelectedAgency}
           labelPlacement="end"

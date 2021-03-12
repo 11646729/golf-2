@@ -27,3 +27,7 @@ yarn-error.log*
 /frontend/node_modules
 .env
 google_maps.js
+
+# Added by BDS 12-03-21
+/backend/gtfs data/Dublin TFI/shapes.txt
+/backend/gtfs data/Dublin TFI/stop_times.txt

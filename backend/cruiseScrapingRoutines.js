@@ -29,7 +29,8 @@ export const fetchPortArrivalsAndVessels = async () => {
 
   // Secondly get the Port Name & Associated values
   // const port = "Belfast".toUpperCase()
-  const port = "Geiranger".toUpperCase()
+  // const port = "Geiranger".toUpperCase()
+  const port = "Bergen".toUpperCase()
   const portUrl = port + "_PORT_URL"
   const portName = process.env[portUrl]
 
