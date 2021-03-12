@@ -141,6 +141,8 @@ export default function GTFSTransportMapContainer() {
     // setBusRouteSelected(busRoute)
   }
 
+  console.log("Test")
+
   // -----------------------------------------------------
   // VIEW SECTION
   // -----------------------------------------------------
