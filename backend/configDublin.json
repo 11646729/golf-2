@@ -1,0 +1,13 @@
+{
+  "agencies": [
+    {
+      "agency_key": "Transport For Ireland",
+      "path": "/Users/briansmith/Documents/GTD/golf-2/backend/gtfs data/Dublin TFI"
+    }
+  ],
+  "verbose": true,
+  "coordinatePrecision": 5,
+  "includeStops": true,
+  "sqlitePath": "/Users/briansmith/Documents/GTD/golf-2/backend/gtfs data/Dublin TFI/gtfs.db",
+  "skipImport": false
+}
