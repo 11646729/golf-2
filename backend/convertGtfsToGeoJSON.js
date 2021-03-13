@@ -10,7 +10,7 @@ export const convertGtfsToGeoJSON = async () => {
     gtfsToGeoJSON(config)
       .then(() => {
         console.log("\n\nGeoJSON Generation Successful")
-        createGtfsRoutesAndGtfsStops()
+        // createGtfsRoutesAndGtfsStops()
       })
       .catch((err) => {
         console.error(err)

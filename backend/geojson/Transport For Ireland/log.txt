@@ -1,0 +1,7 @@
+Feed Version: Unknown
+GTFS-to-geoJSON Version: 1.0.5
+Date Generated: Sat Mar 13 2021 04:52:35 GMT+0000 (Greenwich Mean Time)
+Route Count: 432
+GeoJSON File Count: 840
+Output Type: route
+Source: /Users/briansmith/Documents/GTD/golf-2/backend/gtfs data/Dublin TFI
