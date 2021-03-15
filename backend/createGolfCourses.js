@@ -6,9 +6,9 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 // Create Golf Courses in the Database
 // Path: local function called in switchBoard
 // -------------------------------------------------------
-export const createGolfCourses = () => {
+export const createGolfCourses = async (req, res) => {
   // Firstly delete all existing Golf Courses in the database
-  GolfCourseSchema.deleteMany({})
+  await GolfCourseSchema.deleteMany({})
     .then((res) => {
       console.log("No of old Golf Courses deleted: ", res.deletedCount)
 

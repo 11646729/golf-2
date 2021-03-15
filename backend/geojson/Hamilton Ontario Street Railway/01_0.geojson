@@ -1,1 +1,2385 @@
-{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"agency_name":"Hamilton Street Railway","route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},"geometry":{"type":"LineString","coordinates":[[-79.8684,43.25244],[-79.86804,43.25234],[-79.86773,43.25316],[-79.86703,43.25474],[-79.86476,43.25418],[-79.85983,43.25282],[-79.85846,43.25246],[-79.855,43.25159],[-79.8461,43.2493],[-79.84313,43.24856],[-79.83894,43.24747],[-79.82978,43.24499],[-79.82581,43.24402],[-79.82439,43.24365],[-79.82364,43.24349],[-79.81991,43.2426],[-79.81487,43.24143],[-79.80998,43.24047],[-79.80498,43.23921],[-79.80222,43.23838],[-79.80193,43.23826],[-79.80169,43.23814],[-79.80154,43.23803],[-79.80134,43.23784],[-79.80104,43.23747],[-79.80001,43.23627],[-79.79988,43.23616],[-79.79973,43.23608],[-79.79944,43.23597],[-79.79264,43.23442],[-79.78534,43.23252],[-79.78445,43.23232],[-79.78241,43.23198],[-79.78072,43.23165],[-79.77449,43.23014],[-79.77366,43.22996],[-79.76648,43.22855],[-79.76636,43.22884],[-79.76547,43.22865]]}},{"type":"Feature","properties":{"agency_name":"Hamilton Street Railway","route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},"geometry":{"type":"LineString","coordinates":[[-79.94288,43.25836],[-79.94312,43.25909],[-79.94313,43.25923],[-79.9431,43.25933],[-79.94304,43.25943],[-79.94276,43.2597],[-79.94132,43.25893],[-79.94,43.25828],[-79.93967,43.25817],[-79.93918,43.25802],[-79.93869,43.2579],[-79.93598,43.25739],[-79.9355,43.25732],[-79.93502,43.2573],[-79.93282,43.25736],[-79.92485,43.25759],[-79.92222,43.2577],[-79.92077,43.25767],[-79.91947,43.2577],[-79.91928,43.25815],[-79.9192,43.25827],[-79.91908,43.25838],[-79.91886,43.25848],[-79.91894,43.2586],[-79.91899,43.25872],[-79.91898,43.25949],[-79.91902,43.2599],[-79.91908,43.26003],[-79.91924,43.26019],[-79.91881,43.26056],[-79.91877,43.26062],[-79.91873,43.26071],[-79.91878,43.26225],[-79.91768,43.26226],[-79.91723,43.26231],[-79.91596,43.26234],[-79.90871,43.26192],[-79.90823,43.26185],[-79.9076,43.2617],[-79.90746,43.26162],[-79.90724,43.26132],[-79.90242,43.2633],[-79.90228,43.26334],[-79.90217,43.26334],[-79.90075,43.26302],[-79.90233,43.25938],[-79.90238,43.25913],[-79.9002,43.25944],[-79.89731,43.26013],[-79.89667,43.26024],[-79.89584,43.26034],[-79.89327,43.26058],[-79.89273,43.26061],[-79.89233,43.26058],[-79.89202,43.26053],[-79.88873,43.25974],[-79.88088,43.25797],[-79.87965,43.25772],[-79.87904,43.25766],[-79.87423,43.25647],[-79.86703,43.25474]]}},{"type":"Feature","properties":{"agency_name":"Hamilton Street Railway","route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},"geometry":{"type":"LineString","coordinates":[[-79.76648,43.22855],[-79.7654,43.22832],[-79.76533,43.2285],[-79.76533,43.22855],[-79.76538,43.22862],[-79.76547,43.22865]]}},{"type":"Feature","properties":{"agency_name":"Hamilton Street Railway","route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},"geometry":{"type":"LineString","coordinates":[[-79.7654,43.22832],[-79.76403,43.22805],[-79.75821,43.22671],[-79.74769,43.22424],[-79.74785,43.22386],[-79.748,43.22368],[-79.74807,43.22354],[-79.74808,43.22347],[-79.74805,43.22343],[-79.74791,43.22338],[-79.74613,43.22297]]}},{"type":"Feature","properties":{"agency_name":"Hamilton Street Railway","route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},"geometry":{"type":"LineString","coordinates":[[-79.8902,43.20895],[-79.89044,43.20842],[-79.94288,43.25836]]}},{"type":"Feature","properties":{"stop_id":"1403","stop_code":"2056","stop_name":"EASTGATE TERMINAL PLATFORM 4","parent_station":"2","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.76556,43.2286]}},{"type":"Feature","properties":{"stop_id":"1406","stop_code":"2001","stop_name":"EASTGATE TERMINAL PLATFORM 2","stop_desc":"PRIVATE RD & PLATFORM 2","parent_station":"2","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.76589,43.22879]}},{"type":"Feature","properties":{"stop_id":"1971","stop_code":"2749","stop_name":"KING at MARION","stop_desc":"KING ST W & MARION AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.90467,43.2623]}},{"type":"Feature","properties":{"stop_id":"1973","stop_code":"1121","stop_name":"KING at PAISLEY","stop_desc":"KING ST W & PAISLEY AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.90602,43.26174]}},{"type":"Feature","properties":{"stop_id":"2045","stop_code":"2935","stop_name":"LONGWOOD at MARION","stop_desc":"0 LONGWOOD RD S & MARION AV S","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.90209,43.26002]}},{"type":"Feature","properties":{"stop_id":"2071","stop_code":"2709","stop_name":"MAIN opposite MELROSE","stop_desc":"MAIN ST E & MELROSE AV S OPP","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4310","agency_id":"HSR","route_short_name":"10","route_long_name":"B-LINE EXPRESS","route_type":3,"route_color":"#DA251D","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.83438,43.24616]}},{"type":"Feature","properties":{"stop_id":"2072","stop_code":"2709","stop_name":"MAIN at ASHFORD","stop_desc":"MAIN ST E & ASHFORD BV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.83731,43.24696]}},{"type":"Feature","properties":{"stop_id":"2074","stop_code":"2711","stop_name":"MAIN at BALMORAL","stop_desc":"MAIN ST E & BALMORAL AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.82207,43.24303]}},{"type":"Feature","properties":{"stop_id":"2075","stop_code":"2709","stop_name":"MAIN at BALSAM","stop_desc":"MAIN ST E & BALSAM AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.83204,43.24552]}},{"type":"Feature","properties":{"stop_id":"2076","stop_code":"2715","stop_name":"MAIN at CAMERON","stop_desc":"MAIN ST E & CAMERON AV S","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.80759,43.23977]}},{"type":"Feature","properties":{"stop_id":"2078","stop_code":"2710","stop_name":"MAIN opposite EAST BEND","stop_desc":"MAIN ST E & EAST BEND AV OPP","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.82889,43.2447]}},{"type":"Feature","properties":{"stop_id":"2079","stop_code":"2707","stop_name":"MAIN at EASTBOURNE","stop_desc":"MAIN ST E & EASTBOURNE AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.8422,43.24824]}},{"type":"Feature","properties":{"stop_id":"2080","stop_code":"2704","stop_name":"MAIN at EMERALD","stop_desc":"MAIN ST E & EMERALD ST","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.85451,43.25137]}},{"type":"Feature","properties":{"stop_id":"2081","stop_code":"2715","stop_name":"MAIN opposite FAIRFIELD","stop_desc":"MAIN ST E & FAIRFIELD AV OPP","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.80274,43.23846]}},{"type":"Feature","properties":{"stop_id":"2082","stop_code":"2707","stop_name":"MAIN at FAIRLEIGH","stop_desc":"MAIN ST E & FAIRLEIGH AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.84393,43.24868]}},{"type":"Feature","properties":{"stop_id":"2083","stop_code":"2703","stop_name":"MAIN at FERGUSON","stop_desc":"MAIN ST E & FERGUSON AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.86195,43.2533]}},{"type":"Feature","properties":{"stop_id":"2085","stop_code":"2710","stop_name":"MAIN opposite GLENDALE","stop_desc":"MAIN ST E & GLENDALE AV OPP","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.82723,43.24429]}},{"type":"Feature","properties":{"stop_id":"2087","stop_code":"2713","stop_name":"MAIN at GRAHAM","stop_desc":"MAIN ST E & GRAHAM AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.81463,43.24131]}},{"type":"Feature","properties":{"stop_id":"2089","stop_code":"2701","stop_name":"MAIN at HUGHSON","stop_desc":"MAIN ST E & HUGHSON ST","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.86854,43.25502]}},{"type":"Feature","properties":{"stop_id":"2090","stop_code":"2713","stop_name":"MAIN at HUXLEY","stop_desc":"MAIN ST E & HUXLEY AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.81237,43.24086]}},{"type":"Feature","properties":{"stop_id":"2095","stop_code":"2714","stop_name":"MAIN at KENILWORTH","stop_desc":"MAIN ST E & KENILWORTH AV S","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4310","agency_id":"HSR","route_short_name":"10","route_long_name":"B-LINE EXPRESS","route_type":3,"route_color":"#DA251D","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.81013,43.24044]}},{"type":"Feature","properties":{"stop_id":"2097","stop_code":"2711","stop_name":"MAIN at KING","stop_desc":"MAIN ST E & KING ST (ISLAND) - DELTA","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4310","agency_id":"HSR","route_short_name":"10","route_long_name":"B-LINE EXPRESS","route_type":3,"route_color":"#DA251D","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.82435,43.24356]}},{"type":"Feature","properties":{"stop_id":"2098","stop_code":"2704","stop_name":"MAIN at ONTARIO","stop_desc":"MAIN ST E & ONTARIO ST","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.85168,43.25066]}},{"type":"Feature","properties":{"stop_id":"2101","stop_code":"2712","stop_name":"MAIN at OTTAWA","stop_desc":"MAIN ST E & OTTAWA ST","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4310","agency_id":"HSR","route_short_name":"10","route_long_name":"B-LINE EXPRESS","route_type":3,"route_color":"#DA251D","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.81998,43.2425]}},{"type":"Feature","properties":{"stop_id":"2103","stop_code":"2713","stop_name":"MAIN at PARK ROW","stop_desc":"MAIN ST E & PARK ROW","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.8171,43.24187]}},{"type":"Feature","properties":{"stop_id":"2104","stop_code":"2707","stop_name":"MAIN at SANFORD","stop_desc":"MAIN ST E & SANFORD AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.84745,43.24957]}},{"type":"Feature","properties":{"stop_id":"2105","stop_code":"2708","stop_name":"MAIN opposite GARFIELD","stop_desc":"MAIN ST E & GARFIELD AV OPP","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.83919,43.24746]}},{"type":"Feature","properties":{"stop_id":"2108","stop_code":"2715","stop_name":"MAIN at TRAGINA","stop_desc":"MAIN ST E & TRAGINA AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.80452,43.23901]}},{"type":"Feature","properties":{"stop_id":"2109","stop_code":"2705","stop_name":"MAIN at VICTORIA","stop_desc":"MAIN ST E & VICTORIA AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.85758,43.25216]}},{"type":"Feature","properties":{"stop_id":"2110","stop_code":"2703","stop_name":"MAIN at WALNUT","stop_desc":"MAIN ST E & WALNUT ST S","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.86388,43.2539]}},{"type":"Feature","properties":{"stop_id":"2112","stop_code":"2703","stop_name":"MAIN at WELLINGTON","stop_desc":"MAIN ST E & WELLINGTON ST","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"},{"route_id":"4310","agency_id":"HSR","route_short_name":"10","route_long_name":"B-LINE EXPRESS","route_type":3,"route_color":"#DA251D","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.85997,43.25276]}},{"type":"Feature","properties":{"stop_id":"2113","stop_code":"2706","stop_name":"MAIN at WENTWORTH","stop_desc":"MAIN ST E & WENTWORTH ST S","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4310","agency_id":"HSR","route_short_name":"10","route_long_name":"B-LINE EXPRESS","route_type":3,"route_color":"#DA251D","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.8494,43.25008]}},{"type":"Feature","properties":{"stop_id":"2121","stop_code":"2919","stop_name":"MAIN at BAY","stop_desc":"MAIN ST W & BAY ST","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.87455,43.25647]}},{"type":"Feature","properties":{"stop_id":"2123","stop_code":"2647","stop_name":"MAIN at RIFLE RANGE","stop_desc":"MAIN ST W & RIFLE RANGE RD","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.92958,43.25742]}},{"type":"Feature","properties":{"stop_id":"2128","stop_code":"2919","stop_name":"MAIN at CAROLINE","stop_desc":"MAIN ST W & CAROLINE ST","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.8769,43.25705]}},{"type":"Feature","properties":{"stop_id":"2130","stop_code":"2646","stop_name":"OSLER at MAIN","stop_desc":"MAIN ST W & OSLER DR","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"},{"route_id":"4310","agency_id":"HSR","route_short_name":"10","route_long_name":"B-LINE EXPRESS","route_type":3,"route_color":"#DA251D","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.93541,43.25726]}},{"type":"Feature","properties":{"stop_id":"2136","stop_code":"2756","stop_name":"MAIN at DUNDURN","stop_desc":"MAIN ST W & DUNDURN ST","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4310","agency_id":"HSR","route_short_name":"10","route_long_name":"B-LINE EXPRESS","route_type":3,"route_color":"#DA251D","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.88946,43.25982]}},{"type":"Feature","properties":{"stop_id":"2139","stop_code":"1352","stop_name":"MAIN at EWEN","stop_desc":"MAIN ST W & EWEN RD","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.93224,43.2573]}},{"type":"Feature","properties":{"stop_id":"2144","stop_code":"2647","stop_name":"MAIN at KINGSMOUNT","stop_desc":"MAIN ST W & KINGSMOUNT ST","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.92728,43.25741]}},{"type":"Feature","properties":{"stop_id":"2145","stop_code":"2648","stop_name":"MAIN at LELAND","stop_desc":"MAIN ST W & LELAND ST","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.92251,43.25756]}},{"type":"Feature","properties":{"stop_id":"2146","stop_code":"1122","stop_name":"MAIN at LONGWOOD","stop_desc":"MAIN ST W & LONGWOOD RD","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.90171,43.25909]}},{"type":"Feature","properties":{"stop_id":"2148","stop_code":"1184","stop_name":"MAIN opposite MACKLIN","stop_desc":"MAIN ST W & MACKLIN ST S","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.89777,43.25994]}},{"type":"Feature","properties":{"stop_id":"2149","stop_code":"2920","stop_name":"MAIN at MACNAB","stop_desc":"MAIN ST W & MACNAB ST (1&10)","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4310","agency_id":"HSR","route_short_name":"10","route_long_name":"B-LINE EXPRESS","route_type":3,"route_color":"#DA251D","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.872,43.25582]}},{"type":"Feature","properties":{"stop_id":"2157","stop_code":"1124","stop_name":"MAIN at PEARL","stop_desc":"MAIN ST W & PEARL ST","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.88289,43.25834]}},{"type":"Feature","properties":{"stop_id":"2158","stop_code":"1123","stop_name":"MAIN at POULETTE","stop_desc":"MAIN ST W & POULETTE ST","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.88602,43.25902]}},{"type":"Feature","properties":{"stop_id":"2160","stop_code":"1124","stop_name":"MAIN at QUEEN","stop_desc":"MAIN ST W & QUEEN ST S","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.87982,43.25767]}},{"type":"Feature","properties":{"stop_id":"2162","stop_code":"2648","stop_name":"MAIN at THORNDALE","stop_desc":"MAIN ST W & THORNDALE ST","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.92499,43.25749]}},{"type":"Feature","properties":{"stop_id":"2185","stop_code":"2748","stop_name":"UNIVERSITY at LIFE SCIENCES","stop_desc":"UNIVERSITY AV & LIFE SCIENCE BLDG","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.91862,43.261]}},{"type":"Feature","properties":{"stop_id":"2190","stop_code":"2650","stop_name":"UNIVERSITY at FORSYTH","stop_desc":"UNIVERSITY AV & FORSYTH AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.91887,43.25863]}},{"type":"Feature","properties":{"stop_id":"2353","stop_code":"1107","stop_name":"OSLER opposite OSLER","stop_desc":"OSLER DR & OSLER CT OPP","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.94254,43.25951]}},{"type":"Feature","properties":{"stop_id":"2485","stop_code":"2720","stop_name":"QUEENSTON at POTTRUFF","stop_desc":"QUEENSTON RD & POTTRUFF RD S","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.78109,43.2317]}},{"type":"Feature","properties":{"stop_id":"2489","stop_code":"2722","stop_name":"QUEENSTON opposite EASTGATE SQUARE","stop_desc":"QUEENSTON RD & EASTGATE SQUARE OPP","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.7675,43.22865]}},{"type":"Feature","properties":{"stop_id":"2490","stop_code":"2389","stop_name":"QUEENSTON opposite RIVERDALE","stop_desc":"QUEENSTON RD & RIVERDALE DR","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4332","agency_id":"HSR","route_short_name":"55","route_long_name":"STONEY CREEK CENTRAL","route_type":3,"route_color":"#B86779","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.76119,43.22737]}},{"type":"Feature","properties":{"stop_id":"2491","stop_code":"1353","stop_name":"At 940 QUEENSTON","stop_desc":"QUEENSTON RD & #940 E LAKE AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4332","agency_id":"HSR","route_short_name":"55","route_long_name":"STONEY CREEK CENTRAL","route_type":3,"route_color":"#B86779","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.75252,43.22527]}},{"type":"Feature","properties":{"stop_id":"2495","stop_code":"2722","stop_name":"QUEENSTON at CLAPHAM","stop_desc":"QUEENSTON RD & CLAPHAM RD","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.77056,43.22925]}},{"type":"Feature","properties":{"stop_id":"2496","stop_code":"2716","stop_name":"QUEENSTON at COCHRANE","stop_desc":"QUEENSTON RD & COCHRANE RD","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.80056,43.23676]}},{"type":"Feature","properties":{"stop_id":"2497","stop_code":"2716","stop_name":"QUEENSTON at CRAIGROYSTON","stop_desc":"QUEENSTON RD & CRAIGROYSTON AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.79883,43.23574]}},{"type":"Feature","properties":{"stop_id":"2498","stop_code":"2719","stop_name":"QUEENSTON at DELENA","stop_desc":"QUEENSTON RD & DELENA AV S","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.79009,43.2337]}},{"type":"Feature","properties":{"stop_id":"2499","stop_code":"2388","stop_name":"QUEENSTON at DONN","stop_desc":"QUEENSTON RD & DONN AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4332","agency_id":"HSR","route_short_name":"55","route_long_name":"STONEY CREEK CENTRAL","route_type":3,"route_color":"#B86779","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.74986,43.22464]}},{"type":"Feature","properties":{"stop_id":"2507","stop_code":"2513","stop_name":"QUEENSTON at IRENE","stop_desc":"QUEENSTON RD & IRENE AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4332","agency_id":"HSR","route_short_name":"55","route_long_name":"STONEY CREEK CENTRAL","route_type":3,"route_color":"#B86779","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.7628,43.22772]}},{"type":"Feature","properties":{"stop_id":"2510","stop_code":"2716","stop_name":"QUEENSTON opposite ISABEL","stop_desc":"QUEENSTON RD & ISABEL AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.79598,43.23515]}},{"type":"Feature","properties":{"stop_id":"2513","stop_code":"2514","stop_name":"QUEENSTON at LAKE","stop_desc":"QUEENSTON RD & LAKE AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4332","agency_id":"HSR","route_short_name":"55","route_long_name":"STONEY CREEK CENTRAL","route_type":3,"route_color":"#B86779","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.75567,43.22599]}},{"type":"Feature","properties":{"stop_id":"2515","stop_code":"2721","stop_name":"QUEENSTON at NASH","stop_desc":"QUEENSTON RD & NASH RD","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4310","agency_id":"HSR","route_short_name":"10","route_long_name":"B-LINE EXPRESS","route_type":3,"route_color":"#DA251D","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.77423,43.22999]}},{"type":"Feature","properties":{"stop_id":"2517","stop_code":"2717","stop_name":"QUEENSTON at PARKDALE","stop_desc":"0 QUEENSTON RD & PARKDALE AV S","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4310","agency_id":"HSR","route_short_name":"10","route_long_name":"B-LINE EXPRESS","route_type":3,"route_color":"#DA251D","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.79293,43.23445]}},{"type":"Feature","properties":{"stop_id":"2520","stop_code":"2719","stop_name":"QUEENSTON at REID","stop_desc":"QUEENSTON RD & REID AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.78827,43.23318]}},{"type":"Feature","properties":{"stop_id":"2525","stop_code":"2720","stop_name":"QUEENSTON at WOODMAN","stop_desc":"QUEENSTON RD & WOODMAN DR","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.77882,43.23109]}},{"type":"Feature","properties":{"stop_id":"2642","stop_code":"2527","stop_name":"FIESTA MALL LOOP","stop_desc":"HIGHWAY NO. 8 & GRAYS RD","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.74614,43.2229]}},{"type":"Feature","properties":{"stop_id":"2654","stop_code":"1120","stop_name":"STERLING at DALEWOOD","stop_desc":"STERLING ST & DALEWOOD AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.91229,43.26208]}},{"type":"Feature","properties":{"stop_id":"2658","stop_code":"1119","stop_name":"STERLING at FORSYTH","stop_desc":"STERLING ST & FORSYTH AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.91598,43.26229]}},{"type":"Feature","properties":{"stop_id":"2659","stop_code":"1120","stop_name":"STERLING at HADDON","stop_desc":"STERLING ST & HADDON AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.91032,43.26196]}},{"type":"Feature","properties":{"stop_id":"2662","stop_code":"1119","stop_name":"STERLING at UNIVERSITY","stop_desc":"STERLING ST & UNIVERSITY AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.91825,43.26225]}},{"type":"Feature","properties":{"stop_id":"355260","stop_code":"1001","stop_name":"UNIVERSITY PLAZA PLATFORM 1","stop_desc":"PRIVATE RD","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.94281,43.2584]}},{"type":"Feature","properties":{"stop_id":"355415","stop_code":"1701","stop_name":"HAMILTON GO CENTRE PLATFORM 18","stop_desc":"PRIVATE RD & JOHN ST S","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4302","agency_id":"HSR","route_short_name":"02","route_long_name":"BARTON","route_type":3,"route_color":"#75C5F0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.86858,43.25249]}},{"type":"Feature","properties":{"stop_id":"355419","stop_code":"1265","stop_name":"JOHN at JACKSON","stop_desc":"JOHN ST S & JACKSON ST E","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4302","agency_id":"HSR","route_short_name":"02","route_long_name":"BARTON","route_type":3,"route_color":"#75C5F0","route_text_color":"#000000"},{"route_id":"4303","agency_id":"HSR","route_short_name":"03","route_long_name":"CANNON","route_type":3,"route_color":"#7882B4","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.86742,43.25368]}},{"type":"Feature","properties":{"stop_id":"355731","stop_code":"2933","stop_name":"LONGWOOD at KING","stop_desc":"LONGWOOD RD S & KING ST W","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"},{"route_id":"4305","agency_id":"HSR","route_short_name":"05","route_long_name":"DELAWARE","route_type":3,"route_color":"#78AAA0","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.90097,43.26268]}},{"type":"Feature","properties":{"stop_id":"355947","stop_code":"2720","stop_name":"QUEENSTON at QUEENSTON PLACE","stop_desc":"QUEENSTON RD & PRIVATE RD","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.7765,43.23059]}},{"type":"Feature","properties":{"stop_id":"355948","stop_code":"2391","stop_name":"QUEENSTON at FIESTA MALL","stop_desc":"QUEENSTON RD & DONN AV","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.74801,43.22429]}},{"type":"Feature","properties":{"stop_id":"356010","stop_code":"1711","stop_name":"MAIN at CATHARINE","stop_desc":"0 MAIN ST E & CATHARINE ST S","wheelchair_boarding":0,"routes":[{"route_id":"4301","agency_id":"HSR","route_short_name":"01","route_long_name":"KING","route_type":3,"route_color":"#0093DD","route_text_color":"#000000"}],"agency_name":"Hamilton Street Railway"},"geometry":{"type":"Point","coordinates":[-79.86583,43.25442]}}]}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "agency_name": "Hamilton Street Railway",
+        "route_id": "4301",
+        "agency_id": "HSR",
+        "route_short_name": "01",
+        "route_long_name": "KING",
+        "route_type": 3,
+        "route_color": "#0093DD",
+        "route_text_color": "#000000"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-79.8684, 43.25244],
+          [-79.86804, 43.25234],
+          [-79.86773, 43.25316],
+          [-79.86703, 43.25474],
+          [-79.86476, 43.25418],
+          [-79.85983, 43.25282],
+          [-79.85846, 43.25246],
+          [-79.855, 43.25159],
+          [-79.8461, 43.2493],
+          [-79.84313, 43.24856],
+          [-79.83894, 43.24747],
+          [-79.82978, 43.24499],
+          [-79.82581, 43.24402],
+          [-79.82439, 43.24365],
+          [-79.82364, 43.24349],
+          [-79.81991, 43.2426],
+          [-79.81487, 43.24143],
+          [-79.80998, 43.24047],
+          [-79.80498, 43.23921],
+          [-79.80222, 43.23838],
+          [-79.80193, 43.23826],
+          [-79.80169, 43.23814],
+          [-79.80154, 43.23803],
+          [-79.80134, 43.23784],
+          [-79.80104, 43.23747],
+          [-79.80001, 43.23627],
+          [-79.79988, 43.23616],
+          [-79.79973, 43.23608],
+          [-79.79944, 43.23597],
+          [-79.79264, 43.23442],
+          [-79.78534, 43.23252],
+          [-79.78445, 43.23232],
+          [-79.78241, 43.23198],
+          [-79.78072, 43.23165],
+          [-79.77449, 43.23014],
+          [-79.77366, 43.22996],
+          [-79.76648, 43.22855],
+          [-79.76636, 43.22884],
+          [-79.76547, 43.22865]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "agency_name": "Hamilton Street Railway",
+        "route_id": "4301",
+        "agency_id": "HSR",
+        "route_short_name": "01",
+        "route_long_name": "KING",
+        "route_type": 3,
+        "route_color": "#0093DD",
+        "route_text_color": "#000000"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-79.94288, 43.25836],
+          [-79.94312, 43.25909],
+          [-79.94313, 43.25923],
+          [-79.9431, 43.25933],
+          [-79.94304, 43.25943],
+          [-79.94276, 43.2597],
+          [-79.94132, 43.25893],
+          [-79.94, 43.25828],
+          [-79.93967, 43.25817],
+          [-79.93918, 43.25802],
+          [-79.93869, 43.2579],
+          [-79.93598, 43.25739],
+          [-79.9355, 43.25732],
+          [-79.93502, 43.2573],
+          [-79.93282, 43.25736],
+          [-79.92485, 43.25759],
+          [-79.92222, 43.2577],
+          [-79.92077, 43.25767],
+          [-79.91947, 43.2577],
+          [-79.91928, 43.25815],
+          [-79.9192, 43.25827],
+          [-79.91908, 43.25838],
+          [-79.91886, 43.25848],
+          [-79.91894, 43.2586],
+          [-79.91899, 43.25872],
+          [-79.91898, 43.25949],
+          [-79.91902, 43.2599],
+          [-79.91908, 43.26003],
+          [-79.91924, 43.26019],
+          [-79.91881, 43.26056],
+          [-79.91877, 43.26062],
+          [-79.91873, 43.26071],
+          [-79.91878, 43.26225],
+          [-79.91768, 43.26226],
+          [-79.91723, 43.26231],
+          [-79.91596, 43.26234],
+          [-79.90871, 43.26192],
+          [-79.90823, 43.26185],
+          [-79.9076, 43.2617],
+          [-79.90746, 43.26162],
+          [-79.90724, 43.26132],
+          [-79.90242, 43.2633],
+          [-79.90228, 43.26334],
+          [-79.90217, 43.26334],
+          [-79.90075, 43.26302],
+          [-79.90233, 43.25938],
+          [-79.90238, 43.25913],
+          [-79.9002, 43.25944],
+          [-79.89731, 43.26013],
+          [-79.89667, 43.26024],
+          [-79.89584, 43.26034],
+          [-79.89327, 43.26058],
+          [-79.89273, 43.26061],
+          [-79.89233, 43.26058],
+          [-79.89202, 43.26053],
+          [-79.88873, 43.25974],
+          [-79.88088, 43.25797],
+          [-79.87965, 43.25772],
+          [-79.87904, 43.25766],
+          [-79.87423, 43.25647],
+          [-79.86703, 43.25474]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "agency_name": "Hamilton Street Railway",
+        "route_id": "4301",
+        "agency_id": "HSR",
+        "route_short_name": "01",
+        "route_long_name": "KING",
+        "route_type": 3,
+        "route_color": "#0093DD",
+        "route_text_color": "#000000"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-79.76648, 43.22855],
+          [-79.7654, 43.22832],
+          [-79.76533, 43.2285],
+          [-79.76533, 43.22855],
+          [-79.76538, 43.22862],
+          [-79.76547, 43.22865]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "agency_name": "Hamilton Street Railway",
+        "route_id": "4301",
+        "agency_id": "HSR",
+        "route_short_name": "01",
+        "route_long_name": "KING",
+        "route_type": 3,
+        "route_color": "#0093DD",
+        "route_text_color": "#000000"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-79.7654, 43.22832],
+          [-79.76403, 43.22805],
+          [-79.75821, 43.22671],
+          [-79.74769, 43.22424],
+          [-79.74785, 43.22386],
+          [-79.748, 43.22368],
+          [-79.74807, 43.22354],
+          [-79.74808, 43.22347],
+          [-79.74805, 43.22343],
+          [-79.74791, 43.22338],
+          [-79.74613, 43.22297]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1403",
+        "stop_code": "2056",
+        "stop_name": "EASTGATE TERMINAL PLATFORM 4",
+        "parent_station": "2",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.76556, 43.2286] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1406",
+        "stop_code": "2001",
+        "stop_name": "EASTGATE TERMINAL PLATFORM 2",
+        "stop_desc": "PRIVATE RD & PLATFORM 2",
+        "parent_station": "2",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.76589, 43.22879] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1971",
+        "stop_code": "2749",
+        "stop_name": "KING at MARION",
+        "stop_desc": "KING ST W & MARION AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.90467, 43.2623] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1973",
+        "stop_code": "1121",
+        "stop_name": "KING at PAISLEY",
+        "stop_desc": "KING ST W & PAISLEY AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.90602, 43.26174] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2045",
+        "stop_code": "2935",
+        "stop_name": "LONGWOOD at MARION",
+        "stop_desc": "0 LONGWOOD RD S & MARION AV S",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.90209, 43.26002] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2071",
+        "stop_code": "2709",
+        "stop_name": "MAIN opposite MELROSE",
+        "stop_desc": "MAIN ST E & MELROSE AV S OPP",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4310",
+            "agency_id": "HSR",
+            "route_short_name": "10",
+            "route_long_name": "B-LINE EXPRESS",
+            "route_type": 3,
+            "route_color": "#DA251D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.83438, 43.24616] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2072",
+        "stop_code": "2709",
+        "stop_name": "MAIN at ASHFORD",
+        "stop_desc": "MAIN ST E & ASHFORD BV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.83731, 43.24696] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2074",
+        "stop_code": "2711",
+        "stop_name": "MAIN at BALMORAL",
+        "stop_desc": "MAIN ST E & BALMORAL AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.82207, 43.24303] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2075",
+        "stop_code": "2709",
+        "stop_name": "MAIN at BALSAM",
+        "stop_desc": "MAIN ST E & BALSAM AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.83204, 43.24552] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2076",
+        "stop_code": "2715",
+        "stop_name": "MAIN at CAMERON",
+        "stop_desc": "MAIN ST E & CAMERON AV S",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.80759, 43.23977] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2078",
+        "stop_code": "2710",
+        "stop_name": "MAIN opposite EAST BEND",
+        "stop_desc": "MAIN ST E & EAST BEND AV OPP",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.82889, 43.2447] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2079",
+        "stop_code": "2707",
+        "stop_name": "MAIN at EASTBOURNE",
+        "stop_desc": "MAIN ST E & EASTBOURNE AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.8422, 43.24824] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2080",
+        "stop_code": "2704",
+        "stop_name": "MAIN at EMERALD",
+        "stop_desc": "MAIN ST E & EMERALD ST",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.85451, 43.25137] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2081",
+        "stop_code": "2715",
+        "stop_name": "MAIN opposite FAIRFIELD",
+        "stop_desc": "MAIN ST E & FAIRFIELD AV OPP",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.80274, 43.23846] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2082",
+        "stop_code": "2707",
+        "stop_name": "MAIN at FAIRLEIGH",
+        "stop_desc": "MAIN ST E & FAIRLEIGH AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.84393, 43.24868] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2083",
+        "stop_code": "2703",
+        "stop_name": "MAIN at FERGUSON",
+        "stop_desc": "MAIN ST E & FERGUSON AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.86195, 43.2533] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2085",
+        "stop_code": "2710",
+        "stop_name": "MAIN opposite GLENDALE",
+        "stop_desc": "MAIN ST E & GLENDALE AV OPP",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.82723, 43.24429] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2087",
+        "stop_code": "2713",
+        "stop_name": "MAIN at GRAHAM",
+        "stop_desc": "MAIN ST E & GRAHAM AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.81463, 43.24131] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2089",
+        "stop_code": "2701",
+        "stop_name": "MAIN at HUGHSON",
+        "stop_desc": "MAIN ST E & HUGHSON ST",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.86854, 43.25502] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2090",
+        "stop_code": "2713",
+        "stop_name": "MAIN at HUXLEY",
+        "stop_desc": "MAIN ST E & HUXLEY AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.81237, 43.24086] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2095",
+        "stop_code": "2714",
+        "stop_name": "MAIN at KENILWORTH",
+        "stop_desc": "MAIN ST E & KENILWORTH AV S",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4310",
+            "agency_id": "HSR",
+            "route_short_name": "10",
+            "route_long_name": "B-LINE EXPRESS",
+            "route_type": 3,
+            "route_color": "#DA251D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.81013, 43.24044] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2097",
+        "stop_code": "2711",
+        "stop_name": "MAIN at KING",
+        "stop_desc": "MAIN ST E & KING ST (ISLAND) - DELTA",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4310",
+            "agency_id": "HSR",
+            "route_short_name": "10",
+            "route_long_name": "B-LINE EXPRESS",
+            "route_type": 3,
+            "route_color": "#DA251D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.82435, 43.24356] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2098",
+        "stop_code": "2704",
+        "stop_name": "MAIN at ONTARIO",
+        "stop_desc": "MAIN ST E & ONTARIO ST",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.85168, 43.25066] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2101",
+        "stop_code": "2712",
+        "stop_name": "MAIN at OTTAWA",
+        "stop_desc": "MAIN ST E & OTTAWA ST",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4310",
+            "agency_id": "HSR",
+            "route_short_name": "10",
+            "route_long_name": "B-LINE EXPRESS",
+            "route_type": 3,
+            "route_color": "#DA251D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.81998, 43.2425] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2103",
+        "stop_code": "2713",
+        "stop_name": "MAIN at PARK ROW",
+        "stop_desc": "MAIN ST E & PARK ROW",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.8171, 43.24187] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2104",
+        "stop_code": "2707",
+        "stop_name": "MAIN at SANFORD",
+        "stop_desc": "MAIN ST E & SANFORD AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.84745, 43.24957] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2105",
+        "stop_code": "2708",
+        "stop_name": "MAIN opposite GARFIELD",
+        "stop_desc": "MAIN ST E & GARFIELD AV OPP",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.83919, 43.24746] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2108",
+        "stop_code": "2715",
+        "stop_name": "MAIN at TRAGINA",
+        "stop_desc": "MAIN ST E & TRAGINA AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.80452, 43.23901] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2109",
+        "stop_code": "2705",
+        "stop_name": "MAIN at VICTORIA",
+        "stop_desc": "MAIN ST E & VICTORIA AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.85758, 43.25216] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2110",
+        "stop_code": "2703",
+        "stop_name": "MAIN at WALNUT",
+        "stop_desc": "MAIN ST E & WALNUT ST S",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.86388, 43.2539] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2112",
+        "stop_code": "2703",
+        "stop_name": "MAIN at WELLINGTON",
+        "stop_desc": "MAIN ST E & WELLINGTON ST",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4310",
+            "agency_id": "HSR",
+            "route_short_name": "10",
+            "route_long_name": "B-LINE EXPRESS",
+            "route_type": 3,
+            "route_color": "#DA251D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.85997, 43.25276] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2113",
+        "stop_code": "2706",
+        "stop_name": "MAIN at WENTWORTH",
+        "stop_desc": "MAIN ST E & WENTWORTH ST S",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4310",
+            "agency_id": "HSR",
+            "route_short_name": "10",
+            "route_long_name": "B-LINE EXPRESS",
+            "route_type": 3,
+            "route_color": "#DA251D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.8494, 43.25008] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2121",
+        "stop_code": "2919",
+        "stop_name": "MAIN at BAY",
+        "stop_desc": "MAIN ST W & BAY ST",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.87455, 43.25647] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2123",
+        "stop_code": "2647",
+        "stop_name": "MAIN at RIFLE RANGE",
+        "stop_desc": "MAIN ST W & RIFLE RANGE RD",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.92958, 43.25742] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2128",
+        "stop_code": "2919",
+        "stop_name": "MAIN at CAROLINE",
+        "stop_desc": "MAIN ST W & CAROLINE ST",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.8769, 43.25705] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2130",
+        "stop_code": "2646",
+        "stop_name": "OSLER at MAIN",
+        "stop_desc": "MAIN ST W & OSLER DR",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4310",
+            "agency_id": "HSR",
+            "route_short_name": "10",
+            "route_long_name": "B-LINE EXPRESS",
+            "route_type": 3,
+            "route_color": "#DA251D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.93541, 43.25726] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2136",
+        "stop_code": "2756",
+        "stop_name": "MAIN at DUNDURN",
+        "stop_desc": "MAIN ST W & DUNDURN ST",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4310",
+            "agency_id": "HSR",
+            "route_short_name": "10",
+            "route_long_name": "B-LINE EXPRESS",
+            "route_type": 3,
+            "route_color": "#DA251D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.88946, 43.25982] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2139",
+        "stop_code": "1352",
+        "stop_name": "MAIN at EWEN",
+        "stop_desc": "MAIN ST W & EWEN RD",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.93224, 43.2573] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2144",
+        "stop_code": "2647",
+        "stop_name": "MAIN at KINGSMOUNT",
+        "stop_desc": "MAIN ST W & KINGSMOUNT ST",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.92728, 43.25741] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2145",
+        "stop_code": "2648",
+        "stop_name": "MAIN at LELAND",
+        "stop_desc": "MAIN ST W & LELAND ST",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.92251, 43.25756] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2146",
+        "stop_code": "1122",
+        "stop_name": "MAIN at LONGWOOD",
+        "stop_desc": "MAIN ST W & LONGWOOD RD",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.90171, 43.25909] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2148",
+        "stop_code": "1184",
+        "stop_name": "MAIN opposite MACKLIN",
+        "stop_desc": "MAIN ST W & MACKLIN ST S",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.89777, 43.25994] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2149",
+        "stop_code": "2920",
+        "stop_name": "MAIN at MACNAB",
+        "stop_desc": "MAIN ST W & MACNAB ST (1&10)",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4310",
+            "agency_id": "HSR",
+            "route_short_name": "10",
+            "route_long_name": "B-LINE EXPRESS",
+            "route_type": 3,
+            "route_color": "#DA251D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.872, 43.25582] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2157",
+        "stop_code": "1124",
+        "stop_name": "MAIN at PEARL",
+        "stop_desc": "MAIN ST W & PEARL ST",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.88289, 43.25834] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2158",
+        "stop_code": "1123",
+        "stop_name": "MAIN at POULETTE",
+        "stop_desc": "MAIN ST W & POULETTE ST",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.88602, 43.25902] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2160",
+        "stop_code": "1124",
+        "stop_name": "MAIN at QUEEN",
+        "stop_desc": "MAIN ST W & QUEEN ST S",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.87982, 43.25767] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2162",
+        "stop_code": "2648",
+        "stop_name": "MAIN at THORNDALE",
+        "stop_desc": "MAIN ST W & THORNDALE ST",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.92499, 43.25749] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2185",
+        "stop_code": "2748",
+        "stop_name": "UNIVERSITY at LIFE SCIENCES",
+        "stop_desc": "UNIVERSITY AV & LIFE SCIENCE BLDG",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.91862, 43.261] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2190",
+        "stop_code": "2650",
+        "stop_name": "UNIVERSITY at FORSYTH",
+        "stop_desc": "UNIVERSITY AV & FORSYTH AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.91887, 43.25863] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2353",
+        "stop_code": "1107",
+        "stop_name": "OSLER opposite OSLER",
+        "stop_desc": "OSLER DR & OSLER CT OPP",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.94254, 43.25951] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2485",
+        "stop_code": "2720",
+        "stop_name": "QUEENSTON at POTTRUFF",
+        "stop_desc": "QUEENSTON RD & POTTRUFF RD S",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.78109, 43.2317] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2489",
+        "stop_code": "2722",
+        "stop_name": "QUEENSTON opposite EASTGATE SQUARE",
+        "stop_desc": "QUEENSTON RD & EASTGATE SQUARE OPP",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.7675, 43.22865] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2490",
+        "stop_code": "2389",
+        "stop_name": "QUEENSTON opposite RIVERDALE",
+        "stop_desc": "QUEENSTON RD & RIVERDALE DR",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4332",
+            "agency_id": "HSR",
+            "route_short_name": "55",
+            "route_long_name": "STONEY CREEK CENTRAL",
+            "route_type": 3,
+            "route_color": "#B86779",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.76119, 43.22737] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2491",
+        "stop_code": "1353",
+        "stop_name": "At 940 QUEENSTON",
+        "stop_desc": "QUEENSTON RD & #940 E LAKE AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4332",
+            "agency_id": "HSR",
+            "route_short_name": "55",
+            "route_long_name": "STONEY CREEK CENTRAL",
+            "route_type": 3,
+            "route_color": "#B86779",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.75252, 43.22527] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2495",
+        "stop_code": "2722",
+        "stop_name": "QUEENSTON at CLAPHAM",
+        "stop_desc": "QUEENSTON RD & CLAPHAM RD",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.77056, 43.22925] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2496",
+        "stop_code": "2716",
+        "stop_name": "QUEENSTON at COCHRANE",
+        "stop_desc": "QUEENSTON RD & COCHRANE RD",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.80056, 43.23676] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2497",
+        "stop_code": "2716",
+        "stop_name": "QUEENSTON at CRAIGROYSTON",
+        "stop_desc": "QUEENSTON RD & CRAIGROYSTON AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.79883, 43.23574] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2498",
+        "stop_code": "2719",
+        "stop_name": "QUEENSTON at DELENA",
+        "stop_desc": "QUEENSTON RD & DELENA AV S",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.79009, 43.2337] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2499",
+        "stop_code": "2388",
+        "stop_name": "QUEENSTON at DONN",
+        "stop_desc": "QUEENSTON RD & DONN AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4332",
+            "agency_id": "HSR",
+            "route_short_name": "55",
+            "route_long_name": "STONEY CREEK CENTRAL",
+            "route_type": 3,
+            "route_color": "#B86779",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.74986, 43.22464] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2507",
+        "stop_code": "2513",
+        "stop_name": "QUEENSTON at IRENE",
+        "stop_desc": "QUEENSTON RD & IRENE AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4332",
+            "agency_id": "HSR",
+            "route_short_name": "55",
+            "route_long_name": "STONEY CREEK CENTRAL",
+            "route_type": 3,
+            "route_color": "#B86779",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.7628, 43.22772] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2510",
+        "stop_code": "2716",
+        "stop_name": "QUEENSTON opposite ISABEL",
+        "stop_desc": "QUEENSTON RD & ISABEL AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.79598, 43.23515] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2513",
+        "stop_code": "2514",
+        "stop_name": "QUEENSTON at LAKE",
+        "stop_desc": "QUEENSTON RD & LAKE AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4332",
+            "agency_id": "HSR",
+            "route_short_name": "55",
+            "route_long_name": "STONEY CREEK CENTRAL",
+            "route_type": 3,
+            "route_color": "#B86779",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.75567, 43.22599] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2515",
+        "stop_code": "2721",
+        "stop_name": "QUEENSTON at NASH",
+        "stop_desc": "QUEENSTON RD & NASH RD",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4310",
+            "agency_id": "HSR",
+            "route_short_name": "10",
+            "route_long_name": "B-LINE EXPRESS",
+            "route_type": 3,
+            "route_color": "#DA251D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.77423, 43.22999] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2517",
+        "stop_code": "2717",
+        "stop_name": "QUEENSTON at PARKDALE",
+        "stop_desc": "0 QUEENSTON RD & PARKDALE AV S",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4310",
+            "agency_id": "HSR",
+            "route_short_name": "10",
+            "route_long_name": "B-LINE EXPRESS",
+            "route_type": 3,
+            "route_color": "#DA251D",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.79293, 43.23445] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2520",
+        "stop_code": "2719",
+        "stop_name": "QUEENSTON at REID",
+        "stop_desc": "QUEENSTON RD & REID AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.78827, 43.23318] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2525",
+        "stop_code": "2720",
+        "stop_name": "QUEENSTON at WOODMAN",
+        "stop_desc": "QUEENSTON RD & WOODMAN DR",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.77882, 43.23109] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2642",
+        "stop_code": "2527",
+        "stop_name": "FIESTA MALL LOOP",
+        "stop_desc": "HIGHWAY NO. 8 & GRAYS RD",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.74614, 43.2229] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2654",
+        "stop_code": "1120",
+        "stop_name": "STERLING at DALEWOOD",
+        "stop_desc": "STERLING ST & DALEWOOD AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.91229, 43.26208] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2658",
+        "stop_code": "1119",
+        "stop_name": "STERLING at FORSYTH",
+        "stop_desc": "STERLING ST & FORSYTH AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.91598, 43.26229] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2659",
+        "stop_code": "1120",
+        "stop_name": "STERLING at HADDON",
+        "stop_desc": "STERLING ST & HADDON AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.91032, 43.26196] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2662",
+        "stop_code": "1119",
+        "stop_name": "STERLING at UNIVERSITY",
+        "stop_desc": "STERLING ST & UNIVERSITY AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.91825, 43.26225] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "355260",
+        "stop_code": "1001",
+        "stop_name": "UNIVERSITY PLAZA PLATFORM 1",
+        "stop_desc": "PRIVATE RD",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.94281, 43.2584] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "355415",
+        "stop_code": "1701",
+        "stop_name": "HAMILTON GO CENTRE PLATFORM 18",
+        "stop_desc": "PRIVATE RD & JOHN ST S",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4302",
+            "agency_id": "HSR",
+            "route_short_name": "02",
+            "route_long_name": "BARTON",
+            "route_type": 3,
+            "route_color": "#75C5F0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.86858, 43.25249] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "355419",
+        "stop_code": "1265",
+        "stop_name": "JOHN at JACKSON",
+        "stop_desc": "JOHN ST S & JACKSON ST E",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4302",
+            "agency_id": "HSR",
+            "route_short_name": "02",
+            "route_long_name": "BARTON",
+            "route_type": 3,
+            "route_color": "#75C5F0",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4303",
+            "agency_id": "HSR",
+            "route_short_name": "03",
+            "route_long_name": "CANNON",
+            "route_type": 3,
+            "route_color": "#7882B4",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.86742, 43.25368] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "355731",
+        "stop_code": "2933",
+        "stop_name": "LONGWOOD at KING",
+        "stop_desc": "LONGWOOD RD S & KING ST W",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          },
+          {
+            "route_id": "4305",
+            "agency_id": "HSR",
+            "route_short_name": "05",
+            "route_long_name": "DELAWARE",
+            "route_type": 3,
+            "route_color": "#78AAA0",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.90097, 43.26268] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "355947",
+        "stop_code": "2720",
+        "stop_name": "QUEENSTON at QUEENSTON PLACE",
+        "stop_desc": "QUEENSTON RD & PRIVATE RD",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.7765, 43.23059] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "355948",
+        "stop_code": "2391",
+        "stop_name": "QUEENSTON at FIESTA MALL",
+        "stop_desc": "QUEENSTON RD & DONN AV",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.74801, 43.22429] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "356010",
+        "stop_code": "1711",
+        "stop_name": "MAIN at CATHARINE",
+        "stop_desc": "0 MAIN ST E & CATHARINE ST S",
+        "wheelchair_boarding": 0,
+        "routes": [
+          {
+            "route_id": "4301",
+            "agency_id": "HSR",
+            "route_short_name": "01",
+            "route_long_name": "KING",
+            "route_type": 3,
+            "route_color": "#0093DD",
+            "route_text_color": "#000000"
+          }
+        ],
+        "agency_name": "Hamilton Street Railway"
+      },
+      "geometry": { "type": "Point", "coordinates": [-79.86583, 43.25442] }
+    }
+  ]
+}

@@ -128,8 +128,8 @@ export function updateOne(req, res) {
 }
 
 // Path localhost:5000/api/weather/temperatures
-export function deleteAll(req, res) {
-  TemperatureSchema.deleteMany({})
+export const deleteAll = async (req, res) => {
+  await TemperatureSchema.deleteMany({})
     .then((data) => {
       res.send({
         message:
@@ -146,14 +146,21 @@ export function deleteAll(req, res) {
 }
 
 // Direct call to delete all weather data in the database
-export function directDeleteAll() {
-  TemperatureSchema.deleteMany({}, (err) => {
-    if (err) {
-      console.log("Some error occurred while removing all temperature readings")
-    } else {
-      console.log("All temperature readings were deleted successfully!")
-    }
-  })
+export const directDeleteAll = async (req, res) => {
+  await TemperatureSchema.deleteMany({})
+    .then((data) => {
+      res.send({
+        message:
+          "${data.deletedCount} temperature readings were deleted successfully!",
+      })
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message ||
+          "Some error occurred while removing all temperature readings",
+      })
+    })
 }
 
 // Path localhost:5000/api/weather/temperatures/:id

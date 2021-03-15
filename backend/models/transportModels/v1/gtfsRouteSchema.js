@@ -4,6 +4,7 @@ import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 const gtfsRouteSchema = new Schema(
   {
     databaseVersion: { type: Number },
+    routeFilePath: { type: String },
     agencyName: { type: String },
     agencyId: { type: String },
     markerType: { type: String },

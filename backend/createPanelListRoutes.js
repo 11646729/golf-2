@@ -19,7 +19,7 @@ function removeDuplicates(originalArray, prop) {
 
 export const createPanelListRoutes = async (req, res) => {
   // Firstly delete existing gtfsPanelListRouteSchema collection
-  GtfsPanelListRouteSchema.deleteMany({})
+  await GtfsPanelListRouteSchema.deleteMany({})
     .then((res) => {
       console.log("No of Panel Routes successfully deleted: ", res.deletedCount)
     })

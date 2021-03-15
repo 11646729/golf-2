@@ -4,12 +4,13 @@ import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 const gtfsStopSchema = new Schema(
   {
     databaseVersion: { type: Number },
+    routeFileUrl: { type: String },
     agencyName: { type: String },
     agencyId: { type: String },
     markerType: { type: String },
     stopKey: { type: String },
     stopCode: { type: Number },
-    stopId: { type: Number },
+    stopId: { type: String },
     stopColor: { type: String },
     stopName: { type: String },
     stopCoordinates: { type: CoordsSchema.schema },

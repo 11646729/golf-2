@@ -9,9 +9,9 @@ import { getSingleVesselDetails } from "./scrapeVessels"
 // Fetch Port Arrivals & Vessel Details
 // Path: Function called in switchBoard
 // -------------------------------------------------------
-export const fetchPortArrivalsAndVessels = async () => {
+export const fetchPortArrivalsAndVessels = async (req, res) => {
   // Firstly delete all existing Port Arrivals & Vessel Details from the database
-  PortArrivalSchema.deleteMany({})
+  await PortArrivalSchema.deleteMany({})
     .then((res) => {
       console.log("No of old Port Arrivals deleted: ", res.deletedCount)
     })
@@ -19,7 +19,7 @@ export const fetchPortArrivalsAndVessels = async () => {
       console.log(err.message)
     })
 
-  VesselSchema.deleteMany({})
+  await VesselSchema.deleteMany({})
     .then((res) => {
       console.log("No of old Vessels deleted: ", res.deletedCount)
     })

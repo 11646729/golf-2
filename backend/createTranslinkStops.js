@@ -6,9 +6,9 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 // Create Bus Stops in the Database
 // Path: local function called in switchBoard
 // -------------------------------------------------------
-export const createTranslinkStops = () => {
+export const createTranslinkStops = async (req, res) => {
   // Firstly delete all existing Bus Stops in the database
-  TranslinkStopSchema.deleteMany({})
+  await TranslinkStopSchema.deleteMany({})
     .then((res) => {
       console.log("No of Stops successfully deleted: ", res.deletedCount)
 

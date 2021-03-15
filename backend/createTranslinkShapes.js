@@ -6,9 +6,9 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 // Create Bus Shapes in the Database
 // Path: local function called in switchBoard
 // -------------------------------------------------------
-export const createTranslinkShapes = () => {
+export const createTranslinkShapes = async (req, res) => {
   // Firstly delete all existing Route Shapes in the database
-  TranslinkShapeSchema.deleteMany({})
+  await TranslinkShapeSchema.deleteMany({})
     .then((res) => {
       console.log("No of Shapes successfully deleted: ", res.deletedCount)
 

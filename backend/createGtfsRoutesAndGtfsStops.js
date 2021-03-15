@@ -7,7 +7,7 @@ import { getSingleBusRouteAndStops } from "./getSingleBusRouteAndStops"
 // Function to fetch all the GeoJson route filenames in a directory irrespective of trip direction
 export const createGtfsRoutesAndGtfsStops = async (req, res) => {
   // Firstly delete all existing Routes in the database
-  GtfsRouteSchema.deleteMany({})
+  await GtfsRouteSchema.deleteMany({})
     .then((res) => {
       console.log("No of Routes successfully deleted: ", res.deletedCount)
     })
@@ -16,7 +16,7 @@ export const createGtfsRoutesAndGtfsStops = async (req, res) => {
     })
 
   // Firstly delete all existing Stops in the database
-  GtfsStopSchema.deleteMany({})
+  await GtfsStopSchema.deleteMany({})
     .then((res) => {
       console.log("No of Stops successfully deleted: ", res.deletedCount)
     })
@@ -24,24 +24,25 @@ export const createGtfsRoutesAndGtfsStops = async (req, res) => {
       console.log(err.message || "An error occurred while removing all Stops")
     })
 
-  const geojsonDirectory = process.env.GEOJSON_FILES_PATH
+  const routeFilePath = process.env.HAMILTON_GEOJSON_FILES_PATH
+  // const routeFilePath = process.env.TFI_GEOJSON_FILES_PATH
 
-  fs.readdir(geojsonDirectory, function (err, files) {
-    var filesList = files.filter(function (e) {
+  fs.readdir(routeFilePath, function (err, files) {
+    const filesList = files.filter(function (e) {
       return path.extname(e).toLowerCase() === ".geojson"
     })
     if (err) {
       throw err
     }
 
-    // Now pass a single GeoJson route filename to getSingleBusRouteAndStops
-    let i = 0
+    // Now pass geojsonFilePath, routeFileName & outerLoop to getSingleBusRouteAndStops
+    let outerLoop = 0
     do {
-      let singleRouteFilename = filesList[i]
+      let routeFileName = filesList[outerLoop]
 
-      getSingleBusRouteAndStops(singleRouteFilename)
+      getSingleBusRouteAndStops(routeFilePath, routeFileName, outerLoop)
 
-      i++
-    } while (i < filesList.length)
+      outerLoop++
+    } while (outerLoop < filesList.length)
   })
 }
