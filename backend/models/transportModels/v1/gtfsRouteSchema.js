@@ -5,6 +5,7 @@ const gtfsRouteSchema = new Schema(
   {
     databaseVersion: { type: Number },
     routeFilePath: { type: String },
+    routeFileUrl: { type: String },
     agencyName: { type: String },
     agencyId: { type: String },
     markerType: { type: String },

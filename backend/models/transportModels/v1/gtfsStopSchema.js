@@ -4,7 +4,8 @@ import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 const gtfsStopSchema = new Schema(
   {
     databaseVersion: { type: Number },
-    routeFileUrl: { type: String },
+    stopFilePath: { type: String },
+    stopFileUrl: { type: String },
     agencyName: { type: String },
     agencyId: { type: String },
     markerType: { type: String },

@@ -17,10 +17,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export async function selectedUniqueRoute(selectedBusRouteNumber, selected) {
-  // console.log("Bus Route to change: ", selectedBusRouteNumber)
+  console.log("Bus Route to change: ", selectedBusRouteNumber)
 
   await axios({
-    url: "http://localhost:5000/api/transport/gplroute/",
+    url: "http://localhost:5000/api/transport/gplroute/:routenumber",
     data: {
       routeNumber: selectedBusRouteNumber,
       routeVisible: selected,

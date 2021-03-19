@@ -2,7 +2,7 @@ const fs = require("fs")
 const path = require("path")
 import { GtfsStopSchema } from "./models/transportModels/v1/gtfsStopSchema"
 import { GtfsRouteSchema } from "./models/transportModels/v1/gtfsRouteSchema"
-import { getSingleBusRouteAndStops } from "./getSingleBusRouteAndStops"
+import { getAndParseSingleBusRouteAndStops } from "./getAndParseSingleBusRouteAndStops"
 
 // Function to fetch all the GeoJson route filenames in a directory irrespective of trip direction
 export const createGtfsRoutesAndGtfsStops = async (req, res) => {
@@ -27,22 +27,32 @@ export const createGtfsRoutesAndGtfsStops = async (req, res) => {
   const routeFilePath = process.env.HAMILTON_GEOJSON_FILES_PATH
   // const routeFilePath = process.env.TFI_GEOJSON_FILES_PATH
 
+  let returnValues = 0
+
   fs.readdir(routeFilePath, function (err, files) {
-    const filesList = files.filter(function (e) {
+    const arrayOfFiles = files.filter(function (e) {
       return path.extname(e).toLowerCase() === ".geojson"
     })
     if (err) {
       throw err
     }
 
-    // Now pass geojsonFilePath, routeFileName & outerLoop to getSingleBusRouteAndStops
-    let outerLoop = 0
+    // Now pass filePath, fileName & index to getSingleBusRouteAndStops
+    let index = 0
     do {
-      let routeFileName = filesList[outerLoop]
+      let fileName = arrayOfFiles[index]
 
-      getSingleBusRouteAndStops(routeFilePath, routeFileName, outerLoop)
+      returnValues = getAndParseSingleBusRouteAndStops(
+        filePath,
+        fileName,
+        index
+      )
 
-      outerLoop++
-    } while (outerLoop < filesList.length)
+      // Promise.resolve(returnValues).then(function (value) {
+      //   console.log("Stops created: ", value) // "Success"
+      // })
+
+      index++
+    } while (index < arrayOfFiles.length)
   })
 }

@@ -33,7 +33,7 @@ export const runSwitchboard = (io) => {
   // createGolfCourses()
   // -----------------------------
   // convertGtfsToGeoJSON()
-  createGtfsRoutesAndGtfsStops()
+  // createGtfsRoutesAndGtfsStops()
   // createPanelListRoutes()
   // -----------------------------
   // createTranslinkShapes()
