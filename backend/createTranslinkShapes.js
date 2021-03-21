@@ -31,6 +31,9 @@ export const createTranslinkShapes = async (req, res) => {
     })
 }
 
+// -------------------------------------------------------
+// Function to extract data for reduced dataset then save it in the mongodb database
+// -------------------------------------------------------
 function decodeInnerArray(oldcoords, oldcoordslength) {
   let j = 0
   let pathArray = []

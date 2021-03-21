@@ -25,7 +25,9 @@ export const createTranslinkStops = async (req, res) => {
     })
 }
 
+// -------------------------------------------------------
 // Function to extract data for reduced dataset then save it in the mongodb database
+// -------------------------------------------------------
 const reduceTranslinkStops = (busStops) => {
   const endloop = busStops.features.length
 
