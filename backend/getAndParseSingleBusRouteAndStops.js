@@ -3,6 +3,7 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 import { GtfsRouteSchema } from "./models/transportModels/v1/gtfsRouteSchema"
 import { GtfsStopSchema } from "./models/transportModels/v1/gtfsStopSchema"
 
+// -------------------------------------------------------
 // Function to fetch data from a single GeoJson route file
 // This routine is called from the individual route button
 // -------------------------------------------------------
@@ -51,14 +52,10 @@ export const getAndParseSingleBusRouteAndStops = (
       })
 
       // Save the gtfsRouteSchema in the database
-      gtfsRouteSchema
-        .save()
-        .then(() => {
-          // console.log("gtfsRouteSchema collection saved successfully")
-        })
-        .catch((err) => {
-          console.error(err)
-        })
+      gtfsRouteSchema.save().catch((err) => {
+        console.log("Error saving Routes to database ", err)
+      })
+
       // Increment Number of Routes created
       numberOfRoutes++
     }
@@ -91,14 +88,10 @@ export const getAndParseSingleBusRouteAndStops = (
       })
 
       // Save the gtfsStopsSchema in the database
-      gtfsStopSchema
-        .save()
-        .then(() => {
-          // console.log("gtfsStopSchema collection saved successfully")
-        })
-        .catch((err) => {
-          console.error(err)
-        })
+      gtfsStopSchema.save().catch((err) => {
+        console.log("Error saving Stops to database ", err)
+      })
+
       // Increment Number of Stops created
       numberOfStops++
     }
@@ -112,6 +105,9 @@ export const getAndParseSingleBusRouteAndStops = (
   return numbersReturned
 }
 
+// -------------------------------------------------------
+// Local function
+// -------------------------------------------------------
 function readBusRouteFile(fileUrl) {
   return JSON.parse(fs.readFileSync(fileUrl))
 }

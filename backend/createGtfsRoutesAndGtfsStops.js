@@ -4,7 +4,9 @@ import { GtfsStopSchema } from "./models/transportModels/v1/gtfsStopSchema"
 import { GtfsRouteSchema } from "./models/transportModels/v1/gtfsRouteSchema"
 import { getAndParseSingleBusRouteAndStops } from "./getAndParseSingleBusRouteAndStops"
 
+// -------------------------------------------------------
 // Function to fetch all the GeoJson route filenames in a directory irrespective of trip direction
+// -------------------------------------------------------
 export const createGtfsRoutesAndGtfsStops = async (req, res) => {
   // Firstly delete all existing Routes in the database
   await GtfsRouteSchema.deleteMany({})
@@ -53,6 +55,9 @@ export const createGtfsRoutesAndGtfsStops = async (req, res) => {
   console.log("No of Stops successfully created: ", totalStops)
 }
 
+// -------------------------------------------------------
+// Local function
+// -------------------------------------------------------
 function readBusRouteDirectory(filePath) {
   let fileArray = []
   let files = fs.readdirSync(filePath)
