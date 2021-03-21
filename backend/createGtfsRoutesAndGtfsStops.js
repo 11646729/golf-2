@@ -24,35 +24,40 @@ export const createGtfsRoutesAndGtfsStops = async (req, res) => {
       console.log(err.message || "An error occurred while removing all Stops")
     })
 
-  const routeFilePath = process.env.HAMILTON_GEOJSON_FILES_PATH
-  // const routeFilePath = process.env.TFI_GEOJSON_FILES_PATH
+  const filePath = process.env.HAMILTON_GEOJSON_FILES_PATH
+  // const filePath = process.env.TFI_GEOJSON_FILES_PATH
 
-  let returnValues = 0
+  let totalRoutes = 0
+  let totalStops = 0
 
-  fs.readdir(routeFilePath, function (err, files) {
-    const arrayOfFiles = files.filter(function (e) {
-      return path.extname(e).toLowerCase() === ".geojson"
-    })
-    if (err) {
-      throw err
-    }
+  let arrayOfFiles = readBusRouteDirectory(filePath)
 
-    // Now pass filePath, fileName & index to getSingleBusRouteAndStops
-    let index = 0
-    do {
-      let fileName = arrayOfFiles[index]
+  // Now pass filePath, fileName & fileIndex to getSingleBusRouteAndStops
+  let fileIndex = 0
+  do {
+    let fileName = arrayOfFiles[fileIndex]
 
-      returnValues = getAndParseSingleBusRouteAndStops(
-        filePath,
-        fileName,
-        index
-      )
+    const returnValues = getAndParseSingleBusRouteAndStops(
+      filePath,
+      fileName,
+      fileIndex
+    )
 
-      // Promise.resolve(returnValues).then(function (value) {
-      //   console.log("Stops created: ", value) // "Success"
-      // })
+    totalRoutes += returnValues[0]
+    totalStops += returnValues[1]
 
-      index++
-    } while (index < arrayOfFiles.length)
+    fileIndex++
+  } while (fileIndex < arrayOfFiles.length)
+
+  console.log("No of Routes successfully created: ", totalRoutes)
+  console.log("No of Stops successfully created: ", totalStops)
+}
+
+function readBusRouteDirectory(filePath) {
+  let fileArray = []
+  let files = fs.readdirSync(filePath)
+  files.forEach((file) => {
+    if (path.extname(file).toLowerCase() === ".geojson") fileArray.push(file)
   })
+  return fileArray
 }
