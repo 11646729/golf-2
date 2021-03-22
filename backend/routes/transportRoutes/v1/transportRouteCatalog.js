@@ -29,6 +29,12 @@ router.get("/groute/", transportController.getAllGtfsRoutes)
 // GET all Panel List Bus Routes
 router.get("/gplroute/", transportController.getAllPanelListGtfsRoutes)
 
+// GET all Selected Panel List Bus Routes
+router.get(
+  "/gplroute/:routevisible",
+  transportController.getSelectedPanelListGtfsRoutes
+)
+
 // PUT Selected Status in the Panel List Bus Routes documents
 router.put(
   "/gplroute/:routenumber",

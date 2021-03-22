@@ -45,6 +45,16 @@ export const getAllPanelListGtfsRoutes = async (req, res) => {
     .catch((err) => res.status(400).json("Error " + err))
 }
 
+// Get Panel Selected Routes
+export const getSelectedPanelListGtfsRoutes = async (req, res) => {
+  const filter = { routeVisible: "true" }
+
+  GtfsPanelListRouteSchema.find(filter)
+    .then((gtfsPanelListRouteSchema) => res.json(gtfsPanelListRouteSchema))
+    .catch((err) => res.status(400).json("Error " + err))
+}
+
+// Update Panel Selected Routes
 export const putOnePanelListGtfsRoutes = async (req, res) => {
   const filter = { routeNumber: req.body.routeNumber }
   const update = { routeVisible: req.body.routeVisible }
