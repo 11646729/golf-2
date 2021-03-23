@@ -30,24 +30,6 @@ router.get("/groute/:routevisible", transportController.getSelectedGtfsRoutes)
 router.put("/groute/:routenumber", transportController.putSelectedGtfsRoutes)
 
 // -------------------------------------------------------
-// Panel List Bus Routes
-// -------------------------------------------------------
-// GET all Panel List Bus Routes
-router.get("/gplroute/", transportController.getAllPanelListGtfsRoutes)
-
-// GET all Selected Panel List Bus Routes
-router.get(
-  "/gplroute/:routevisible",
-  transportController.getSelectedPanelListGtfsRoutes
-)
-
-// PUT Selected Status in the Panel List Bus Routes documents
-// router.put(
-//   "/gplroute/:routenumber",
-//   transportController.putSelectedPanelListGtfsRoutes
-// )
-
-// -------------------------------------------------------
 // Bus Stops
 // -------------------------------------------------------
 // GET all Bus Stops
