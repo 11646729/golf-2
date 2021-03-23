@@ -70,7 +70,7 @@ export default function GTFSTransportMapContainer() {
         }
       )
       .then(
-        axios.spread((routesResponse, stopsResponse, uniqueRoutesResponse) => {
+        axios.spread((routesResponse, stopsResponse) => {
           setBusRoutesCollection(routesResponse.data)
           setBusStopsCollection(stopsResponse.data)
           setbusRouteAgencyName(routesResponse.data[0].agencyName)
