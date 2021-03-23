@@ -11,7 +11,7 @@ router.get("/", transportController.index)
 // -------------------------------------------------------
 // Translink Bus Shapes
 // -------------------------------------------------------
-// GET all Shapes
+// GET all Translink Shapes
 router.get("/tshape/", transportController.getAllTranslinkShapes)
 
 // -------------------------------------------------------
@@ -23,10 +23,10 @@ router.get("/groute/", transportController.getAllGtfsRoutes)
 // GET all Selected Panel List Bus Routes
 router.get("/groute/:routevisible", transportController.getSelectedGtfsRoutes)
 
-// GET all Bus Routes
+// GET all Translink Bus Routes
 // router.get("/groute/", transportController.getAllTranslinkRoutes)
 
-// PUT Selected Status in the Panel List Bus Routes documents
+// UPDATE Selected Status in the Bus Routes documents
 router.put("/groute/:routenumber", transportController.putSelectedGtfsRoutes)
 
 // -------------------------------------------------------
@@ -35,7 +35,7 @@ router.put("/groute/:routenumber", transportController.putSelectedGtfsRoutes)
 // GET all Bus Stops
 router.get("/gstop/", transportController.getAllGtfsStops)
 
-// GET all Bus Stops
+// GET all Translink Bus Stops
 router.get("/tstop/", transportController.getAllTranslinkStops)
 
 module.exports = router

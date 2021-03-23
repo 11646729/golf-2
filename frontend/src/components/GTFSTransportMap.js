@@ -27,22 +27,6 @@ const useStyles = makeStyles({
   },
 })
 
-// Function to remove duplicates from array
-// function removeRoutesDuplicates(originalArray, prop) {
-//   var newArray = []
-//   var lookupObject = {}
-
-//   for (var i in originalArray) {
-//     lookupObject[originalArray[i][prop]] = originalArray[i]
-//   }
-
-//   for (i in lookupObject) {
-//     newArray.push(lookupObject[i])
-//   }
-
-//   return newArray
-// }
-
 export default function GTFSTransportMapContainer() {
   const classes = useStyles()
 
@@ -68,7 +52,6 @@ export default function GTFSTransportMapContainer() {
   // -----------------------------------------------------
   const [busRoutesCollection, setBusRoutesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
-  // const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
   const [busRouteAgencyName, setbusRouteAgencyName] = useState(null)
   const [loadingData, setLoadingData] = useState(false)
   const [loadingError, setLoadingError] = useState("")
@@ -81,7 +64,6 @@ export default function GTFSTransportMapContainer() {
         [
           axios.get("http://localhost:5000/api/transport/groute/"),
           axios.get("http://localhost:5000/api/transport/gstop/"),
-          // axios.get("http://localhost:5000/api/transport/gplroute/"),
         ],
         {
           cancelToken: source.token,
@@ -91,16 +73,15 @@ export default function GTFSTransportMapContainer() {
         axios.spread((routesResponse, stopsResponse, uniqueRoutesResponse) => {
           setBusRoutesCollection(routesResponse.data)
           setBusStopsCollection(stopsResponse.data)
-          // setUniqueBusRoutesCollection(uniqueRoutesResponse.data)
           setbusRouteAgencyName(routesResponse.data[0].agencyName)
           setLoadingData(false)
         })
       )
-      .catch((error) => {
-        if (axios.isCancel(error)) {
-          console.log(error) // Component unmounted, request is cancelled
+      .catch((err) => {
+        if (axios.isCancel(err)) {
+          console.log(err) // Component unmounted, request is cancelled
         } else {
-          setLoadingError(error)
+          setLoadingError(err)
         }
       })
     return () => {
@@ -112,7 +93,7 @@ export default function GTFSTransportMapContainer() {
     getAllData()
   }, [])
 
-  // Remove Duplicates from the array
+  // Remove Duplicates from the busStopsCollection array
   let uniqueBusStopsCollection = removeDuplicates(
     busStopsCollection,
     "coordsString"
@@ -232,7 +213,7 @@ export default function GTFSTransportMapContainer() {
                   />
                 ))
               : null} */}
-            {busStopSelected ? (
+            {/* {busStopSelected ? (
               <InfoWindow
                 position={{
                   lat: busStopSelected.stop_lat,
@@ -248,7 +229,7 @@ export default function GTFSTransportMapContainer() {
                   </Typography>
                 </div>
               </InfoWindow>
-            ) : null}
+            ) : null} */}
           </GoogleMap>
         </Grid>
         <Grid item xs={12} sm={3}>
