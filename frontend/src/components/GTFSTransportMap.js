@@ -27,6 +27,22 @@ const useStyles = makeStyles({
   },
 })
 
+// Function to remove duplicates from array
+// function removeRoutesDuplicates(originalArray, prop) {
+//   var newArray = []
+//   var lookupObject = {}
+
+//   for (var i in originalArray) {
+//     lookupObject[originalArray[i][prop]] = originalArray[i]
+//   }
+
+//   for (i in lookupObject) {
+//     newArray.push(lookupObject[i])
+//   }
+
+//   return newArray
+// }
+
 export default function GTFSTransportMapContainer() {
   const classes = useStyles()
 
@@ -52,7 +68,7 @@ export default function GTFSTransportMapContainer() {
   // -----------------------------------------------------
   const [busRoutesCollection, setBusRoutesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
-  const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
+  // const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
   const [busRouteAgencyName, setbusRouteAgencyName] = useState(null)
   const [loadingData, setLoadingData] = useState(false)
   const [loadingError, setLoadingError] = useState("")
@@ -65,7 +81,7 @@ export default function GTFSTransportMapContainer() {
         [
           axios.get("http://localhost:5000/api/transport/groute/"),
           axios.get("http://localhost:5000/api/transport/gstop/"),
-          axios.get("http://localhost:5000/api/transport/gplroute/"),
+          // axios.get("http://localhost:5000/api/transport/gplroute/"),
         ],
         {
           cancelToken: source.token,
@@ -75,7 +91,7 @@ export default function GTFSTransportMapContainer() {
         axios.spread((routesResponse, stopsResponse, uniqueRoutesResponse) => {
           setBusRoutesCollection(routesResponse.data)
           setBusStopsCollection(stopsResponse.data)
-          setUniqueBusRoutesCollection(uniqueRoutesResponse.data)
+          // setUniqueBusRoutesCollection(uniqueRoutesResponse.data)
           setbusRouteAgencyName(routesResponse.data[0].agencyName)
           setLoadingData(false)
         })
@@ -100,6 +116,12 @@ export default function GTFSTransportMapContainer() {
   let uniqueBusStopsCollection = removeDuplicates(
     busStopsCollection,
     "coordsString"
+  )
+
+  // Remove Duplicates from the busRoutesCollection array
+  let uniqueBusRoutesCollection = removeDuplicates(
+    busRoutesCollection,
+    "routeNumber"
   )
 
   // Now compute bounds of map to display

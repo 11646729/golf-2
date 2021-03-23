@@ -35,6 +35,25 @@ export const getAllGtfsRoutes = async (req, res) => {
     .catch((err) => res.status(400).json("Error " + err))
 }
 
+// Get Panel Selected Routes
+export const getSelectedGtfsRoutes = async (req, res) => {
+  const filter = { routeVisible: "true" }
+
+  GtfsRouteSchema.find(filter)
+    .then((gtfsRouteSchema) => res.json(gtfsRouteSchema))
+    .catch((err) => res.status(400).json("Error " + err))
+}
+
+// Update Selected Routes
+export const putSelectedGtfsRoutes = async (req, res) => {
+  const filter = { routeNumber: req.body.routeNumber }
+  const update = { routeVisible: req.body.routeVisible }
+
+  GtfsRouteSchema.updateMany(filter, update)
+    .then((gtfsRouteSchema) => res.json(gtfsRouteSchema))
+    .catch((err) => res.status(400).json("Error " + err))
+}
+
 // -------------------------------------------------------
 // Panel List Bus Routes
 // Path: localhost:5000/api/transport/gplroute/
@@ -55,14 +74,14 @@ export const getSelectedPanelListGtfsRoutes = async (req, res) => {
 }
 
 // Update Panel Selected Routes
-export const putOnePanelListGtfsRoutes = async (req, res) => {
-  const filter = { routeNumber: req.body.routeNumber }
-  const update = { routeVisible: req.body.routeVisible }
+// export const putSelectedPanelListGtfsRoutes = async (req, res) => {
+//   const filter = { routeNumber: req.body.routeNumber }
+//   const update = { routeVisible: req.body.routeVisible }
 
-  GtfsPanelListRouteSchema.findOneAndUpdate(filter, update)
-    .then((gtfsPanelListRouteSchema) => res.json(gtfsPanelListRouteSchema))
-    .catch((err) => res.status(400).json("Error " + err))
-}
+//   GtfsPanelListRouteSchema.findOneAndUpdate(filter, update)
+//     .then((gtfsPanelListRouteSchema) => res.json(gtfsPanelListRouteSchema))
+//     .catch((err) => res.status(400).json("Error " + err))
+// }
 
 // -------------------------------------------------------
 // Bus Stops

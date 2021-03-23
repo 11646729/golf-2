@@ -20,8 +20,14 @@ router.get("/tshape/", transportController.getAllTranslinkShapes)
 // GET all Bus Routes
 router.get("/groute/", transportController.getAllGtfsRoutes)
 
+// GET all Selected Panel List Bus Routes
+router.get("/groute/:routevisible", transportController.getSelectedGtfsRoutes)
+
 // GET all Bus Routes
-// router.get("/troute/", transportController.getAllTranslinkRoutes)
+// router.get("/groute/", transportController.getAllTranslinkRoutes)
+
+// PUT Selected Status in the Panel List Bus Routes documents
+router.put("/groute/:routenumber", transportController.putSelectedGtfsRoutes)
 
 // -------------------------------------------------------
 // Panel List Bus Routes
@@ -36,10 +42,10 @@ router.get(
 )
 
 // PUT Selected Status in the Panel List Bus Routes documents
-router.put(
-  "/gplroute/:routenumber",
-  transportController.putOnePanelListGtfsRoutes
-)
+// router.put(
+//   "/gplroute/:routenumber",
+//   transportController.putSelectedPanelListGtfsRoutes
+// )
 
 // -------------------------------------------------------
 // Bus Stops
