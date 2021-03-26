@@ -12,7 +12,7 @@ import axios from "axios"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
-import { removeDuplicates, removeFalse } from "./utilities"
+import { removeDuplicates, removeFalse } from "./Utilities"
 
 const useStyles = makeStyles({
   divStyle: {
