@@ -13,6 +13,7 @@ import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
 import removeDuplicates from "./utilities"
+import removeFalse from "./utilities2"
 
 const useStyles = makeStyles({
   divStyle: {
@@ -20,10 +21,18 @@ const useStyles = makeStyles({
     border: "1px solid #ccc",
     padding: 15,
   },
-  headerSelection: {
+  headerStyle: {
     marginTop: 55,
     marginLeft: 20,
     width: "97%",
+  },
+  containerStyle: {
+    height: "600px",
+    width: "97%",
+    border: "1px solid #ccc",
+    marginLeft: 20,
+    marginRight: 10,
+    marginBottom: 20,
   },
 })
 
@@ -105,6 +114,10 @@ export default function GTFSTransportMapContainer() {
     "routeNumber"
   )
 
+  let displayBusRoutesCollection = removeFalse(busRoutesCollection, true)
+
+  console.log(displayBusRoutesCollection)
+
   // Now compute bounds of map to display
   if (mapRef && uniqueBusStopsCollection != null) {
     const bounds = new window.google.maps.LatLngBounds()
@@ -152,7 +165,7 @@ export default function GTFSTransportMapContainer() {
       <CssBaseline />
       <Grid container spacing={1}>
         <Grid item xs={12} sm={12}>
-          <div className={classes.headerSelection}>
+          <div className={classes.headerStyle}>
             <Title>GTFS Transport UI Test</Title>
             {loadingData ? <LoadingTitle>Loading...</LoadingTitle> : null}
             {loadingError ? (
@@ -162,14 +175,17 @@ export default function GTFSTransportMapContainer() {
         </Grid>
         <Grid item xs={12} sm={9}>
           <GoogleMap
-            mapContainerStyle={{
-              height: "600px",
-              width: "97%",
-              border: "1px solid #ccc",
-              marginLeft: 20,
-              marginRight: 10,
-              marginBottom: 20,
-            }}
+            mapContainerStyle={
+              // classes.containerStyle
+              {
+                height: "600px",
+                width: "97%",
+                border: "1px solid #ccc",
+                marginLeft: 20,
+                marginRight: 10,
+                marginBottom: 20,
+              }
+            }
             center={mapCenter}
             zoom={mapZoom}
             options={{
@@ -180,8 +196,8 @@ export default function GTFSTransportMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {busRoutesCollection
-              ? busRoutesCollection.map((busRoute) => (
+            {displayBusRoutesCollection
+              ? displayBusRoutesCollection.map((busRoute) => (
                   <Polyline
                     key={busRoute.routeKey}
                     path={busRoute.routeCoordinates}
