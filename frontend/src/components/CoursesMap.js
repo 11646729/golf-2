@@ -52,7 +52,7 @@ export default function CoursesMapContainer() {
     const source = axios.CancelToken.source()
     setLoadingData(true)
     await axios
-      .get("http://localhost:5000/api/golf/course/", {
+      .get(process.env.REACT_APP_NEARBY_GOLF_COURSES, {
         cancelToken: source.token,
       })
       .then((response) => {

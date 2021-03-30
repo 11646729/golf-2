@@ -6,7 +6,7 @@ import {
   Polyline,
   InfoWindow,
 } from "@react-google-maps/api"
-import { Typography, CssBaseline, Grid, makeStyles } from "@material-ui/core"
+import { CssBaseline, Grid, makeStyles } from "@material-ui/core"
 import axios from "axios"
 
 import Title from "./Title"
@@ -52,21 +52,23 @@ export default function GTFSTransportMapContainer() {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
 
-  const [busStopSelected, setBusStopSelected] = useState(null)
-  const [busRouteSelected, setBusRouteSelected] = useState(null)
-
   // -----------------------------------------------------
-  // DATA HOOKS SECTION
+  // HOOKS
   // -----------------------------------------------------
   const [busRoutesCollection, setBusRoutesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
-  const [busRouteAgencyName, setbusRouteAgencyName] = useState(null)
+
   const [loadingData, setLoadingData] = useState(false)
   const [loadingError, setLoadingError] = useState("")
 
+  const [busStopSelected, setBusStopSelected] = useState(null)
+  const [busRouteSelected, setBusRouteSelected] = useState(null)
+
   const getAllData = async () => {
     const source = axios.CancelToken.source()
+
     setLoadingData(true)
+
     await axios
       .all(
         [
@@ -81,7 +83,7 @@ export default function GTFSTransportMapContainer() {
         axios.spread((routesResponse, stopsResponse) => {
           setBusRoutesCollection(routesResponse.data)
           setBusStopsCollection(stopsResponse.data)
-          setbusRouteAgencyName(routesResponse.data[0].agencyName)
+
           setLoadingData(false)
         })
       )
@@ -101,6 +103,11 @@ export default function GTFSTransportMapContainer() {
     getAllData()
   }, [])
 
+  let busRouteAgencyName = ""
+  if (busRoutesCollection.length > 0) {
+    busRouteAgencyName = busRoutesCollection[0].agencyName
+  }
+
   // Remove Duplicates from the busStopsCollection array
   let uniqueBusStopsCollection = removeDuplicates(
     busStopsCollection,
@@ -114,8 +121,6 @@ export default function GTFSTransportMapContainer() {
   )
 
   let displayBusRoutesCollection = removeFalse(busRoutesCollection, true)
-
-  console.log(displayBusRoutesCollection)
 
   // Now compute bounds of map to display
   if (mapRef && uniqueBusStopsCollection != null) {

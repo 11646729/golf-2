@@ -10,7 +10,7 @@ import axios from "axios"
 
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
-import removeDuplicates from "./utilities"
+import removeDuplicates from "./Utilities"
 
 const useStyles = makeStyles({
   headerSelection: {
