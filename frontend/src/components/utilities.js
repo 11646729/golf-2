@@ -1,3 +1,5 @@
+import axios from "axios"
+
 // Function to remove duplicates from array
 export const removeDuplicates = (originalArray, prop) => {
   let newArray = []
@@ -15,6 +17,13 @@ export const removeFalse = (originalArray, value) => {
     .forEach((item) => newArray.push(item))
 
   return newArray
+}
+
+// Function to fetch Gtfs data
+export async function getGtfsData(url) {
+  const result = await axios(url)
+
+  return result.data
 }
 
 export { removeDuplicates as default }

@@ -12,7 +12,7 @@ import axios from "axios"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
-import { removeDuplicates, removeFalse } from "./Utilities"
+import { removeDuplicates, removeFalse, getGtfsData } from "./Utilities"
 
 const useStyles = makeStyles({
   divStyle: {
@@ -57,6 +57,8 @@ export default function GTFSTransportMapContainer() {
   // -----------------------------------------------------
   const [busRoutesCollection, setBusRoutesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
+  // const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
+  // const [uniqueBusStopsCollection, setUniqueBusStopsCollection] = useState([])
 
   const [loadingData, setLoadingData] = useState(false)
   const [loadingError, setLoadingError] = useState("")
@@ -64,43 +66,26 @@ export default function GTFSTransportMapContainer() {
   const [busStopSelected, setBusStopSelected] = useState(null)
   const [busRouteSelected, setBusRouteSelected] = useState(null)
 
-  const getAllData = async () => {
-    const source = axios.CancelToken.source()
-
-    setLoadingData(true)
-
-    await axios
-      .all(
-        [
-          axios.get("http://localhost:5000/api/transport/groute/"),
-          axios.get("http://localhost:5000/api/transport/gstop/"),
-        ],
-        {
-          cancelToken: source.token,
-        }
-      )
-      .then(
-        axios.spread((routesResponse, stopsResponse) => {
-          setBusRoutesCollection(routesResponse.data)
-          setBusStopsCollection(stopsResponse.data)
-
-          setLoadingData(false)
-        })
-      )
-      .catch((err) => {
-        if (axios.isCancel(err)) {
-          console.log(err) // Component unmounted, request is cancelled
-        } else {
-          setLoadingError(err)
-        }
-      })
-    return () => {
-      source.cancel("Component unmounted, request is cancelled")
-    }
-  }
-
   useEffect(() => {
-    getAllData()
+    let isSubscribed = true
+
+    getGtfsData("http://localhost:5000/api/transport/groute/")
+      .then((temps) => (isSubscribed ? setBusRoutesCollection(temps) : null))
+      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+
+    getGtfsData("http://localhost:5000/api/transport/gstop/")
+      .then((temps) => (isSubscribed ? setBusStopsCollection(temps) : null))
+      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+
+    // removeDuplicates(busRoutesCollection, "routeNumber").then((temps) =>
+    //   isSubscribed ? setUniqueBusRoutesCollection(temps) : null
+    // )
+
+    // removeDuplicates(busStopsCollection, "coordsString").then((temps) =>
+    //   isSubscribed ? setUniqueBusStopsCollection(temps) : null
+    // )
+
+    return () => (isSubscribed = false)
   }, [])
 
   let busRouteAgencyName = ""
@@ -108,16 +93,16 @@ export default function GTFSTransportMapContainer() {
     busRouteAgencyName = busRoutesCollection[0].agencyName
   }
 
-  // Remove Duplicates from the busStopsCollection array
-  let uniqueBusStopsCollection = removeDuplicates(
-    busStopsCollection,
-    "coordsString"
-  )
-
   // Remove Duplicates from the busRoutesCollection array
   let uniqueBusRoutesCollection = removeDuplicates(
     busRoutesCollection,
     "routeNumber"
+  )
+
+  // Remove Duplicates from the busStopsCollection array
+  let uniqueBusStopsCollection = removeDuplicates(
+    busStopsCollection,
+    "coordsString"
   )
 
   let displayBusRoutesCollection = removeFalse(busRoutesCollection, true)
