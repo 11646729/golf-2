@@ -22,7 +22,7 @@ import {
 } from "recharts"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
-import get20WeatherDataPoints from "./getWeatherData"
+import get20WeatherDataPoints from "./Utilities"
 
 const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
@@ -59,7 +59,7 @@ export default function WeatherChart() {
   useEffect(() => {
     let isSubscribed = true
 
-    get20WeatherDataPoints()
+    get20WeatherDataPoints("http://localhost:5000/api/golf/nearbyGolfCourses")
       .then((temps) => (isSubscribed ? setTemperatureValues(temps) : null))
       .catch((error) => (isSubscribed ? setLoadingError(error) : null))
 

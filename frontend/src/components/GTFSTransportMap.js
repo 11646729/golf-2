@@ -7,7 +7,6 @@ import {
   InfoWindow,
 } from "@react-google-maps/api"
 import { CssBaseline, Grid, makeStyles } from "@material-ui/core"
-import axios from "axios"
 
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
@@ -105,7 +104,11 @@ export default function GTFSTransportMapContainer() {
     "coordsString"
   )
 
-  let displayBusRoutesCollection = removeFalse(busRoutesCollection, true)
+  let displayBusRoutesCollection = removeFalse(
+    busRoutesCollection,
+    "routeVisible",
+    true
+  )
 
   // Now compute bounds of map to display
   if (mapRef && uniqueBusStopsCollection != null) {
