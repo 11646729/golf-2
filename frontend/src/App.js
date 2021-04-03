@@ -20,7 +20,7 @@ import CoursesMap from "./components/CoursesMap"
 import CruiseTable from "./components/CruiseTable"
 import CrimesMap from "./components/CrimesMap"
 import TransportMap from "./components/TransportMap"
-import GTFSTransportMap from "./components/GTFSTransportMap"
+import GTFSTransportMap from "./components/GTFSTransportMapTest2"
 
 const useStyles = makeStyles((theme) => ({
   root: {

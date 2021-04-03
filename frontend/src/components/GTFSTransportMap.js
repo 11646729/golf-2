@@ -34,7 +34,7 @@ const useStyles = makeStyles({
   },
 })
 
-export default function GTFSTransportMapContainer() {
+function GTFSTransportMap() {
   const classes = useStyles()
 
   // -----------------------------------------------------
@@ -158,7 +158,7 @@ export default function GTFSTransportMapContainer() {
       <Grid container spacing={1}>
         <Grid item xs={12} sm={12}>
           <div className={classes.headerStyle}>
-            <Title>GTFS Transport UI Test</Title>
+            <Title>GTFS Transport UI</Title>
             {loadingData ? <LoadingTitle>Loading...</LoadingTitle> : null}
             {loadingError ? (
               <LoadingTitle>Error Loading...</LoadingTitle>
@@ -257,3 +257,5 @@ export default function GTFSTransportMapContainer() {
 
   return isLoaded ? renderMap() : null
 }
+
+export default React.memo(GTFSTransportMap)
