@@ -23,7 +23,7 @@ import { getGolfCoursesData } from "./Utilities"
 // -------------------------------------------------------
 // React Controller component
 // -------------------------------------------------------
-function CoursesMap() {
+function GolfCoursesMap() {
   const [golfCoursesData, setGolfCoursesData] = useState([])
   const [loadingError, setLoadingError] = useState("")
 
@@ -39,10 +39,8 @@ function CoursesMap() {
     return () => (isSubscribed = false)
   }, [])
 
-  console.log(golfCoursesData)
-
   return (
-    <CoursesMapView
+    <GolfCoursesMapView
       golfCoursesData={golfCoursesData}
       loadingError={loadingError}
     />
@@ -52,7 +50,7 @@ function CoursesMap() {
 // -------------------------------------------------------
 // React View component
 // -------------------------------------------------------
-function CoursesMapView(props) {
+function GolfCoursesMapView(props) {
   const [map, setMap] = useState(null)
   const [selected, setSelected] = useState(null)
 
@@ -113,7 +111,6 @@ function CoursesMapView(props) {
             }}
           >
             <Title>Golf Courses</Title>
-            {/* {loadingData ? <LoadingTitle>Loading...</LoadingTitle> : null} */}
             {props.loadingError ? (
               <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
@@ -197,4 +194,4 @@ function CoursesMapView(props) {
   ) : null
 }
 
-export default memo(CoursesMap)
+export default memo(GolfCoursesMap)

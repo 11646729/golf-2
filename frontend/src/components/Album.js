@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core"
 
 import WeatherCard from "./WeatherCard"
-import CoursesCard from "./CoursesCard"
+import GolfCoursesCard from "./GolfCoursesCard"
 import CrimesCard from "./CrimesCard"
 import CruiseTableCard from "./CruiseTableCard"
 import TransportCard from "./TransportCard"
@@ -121,7 +121,7 @@ export default function Album() {
               <WeatherCard />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
-              <CoursesCard />
+              <GolfCoursesCard />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <CrimesCard />

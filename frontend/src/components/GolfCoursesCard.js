@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function CoursesCard() {
+export default function GolfCoursesCard() {
   const classes = useStyles()
 
   return (
