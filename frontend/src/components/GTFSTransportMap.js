@@ -23,8 +23,6 @@ import {
 function GTFSTransportMap() {
   const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
   const [uniqueBusStopsCollection, setUniqueBusStopsCollection] = useState([])
-
-  // const [loadingData, setLoadingData] = useState(false)
   const [loadingError, setLoadingError] = useState("")
 
   useEffect(() => {
@@ -49,7 +47,6 @@ function GTFSTransportMap() {
     <GTFSTransportMapView
       uniqueBusRoutesCollection={uniqueBusRoutesCollection}
       uniqueBusStopsCollection={uniqueBusStopsCollection}
-      // loadingData={loadingData}
       loadingError={loadingError}
     />
   )
@@ -98,6 +95,7 @@ function GTFSTransportMapView(props) {
     map.fitBounds(bounds)
   }
 
+  // Store a reference to the google map instance in state
   const onLoadHandler = useCallback(function callback(map) {
     // if (map && props.uniqueBusStopsCollection != null) {
     //   const bounds = new window.google.maps.LatLngBounds()
@@ -114,6 +112,7 @@ function GTFSTransportMapView(props) {
     setMap(map)
   }, [])
 
+  // Clear the reference to the google map instance
   const onUnmountHandler = useCallback(function callback(map) {
     setMap(null)
   }, [])
@@ -143,7 +142,6 @@ function GTFSTransportMapView(props) {
             }}
           >
             <Title>GTFS Transport UI Test</Title>
-            {/* {props.loadingData ? <LoadingTitle>Loading...</LoadingTitle> : null} */}
             {props.loadingError ? (
               <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
