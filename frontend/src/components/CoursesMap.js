@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
+import React, { useState, useEffect, useCallback, memo } from "react"
 import {
   GoogleMap,
-  useLoadScript,
+  useJsApiLoader,
   Marker,
   InfoWindow,
 } from "@react-google-maps/api"
@@ -16,86 +15,70 @@ import {
   Button,
   Link,
   CardActions,
-  makeStyles,
 } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
+import { getGolfCoursesData } from "./Utilities"
 
-const useStyles = makeStyles({
-  headerSelection: {
-    marginTop: 55,
-    marginLeft: 20,
-    width: "97%",
-  },
-})
-
-export default function CoursesMapContainer() {
-  const classes = useStyles()
-
-  // -----------------------------------------------------
-  // STATE HOOKS
-  // -----------------------------------------------------
-  const { isLoaded, mapLoadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
-  })
-  const [mapRef, setMapRef] = useState(null)
-  const [selected, setSelected] = useState(null)
-
-  // -----------------------------------------------------
-  // DATA HOOKS SECTION
-  // -----------------------------------------------------
-  const [golfCourses, setData] = useState([])
-  const [loadingData, setLoadingData] = useState(false)
+// -------------------------------------------------------
+// React Controller component
+// -------------------------------------------------------
+function CoursesMap() {
+  const [golfCoursesData, setGolfCoursesData] = useState([])
   const [loadingError, setLoadingError] = useState("")
 
-  const getAllData = async () => {
-    const source = axios.CancelToken.source()
-    setLoadingData(true)
-    await axios
-      .get(process.env.REACT_APP_NEARBY_GOLF_COURSES, {
-        cancelToken: source.token,
-      })
-      .then((response) => {
-        setData(response.data)
-        setLoadingData(false)
-      })
-      .catch((error) => {
-        if (axios.isCancel(error)) {
-          console.log(error) // Component unmounted, request is cancelled
-        } else {
-          setLoadingError(error)
-        }
-      })
-    return () => {
-      source.cancel("Component unmounted, request is cancelled")
-    }
-  }
-
   useEffect(() => {
-    getAllData()
+    let isSubscribed = true
+
+    getGolfCoursesData("http://localhost:5000/api/golf/nearbyGolfCourses")
+      .then((returnedData) =>
+        isSubscribed ? setGolfCoursesData(returnedData) : null
+      )
+      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+
+    return () => (isSubscribed = false)
   }, [])
 
-  // -----------------------------------------------------
-  // EVENT HANDLERS SECTION
-  // -----------------------------------------------------
+  console.log(golfCoursesData)
+
+  return (
+    <CoursesMapView
+      golfCoursesData={golfCoursesData}
+      loadingError={loadingError}
+    />
+  )
+}
+
+// -------------------------------------------------------
+// React View component
+// -------------------------------------------------------
+function CoursesMapView(props) {
+  const [map, setMap] = useState(null)
+  const [selected, setSelected] = useState(null)
+
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
+  })
+
   // Store a reference to the google map instance in state
-  const onLoadHandler = (map) => {
-    setMapRef(map)
-  }
+  const onLoadHandler = useCallback(function callback(map) {
+    setMap(map)
+  }, [])
 
   // Clear the reference to the google map instance
-  const onUnmountHandler = () => {
-    setMapRef(null)
-  }
+  const onUnmountHandler = useCallback(function callback(map) {
+    setMap(null)
+  }, [])
 
   // Now compute bounds of map to display
-  if (mapRef != null && golfCourses.length !== 0) {
+  if (map != null && props.golfCoursesData.length !== 0) {
     const bounds = new window.google.maps.LatLngBounds()
-    golfCourses.map((golfCourse) => {
+    props.golfCoursesData.map((golfCourse) => {
       bounds.extend(golfCourse.coordinates)
       return bounds
     })
-    mapRef.fitBounds(bounds)
+    map.fitBounds(bounds)
   }
 
   // -----------------------------------------------------
@@ -117,18 +100,21 @@ export default function CoursesMapContainer() {
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   }
 
-  // -----------------------------------------------------
-  // VIEW SECTION
-  // -----------------------------------------------------
-  const renderMap = () => (
+  return isLoaded ? (
     <div>
       <CssBaseline />
       <Grid container spacing={1}>
         <Grid item xs={12} sm={12}>
-          <div className={classes.headerSelection}>
+          <div
+            style={{
+              marginTop: 55,
+              marginLeft: 20,
+              width: "97%",
+            }}
+          >
             <Title>Golf Courses</Title>
-            {loadingData ? <LoadingTitle>Loading...</LoadingTitle> : null}
-            {loadingError ? (
+            {/* {loadingData ? <LoadingTitle>Loading...</LoadingTitle> : null} */}
+            {props.loadingError ? (
               <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
           </div>
@@ -153,8 +139,8 @@ export default function CoursesMapContainer() {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {golfCourses
-              ? golfCourses.map((golfCourse) => (
+            {props.golfCoursesData
+              ? props.golfCoursesData.map((golfCourse) => (
                   <Marker
                     key={golfCourse.name}
                     position={golfCourse.coordinates}
@@ -208,11 +194,7 @@ export default function CoursesMapContainer() {
         </Grid>
       </Grid>
     </div>
-  )
-
-  if (mapLoadError) {
-    return <div>Map cannot be loaded right now, sorry.</div>
-  }
-
-  return isLoaded ? renderMap() : null
+  ) : null
 }
+
+export default memo(CoursesMap)

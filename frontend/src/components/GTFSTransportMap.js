@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useState, useEffect, useCallback, memo } from "react"
 import {
   GoogleMap,
   useJsApiLoader,
@@ -17,10 +17,10 @@ import {
   getDisplayGtfsData,
 } from "./Utilities"
 
+// -------------------------------------------------------
+// React Controller component
+// -------------------------------------------------------
 function GTFSTransportMap() {
-  // const [busRoutesCollection, setBusRoutesCollection] = useState([])
-  // const [busStopsCollection, setBusStopsCollection] = useState([])
-
   const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
   const [uniqueBusStopsCollection, setUniqueBusStopsCollection] = useState([])
 
@@ -45,24 +45,20 @@ function GTFSTransportMap() {
     return () => (isSubscribed = false)
   }, [])
 
-  let displayBusRoutesCollection = []
-  if (uniqueBusRoutesCollection.length > 0) {
-    displayBusRoutesCollection = getDisplayGtfsData(uniqueBusRoutesCollection)
-  }
-
   return (
     <GTFSTransportMapView
       uniqueBusRoutesCollection={uniqueBusRoutesCollection}
       uniqueBusStopsCollection={uniqueBusStopsCollection}
-      displayBusRoutesCollection={displayBusRoutesCollection}
       // loadingData={loadingData}
       loadingError={loadingError}
     />
   )
 }
 
+// -------------------------------------------------------
+// React View component
+// -------------------------------------------------------
 function GTFSTransportMapView(props) {
-  // const [mapRef, setMapRef] = useState(null)
   const [map, setMap] = useState(null)
   const newLocal = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
   const [mapZoom] = useState(newLocal)
@@ -76,7 +72,13 @@ function GTFSTransportMapView(props) {
     busRouteAgencyName = props.uniqueBusRoutesCollection[0].agencyName
   }
 
-  // function GTFSTransportMap() {
+  let displayBusRoutesCollection = []
+  if (props.uniqueBusRoutesCollection.length > 0) {
+    displayBusRoutesCollection = getDisplayGtfsData(
+      props.uniqueBusRoutesCollection
+    )
+  }
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
@@ -167,9 +169,8 @@ function GTFSTransportMapView(props) {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {/* Child components, such as markers, info windows, etc. */}
-            {props.displayBusRoutesCollection
-              ? props.displayBusRoutesCollection.map((busRoute) => (
+            {displayBusRoutesCollection
+              ? displayBusRoutesCollection.map((busRoute) => (
                   <Polyline
                     key={busRoute.routeKey}
                     path={busRoute.routeCoordinates}
@@ -232,4 +233,4 @@ function GTFSTransportMapView(props) {
   ) : null
 }
 
-export default React.memo(GTFSTransportMap)
+export default memo(GTFSTransportMap)

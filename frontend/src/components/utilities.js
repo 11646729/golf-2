@@ -14,6 +14,11 @@ const removeDuplicates = (originalArray, prop) => {
   return [...new Map(originalArray.map((item) => [item[prop], item])).values()]
 }
 
+export async function getGolfCoursesData(url) {
+  const result = await axios(url)
+  return result.data
+}
+
 // Function to fetch Unique Gtfs Route data
 export async function getGtfsRoutesData(url) {
   const result = await axios(url)
