@@ -7,9 +7,9 @@ import {
 import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines"
 import { createGolfCourses } from "./createGolfCourses"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
-import { createGtfsRoutesAndGtfsStops } from "./createGtfsRoutesAndGtfsStops"
+import { createGtfsRoutesAndStops } from "./createGtfsRoutesAndStops"
 import { createTranslinkShapes } from "./createTranslinkShapes"
-import { createTranslinkStops } from "./createTranslinkStops"
+import { createStops } from "./createTranslinkStops"
 
 export const runSwitchboard = (io) => {
   // Using socket.io for realtime
@@ -32,10 +32,10 @@ export const runSwitchboard = (io) => {
   // createGolfCourses()
   // -----------------------------
   // convertGtfsToGeoJSON()
-  // createGtfsRoutesAndGtfsStops()
+  // createGtfsRoutesAndStops()
   // -----------------------------
   // createTranslinkShapes()
-  // createTranslinkStops()
+  // createStops()
   // })
   // -----------------------------
   // Fetch data every 1 minutes

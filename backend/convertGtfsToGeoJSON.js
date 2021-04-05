@@ -2,7 +2,7 @@ import gtfsToGeoJSON from "gtfs-to-geojson"
 import config from "./config.json"
 // import config from "./configMetro.json"
 // import config from "./configDublin.json"
-import { createGtfsRoutesAndGtfsStops } from "./createGtfsRoutesAndGtfsStops"
+import { createGtfsRoutesAndStops } from "./createGtfsRoutesAndStops"
 
 // Function to convert GTFS data to GeoJson
 export const convertGtfsToGeoJSON = async () => {
@@ -10,7 +10,7 @@ export const convertGtfsToGeoJSON = async () => {
     gtfsToGeoJSON(config)
       .then(() => {
         console.log("\n\nGeoJSON Generation Successful")
-        // createGtfsRoutesAndGtfsStops()
+        // createGtfsRoutesAndStops()
       })
       .catch((err) => {
         console.error(err)

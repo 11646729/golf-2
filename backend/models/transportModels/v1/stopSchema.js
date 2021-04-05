@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose"
 import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 
-const gtfsStopSchema = new Schema(
+const stopSchema = new Schema(
   {
     databaseVersion: { type: Number },
     stopFilePath: { type: String },
@@ -33,11 +33,11 @@ const gtfsStopSchema = new Schema(
   }
 )
 
-gtfsStopSchema.method("toJSON", function () {
+stopSchema.method("toJSON", function () {
   const { __v, _id, ...object } = this.toObject()
   object.id = _id
   return object
 })
 
 // Export model
-export const GtfsStopSchema = mongoose.model("gtfsStops", gtfsStopSchema)
+export const StopSchema = mongoose.model("stops", stopSchema)

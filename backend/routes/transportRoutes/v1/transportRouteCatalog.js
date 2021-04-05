@@ -33,7 +33,7 @@ router.put("/groute/:routenumber", transportController.putSelectedGtfsRoutes)
 // Bus Stops
 // -------------------------------------------------------
 // GET all Bus Stops
-router.get("/gstop/", transportController.getAllGtfsStops)
+router.get("/gstop/", transportController.getAllStops)
 
 // GET all Translink Bus Stops
 router.get("/tstop/", transportController.getAllTranslinkStops)

@@ -1,7 +1,7 @@
 const fs = require("fs")
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 import { GtfsRouteSchema } from "./models/transportModels/v1/gtfsRouteSchema"
-import { GtfsStopSchema } from "./models/transportModels/v1/gtfsStopSchema"
+import { StopSchema } from "./models/transportModels/v1/stopSchema"
 
 // -------------------------------------------------------
 // Function to fetch data from a single GeoJson route file
@@ -67,7 +67,7 @@ export const getAndParseSingleBusRouteAndStops = (
       })
 
       // And save it in a gtfsStopsSchema collection
-      const gtfsStopSchema = new GtfsStopSchema({
+      const stopSchema = new StopSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         stopFilePath: filePath,
         stopFileUrl: fileUrl,
@@ -87,8 +87,8 @@ export const getAndParseSingleBusRouteAndStops = (
         wheelchair_boarding: 0,
       })
 
-      // Save the gtfsStopsSchema in the database
-      gtfsStopSchema.save().catch((err) => {
+      // Save the stopsSchema in the database
+      stopSchema.save().catch((err) => {
         console.log("Error saving Stops to database ", err)
       })
 

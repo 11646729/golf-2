@@ -39,6 +39,8 @@ function GTFSTransportMap() {
     return () => (isSubscribed = false)
   }, [])
 
+  console.log(uniqueBusStopsCollection)
+
   return (
     <GTFSTransportMapView
       uniqueBusRoutesCollection={uniqueBusRoutesCollection}

@@ -1,14 +1,14 @@
 const fs = require("fs")
-import { TranslinkStopSchema } from "./models/transportModels/v1/translinkStopSchema"
+import { StopSchema } from "./models/transportModels/v1/stopSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // -------------------------------------------------------
 // Create Bus Stops in the Database
 // Path: local function called in switchBoard
 // -------------------------------------------------------
-export const createTranslinkStops = async (req, res) => {
+export const createStops = async (req, res) => {
   // Firstly delete all existing Bus Stops in the database
-  await TranslinkStopSchema.deleteMany({})
+  await StopSchema.deleteMany({})
     .then((res) => {
       console.log("No of Stops successfully deleted: ", res.deletedCount)
 
@@ -17,7 +17,7 @@ export const createTranslinkStops = async (req, res) => {
           throw err
         }
 
-        reduceTranslinkStops(JSON.parse(data))
+        reduceStops(JSON.parse(data))
       })
     })
     .catch((err) => {
@@ -28,7 +28,7 @@ export const createTranslinkStops = async (req, res) => {
 // -------------------------------------------------------
 // Function to extract data for reduced dataset then save it in the mongodb database
 // -------------------------------------------------------
-const reduceTranslinkStops = (busStops) => {
+const reduceStops = (busStops) => {
   const endloop = busStops.features.length
 
   let loop = 0
@@ -43,7 +43,7 @@ const reduceTranslinkStops = (busStops) => {
     }
 
     // Now create a model instance
-    const busStop = new TranslinkStopSchema({
+    const busStop = new StopSchema({
       databaseVersion: process.env.DATABASE_VERSION,
       agencyName: busStops.features[loop].properties.DepotOpsArea,
       agencyId: "MET",

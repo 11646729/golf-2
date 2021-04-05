@@ -4,6 +4,8 @@ import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 const translinkStopSchema = new Schema(
   {
     databaseVersion: { type: Number },
+    stopFilePath: { type: String },
+    stopFileUrl: { type: String },
     agencyName: { type: String },
     agencyId: { type: String },
     markerType: { type: String },

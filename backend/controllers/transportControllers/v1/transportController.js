@@ -1,5 +1,5 @@
 import { GtfsRouteSchema } from "../../../models/transportModels/v1/gtfsRouteSchema"
-import { GtfsStopSchema } from "../../../models/transportModels/v1/gtfsStopSchema"
+import { StopSchema } from "../../../models/transportModels/v1/stopSchema"
 import { TranslinkShapeSchema } from "../../../models/transportModels/v1/translinkShapeSchema"
 import { TranslinkStopSchema } from "../../../models/transportModels/v1/translinkStopSchema"
 
@@ -57,9 +57,9 @@ export const putSelectedGtfsRoutes = async (req, res) => {
 // Bus Stops
 // Path: localhost:5000/api/transport/gstop/
 // -------------------------------------------------------
-export const getAllGtfsStops = async (req, res) => {
-  GtfsStopSchema.find({})
-    .then((gtfsStopSchema) => res.json(gtfsStopSchema))
+export const getAllStops = async (req, res) => {
+  StopSchema.find({})
+    .then((stopSchema) => res.json(stopSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
