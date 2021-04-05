@@ -1,6 +1,5 @@
 import React from "react"
 import { makeStyles, List, Paper } from "@material-ui/core"
-import yellow from "@material-ui/core/colors/yellow"
 import BandListItem from "./BandListItem"
 
 const useStyles = makeStyles((theme) => ({
@@ -12,17 +11,14 @@ const useStyles = makeStyles((theme) => ({
   item: {
     padding: 0,
   },
-  yellowPaper: {
-    backgroundColor: yellow[300],
-  },
 }))
 
-export default function RouteSelectionList(props) {
+function RouteSelectionList(props) {
   const classes = useStyles()
 
   return (
     <div className={classes.root}>
-      <Paper className={classes.yellowPaper}>
+      <Paper>
         <List>
           <BandListItem
             routeVisible={props.routeVisible}
@@ -36,3 +32,5 @@ export default function RouteSelectionList(props) {
     </div>
   )
 }
+
+export default RouteSelectionList

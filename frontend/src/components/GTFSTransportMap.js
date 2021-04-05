@@ -11,11 +11,7 @@ import { CssBaseline, Grid } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
-import {
-  getGtfsRoutesData,
-  getGtfsStopsData,
-  getDisplayGtfsData,
-} from "./Utilities"
+import { getRoutesData, getStopsData, getDisplayData } from "./Utilities"
 
 // -------------------------------------------------------
 // React Controller component
@@ -28,13 +24,13 @@ function GTFSTransportMap() {
   useEffect(() => {
     let isSubscribed = true
 
-    getGtfsRoutesData("http://localhost:5000/api/transport/groute/")
+    getRoutesData("http://localhost:5000/api/transport/groute/")
       .then((returnedData) =>
         isSubscribed ? setUniqueBusRoutesCollection(returnedData) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
-    getGtfsStopsData("http://localhost:5000/api/transport/gstop/")
+    getStopsData("http://localhost:5000/api/transport/gstop/")
       .then((returnedData) =>
         isSubscribed ? setUniqueBusStopsCollection(returnedData) : null
       )
@@ -57,7 +53,10 @@ function GTFSTransportMap() {
 // -------------------------------------------------------
 function GTFSTransportMapView(props) {
   const [map, setMap] = useState(null)
-  const newLocal = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
+  const newLocal = parseInt(
+    process.env.REACT_APP_MAP_DEFAULT_ZOOM,
+    process.env.REACT_APP_MAP_DEFAULT_ZOOM
+  )
   const [mapZoom] = useState(newLocal)
   const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
@@ -65,16 +64,18 @@ function GTFSTransportMapView(props) {
   })
 
   let busRouteAgencyName = ""
-  if (props.uniqueBusRoutesCollection.length > 0) {
-    busRouteAgencyName = props.uniqueBusRoutesCollection[0].agencyName
-  }
-
   let displayBusRoutesCollection = []
   if (props.uniqueBusRoutesCollection.length > 0) {
-    displayBusRoutesCollection = getDisplayGtfsData(
-      props.uniqueBusRoutesCollection
-    )
+    busRouteAgencyName = props.uniqueBusRoutesCollection[0].agencyName
+    displayBusRoutesCollection = getDisplayData(props.uniqueBusRoutesCollection)
   }
+
+  // let displayBusRoutesCollection = []
+  // if (props.uniqueBusRoutesCollection.length > 0) {
+  //   displayBusRoutesCollection = getDisplayData(
+  //     props.uniqueBusRoutesCollection
+  //   )
+  // }
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",

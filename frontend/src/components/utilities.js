@@ -20,25 +20,32 @@ export async function getGolfCoursesData(url) {
 }
 
 // Function to fetch Unique Gtfs Route data
-export async function getGtfsRoutesData(url) {
+export async function getRoutesData(url) {
   const result = await axios(url)
   return removeDuplicates(result.data, "routeNumber")
 }
 
 // Function to fetch Unique Gtfs Stops data
-export async function getGtfsStopsData(url) {
+export async function getStopsData(url) {
   const result = await axios(url)
   return removeDuplicates(result.data, "coordsString")
 }
 
-// Function to fetch Gtfs Stops data
-export async function getGtfsData(url) {
+// Function to fetch Unique Shapes data
+export async function getShapesData(url) {
   const result = await axios(url)
   return result.data
+  // removeDuplicates(result.data, "routeNumber")
 }
 
+// Function to fetch Gtfs Stops data
+// export async function getGtfsData(url) {
+//   const result = await axios(url)
+//   return result.data
+// }
+
 // Function to remove Gtfs data fields routeVisible === false
-export function getDisplayGtfsData(originalArray) {
+export function getDisplayData(originalArray) {
   let displayArray = []
   let index = 0
   do {

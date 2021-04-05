@@ -93,7 +93,10 @@ function GolfCoursesMapView(props) {
     strokeWeight: 1,
   }
 
-  const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
+  const mapZoom = parseInt(
+    process.env.REACT_APP_MAP_DEFAULT_ZOOM,
+    process.env.REACT_APP_MAP_DEFAULT_ZOOM
+  )
   const mapCenter = {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
