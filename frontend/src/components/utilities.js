@@ -38,12 +38,6 @@ export async function getShapesData(url) {
   // removeDuplicates(result.data, "routeNumber")
 }
 
-// Function to fetch Gtfs Stops data
-// export async function getGtfsData(url) {
-//   const result = await axios(url)
-//   return result.data
-// }
-
 // Function to remove Gtfs data fields routeVisible === false
 export function getDisplayData(originalArray) {
   let displayArray = []

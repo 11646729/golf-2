@@ -40,8 +40,6 @@ function TransportMap() {
     return () => (isSubscribed = false)
   }, [])
 
-  console.log(busStopsCollection)
-
   return (
     <TransportMapView
       uniqueBusShapesCollection={uniqueBusShapesCollection}
@@ -55,7 +53,7 @@ function TransportMap() {
 // React View component
 // -------------------------------------------------------
 function TransportMapView(props) {
-  const [mapRef, setMapRef] = useState(null)
+  const [map, setMap] = useState(null)
   const newLocal = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
   const [mapZoom] = useState(newLocal)
   const [mapCenter] = useState({
@@ -68,11 +66,8 @@ function TransportMapView(props) {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
 
-  // const [busStopSelected, setBusStopSelected] = useState(null)
-  // const [busShapeSelected, setBusShapeSelected] = useState(null)
-
   // Now compute bounds of map to display
-  if (mapRef && props.busStopsCollection != null) {
+  if (map && props.busStopsCollection != null) {
     const bounds = new window.google.maps.LatLngBounds()
     props.busStopsCollection.map((busStop) => {
       const myLatLng = new window.google.maps.LatLng({
@@ -83,7 +78,7 @@ function TransportMapView(props) {
       bounds.extend(myLatLng)
       return bounds
     })
-    mapRef.fitBounds(bounds)
+    map.fitBounds(bounds)
   }
 
   // -----------------------------------------------------
@@ -91,24 +86,20 @@ function TransportMapView(props) {
   // -----------------------------------------------------
   // Store a reference to the google map instance
   const onLoadHandler = (map) => {
-    setMapRef(map)
+    setMap(map)
   }
 
   // Clear the reference to the google map instance
   const onUnmountHandler = () => {
-    setMapRef(null)
+    setMap(null)
   }
 
   const handleBusStopClick = (event) => {
     console.log(event)
-    // console.log(busStopSelected)
-    // setBusStopSelected(busStop)
   }
 
-  const handleBusRouteClick = (event) => {
+  const handleBusShapeClick = (event) => {
     console.log(event)
-    // console.log(busRouteSelected)
-    // setBusRouteSelected(busRoute)
   }
 
   return isLoaded ? (
@@ -159,7 +150,7 @@ function TransportMapView(props) {
                       strokeWeight: 2,
                     }}
                     onClick={() => {
-                      handleBusRouteClick()
+                      handleBusShapeClick()
                     }}
                   />
                 ))
@@ -182,6 +173,13 @@ function TransportMapView(props) {
                 ))
               : null} */}
           </GoogleMap>
+        </Grid>
+        <Grid item xs={12} sm={3}>
+          {/* <RouteSelectionPanel
+            busRoutesCollection={props.uniqueBusRoutesCollection}
+            busStopsCollection={props.busStopsCollection}
+            busRoutesSelectedAgency={busRouteAgencyName}
+          /> */}
         </Grid>
       </Grid>
     </div>
