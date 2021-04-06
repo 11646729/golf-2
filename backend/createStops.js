@@ -45,6 +45,8 @@ const reduceStops = (busStops) => {
     // Now create a model instance
     const busStop = new StopSchema({
       databaseVersion: process.env.DATABASE_VERSION,
+      // stopFilePath: filePath,
+      // stopFileUrl: fileUrl,
       agencyName: busStops.features[loop].properties.DepotOpsArea,
       agencyId: "MET",
       markerType: busStops.features[loop].geometry.type,

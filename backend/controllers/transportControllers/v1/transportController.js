@@ -1,7 +1,6 @@
 import { GtfsRouteSchema } from "../../../models/transportModels/v1/gtfsRouteSchema"
 import { StopSchema } from "../../../models/transportModels/v1/stopSchema"
-import { TranslinkShapeSchema } from "../../../models/transportModels/v1/translinkShapeSchema"
-import { TranslinkStopSchema } from "../../../models/transportModels/v1/translinkStopSchema"
+import { ShapeSchema } from "../../../models/transportModels/v1/shapeSchema"
 
 // -------------------------------------------------------
 // Catalogue Home page
@@ -19,14 +18,14 @@ const Keys = ["7", "8", "9", "10", "11", "16", "17"]
 // const Keys = ["1", "2", "3", "4", "5", "6", "3195", "3196"]
 // const Keys = ["1", "2", "3", "4", "5", "6"]
 
-export const getAllTranslinkShapes = async (req, res) => {
-  TranslinkShapeSchema.find({ shapeKey: Keys }) // 3 = Train, 1&2 = Route Endpoints
-    .then((translinkShapeSchema) => res.json(translinkShapeSchema))
+export const getAllShapes = async (req, res) => {
+  ShapeSchema.find({ shapeKey: Keys }) // 3 = Train, 1&2 = Route Endpoints
+    .then((shapeSchema) => res.json(shapeSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 // -------------------------------------------------------
 // Bus Routes
-// Path: localhost:5000/api/transport/groute/
+// Path: localhost:5000/api/transport/groutes/
 // -------------------------------------------------------
 export const getAllGtfsRoutes = async (req, res) => {
   GtfsRouteSchema.find({})
@@ -55,16 +54,13 @@ export const putSelectedGtfsRoutes = async (req, res) => {
 
 // -------------------------------------------------------
 // Bus Stops
-// Path: localhost:5000/api/transport/gstop/
+// Path: localhost:5000/api/transport/stops/
 // -------------------------------------------------------
 export const getAllStops = async (req, res) => {
-  StopSchema.find({})
+  // const filter = { agencyId: req.body.agencyId }
+  // console.log(filter)
+  const filter = { agencyId: "MET" }
+  StopSchema.find(filter)
     .then((stopSchema) => res.json(stopSchema))
-    .catch((err) => res.status(400).json("Error " + err))
-}
-
-export const getAllTranslinkStops = async (req, res) => {
-  TranslinkStopSchema.find({})
-    .then((translinkStopSchema) => res.json(translinkStopSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }

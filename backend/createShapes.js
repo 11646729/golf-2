@@ -1,14 +1,14 @@
 const fs = require("fs")
-import { TranslinkShapeSchema } from "./models/transportModels/v1/translinkShapeSchema"
+import { ShapeSchema } from "./models/transportModels/v1/shapeSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 
 // -------------------------------------------------------
 // Create Bus Shapes in the Database
 // Path: local function called in switchBoard
 // -------------------------------------------------------
-export const createTranslinkShapes = async (req, res) => {
+export const createShapes = async (req, res) => {
   // Firstly delete all existing Route Shapes in the database
-  await TranslinkShapeSchema.deleteMany({})
+  await ShapeSchema.deleteMany({})
     .then((res) => {
       console.log("No of Shapes successfully deleted: ", res.deletedCount)
 
@@ -22,7 +22,7 @@ export const createTranslinkShapes = async (req, res) => {
           }
 
           // Thirdly format data then save it in the mongodb database
-          reduceTranslinkRoutes(JSON.parse(data))
+          reduceRoutes(JSON.parse(data))
         }
       )
     })
@@ -55,7 +55,7 @@ function decodeInnerArray(oldcoords, oldcoordslength) {
 // -------------------------------------------------------
 // Local function
 // -------------------------------------------------------
-const reduceTranslinkRoutes = (busRoute) => {
+const reduceRoutes = (busRoute) => {
   // Test function
   // const endloop = busRoute.data.features.length
   const endloop = 10000
@@ -66,7 +66,7 @@ const reduceTranslinkRoutes = (busRoute) => {
     let convertedcoords = decodeInnerArray(oldcoords, oldcoords.length)
 
     // Now create a model instance
-    const busShapes = new TranslinkShapeSchema({
+    const busShapes = new ShapeSchema({
       databaseVersion: process.env.DATABASE_VERSION,
       agencyName: "Translink Buses",
       agencyId: "MET",

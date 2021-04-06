@@ -27,7 +27,17 @@ export async function getRoutesData(url) {
 
 // Function to fetch Unique Gtfs Stops data
 export async function getStopsData(url) {
-  const result = await axios(url)
+  const result = await axios({
+    url,
+    // data: {
+    //   agencyId: "MET",
+    // },
+    method: "get",
+    // timeout: 8000,
+    // headers: {
+    //   "Content-Type": "application/json",
+    // },
+  })
   return removeDuplicates(result.data, "coordsString")
 }
 

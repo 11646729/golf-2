@@ -24,13 +24,13 @@ function GTFSTransportMap() {
   useEffect(() => {
     let isSubscribed = true
 
-    getRoutesData("http://localhost:5000/api/transport/groute/")
+    getRoutesData("http://localhost:5000/api/transport/groutes/")
       .then((returnedData) =>
         isSubscribed ? setUniqueBusRoutesCollection(returnedData) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
-    getStopsData("http://localhost:5000/api/transport/gstop/")
+    getStopsData("http://localhost:5000/api/transport/stops/")
       .then((returnedData) =>
         isSubscribed ? setUniqueBusStopsCollection(returnedData) : null
       )
@@ -66,18 +66,16 @@ function GTFSTransportMapView(props) {
   })
 
   let busRouteAgencyName = ""
-  let displayBusRoutesCollection = []
+  // let displayBusRoutesCollection = []
   if (props.uniqueBusRoutesCollection.length > 0) {
     busRouteAgencyName = props.uniqueBusRoutesCollection[0].agencyName
-    displayBusRoutesCollection = getDisplayData(props.uniqueBusRoutesCollection)
+    // displayBusRoutesCollection = getDisplayData(props.uniqueBusRoutesCollection)
   }
 
-  // let displayBusRoutesCollection = []
-  // if (props.uniqueBusRoutesCollection.length > 0) {
-  //   displayBusRoutesCollection = getDisplayData(
-  //     props.uniqueBusRoutesCollection
-  //   )
-  // }
+  let displayBusRoutesCollection = []
+  if (props.uniqueBusRoutesCollection.length > 0) {
+    displayBusRoutesCollection = getDisplayData(props.uniqueBusRoutesCollection)
+  }
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -120,11 +118,11 @@ function GTFSTransportMapView(props) {
     setMap(null)
   }, [])
 
-  // const handleBusStopClick = (event) => {
-  //   console.log(event)
-  //     // console.log(busStopSelected)
-  //     // setBusStopSelected(busStop)
-  // }
+  const handleBusStopClick = (event) => {
+    console.log(event)
+    // console.log(busStopSelected)
+    // setBusStopSelected(busStop)
+  }
 
   const handleBusRouteClick = (event) => {
     console.log(event)
@@ -186,7 +184,7 @@ function GTFSTransportMapView(props) {
                   />
                 ))
               : null}
-            {/* {props.uniqueBusStopsCollection
+            {props.uniqueBusStopsCollection
               ? props.uniqueBusStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stopKey}
@@ -202,7 +200,7 @@ function GTFSTransportMapView(props) {
                     }}
                   />
                 ))
-              : null} */}
+              : null}
             {/* {busStopSelected ? (
               <InfoWindow
                 position={{

@@ -25,13 +25,13 @@ function TransportMap() {
   useEffect(() => {
     let isSubscribed = true
 
-    getShapesData("http://localhost:5000/api/transport/tshape/")
+    getShapesData("http://localhost:5000/api/transport/shapes/")
       .then((returnedData) =>
         isSubscribed ? setUniqueBusShapesCollection(returnedData) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
-    getStopsData("http://localhost:5000/api/transport/tstop/")
+    getStopsData("http://localhost:5000/api/transport/stops/")
       .then((returnedData) =>
         isSubscribed ? setBusStopsCollection(returnedData) : null
       )
@@ -155,7 +155,7 @@ function TransportMapView(props) {
                   />
                 ))
               : null}
-            {/* {props.busStopsCollection
+            {props.busStopsCollection
               ? props.busStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stopKey}
@@ -171,7 +171,7 @@ function TransportMapView(props) {
                     }}
                   />
                 ))
-              : null} */}
+              : null}
           </GoogleMap>
         </Grid>
         <Grid item xs={12} sm={3}>
