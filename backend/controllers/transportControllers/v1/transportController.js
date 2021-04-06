@@ -28,7 +28,7 @@ export const getAllShapes = async (req, res) => {
 // Path: localhost:5000/api/transport/groutes/
 // -------------------------------------------------------
 export const getAllGtfsRoutes = async (req, res) => {
-  GtfsRouteSchema.find({})
+  GtfsRouteSchema.find(req.query)
     .then((gtfsRouteSchema) => res.json(gtfsRouteSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
@@ -57,10 +57,7 @@ export const putSelectedGtfsRoutes = async (req, res) => {
 // Path: localhost:5000/api/transport/stops/
 // -------------------------------------------------------
 export const getAllStops = async (req, res) => {
-  // const filter = { agencyId: req.body.agencyId }
-  // console.log(filter)
-  const filter = { agencyId: "MET" }
-  StopSchema.find(filter)
+  StopSchema.find(req.query)
     .then((stopSchema) => res.json(stopSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }

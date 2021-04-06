@@ -15,35 +15,41 @@ const removeDuplicates = (originalArray, prop) => {
 }
 
 export async function getGolfCoursesData(url) {
-  const result = await axios(url)
+  const result = await axios(url, {
+    // params: {
+    //   agencyId: "MET",
+    // },
+  })
   return result.data
 }
 
 // Function to fetch Unique Gtfs Route data
 export async function getRoutesData(url) {
-  const result = await axios(url)
+  const result = await axios(url, {
+    // params: {
+    //   agencyId: "MET",
+    // },
+  })
   return removeDuplicates(result.data, "routeNumber")
 }
 
 // Function to fetch Unique Gtfs Stops data
 export async function getStopsData(url) {
-  const result = await axios({
-    url,
-    // data: {
-    //   agencyId: "MET",
-    // },
-    method: "get",
-    // timeout: 8000,
-    // headers: {
-    //   "Content-Type": "application/json",
-    // },
+  const result = await axios(url, {
+    params: {
+      agencyId: "HSR",
+    },
   })
   return removeDuplicates(result.data, "coordsString")
 }
 
 // Function to fetch Unique Shapes data
 export async function getShapesData(url) {
-  const result = await axios(url)
+  const result = await axios(url, {
+    // params: {
+    //   agencyId: "MET",
+    // },
+  })
   return result.data
   // removeDuplicates(result.data, "routeNumber")
 }
