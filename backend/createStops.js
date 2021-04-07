@@ -7,22 +7,15 @@ import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 // Path: local function called in switchBoard
 // -------------------------------------------------------
 export const createStops = async (req, res) => {
-  // Firstly delete all existing Bus Stops in the database
-  await StopSchema.deleteMany({})
-    .then((res) => {
-      console.log("No of Stops successfully deleted: ", res.deletedCount)
+  // Firstly read all existing Bus Stops in the file
+  fs.readFile(process.env.TRANSLINK_STOPS_FILE_URL, "utf8", (err, data) => {
+    if (err) {
+      throw err
+    }
 
-      fs.readFile(process.env.TRANSLINK_STOPS_FILEPATH, "utf8", (err, data) => {
-        if (err) {
-          throw err
-        }
-
-        reduceStops(JSON.parse(data))
-      })
-    })
-    .catch((err) => {
-      console.log(err.message)
-    })
+    // Then reduce and save individual Bus Stops in the database
+    reduceStops(JSON.parse(data))
+  })
 }
 
 // -------------------------------------------------------
@@ -45,8 +38,8 @@ const reduceStops = (busStops) => {
     // Now create a model instance
     const busStop = new StopSchema({
       databaseVersion: process.env.DATABASE_VERSION,
-      // stopFilePath: filePath,
-      // stopFileUrl: fileUrl,
+      stopFilePath: process.env.TRANSLINK_STOPS_FILEPATH,
+      stopFileUrl: process.env.TRANSLINK_STOPS_FILE_URL,
       agencyName: busStops.features[loop].properties.DepotOpsArea,
       agencyId: "MET",
       markerType: busStops.features[loop].geometry.type,
