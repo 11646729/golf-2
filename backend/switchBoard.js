@@ -9,6 +9,7 @@ import { createGolfCourses } from "./createGolfCourses"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
 import { createGtfsRoutesAndStops } from "./createGtfsRoutesAndStops"
 import { createShapes } from "./createShapes"
+import { deleteAllStops } from "./deleteAllStops"
 import { createStops } from "./createStops"
 
 export const runSwitchboard = (io) => {
@@ -32,6 +33,7 @@ export const runSwitchboard = (io) => {
   // createGolfCourses()
   // -----------------------------
   // convertGtfsToGeoJSON()
+  // deleteAllStops()
   // createGtfsRoutesAndStops()
   // -----------------------------
   // createShapes()

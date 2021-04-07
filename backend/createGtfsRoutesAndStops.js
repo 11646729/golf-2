@@ -1,6 +1,6 @@
 const fs = require("fs")
 const path = require("path")
-import { StopSchema } from "./models/transportModels/v1/stopSchema"
+// import { StopSchema } from "./models/transportModels/v1/stopSchema"
 import { GtfsRouteSchema } from "./models/transportModels/v1/gtfsRouteSchema"
 import { getAndParseSingleBusRouteAndStops } from "./getAndParseSingleBusRouteAndStops"
 
