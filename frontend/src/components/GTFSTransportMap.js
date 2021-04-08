@@ -19,6 +19,9 @@ import { getRoutesData, getStopsData, getDisplayData } from "./Utilities"
 function GTFSTransportMap() {
   const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
   const [uniqueBusStopsCollection, setUniqueBusStopsCollection] = useState([])
+  const [displayBusRoutesCollection, setDisplayBusRoutesCollection] = useState(
+    []
+  )
   const [loadingError, setLoadingError] = useState("")
 
   useEffect(() => {
@@ -39,12 +42,11 @@ function GTFSTransportMap() {
     return () => (isSubscribed = false)
   }, [])
 
-  console.log(uniqueBusStopsCollection)
-
   return (
     <GTFSTransportMapView
       uniqueBusRoutesCollection={uniqueBusRoutesCollection}
       uniqueBusStopsCollection={uniqueBusStopsCollection}
+      // displayBusRoutesCollection={displayBusRoutesCollection}
       loadingError={loadingError}
     />
   )
@@ -66,10 +68,8 @@ function GTFSTransportMapView(props) {
   })
 
   let busRouteAgencyName = ""
-  // let displayBusRoutesCollection = []
   if (props.uniqueBusRoutesCollection.length > 0) {
     busRouteAgencyName = props.uniqueBusRoutesCollection[0].agencyName
-    // displayBusRoutesCollection = getDisplayData(props.uniqueBusRoutesCollection)
   }
 
   let displayBusRoutesCollection = []
@@ -184,7 +184,7 @@ function GTFSTransportMapView(props) {
                   />
                 ))
               : null}
-            {props.uniqueBusStopsCollection
+            {/* {props.uniqueBusStopsCollection
               ? props.uniqueBusStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stopKey}
@@ -200,7 +200,7 @@ function GTFSTransportMapView(props) {
                     }}
                   />
                 ))
-              : null}
+              : null} */}
             {/* {busStopSelected ? (
               <InfoWindow
                 position={{
