@@ -1,6 +1,6 @@
 const fs = require("fs")
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
-import { GtfsRouteSchema } from "./models/transportModels/v1/gtfsRouteSchema"
+import { RouteSchema } from "./models/transportModels/v1/routeSchema"
 import { StopSchema } from "./models/transportModels/v1/stopSchema"
 
 // -------------------------------------------------------
@@ -35,8 +35,8 @@ export const getAndParseSingleBusRouteAndStops = (
         i++
       } while (i < busRoute.features[loop].geometry.coordinates.length)
 
-      // And save it in a gtfsRouteSchema collection
-      const gtfsRouteSchema = new GtfsRouteSchema({
+      // And save it in a routeSchema collection
+      const routeSchema = new RouteSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         routeFilePath: filePath,
         routeFileUrl: fileUrl,
@@ -51,8 +51,8 @@ export const getAndParseSingleBusRouteAndStops = (
         routeCoordinates: googleMapsCoords,
       })
 
-      // Save the gtfsRouteSchema in the database
-      gtfsRouteSchema.save().catch((err) => {
+      // Save the routeSchema in the database
+      routeSchema.save().catch((err) => {
         console.log("Error saving Routes to database ", err)
       })
 

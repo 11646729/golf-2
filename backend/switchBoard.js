@@ -7,6 +7,7 @@ import {
 import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines"
 import { createGolfCourses } from "./createGolfCourses"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
+import { deleteAllRoutes } from "./deleteAllRoutes"
 import { createGtfsRoutesAndStops } from "./createGtfsRoutesAndStops"
 import { createShapes } from "./createShapes"
 import { deleteAllStops } from "./deleteAllStops"
@@ -33,6 +34,7 @@ export const runSwitchboard = (io) => {
   // createGolfCourses()
   // -----------------------------
   // convertGtfsToGeoJSON()
+  // deleteAllRoutes()
   // deleteAllStops()
   // createGtfsRoutesAndStops()
   // -----------------------------

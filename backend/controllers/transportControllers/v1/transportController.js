@@ -1,4 +1,4 @@
-import { GtfsRouteSchema } from "../../../models/transportModels/v1/gtfsRouteSchema"
+import { RouteSchema } from "../../../models/transportModels/v1/routeSchema"
 import { StopSchema } from "../../../models/transportModels/v1/stopSchema"
 import { ShapeSchema } from "../../../models/transportModels/v1/shapeSchema"
 
@@ -27,28 +27,28 @@ export const getAllShapes = async (req, res) => {
 // Bus Routes
 // Path: localhost:5000/api/transport/groutes/
 // -------------------------------------------------------
-export const getAllGtfsRoutes = async (req, res) => {
-  GtfsRouteSchema.find(req.query)
-    .then((gtfsRouteSchema) => res.json(gtfsRouteSchema))
+export const getAllRoutes = async (req, res) => {
+  RouteSchema.find(req.query)
+    .then((routeSchema) => res.json(routeSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
 // Get Panel Selected Routes
-export const getSelectedGtfsRoutes = async (req, res) => {
+export const getSelectedRoutes = async (req, res) => {
   const filter = { routeVisible: "true" }
 
-  GtfsRouteSchema.find(filter)
-    .then((gtfsRouteSchema) => res.json(gtfsRouteSchema))
+  RouteSchema.find(filter)
+    .then((routeSchema) => res.json(routeSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
 // Update Selected Routes
-export const putSelectedGtfsRoutes = async (req, res) => {
+export const putSelectedRoutes = async (req, res) => {
   const filter = { routeNumber: req.body.routeNumber }
   const update = { routeVisible: req.body.routeVisible }
 
-  GtfsRouteSchema.updateMany(filter, update)
-    .then((gtfsRouteSchema) => res.json(gtfsRouteSchema))
+  RouteSchema.updateMany(filter, update)
+    .then((routeSchema) => res.json(routeSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 

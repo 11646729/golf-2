@@ -18,16 +18,16 @@ router.get("/shapes/", transportController.getAllShapes)
 // Bus Routes
 // -------------------------------------------------------
 // GET all Bus Routes
-router.get("/groutes/", transportController.getAllGtfsRoutes)
+router.get("/groutes/", transportController.getAllRoutes)
 
 // GET all Selected Panel List Bus Routes
-router.get("/groutes/:routevisible", transportController.getSelectedGtfsRoutes)
+router.get("/groutes/:routevisible", transportController.getSelectedRoutes)
 
 // GET all Translink Bus Routes
 // router.get("/groutes/", transportController.getAllTranslinkRoutes)
 
 // UPDATE Selected Status in the Bus Routes documents
-router.put("/groutes/:routenumber", transportController.putSelectedGtfsRoutes)
+router.put("/groutes/:routenumber", transportController.putSelectedRoutes)
 
 // -------------------------------------------------------
 // Bus Stops

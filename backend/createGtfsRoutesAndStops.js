@@ -1,7 +1,7 @@
 const fs = require("fs")
 const path = require("path")
 // import { StopSchema } from "./models/transportModels/v1/stopSchema"
-import { GtfsRouteSchema } from "./models/transportModels/v1/gtfsRouteSchema"
+// import { RouteSchema } from "./models/transportModels/v1/routeSchema"
 import { getAndParseSingleBusRouteAndStops } from "./getAndParseSingleBusRouteAndStops"
 
 // -------------------------------------------------------
@@ -9,13 +9,13 @@ import { getAndParseSingleBusRouteAndStops } from "./getAndParseSingleBusRouteAn
 // -------------------------------------------------------
 export const createGtfsRoutesAndStops = async (req, res) => {
   // Firstly delete all existing Routes in the database
-  await GtfsRouteSchema.deleteMany({})
-    .then((res) => {
-      console.log("No of Routes successfully deleted: ", res.deletedCount)
-    })
-    .catch((err) => {
-      console.log(err.message || "An error occurred while removing all Routes")
-    })
+  // await RouteSchema.deleteMany({})
+  //   .then((res) => {
+  //     console.log("No of Routes successfully deleted: ", res.deletedCount)
+  //   })
+  //   .catch((err) => {
+  //     console.log(err.message || "An error occurred while removing all Routes")
+  //   })
 
   const filePath = process.env.HAMILTON_GEOJSON_FILES_PATH
   // const filePath = process.env.TFI_GEOJSON_FILES_PATH
