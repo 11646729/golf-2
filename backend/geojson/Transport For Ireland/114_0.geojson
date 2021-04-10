@@ -1,1 +1,1013 @@
-{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"agency_name":"Go-Ahead","route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},"geometry":{"type":"LineString","coordinates":[[-6.24058,53.26926],[-6.23957,53.26949],[-6.23893,53.26956],[-6.23872,53.26954],[-6.23808,53.26956],[-6.23786,53.26953],[-6.23743,53.26937],[-6.23731,53.26925],[-6.2372,53.26904],[-6.23722,53.26883],[-6.23731,53.26867],[-6.23752,53.26849],[-6.23778,53.2684],[-6.23821,53.26831],[-6.23873,53.26828],[-6.23935,53.26819],[-6.24002,53.26805],[-6.24047,53.26792],[-6.24088,53.26776],[-6.24138,53.26737],[-6.24162,53.26696],[-6.2417,53.26636],[-6.24181,53.26604],[-6.24192,53.2659],[-6.24197,53.26561],[-6.24209,53.26533],[-6.24097,53.26488],[-6.24063,53.26479],[-6.23942,53.26477],[-6.23856,53.26488],[-6.23825,53.26495],[-6.23725,53.2653],[-6.23658,53.26544],[-6.2361,53.26547],[-6.22946,53.26525],[-6.22922,53.26527],[-6.22917,53.26739],[-6.22924,53.26841],[-6.22922,53.26869],[-6.2286,53.27065],[-6.22848,53.27136],[-6.22848,53.27211],[-6.22854,53.27254],[-6.22866,53.27296],[-6.2291,53.27396],[-6.22945,53.27564],[-6.22478,53.27599],[-6.2229,53.27626],[-6.22157,53.27656],[-6.22046,53.2769],[-6.21954,53.27724],[-6.2193,53.27704],[-6.219,53.27689],[-6.21636,53.27599],[-6.21763,53.27642],[-6.21746,53.27661],[-6.21737,53.27656],[-6.21689,53.27642],[-6.21662,53.27623],[-6.21623,53.27615],[-6.21636,53.27599],[-6.21229,53.27462],[-6.21196,53.27453],[-6.21149,53.27445],[-6.21126,53.27443],[-6.21086,53.27444],[-6.21038,53.27451],[-6.21001,53.27461],[-6.20983,53.27468],[-6.20948,53.27487],[-6.20916,53.27513],[-6.20854,53.27576],[-6.20672,53.27776],[-6.20653,53.27785],[-6.20631,53.27787],[-6.20494,53.27743],[-6.20458,53.27722],[-6.2042,53.27695],[-6.20388,53.27663],[-6.20362,53.27623],[-6.20349,53.27573],[-6.20351,53.27526],[-6.20354,53.27508],[-6.20371,53.27471],[-6.20401,53.27428],[-6.20372,53.27385],[-6.20235,53.27344],[-6.20157,53.27327],[-6.20063,53.27311],[-6.20002,53.27304],[-6.1983,53.27318],[-6.1935,53.27426],[-6.19092,53.2751],[-6.18884,53.27591],[-6.18731,53.27681],[-6.18548,53.27817],[-6.18507,53.27852],[-6.18438,53.27906],[-6.17824,53.28362],[-6.1778,53.28407],[-6.17761,53.28439],[-6.17718,53.2856],[-6.17608,53.28726],[-6.17669,53.28733],[-6.18076,53.288],[-6.18062,53.28904],[-6.18006,53.29285],[-6.18006,53.29321],[-6.18011,53.29361],[-6.18051,53.29531],[-6.1806,53.29767],[-6.18054,53.29803],[-6.18012,53.29884],[-6.17918,53.29999],[-6.17893,53.30016],[-6.17709,53.30092],[-6.17713,53.30104],[-6.17728,53.30124],[-6.17791,53.3017],[-6.17747,53.30204],[-6.17749,53.30212],[-6.1776,53.30229],[-6.1777,53.30237],[-6.17832,53.30256]]}},{"type":"Feature","properties":{"stop_id":"8250DB000449","stop_name":"Blackthorn Road, stop 449","routes":[{"route_id":"60-11-b12-1","agency_id":"978","route_short_name":"11","route_long_name":"Saint Pappin's Road - Blackthorn Drive (Blackthorn Road)","route_type":3},{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3},{"route_id":"60-116-b12-1","agency_id":"978","route_short_name":"116","route_long_name":"Sussex Road - Church of Our Lady of Good Council","route_type":3},{"route_id":"2-751-ga2-1","agency_id":"03","route_short_name":"751","route_long_name":"The Square Tallaght - Dún Laoghaire","route_type":3},{"route_id":"2-751-gad-1","agency_id":"03","route_short_name":"751","route_long_name":"The Square Tallaght - Dún Laoghaire","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.21693,53.27632]}},{"type":"Feature","properties":{"stop_id":"8250DB000450","stop_name":"Heather Road, stop 450","routes":[{"route_id":"60-11-b12-1","agency_id":"978","route_short_name":"11","route_long_name":"Saint Pappin's Road - Blackthorn Drive (Blackthorn Road)","route_type":3},{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3},{"route_id":"60-116-b12-1","agency_id":"978","route_short_name":"116","route_long_name":"Sussex Road - Church of Our Lady of Good Council","route_type":3},{"route_id":"2-751-ga2-1","agency_id":"03","route_short_name":"751","route_long_name":"The Square Tallaght - Dún Laoghaire","route_type":3},{"route_id":"2-751-gad-1","agency_id":"03","route_short_name":"751","route_long_name":"The Square Tallaght - Dún Laoghaire","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.2135,53.27509]}},{"type":"Feature","properties":{"stop_id":"8250DB003085","stop_name":"Blackrock Station, stop 3085","routes":[{"route_id":"2-17-ga2-1","agency_id":"03","route_short_name":"17","route_long_name":"Rialto - Blackrock","route_type":3},{"route_id":"2-17-gad-1","agency_id":"03","route_short_name":"17","route_long_name":"Rialto - Blackrock Station","route_type":3},{"route_id":"60-46E-b12-1","agency_id":"978","route_short_name":"46E","route_long_name":"Outside Train Station - Mountjoy Square","route_type":3},{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.17837,53.30248]}},{"type":"Feature","properties":{"stop_id":"8250DB003181","stop_name":"Carmanhall Road, stop 3181","routes":[{"route_id":"60-11-b12-1","agency_id":"978","route_short_name":"11","route_long_name":"Saint Pappin's Road - Blackthorn Drive (Blackthorn Road)","route_type":3},{"route_id":"60-47-b12-1","agency_id":"978","route_short_name":"47","route_long_name":"Poolbeg Street - Castlethorn Estate","route_type":3},{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3},{"route_id":"60-116-b12-1","agency_id":"978","route_short_name":"116","route_long_name":"Sussex Road - Church of Our Lady of Good Council","route_type":3},{"route_id":"2-751-ga2-1","agency_id":"03","route_short_name":"751","route_long_name":"The Square Tallaght - Dún Laoghaire","route_type":3},{"route_id":"2-751-gad-1","agency_id":"03","route_short_name":"751","route_long_name":"The Square Tallaght - Dún Laoghaire","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.20778,53.27673]}},{"type":"Feature","properties":{"stop_id":"8250DB003184","stop_name":"Moreen Avenue, stop 3184","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3},{"route_id":"60-116-b12-1","agency_id":"978","route_short_name":"116","route_long_name":"Sussex Road - Church of Our Lady of Good Council","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.22385,53.27619]}},{"type":"Feature","properties":{"stop_id":"8250DB003187","stop_name":"Burton Hall Road, stop 3187","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.20333,53.27383]}},{"type":"Feature","properties":{"stop_id":"8250DB003188","stop_name":"Racecourse, stop 3188","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.19902,53.27318]}},{"type":"Feature","properties":{"stop_id":"8250DB003189","stop_name":"Silverpark GAA, stop 3189","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.19557,53.27384]}},{"type":"Feature","properties":{"stop_id":"8250DB003190","stop_name":"Torquay Road, stop 3190","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.19186,53.27488]}},{"type":"Feature","properties":{"stop_id":"8250DB003191","stop_name":"Foxrock Manor, stop 3191","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.18833,53.27631]}},{"type":"Feature","properties":{"stop_id":"8250DB003192","stop_name":"Kelston Park, stop 3192","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.18653,53.27748]}},{"type":"Feature","properties":{"stop_id":"8250DB003193","stop_name":"Newtownpark Avenue, stop 3193","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.18334,53.27983]}},{"type":"Feature","properties":{"stop_id":"8250DB003194","stop_name":"Holly Park Avenue, stop 3194","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.17884,53.28326]}},{"type":"Feature","properties":{"stop_id":"8250DB003195","stop_name":"Meadow Close, stop 3195","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.17754,53.2849]}},{"type":"Feature","properties":{"stop_id":"8250DB003196","stop_name":"Newtown Park, stop 3196","routes":[{"route_id":"60-46E-b12-1","agency_id":"978","route_short_name":"46E","route_long_name":"Outside Train Station - Mountjoy Square","route_type":3},{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.17723,53.28738]}},{"type":"Feature","properties":{"stop_id":"8250DB003198","stop_name":"Carysfort Avenue, stop 3198","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.1806,53.28989]}},{"type":"Feature","properties":{"stop_id":"8250DB003199","stop_name":"Proby Square, stop 3199","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.18017,53.29258]}},{"type":"Feature","properties":{"stop_id":"8250DB003200","stop_name":"UCD Smurfit, stop 3200","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.18066,53.29667]}},{"type":"Feature","properties":{"stop_id":"8250DB003201","stop_name":"Frascati Road, stop 3201","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.17973,53.29953]}},{"type":"Feature","properties":{"stop_id":"8250DB003491","stop_name":"Lambs Cross, stop 3491","routes":[{"route_id":"60-44B-b12-1","agency_id":"978","route_short_name":"44B","route_long_name":"Outside Luas Station - Hill View","route_type":3},{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.22926,53.26553]}},{"type":"Feature","properties":{"stop_id":"8250DB003532","stop_name":"Blackglen Road, stop 3532","routes":[{"route_id":"60-44B-b12-1","agency_id":"978","route_short_name":"44B","route_long_name":"Outside Luas Station - Hill View","route_type":3},{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.24016,53.26479]}},{"type":"Feature","properties":{"stop_id":"8250DB003533","stop_name":"Blackglen Court, stop 3533","routes":[{"route_id":"60-44B-b12-1","agency_id":"978","route_short_name":"44B","route_long_name":"Outside Luas Station - Hill View","route_type":3},{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.2343,53.26547]}},{"type":"Feature","properties":{"stop_id":"8250DB004349","stop_name":"Blackthorn Drive, stop 4349","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3},{"route_id":"60-116-b12-1","agency_id":"978","route_short_name":"116","route_long_name":"Sussex Road - Church of Our Lady of Good Council","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.22771,53.27585]}},{"type":"Feature","properties":{"stop_id":"8250DB005142","stop_name":"Sandyford Luas, stop 5142","routes":[{"route_id":"60-47-b12-1","agency_id":"978","route_short_name":"47","route_long_name":"Poolbeg Street - Castlethorn Estate","route_type":3},{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.20517,53.27767]}},{"type":"Feature","properties":{"stop_id":"8250DB006007","stop_name":"Kilcross Road, stop 6007","routes":[{"route_id":"60-44B-b12-1","agency_id":"978","route_short_name":"44B","route_long_name":"Outside Luas Station - Hill View","route_type":3},{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.229,53.26976]}},{"type":"Feature","properties":{"stop_id":"8250DB006196","stop_name":"Rockview Road, stop 6196","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.24166,53.26673]}},{"type":"Feature","properties":{"stop_id":"8250DB006200","stop_name":"Rockview, stop 6200","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.24061,53.2693]}},{"type":"Feature","properties":{"stop_id":"8250DB006201","stop_name":"Sandyford View, stop 6201","routes":[{"route_id":"2-114-ga2-1","agency_id":"03","route_short_name":"114","route_long_name":"Rockview - Blackrock Station","route_type":3},{"route_id":"2-114-gad-1","agency_id":"03","route_short_name":"114","route_long_name":"Rock View - Blackrock Station","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.23928,53.26957]}}]}}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "agency_name": "Go-Ahead",
+        "route_id": "2-114-ga2-1",
+        "agency_id": "03",
+        "route_short_name": "114",
+        "route_long_name": "Rockview - Blackrock Station",
+        "route_type": 3
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-6.24058, 53.26926],
+          [-6.23957, 53.26949],
+          [-6.23893, 53.26956],
+          [-6.23872, 53.26954],
+          [-6.23808, 53.26956],
+          [-6.23786, 53.26953],
+          [-6.23743, 53.26937],
+          [-6.23731, 53.26925],
+          [-6.2372, 53.26904],
+          [-6.23722, 53.26883],
+          [-6.23731, 53.26867],
+          [-6.23752, 53.26849],
+          [-6.23778, 53.2684],
+          [-6.23821, 53.26831],
+          [-6.23873, 53.26828],
+          [-6.23935, 53.26819],
+          [-6.24002, 53.26805],
+          [-6.24047, 53.26792],
+          [-6.24088, 53.26776],
+          [-6.24138, 53.26737],
+          [-6.24162, 53.26696],
+          [-6.2417, 53.26636],
+          [-6.24181, 53.26604],
+          [-6.24192, 53.2659],
+          [-6.24197, 53.26561],
+          [-6.24209, 53.26533],
+          [-6.24097, 53.26488],
+          [-6.24063, 53.26479],
+          [-6.23942, 53.26477],
+          [-6.23856, 53.26488],
+          [-6.23825, 53.26495],
+          [-6.23725, 53.2653],
+          [-6.23658, 53.26544],
+          [-6.2361, 53.26547],
+          [-6.22946, 53.26525],
+          [-6.22922, 53.26527],
+          [-6.22917, 53.26739],
+          [-6.22924, 53.26841],
+          [-6.22922, 53.26869],
+          [-6.2286, 53.27065],
+          [-6.22848, 53.27136],
+          [-6.22848, 53.27211],
+          [-6.22854, 53.27254],
+          [-6.22866, 53.27296],
+          [-6.2291, 53.27396],
+          [-6.22945, 53.27564],
+          [-6.22478, 53.27599],
+          [-6.2229, 53.27626],
+          [-6.22157, 53.27656],
+          [-6.22046, 53.2769],
+          [-6.21954, 53.27724],
+          [-6.2193, 53.27704],
+          [-6.219, 53.27689],
+          [-6.21636, 53.27599],
+          [-6.21763, 53.27642],
+          [-6.21746, 53.27661],
+          [-6.21737, 53.27656],
+          [-6.21689, 53.27642],
+          [-6.21662, 53.27623],
+          [-6.21623, 53.27615],
+          [-6.21636, 53.27599],
+          [-6.21229, 53.27462],
+          [-6.21196, 53.27453],
+          [-6.21149, 53.27445],
+          [-6.21126, 53.27443],
+          [-6.21086, 53.27444],
+          [-6.21038, 53.27451],
+          [-6.21001, 53.27461],
+          [-6.20983, 53.27468],
+          [-6.20948, 53.27487],
+          [-6.20916, 53.27513],
+          [-6.20854, 53.27576],
+          [-6.20672, 53.27776],
+          [-6.20653, 53.27785],
+          [-6.20631, 53.27787],
+          [-6.20494, 53.27743],
+          [-6.20458, 53.27722],
+          [-6.2042, 53.27695],
+          [-6.20388, 53.27663],
+          [-6.20362, 53.27623],
+          [-6.20349, 53.27573],
+          [-6.20351, 53.27526],
+          [-6.20354, 53.27508],
+          [-6.20371, 53.27471],
+          [-6.20401, 53.27428],
+          [-6.20372, 53.27385],
+          [-6.20235, 53.27344],
+          [-6.20157, 53.27327],
+          [-6.20063, 53.27311],
+          [-6.20002, 53.27304],
+          [-6.1983, 53.27318],
+          [-6.1935, 53.27426],
+          [-6.19092, 53.2751],
+          [-6.18884, 53.27591],
+          [-6.18731, 53.27681],
+          [-6.18548, 53.27817],
+          [-6.18507, 53.27852],
+          [-6.18438, 53.27906],
+          [-6.17824, 53.28362],
+          [-6.1778, 53.28407],
+          [-6.17761, 53.28439],
+          [-6.17718, 53.2856],
+          [-6.17608, 53.28726],
+          [-6.17669, 53.28733],
+          [-6.18076, 53.288],
+          [-6.18062, 53.28904],
+          [-6.18006, 53.29285],
+          [-6.18006, 53.29321],
+          [-6.18011, 53.29361],
+          [-6.18051, 53.29531],
+          [-6.1806, 53.29767],
+          [-6.18054, 53.29803],
+          [-6.18012, 53.29884],
+          [-6.17918, 53.29999],
+          [-6.17893, 53.30016],
+          [-6.17709, 53.30092],
+          [-6.17713, 53.30104],
+          [-6.17728, 53.30124],
+          [-6.17791, 53.3017],
+          [-6.17747, 53.30204],
+          [-6.17749, 53.30212],
+          [-6.1776, 53.30229],
+          [-6.1777, 53.30237],
+          [-6.17832, 53.30256]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB000449",
+        "stop_name": "Blackthorn Road, stop 449",
+        "routes": [
+          {
+            "route_id": "60-11-b12-1",
+            "agency_id": "978",
+            "route_short_name": "11",
+            "route_long_name": "Saint Pappin's Road - Blackthorn Drive (Blackthorn Road)",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-116-b12-1",
+            "agency_id": "978",
+            "route_short_name": "116",
+            "route_long_name": "Sussex Road - Church of Our Lady of Good Council",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-751-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "751",
+            "route_long_name": "The Square Tallaght - Dún Laoghaire",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-751-gad-1",
+            "agency_id": "03",
+            "route_short_name": "751",
+            "route_long_name": "The Square Tallaght - Dún Laoghaire",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.21693, 53.27632] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB000450",
+        "stop_name": "Heather Road, stop 450",
+        "routes": [
+          {
+            "route_id": "60-11-b12-1",
+            "agency_id": "978",
+            "route_short_name": "11",
+            "route_long_name": "Saint Pappin's Road - Blackthorn Drive (Blackthorn Road)",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-116-b12-1",
+            "agency_id": "978",
+            "route_short_name": "116",
+            "route_long_name": "Sussex Road - Church of Our Lady of Good Council",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-751-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "751",
+            "route_long_name": "The Square Tallaght - Dún Laoghaire",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-751-gad-1",
+            "agency_id": "03",
+            "route_short_name": "751",
+            "route_long_name": "The Square Tallaght - Dún Laoghaire",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.2135, 53.27509] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003085",
+        "stop_name": "Blackrock Station, stop 3085",
+        "routes": [
+          {
+            "route_id": "2-17-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "17",
+            "route_long_name": "Rialto - Blackrock",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-17-gad-1",
+            "agency_id": "03",
+            "route_short_name": "17",
+            "route_long_name": "Rialto - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-46E-b12-1",
+            "agency_id": "978",
+            "route_short_name": "46E",
+            "route_long_name": "Outside Train Station - Mountjoy Square",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.17837, 53.30248] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003181",
+        "stop_name": "Carmanhall Road, stop 3181",
+        "routes": [
+          {
+            "route_id": "60-11-b12-1",
+            "agency_id": "978",
+            "route_short_name": "11",
+            "route_long_name": "Saint Pappin's Road - Blackthorn Drive (Blackthorn Road)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-47-b12-1",
+            "agency_id": "978",
+            "route_short_name": "47",
+            "route_long_name": "Poolbeg Street - Castlethorn Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-116-b12-1",
+            "agency_id": "978",
+            "route_short_name": "116",
+            "route_long_name": "Sussex Road - Church of Our Lady of Good Council",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-751-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "751",
+            "route_long_name": "The Square Tallaght - Dún Laoghaire",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-751-gad-1",
+            "agency_id": "03",
+            "route_short_name": "751",
+            "route_long_name": "The Square Tallaght - Dún Laoghaire",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.20778, 53.27673] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003184",
+        "stop_name": "Moreen Avenue, stop 3184",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-116-b12-1",
+            "agency_id": "978",
+            "route_short_name": "116",
+            "route_long_name": "Sussex Road - Church of Our Lady of Good Council",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.22385, 53.27619] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003187",
+        "stop_name": "Burton Hall Road, stop 3187",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.20333, 53.27383] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003188",
+        "stop_name": "Racecourse, stop 3188",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.19902, 53.27318] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003189",
+        "stop_name": "Silverpark GAA, stop 3189",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.19557, 53.27384] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003190",
+        "stop_name": "Torquay Road, stop 3190",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.19186, 53.27488] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003191",
+        "stop_name": "Foxrock Manor, stop 3191",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.18833, 53.27631] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003192",
+        "stop_name": "Kelston Park, stop 3192",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.18653, 53.27748] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003193",
+        "stop_name": "Newtownpark Avenue, stop 3193",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.18334, 53.27983] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003194",
+        "stop_name": "Holly Park Avenue, stop 3194",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.17884, 53.28326] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003195",
+        "stop_name": "Meadow Close, stop 3195",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.17754, 53.2849] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003196",
+        "stop_name": "Newtown Park, stop 3196",
+        "routes": [
+          {
+            "route_id": "60-46E-b12-1",
+            "agency_id": "978",
+            "route_short_name": "46E",
+            "route_long_name": "Outside Train Station - Mountjoy Square",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.17723, 53.28738] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003198",
+        "stop_name": "Carysfort Avenue, stop 3198",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.1806, 53.28989] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003199",
+        "stop_name": "Proby Square, stop 3199",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.18017, 53.29258] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003200",
+        "stop_name": "UCD Smurfit, stop 3200",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.18066, 53.29667] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003201",
+        "stop_name": "Frascati Road, stop 3201",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.17973, 53.29953] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003491",
+        "stop_name": "Lambs Cross, stop 3491",
+        "routes": [
+          {
+            "route_id": "60-44B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "44B",
+            "route_long_name": "Outside Luas Station - Hill View",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.22926, 53.26553] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003532",
+        "stop_name": "Blackglen Road, stop 3532",
+        "routes": [
+          {
+            "route_id": "60-44B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "44B",
+            "route_long_name": "Outside Luas Station - Hill View",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.24016, 53.26479] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003533",
+        "stop_name": "Blackglen Court, stop 3533",
+        "routes": [
+          {
+            "route_id": "60-44B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "44B",
+            "route_long_name": "Outside Luas Station - Hill View",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.2343, 53.26547] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB004349",
+        "stop_name": "Blackthorn Drive, stop 4349",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-116-b12-1",
+            "agency_id": "978",
+            "route_short_name": "116",
+            "route_long_name": "Sussex Road - Church of Our Lady of Good Council",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.22771, 53.27585] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB005142",
+        "stop_name": "Sandyford Luas, stop 5142",
+        "routes": [
+          {
+            "route_id": "60-47-b12-1",
+            "agency_id": "978",
+            "route_short_name": "47",
+            "route_long_name": "Poolbeg Street - Castlethorn Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.20517, 53.27767] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB006007",
+        "stop_name": "Kilcross Road, stop 6007",
+        "routes": [
+          {
+            "route_id": "60-44B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "44B",
+            "route_long_name": "Outside Luas Station - Hill View",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.229, 53.26976] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB006196",
+        "stop_name": "Rockview Road, stop 6196",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.24166, 53.26673] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB006200",
+        "stop_name": "Rockview, stop 6200",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.24061, 53.2693] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB006201",
+        "stop_name": "Sandyford View, stop 6201",
+        "routes": [
+          {
+            "route_id": "2-114-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rockview - Blackrock Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-114-gad-1",
+            "agency_id": "03",
+            "route_short_name": "114",
+            "route_long_name": "Rock View - Blackrock Station",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.23928, 53.26957] }
+    }
+  ]
+}

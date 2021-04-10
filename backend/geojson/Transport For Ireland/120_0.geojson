@@ -1,1 +1,3148 @@
-{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"agency_name":"Go-Ahead","route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3},"geometry":{"type":"LineString","coordinates":[[-6.22857,53.32832],[-6.23004,53.32874],[-6.23041,53.3288],[-6.23185,53.32938],[-6.23232,53.32965],[-6.23272,53.32995],[-6.23287,53.33012],[-6.23497,53.33183],[-6.23566,53.33265],[-6.238,53.33603],[-6.23848,53.33641],[-6.23978,53.33725],[-6.24021,53.33749],[-6.24049,53.33763],[-6.24674,53.33974],[-6.24967,53.34078],[-6.25101,53.34128],[-6.25241,53.34175],[-6.2526,53.34186],[-6.25219,53.34194],[-6.25158,53.34214],[-6.25131,53.34213],[-6.25077,53.342],[-6.25068,53.342],[-6.25062,53.34202],[-6.24988,53.34315],[-6.24943,53.34391],[-6.24944,53.34402],[-6.24956,53.34415],[-6.24968,53.34419],[-6.25225,53.34474],[-6.25514,53.34529],[-6.25518,53.3459],[-6.25408,53.34587],[-6.25304,53.34581],[-6.25514,53.34529],[-6.25519,53.34644],[-6.25516,53.34683],[-6.25597,53.34684],[-6.25593,53.34747],[-6.25632,53.34745],[-6.25698,53.34737],[-6.25784,53.34723],[-6.25869,53.34701],[-6.25909,53.34694],[-6.25918,53.34721],[-6.25936,53.34752],[-6.26152,53.35243],[-6.26169,53.35249],[-6.26201,53.35237],[-6.26279,53.35199],[-6.26295,53.35195],[-6.26304,53.35196],[-6.26322,53.35205],[-6.26496,53.35322],[-6.26602,53.35388],[-6.26733,53.35436],[-6.26775,53.35454],[-6.2679,53.35476],[-6.26844,53.35495],[-6.26857,53.35502],[-6.26824,53.3556],[-6.268,53.35616],[-6.26794,53.35672],[-6.26802,53.35696],[-6.26978,53.35894],[-6.2698,53.35904],[-6.26979,53.35933],[-6.26963,53.36058],[-6.27017,53.36063],[-6.27271,53.3608],[-6.27431,53.36079],[-6.27735,53.36083],[-6.28333,53.36107],[-6.28256,53.36381],[-6.28748,53.36476],[-6.28817,53.36472],[-6.28828,53.36467],[-6.28836,53.36466],[-6.28851,53.36469],[-6.28881,53.3651],[-6.29002,53.36604],[-6.2905,53.36628],[-6.29104,53.36644],[-6.29203,53.36668],[-6.29103,53.36843],[-6.29107,53.36868],[-6.29124,53.36894],[-6.29147,53.36918],[-6.2918,53.36939],[-6.2922,53.36956],[-6.30035,53.37113],[-6.30461,53.37131],[-6.3047,53.37126],[-6.30472,53.37121],[-6.30432,53.36958],[-6.30413,53.3694],[-6.30394,53.36931],[-6.30472,53.36859],[-6.30528,53.36885],[-6.30554,53.36903],[-6.30574,53.36925],[-6.30605,53.36971],[-6.30619,53.37008],[-6.30626,53.37054],[-6.30626,53.37067],[-6.30594,53.37132],[-6.30591,53.37146],[-6.3059,53.37161],[-6.30624,53.37307],[-6.30657,53.37344],[-6.30735,53.37405],[-6.30754,53.37417],[-6.30838,53.37459],[-6.30846,53.37467],[-6.30845,53.37478],[-6.30855,53.37486],[-6.30903,53.37507],[-6.30926,53.37521],[-6.30944,53.37534],[-6.3098,53.37571],[-6.31003,53.37604],[-6.31007,53.37619],[-6.31063,53.37643],[-6.31141,53.37648],[-6.3126,53.3768],[-6.3137,53.37585],[-6.31393,53.37571],[-6.31536,53.37571],[-6.31969,53.37576],[-6.32106,53.37572],[-6.3212,53.37577],[-6.32191,53.37625],[-6.32244,53.37642],[-6.3229,53.37648],[-6.32336,53.37647],[-6.32336,53.37665],[-6.32349,53.37684],[-6.3241,53.37742],[-6.32422,53.37748],[-6.32435,53.37748],[-6.32547,53.37724],[-6.32567,53.37723],[-6.33077,53.37725],[-6.33084,53.37722],[-6.33088,53.37731],[-6.3309,53.3776],[-6.33145,53.37749],[-6.33181,53.37746]]}},{"type":"Feature","properties":{"agency_name":"Go-Ahead","route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3},"geometry":{"type":"LineString","coordinates":[[-6.26058,53.35298],[-6.2613,53.35262],[-6.26135,53.35254],[-6.26144,53.3525],[-6.26169,53.35249]]}},{"type":"Feature","properties":{"agency_name":"Go-Ahead","route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3},"geometry":{"type":"LineString","coordinates":[[-6.26201,53.35237],[-6.26286,53.35196],[-6.26304,53.35196],[-6.2637,53.35237]]}},{"type":"Feature","properties":{"stop_id":"8220DB000003","stop_name":"Parnell Square West, stop 3","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3},{"route_id":"60-122-b12-1","agency_id":"978","route_short_name":"122","route_long_name":"Ashington Park - Errigal Rd","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.26381,53.35231]}},{"type":"Feature","properties":{"stop_id":"8220DB000056","stop_name":"Dalymount, stop 56","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3},{"route_id":"60-122-b12-1","agency_id":"978","route_short_name":"122","route_long_name":"Ashington Park - Errigal Rd","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.27637,53.36076]}},{"type":"Feature","properties":{"stop_id":"8220DB000058","stop_name":"Churchview Home, stop 58","routes":[{"route_id":"60-38-b12-1","agency_id":"978","route_short_name":"38","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-38A-b12-1","agency_id":"978","route_short_name":"38A","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-38B-b12-1","agency_id":"978","route_short_name":"38B","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-38D-b12-1","agency_id":"978","route_short_name":"38D","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3},{"route_id":"60-122-b12-1","agency_id":"978","route_short_name":"122","route_long_name":"Ashington Park - Errigal Rd","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.2812,53.36095]}},{"type":"Feature","properties":{"stop_id":"8220DB000071","stop_name":"Ventry Park, stop 71","routes":[{"route_id":"60-40E-b12-1","agency_id":"978","route_short_name":"40E","route_long_name":"Broombridge Luas - Carlton Hotel","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.30444,53.37026]}},{"type":"Feature","properties":{"stop_id":"8220DB000072","stop_name":"Ventry Drive, stop 72","routes":[{"route_id":"60-40E-b12-1","agency_id":"978","route_short_name":"40E","route_long_name":"Broombridge Luas - Carlton Hotel","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.30426,53.36897]}},{"type":"Feature","properties":{"stop_id":"8220DB000192","stop_name":"Mountjoy Street, stop 192","routes":[{"route_id":"60-38-b12-1","agency_id":"978","route_short_name":"38","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-38A-b12-1","agency_id":"978","route_short_name":"38A","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-38B-b12-1","agency_id":"978","route_short_name":"38B","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-38D-b12-1","agency_id":"978","route_short_name":"38D","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-40-b12-1","agency_id":"978","route_short_name":"40","route_long_name":"Charlestown Shopping Centre - Liffey Valley Shopping Centre","route_type":3},{"route_id":"60-46A-b12-1","agency_id":"978","route_short_name":"46A","route_long_name":"Phoenix Park Gate - University College Dublin","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.26808,53.3564]}},{"type":"Feature","properties":{"stop_id":"8220DB000276","stop_name":"River Road, stop 276","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.3318,53.3774]}},{"type":"Feature","properties":{"stop_id":"8220DB000279","stop_name":"O'Connell St Upper, stop 279","routes":[{"route_id":"60-40-b12-1","agency_id":"978","route_short_name":"40","route_long_name":"Charlestown Shopping Centre - Liffey Valley Shopping Centre","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3},{"route_id":"60-122-b12-1","agency_id":"978","route_short_name":"122","route_long_name":"Ashington Park - Errigal Rd","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.26061,53.35013]}},{"type":"Feature","properties":{"stop_id":"8220DB000400","stop_name":"Shaw Street, stop 400","routes":[{"route_id":"60-1-b12-1","agency_id":"978","route_short_name":"1","route_long_name":"Shanard Road (Shanard Avenue) - Saint John's Church","route_type":3},{"route_id":"60-4-b12-1","agency_id":"978","route_short_name":"4","route_long_name":"Harristown Bus Garage - Monkstown Avenue (Richmond Grove)","route_type":3},{"route_id":"60-7-b12-1","agency_id":"978","route_short_name":"7","route_long_name":"Mountjoy Square Park - Bride's Glen Bus Stop","route_type":3},{"route_id":"60-7A-b12-1","agency_id":"978","route_short_name":"7A","route_long_name":"Mountjoy Square Park - Loughlinstown Wood Estate","route_type":3},{"route_id":"60-15A-b12-1","agency_id":"978","route_short_name":"15A","route_long_name":"Ringsend Road - Limekiln Avenue","route_type":3},{"route_id":"60-15B-b12-1","agency_id":"978","route_short_name":"15B","route_long_name":"Ringsend Road - Dalriada Estate","route_type":3},{"route_id":"60-15D-b12-1","agency_id":"978","route_short_name":"15D","route_long_name":"Ringsend Road - Church of Our Lady of Good Council","route_type":3},{"route_id":"60-25-b12-1","agency_id":"978","route_short_name":"25","route_long_name":"Merrion Square South - Dodsboro Road","route_type":3},{"route_id":"60-25A-b12-1","agency_id":"978","route_short_name":"25A","route_long_name":"Merrion Square South - Newcastle Road","route_type":3},{"route_id":"60-25B-b12-1","agency_id":"978","route_short_name":"25B","route_long_name":"Merrion Square South - Outside Train Station","route_type":3},{"route_id":"60-25D-b12-1","agency_id":"978","route_short_name":"25D","route_long_name":"Merrion Square South - Outside Train Station","route_type":3},{"route_id":"60-26-b12-1","agency_id":"978","route_short_name":"26","route_long_name":"Merrion Square South - Liffey Valley Shopping Centre","route_type":3},{"route_id":"60-27-b12-1","agency_id":"978","route_short_name":"27","route_long_name":"Templeview Avenue - Fortunestown Road","route_type":3},{"route_id":"60-44-b12-1","agency_id":"978","route_short_name":"44","route_long_name":"The Helix - Powerscourt National School","route_type":3},{"route_id":"60-47-b12-1","agency_id":"978","route_short_name":"47","route_long_name":"Poolbeg Street - Castlethorn Estate","route_type":3},{"route_id":"60-56A-b12-1","agency_id":"978","route_short_name":"56A","route_long_name":"Ringsend Road - The Square Shopping Centre","route_type":3},{"route_id":"60-61-b12-1","agency_id":"978","route_short_name":"61","route_long_name":"Eden Quay - Edmondstown Road (Rockbrook Park School)","route_type":3},{"route_id":"60-66-b12-1","agency_id":"978","route_short_name":"66","route_long_name":"Merrion Square South - Kingsbury Estate","route_type":3},{"route_id":"60-66A-b12-1","agency_id":"978","route_short_name":"66A","route_long_name":"Merrion Square South - River Forest Estate","route_type":3},{"route_id":"60-66B-b12-1","agency_id":"978","route_short_name":"66B","route_long_name":"Merrion Square South - Alensgrove","route_type":3},{"route_id":"60-66E-b12-1","agency_id":"978","route_short_name":"66E","route_long_name":"Merrion Square South - Kingsbury Estate","route_type":3},{"route_id":"60-67-b12-1","agency_id":"978","route_short_name":"67","route_long_name":"Merrion Square South - Straffan Road","route_type":3},{"route_id":"60-77A-b12-1","agency_id":"978","route_short_name":"77A","route_long_name":"Ringsend Road - Bianconi Avenue","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.25321,53.34485]}},{"type":"Feature","properties":{"stop_id":"8220DB000485","stop_name":"RDS Ballsbridge, stop 485","routes":[{"route_id":"60-4-b12-1","agency_id":"978","route_short_name":"4","route_long_name":"Harristown Bus Garage - Monkstown Avenue (Richmond Grove)","route_type":3},{"route_id":"60-7-b12-1","agency_id":"978","route_short_name":"7","route_long_name":"Mountjoy Square Park - Bride's Glen Bus Stop","route_type":3},{"route_id":"60-7A-b12-1","agency_id":"978","route_short_name":"7A","route_long_name":"Mountjoy Square Park - Loughlinstown Wood Estate","route_type":3},{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"60-27X-b12-1","agency_id":"978","route_short_name":"27X","route_long_name":"University College Dublin - Clare Hall Estate (Templeview Avenue)","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.22863,53.32825]}},{"type":"Feature","properties":{"stop_id":"8220DB000487","stop_name":"American Embassy, stop 487","routes":[{"route_id":"60-4-b12-1","agency_id":"978","route_short_name":"4","route_long_name":"Harristown Bus Garage - Monkstown Avenue (Richmond Grove)","route_type":3},{"route_id":"60-7-b12-1","agency_id":"978","route_short_name":"7","route_long_name":"Mountjoy Square Park - Bride's Glen Bus Stop","route_type":3},{"route_id":"60-7A-b12-1","agency_id":"978","route_short_name":"7A","route_long_name":"Mountjoy Square Park - Loughlinstown Wood Estate","route_type":3},{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-18-ga2-1","agency_id":"03","route_short_name":"18","route_long_name":"Palmerstown - Sandymount","route_type":3},{"route_id":"2-18-gad-1","agency_id":"03","route_short_name":"18","route_long_name":"Palmerstown - Sandymount","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.2339,53.33086]}},{"type":"Feature","properties":{"stop_id":"8220DB000488","stop_name":"Lansdowne Park, stop 488","routes":[{"route_id":"60-4-b12-1","agency_id":"978","route_short_name":"4","route_long_name":"Harristown Bus Garage - Monkstown Avenue (Richmond Grove)","route_type":3},{"route_id":"60-7-b12-1","agency_id":"978","route_short_name":"7","route_long_name":"Mountjoy Square Park - Bride's Glen Bus Stop","route_type":3},{"route_id":"60-7A-b12-1","agency_id":"978","route_short_name":"7A","route_long_name":"Mountjoy Square Park - Loughlinstown Wood Estate","route_type":3},{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"60-27X-b12-1","agency_id":"978","route_short_name":"27X","route_long_name":"University College Dublin - Clare Hall Estate (Templeview Avenue)","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.23608,53.3331]}},{"type":"Feature","properties":{"stop_id":"8220DB000489","stop_name":"St Mary's Rd South, stop 489","routes":[{"route_id":"60-4-b12-1","agency_id":"978","route_short_name":"4","route_long_name":"Harristown Bus Garage - Monkstown Avenue (Richmond Grove)","route_type":3},{"route_id":"60-7-b12-1","agency_id":"978","route_short_name":"7","route_long_name":"Mountjoy Square Park - Bride's Glen Bus Stop","route_type":3},{"route_id":"60-7A-b12-1","agency_id":"978","route_short_name":"7A","route_long_name":"Mountjoy Square Park - Loughlinstown Wood Estate","route_type":3},{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.23735,53.33494]}},{"type":"Feature","properties":{"stop_id":"8220DB000490","stop_name":"Haddington Road, stop 490","routes":[{"route_id":"60-4-b12-1","agency_id":"978","route_short_name":"4","route_long_name":"Harristown Bus Garage - Monkstown Avenue (Richmond Grove)","route_type":3},{"route_id":"60-7-b12-1","agency_id":"978","route_short_name":"7","route_long_name":"Mountjoy Square Park - Bride's Glen Bus Stop","route_type":3},{"route_id":"60-7A-b12-1","agency_id":"978","route_short_name":"7A","route_long_name":"Mountjoy Square Park - Loughlinstown Wood Estate","route_type":3},{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.23891,53.33657]}},{"type":"Feature","properties":{"stop_id":"8220DB000491","stop_name":"Mount Street Bridge, stop 491","routes":[{"route_id":"60-4-b12-1","agency_id":"978","route_short_name":"4","route_long_name":"Harristown Bus Garage - Monkstown Avenue (Richmond Grove)","route_type":3},{"route_id":"60-7-b12-1","agency_id":"978","route_short_name":"7","route_long_name":"Mountjoy Square Park - Bride's Glen Bus Stop","route_type":3},{"route_id":"60-7A-b12-1","agency_id":"978","route_short_name":"7A","route_long_name":"Mountjoy Square Park - Loughlinstown Wood Estate","route_type":3},{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"60-27X-b12-1","agency_id":"978","route_short_name":"27X","route_long_name":"University College Dublin - Clare Hall Estate (Templeview Avenue)","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.24133,53.33781]}},{"type":"Feature","properties":{"stop_id":"8220DB000492","stop_name":"Mount Street Lower, stop 492","routes":[{"route_id":"60-4-b12-1","agency_id":"978","route_short_name":"4","route_long_name":"Harristown Bus Garage - Monkstown Avenue (Richmond Grove)","route_type":3},{"route_id":"60-7-b12-1","agency_id":"978","route_short_name":"7","route_long_name":"Mountjoy Square Park - Bride's Glen Bus Stop","route_type":3},{"route_id":"60-7A-b12-1","agency_id":"978","route_short_name":"7A","route_long_name":"Mountjoy Square Park - Loughlinstown Wood Estate","route_type":3},{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.24361,53.33858]}},{"type":"Feature","properties":{"stop_id":"8220DB000493","stop_name":"Holles Street, stop 493","routes":[{"route_id":"60-4-b12-1","agency_id":"978","route_short_name":"4","route_long_name":"Harristown Bus Garage - Monkstown Avenue (Richmond Grove)","route_type":3},{"route_id":"60-7-b12-1","agency_id":"978","route_short_name":"7","route_long_name":"Mountjoy Square Park - Bride's Glen Bus Stop","route_type":3},{"route_id":"60-7A-b12-1","agency_id":"978","route_short_name":"7A","route_long_name":"Mountjoy Square Park - Loughlinstown Wood Estate","route_type":3},{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"60-25-b12-1","agency_id":"978","route_short_name":"25","route_long_name":"Merrion Square South - Dodsboro Road","route_type":3},{"route_id":"60-25A-b12-1","agency_id":"978","route_short_name":"25A","route_long_name":"Merrion Square South - Newcastle Road","route_type":3},{"route_id":"60-25B-b12-1","agency_id":"978","route_short_name":"25B","route_long_name":"Merrion Square South - Outside Train Station","route_type":3},{"route_id":"60-25D-b12-1","agency_id":"978","route_short_name":"25D","route_long_name":"Merrion Square South - Outside Train Station","route_type":3},{"route_id":"60-26-b12-1","agency_id":"978","route_short_name":"26","route_long_name":"Merrion Square South - Liffey Valley Shopping Centre","route_type":3},{"route_id":"60-27X-b12-1","agency_id":"978","route_short_name":"27X","route_long_name":"University College Dublin - Clare Hall Estate (Templeview Avenue)","route_type":3},{"route_id":"60-66-b12-1","agency_id":"978","route_short_name":"66","route_long_name":"Merrion Square South - Kingsbury Estate","route_type":3},{"route_id":"60-66A-b12-1","agency_id":"978","route_short_name":"66A","route_long_name":"Merrion Square South - River Forest Estate","route_type":3},{"route_id":"60-66B-b12-1","agency_id":"978","route_short_name":"66B","route_long_name":"Merrion Square South - Alensgrove","route_type":3},{"route_id":"60-66E-b12-1","agency_id":"978","route_short_name":"66E","route_long_name":"Merrion Square South - Kingsbury Estate","route_type":3},{"route_id":"60-67-b12-1","agency_id":"978","route_short_name":"67","route_long_name":"Merrion Square South - Straffan Road","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.24738,53.33985]}},{"type":"Feature","properties":{"stop_id":"8220DB000494","stop_name":"Clare Street, stop 494","routes":[{"route_id":"60-4-b12-1","agency_id":"978","route_short_name":"4","route_long_name":"Harristown Bus Garage - Monkstown Avenue (Richmond Grove)","route_type":3},{"route_id":"60-7-b12-1","agency_id":"978","route_short_name":"7","route_long_name":"Mountjoy Square Park - Bride's Glen Bus Stop","route_type":3},{"route_id":"60-7A-b12-1","agency_id":"978","route_short_name":"7A","route_long_name":"Mountjoy Square Park - Loughlinstown Wood Estate","route_type":3},{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"60-25-b12-1","agency_id":"978","route_short_name":"25","route_long_name":"Merrion Square South - Dodsboro Road","route_type":3},{"route_id":"60-25A-b12-1","agency_id":"978","route_short_name":"25A","route_long_name":"Merrion Square South - Newcastle Road","route_type":3},{"route_id":"60-25B-b12-1","agency_id":"978","route_short_name":"25B","route_long_name":"Merrion Square South - Outside Train Station","route_type":3},{"route_id":"60-25D-b12-1","agency_id":"978","route_short_name":"25D","route_long_name":"Merrion Square South - Outside Train Station","route_type":3},{"route_id":"60-26-b12-1","agency_id":"978","route_short_name":"26","route_long_name":"Merrion Square South - Liffey Valley Shopping Centre","route_type":3},{"route_id":"60-27X-b12-1","agency_id":"978","route_short_name":"27X","route_long_name":"University College Dublin - Clare Hall Estate (Templeview Avenue)","route_type":3},{"route_id":"60-66-b12-1","agency_id":"978","route_short_name":"66","route_long_name":"Merrion Square South - Kingsbury Estate","route_type":3},{"route_id":"60-66A-b12-1","agency_id":"978","route_short_name":"66A","route_long_name":"Merrion Square South - River Forest Estate","route_type":3},{"route_id":"60-66B-b12-1","agency_id":"978","route_short_name":"66B","route_long_name":"Merrion Square South - Alensgrove","route_type":3},{"route_id":"60-66E-b12-1","agency_id":"978","route_short_name":"66E","route_long_name":"Merrion Square South - Kingsbury Estate","route_type":3},{"route_id":"60-67-b12-1","agency_id":"978","route_short_name":"67","route_long_name":"Merrion Square South - Straffan Road","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.25168,53.34144]}},{"type":"Feature","properties":{"stop_id":"8220DB000495","stop_name":"Pearse Station, stop 495","routes":[{"route_id":"60-4-b12-1","agency_id":"978","route_short_name":"4","route_long_name":"Harristown Bus Garage - Monkstown Avenue (Richmond Grove)","route_type":3},{"route_id":"60-7-b12-1","agency_id":"978","route_short_name":"7","route_long_name":"Mountjoy Square Park - Bride's Glen Bus Stop","route_type":3},{"route_id":"60-7A-b12-1","agency_id":"978","route_short_name":"7A","route_long_name":"Mountjoy Square Park - Loughlinstown Wood Estate","route_type":3},{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"60-25-b12-1","agency_id":"978","route_short_name":"25","route_long_name":"Merrion Square South - Dodsboro Road","route_type":3},{"route_id":"60-25A-b12-1","agency_id":"978","route_short_name":"25A","route_long_name":"Merrion Square South - Newcastle Road","route_type":3},{"route_id":"60-25B-b12-1","agency_id":"978","route_short_name":"25B","route_long_name":"Merrion Square South - Outside Train Station","route_type":3},{"route_id":"60-25D-b12-1","agency_id":"978","route_short_name":"25D","route_long_name":"Merrion Square South - Outside Train Station","route_type":3},{"route_id":"60-26-b12-1","agency_id":"978","route_short_name":"26","route_long_name":"Merrion Square South - Liffey Valley Shopping Centre","route_type":3},{"route_id":"60-27X-b12-1","agency_id":"978","route_short_name":"27X","route_long_name":"University College Dublin - Clare Hall Estate (Templeview Avenue)","route_type":3},{"route_id":"60-44-b12-1","agency_id":"978","route_short_name":"44","route_long_name":"The Helix - Powerscourt National School","route_type":3},{"route_id":"60-61-b12-1","agency_id":"978","route_short_name":"61","route_long_name":"Eden Quay - Edmondstown Road (Rockbrook Park School)","route_type":3},{"route_id":"60-66-b12-1","agency_id":"978","route_short_name":"66","route_long_name":"Merrion Square South - Kingsbury Estate","route_type":3},{"route_id":"60-66A-b12-1","agency_id":"978","route_short_name":"66A","route_long_name":"Merrion Square South - River Forest Estate","route_type":3},{"route_id":"60-66B-b12-1","agency_id":"978","route_short_name":"66B","route_long_name":"Merrion Square South - Alensgrove","route_type":3},{"route_id":"60-66E-b12-1","agency_id":"978","route_short_name":"66E","route_long_name":"Merrion Square South - Kingsbury Estate","route_type":3},{"route_id":"60-67-b12-1","agency_id":"978","route_short_name":"67","route_long_name":"Merrion Square South - Straffan Road","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.24975,53.34359]}},{"type":"Feature","properties":{"stop_id":"8220DB000795","stop_name":"Berkeley Road, stop 795","routes":[{"route_id":"60-38-b12-1","agency_id":"978","route_short_name":"38","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-38A-b12-1","agency_id":"978","route_short_name":"38A","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-38B-b12-1","agency_id":"978","route_short_name":"38B","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-38D-b12-1","agency_id":"978","route_short_name":"38D","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-46A-b12-1","agency_id":"978","route_short_name":"46A","route_long_name":"Phoenix Park Gate - University College Dublin","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.26972,53.35874]}},{"type":"Feature","properties":{"stop_id":"8220DB000796","stop_name":"Berkeley Road, stop 796","routes":[{"route_id":"60-38-b12-1","agency_id":"978","route_short_name":"38","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-38A-b12-1","agency_id":"978","route_short_name":"38A","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-38B-b12-1","agency_id":"978","route_short_name":"38B","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-38D-b12-1","agency_id":"978","route_short_name":"38D","route_long_name":"Burlington Road (Mespil Road) - Damastown Drive","route_type":3},{"route_id":"60-46A-b12-1","agency_id":"978","route_short_name":"46A","route_long_name":"Phoenix Park Gate - University College Dublin","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.26985,53.36002]}},{"type":"Feature","properties":{"stop_id":"8220DB000822","stop_name":"Mulroy Road, stop 822","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.29182,53.36712]}},{"type":"Feature","properties":{"stop_id":"8220DB000823","stop_name":"Kilkieran Road, stop 823","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.29119,53.36824]}},{"type":"Feature","properties":{"stop_id":"8220DB000824","stop_name":"Bannow Road, stop 824","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.29326,53.36975]}},{"type":"Feature","properties":{"stop_id":"8220DB000825","stop_name":"St Finbar's Road, stop 825","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.29693,53.37043]}},{"type":"Feature","properties":{"stop_id":"8220DB000826","stop_name":"Carnlough Road, stop 826","routes":[{"route_id":"60-40E-b12-1","agency_id":"978","route_short_name":"40E","route_long_name":"Broombridge Luas - Carlton Hotel","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.30117,53.37122]}},{"type":"Feature","properties":{"stop_id":"8220DB000827","stop_name":"Ventry Park, stop 827","routes":[{"route_id":"60-40E-b12-1","agency_id":"978","route_short_name":"40E","route_long_name":"Broombridge Luas - Carlton Hotel","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.30399,53.37129]}},{"type":"Feature","properties":{"stop_id":"8220DB004481","stop_name":"Cabra PO, stop 4481","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.2869,53.36461]}},{"type":"Feature","properties":{"stop_id":"8220DB004485","stop_name":"Naomh Fionnbarra GAA, stop 4485","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.28951,53.36554]}},{"type":"Feature","properties":{"stop_id":"8220DB004499","stop_name":"Dowth Avenue, stop 4499","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.28322,53.36157]}},{"type":"Feature","properties":{"stop_id":"8220DB004500","stop_name":"Faussagh Road, stop 4500","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.28372,53.36405]}},{"type":"Feature","properties":{"stop_id":"8220DB004538","stop_name":"Royal Canal Avenue, stop 4538","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.31691,53.37573]}},{"type":"Feature","properties":{"stop_id":"8220DB004934","stop_name":"Offaly Road, stop 4934","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.28286,53.36286]}},{"type":"Feature","properties":{"stop_id":"8220DB005144","stop_name":"Marian School, stop 5144","routes":[{"route_id":"60-40E-b12-1","agency_id":"978","route_short_name":"40E","route_long_name":"Broombridge Luas - Carlton Hotel","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.30621,53.37271]}},{"type":"Feature","properties":{"stop_id":"8220DB005145","stop_name":"Rathbourne Avenue, stop 5145","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.32675,53.3772]}},{"type":"Feature","properties":{"stop_id":"8220DB006004","stop_name":"Parnell Street, stop 6004","routes":[{"route_id":"60-40B-b12-1","agency_id":"978","route_short_name":"40B","route_long_name":"The Gate Hotel - River Meade Avenue","route_type":3},{"route_id":"60-40D-b12-1","agency_id":"978","route_short_name":"40D","route_long_name":"The Gate Hotel - The Oaks","route_type":3},{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.26051,53.35291]}},{"type":"Feature","properties":{"stop_id":"8220DB007027","stop_name":"Glasnevin Park, stop 7027","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.31205,53.37659]}},{"type":"Feature","properties":{"stop_id":"8220DB007396","stop_name":"Crescent Park, stop 7396","routes":[{"route_id":"60-120-b12-1","agency_id":"978","route_short_name":"120","route_long_name":"Merrion Road RDS - River Road","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.32161,53.37611]}}]}p_name":"UCD, stop 767","routes":[{"route_id":"60-39A-b12-1","agency_id":"978","route_short_name":"39A","route_long_name":"University College Dublin - Ongar Road (Hansfield Road)","route_type":3},{"route_id":"60-46A-b12-1","agency_id":"978","route_short_name":"46A","route_long_name":"Phoenix Park Gate - University College Dublin","route_type":3},{"route_id":"17-120-1-cm1-1","agency_id":"03C","route_short_name":"120-1","route_long_name":"Edenderry - University College Dublin","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-125-cm1-1","agency_id":"03C","route_short_name":"125","route_long_name":"University College Dublin - Newbridge","route_type":3},{"route_id":"17-126-7-cm1-1","agency_id":"03C","route_short_name":"126-7","route_long_name":"Kildare - University College Dublin","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.21668,53.3053]}},{"type":"Feature","properties":{"stop_id":"8260B1025301","stop_name":"Curryhills, stop 102531","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-6-cm1-1","agency_id":"03C","route_short_name":"120-6","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.73995,53.28866]}},{"type":"Feature","properties":{"stop_id":"8260B1025601","stop_name":"Downings North, stop 102561","routes":[{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.77454,53.28729]}},{"type":"Feature","properties":{"stop_id":"8260B1025701","stop_name":"Straffan, stop 102571","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.61859,53.31855]}},{"type":"Feature","properties":{"stop_id":"8260B1025801","stop_name":"Baybush, stop 102581","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-6-cm1-1","agency_id":"03C","route_short_name":"120-6","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.62912,53.32024]}},{"type":"Feature","properties":{"stop_id":"8260B1026001","stop_name":"Irishtown Upper, stop 102601","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-6-cm1-1","agency_id":"03C","route_short_name":"120-6","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.64871,53.31371]}},{"type":"Feature","properties":{"stop_id":"8260B1026101","stop_name":"Brooklands, stop 102611","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-6-cm1-1","agency_id":"03C","route_short_name":"120-6","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.67953,53.29641]}},{"type":"Feature","properties":{"stop_id":"8260B1026301","stop_name":"Clane, stop 102631","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-6-cm1-1","agency_id":"03C","route_short_name":"120-6","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.68794,53.29052]}},{"type":"Feature","properties":{"stop_id":"8260B1026401","stop_name":"Clane Hospital, stop 102641","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-6-cm1-1","agency_id":"03C","route_short_name":"120-6","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.7004,53.29008]}},{"type":"Feature","properties":{"stop_id":"8260B1027201","stop_name":"Shee Bridge, stop 102721","routes":[{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.87826,53.2833]}},{"type":"Feature","properties":{"stop_id":"8260B1027301","stop_name":"Lullymore Cross, stop 102731","routes":[{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.92359,53.31022]}},{"type":"Feature","properties":{"stop_id":"8260B1027401","stop_name":"Carbury Mushroom, stop 102741","routes":[{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.9272,53.31882]}},{"type":"Feature","properties":{"stop_id":"8260B1027501","stop_name":"Windmill Cross, stop 102751","routes":[{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.93142,53.3344]}},{"type":"Feature","properties":{"stop_id":"8260B1027601","stop_name":"Dreenane Park, stop 102761","routes":[{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.93574,53.33691]}},{"type":"Feature","properties":{"stop_id":"8260B1027801","stop_name":"Ashgrove, stop 102781","routes":[{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.94449,53.34203]}},{"type":"Feature","properties":{"stop_id":"8260B1047601","stop_name":"Prosperous Church, stop 104761","routes":[{"route_id":"17-120-1-cm1-1","agency_id":"03C","route_short_name":"120-1","route_long_name":"Edenderry - University College Dublin","route_type":3},{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-5-cm1-1","agency_id":"03C","route_short_name":"120-5","route_long_name":"Edenderry - Dublin","route_type":3},{"route_id":"17-120-6-cm1-1","agency_id":"03C","route_short_name":"120-6","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.75028,53.28835]}},{"type":"Feature","properties":{"stop_id":"8260B1047801","stop_name":"Clane Garda Station, stop 104781","routes":[{"route_id":"17-120-1-cm1-1","agency_id":"03C","route_short_name":"120-1","route_long_name":"Edenderry - University College Dublin","route_type":3},{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-5-cm1-1","agency_id":"03C","route_short_name":"120-5","route_long_name":"Edenderry - Dublin","route_type":3},{"route_id":"17-120-6-cm1-1","agency_id":"03C","route_short_name":"120-6","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.6854,53.29352]}},{"type":"Feature","properties":{"stop_id":"8260B105211","stop_name":"Barrington Court, stop 105211","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-6-cm1-1","agency_id":"03C","route_short_name":"120-6","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.75759,53.28797]}},{"type":"Feature","properties":{"stop_id":"8260B1319001","stop_name":"High Road Gap, stop 131901","routes":[{"route_id":"17-120-3-cm1-1","agency_id":"03C","route_short_name":"120-3","route_long_name":"Enfield - Tullamore","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.99963,53.3461]}},{"type":"Feature","properties":{"stop_id":"8260B1319901","stop_name":"Newbury Cross, stop 131991","routes":[{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.9524,53.34663]}},{"type":"Feature","properties":{"stop_id":"8260B1320701","stop_name":"Derrinturn, stop 132071","routes":[{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.93975,53.33924]}},{"type":"Feature","properties":{"stop_id":"8260B1323201","stop_name":"Killinagh Lower, stop 132321","routes":[{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.91406,53.30508]}},{"type":"Feature","properties":{"stop_id":"8260B1323901","stop_name":"Kennedys Bridge, stop 132391","routes":[{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.89507,53.28799]}},{"type":"Feature","properties":{"stop_id":"8260B1324501","stop_name":"Allenwood, stop 132451","routes":[{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.8622,53.28387]}},{"type":"Feature","properties":{"stop_id":"8260B1326101","stop_name":"Coill Dubh, stop 132611","routes":[{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.81811,53.29188]}},{"type":"Feature","properties":{"stop_id":"8260B1327901","stop_name":"Cross of Brockagh, stop 132791","routes":[{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.79975,53.28634]}},{"type":"Feature","properties":{"stop_id":"8260B1330101","stop_name":"St Farnan's Church, stop 133011","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-6-cm1-1","agency_id":"03C","route_short_name":"120-6","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.7512,53.2882]}},{"type":"Feature","properties":{"stop_id":"8260B1331301","stop_name":"Firmount Cross, stop 133131","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-6-cm1-1","agency_id":"03C","route_short_name":"120-6","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.71677,53.28936]}},{"type":"Feature","properties":{"stop_id":"8260B1332101","stop_name":"Clane Garda Station, stop 133211","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-6-cm1-1","agency_id":"03C","route_short_name":"120-6","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.68583,53.29328]}},{"type":"Feature","properties":{"stop_id":"8260B1334301","stop_name":"Richardstown, stop 133431","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-6-cm1-1","agency_id":"03C","route_short_name":"120-6","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.66231,53.30643]}},{"type":"Feature","properties":{"stop_id":"8260B1335601","stop_name":"Ovidstown, stop 133561","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-6-cm1-1","agency_id":"03C","route_short_name":"120-6","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.63859,53.3172]}},{"type":"Feature","properties":{"stop_id":"8260B1337901","stop_name":"St Brigid's Church, stop 133791","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.60888,53.31282]}},{"type":"Feature","properties":{"stop_id":"8260B1338401","stop_name":"Barberstown Road, stop 133841","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.60618,53.31699]}},{"type":"Feature","properties":{"stop_id":"8260B1338501","stop_name":"Barberstown Cross, stop 133851","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.60569,53.32381]}},{"type":"Feature","properties":{"stop_id":"8260B1340401","stop_name":"St Wolstan's School, stop 134041","routes":[{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.56178,53.33509]}},{"type":"Feature","properties":{"stop_id":"8260DB007085","stop_name":"English Row, stop 7085","routes":[{"route_id":"60-67X-b12-1","agency_id":"978","route_short_name":"67X","route_long_name":"University College Dublin - Straffan Road","route_type":3},{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.54025,53.33795]}},{"type":"Feature","properties":{"stop_id":"8260DB007086","stop_name":"Celbridge Abbey, stop 7086","routes":[{"route_id":"60-67X-b12-1","agency_id":"978","route_short_name":"67X","route_long_name":"University College Dublin - Straffan Road","route_type":3},{"route_id":"17-120-2-cm1-1","agency_id":"03C","route_short_name":"120-2","route_long_name":"Dublin - Newbridge","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.55294,53.3353]}},{"type":"Feature","properties":{"stop_id":"8260GD10268","stop_name":"Carbury, stop 10268","routes":[{"route_id":"17-120-3-cm1-1","agency_id":"03C","route_short_name":"120-3","route_long_name":"Enfield - Tullamore","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.96365,53.35328]}},{"type":"Feature","properties":{"stop_id":"8320B1028001","stop_name":"Dublin Road, stop 102801","routes":[{"route_id":"17-120-3-cm1-1","agency_id":"03C","route_short_name":"120-3","route_long_name":"Enfield - Tullamore","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-7.03196,53.34697]}},{"type":"Feature","properties":{"stop_id":"8320B1028101","stop_name":"Colonel Perry Street, stop 102811","routes":[{"route_id":"17-120-3-cm1-1","agency_id":"03C","route_short_name":"120-3","route_long_name":"Enfield - Tullamore","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-7.04376,53.34418]}},{"type":"Feature","properties":{"stop_id":"8320B1028201","stop_name":"Edenderry Town Hall, stop 102821","routes":[{"route_id":"17-120-3-cm1-1","agency_id":"03C","route_short_name":"120-3","route_long_name":"Enfield - Tullamore","route_type":3},{"route_id":"17-120-4-cm1-1","agency_id":"03C","route_short_name":"120-4","route_long_name":"Edenderry - Tullamore","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-7.0504,53.34313]}},{"type":"Feature","properties":{"stop_id":"8320B1359601","stop_name":"Edenderry SC, stop 135961","routes":[{"route_id":"17-120-1-cm1-1","agency_id":"03C","route_short_name":"120-1","route_long_name":"Edenderry - University College Dublin","route_type":3},{"route_id":"17-120-3-cm1-1","agency_id":"03C","route_short_name":"120-3","route_long_name":"Enfield - Tullamore","route_type":3},{"route_id":"17-120-5-cm1-1","agency_id":"03C","route_short_name":"120-5","route_long_name":"Edenderry - Dublin","route_type":3},{"route_id":"17-120-9-cm1-1","agency_id":"03C","route_short_name":"120-9","route_long_name":"Dublin - Edenderry","route_type":3},{"route_id":"17-120-cm1-1","agency_id":"03C","route_short_name":"120","route_long_name":"Dublin - Edenderry","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-7.05857,53.34349]}}]}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "agency_name": "Go-Ahead",
+        "route_id": "60-120-b12-1",
+        "agency_id": "978",
+        "route_short_name": "120",
+        "route_long_name": "Merrion Road RDS - River Road",
+        "route_type": 3
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-6.22857, 53.32832],
+          [-6.23004, 53.32874],
+          [-6.23041, 53.3288],
+          [-6.23185, 53.32938],
+          [-6.23232, 53.32965],
+          [-6.23272, 53.32995],
+          [-6.23287, 53.33012],
+          [-6.23497, 53.33183],
+          [-6.23566, 53.33265],
+          [-6.238, 53.33603],
+          [-6.23848, 53.33641],
+          [-6.23978, 53.33725],
+          [-6.24021, 53.33749],
+          [-6.24049, 53.33763],
+          [-6.24674, 53.33974],
+          [-6.24967, 53.34078],
+          [-6.25101, 53.34128],
+          [-6.25241, 53.34175],
+          [-6.2526, 53.34186],
+          [-6.25219, 53.34194],
+          [-6.25158, 53.34214],
+          [-6.25131, 53.34213],
+          [-6.25077, 53.342],
+          [-6.25068, 53.342],
+          [-6.25062, 53.34202],
+          [-6.24988, 53.34315],
+          [-6.24943, 53.34391],
+          [-6.24944, 53.34402],
+          [-6.24956, 53.34415],
+          [-6.24968, 53.34419],
+          [-6.25225, 53.34474],
+          [-6.25514, 53.34529],
+          [-6.25518, 53.3459],
+          [-6.25408, 53.34587],
+          [-6.25304, 53.34581],
+          [-6.25514, 53.34529],
+          [-6.25519, 53.34644],
+          [-6.25516, 53.34683],
+          [-6.25597, 53.34684],
+          [-6.25593, 53.34747],
+          [-6.25632, 53.34745],
+          [-6.25698, 53.34737],
+          [-6.25784, 53.34723],
+          [-6.25869, 53.34701],
+          [-6.25909, 53.34694],
+          [-6.25918, 53.34721],
+          [-6.25936, 53.34752],
+          [-6.26152, 53.35243],
+          [-6.26169, 53.35249],
+          [-6.26201, 53.35237],
+          [-6.26279, 53.35199],
+          [-6.26295, 53.35195],
+          [-6.26304, 53.35196],
+          [-6.26322, 53.35205],
+          [-6.26496, 53.35322],
+          [-6.26602, 53.35388],
+          [-6.26733, 53.35436],
+          [-6.26775, 53.35454],
+          [-6.2679, 53.35476],
+          [-6.26844, 53.35495],
+          [-6.26857, 53.35502],
+          [-6.26824, 53.3556],
+          [-6.268, 53.35616],
+          [-6.26794, 53.35672],
+          [-6.26802, 53.35696],
+          [-6.26978, 53.35894],
+          [-6.2698, 53.35904],
+          [-6.26979, 53.35933],
+          [-6.26963, 53.36058],
+          [-6.27017, 53.36063],
+          [-6.27271, 53.3608],
+          [-6.27431, 53.36079],
+          [-6.27735, 53.36083],
+          [-6.28333, 53.36107],
+          [-6.28256, 53.36381],
+          [-6.28748, 53.36476],
+          [-6.28817, 53.36472],
+          [-6.28828, 53.36467],
+          [-6.28836, 53.36466],
+          [-6.28851, 53.36469],
+          [-6.28881, 53.3651],
+          [-6.29002, 53.36604],
+          [-6.2905, 53.36628],
+          [-6.29104, 53.36644],
+          [-6.29203, 53.36668],
+          [-6.29103, 53.36843],
+          [-6.29107, 53.36868],
+          [-6.29124, 53.36894],
+          [-6.29147, 53.36918],
+          [-6.2918, 53.36939],
+          [-6.2922, 53.36956],
+          [-6.30035, 53.37113],
+          [-6.30461, 53.37131],
+          [-6.3047, 53.37126],
+          [-6.30472, 53.37121],
+          [-6.30432, 53.36958],
+          [-6.30413, 53.3694],
+          [-6.30394, 53.36931],
+          [-6.30472, 53.36859],
+          [-6.30528, 53.36885],
+          [-6.30554, 53.36903],
+          [-6.30574, 53.36925],
+          [-6.30605, 53.36971],
+          [-6.30619, 53.37008],
+          [-6.30626, 53.37054],
+          [-6.30626, 53.37067],
+          [-6.30594, 53.37132],
+          [-6.30591, 53.37146],
+          [-6.3059, 53.37161],
+          [-6.30624, 53.37307],
+          [-6.30657, 53.37344],
+          [-6.30735, 53.37405],
+          [-6.30754, 53.37417],
+          [-6.30838, 53.37459],
+          [-6.30846, 53.37467],
+          [-6.30845, 53.37478],
+          [-6.30855, 53.37486],
+          [-6.30903, 53.37507],
+          [-6.30926, 53.37521],
+          [-6.30944, 53.37534],
+          [-6.3098, 53.37571],
+          [-6.31003, 53.37604],
+          [-6.31007, 53.37619],
+          [-6.31063, 53.37643],
+          [-6.31141, 53.37648],
+          [-6.3126, 53.3768],
+          [-6.3137, 53.37585],
+          [-6.31393, 53.37571],
+          [-6.31536, 53.37571],
+          [-6.31969, 53.37576],
+          [-6.32106, 53.37572],
+          [-6.3212, 53.37577],
+          [-6.32191, 53.37625],
+          [-6.32244, 53.37642],
+          [-6.3229, 53.37648],
+          [-6.32336, 53.37647],
+          [-6.32336, 53.37665],
+          [-6.32349, 53.37684],
+          [-6.3241, 53.37742],
+          [-6.32422, 53.37748],
+          [-6.32435, 53.37748],
+          [-6.32547, 53.37724],
+          [-6.32567, 53.37723],
+          [-6.33077, 53.37725],
+          [-6.33084, 53.37722],
+          [-6.33088, 53.37731],
+          [-6.3309, 53.3776],
+          [-6.33145, 53.37749],
+          [-6.33181, 53.37746]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "agency_name": "Go-Ahead",
+        "route_id": "60-120-b12-1",
+        "agency_id": "978",
+        "route_short_name": "120",
+        "route_long_name": "Merrion Road RDS - River Road",
+        "route_type": 3
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-6.26058, 53.35298],
+          [-6.2613, 53.35262],
+          [-6.26135, 53.35254],
+          [-6.26144, 53.3525],
+          [-6.26169, 53.35249]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "agency_name": "Go-Ahead",
+        "route_id": "60-120-b12-1",
+        "agency_id": "978",
+        "route_short_name": "120",
+        "route_long_name": "Merrion Road RDS - River Road",
+        "route_type": 3
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-6.26201, 53.35237],
+          [-6.26286, 53.35196],
+          [-6.26304, 53.35196],
+          [-6.2637, 53.35237]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000003",
+        "stop_name": "Parnell Square West, stop 3",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-122-b12-1",
+            "agency_id": "978",
+            "route_short_name": "122",
+            "route_long_name": "Ashington Park - Errigal Rd",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.26381, 53.35231] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000056",
+        "stop_name": "Dalymount, stop 56",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-122-b12-1",
+            "agency_id": "978",
+            "route_short_name": "122",
+            "route_long_name": "Ashington Park - Errigal Rd",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.27637, 53.36076] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000058",
+        "stop_name": "Churchview Home, stop 58",
+        "routes": [
+          {
+            "route_id": "60-38-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-38A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38A",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-38B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38B",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-38D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38D",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-122-b12-1",
+            "agency_id": "978",
+            "route_short_name": "122",
+            "route_long_name": "Ashington Park - Errigal Rd",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.2812, 53.36095] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000071",
+        "stop_name": "Ventry Park, stop 71",
+        "routes": [
+          {
+            "route_id": "60-40E-b12-1",
+            "agency_id": "978",
+            "route_short_name": "40E",
+            "route_long_name": "Broombridge Luas - Carlton Hotel",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.30444, 53.37026] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000072",
+        "stop_name": "Ventry Drive, stop 72",
+        "routes": [
+          {
+            "route_id": "60-40E-b12-1",
+            "agency_id": "978",
+            "route_short_name": "40E",
+            "route_long_name": "Broombridge Luas - Carlton Hotel",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.30426, 53.36897] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000192",
+        "stop_name": "Mountjoy Street, stop 192",
+        "routes": [
+          {
+            "route_id": "60-38-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-38A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38A",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-38B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38B",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-38D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38D",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-40-b12-1",
+            "agency_id": "978",
+            "route_short_name": "40",
+            "route_long_name": "Charlestown Shopping Centre - Liffey Valley Shopping Centre",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-46A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "46A",
+            "route_long_name": "Phoenix Park Gate - University College Dublin",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.26808, 53.3564] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000276",
+        "stop_name": "River Road, stop 276",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.3318, 53.3774] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000279",
+        "stop_name": "O'Connell St Upper, stop 279",
+        "routes": [
+          {
+            "route_id": "60-40-b12-1",
+            "agency_id": "978",
+            "route_short_name": "40",
+            "route_long_name": "Charlestown Shopping Centre - Liffey Valley Shopping Centre",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-122-b12-1",
+            "agency_id": "978",
+            "route_short_name": "122",
+            "route_long_name": "Ashington Park - Errigal Rd",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.26061, 53.35013] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000400",
+        "stop_name": "Shaw Street, stop 400",
+        "routes": [
+          {
+            "route_id": "60-1-b12-1",
+            "agency_id": "978",
+            "route_short_name": "1",
+            "route_long_name": "Shanard Road (Shanard Avenue) - Saint John's Church",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-4-b12-1",
+            "agency_id": "978",
+            "route_short_name": "4",
+            "route_long_name": "Harristown Bus Garage - Monkstown Avenue (Richmond Grove)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7",
+            "route_long_name": "Mountjoy Square Park - Bride's Glen Bus Stop",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7A",
+            "route_long_name": "Mountjoy Square Park - Loughlinstown Wood Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-15A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "15A",
+            "route_long_name": "Ringsend Road - Limekiln Avenue",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-15B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "15B",
+            "route_long_name": "Ringsend Road - Dalriada Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-15D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "15D",
+            "route_long_name": "Ringsend Road - Church of Our Lady of Good Council",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25",
+            "route_long_name": "Merrion Square South - Dodsboro Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25A",
+            "route_long_name": "Merrion Square South - Newcastle Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25B",
+            "route_long_name": "Merrion Square South - Outside Train Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25D",
+            "route_long_name": "Merrion Square South - Outside Train Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-26-b12-1",
+            "agency_id": "978",
+            "route_short_name": "26",
+            "route_long_name": "Merrion Square South - Liffey Valley Shopping Centre",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-27-b12-1",
+            "agency_id": "978",
+            "route_short_name": "27",
+            "route_long_name": "Templeview Avenue - Fortunestown Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-44-b12-1",
+            "agency_id": "978",
+            "route_short_name": "44",
+            "route_long_name": "The Helix - Powerscourt National School",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-47-b12-1",
+            "agency_id": "978",
+            "route_short_name": "47",
+            "route_long_name": "Poolbeg Street - Castlethorn Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-56A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "56A",
+            "route_long_name": "Ringsend Road - The Square Shopping Centre",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-61-b12-1",
+            "agency_id": "978",
+            "route_short_name": "61",
+            "route_long_name": "Eden Quay - Edmondstown Road (Rockbrook Park School)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66",
+            "route_long_name": "Merrion Square South - Kingsbury Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66A",
+            "route_long_name": "Merrion Square South - River Forest Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66B",
+            "route_long_name": "Merrion Square South - Alensgrove",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66E-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66E",
+            "route_long_name": "Merrion Square South - Kingsbury Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-67-b12-1",
+            "agency_id": "978",
+            "route_short_name": "67",
+            "route_long_name": "Merrion Square South - Straffan Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-77A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "77A",
+            "route_long_name": "Ringsend Road - Bianconi Avenue",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.25321, 53.34485] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000485",
+        "stop_name": "RDS Ballsbridge, stop 485",
+        "routes": [
+          {
+            "route_id": "60-4-b12-1",
+            "agency_id": "978",
+            "route_short_name": "4",
+            "route_long_name": "Harristown Bus Garage - Monkstown Avenue (Richmond Grove)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7",
+            "route_long_name": "Mountjoy Square Park - Bride's Glen Bus Stop",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7A",
+            "route_long_name": "Mountjoy Square Park - Loughlinstown Wood Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-27X-b12-1",
+            "agency_id": "978",
+            "route_short_name": "27X",
+            "route_long_name": "University College Dublin - Clare Hall Estate (Templeview Avenue)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.22863, 53.32825] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000487",
+        "stop_name": "American Embassy, stop 487",
+        "routes": [
+          {
+            "route_id": "60-4-b12-1",
+            "agency_id": "978",
+            "route_short_name": "4",
+            "route_long_name": "Harristown Bus Garage - Monkstown Avenue (Richmond Grove)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7",
+            "route_long_name": "Mountjoy Square Park - Bride's Glen Bus Stop",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7A",
+            "route_long_name": "Mountjoy Square Park - Loughlinstown Wood Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-18-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "18",
+            "route_long_name": "Palmerstown - Sandymount",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-18-gad-1",
+            "agency_id": "03",
+            "route_short_name": "18",
+            "route_long_name": "Palmerstown - Sandymount",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.2339, 53.33086] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000488",
+        "stop_name": "Lansdowne Park, stop 488",
+        "routes": [
+          {
+            "route_id": "60-4-b12-1",
+            "agency_id": "978",
+            "route_short_name": "4",
+            "route_long_name": "Harristown Bus Garage - Monkstown Avenue (Richmond Grove)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7",
+            "route_long_name": "Mountjoy Square Park - Bride's Glen Bus Stop",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7A",
+            "route_long_name": "Mountjoy Square Park - Loughlinstown Wood Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-27X-b12-1",
+            "agency_id": "978",
+            "route_short_name": "27X",
+            "route_long_name": "University College Dublin - Clare Hall Estate (Templeview Avenue)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.23608, 53.3331] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000489",
+        "stop_name": "St Mary's Rd South, stop 489",
+        "routes": [
+          {
+            "route_id": "60-4-b12-1",
+            "agency_id": "978",
+            "route_short_name": "4",
+            "route_long_name": "Harristown Bus Garage - Monkstown Avenue (Richmond Grove)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7",
+            "route_long_name": "Mountjoy Square Park - Bride's Glen Bus Stop",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7A",
+            "route_long_name": "Mountjoy Square Park - Loughlinstown Wood Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.23735, 53.33494] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000490",
+        "stop_name": "Haddington Road, stop 490",
+        "routes": [
+          {
+            "route_id": "60-4-b12-1",
+            "agency_id": "978",
+            "route_short_name": "4",
+            "route_long_name": "Harristown Bus Garage - Monkstown Avenue (Richmond Grove)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7",
+            "route_long_name": "Mountjoy Square Park - Bride's Glen Bus Stop",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7A",
+            "route_long_name": "Mountjoy Square Park - Loughlinstown Wood Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.23891, 53.33657] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000491",
+        "stop_name": "Mount Street Bridge, stop 491",
+        "routes": [
+          {
+            "route_id": "60-4-b12-1",
+            "agency_id": "978",
+            "route_short_name": "4",
+            "route_long_name": "Harristown Bus Garage - Monkstown Avenue (Richmond Grove)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7",
+            "route_long_name": "Mountjoy Square Park - Bride's Glen Bus Stop",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7A",
+            "route_long_name": "Mountjoy Square Park - Loughlinstown Wood Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-27X-b12-1",
+            "agency_id": "978",
+            "route_short_name": "27X",
+            "route_long_name": "University College Dublin - Clare Hall Estate (Templeview Avenue)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.24133, 53.33781] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000492",
+        "stop_name": "Mount Street Lower, stop 492",
+        "routes": [
+          {
+            "route_id": "60-4-b12-1",
+            "agency_id": "978",
+            "route_short_name": "4",
+            "route_long_name": "Harristown Bus Garage - Monkstown Avenue (Richmond Grove)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7",
+            "route_long_name": "Mountjoy Square Park - Bride's Glen Bus Stop",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7A",
+            "route_long_name": "Mountjoy Square Park - Loughlinstown Wood Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.24361, 53.33858] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000493",
+        "stop_name": "Holles Street, stop 493",
+        "routes": [
+          {
+            "route_id": "60-4-b12-1",
+            "agency_id": "978",
+            "route_short_name": "4",
+            "route_long_name": "Harristown Bus Garage - Monkstown Avenue (Richmond Grove)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7",
+            "route_long_name": "Mountjoy Square Park - Bride's Glen Bus Stop",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7A",
+            "route_long_name": "Mountjoy Square Park - Loughlinstown Wood Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25",
+            "route_long_name": "Merrion Square South - Dodsboro Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25A",
+            "route_long_name": "Merrion Square South - Newcastle Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25B",
+            "route_long_name": "Merrion Square South - Outside Train Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25D",
+            "route_long_name": "Merrion Square South - Outside Train Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-26-b12-1",
+            "agency_id": "978",
+            "route_short_name": "26",
+            "route_long_name": "Merrion Square South - Liffey Valley Shopping Centre",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-27X-b12-1",
+            "agency_id": "978",
+            "route_short_name": "27X",
+            "route_long_name": "University College Dublin - Clare Hall Estate (Templeview Avenue)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66",
+            "route_long_name": "Merrion Square South - Kingsbury Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66A",
+            "route_long_name": "Merrion Square South - River Forest Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66B",
+            "route_long_name": "Merrion Square South - Alensgrove",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66E-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66E",
+            "route_long_name": "Merrion Square South - Kingsbury Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-67-b12-1",
+            "agency_id": "978",
+            "route_short_name": "67",
+            "route_long_name": "Merrion Square South - Straffan Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.24738, 53.33985] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000494",
+        "stop_name": "Clare Street, stop 494",
+        "routes": [
+          {
+            "route_id": "60-4-b12-1",
+            "agency_id": "978",
+            "route_short_name": "4",
+            "route_long_name": "Harristown Bus Garage - Monkstown Avenue (Richmond Grove)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7",
+            "route_long_name": "Mountjoy Square Park - Bride's Glen Bus Stop",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7A",
+            "route_long_name": "Mountjoy Square Park - Loughlinstown Wood Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25",
+            "route_long_name": "Merrion Square South - Dodsboro Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25A",
+            "route_long_name": "Merrion Square South - Newcastle Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25B",
+            "route_long_name": "Merrion Square South - Outside Train Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25D",
+            "route_long_name": "Merrion Square South - Outside Train Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-26-b12-1",
+            "agency_id": "978",
+            "route_short_name": "26",
+            "route_long_name": "Merrion Square South - Liffey Valley Shopping Centre",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-27X-b12-1",
+            "agency_id": "978",
+            "route_short_name": "27X",
+            "route_long_name": "University College Dublin - Clare Hall Estate (Templeview Avenue)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66",
+            "route_long_name": "Merrion Square South - Kingsbury Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66A",
+            "route_long_name": "Merrion Square South - River Forest Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66B",
+            "route_long_name": "Merrion Square South - Alensgrove",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66E-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66E",
+            "route_long_name": "Merrion Square South - Kingsbury Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-67-b12-1",
+            "agency_id": "978",
+            "route_short_name": "67",
+            "route_long_name": "Merrion Square South - Straffan Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.25168, 53.34144] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000495",
+        "stop_name": "Pearse Station, stop 495",
+        "routes": [
+          {
+            "route_id": "60-4-b12-1",
+            "agency_id": "978",
+            "route_short_name": "4",
+            "route_long_name": "Harristown Bus Garage - Monkstown Avenue (Richmond Grove)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7",
+            "route_long_name": "Mountjoy Square Park - Bride's Glen Bus Stop",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7A",
+            "route_long_name": "Mountjoy Square Park - Loughlinstown Wood Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25",
+            "route_long_name": "Merrion Square South - Dodsboro Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25A",
+            "route_long_name": "Merrion Square South - Newcastle Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25B",
+            "route_long_name": "Merrion Square South - Outside Train Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-25D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "25D",
+            "route_long_name": "Merrion Square South - Outside Train Station",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-26-b12-1",
+            "agency_id": "978",
+            "route_short_name": "26",
+            "route_long_name": "Merrion Square South - Liffey Valley Shopping Centre",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-27X-b12-1",
+            "agency_id": "978",
+            "route_short_name": "27X",
+            "route_long_name": "University College Dublin - Clare Hall Estate (Templeview Avenue)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-44-b12-1",
+            "agency_id": "978",
+            "route_short_name": "44",
+            "route_long_name": "The Helix - Powerscourt National School",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-61-b12-1",
+            "agency_id": "978",
+            "route_short_name": "61",
+            "route_long_name": "Eden Quay - Edmondstown Road (Rockbrook Park School)",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66",
+            "route_long_name": "Merrion Square South - Kingsbury Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66A",
+            "route_long_name": "Merrion Square South - River Forest Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66B",
+            "route_long_name": "Merrion Square South - Alensgrove",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-66E-b12-1",
+            "agency_id": "978",
+            "route_short_name": "66E",
+            "route_long_name": "Merrion Square South - Kingsbury Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-67-b12-1",
+            "agency_id": "978",
+            "route_short_name": "67",
+            "route_long_name": "Merrion Square South - Straffan Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.24975, 53.34359] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000795",
+        "stop_name": "Berkeley Road, stop 795",
+        "routes": [
+          {
+            "route_id": "60-38-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-38A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38A",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-38B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38B",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-38D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38D",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-46A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "46A",
+            "route_long_name": "Phoenix Park Gate - University College Dublin",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.26972, 53.35874] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000796",
+        "stop_name": "Berkeley Road, stop 796",
+        "routes": [
+          {
+            "route_id": "60-38-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-38A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38A",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-38B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38B",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-38D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "38D",
+            "route_long_name": "Burlington Road (Mespil Road) - Damastown Drive",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-46A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "46A",
+            "route_long_name": "Phoenix Park Gate - University College Dublin",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.26985, 53.36002] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000822",
+        "stop_name": "Mulroy Road, stop 822",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.29182, 53.36712] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000823",
+        "stop_name": "Kilkieran Road, stop 823",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.29119, 53.36824] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000824",
+        "stop_name": "Bannow Road, stop 824",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.29326, 53.36975] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000825",
+        "stop_name": "St Finbar's Road, stop 825",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.29693, 53.37043] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000826",
+        "stop_name": "Carnlough Road, stop 826",
+        "routes": [
+          {
+            "route_id": "60-40E-b12-1",
+            "agency_id": "978",
+            "route_short_name": "40E",
+            "route_long_name": "Broombridge Luas - Carlton Hotel",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.30117, 53.37122] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB000827",
+        "stop_name": "Ventry Park, stop 827",
+        "routes": [
+          {
+            "route_id": "60-40E-b12-1",
+            "agency_id": "978",
+            "route_short_name": "40E",
+            "route_long_name": "Broombridge Luas - Carlton Hotel",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.30399, 53.37129] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB004481",
+        "stop_name": "Cabra PO, stop 4481",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.2869, 53.36461] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB004485",
+        "stop_name": "Naomh Fionnbarra GAA, stop 4485",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.28951, 53.36554] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB004499",
+        "stop_name": "Dowth Avenue, stop 4499",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.28322, 53.36157] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB004500",
+        "stop_name": "Faussagh Road, stop 4500",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.28372, 53.36405] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB004538",
+        "stop_name": "Royal Canal Avenue, stop 4538",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.31691, 53.37573] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB004934",
+        "stop_name": "Offaly Road, stop 4934",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.28286, 53.36286] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB005144",
+        "stop_name": "Marian School, stop 5144",
+        "routes": [
+          {
+            "route_id": "60-40E-b12-1",
+            "agency_id": "978",
+            "route_short_name": "40E",
+            "route_long_name": "Broombridge Luas - Carlton Hotel",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.30621, 53.37271] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB005145",
+        "stop_name": "Rathbourne Avenue, stop 5145",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.32675, 53.3772] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB006004",
+        "stop_name": "Parnell Street, stop 6004",
+        "routes": [
+          {
+            "route_id": "60-40B-b12-1",
+            "agency_id": "978",
+            "route_short_name": "40B",
+            "route_long_name": "The Gate Hotel - River Meade Avenue",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-40D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "40D",
+            "route_long_name": "The Gate Hotel - The Oaks",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.26051, 53.35291] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8220DB007027",
+        "stop_name": "Glasnevin Park, stop 7027",
+        "routes": [
+          {
+            "route_id": "60-120-b12-1",
+            "agency_id": "978",
+            "route_short_name": "120",
+            "route_long_name": "Merrion Road RDS - River Road",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.31205, 53.37659] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1025301",
+        "stop_name": "Curryhills, stop 102531",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-6-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-6",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.73995, 53.28866] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1025601",
+        "stop_name": "Downings North, stop 102561",
+        "routes": [
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.77454, 53.28729] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1025701",
+        "stop_name": "Straffan, stop 102571",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.61859, 53.31855] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1025801",
+        "stop_name": "Baybush, stop 102581",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-6-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-6",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.62912, 53.32024] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1026001",
+        "stop_name": "Irishtown Upper, stop 102601",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-6-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-6",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.64871, 53.31371] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1026101",
+        "stop_name": "Brooklands, stop 102611",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-6-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-6",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.67953, 53.29641] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1026301",
+        "stop_name": "Clane, stop 102631",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-6-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-6",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.68794, 53.29052] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1026401",
+        "stop_name": "Clane Hospital, stop 102641",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-6-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-6",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.7004, 53.29008] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1027201",
+        "stop_name": "Shee Bridge, stop 102721",
+        "routes": [
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.87826, 53.2833] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1027301",
+        "stop_name": "Lullymore Cross, stop 102731",
+        "routes": [
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.92359, 53.31022] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1027401",
+        "stop_name": "Carbury Mushroom, stop 102741",
+        "routes": [
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.9272, 53.31882] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1027501",
+        "stop_name": "Windmill Cross, stop 102751",
+        "routes": [
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.93142, 53.3344] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1027601",
+        "stop_name": "Dreenane Park, stop 102761",
+        "routes": [
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.93574, 53.33691] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1027801",
+        "stop_name": "Ashgrove, stop 102781",
+        "routes": [
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.94449, 53.34203] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1047601",
+        "stop_name": "Prosperous Church, stop 104761",
+        "routes": [
+          {
+            "route_id": "17-120-1-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-1",
+            "route_long_name": "Edenderry - University College Dublin",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-5-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-5",
+            "route_long_name": "Edenderry - Dublin",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-6-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-6",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.75028, 53.28835] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1047801",
+        "stop_name": "Clane Garda Station, stop 104781",
+        "routes": [
+          {
+            "route_id": "17-120-1-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-1",
+            "route_long_name": "Edenderry - University College Dublin",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-5-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-5",
+            "route_long_name": "Edenderry - Dublin",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-6-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-6",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.6854, 53.29352] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B105211",
+        "stop_name": "Barrington Court, stop 105211",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-6-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-6",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.75759, 53.28797] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1319001",
+        "stop_name": "High Road Gap, stop 131901",
+        "routes": [
+          {
+            "route_id": "17-120-3-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-3",
+            "route_long_name": "Enfield - Tullamore",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.99963, 53.3461] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1319901",
+        "stop_name": "Newbury Cross, stop 131991",
+        "routes": [
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.9524, 53.34663] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1320701",
+        "stop_name": "Derrinturn, stop 132071",
+        "routes": [
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.93975, 53.33924] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1323201",
+        "stop_name": "Killinagh Lower, stop 132321",
+        "routes": [
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.91406, 53.30508] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1323901",
+        "stop_name": "Kennedys Bridge, stop 132391",
+        "routes": [
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.89507, 53.28799] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1324501",
+        "stop_name": "Allenwood, stop 132451",
+        "routes": [
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.8622, 53.28387] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1326101",
+        "stop_name": "Coill Dubh, stop 132611",
+        "routes": [
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.81811, 53.29188] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1327901",
+        "stop_name": "Cross of Brockagh, stop 132791",
+        "routes": [
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.79975, 53.28634] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1330101",
+        "stop_name": "St Farnan's Church, stop 133011",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-6-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-6",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.7512, 53.2882] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1331301",
+        "stop_name": "Firmount Cross, stop 133131",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-6-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-6",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.71677, 53.28936] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1332101",
+        "stop_name": "Clane Garda Station, stop 133211",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-6-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-6",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.68583, 53.29328] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1334301",
+        "stop_name": "Richardstown, stop 133431",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-6-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-6",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.66231, 53.30643] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1335601",
+        "stop_name": "Ovidstown, stop 133561",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-6-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-6",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.63859, 53.3172] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1337901",
+        "stop_name": "St Brigid's Church, stop 133791",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.60888, 53.31282] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1338401",
+        "stop_name": "Barberstown Road, stop 133841",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.60618, 53.31699] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1338501",
+        "stop_name": "Barberstown Cross, stop 133851",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.60569, 53.32381] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260B1340401",
+        "stop_name": "St Wolstan's School, stop 134041",
+        "routes": [
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.56178, 53.33509] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260DB007085",
+        "stop_name": "English Row, stop 7085",
+        "routes": [
+          {
+            "route_id": "60-67X-b12-1",
+            "agency_id": "978",
+            "route_short_name": "67X",
+            "route_long_name": "University College Dublin - Straffan Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.54025, 53.33795] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260DB007086",
+        "stop_name": "Celbridge Abbey, stop 7086",
+        "routes": [
+          {
+            "route_id": "60-67X-b12-1",
+            "agency_id": "978",
+            "route_short_name": "67X",
+            "route_long_name": "University College Dublin - Straffan Road",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-2-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-2",
+            "route_long_name": "Dublin - Newbridge",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.55294, 53.3353] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8260GD10268",
+        "stop_name": "Carbury, stop 10268",
+        "routes": [
+          {
+            "route_id": "17-120-3-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-3",
+            "route_long_name": "Enfield - Tullamore",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.96365, 53.35328] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8320B1028001",
+        "stop_name": "Dublin Road, stop 102801",
+        "routes": [
+          {
+            "route_id": "17-120-3-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-3",
+            "route_long_name": "Enfield - Tullamore",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-7.03196, 53.34697] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8320B1028101",
+        "stop_name": "Colonel Perry Street, stop 102811",
+        "routes": [
+          {
+            "route_id": "17-120-3-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-3",
+            "route_long_name": "Enfield - Tullamore",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-7.04376, 53.34418] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8320B1028201",
+        "stop_name": "Edenderry Town Hall, stop 102821",
+        "routes": [
+          {
+            "route_id": "17-120-3-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-3",
+            "route_long_name": "Enfield - Tullamore",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-4-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-4",
+            "route_long_name": "Edenderry - Tullamore",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-7.0504, 53.34313] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8320B1359601",
+        "stop_name": "Edenderry SC, stop 135961",
+        "routes": [
+          {
+            "route_id": "17-120-1-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-1",
+            "route_long_name": "Edenderry - University College Dublin",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-3-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-3",
+            "route_long_name": "Enfield - Tullamore",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-5-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-5",
+            "route_long_name": "Edenderry - Dublin",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-9-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120-9",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          },
+          {
+            "route_id": "17-120-cm1-1",
+            "agency_id": "03C",
+            "route_short_name": "120",
+            "route_long_name": "Dublin - Edenderry",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-7.05857, 53.34349] }
+    }
+  ]
+}

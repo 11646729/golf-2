@@ -109,5 +109,6 @@ export const getAndParseSingleBusRouteAndStops = (
 // Local function
 // -------------------------------------------------------
 function readBusRouteFile(fileUrl) {
+  console.log(fileUrl)
   return JSON.parse(fs.readFileSync(fileUrl))
 }

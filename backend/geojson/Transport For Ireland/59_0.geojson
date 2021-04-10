@@ -1,1 +1,1041 @@
-{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"agency_name":"Go-Ahead","route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},"geometry":{"type":"LineString","coordinates":[[-6.13449,53.29379],[-6.13594,53.29237],[-6.13595,53.29227],[-6.1358,53.29217],[-6.13553,53.29208],[-6.1296,53.28949],[-6.12531,53.28759],[-6.1217,53.28676],[-6.12126,53.28658],[-6.12062,53.28627],[-6.12022,53.28616],[-6.11972,53.28609],[-6.11705,53.28604],[-6.11189,53.2856],[-6.11091,53.28546],[-6.10898,53.28494],[-6.10869,53.28478],[-6.10832,53.28443],[-6.10816,53.28433],[-6.10727,53.28392],[-6.10713,53.28381],[-6.107,53.28367],[-6.10685,53.28335],[-6.10682,53.28295],[-6.10719,53.28074],[-6.1072,53.28059],[-6.1069,53.27937],[-6.10698,53.27868],[-6.10707,53.27828],[-6.10721,53.27812],[-6.10831,53.27822],[-6.10879,53.27817],[-6.10941,53.27806],[-6.11092,53.27774],[-6.11175,53.27753],[-6.11342,53.27725],[-6.1139,53.27723],[-6.11639,53.27743],[-6.11732,53.27741],[-6.11742,53.27735],[-6.11748,53.27735],[-6.11753,53.27739],[-6.11794,53.27729],[-6.11864,53.27706],[-6.12042,53.27666],[-6.12087,53.27652],[-6.12101,53.27646],[-6.12121,53.27631],[-6.12146,53.276],[-6.12156,53.27595],[-6.12191,53.27586],[-6.12223,53.27571],[-6.12248,53.27547],[-6.12436,53.27327],[-6.12465,53.27305],[-6.12531,53.27276],[-6.12621,53.27243],[-6.12835,53.27151],[-6.12918,53.27111],[-6.12961,53.27086],[-6.12992,53.27061],[-6.13033,53.27019],[-6.12802,53.26939],[-6.12635,53.26895],[-6.12576,53.26923],[-6.12489,53.26942],[-6.12285,53.27011],[-6.12246,53.27033],[-6.12129,53.27116],[-6.12107,53.27121],[-6.12092,53.27122],[-6.12073,53.27117],[-6.12061,53.27111],[-6.12026,53.27089],[-6.11985,53.27071],[-6.11926,53.27056],[-6.11445,53.26977],[-6.11462,53.26941],[-6.11466,53.2692],[-6.11465,53.26906],[-6.11459,53.26894],[-6.11436,53.26867],[-6.11432,53.26858],[-6.11443,53.26812],[-6.11442,53.26808],[-6.11433,53.26802],[-6.11442,53.26799],[-6.11457,53.26771],[-6.11498,53.26719],[-6.11527,53.26643],[-6.11533,53.26613],[-6.11538,53.26559],[-6.1153,53.26541],[-6.11505,53.26506],[-6.11495,53.26486]]}},{"type":"Feature","properties":{"stop_id":"8250DB002037","stop_name":"Dun Laoghaire Stn, stop 2037","routes":[{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3},{"route_id":"2-111-ga2-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-111-gad-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-451-ga2-1","agency_id":"03","route_short_name":"451","route_long_name":"Kilmacanogue - Dún Laoghaire","route_type":3},{"route_id":"2-451-gad-1","agency_id":"03","route_short_name":"451","route_long_name":"Kilmacanogue - Dún Laoghaire","route_type":3},{"route_id":"2-452-ga2-1","agency_id":"03","route_short_name":"452","route_long_name":"Kilmacanogue - Dún Laoghaire","route_type":3},{"route_id":"2-452-gad-1","agency_id":"03","route_short_name":"452","route_long_name":"Kilmacanogue - Dún Laoghaire","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.1344,53.29376]}},{"type":"Feature","properties":{"stop_id":"8250DB003046","stop_name":"Dun Laoghaire SC, stop 3046","routes":[{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3},{"route_id":"2-111-ga2-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-111-gad-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.13515,53.29201]}},{"type":"Feature","properties":{"stop_id":"8250DB003047","stop_name":"George's St Upper, stop 3047","routes":[{"route_id":"60-7-b12-1","agency_id":"978","route_short_name":"7","route_long_name":"Mountjoy Square Park - Bride's Glen Bus Stop","route_type":3},{"route_id":"60-7A-b12-1","agency_id":"978","route_short_name":"7A","route_long_name":"Mountjoy Square Park - Loughlinstown Wood Estate","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3},{"route_id":"2-111-ga2-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-111-gad-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-451-ga2-1","agency_id":"03","route_short_name":"451","route_long_name":"Kilmacanogue - Dún Laoghaire","route_type":3},{"route_id":"2-451-gad-1","agency_id":"03","route_short_name":"451","route_long_name":"Kilmacanogue - Dún Laoghaire","route_type":3},{"route_id":"2-452-ga2-1","agency_id":"03","route_short_name":"452","route_long_name":"Kilmacanogue - Dún Laoghaire","route_type":3},{"route_id":"2-452-gad-1","agency_id":"03","route_short_name":"452","route_long_name":"Kilmacanogue - Dún Laoghaire","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.13101,53.29017]}},{"type":"Feature","properties":{"stop_id":"8250DB003048","stop_name":"Sandycove Station, stop 3048","routes":[{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3},{"route_id":"2-111-ga2-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-111-gad-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.12704,53.28844]}},{"type":"Feature","properties":{"stop_id":"8250DB003049","stop_name":"St Joseph's Church, stop 3049","routes":[{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3},{"route_id":"2-111-ga2-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-111-gad-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.12441,53.28741]}},{"type":"Feature","properties":{"stop_id":"8250DB003050","stop_name":"Glasthule, stop 3050","routes":[{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3},{"route_id":"2-111-ga2-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-111-gad-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.12221,53.28695]}},{"type":"Feature","properties":{"stop_id":"8250DB003051","stop_name":"Sandycove Road, stop 3051","routes":[{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3},{"route_id":"2-111-ga2-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-111-gad-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.1178,53.28612]}},{"type":"Feature","properties":{"stop_id":"8250DB003052","stop_name":"Elton Park, stop 3052","routes":[{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3},{"route_id":"2-111-ga2-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-111-gad-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.1149,53.28591]}},{"type":"Feature","properties":{"stop_id":"8250DB003053","stop_name":"Breffni Road, stop 3053","routes":[{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3},{"route_id":"2-111-ga2-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-111-gad-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.11128,53.28559]}},{"type":"Feature","properties":{"stop_id":"8250DB003054","stop_name":"Ulverton Road, stop 3054","routes":[{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3},{"route_id":"2-111-ga2-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-111-gad-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.10758,53.2841]}},{"type":"Feature","properties":{"stop_id":"8250DB003055","stop_name":"South Winds, stop 3055","routes":[{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3},{"route_id":"2-111-ga2-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-111-gad-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.10689,53.28183]}},{"type":"Feature","properties":{"stop_id":"8250DB003056","stop_name":"Church Road, stop 3056","routes":[{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3},{"route_id":"2-111-ga2-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-111-gad-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.10709,53.28031]}},{"type":"Feature","properties":{"stop_id":"8250DB003057","stop_name":"Dalkey Village, stop 3057","routes":[{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3},{"route_id":"2-111-ga2-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3},{"route_id":"2-111-gad-1","agency_id":"03","route_short_name":"111","route_long_name":"Bride's Glen - Dalkey","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.10695,53.27838]}},{"type":"Feature","properties":{"stop_id":"8250DB003091","stop_name":"Avondale Road, stop 3091","routes":[{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.12388,53.27365]}},{"type":"Feature","properties":{"stop_id":"8250DB003092","stop_name":"Arnold Grove, stop 3092","routes":[{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.12682,53.27207]}},{"type":"Feature","properties":{"stop_id":"8250DB003093","stop_name":"Arnold Park, stop 3093","routes":[{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.13012,53.27035]}},{"type":"Feature","properties":{"stop_id":"8250DB003094","stop_name":"Cluny Grove, stop 3094","routes":[{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.12716,53.26919]}},{"type":"Feature","properties":{"stop_id":"8250DB003095","stop_name":"Ballinaclea Road, stop 3095","routes":[{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.12178,53.27085]}},{"type":"Feature","properties":{"stop_id":"8250DB003096","stop_name":"Killiney Road, stop 3096","routes":[{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.11827,53.27046]}},{"type":"Feature","properties":{"stop_id":"8250DB003097","stop_name":"Wyvern Estate, stop 3097","routes":[{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.11507,53.26992]}},{"type":"Feature","properties":{"stop_id":"8250DB003098","stop_name":"Killiney Hill Park, stop 3098","routes":[{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.11438,53.26787]}},{"type":"Feature","properties":{"stop_id":"8250DB003099","stop_name":"Victoria Road, stop 3099","routes":[{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.11503,53.26485]}},{"type":"Feature","properties":{"stop_id":"8250DB004830","stop_name":"Barnhill Road, stop 4830","routes":[{"route_id":"60-7D-b12-1","agency_id":"978","route_short_name":"7D","route_long_name":"Mountjoy Square - Castle Street","route_type":3},{"route_id":"2-59-ga2-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire - Killiney Hill","route_type":3},{"route_id":"2-59-gad-1","agency_id":"03","route_short_name":"59","route_long_name":"Dún Laoghaire Station - Killiney Hill","route_type":3}],"agency_name":"Go-Ahead"},"geometry":{"type":"Point","coordinates":[-6.11447,53.27725]}}]}725]}}]}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "agency_name": "Go-Ahead",
+        "route_id": "2-59-ga2-1",
+        "agency_id": "03",
+        "route_short_name": "59",
+        "route_long_name": "Dún Laoghaire - Killiney Hill",
+        "route_type": 3
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-6.13449, 53.29379],
+          [-6.13594, 53.29237],
+          [-6.13595, 53.29227],
+          [-6.1358, 53.29217],
+          [-6.13553, 53.29208],
+          [-6.1296, 53.28949],
+          [-6.12531, 53.28759],
+          [-6.1217, 53.28676],
+          [-6.12126, 53.28658],
+          [-6.12062, 53.28627],
+          [-6.12022, 53.28616],
+          [-6.11972, 53.28609],
+          [-6.11705, 53.28604],
+          [-6.11189, 53.2856],
+          [-6.11091, 53.28546],
+          [-6.10898, 53.28494],
+          [-6.10869, 53.28478],
+          [-6.10832, 53.28443],
+          [-6.10816, 53.28433],
+          [-6.10727, 53.28392],
+          [-6.10713, 53.28381],
+          [-6.107, 53.28367],
+          [-6.10685, 53.28335],
+          [-6.10682, 53.28295],
+          [-6.10719, 53.28074],
+          [-6.1072, 53.28059],
+          [-6.1069, 53.27937],
+          [-6.10698, 53.27868],
+          [-6.10707, 53.27828],
+          [-6.10721, 53.27812],
+          [-6.10831, 53.27822],
+          [-6.10879, 53.27817],
+          [-6.10941, 53.27806],
+          [-6.11092, 53.27774],
+          [-6.11175, 53.27753],
+          [-6.11342, 53.27725],
+          [-6.1139, 53.27723],
+          [-6.11639, 53.27743],
+          [-6.11732, 53.27741],
+          [-6.11742, 53.27735],
+          [-6.11748, 53.27735],
+          [-6.11753, 53.27739],
+          [-6.11794, 53.27729],
+          [-6.11864, 53.27706],
+          [-6.12042, 53.27666],
+          [-6.12087, 53.27652],
+          [-6.12101, 53.27646],
+          [-6.12121, 53.27631],
+          [-6.12146, 53.276],
+          [-6.12156, 53.27595],
+          [-6.12191, 53.27586],
+          [-6.12223, 53.27571],
+          [-6.12248, 53.27547],
+          [-6.12436, 53.27327],
+          [-6.12465, 53.27305],
+          [-6.12531, 53.27276],
+          [-6.12621, 53.27243],
+          [-6.12835, 53.27151],
+          [-6.12918, 53.27111],
+          [-6.12961, 53.27086],
+          [-6.12992, 53.27061],
+          [-6.13033, 53.27019],
+          [-6.12802, 53.26939],
+          [-6.12635, 53.26895],
+          [-6.12576, 53.26923],
+          [-6.12489, 53.26942],
+          [-6.12285, 53.27011],
+          [-6.12246, 53.27033],
+          [-6.12129, 53.27116],
+          [-6.12107, 53.27121],
+          [-6.12092, 53.27122],
+          [-6.12073, 53.27117],
+          [-6.12061, 53.27111],
+          [-6.12026, 53.27089],
+          [-6.11985, 53.27071],
+          [-6.11926, 53.27056],
+          [-6.11445, 53.26977],
+          [-6.11462, 53.26941],
+          [-6.11466, 53.2692],
+          [-6.11465, 53.26906],
+          [-6.11459, 53.26894],
+          [-6.11436, 53.26867],
+          [-6.11432, 53.26858],
+          [-6.11443, 53.26812],
+          [-6.11442, 53.26808],
+          [-6.11433, 53.26802],
+          [-6.11442, 53.26799],
+          [-6.11457, 53.26771],
+          [-6.11498, 53.26719],
+          [-6.11527, 53.26643],
+          [-6.11533, 53.26613],
+          [-6.11538, 53.26559],
+          [-6.1153, 53.26541],
+          [-6.11505, 53.26506],
+          [-6.11495, 53.26486]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB002037",
+        "stop_name": "Dun Laoghaire Stn, stop 2037",
+        "routes": [
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-gad-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-451-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "451",
+            "route_long_name": "Kilmacanogue - Dún Laoghaire",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-451-gad-1",
+            "agency_id": "03",
+            "route_short_name": "451",
+            "route_long_name": "Kilmacanogue - Dún Laoghaire",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-452-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "452",
+            "route_long_name": "Kilmacanogue - Dún Laoghaire",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-452-gad-1",
+            "agency_id": "03",
+            "route_short_name": "452",
+            "route_long_name": "Kilmacanogue - Dún Laoghaire",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.1344, 53.29376] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003046",
+        "stop_name": "Dun Laoghaire SC, stop 3046",
+        "routes": [
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-gad-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.13515, 53.29201] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003047",
+        "stop_name": "George's St Upper, stop 3047",
+        "routes": [
+          {
+            "route_id": "60-7-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7",
+            "route_long_name": "Mountjoy Square Park - Bride's Glen Bus Stop",
+            "route_type": 3
+          },
+          {
+            "route_id": "60-7A-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7A",
+            "route_long_name": "Mountjoy Square Park - Loughlinstown Wood Estate",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-gad-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-451-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "451",
+            "route_long_name": "Kilmacanogue - Dún Laoghaire",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-451-gad-1",
+            "agency_id": "03",
+            "route_short_name": "451",
+            "route_long_name": "Kilmacanogue - Dún Laoghaire",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-452-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "452",
+            "route_long_name": "Kilmacanogue - Dún Laoghaire",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-452-gad-1",
+            "agency_id": "03",
+            "route_short_name": "452",
+            "route_long_name": "Kilmacanogue - Dún Laoghaire",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.13101, 53.29017] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003048",
+        "stop_name": "Sandycove Station, stop 3048",
+        "routes": [
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-gad-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.12704, 53.28844] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003049",
+        "stop_name": "St Joseph's Church, stop 3049",
+        "routes": [
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-gad-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.12441, 53.28741] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003050",
+        "stop_name": "Glasthule, stop 3050",
+        "routes": [
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-gad-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.12221, 53.28695] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003051",
+        "stop_name": "Sandycove Road, stop 3051",
+        "routes": [
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-gad-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.1178, 53.28612] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003052",
+        "stop_name": "Elton Park, stop 3052",
+        "routes": [
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-gad-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.1149, 53.28591] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003053",
+        "stop_name": "Breffni Road, stop 3053",
+        "routes": [
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-gad-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.11128, 53.28559] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003054",
+        "stop_name": "Ulverton Road, stop 3054",
+        "routes": [
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-gad-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.10758, 53.2841] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003055",
+        "stop_name": "South Winds, stop 3055",
+        "routes": [
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-gad-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.10689, 53.28183] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003056",
+        "stop_name": "Church Road, stop 3056",
+        "routes": [
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-gad-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.10709, 53.28031] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003057",
+        "stop_name": "Dalkey Village, stop 3057",
+        "routes": [
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-111-gad-1",
+            "agency_id": "03",
+            "route_short_name": "111",
+            "route_long_name": "Bride's Glen - Dalkey",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.10695, 53.27838] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003091",
+        "stop_name": "Avondale Road, stop 3091",
+        "routes": [
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.12388, 53.27365] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003092",
+        "stop_name": "Arnold Grove, stop 3092",
+        "routes": [
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.12682, 53.27207] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003093",
+        "stop_name": "Arnold Park, stop 3093",
+        "routes": [
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.13012, 53.27035] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003094",
+        "stop_name": "Cluny Grove, stop 3094",
+        "routes": [
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.12716, 53.26919] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003095",
+        "stop_name": "Ballinaclea Road, stop 3095",
+        "routes": [
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.12178, 53.27085] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003096",
+        "stop_name": "Killiney Road, stop 3096",
+        "routes": [
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.11827, 53.27046] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003097",
+        "stop_name": "Wyvern Estate, stop 3097",
+        "routes": [
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.11507, 53.26992] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003098",
+        "stop_name": "Killiney Hill Park, stop 3098",
+        "routes": [
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.11438, 53.26787] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB003099",
+        "stop_name": "Victoria Road, stop 3099",
+        "routes": [
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.11503, 53.26485] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8250DB004830",
+        "stop_name": "Barnhill Road, stop 4830",
+        "routes": [
+          {
+            "route_id": "60-7D-b12-1",
+            "agency_id": "978",
+            "route_short_name": "7D",
+            "route_long_name": "Mountjoy Square - Castle Street",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-ga2-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire - Killiney Hill",
+            "route_type": 3
+          },
+          {
+            "route_id": "2-59-gad-1",
+            "agency_id": "03",
+            "route_short_name": "59",
+            "route_long_name": "Dún Laoghaire Station - Killiney Hill",
+            "route_type": 3
+          }
+        ],
+        "agency_name": "Go-Ahead"
+      },
+      "geometry": { "type": "Point", "coordinates": [-6.11447, 53.27725] }
+    }
+  ]
+}

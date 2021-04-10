@@ -11,7 +11,12 @@ import { CssBaseline, Grid } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
-import { getRoutesData, getStopsData, getDisplayData } from "./Utilities"
+import {
+  getRoutesData,
+  getStopsData,
+  getDisplayData,
+  getAgencyNames,
+} from "./Utilities"
 
 // -------------------------------------------------------
 // React Controller component
@@ -22,15 +27,24 @@ function GTFSTransportMap() {
   const [displayBusRoutesCollection, setDisplayBusRoutesCollection] = useState(
     []
   )
+  const [busRouteAgencyName, setBusRouteAgencyName] = useState([])
   const [loadingError, setLoadingError] = useState("")
+
+  function saveToHooks(array) {
+    setUniqueBusRoutesCollection(array[0])
+    setDisplayBusRoutesCollection(getDisplayData(array[0]))
+    setBusRouteAgencyName(getAgencyNames(array[0]))
+
+    // Also need to add:
+    // List of Agencies
+    // Current or Next Trip ??
+  }
 
   useEffect(() => {
     let isSubscribed = true
 
     getRoutesData("http://localhost:5000/api/transport/groutes/")
-      .then((returnedData) =>
-        isSubscribed ? setUniqueBusRoutesCollection(returnedData) : null
-      )
+      .then((returnedData) => (isSubscribed ? saveToHooks(returnedData) : null))
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     getStopsData("http://localhost:5000/api/transport/stops/")
@@ -42,11 +56,13 @@ function GTFSTransportMap() {
     return () => (isSubscribed = false)
   }, [])
 
+  console.log(busRouteAgencyName)
+
   return (
     <GTFSTransportMapView
-      uniqueBusRoutesCollection={uniqueBusRoutesCollection}
+      sortedUniqueBusRoutesCollection={uniqueBusRoutesCollection}
       uniqueBusStopsCollection={uniqueBusStopsCollection}
-      // displayBusRoutesCollection={displayBusRoutesCollection}
+      displayBusRoutesCollection={displayBusRoutesCollection}
       loadingError={loadingError}
     />
   )
@@ -68,13 +84,8 @@ function GTFSTransportMapView(props) {
   })
 
   let busRouteAgencyName = ""
-  if (props.uniqueBusRoutesCollection.length > 0) {
-    busRouteAgencyName = props.uniqueBusRoutesCollection[0].agencyName
-  }
-
-  let displayBusRoutesCollection = []
-  if (props.uniqueBusRoutesCollection.length > 0) {
-    displayBusRoutesCollection = getDisplayData(props.uniqueBusRoutesCollection)
+  if (props.sortedUniqueBusRoutesCollection.length > 0) {
+    busRouteAgencyName = props.sortedUniqueBusRoutesCollection[0].agencyName
   }
 
   const { isLoaded } = useJsApiLoader({
@@ -168,8 +179,8 @@ function GTFSTransportMapView(props) {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {displayBusRoutesCollection
-              ? displayBusRoutesCollection.map((busRoute) => (
+            {props.displayBusRoutesCollection
+              ? props.displayBusRoutesCollection.map((busRoute) => (
                   <Polyline
                     key={busRoute.routeKey}
                     path={busRoute.routeCoordinates}
@@ -222,8 +233,9 @@ function GTFSTransportMapView(props) {
         </Grid>
         <Grid item xs={12} sm={3}>
           <RouteSelectionPanel
-            busRoutesCollection={props.uniqueBusRoutesCollection}
-            busStopsCollection={props.busStopsCollection}
+            sortedUniqueBusRoutesCollection={
+              props.sortedUniqueBusRoutesCollection
+            }
             busRoutesSelectedAgency={busRouteAgencyName}
           />
         </Grid>

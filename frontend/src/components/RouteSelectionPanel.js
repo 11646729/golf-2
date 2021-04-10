@@ -19,12 +19,6 @@ const useStyles = makeStyles({
 export default function RouteSelectionPanel(props) {
   const classes = useStyles()
 
-  // Sort the busRoutesCollection array by increasing busRouteNumber
-  let sortedBusRoutesCollection = props.busRoutesCollection
-  sortedBusRoutesCollection.sort((a, b) =>
-    a.routeNumber > b.routeNumber ? 1 : -1
-  )
-
   return (
     <Paper className={classes.routeSelectionList}>
       <LoadingTitle> Available Bus Routes</LoadingTitle>
@@ -32,8 +26,8 @@ export default function RouteSelectionPanel(props) {
         busRoutesSelectedAgency={props.busRoutesSelectedAgency}
       />
 
-      {sortedBusRoutesCollection
-        ? sortedBusRoutesCollection.map((busRoute) => (
+      {props.sortedUniqueBusRoutesCollection
+        ? props.sortedUniqueBusRoutesCollection.map((busRoute) => (
             <RouteSelectionList
               key={busRoute.routeKey}
               routeVisible={busRoute.routeVisible}
