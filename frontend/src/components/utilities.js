@@ -38,9 +38,9 @@ export async function getRoutesData(url) {
 // Function to fetch Unique Gtfs Stops data
 export async function getStopsData(url) {
   const result = await axios(url, {
-    params: {
-      agencyId: "HSR",
-    },
+    // params: {
+    //   agencyId: "HSR",
+    // },
   })
   return removeDuplicates(result.data, "coordsString")
 }
@@ -80,12 +80,14 @@ export function getAgencyNames(originalArray) {
   let namesArray = []
   let index = 0
   do {
-    namesArray.push(originalArray[index].agencyId)
+    namesArray.push(originalArray[index].agencyName)
     index++
   } while (index < originalArray.length)
 
+  console.log(originalArray.length)
+
   return [
-    ...new Map(namesArray.map((item) => [item["agencyId"], item])).values(),
+    ...new Map(namesArray.map((item) => [item["agencyName"], item])).values(),
   ]
 }
 
