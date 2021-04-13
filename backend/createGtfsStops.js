@@ -1,6 +1,5 @@
 const fs = require("fs")
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
-import { RouteSchema } from "./models/transportModels/v1/routeSchema"
 import { StopSchema } from "./models/transportModels/v1/stopSchema"
 
 // -------------------------------------------------------
@@ -10,6 +9,7 @@ import { StopSchema } from "./models/transportModels/v1/stopSchema"
 export const createGtfsStops = (filePath, fileName, fileIndex) => {
   const fileUrl = filePath + fileName
   const busRoute = readBusRouteFile(fileUrl)
+  const endloop = busRoute.features.length
 
   let numberOfStops = 0
 
@@ -22,7 +22,7 @@ export const createGtfsStops = (filePath, fileName, fileIndex) => {
       })
 
       // And save it in a gtfsStopsSchema collection
-      const stopSchema = new StopSchema({
+      const busStop = new StopSchema({
         databaseVersion: process.env.DATABASE_VERSION,
         stopFilePath: filePath,
         stopFileUrl: fileUrl,
@@ -42,17 +42,19 @@ export const createGtfsStops = (filePath, fileName, fileIndex) => {
         wheelchair_boarding: 0,
       })
 
-      // Save the stopsSchema in the database
-      stopSchema.save().catch((err) => {
-        console.log("Error saving Stops to database ", err)
-      })
+      // Now save in mongoDB
+      busStop
+        .save()
+        .catch((err) =>
+          console.log("Error saving Bus Stops to database " + err)
+        )
 
       // Increment Number of Stops created
       numberOfStops++
     }
 
     loop++
-  } while (loop < busRoute.features.length)
+  } while (loop < endloop)
 
   return numberOfStops
 }

@@ -1,6 +1,5 @@
 const fs = require("fs")
 const path = require("path")
-import { getAndParseSingleBusRouteAndStops } from "./getAndParseSingleBusRouteAndStops"
 import { createGtfsRoutes } from "./createGtfsRoutes"
 import { createGtfsStops } from "./createGtfsStops"
 
@@ -28,6 +27,8 @@ export const createGtfsRoutesAndStops = async (req, res) => {
     fileIndex++
     // } while (fileIndex < maxFiles)
   } while (fileIndex < arrayOfFiles.length)
+
+  // TODO - Renumber routeKey & stopKey
 
   console.log("No of Routes successfully created: ", totalRoutes)
   console.log("No of Stops successfully created: ", totalStops)
