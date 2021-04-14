@@ -1,34 +1,51 @@
 const fs = require("fs")
-import { StopSchema } from "./models/transportModels/v1/stopSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
+import { StopSchema } from "./models/transportModels/v1/stopSchema"
 
 // -------------------------------------------------------
 // Create Bus Stops in the Database
 // Path: local function called in switchBoard
 // -------------------------------------------------------
-export const createStops = async (req, res) => {
-  // Firstly read all existing Bus Stops in the file
-  fs.readFile(process.env.TRANSLINK_STOPS_FILE_URL, "utf8", (err, data) => {
-    if (err) {
-      throw err
-    }
+export const createStops = (req, res) => {
+  try {
+    const fileUrl = process.env.TRANSLINK_STOPS_FILE_URL
+    const filePath = process.env.TRANSLINK_STOPS_FILEPATH
+    const fileName = "FileName"
+    const fileIndex = 0
+
+    // Firstly read all existing Bus Stops in the file
+    const data = fs.readFileSync(fileUrl, "utf8")
 
     // Then reduce and save individual Bus Stops in the database
-    reduceStops(JSON.parse(data))
-  })
+    let numberOfStops = reduceStops(
+      fileUrl,
+      filePath,
+      fileName,
+      fileIndex,
+      JSON.parse(data)
+    )
+
+    console.log("No of Stops successfully created: ", numberOfStops)
+
+    return numberOfStops
+  } catch (err) {
+    if (err.code === "ENOENT") {
+      console.log("File not found!")
+    } else {
+      throw err
+    }
+  }
 }
 
 // -------------------------------------------------------
 // Function to extract data for reduced dataset then save it in the mongodb database
 // -------------------------------------------------------
-const reduceStops = (busStops) => {
-  const endloop = busStops.features.length
-
+const reduceStops = (fileUrl, filePath, fileName, fileIndex, busStops) => {
   let numberOfStops = 0
-
   let loop = 0
+
   do {
-    if (busRoute.features[loop].geometry.type === "Point") {
+    if (busStops.features[loop].geometry.type === "Point") {
       const coordsSchema = new CoordsSchema({
         lat: busStops.features[loop].properties.Latitude,
         lng: busStops.features[loop].properties.Longitude,
@@ -41,13 +58,14 @@ const reduceStops = (busStops) => {
       // Now create a model instance
       const busStop = new StopSchema({
         databaseVersion: process.env.DATABASE_VERSION,
-        stopFilePath: process.env.TRANSLINK_STOPS_FILEPATH,
-        stopFileUrl: process.env.TRANSLINK_STOPS_FILE_URL,
+        stopFileUrl: fileUrl,
+        stopFilePath: filePath,
+        stopFileName: fileName,
         agencyName: busStops.features[loop].properties.DepotOpsArea,
         agencyId: "MET",
         markerType: busStops.features[loop].geometry.type,
         stopKey: loop + 1,
-        // stopCode: 0,
+        stopCode: 0,
         stopId: busStops.features[loop].properties.LocationID,
         stopColor: "#0093DD",
         stopName: busStops.features[loop].properties.Stop_Name,
@@ -71,7 +89,7 @@ const reduceStops = (busStops) => {
     }
 
     loop++
-  } while (loop < endloop)
+  } while (loop < busStops.features.length)
 
-  console.log("No of new Bus Stops created & saved: ", numberOfStops)
+  return numberOfStops
 }

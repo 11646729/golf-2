@@ -7,32 +7,62 @@ import { StopSchema } from "./models/transportModels/v1/stopSchema"
 // This routine is called from the individual route button
 // -------------------------------------------------------
 export const createGtfsStops = (filePath, fileName, fileIndex) => {
-  const fileUrl = filePath + fileName
-  const busRoute = readBusRouteFile(fileUrl)
-  const endloop = busRoute.features.length
+  try {
+    const fileUrl = filePath + fileName
 
+    // Firstly read all existing Bus Stops in the file
+    const data = fs.readFileSync(fileUrl, "utf8")
+
+    // Then reduce and save individual Bus Stops in the database
+    let numberOfStops = reduceGtfsStops(
+      fileUrl,
+      filePath,
+      fileName,
+      fileIndex,
+      JSON.parse(data)
+    )
+
+    return numberOfStops
+  } catch (err) {
+    if (err.code === "ENOENT") {
+      console.log("File not found!")
+    } else {
+      throw err
+    }
+  }
+}
+
+// -------------------------------------------------------
+// Function to extract data for reduced dataset then save it in the mongodb database
+// -------------------------------------------------------
+const reduceGtfsStops = (fileUrl, filePath, fileName, fileIndex, busStops) => {
   let numberOfStops = 0
-
   let loop = 0
+
   do {
-    if (busRoute.features[loop].geometry.type === "Point") {
+    if (busStops.features[loop].geometry.type === "Point") {
       const coordsSchema = new CoordsSchema({
-        lat: busRoute.features[loop].geometry.coordinates[1],
-        lng: busRoute.features[loop].geometry.coordinates[0],
+        lat: busStops.features[loop].geometry.coordinates[1],
+        lng: busStops.features[loop].geometry.coordinates[0],
       })
 
-      // And save it in a gtfsStopsSchema collection
+      if (busStops.features[loop].geometry.length > 1) {
+        console.log("More than 1 point is stored for this feature")
+      }
+
+      // Now create a model instance
       const busStop = new StopSchema({
         databaseVersion: process.env.DATABASE_VERSION,
-        stopFilePath: filePath,
         stopFileUrl: fileUrl,
-        agencyName: busRoute.features[loop].properties.agency_name,
-        agencyId: busRoute.features[loop].properties.routes[0].agency_id,
-        markerType: busRoute.features[loop].geometry.type,
+        stopFilePath: filePath,
+        stopFileName: fileName,
+        agencyName: busStops.features[loop].properties.agency_name,
+        agencyId: busStops.features[loop].properties.routes[0].agency_id,
+        markerType: busStops.features[loop].geometry.type,
         stopKey: fileIndex * 1000 + loop,
-        stopCode: busRoute.features[loop].properties.stop_code,
-        stopId: busRoute.features[loop].properties.stop_id,
-        stopColor: busRoute.features[loop].properties.routes[0].route_color,
+        stopCode: busStops.features[loop].properties.stop_code,
+        stopId: busStops.features[loop].properties.stop_id,
+        stopColor: busStops.features[loop].properties.routes[0].route_color,
         stopName: "No Data",
         stopCoordinates: coordsSchema,
         coordsString:
@@ -54,15 +84,7 @@ export const createGtfsStops = (filePath, fileName, fileIndex) => {
     }
 
     loop++
-  } while (loop < endloop)
+  } while (loop < busStops.features.length)
 
   return numberOfStops
-}
-
-// -------------------------------------------------------
-// Local function
-// -------------------------------------------------------
-function readBusRouteFile(fileUrl) {
-  console.log(fileUrl)
-  return JSON.parse(fs.readFileSync(fileUrl))
 }

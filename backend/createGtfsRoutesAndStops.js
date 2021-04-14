@@ -6,7 +6,7 @@ import { createGtfsStops } from "./createGtfsStops"
 // -------------------------------------------------------
 // Function to fetch all the GeoJson route filenames in a directory irrespective of trip direction
 // -------------------------------------------------------
-export const createGtfsRoutesAndStops = async (req, res) => {
+export const createGtfsRoutesAndStops = (req, res) => {
   const filePath = process.env.HAMILTON_GEOJSON_FILES_PATH
   // const filePath = process.env.TFI_GEOJSON_FILES_PATH
 
@@ -17,11 +17,11 @@ export const createGtfsRoutesAndStops = async (req, res) => {
 
   // Now pass filePath, fileName & fileIndex to createGtfsRoutes & createGtfsStops
   let fileIndex = 0
-  let maxFiles = 100
+  // let maxFiles = 100
   do {
     let fileName = arrayOfFiles[fileIndex]
 
-    totalRoutes += createGtfsRoutes(filePath, fileName, fileIndex)
+    // totalRoutes += createGtfsRoutes(filePath, fileName, fileIndex)
     totalStops += createGtfsStops(filePath, fileName, fileIndex)
 
     fileIndex++

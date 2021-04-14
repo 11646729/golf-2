@@ -4,8 +4,9 @@ import { CoordsSchema } from "../../commonModels/v1/coordsSchema"
 const stopSchema = new Schema(
   {
     databaseVersion: { type: Number },
-    stopFilePath: { type: String },
     stopFileUrl: { type: String },
+    stopFilePath: { type: String },
+    stopFileName: { type: String },
     agencyName: { type: String },
     agencyId: { type: String },
     markerType: { type: String },
