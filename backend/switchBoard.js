@@ -8,10 +8,11 @@ import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines"
 import { createGolfCourses } from "./createGolfCourses"
 import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
 import { deleteAllRoutes } from "./deleteAllRoutes"
-import { createGtfsRoutesAndStops } from "./createGtfsRoutesAndStops"
+import { createGtfsRoutes } from "./createGtfsRoutes"
 import { createShapes } from "./createShapes"
 import { deleteAllStops } from "./deleteAllStops"
 import { createStops } from "./createStops"
+import { createGtfsStops } from "./createGtfsStops"
 
 export const runSwitchboard = (io) => {
   // Using socket.io for realtime
@@ -36,7 +37,8 @@ export const runSwitchboard = (io) => {
   // convertGtfsToGeoJSON()
   // deleteAllRoutes()
   // deleteAllStops()
-  // createGtfsRoutesAndStops()
+  createGtfsRoutes()
+  // createGtfsStops()
   // -----------------------------
   // createShapes()
   // createStops()
