@@ -36,3 +36,53 @@ export function readRouteFile(fileUrl) {
     }
   }
 }
+
+// -------------------------------------------------------
+// Local function to read a set of files in a directory
+// -------------------------------------------------------
+export function prepReadGtfsFile(firstFile, iterationSize, arraylength) {
+  let fileFetchArray = []
+  let fileFetch = []
+
+  // Divide into pieces to prevent timeout error
+  let loop = 0
+  let start = 0
+  let startIteration = firstFile // fileFetch[0]
+  let endIteration = 0 // fileFetch[1]
+  let end = arraylength // fileFetch[2]
+  let iterations = Math.floor(end / iterationSize)
+
+  if (iterations > 0) {
+    do {
+      if (loop === 0) {
+        startIteration = start
+        endIteration = iterationSize - 1
+      } else {
+        startIteration = loop * iterationSize
+        if (loop < iterations) {
+          endIteration = (loop + 1) * iterationSize - 1
+        } else {
+          endIteration = end
+        }
+      }
+
+      loop++
+
+      fileFetch.push(startIteration)
+      fileFetch.push(endIteration)
+
+      fileFetchArray.push(fileFetch)
+      fileFetch = []
+    } while (loop <= iterations)
+  } else {
+    startIteration = start
+    endIteration = end
+
+    fileFetch.push(startIteration)
+    fileFetch.push(endIteration)
+
+    fileFetchArray.push(fileFetch)
+  }
+
+  return fileFetchArray
+}

@@ -2,60 +2,24 @@ const fs = require("fs")
 const path = require("path")
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 import { RouteSchema } from "./models/transportModels/v1/routeSchema"
-import { readRouteDirectory, readRouteFile } from "./fileUtilities"
+import {
+  readRouteDirectory,
+  readRouteFile,
+  prepReadGtfsFile,
+} from "./fileUtilities"
 
 // -------------------------------------------------------
 // Function to fetch all the GeoJson route filenames in a directory irrespective of trip direction
 // -------------------------------------------------------
 export const createGtfsRoutes = () => {
-  // let fileFetch = []
-
   // const dirPath = process.env.HAMILTON_GEOJSON_FILES_PATH
   const dirPath = process.env.TFI_GEOJSON_FILES_PATH
 
   // Store filenames in array from directory with type .geojson
   let arrayOfFiles = readRouteDirectory(dirPath, ".geojson")
 
-  // -----------------------------------------------------
-  // Divide into pieces to prevent timeout error
-  // let loop = 0
-  // let start = 0 // fileFetch[0]
-  // let startIteration = 0
-  // let endIteration = 0
-  // let iterationSize = 100
-  // let end = arrayOfFiles.length
-  // let iterations = Math.floor(end / iterationSize)
-
-  // console.log("Start of files: ", start)
-  // console.log("Number of files: ", end)
-
-  // if (iterations > 0) {
-  //   do {
-  //     if (loop === 0) {
-  //       startIteration = start
-  //       endIteration = iterationSize - 1
-  //     } else {
-  //       startIteration = loop * iterationSize
-  //       if (loop < iterations) {
-  //         endIteration = (loop + 1) * iterationSize - 1
-  //       } else {
-  //         endIteration = end
-  //       }
-  //     }
-
-  //     console.log("Iteration Start: ", startIteration)
-  //     console.log("Iteration End: ", endIteration)
-
-  //     loop++
-  //   } while (loop <= iterations)
-  // } else {
-  //   startIteration = start
-  //   endIteration = end
-  // }
-  // --------------------------------------------------------
-
-  let fileFetch = prepReadGtfsFile(0, 100, dirPath, arrayOfFiles)
-  // console.log(fileFetch)
+  let fileFetch = prepReadGtfsFile(0, 100, arrayOfFiles.length)
+  console.log(fileFetch.length)
 
   let totalRoutes = 0
 
@@ -134,66 +98,4 @@ function createGtfsRoutes2(dirPath, fileName, fileIndex) {
   } while (loop < busRoute.features.length)
 
   return numberOfRoutes
-}
-
-// -------------------------------------------------------
-// Local function to read a set of files in a directory
-// -------------------------------------------------------
-function prepReadGtfsFile(firstFile, iterationSize, dirPath, arrayOfFiles) {
-  let fileFetchArray = []
-  let fileFetch = []
-
-  // Divide into pieces to prevent timeout error
-  let loop = 0
-  let start = 0
-  let startIteration = 0 // fileFetch[0]
-  let endIteration = 0 // fileFetch[1]
-  let end = arrayOfFiles.length // fileFetch[2]
-  let iterations = Math.floor(end / iterationSize)
-
-  console.log("Start of files: ", start)
-  console.log("Number of files: ", end)
-
-  if (iterations > 0) {
-    do {
-      if (loop === 0) {
-        startIteration = start
-        endIteration = iterationSize - 1
-      } else {
-        startIteration = loop * iterationSize
-        if (loop < iterations) {
-          endIteration = (loop + 1) * iterationSize - 1
-        } else {
-          endIteration = end
-        }
-      }
-
-      loop++
-
-      fileFetch.push(startIteration)
-      fileFetch.push(endIteration)
-
-      // console.log("Iteration Start: ", startIteration)
-      // console.log("Iteration End: ", endIteration)
-
-      fileFetchArray.push(fileFetch)
-      fileFetch = []
-
-      if (loop > iterations) {
-        console.log(fileFetchArray)
-      }
-    } while (loop <= iterations)
-  } else {
-    startIteration = start
-    endIteration = end
-
-    fileFetch.push(startIteration)
-    fileFetch.push(endIteration)
-
-    fileFetchArray.push(fileFetch)
-
-    console.log(fileFetchArray)
-  }
-
-  return fileFetchArray
 }
