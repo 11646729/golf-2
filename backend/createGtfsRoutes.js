@@ -15,26 +15,32 @@ export const createGtfsRoutes = () => {
   // const dirPath = process.env.HAMILTON_GEOJSON_FILES_PATH
   const dirPath = process.env.TFI_GEOJSON_FILES_PATH
 
+  let totalRoutes = 0
+
   // Store filenames in array from directory with type .geojson
   let arrayOfFiles = readRouteDirectory(dirPath, ".geojson")
 
   let fileFetch = prepReadGtfsFile(0, 100, arrayOfFiles.length)
-  console.log(fileFetch.length)
 
-  let totalRoutes = 0
-
-  // Now pass dirPath, fileName & fileIndex to createGtfsRoutes
-  let fileIndex = 0
-  let maxFiles = 100
-
+  let loop = 0
   do {
-    let fileName = arrayOfFiles[fileIndex]
+    console.log("From: ", fileFetch[loop][0])
+    console.log("To: ", fileFetch[loop][1])
+    // console.log("No of Iterations: ", fileFetch[loop][2])
 
-    // totalRoutes += createGtfsRoutes2(dirPath, fileName, fileIndex)
+    let fileIndex = fileFetch[loop][0]
 
-    fileIndex++
-    // } while (fileIndex < maxFiles)
-  } while (fileIndex < arrayOfFiles.length)
+    do {
+      let fileName = arrayOfFiles[fileIndex]
+
+      totalRoutes += createGtfsRoutes2(dirPath, fileName, fileIndex)
+
+      fileIndex++
+    } while (fileIndex <= fileFetch[loop][1])
+
+    loop++
+  } while (loop <= 1)
+  // fileFetch[0][2])
 
   // TODO - Renumber routeKey & stopKey
 

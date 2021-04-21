@@ -37,7 +37,7 @@ export const runSwitchboard = (io) => {
   // convertGtfsToGeoJSON()
   // deleteAllRoutes()
   // deleteAllStops()
-  createGtfsRoutes()
+  // createGtfsRoutes()
   // createGtfsStops()
   // -----------------------------
   // createShapes()

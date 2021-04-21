@@ -50,19 +50,19 @@ export function prepReadGtfsFile(firstFile, iterationSize, arraylength) {
   let startIteration = firstFile // fileFetch[0]
   let endIteration = 0 // fileFetch[1]
   let end = arraylength // fileFetch[2]
-  let iterations = Math.floor(end / iterationSize)
+  let noOfIterations = Math.floor(end / iterationSize)
 
-  if (iterations > 0) {
+  if (noOfIterations > 0) {
     do {
       if (loop === 0) {
         startIteration = start
         endIteration = iterationSize - 1
       } else {
         startIteration = loop * iterationSize
-        if (loop < iterations) {
+        if (loop < noOfIterations) {
           endIteration = (loop + 1) * iterationSize - 1
         } else {
-          endIteration = end
+          endIteration = end - 1
         }
       }
 
@@ -70,16 +70,19 @@ export function prepReadGtfsFile(firstFile, iterationSize, arraylength) {
 
       fileFetch.push(startIteration)
       fileFetch.push(endIteration)
+      fileFetch.push(noOfIterations)
 
       fileFetchArray.push(fileFetch)
+
       fileFetch = []
-    } while (loop <= iterations)
+    } while (loop <= noOfIterations)
   } else {
     startIteration = start
-    endIteration = end
+    endIteration = end - 1
 
     fileFetch.push(startIteration)
     fileFetch.push(endIteration)
+    fileFetch.push(noOfIterations)
 
     fileFetchArray.push(fileFetch)
   }
