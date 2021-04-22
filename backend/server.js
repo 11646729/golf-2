@@ -8,6 +8,7 @@ import sqlite3 from "sqlite3"
 import toJson from "@meanie/mongoose-to-json"
 import dotenv from "dotenv"
 import { runSwitchboard } from "./switchBoard"
+import { createFilledGolfCourseTable } from "./createFilledGolfCourseTable"
 
 // const cookieParser = require("cookie-parser")
 // const logger = require("morgan")
@@ -81,29 +82,8 @@ const db = new sqlite3.Database(db_name, (err) => {
   console.log("Successful connection to the database 'sqlite3 data/general.db'")
 })
 
-const sql_create = `CREATE TABLE IF NOT EXISTS GolfCourses (
-  Book_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-  Title VARCHAR(100) NOT NULL,
-  Author VARCHAR(100) NOT NULL,
-  Comments TEXT
-)`
-
-// databaseVersion: { type: Number },
-// type: { type: String },
-// crsUrn: { type: String },
-// name: { type: String },
-// phoneNumber: { type: String },
-// photoTitle: { type: String },
-// photoUrl: { type: String },
-// description: { type: String },
-// coordinates: { type: CoordsSchema.schema },
-
-db.run(sql_create, (err) => {
-  if (err) {
-    return console.error(err.message)
-  }
-  console.log("Successful creation of the 'GolfCourses' table")
-})
+// Create sql Golf Course Table if one doesn't exist
+createFilledGolfCourseTable(db)
 
 // Routers use Controllers as per Express Tutorial
 const golfRouter = require("./routes/golfRoutes/v2/golfRouteCatalog")
