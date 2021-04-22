@@ -2605,6 +2605,11 @@ sqlite@^4.0.19:
   resolved "https://registry.yarnpkg.com/sqlite/-/sqlite-4.0.19.tgz#3ee7d44984910113205418141f3d2b54e74dc94f"
   integrity sha512-UiHAgJI4NzbnBXdD3r8EHOpwCOiv8VxcC6dnOoEYPEde8bw6t2HRqUcvGppF3uOV/SrqyVHicMl5Cjmuaalnlw==
 
+sqlite@^4.0.21:
+  version "4.0.21"
+  resolved "https://registry.yarnpkg.com/sqlite/-/sqlite-4.0.21.tgz#211dd837a0459d90eeb8d5cfba4bfb509d8abe27"
+  integrity sha512-HIqObuvz+Vx8BXWzIhR12fJMjiE37Mdfupg2Ok0f8MChSqALXj7FgpZauj1pJoSY6qsDYmp/+/ZgSn3l8yutoA==
+
 sqlstring-sqlite@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/sqlstring-sqlite/-/sqlstring-sqlite-0.1.1.tgz#c8c61810663f2e59a6b0d737b70a8752bda3a078"

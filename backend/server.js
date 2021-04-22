@@ -5,6 +5,7 @@ import socketIo from "socket.io"
 import cors from "cors"
 import mongoose from "mongoose"
 import sqlite3 from "sqlite3"
+const { open } = require("sqlite")
 import toJson from "@meanie/mongoose-to-json"
 import dotenv from "dotenv"
 import { runSwitchboard } from "./switchBoard"
@@ -67,23 +68,41 @@ connection.once("open", () => {
   console.log("Connected to MongoDB database")
 })
 
-const db_name = path.join(
-  __dirname,
-  // "gtfs data/Hamilton Ontario Street Railway",
-  // "gtfs.db"
-  "sqlite3 data",
-  "general.db"
-)
+let db = null
+const db_name = path.join(__dirname, "sqlite3 data", "general.db")
 
-const db = new sqlite3.Database(db_name, (err) => {
-  if (err) {
-    return console.error(err.message)
+async function main() {
+  try {
+    sqlite3.verbose()
+    const db = await createDbConnection(db_name)
+    if (db !== null) {
+      console.log("Successful connection to the SQLite database:", db_name)
+    } else {
+      console.log("UNSUCCESSFUL connection to the SQLite database")
+    }
+
+    // Create sql Golf Course Table if one doesn't exist
+    const result = await createFilledGolfCourseTable(db)
+    console.log("Result: ", result)
+
+    // const orderProcessed = await orderAlreadyProcessed(ordersDb, "555");
+    // console.log("orderProcessed = " + orderProcessed);
+    // if (!orderProcessed) {
+    //     console.log("So condition is met!");
+    // }
+  } catch (error) {
+    console.error(error)
   }
-  console.log("Successful connection to the database 'sqlite3 data/general.db'")
-})
+}
 
-// Create sql Golf Course Table if one doesn't exist
-createFilledGolfCourseTable(db)
+function createDbConnection(filename) {
+  return open({
+    filename,
+    driver: sqlite3.Database,
+  })
+}
+
+main()
 
 // Routers use Controllers as per Express Tutorial
 const golfRouter = require("./routes/golfRoutes/v2/golfRouteCatalog")
