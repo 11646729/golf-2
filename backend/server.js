@@ -4,6 +4,7 @@ import path from "path"
 import socketIo from "socket.io"
 import cors from "cors"
 import mongoose from "mongoose"
+import sqlite3 from "sqlite3"
 import toJson from "@meanie/mongoose-to-json"
 import dotenv from "dotenv"
 import { runSwitchboard } from "./switchBoard"
@@ -13,6 +14,8 @@ import { runSwitchboard } from "./switchBoard"
 // const createError = require("http-errors")
 
 dotenv.config()
+
+sqlite3.verbose()
 
 const app = express()
 const server = http.createServer(app)
@@ -61,6 +64,45 @@ mongoose.connect(uri, options)
 const connection = mongoose.connection
 connection.once("open", () => {
   console.log("Connected to MongoDB database")
+})
+
+const db_name = path.join(
+  __dirname,
+  // "gtfs data/Hamilton Ontario Street Railway",
+  // "gtfs.db"
+  "sqlite3 data",
+  "general.db"
+)
+
+const db = new sqlite3.Database(db_name, (err) => {
+  if (err) {
+    return console.error(err.message)
+  }
+  console.log("Successful connection to the database 'sqlite3 data/general.db'")
+})
+
+const sql_create = `CREATE TABLE IF NOT EXISTS GolfCourses (
+  Book_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+  Title VARCHAR(100) NOT NULL,
+  Author VARCHAR(100) NOT NULL,
+  Comments TEXT
+)`
+
+// databaseVersion: { type: Number },
+// type: { type: String },
+// crsUrn: { type: String },
+// name: { type: String },
+// phoneNumber: { type: String },
+// photoTitle: { type: String },
+// photoUrl: { type: String },
+// description: { type: String },
+// coordinates: { type: CoordsSchema.schema },
+
+db.run(sql_create, (err) => {
+  if (err) {
+    return console.error(err.message)
+  }
+  console.log("Successful creation of the 'GolfCourses' table")
 })
 
 // Routers use Controllers as per Express Tutorial
