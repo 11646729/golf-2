@@ -25,7 +25,6 @@ export const createFilledGolfCourseTable = async (db) => {
 
         // Thirdly save the data in the Golf Courses Table in the SQLite database
         let myData = JSON.parse(data)
-        // console.log(myData.features.length)
         populateGolfCourses(db, myData)
       }
     )

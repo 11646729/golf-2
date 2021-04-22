@@ -5,19 +5,16 @@ import socketIo from "socket.io"
 import cors from "cors"
 import mongoose from "mongoose"
 import sqlite3 from "sqlite3"
-const { open } = require("sqlite")
+import { open } from "sqlite"
 import toJson from "@meanie/mongoose-to-json"
 import dotenv from "dotenv"
 import { runSwitchboard } from "./switchBoard"
-import { createFilledGolfCourseTable } from "./createFilledGolfCourseTable"
 
 // const cookieParser = require("cookie-parser")
 // const logger = require("morgan")
 // const createError = require("http-errors")
 
 dotenv.config()
-
-sqlite3.verbose()
 
 const app = express()
 const server = http.createServer(app)
@@ -33,6 +30,7 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 )
+
 app.use(express.json())
 
 app.use(express.static(path.join(__dirname, "public")))
@@ -40,69 +38,8 @@ app.use(express.static(path.join(__dirname, "public")))
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }))
 
-// MongoDB connection string
-const uri = process.env.ATLAS_URI
-
-// Mongoose connection optional arguments
-const options = {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-  autoIndex: false, // Don't build indexes
-  poolSize: 30, // Maintain up to 10 socket connections
-  // If not connected, return errors immediately rather than waiting for reconnect
-  bufferMaxEntries: 0,
-  connectTimeoutMS: 10000, // Give up initial connection after 10 seconds
-  socketTimeoutMS: 360000, // Close sockets after 45 seconds of inactivity
-  family: 4, // Use IPv4, skip trying IPv6
-}
-
-// Add plug-in to change _id to id
-mongoose.plugin(toJson)
-
-mongoose.connect(uri, options)
-
-const connection = mongoose.connection
-connection.once("open", () => {
-  console.log("Connected to MongoDB database")
-})
-
-let db = null
-const db_name = path.join(__dirname, "sqlite3 data", "general.db")
-
-async function main() {
-  try {
-    sqlite3.verbose()
-    const db = await createDbConnection(db_name)
-    if (db !== null) {
-      console.log("Successful connection to the SQLite database:", db_name)
-    } else {
-      console.log("UNSUCCESSFUL connection to the SQLite database")
-    }
-
-    // Create sql Golf Course Table if one doesn't exist
-    const result = await createFilledGolfCourseTable(db)
-    console.log("Result: ", result)
-
-    // const orderProcessed = await orderAlreadyProcessed(ordersDb, "555");
-    // console.log("orderProcessed = " + orderProcessed);
-    // if (!orderProcessed) {
-    //     console.log("So condition is met!");
-    // }
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-function createDbConnection(filename) {
-  return open({
-    filename,
-    driver: sqlite3.Database,
-  })
-}
-
-main()
+addSQLite()
+addMongoose()
 
 // Routers use Controllers as per Express Tutorial
 const golfRouter = require("./routes/golfRoutes/v2/golfRouteCatalog")
@@ -116,8 +53,6 @@ app.use("/api/weather", weatherRouter)
 app.use("/api/cruise", cruiseRouter)
 app.use("/api/transport", transportRouter)
 
-runSwitchboard(io)
-
 // Start Express server
 server.listen(port, (err) => {
   if (err) {
@@ -126,3 +61,64 @@ server.listen(port, (err) => {
     console.log("Server running on port: " + port)
   }
 })
+
+async function addMongoose() {
+  try {
+    // MongoDB connection string
+    const uri = process.env.ATLAS_URI
+
+    // Mongoose connection optional arguments
+    const options = {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+      autoIndex: false, // Don't build indexes
+      poolSize: 30, // Maintain up to 10 socket connections
+      // If not connected, return errors immediately rather than waiting for reconnect
+      bufferMaxEntries: 0,
+      connectTimeoutMS: 10000, // Give up initial connection after 10 seconds
+      socketTimeoutMS: 360000, // Close sockets after 45 seconds of inactivity
+      family: 4, // Use IPv4, skip trying IPv6
+    }
+
+    // Add plug-in to change _id to id
+    mongoose.plugin(toJson)
+
+    mongoose.connect(uri, options)
+
+    const connection = mongoose.connection
+    connection.once("open", () => {
+      console.log("Connected to the MongoDB database")
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+async function addSQLite() {
+  try {
+    let db = null
+
+    const db_name = path.join(__dirname, "sqlite3 data", "general.db")
+
+    sqlite3.verbose()
+    db = await createSqlDbConnection(db_name)
+    if (db !== null) {
+      console.log("Connected to the SQLite database:")
+    } else {
+      console.log("UNSUCCESSFUL connection to the SQLite database")
+    }
+
+    runSwitchboard(io, db)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+function createSqlDbConnection(filename) {
+  return open({
+    filename,
+    driver: sqlite3.Database,
+  })
+}

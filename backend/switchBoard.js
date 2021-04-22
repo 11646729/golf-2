@@ -13,8 +13,9 @@ import { createShapes } from "./createShapes"
 import { deleteAllStops } from "./deleteAllStops"
 import { createStops } from "./createStops"
 import { createGtfsStops } from "./createGtfsStops"
+import { createFilledGolfCourseTable } from "./createFilledGolfCourseTable"
 
-export const runSwitchboard = (io) => {
+export const runSwitchboard = (io, db) => {
   // Using socket.io for realtime
   // io.on("connection", (socket) => {
   //   console.log("Client Connected")
@@ -33,6 +34,7 @@ export const runSwitchboard = (io) => {
   // deleteAllTemperatures()
   // -----------------------------
   // createGolfCourses()
+  // createFilledGolfCourseTable(db)
   // -----------------------------
   // convertGtfsToGeoJSON()
   // deleteAllRoutes()
