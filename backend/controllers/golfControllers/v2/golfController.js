@@ -1,4 +1,3 @@
-import path from "path"
 import { GolfCourseSchema } from "../../../models/golfModels/v2/courseSchema"
 import {
   openSqlDbConnection,
@@ -34,27 +33,18 @@ export const getAllCourses = async (req, res) => {
 // -------------------------------------------------------
 export const getAllSqlCourses = async (req, res) => {
   try {
-    const db_name = path.join(
-      "/Users/briansmith/Documents/GTD/golf-2/backend/",
-      "sqlite3 data",
-      "general.db"
-    )
-    console.log(db_name)
-
     let db = null
-    db = await openSqlDbConnection(db_name)
+
+    db = await openSqlDbConnection(process.env.SQL_URI)
+
     if (db !== null) {
-      console.log("Connected to the SQLite database")
-    } else {
-      console.log("UNSUCCESSFUL connection to the SQLite database")
+      const sql = "SELECT * FROM GolfCourses ORDER BY course_id"
+      const result = await db.all(sql)
+
+      closeSqlDbConnection(db)
+
+      res.send(result)
     }
-
-    const sql = "SELECT * FROM GolfCourses ORDER BY course_id"
-    const result = await db.all(sql)
-
-    closeSqlDbConnection(db)
-
-    res.send(result)
   } catch (e) {
     console.error(e.message)
   }
