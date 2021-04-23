@@ -1,4 +1,4 @@
-import { GolfCourseSchema } from "../../../models/golfModels/v2/courseSchema"
+// import { GolfCourseSchema } from "../../../models/golfModels/v2/courseSchema"
 import {
   openSqlDbConnection,
   closeSqlDbConnection,
@@ -16,22 +16,6 @@ export const index = async (req, res) => {
 // Path: localhost:5000/api/golf/courses
 // -------------------------------------------------------
 export const getAllCourses = async (req, res) => {
-  GolfCourseSchema.find({})
-    .then((data) => {
-      res.send(data)
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "An error ocurred while retrieving golfCourses.",
-      })
-    })
-}
-
-// -------------------------------------------------------
-// Path: localhost:5000/api/golf/courses
-// -------------------------------------------------------
-export const getAllSqlCourses = async (req, res) => {
   try {
     let db = null
 

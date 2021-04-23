@@ -1,33 +1,39 @@
 const fs = require("fs")
+import { openSqlDbConnection } from "./fileUtilities"
 
 // -------------------------------------------------------
 // Create Golf Courses Table in the SQLite Database
 // Path: Function called in switchBoard
 // -------------------------------------------------------
-export const createFilledGolfCourseTable = async (db) => {
-  const golfCourses_create =
-    "CREATE TABLE IF NOT EXISTS GolfCourses (course_id INTEGER PRIMARY KEY AUTOINCREMENT, databaseVersion INTEGER, type VARCHAR(100) NOT NULL, crsUrn VARCHAR(100) NOT NULL, name VARCHAR(100) NOT NULL, phoneNumber VARCHAR(100) NOT NULL, photoTitle VARCHAR(100) NOT NULL, photoUrl VARCHAR(100) NOT NULL, description VARCHAR(200), course_lng REAL CHECK( course_lng >= -180 AND course_lng <= 180 ), course_lat REAL CHECK( course_lat >= -90 AND course_lat <= 90 ))"
-
+export const createFilledGolfCourseTable = async () => {
   try {
-    // Firstly create an empty Table in the database
-    db.run(golfCourses_create, (err) => {
-      console.log("Successful creation of the empty 'GolfCourses' table")
-    })
+    let db = null
 
-    // Secondly fetch all the Golf Courses data
-    fs.readFile(
-      process.env.RAW_GOLF_COURSE_DATA_FILEPATH,
-      "utf8",
-      (err, data) => {
-        if (err) {
-          throw err
+    db = await openSqlDbConnection(process.env.SQL_URI)
+
+    if (db !== null) {
+      // Firstly create an empty Table in the database - IF NEEDED
+      const golfCourses_create =
+        "CREATE TABLE IF NOT EXISTS GolfCourses (course_id INTEGER PRIMARY KEY AUTOINCREMENT, databaseVersion INTEGER, type VARCHAR(100) NOT NULL, crsUrn VARCHAR(100) NOT NULL, name VARCHAR(100) NOT NULL, phoneNumber VARCHAR(100) NOT NULL, photoTitle VARCHAR(100) NOT NULL, photoUrl VARCHAR(100) NOT NULL, description VARCHAR(200), course_lng REAL CHECK( course_lng >= -180 AND course_lng <= 180 ), course_lat REAL CHECK( course_lat >= -90 AND course_lat <= 90 ))"
+      await db.run(golfCourses_create)
+
+      // Secondly fetch all the Golf Courses data
+      fs.readFile(
+        process.env.RAW_GOLF_COURSE_DATA_FILEPATH,
+        "utf8",
+        (err, data) => {
+          if (err) {
+            throw err
+          }
+
+          // Thirdly save the data in the Golf Courses Table in the SQLite database
+          let myData = JSON.parse(data)
+          populateGolfCourses(db, myData)
         }
+      )
+    }
 
-        // Thirdly save the data in the Golf Courses Table in the SQLite database
-        let myData = JSON.parse(data)
-        populateGolfCourses(db, myData)
-      }
-    )
+    // It seems there is no need to disconnect from the SQLite database
   } catch (e) {
     return console.error(e.message)
   }
@@ -58,7 +64,6 @@ const populateGolfCourses = async (db, courses) => {
       loop++
     } while (loop < courses.features.length)
     console.log("No of new Golf Courses created & saved: ", loop)
-    // return loop
   } catch (e) {
     console.error(e.message)
   }

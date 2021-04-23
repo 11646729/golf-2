@@ -4,8 +4,6 @@ import path from "path"
 import socketIo from "socket.io"
 import cors from "cors"
 import mongoose from "mongoose"
-import sqlite3 from "sqlite3"
-import { open } from "sqlite"
 import toJson from "@meanie/mongoose-to-json"
 import dotenv from "dotenv"
 import { runSwitchboard } from "./switchBoard"
@@ -38,7 +36,6 @@ app.use(express.static(path.join(__dirname, "public")))
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }))
 
-// addSQLite()
 addMongoose()
 
 runSwitchboard(io)
@@ -97,11 +94,3 @@ async function addMongoose() {
     console.error(error)
   }
 }
-
-// async function addSQLite() {
-//   try {
-//     runSwitchboard(io)
-//   } catch (error) {
-//     console.error(error)
-//   }
-// }

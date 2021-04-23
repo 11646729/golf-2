@@ -113,14 +113,6 @@ export const openSqlDbConnection = (filename) => {
 // Function to close the SQLite database connection
 // -------------------------------------------------------
 export const closeSqlDbConnection = (db) => {
-  console.log("Here")
-
-  return db.close()
-  // db.close((err) => {
-  //   if (err) {
-  //     console.error(err.message)
-  //   } else {
-  //     console.log("Closed the SQLite database connection.")
-  //   }
-  // })
+  db.close()
+  console.log("Disconnected from the SQLite database")
 }

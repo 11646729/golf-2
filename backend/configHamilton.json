@@ -2,12 +2,9 @@
   "agencies": [
     {
       "agency_key": "Hamilton Ontario Street Railway",
-      "url": "http://transitfeeds.com/p/hamilton-street-railway/31/latest/download"
+      "url": "http://transitfeeds.com/p/hamilton-street-railway/31/20210217-5/download"
     }
   ],
   "verbose": true,
-  "coordinatePrecision": 5,
-  "includeStops": true,
-  "sqlitePath": "/Users/briansmith/Documents/GTD/golf-2/backend/gtfs data/Hamilton Ontario Street Railway/gtfs.db",
-  "skipImport": false
+  "sqlitePath": "/Users/briansmith/Documents/GTD/golf-2/backend/gtfs data/Hamilton Ontario Street Railway/gtfs.db"
 }

@@ -10,22 +10,11 @@ router.get("/", golfController.index)
 // -------------------------------------------------------
 // GET all Golf Courses
 // -------------------------------------------------------
-// router.get("/nearbyGolfCourses/", golfController.getAllCourses)
-router.get("/nearbyGolfCourses/", golfController.getAllSqlCourses)
+router.get("/nearbyGolfCourses/", golfController.getAllCourses)
 
 // -------------------------------------------------------
 // GET a Golf Course by id
 // -------------------------------------------------------
 // router.get("/course/:id", golfController.getOneCourse)
-
-// -------------------------------------------------------
-// DELETE all Golf Courses
-// -------------------------------------------------------
-// router.delete("/course/", golfController.deleteAllCourses)
-
-// -------------------------------------------------------
-// DELETE a GolfCourse by id
-// -------------------------------------------------------
-// router.delete("/course/:id", golfController.deleteOneCourse)
 
 module.exports = router

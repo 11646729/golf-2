@@ -5,8 +5,7 @@ import {
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
 import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines"
-import { createGolfCourses } from "./createGolfCourses"
-import { convertGtfsToGeoJSON } from "./convertGtfsToGeoJSON"
+import { importGtfsToSQLite } from "./importGtfsToSQLite"
 import { deleteAllRoutes } from "./deleteAllRoutes"
 import { createGtfsRoutes } from "./createGtfsRoutes"
 import { createShapes } from "./createShapes"
@@ -33,10 +32,10 @@ export const runSwitchboard = (io) => {
   // -----------------------------
   // deleteAllTemperatures()
   // -----------------------------
-  // createGolfCourses()
-  // createFilledGolfCourseTable(db)
+  // createFilledGolfCourseTable()
   // -----------------------------
-  // convertGtfsToGeoJSON()
+  // importGtfsToSQLite()
+  // -----------------------------
   // deleteAllRoutes()
   // deleteAllStops()
   // createGtfsRoutes()

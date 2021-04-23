@@ -33,5 +33,6 @@ google_maps.js
 # /backend/gtfs data/Dublin TFI/stop_times.txt
 # /backend/gtfs data/Dublin TFI/gtfs.db
 /backend/gtfs data/
+/backend/gtfs data/Hamilton Ontario Street Railway/gtfs.db
 /backend/geojson/
 

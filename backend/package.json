@@ -23,7 +23,6 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "gtfs": "^2.0.8",
-    "gtfs-to-geojson": "^1.0.4",
     "mongoose": "^5.12.0",
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",
