@@ -15,7 +15,7 @@ import { createStops } from "./createStops"
 import { createGtfsStops } from "./createGtfsStops"
 import { createFilledGolfCourseTable } from "./createFilledGolfCourseTable"
 
-export const runSwitchboard = (io, db) => {
+export const runSwitchboard = (io) => {
   // Using socket.io for realtime
   // io.on("connection", (socket) => {
   //   console.log("Client Connected")

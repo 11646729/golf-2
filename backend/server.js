@@ -38,8 +38,10 @@ app.use(express.static(path.join(__dirname, "public")))
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }))
 
-addSQLite()
+// addSQLite()
 addMongoose()
+
+runSwitchboard(io)
 
 // Routers use Controllers as per Express Tutorial
 const golfRouter = require("./routes/golfRoutes/v2/golfRouteCatalog")
@@ -96,29 +98,10 @@ async function addMongoose() {
   }
 }
 
-async function addSQLite() {
-  try {
-    let db = null
-
-    const db_name = path.join(__dirname, "sqlite3 data", "general.db")
-
-    sqlite3.verbose()
-    db = await createSqlDbConnection(db_name)
-    if (db !== null) {
-      console.log("Connected to the SQLite database:")
-    } else {
-      console.log("UNSUCCESSFUL connection to the SQLite database")
-    }
-
-    runSwitchboard(io, db)
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-function createSqlDbConnection(filename) {
-  return open({
-    filename,
-    driver: sqlite3.Database,
-  })
-}
+// async function addSQLite() {
+//   try {
+//     runSwitchboard(io)
+//   } catch (error) {
+//     console.error(error)
+//   }
+// }

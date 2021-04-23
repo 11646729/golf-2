@@ -1,5 +1,7 @@
 const fs = require("fs")
 const path = require("path")
+import sqlite3 from "sqlite3"
+import { open } from "sqlite"
 
 // -------------------------------------------------------
 // Local function to read the geojson filenames in a directory
@@ -88,4 +90,30 @@ export function prepReadGtfsFile(firstFile, iterationSize, arraylength) {
   }
 
   return fileFetchArray
+}
+
+// -------------------------------------------------------
+// Function to open the SQLite database file connection
+// -------------------------------------------------------
+export const openSqlDbConnection = (filename) => {
+  return open({
+    filename,
+    driver: sqlite3.Database,
+  })
+}
+
+// -------------------------------------------------------
+// Function to close the SQLite database connection
+// -------------------------------------------------------
+export const closeSqlDbConnection = (db) => {
+  console.log("Here")
+
+  return db.close()
+  // db.close((err) => {
+  //   if (err) {
+  //     console.error(err.message)
+  //   } else {
+  //     console.log("Closed the SQLite database connection.")
+  //   }
+  // })
 }

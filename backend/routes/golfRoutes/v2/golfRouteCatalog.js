@@ -10,7 +10,8 @@ router.get("/", golfController.index)
 // -------------------------------------------------------
 // GET all Golf Courses
 // -------------------------------------------------------
-router.get("/nearbyGolfCourses/", golfController.getAllCourses)
+// router.get("/nearbyGolfCourses/", golfController.getAllCourses)
+router.get("/nearbyGolfCourses/", golfController.getAllSqlCourses)
 
 // -------------------------------------------------------
 // GET a Golf Course by id

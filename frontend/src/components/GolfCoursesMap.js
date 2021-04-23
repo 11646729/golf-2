@@ -74,7 +74,11 @@ function GolfCoursesMapView(props) {
   if (map != null && props.golfCoursesData.length !== 0) {
     const bounds = new window.google.maps.LatLngBounds()
     props.golfCoursesData.map((golfCourse) => {
-      bounds.extend(golfCourse.coordinates)
+      const myLatLng = new window.google.maps.LatLng({
+        lat: golfCourse.course_lat,
+        lng: golfCourse.course_lng,
+      })
+      bounds.extend(myLatLng)
       return bounds
     })
     map.fitBounds(bounds)
@@ -144,7 +148,10 @@ function GolfCoursesMapView(props) {
               ? props.golfCoursesData.map((golfCourse) => (
                   <Marker
                     key={golfCourse.name}
-                    position={golfCourse.coordinates}
+                    position={{
+                      lat: golfCourse.course_lat,
+                      lng: golfCourse.course_lng,
+                    }}
                     icon={iconPin}
                     onClick={() => {
                       setSelected(golfCourse)
@@ -155,7 +162,10 @@ function GolfCoursesMapView(props) {
 
             {selected ? (
               <InfoWindow
-                position={selected.coordinates}
+                position={{
+                  lat: selected.course_lat,
+                  lng: selected.course_lng,
+                }}
                 onCloseClick={() => {
                   setSelected(null)
                 }}
