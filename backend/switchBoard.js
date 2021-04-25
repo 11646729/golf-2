@@ -13,6 +13,7 @@ import { deleteAllStops } from "./deleteAllStops"
 import { createStops } from "./createStops"
 import { createGtfsStops } from "./createGtfsStops"
 import { createFilledGolfCourseTable } from "./createFilledGolfCourseTable"
+import { createEmptyTemperatureTable } from "./createEmptyTemperatureTable"
 
 export const runSwitchboard = (io) => {
   // Using socket.io for realtime
@@ -31,6 +32,7 @@ export const runSwitchboard = (io) => {
   // fetchPortArrivalsAndVessels()
   // -----------------------------
   // deleteAllTemperatures()
+  // createEmptyTemperatureTable()
   // -----------------------------
   // createFilledGolfCourseTable()
   // -----------------------------

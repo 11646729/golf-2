@@ -40,6 +40,8 @@ function GolfCoursesMap() {
     return () => (isSubscribed = false)
   }, [])
 
+  console.log(golfCoursesData)
+
   return (
     <GolfCoursesMapView
       golfCoursesData={golfCoursesData}
@@ -75,8 +77,8 @@ function GolfCoursesMapView(props) {
     const bounds = new window.google.maps.LatLngBounds()
     props.golfCoursesData.map((golfCourse) => {
       const myLatLng = new window.google.maps.LatLng({
-        lat: golfCourse.course_lat,
-        lng: golfCourse.course_lng,
+        lat: golfCourse.courseLat,
+        lng: golfCourse.courseLng,
       })
       bounds.extend(myLatLng)
       return bounds
@@ -149,8 +151,8 @@ function GolfCoursesMapView(props) {
                   <Marker
                     key={golfCourse.name}
                     position={{
-                      lat: golfCourse.course_lat,
-                      lng: golfCourse.course_lng,
+                      lat: golfCourse.courseLat,
+                      lng: golfCourse.courseLng,
                     }}
                     icon={iconPin}
                     onClick={() => {
@@ -163,8 +165,8 @@ function GolfCoursesMapView(props) {
             {selected ? (
               <InfoWindow
                 position={{
-                  lat: selected.course_lat,
-                  lng: selected.course_lng,
+                  lat: selected.courseLat,
+                  lng: selected.courseLng,
                 }}
                 onCloseClick={() => {
                   setSelected(null)

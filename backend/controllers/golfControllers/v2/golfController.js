@@ -22,7 +22,7 @@ export const getAllCourses = async (req, res) => {
     db = await openSqlDbConnection(process.env.SQL_URI)
 
     if (db !== null) {
-      const sql = "SELECT * FROM GolfCourses ORDER BY course_id"
+      const sql = "SELECT * FROM GolfCourses ORDER BY courseId"
       const result = await db.all(sql)
 
       closeSqlDbConnection(db)

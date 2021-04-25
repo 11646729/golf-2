@@ -1,6 +1,6 @@
 const fs = require("fs")
 import sqlite3 from "sqlite3"
-import { openSqlDbConnection } from "./fileUtilities"
+import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities"
 
 // -------------------------------------------------------
 // Create Golf Courses Table in the SQLite Database
@@ -15,8 +15,10 @@ export const createFilledGolfCourseTable = async () => {
     if (db !== null) {
       // Firstly create an empty Table in the database - IF NEEDED
       const golfCourses_create =
-        "CREATE TABLE IF NOT EXISTS GolfCourses (course_id INTEGER PRIMARY KEY AUTOINCREMENT, databaseVersion INTEGER, type VARCHAR(100) NOT NULL, crsUrn VARCHAR(100) NOT NULL, name VARCHAR(100) NOT NULL, phoneNumber VARCHAR(100) NOT NULL, photoTitle VARCHAR(100) NOT NULL, photoUrl VARCHAR(100) NOT NULL, description VARCHAR(200), course_lng REAL CHECK( course_lng >= -180 AND course_lng <= 180 ), course_lat REAL CHECK( course_lat >= -90 AND course_lat <= 90 ))"
+        "CREATE TABLE IF NOT EXISTS GolfCourses (courseId INTEGER PRIMARY KEY AUTOINCREMENT, databaseVersion INTEGER, type VARCHAR(100) NOT NULL, crsUrn VARCHAR(100) NOT NULL, name VARCHAR(100) NOT NULL, phoneNumber VARCHAR(100) NOT NULL, photoTitle VARCHAR(100) NOT NULL, photoUrl VARCHAR(100) NOT NULL, description VARCHAR(200), courseLng REAL CHECK( courseLng >= -180 AND courseLng <= 180 ), courseLat REAL CHECK( courseLat >= -90 AND courseLat <= 90 ))"
       await db.exec(golfCourses_create)
+
+      console.log("GolfCourses Table successfully created")
 
       // Secondly fetch all the Golf Courses data
       fs.readFile(
@@ -35,6 +37,8 @@ export const createFilledGolfCourseTable = async () => {
     }
 
     // It seems there is no need to disconnect from the SQLite database
+    // closeSqlDbConnection(db)
+
     await db.close()
   } catch (e) {
     return console.error(e.message)
@@ -61,7 +65,7 @@ const populateGolfCourses = async (db, courses) => {
         courses.features[loop].geometry.coordinates[1],
       ]
       const sql_insert =
-        "INSERT INTO GolfCourses (databaseVersion, type, crsUrn, name, phoneNumber, photoTitle, photoUrl, description, course_lng, course_lat) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10 )"
+        "INSERT INTO GolfCourses (databaseVersion, type, crsUrn, name, phoneNumber, photoTitle, photoUrl, description, courseLng, courseLat) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10 )"
       await db.run(sql_insert, course)
       loop++
     } while (loop < courses.features.length)
