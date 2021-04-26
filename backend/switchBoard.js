@@ -31,30 +31,30 @@ export const runSwitchboard = (io) => {
   // -----------------------------
   // fetchPortArrivalsAndVessels()
   // -----------------------------
-  // deleteAllTemperatures()
   // createEmptyTemperatureTable()
   // -----------------------------
   // createFilledGolfCourseTable()
   // -----------------------------
   // importGtfsToSQLite()
   // -----------------------------
+  // deleteAllTemperatures()
   // deleteAllRoutes()
   // deleteAllStops()
+  // -----------------------------
   // createGtfsRoutes()
   // createGtfsStops()
-  // -----------------------------
   // createShapes()
   // createStops()
   // })
   // -----------------------------
   // Fetch data every 1 minutes
-  // cron.schedule("*/1 * * * *", () => {
-  //   getAndSaveDarkSkiesData().then((result) => {
-  //     emitDarkSkiesData(socket, result).then(() => {
-  //       console.log("Fetched temperature value")
-  //     })
-  //   })
-  // })
+  cron.schedule("*/1 * * * *", () => {
+    getAndSaveDarkSkiesData().then((result) => {
+      // emitDarkSkiesData(socket, result).then(() => {
+      // console.log("Fetched temperature value")
+      // })
+    })
+  })
   // socket.off("fetchLocation", () => {
   //   console.log(
   //     "Stop listening to the fetchLocation event in the switchboard file"

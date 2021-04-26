@@ -1,13 +1,19 @@
 import { TemperatureSchema } from "../../../models/weatherModels/v1/temperatureSchema"
 import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
 
+// -------------------------------------------------------
+// Catalogue Home page
 // Path localhost:5000/api/weather/
-export function weatherIndex(req, res) {
+// -------------------------------------------------------
+export function index(req, res) {
   res.send({ response: "I am alive" }).status(200)
 }
 
+// -------------------------------------------------------
+// Fetch All Temperature Readings
 // Path localhost:5000/api/weather/temperatures
-export function findAll(req, res) {
+// -------------------------------------------------------
+export function fetchAllReadings(req, res) {
   TemperatureSchema.find({})
     .then((data) => {
       res.send(data)

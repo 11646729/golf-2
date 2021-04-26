@@ -1,7 +1,8 @@
 import axios from "axios"
 import { TemperatureSchema } from "./models/weatherModels/v1/temperatureSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
-import { directCreate as createTemperatureReading } from "./controllers/weatherControllers/v1/weatherController"
+// import { directCreate as createTemperatureReading } from "./controllers/weatherControllers/v1/weatherController"
+import { openSqlDbConnection } from "./fileUtilities"
 
 // Function to fetch weather data from the Dark Skies website
 export const getAndSaveDarkSkiesData = async () => {
@@ -23,7 +24,7 @@ export const getAndSaveDarkSkiesData = async () => {
 
     return data
   } catch (err) {
-    console.log("Error in fetchDarkSkiesData: ", err)
+    console.log("Error in getAndSaveDarkSkiesData: ", err)
   }
 }
 
@@ -61,31 +62,26 @@ export const emitDarkSkiesData = async (socket, darkSkiesData) => {
 // Function to save weather data to mongodb
 const saveDarkSkiesData = async (darkSkiesData) => {
   try {
-    // Database version
-    const database_version = process.env.DATABASE_VERSION
+    let db = null
 
-    const location_name = "Home"
+    db = await openSqlDbConnection(process.env.SQL_URI)
 
-    // Home Coordinates in GeoJSON
-    const location_coords = new CoordsSchema({
-      lat: process.env.HOME_LATITUDE,
-      lng: process.env.HOME_LONGITUDE,
-    })
+    if (db !== null) {
+      const temperatureReading = [
+        process.env.DATABASE_VERSION,
+        darkSkiesData.data.currently.time,
+        "Home",
+        darkSkiesData.data.currently.temperature,
+        process.env.HOME_LATITUDE,
+        process.env.HOME_LONGITUDE,
+      ]
 
-    const location_temperature = darkSkiesData.data.currently.temperature
-
-    // // Now create a model instance
-    const temperature = new TemperatureSchema({
-      databaseVersion: database_version,
-      timeOfMeasurement: darkSkiesData.data.currently.time,
-      locationName: location_name,
-      locationCoordinates: location_coords,
-      locationTemperature: location_temperature,
-    })
-
-    // Now save data in database
-    createTemperatureReading(temperature)
+      const sql_insert =
+        "INSERT INTO Temperatures (databaseVersion, timeOfMeasurement, locationName, locationTemperature, locationLng, locationLat) VALUES ($1, $2, $3, $4, $5, $6 )"
+      await db.run(sql_insert, temperatureReading)
+      console.log("New Temperature Reading saved")
+    }
   } catch (err) {
-    console.log("Error in saveDarkSkiesDataToDatabase: ", err)
+    console.log("Error in saveDarkSkiesData: ", err)
   }
 }

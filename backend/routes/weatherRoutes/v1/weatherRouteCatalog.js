@@ -6,10 +6,10 @@ const weather_controller = require("../../../controllers/weatherControllers/v1/w
 
 /// Weather Routes ///
 // GET catalogue home page
-router.get("/", weather_controller.weatherIndex)
+router.get("/", weather_controller.index)
 
 // GET all temperature readings from the database
-router.get("/temperatureReadings", weather_controller.findAll)
+router.get("/temperatureReadings", weather_controller.fetchAllReadings)
 
 // POST a temperature reading to the database
 router.post("/temperatureReadings/:id", weather_controller.create)

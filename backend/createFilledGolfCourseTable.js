@@ -1,6 +1,6 @@
 const fs = require("fs")
-import sqlite3 from "sqlite3"
-import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities"
+// import sqlite3 from "sqlite3"
+import { openSqlDbConnection } from "./fileUtilities"
 
 // -------------------------------------------------------
 // Create Golf Courses Table in the SQLite Database
@@ -36,10 +36,7 @@ export const createFilledGolfCourseTable = async () => {
       )
     }
 
-    // It seems there is no need to disconnect from the SQLite database
-    // closeSqlDbConnection(db)
-
-    await db.close()
+    db.close()
   } catch (e) {
     return console.error(e.message)
   }
