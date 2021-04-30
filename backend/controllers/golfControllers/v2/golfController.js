@@ -13,6 +13,7 @@ export const index = async (req, res) => {
 }
 
 // -------------------------------------------------------
+// Get all Golf Courses
 // Path: localhost:5000/api/golf/courses
 // -------------------------------------------------------
 export const getAllCourses = async (req, res) => {

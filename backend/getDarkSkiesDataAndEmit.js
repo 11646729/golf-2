@@ -1,8 +1,12 @@
 import axios from "axios"
 import { TemperatureSchema } from "./models/weatherModels/v1/temperatureSchema"
 import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
-// import { directCreate as createTemperatureReading } from "./controllers/weatherControllers/v1/weatherController"
-import { openSqlDbConnection } from "./fileUtilities"
+import {
+  openSqlDbConnection,
+  closeSqlDbConnection,
+  countRecords,
+} from "./fileUtilities"
+import sqlite3 from "sqlite3"
 
 // Function to fetch weather data from the Dark Skies website
 export const getAndSaveDarkSkiesData = async () => {
@@ -59,14 +63,22 @@ export const emitDarkSkiesData = async (socket, darkSkiesData) => {
   }
 }
 
-// Function to save weather data to mongodb
-const saveDarkSkiesData = async (darkSkiesData) => {
+// -------------------------------------------------------
+// Save Temperature Reading to SQLite database
+// Path:
+// -------------------------------------------------------
+export const saveDarkSkiesData = async (darkSkiesData) => {
+  if (darkSkiesData == null) return
+
   try {
     let db = null
+    db = openSqlDbConnection(process.env.SQL_URI)
 
-    db = await openSqlDbConnection(process.env.SQL_URI)
+    let sql = "SELECT COUNT(temperatureId) AS count FROM Temperatures"
 
     if (db !== null) {
+      countRecords(db, sql)
+
       const temperatureReading = [
         process.env.DATABASE_VERSION,
         darkSkiesData.data.currently.time,
@@ -78,8 +90,17 @@ const saveDarkSkiesData = async (darkSkiesData) => {
 
       const sql_insert =
         "INSERT INTO Temperatures (databaseVersion, timeOfMeasurement, locationName, locationTemperature, locationLng, locationLat) VALUES ($1, $2, $3, $4, $5, $6 )"
-      await db.run(sql_insert, temperatureReading)
-      console.log("New Temperature Reading saved")
+
+      db.run(sql_insert, temperatureReading, (err, results) => {
+        if (err) {
+          return console.error(err.message)
+        }
+        console.log("New Temperature Reading saved")
+      })
+
+      countRecords(db, sql)
+
+      closeSqlDbConnection(db)
     }
   } catch (err) {
     console.log("Error in saveDarkSkiesData: ", err)

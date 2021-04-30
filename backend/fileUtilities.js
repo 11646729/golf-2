@@ -1,7 +1,6 @@
 const fs = require("fs")
 const path = require("path")
 import sqlite3 from "sqlite3"
-import { open } from "sqlite"
 
 // -------------------------------------------------------
 // Local function to read the geojson filenames in a directory
@@ -96,12 +95,14 @@ export function prepReadGtfsFile(firstFile, iterationSize, arraylength) {
 // Function to open the SQLite database file connection
 // -------------------------------------------------------
 export const openSqlDbConnection = (filename) => {
-  let db = null
+  // let db = null
 
-  db = open({
-    filename,
-    driver: sqlite3.Database,
-  })
+  // db = open({
+  //   filename,
+  //   driver: sqlite3.Database,
+  // })
+
+  let db = new sqlite3.Database(process.env.SQL_URI)
 
   if (db !== null) {
     console.log("Connected to the SQLite database")
@@ -119,4 +120,16 @@ export const openSqlDbConnection = (filename) => {
 export const closeSqlDbConnection = (db) => {
   db.close()
   console.log("Disconnected from the SQLite database")
+}
+
+// -------------------------------------------------------
+// Function to count records in a SQLite database
+// -------------------------------------------------------
+export const countRecords = (db, sql) => {
+  db.get(sql, [], (err, results) => {
+    if (err) {
+      return console.error(err.message)
+    }
+    console.log("Record Count: ", results.count)
+  })
 }
