@@ -121,15 +121,3 @@ export const closeSqlDbConnection = (db) => {
   db.close()
   console.log("Disconnected from the SQLite database")
 }
-
-// -------------------------------------------------------
-// Function to count records in a SQLite database
-// -------------------------------------------------------
-export const countRecords = (db, sql) => {
-  db.get(sql, [], (err, results) => {
-    if (err) {
-      return console.error(err.message)
-    }
-    console.log("Record Count: ", results.count)
-  })
-}

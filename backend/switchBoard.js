@@ -17,14 +17,14 @@ import { createEmptyTemperatureTable } from "./createEmptyTemperatureTable"
 
 export const runSwitchboard = (io) => {
   // Using socket.io for realtime
-  // io.on("connection", (socket) => {
-  //   console.log("Client Connected")
-  // Start listening for browser position data
-  // socket.on("fetchLocation", (pos) => {
-  //   console.log(
-  //     "Start listening to the fetchLocation event in the switchboard file"
-  //   )
-  // })
+  io.on("connection", (socket) => {
+    console.log("Client Connected")
+    // Start listening for browser position data
+    // socket.on("fetchLocation", (pos) => {
+    //   console.log(
+    //     "Start listening to the fetchLocation event in the switchboard file"
+    //   )
+  })
   // Fetch data Daily at 07:00
   // cron.schedule("0 7 * * *", () => {
   // cron.schedule("*/15 * * * *", () => {
@@ -51,8 +51,7 @@ export const runSwitchboard = (io) => {
   cron.schedule("*/1 * * * *", () => {
     getAndSaveDarkSkiesData().then((result) => {
       // emitDarkSkiesData(socket, result).then(() => {
-      // console.log("Fetched temperature value")
-      // })
+      //     // })
     })
   })
   // socket.off("fetchLocation", () => {
