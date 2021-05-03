@@ -102,7 +102,6 @@ export const saveDarkSkiesData = (temperatureReading) => {
       const sql_insert =
         "INSERT INTO Temperatures (databaseVersion, timeOfMeasurement, locationName, locationTemperature, locationLng, locationLat) VALUES ($1, $2, $3, $4, $5, $6 )"
       db.run(sql_insert, temperatureReading, function (err) {
-        // err is null if insertion was successful
         if (err) {
           return console.error(err.message)
         }
@@ -112,7 +111,9 @@ export const saveDarkSkiesData = (temperatureReading) => {
       // Close the Database Connection
       closeSqlDbConnection(db)
     } catch (err) {
-      console.log("Error in saveDarkSkiesData: ", err)
+      console.error("Error in saveDarkSkiesData: ", err)
     }
+  } else {
+    console.error("Cannot connect to database")
   }
 }
