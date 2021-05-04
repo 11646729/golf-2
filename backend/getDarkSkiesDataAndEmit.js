@@ -35,7 +35,8 @@ export const getAndSaveDarkSkiesData = async () => {
     saveDarkSkiesData(temperatureReading)
 
     // TODO - change data to temperatureReading
-    return data
+    return temperatureReading
+    // return data
   } catch (err) {
     console.log("Error in getAndSaveDarkSkiesData: ", err)
   }
@@ -47,28 +48,29 @@ export const getAndSaveDarkSkiesData = async () => {
 // -------------------------------------------------------
 export const emitDarkSkiesData = async (socket, darkSkiesData) => {
   try {
-    // Database version
-    const database_version = process.env.DATABASE_VERSION
+    //   // Database version
+    //   const database_version = process.env.DATABASE_VERSION
 
-    const location_name = "Home"
+    //   const location_name = "Home"
 
-    // Home Coordinates in GeoJSON
-    const location_coords = new CoordsSchema({
-      lat: process.env.HOME_LATITUDE,
-      lng: process.env.HOME_LONGITUDE,
-    })
+    //   // Home Coordinates in GeoJSON
+    //   const location_coords = new CoordsSchema({
+    //     lat: process.env.HOME_LATITUDE,
+    //     lng: process.env.HOME_LONGITUDE,
+    //   })
 
-    // // Now create a model instance
-    const temperature = new TemperatureSchema({
-      databaseVersion: database_version,
-      timeOfMeasurement: darkSkiesData.data.currently.time,
-      locationName: location_name,
-      locationCoordinates: location_coords,
-      locationTemperature: darkSkiesData.data.currently.temperature,
-    })
+    //   // // Now create a model instance
+    //   const temperature = new TemperatureSchema({
+    //     databaseVersion: database_version,
+    //     timeOfMeasurement: darkSkiesData.data.currently.time,
+    //     locationName: location_name,
+    //     locationCoordinates: location_coords,
+    //     locationTemperature: darkSkiesData.data.currently.temperature,
+    //   })
 
     await socket.emit("DataFromDarkSkiesAPI", {
-      temperature,
+      // temperature,
+      darkSkiesData,
     })
   } catch (err) {
     console.log("Error in emitDarkSkiesData: ", err)
