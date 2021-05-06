@@ -21,7 +21,7 @@ import {
 } from "recharts"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
-import getTemperaturesData from "./Utilities"
+import getData from "./Utilities"
 
 const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
@@ -46,7 +46,7 @@ export default function TemperaturesChart() {
   useEffect(() => {
     let isSubscribed = true
 
-    getTemperaturesData("http://localhost:5000/api/weather/temperatureReadings")
+    getData("http://localhost:5000/api/weather/temperatureReadings")
       .then((returnedData) =>
         isSubscribed ? setTemperatureData(returnedData) : null
       )

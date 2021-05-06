@@ -1,18 +1,17 @@
 import axios from "axios"
 
-export const getTemperaturesData = async (url) => {
-  const resultData = await getData(url, {})
-  return resultData.data
+const fetchData = async (url, {}) => {
+  return await axios(url, {})
 }
 
-export const getGolfCoursesData = async (url) => {
-  const resultData = await getData(url, {})
+export const getData = async (url) => {
+  const resultData = await fetchData(url, {})
   return resultData.data
 }
 
 // Function to fetch Unique Gtfs Route data
 export const getRoutesData = async (url) => {
-  const resultData = await getData(url, {})
+  const resultData = await fetchData(url, {})
 
   // Filter out Duplicate Routes here
   // let sortedDisplayArray = removeDuplicates(resultData.data, "routeNumber")
@@ -27,13 +26,13 @@ export const getRoutesData = async (url) => {
 
 // Function to fetch Unique Gtfs Stops data
 export const getStopsData = async (url) => {
-  const resultData = await getData(url, {})
+  const resultData = await fetchData(url, {})
   // return removeDuplicates(resultData.data, "coordsString")
 }
 
 // Function to fetch Unique Shapes data
 export const getShapesData = async (url) => {
-  const resultData = await getData(url, {})
+  const resultData = await fetchData(url, {})
   return resultData.data
   // removeDuplicates(result.data, "routeNumber")
 }
@@ -73,8 +72,4 @@ export const getAgencyNames = (originalArray) => {
   ]
 }
 
-const getData = async (url, {}) => {
-  return await axios(url, {})
-}
-
-export { getGolfCoursesData as default }
+export { getData as default }
