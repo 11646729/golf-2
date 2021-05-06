@@ -50,7 +50,7 @@ export const runSwitchboard = (io) => {
   // Fetch data every 1 minutes
   // cron.schedule("*/1 * * * *", () => {
   //   getAndSaveDarkSkiesData().then((result) => {
-  //     // emitDarkSkiesData(socket, result).then(() => {})
+  //     emitDarkSkiesData(socket, result).then(() => {})
   //   })
   // })
   // socket.off("fetchLocation", () => {

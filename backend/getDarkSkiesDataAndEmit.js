@@ -1,6 +1,4 @@
 import axios from "axios"
-import { TemperatureSchema } from "./models/weatherModels/v1/temperatureSchema"
-import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
 import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities"
 
 // -------------------------------------------------------
@@ -39,41 +37,6 @@ export const getAndSaveDarkSkiesData = async () => {
     // return data
   } catch (err) {
     console.log("Error in getAndSaveDarkSkiesData: ", err)
-  }
-}
-
-// -------------------------------------------------------
-// Socket Emit weather data to be consumed by the client
-// Path:
-// -------------------------------------------------------
-export const emitDarkSkiesData = async (socket, darkSkiesData) => {
-  try {
-    //   // Database version
-    //   const database_version = process.env.DATABASE_VERSION
-
-    //   const location_name = "Home"
-
-    //   // Home Coordinates in GeoJSON
-    //   const location_coords = new CoordsSchema({
-    //     lat: process.env.HOME_LATITUDE,
-    //     lng: process.env.HOME_LONGITUDE,
-    //   })
-
-    //   // // Now create a model instance
-    //   const temperature = new TemperatureSchema({
-    //     databaseVersion: database_version,
-    //     timeOfMeasurement: darkSkiesData.data.currently.time,
-    //     locationName: location_name,
-    //     locationCoordinates: location_coords,
-    //     locationTemperature: darkSkiesData.data.currently.temperature,
-    //   })
-
-    await socket.emit("DataFromDarkSkiesAPI", {
-      // temperature,
-      darkSkiesData,
-    })
-  } catch (err) {
-    console.log("Error in emitDarkSkiesData: ", err)
   }
 }
 
@@ -117,5 +80,21 @@ export const saveDarkSkiesData = (temperatureReading) => {
     }
   } else {
     console.error("Cannot connect to database")
+  }
+}
+
+// -------------------------------------------------------
+// Socket Emit weather data to be consumed by the client
+// Path:
+// -------------------------------------------------------
+export const emitDarkSkiesData = async (socket, darkSkiesData) => {
+  // Guard clauses
+  if (socket == null) return
+  if (darkSkiesData == null) return
+
+  try {
+    await socket.emit("DataFromDarkSkiesAPI", darkSkiesData)
+  } catch (err) {
+    console.log("Error in emitDarkSkiesData: ", err)
   }
 }

@@ -32,17 +32,6 @@ export default function TemperaturesChart() {
   const [temperatureData, setTemperatureData] = useState([])
   const [loadingError, setLoadingError] = useState("")
 
-  // const fetchRTTemperatureData = (temperatures) => {
-  //   socket.on("DataFromDarkSkiesAPI", (currentData) => {
-  //     // Need to cancel the Promise here to stop errors
-  //     setTemperatureValues((temps) => [...temps, currentData.temperature])
-  //   })
-  //   // Only display data for the last 20 values
-  //   // temperatureValues.splice(0, temperatureValues.length - 20)
-  // }
-
-  // This line initialises the data array
-  // NB Reset useEffect() with a closure to fix error
   useEffect(() => {
     let isSubscribed = true
 
@@ -55,7 +44,18 @@ export default function TemperaturesChart() {
     return () => (isSubscribed = false)
   }, [])
 
-  // // Listen for realtime temperature data and update the state
+  temperatureData.splice(0, temperatureData.length - 20)
+
+  // const fetchRTTemperatureData = (temperatures) => {
+  //   socket.on("DataFromDarkSkiesAPI", (currentData) => {
+  //     // Need to cancel the Promise here to stop errors
+  //     setTemperatureData((temps) => [...temps, currentData.temperature])
+  //   })
+  //   // Only display data for the last 20 values
+  //   // temperatureValues.splice(0, temperatureValues.length - 20)
+  // }
+
+  // Listen for realtime temperature data and update the state
   // if (temperatureData.length > 0) {
   //   fetchRTTemperatureData(temperatureData)
   // }
