@@ -19,7 +19,7 @@ import {
 
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
-import { getGolfCoursesData } from "./Utilities"
+import getGolfCoursesData from "./Utilities"
 
 // -------------------------------------------------------
 // React Controller component
@@ -39,8 +39,6 @@ function GolfCoursesMap() {
 
     return () => (isSubscribed = false)
   }, [])
-
-  console.log(golfCoursesData)
 
   return (
     <GolfCoursesMapView

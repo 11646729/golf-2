@@ -16,22 +16,29 @@ export const index = async (req, res) => {
 // Get all Golf Courses
 // Path: localhost:5000/api/golf/courses
 // -------------------------------------------------------
-export const getAllCourses = async (req, res) => {
-  try {
-    let db = null
+export const getAllCourses = (req, res) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
 
-    db = await openSqlDbConnection(process.env.SQL_URI)
+  if (db !== null) {
+    try {
+      let sql = "SELECT * FROM GolfCourses ORDER BY courseId"
+      db.all(sql, [], (err, results) => {
+        if (err) {
+          return console.error(err.message)
+        }
+        // console.log("Record Count Before: ", results.count)
+        res.send(results)
+      })
 
-    if (db !== null) {
-      const sql = "SELECT * FROM GolfCourses ORDER BY courseId"
-      const result = await db.all(sql)
-
+      // Close the Database Connection
       closeSqlDbConnection(db)
-
-      res.send(result)
+    } catch (e) {
+      console.error(e.message)
     }
-  } catch (e) {
-    console.error(e.message)
+  } else {
+    console.error("Cannot connect to database")
   }
 }
 

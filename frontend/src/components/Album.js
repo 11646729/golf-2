@@ -9,7 +9,7 @@ import {
   makeStyles,
 } from "@material-ui/core"
 
-import WeatherCard from "./WeatherCard"
+import TemperaturesCard from "./TemperaturesCard"
 import GolfCoursesCard from "./GolfCoursesCard"
 import CrimesCard from "./CrimesCard"
 import CruiseTableCard from "./CruiseTableCard"
@@ -118,7 +118,7 @@ export default function Album() {
           {/* End hero unit */}
           <Grid container>
             <Grid item sm={4} style={{ padding: 20 }}>
-              <WeatherCard />
+              <TemperaturesCard />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <GolfCoursesCard />

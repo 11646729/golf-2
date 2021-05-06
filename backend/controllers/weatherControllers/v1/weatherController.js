@@ -16,26 +16,36 @@ export function index(req, res) {
 // Get all Temperature Readings
 // Path: localhost:5000/api/weather/temperatures
 // -------------------------------------------------------
-export const getAllTemperatureReadings = async (req, res) => {
-  try {
-    let db = null
+export const getAllTemperatureReadings = (req, res) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
 
-    db = await openSqlDbConnection(process.env.SQL_URI)
+  if (db !== null) {
+    try {
+      let sql = "SELECT * FROM Temperatures ORDER BY temperatureId"
+      db.all(sql, [], (err, results) => {
+        if (err) {
+          return console.error(err.message)
+        }
+        // console.log("Record Count Before: ", results.count)
+        res.send(results)
+      })
 
-    if (db !== null) {
-      const sql = "SELECT * FROM Temperatures ORDER BY temperatureId"
-      const result = await db.all(sql)
-
+      // Close the Database Connection
       closeSqlDbConnection(db)
-
-      res.send(result)
+    } catch (e) {
+      console.error(e.message)
     }
-  } catch (e) {
-    console.error(e.message)
+  } else {
+    console.error("Cannot connect to database")
   }
 }
 
+// -------------------------------------------------------
+// Get a Temperature Readings
 // Path localhost:5000/api/weather/temperatures/:id
+// -------------------------------------------------------
 // export function findOne(req, res) {
 //   const id = req.params.id
 

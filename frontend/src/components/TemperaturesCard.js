@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function WeatherCard() {
+export default function TemperaturesCard() {
   const classes = useStyles()
 
   return (
@@ -49,7 +49,7 @@ export default function WeatherCard() {
           size="small"
           color="primary"
           component={Link}
-          to="/weatherchart"
+          to="/temperatureschart"
         >
           View
         </Button>

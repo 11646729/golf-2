@@ -8,7 +8,6 @@ import {
   CssBaseline,
   Container,
   Button,
-  makeStyles,
 } from "@material-ui/core"
 import {
   CartesianGrid,
@@ -22,93 +21,95 @@ import {
 } from "recharts"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
-import get20WeatherDataPoints from "./Utilities"
+import getTemperaturesData from "./Utilities"
 
 const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
-const useStyles = makeStyles({
-  paper: {
-    height: 600,
-    margingTop: 50,
-    marginLeft: 40,
-    marginRight: 40,
-    marginBottom: 100,
-  },
-})
-
-export default function WeatherChart() {
-  const classes = useStyles()
-
+export default function TemperaturesChart() {
   // -----------------------------------------------------
   // DATA HOOKS SECTION
   // -----------------------------------------------------
-  const [temperatureValues, setTemperatureValues] = useState([])
-  const [errorLoading, setLoadingError] = useState([])
+  const [temperatureData, setTemperatureData] = useState([])
+  const [loadingError, setLoadingError] = useState("")
 
-  const fetchRTTemperatureData = (temperatures) => {
-    socket.on("DataFromDarkSkiesAPI", (currentData) => {
-      // Need to cancel the Promise here to stop errors
-      setTemperatureValues((temps) => [...temps, currentData.temperature])
-    })
-    // Only display data for the last 20 values
-    temperatureValues.splice(0, temperatureValues.length - 20)
-  }
+  // const fetchRTTemperatureData = (temperatures) => {
+  //   socket.on("DataFromDarkSkiesAPI", (currentData) => {
+  //     // Need to cancel the Promise here to stop errors
+  //     setTemperatureValues((temps) => [...temps, currentData.temperature])
+  //   })
+  //   // Only display data for the last 20 values
+  //   // temperatureValues.splice(0, temperatureValues.length - 20)
+  // }
 
   // This line initialises the data array
   // NB Reset useEffect() with a closure to fix error
   useEffect(() => {
     let isSubscribed = true
 
-    get20WeatherDataPoints("http://localhost:5000/api/golf/nearbyGolfCourses")
-      .then((temps) => (isSubscribed ? setTemperatureValues(temps) : null))
-      .catch((error) => (isSubscribed ? setLoadingError(error) : null))
+    getTemperaturesData("http://localhost:5000/api/weather/temperatureReadings")
+      .then((returnedData) =>
+        isSubscribed ? setTemperatureData(returnedData) : null
+      )
+      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     return () => (isSubscribed = false)
   }, [])
 
-  // Listen for realtime weather data and update the state
-  if (temperatureValues.length > 0) {
-    fetchRTTemperatureData(temperatureValues)
-  }
+  // // Listen for realtime temperature data and update the state
+  // if (temperatureData.length > 0) {
+  //   fetchRTTemperatureData(temperatureData)
+  // }
 
-  // -----------------------------------------------------
-  // EVENT HANDLERS SECTION
-  // -----------------------------------------------------
+  // const clearDataArray = () => {
+  //   // Error here
+  //   setTemperatureData(() => [])
+  // }
+
+  return (
+    <TemperaturesChartView
+      temperatureData={temperatureData}
+      loadingError={loadingError}
+    />
+  )
+}
+
+// -------------------------------------------------------
+// React View component
+// -------------------------------------------------------
+function TemperaturesChartView(props) {
   const theme = useTheme()
-
-  const clearDataArray = () => {
-    // Error here
-    setTemperatureValues(() => [])
-  }
-
   const formatXAxis = (tickItem) => moment.unix(tickItem).format("HH:mm MMM Do")
-
   const formatYAxis = (tickItem) => +tickItem.toFixed(2)
 
-  // -----------------------------------------------------
-  // VIEW SECTION
-  // -----------------------------------------------------
   return (
     <div>
-      <Paper className={classes.paper}>
+      <Paper
+        style={{
+          height: 600,
+          margingTop: 50,
+          marginLeft: 40,
+          marginRight: 40,
+          marginBottom: 100,
+        }}
+      >
         <CssBaseline />
         <Grid container>
           <Container maxWidth="xl">
             <Grid item xs={12} sm={12} style={{ marginTop: 50, width: "100%" }}>
-              {temperatureValues.length < 1 ? (
+              {props.temperatureData.length < 1 ? (
                 <Title>Home Temperature is loading...</Title>
               ) : (
                 <Title>
                   Home Temperature is: &nbsp;
-                  {Object.values(temperatureValues[0])[4]} °F
+                  {Object.values(props.temperatureData[0])[4]} °F
                 </Title>
               )}
-              {!errorLoading ? (
+              {props.loadingError ? (
                 <LoadingTitle>Error Loading...</LoadingTitle>
               ) : null}
-              <Button size="small" color="primary" onClick={clearDataArray}>
+              {/* <Button size="small" color="primary" onClick={clearDataArray}>
                 Clear
-              </Button>
+              </Button> */}
             </Grid>
             <Grid
               item
@@ -117,7 +118,7 @@ export default function WeatherChart() {
               style={{ marginTop: 20, width: "100%", height: 400 }}
             >
               <ResponsiveContainer>
-                <LineChart data={temperatureValues}>
+                <LineChart data={props.temperatureData}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis
                     stroke={theme.palette.text.secondary}

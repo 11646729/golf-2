@@ -1,58 +1,40 @@
 import axios from "axios"
 
-export async function get20WeatherDataPoints(url) {
-  const result = await axios(url)
-
-  // Only display data for the last 20 values
-  return result.data.splice(0, result.data.length - 20)
+export const getTemperaturesData = async (url) => {
+  const resultData = await getData(url, {})
+  return resultData.data
 }
 
-export async function getGolfCoursesData(url) {
-  const result = await axios(url, {
-    // params: {
-    //   agencyId: "MET",
-    // },
-  })
-  return result.data
+export const getGolfCoursesData = async (url) => {
+  const resultData = await getData(url, {})
+  return resultData.data
 }
 
 // Function to fetch Unique Gtfs Route data
 export async function getRoutesData(url) {
-  const result = await axios(url, {
-    // params: {
-    //   agencyId: "MET",
-    // },
-  })
+  const resultData = await getData(url, {})
 
   // Filter out Duplicate Routes here
-  let sortedDisplayArray = removeDuplicates(result.data, "routeNumber")
+  // let sortedDisplayArray = removeDuplicates(resultData.data, "routeNumber")
 
   // Sort Routes code here
   let res = []
-  sortedDisplayArray.sort((a, b) => (a.routeNumber > b.routeNumber ? 1 : -1))
-  res[0] = sortedDisplayArray
+  // sortedDisplayArray.sort((a, b) => (a.routeNumber > b.routeNumber ? 1 : -1))
+  // res[0] = sortedDisplayArray
 
   return res
 }
 
 // Function to fetch Unique Gtfs Stops data
 export async function getStopsData(url) {
-  const result = await axios(url, {
-    // params: {
-    //   agencyId: "HSR",
-    // },
-  })
-  return removeDuplicates(result.data, "coordsString")
+  const resultData = await getData(url, {})
+  // return removeDuplicates(resultData.data, "coordsString")
 }
 
 // Function to fetch Unique Shapes data
 export async function getShapesData(url) {
-  const result = await axios(url, {
-    // params: {
-    //   agencyId: "MET",
-    // },
-  })
-  return result.data
+  const resultData = await getData(url, {})
+  return resultData.data
   // removeDuplicates(result.data, "routeNumber")
 }
 
@@ -71,9 +53,9 @@ export function getDisplayData(originalArray) {
 }
 
 // Function to remove duplicates from array
-const removeDuplicates = (originalArray, prop) => {
-  return [...new Map(originalArray.map((item) => [item[prop], item])).values()]
-}
+// const removeDuplicates = (originalArray, prop) => {
+//   return [...new Map(originalArray.map((item) => [item[prop], item])).values()]
+// }
 
 // Function to fetch Bus Agencies
 export function getAgencyNames(originalArray) {
@@ -91,4 +73,8 @@ export function getAgencyNames(originalArray) {
   ]
 }
 
-export { removeDuplicates as default }
+const getData = async (url, {}) => {
+  return await axios(url, {})
+}
+
+export { getGolfCoursesData as default }
