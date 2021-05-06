@@ -11,7 +11,7 @@ export const getGolfCoursesData = async (url) => {
 }
 
 // Function to fetch Unique Gtfs Route data
-export async function getRoutesData(url) {
+export const getRoutesData = async (url) => {
   const resultData = await getData(url, {})
 
   // Filter out Duplicate Routes here
@@ -26,20 +26,20 @@ export async function getRoutesData(url) {
 }
 
 // Function to fetch Unique Gtfs Stops data
-export async function getStopsData(url) {
+export const getStopsData = async (url) => {
   const resultData = await getData(url, {})
   // return removeDuplicates(resultData.data, "coordsString")
 }
 
 // Function to fetch Unique Shapes data
-export async function getShapesData(url) {
+export const getShapesData = async (url) => {
   const resultData = await getData(url, {})
   return resultData.data
   // removeDuplicates(result.data, "routeNumber")
 }
 
 // Function to remove Gtfs data fields routeVisible === false
-export function getDisplayData(originalArray) {
+export const getDisplayData = (originalArray) => {
   let displayArray = []
   let index = 0
   do {
@@ -58,7 +58,7 @@ export function getDisplayData(originalArray) {
 // }
 
 // Function to fetch Bus Agencies
-export function getAgencyNames(originalArray) {
+export const getAgencyNames = (originalArray) => {
   let namesArray = []
   let index = 0
   do {
