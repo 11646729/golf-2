@@ -42,26 +42,6 @@ export const getAllTemperatureReadings = (req, res) => {
 }
 
 // -------------------------------------------------------
-// Get a Temperature Readings
-// Path localhost:5000/api/weather/temperatures/:id
-// -------------------------------------------------------
-// export function findOne(req, res) {
-//   const id = req.params.id
-
-//   TemperatureSchema.findById(id)
-//     .then((data) => {
-//       if (!data)
-//         res.status(404).send({ message: "Not found temperature with id " + id })
-//       else res.send(data)
-//     })
-//     .catch((err) => {
-//       res.status(500).send({
-//         message: err.message || "Error retrieving temperature with id= " + id,
-//       })
-//     })
-// }
-
-// -------------------------------------------------------
 // Delete all Temperature Readings from SQLite database
 // Path:
 // -------------------------------------------------------

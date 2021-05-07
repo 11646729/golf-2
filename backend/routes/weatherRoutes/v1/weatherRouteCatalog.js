@@ -2,13 +2,19 @@ import express from "express"
 var router = express.Router()
 
 // Require weather controller module
-const weather_controller = require("../../../controllers/weatherControllers/v1/weatherController")
+const weatherController = require("../../../controllers/weatherControllers/v1/weatherController")
 
 /// Weather Routes ///
 // GET catalogue home page
-router.get("/", weather_controller.index)
+router.get("/", weatherController.index)
 
 // GET all temperature readings from the database
-router.get("/temperatureReadings", weather_controller.getAllTemperatureReadings)
+router.get("/temperatureReadings", weatherController.getAllTemperatureReadings)
+
+// DELETE all temperature readings from the database
+router.delete(
+  "/temperatureReadings",
+  weatherController.deleteAllTemperatureReadings
+)
 
 module.exports = router

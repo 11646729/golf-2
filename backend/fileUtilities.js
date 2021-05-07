@@ -94,15 +94,9 @@ export function prepReadGtfsFile(firstFile, iterationSize, arraylength) {
 // -------------------------------------------------------
 // Function to open the SQLite database file connection
 // -------------------------------------------------------
-export const openSqlDbConnection = (filename) => {
-  // let db = null
-
-  // db = open({
-  //   filename,
-  //   driver: sqlite3.Database,
-  // })
-
-  let db = new sqlite3.Database(process.env.SQL_URI)
+export const openSqlDbConnection = () => {
+  let db = null
+  db = new sqlite3.Database(process.env.SQL_URI)
 
   if (db !== null) {
     console.log("Connected to the SQLite database")

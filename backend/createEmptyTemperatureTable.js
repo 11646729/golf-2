@@ -7,8 +7,7 @@ import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities"
 export const createEmptyTemperatureTable = async () => {
   try {
     let db = null
-
-    db = await openSqlDbConnection(process.env.SQL_URI)
+    db = openSqlDbConnection(process.env.SQL_URI)
 
     if (db !== null) {
       // Firstly create an empty Table in the database - IF NEEDED
