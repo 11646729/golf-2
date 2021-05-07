@@ -1,5 +1,5 @@
 import cron from "node-cron"
-import { directDeleteAll as deleteAllTemperatures } from "./controllers/weatherControllers/v1/weatherController"
+import { deleteAllTemperatureReadings } from "./controllers/weatherControllers/v1/weatherController"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
@@ -37,7 +37,7 @@ export const runSwitchboard = (io) => {
   // -----------------------------
   // importGtfsToSQLite()
   // -----------------------------
-  // deleteAllTemperatures()
+  deleteAllTemperatureReadings()
   // deleteAllRoutes()
   // deleteAllStops()
   // -----------------------------

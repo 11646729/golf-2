@@ -1,4 +1,3 @@
-import { TemperatureSchema } from "../../../models/weatherModels/v1/temperatureSchema"
 import {
   openSqlDbConnection,
   closeSqlDbConnection,
@@ -62,20 +61,31 @@ export const getAllTemperatureReadings = (req, res) => {
 //     })
 // }
 
-// Direct call to delete all weather data in the database
-export const directDeleteAll = async (req, res) => {
-  await TemperatureSchema.deleteMany({})
-    .then((data) => {
-      res.send({
-        message:
-          "${data.deletedCount} temperature readings were deleted successfully!",
+// -------------------------------------------------------
+// Delete all Temperature Readings from SQLite database
+// Path:
+// -------------------------------------------------------
+export const deleteAllTemperatureReadings = (req, res) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
+
+  if (db !== null) {
+    try {
+      const sql_insert = "DELETE FROM Temperatures"
+      db.all(sql_insert, function (err) {
+        if (err) {
+          return console.error(err.message)
+        }
+        console.warn("All Temperature Readings deleted")
       })
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message ||
-          "Some error occurred while removing all temperature readings",
-      })
-    })
+
+      // Close the Database Connection
+      closeSqlDbConnection(db)
+    } catch (err) {
+      console.error("Error in deleteAllTemperatureReadings: ", err)
+    }
+  } else {
+    console.error("Cannot connect to database")
+  }
 }

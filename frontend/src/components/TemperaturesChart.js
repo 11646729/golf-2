@@ -44,6 +44,7 @@ export default function TemperaturesChart() {
     return () => (isSubscribed = false)
   }, [])
 
+  // Now delete all except the last 20 readings
   temperatureData.splice(0, temperatureData.length - 20)
 
   // const fetchRTTemperatureData = (temperatures) => {
