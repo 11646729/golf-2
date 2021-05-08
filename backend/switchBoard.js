@@ -1,5 +1,8 @@
 import cron from "node-cron"
-import { deleteAllTemperatureReadings } from "./controllers/weatherControllers/v1/weatherController"
+import {
+  createEmptyTemperatureTable,
+  deleteAllTemperatureReadings,
+} from "./controllers/weatherControllers/v1/weatherController"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
@@ -13,7 +16,6 @@ import { deleteAllStops } from "./deleteAllStops"
 import { createStops } from "./createStops"
 import { createGtfsStops } from "./createGtfsStops"
 import { createFilledGolfCourseTable } from "./createFilledGolfCourseTable"
-import { createEmptyTemperatureTable } from "./createEmptyTemperatureTable"
 
 export const runSwitchboard = (io) => {
   // Using socket.io for realtime
@@ -37,7 +39,7 @@ export const runSwitchboard = (io) => {
   // -----------------------------
   // importGtfsToSQLite()
   // -----------------------------
-  deleteAllTemperatureReadings()
+  // deleteAllTemperatureReadings()
   // deleteAllRoutes()
   // deleteAllStops()
   // -----------------------------

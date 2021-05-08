@@ -1,5 +1,5 @@
 import axios from "axios"
-import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities"
+import { saveTemperatureReadings } from "./controllers/weatherControllers/v1/weatherController"
 
 // -------------------------------------------------------
 // Fetch weather data from the Dark Skies website
@@ -29,57 +29,12 @@ export const getAndSaveDarkSkiesData = async () => {
       process.env.HOME_LONGITUDE,
     ]
 
-    // call local save data function
-    saveDarkSkiesData(temperatureReading)
+    // Save data in the Database
+    saveTemperatureReadings(temperatureReading)
 
-    // TODO - change data to temperatureReading
     return temperatureReading
-    // return data
   } catch (err) {
     console.log("Error in getAndSaveDarkSkiesData: ", err)
-  }
-}
-
-// -------------------------------------------------------
-// Save Temperature Reading to SQLite database
-// Path:
-// -------------------------------------------------------
-export const saveDarkSkiesData = (temperatureReading) => {
-  // Guard clause for null temperatureReading
-  if (temperatureReading == null) return
-
-  // Open a Database Connection
-  let db = null
-  db = openSqlDbConnection(process.env.SQL_URI)
-
-  if (db !== null) {
-    try {
-      // Count the records in the database
-      let sql = "SELECT COUNT(temperatureId) AS count FROM Temperatures"
-      db.get(sql, [], (err, results) => {
-        if (err) {
-          return console.error(err.message)
-        }
-        console.log("Record Count Before: ", results.count)
-      })
-
-      // Insert the new temperatureReading object
-      const sql_insert =
-        "INSERT INTO Temperatures (databaseVersion, timeOfMeasurement, locationName, locationTemperature, locationLng, locationLat) VALUES ($1, $2, $3, $4, $5, $6 )"
-      db.run(sql_insert, temperatureReading, function (err) {
-        if (err) {
-          return console.error(err.message)
-        }
-        console.warn("New Temperature Reading inserted id:", this.lastID)
-      })
-
-      // Close the Database Connection
-      closeSqlDbConnection(db)
-    } catch (err) {
-      console.error("Error in saveDarkSkiesData: ", err)
-    }
-  } else {
-    console.error("Cannot connect to database")
   }
 }
 

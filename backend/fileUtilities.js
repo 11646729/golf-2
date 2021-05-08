@@ -96,16 +96,23 @@ export function prepReadGtfsFile(firstFile, iterationSize, arraylength) {
 // -------------------------------------------------------
 export const openSqlDbConnection = () => {
   let db = null
-  db = new sqlite3.Database(process.env.SQL_URI)
-
-  if (db !== null) {
-    console.log("Connected to the SQLite database")
-    return db
+  if (process.env.NODE_ENV === "production") {
+    // PostgreSQL in production
+    // TODO
+    //
   } else {
-    console.log("UNSUCCESSFUL connection to the SQLite database")
-  }
+    // SQLite by default
+    db = new sqlite3.Database(process.env.SQL_URI)
 
-  return db
+    if (db !== null) {
+      console.log("Connected to the SQLite database")
+      return db
+    } else {
+      console.log("UNSUCCESSFUL connection to the SQLite database")
+    }
+
+    return db
+  }
 }
 
 // -------------------------------------------------------
