@@ -1,9 +1,9 @@
 import axios from "axios"
 import cheerio from "cheerio"
-import { PortArrivalSchema } from "./models/cruiseModels/v1/portArrivalSchema"
-import { VesselSchema } from "./models/cruiseModels/v1/vesselSchema"
 import { getAndSavePortArrivals } from "./scrapeArrivals"
 import { getSingleVesselDetails } from "./scrapeVessels"
+import { deleteAllPortArrivals } from "./controllers/cruiseControllers/v1/portArrivalsController"
+import { deleteAllVessels } from "./controllers/cruiseControllers/v1/vesselController"
 
 // -------------------------------------------------------
 // Fetch Port Arrivals & Vessel Details
@@ -11,21 +11,9 @@ import { getSingleVesselDetails } from "./scrapeVessels"
 // -------------------------------------------------------
 export const fetchPortArrivalsAndVessels = async (req, res) => {
   // Firstly delete all existing Port Arrivals & Vessel Details from the database
-  await PortArrivalSchema.deleteMany({})
-    .then((res) => {
-      console.log("No of old Port Arrivals deleted: ", res.deletedCount)
-    })
-    .catch((err) => {
-      console.log(err.message)
-    })
+  deleteAllPortArrivals()
 
-  await VesselSchema.deleteMany({})
-    .then((res) => {
-      console.log("No of old Vessels deleted: ", res.deletedCount)
-    })
-    .catch((err) => {
-      console.log(err.message)
-    })
+  deleteAllVessels()
 
   // Secondly get the Port Name & Associated values
   // const port = "Belfast".toUpperCase()

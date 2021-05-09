@@ -114,3 +114,47 @@ export function putVessel(req, res) {
       })
     })
 }
+
+// -------------------------------------------------------
+// Delete all Vessels from SQLite database
+// Path:
+// -------------------------------------------------------
+export const deleteAllVessels = () => {
+  // Firstly delete all existing Vessels from the database
+  VesselSchema.deleteMany({})
+    .then((res) => {
+      console.log("No of old Vessels deleted: ", res.deletedCount)
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+}
+
+// -------------------------------------------------------
+// Delete all Vessels from SQLite database
+// Path:
+// -------------------------------------------------------
+export const SQLdeleteAllVessels = () => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
+
+  if (db !== null) {
+    try {
+      const sql_insert = "DELETE FROM vessels"
+      db.all(sql_insert, [], (err, results) => {
+        if (err) {
+          return console.error(err.message)
+        }
+        console.warn("All Vessels deleted")
+      })
+
+      // Close the Database Connection
+      closeSqlDbConnection(db)
+    } catch (err) {
+      console.error("Error in deleteAllVessels: ", err)
+    }
+  } else {
+    console.error("Cannot connect to database")
+  }
+}

@@ -120,3 +120,47 @@ export function putPortArrival(req, res) {
       })
     })
 }
+
+// -------------------------------------------------------
+// Delete all Port Arrivals from SQLite database
+// Path:
+// -------------------------------------------------------
+export const deleteAllPortArrivals = () => {
+  // Firstly delete all existing Port Arrivals from the database
+  PortArrivalSchema.deleteMany({})
+    .then((res) => {
+      console.log("No of old Port Arrivals deleted: ", res.deletedCount)
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+}
+
+// -------------------------------------------------------
+// Delete all Port Arrivals from SQLite database
+// Path:
+// -------------------------------------------------------
+export const SQLdeleteAllPortArrivals = () => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
+
+  if (db !== null) {
+    try {
+      const sql_insert = "DELETE FROM portarrivals"
+      db.all(sql_insert, [], (err, results) => {
+        if (err) {
+          return console.error(err.message)
+        }
+        console.warn("All PortArrivals deleted")
+      })
+
+      // Close the Database Connection
+      closeSqlDbConnection(db)
+    } catch (err) {
+      console.error("Error in deleteAllPortArrivals: ", err)
+    }
+  } else {
+    console.error("Cannot connect to database")
+  }
+}
