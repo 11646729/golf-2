@@ -73,10 +73,10 @@ function GolfCoursesMapView(props) {
   // Now compute bounds of map to display
   if (map != null && props.golfCoursesData.length !== 0) {
     const bounds = new window.google.maps.LatLngBounds()
-    props.golfCoursesData.map((golfCourse) => {
+    props.golfCoursesData.map((golfcourse) => {
       const myLatLng = new window.google.maps.LatLng({
-        lat: golfCourse.courseLat,
-        lng: golfCourse.courseLng,
+        lat: golfcourse.courselat,
+        lng: golfcourse.courselng,
       })
       bounds.extend(myLatLng)
       return bounds
@@ -145,16 +145,16 @@ function GolfCoursesMapView(props) {
             onUnmount={onUnmountHandler}
           >
             {props.golfCoursesData
-              ? props.golfCoursesData.map((golfCourse) => (
+              ? props.golfCoursesData.map((golfcourse) => (
                   <Marker
-                    key={golfCourse.name}
+                    key={golfcourse.name}
                     position={{
-                      lat: golfCourse.courseLat,
-                      lng: golfCourse.courseLng,
+                      lat: golfcourse.courselat,
+                      lng: golfcourse.courselng,
                     }}
                     icon={iconPin}
                     onClick={() => {
-                      setSelected(golfCourse)
+                      setSelected(golfcourse)
                     }}
                   />
                 ))
@@ -163,8 +163,8 @@ function GolfCoursesMapView(props) {
             {selected ? (
               <InfoWindow
                 position={{
-                  lat: selected.courseLat,
-                  lng: selected.courseLng,
+                  lat: selected.courselat,
+                  lng: selected.courselng,
                 }}
                 onCloseClick={() => {
                   setSelected(null)
@@ -177,8 +177,8 @@ function GolfCoursesMapView(props) {
                       paddingTop: "40%",
                       marginTop: "30",
                     }}
-                    image={selected.photoUrl}
-                    title={selected.photoTitle}
+                    image={selected.photourl}
+                    title={selected.phototitle}
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">

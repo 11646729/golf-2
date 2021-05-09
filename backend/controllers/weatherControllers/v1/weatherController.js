@@ -24,7 +24,7 @@ export const createEmptyTemperatureTable = async () => {
     try {
       const sql =
         "CREATE TABLE IF NOT EXISTS temperatures (temperatureid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, timeofmeasurement VARCHAR(100) NOT NULL, locationname VARCHAR(100) NOT NULL, locationtemperature REAL, locationlng REAL CHECK( locationlng >= -180 AND locationlng <= 180 ), locationlat REAL CHECK( locationlat >= -90 AND locationlat <= 90 ))"
-      db.all(sql, [], (err, results) => {
+      db.all(sql, [], (err) => {
         if (err) {
           return console.error(err.message)
         }

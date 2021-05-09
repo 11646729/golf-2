@@ -6,16 +6,16 @@ import { saveTemperatureReadings } from "./controllers/weatherControllers/v1/wea
 // Path:
 // -------------------------------------------------------
 export const getAndSaveDarkSkiesData = async () => {
-  try {
-    // build Dark Skies Url
-    let darkSkiesUrl =
-      process.env.DARK_SKY_URL +
-      process.env.DARK_SKY_WEATHER_API_KEY +
-      "/" +
-      process.env.HOME_LATITUDE +
-      "," +
-      process.env.HOME_LONGITUDE
+  // build Dark Skies Url
+  const darkSkiesUrl =
+    process.env.DARK_SKY_URL +
+    process.env.DARK_SKY_WEATHER_API_KEY +
+    "/" +
+    process.env.HOME_LATITUDE +
+    "," +
+    process.env.HOME_LONGITUDE
 
+  try {
     // fetch data from the url endpoint and return it
     const data = await axios.get(darkSkiesUrl)
 

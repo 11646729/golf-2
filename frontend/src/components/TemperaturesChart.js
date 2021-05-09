@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react"
 import moment from "moment"
-import socketIOClient from "socket.io-client"
+// import socketIOClient from "socket.io-client"
 import {
   useTheme,
   Paper,
   Grid,
   CssBaseline,
   Container,
-  Button,
+  // Button,
 } from "@material-ui/core"
 import {
   CartesianGrid,
@@ -23,7 +23,7 @@ import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import getData from "./Utilities"
 
-const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
+// const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
 export default function TemperaturesChart() {
   // -----------------------------------------------------
@@ -123,7 +123,7 @@ function TemperaturesChartView(props) {
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis
                     stroke={theme.palette.text.secondary}
-                    dataKey="timeOfMeasurement"
+                    dataKey="timeofmeasurement"
                     tickFormatter={formatXAxis}
                   >
                     <Label
@@ -139,7 +139,7 @@ function TemperaturesChartView(props) {
                   </XAxis>
                   <YAxis
                     stroke={theme.palette.text.secondary}
-                    dataKey="locationTemperature"
+                    dataKey="locationtemperature"
                     tickFormatter={formatYAxis}
                     type="number"
                     domain={["dataMin", "dataMax"]}
@@ -159,7 +159,7 @@ function TemperaturesChartView(props) {
                   <Tooltip labelFormatter={formatXAxis} />
                   <Line
                     type="monotone"
-                    dataKey="locationTemperature"
+                    dataKey="locationtemperature"
                     stroke={theme.palette.primary.main}
                   />
                 </LineChart>

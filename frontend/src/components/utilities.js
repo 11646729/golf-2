@@ -1,17 +1,17 @@
 import axios from "axios"
 
-const fetchData = async (url, {}) => {
-  return await axios(url, {})
+const fetchData = async (url) => {
+  return await axios(url)
 }
 
 export const getData = async (url) => {
-  const resultData = await fetchData(url, {})
+  const resultData = await fetchData(url)
   return resultData.data
 }
 
 // Function to fetch Unique Gtfs Route data
 export const getRoutesData = async (url) => {
-  const resultData = await fetchData(url, {})
+  // const resultData = await fetchData(url, {})
 
   // Filter out Duplicate Routes here
   // let sortedDisplayArray = removeDuplicates(resultData.data, "routeNumber")
@@ -26,7 +26,7 @@ export const getRoutesData = async (url) => {
 
 // Function to fetch Unique Gtfs Stops data
 export const getStopsData = async (url) => {
-  const resultData = await fetchData(url, {})
+  // const resultData = await fetchData(url, {})
   // return removeDuplicates(resultData.data, "coordsString")
 }
 
