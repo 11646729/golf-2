@@ -1,5 +1,5 @@
 import axios from "axios"
-import { saveTemperatureReadings } from "./controllers/weatherControllers/v1/weatherController"
+import { saveTemperatureReading } from "./controllers/weatherControllers/v1/weatherController"
 
 // -------------------------------------------------------
 // Fetch weather data from the Dark Skies website
@@ -30,7 +30,7 @@ export const getAndSaveDarkSkiesData = async () => {
     ]
 
     // Save data in the Database
-    saveTemperatureReadings(temperatureReading)
+    saveTemperatureReading(temperatureReading)
 
     return temperatureReading
   } catch (err) {

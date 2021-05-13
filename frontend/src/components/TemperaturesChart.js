@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import moment from "moment"
-// import socketIOClient from "socket.io-client"
+import socketIOClient from "socket.io-client"
 import {
   useTheme,
   Paper,
@@ -23,7 +23,7 @@ import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import getData from "./Utilities"
 
-// const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
+const socket = socketIOClient(process.env.REACT_APP_SOCKET_ENDPOINT)
 
 export default function TemperaturesChart() {
   // -----------------------------------------------------

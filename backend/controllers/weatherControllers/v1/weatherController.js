@@ -78,7 +78,7 @@ export const getAllTemperatureReadings = (req, res) => {
 // Save Temperature Reading to SQLite database
 // Path:
 // -------------------------------------------------------
-export const saveTemperatureReadings = (temperatureReading) => {
+export const saveTemperatureReading = (temperatureReading) => {
   // Guard clause for null temperatureReading
   if (temperatureReading == null) return
 

@@ -42,7 +42,7 @@ export const runSwitchboard = (io) => {
   // -----------------------------
   // Using socket.io for realtime
   // io.on("connection", (socket) => {
-  //   console.log("Client Connected")
+  console.log("Client Connected")
   // Start listening for browser position data
   // socket.on("fetchLocation", (pos) => {
   //   console.log(
@@ -57,10 +57,10 @@ export const runSwitchboard = (io) => {
   // Fetch data every Minute
   // cron.schedule("*/1 * * * *", () => {
   //   // -----------------------------
-  //   getAndSaveDarkSkiesData().then((result) => {
+  // getAndSaveDarkSkiesData().then((result) => {
   //     emitDarkSkiesData(socket, result)
-  //     // .then(() => {})
-  //   })
+  // .then(() => {})
+  // })
   // })
   // socket.off("fetchLocation", () => {
   //   console.log(
