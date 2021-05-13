@@ -1,4 +1,8 @@
 import { VesselSchema } from "../../../models/cruiseModels/v1/vesselSchema"
+import {
+  openSqlDbConnection,
+  closeSqlDbConnection,
+} from "../../../fileUtilities"
 
 // -------------------------------------------------------
 // Vessels
@@ -14,6 +18,38 @@ export function getVessels(req, res) {
         message: err.message || "Some error ocurred while retrieving vessel",
       })
     })
+}
+
+// -------------------------------------------------------
+// Create Vessels Table in the SQLite Database
+// Path: Function called in switchBoard
+// -------------------------------------------------------
+export const SQLcreateEmptyVesselsTable = async () => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
+
+  if (db !== null) {
+    try {
+      const sql =
+        // "CREATE TABLE IF NOT EXISTS vessels (vesselid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, vesselnameurl VARCHAR(100) NOT NULL, title VARCHAR(100) NOT NULL, vesseltype VARCHAR(100) NOT NULL, vesselname VARCHAR(100) NOT NULL, vesselflag VARCHAR(100) NOT NULL, vesselshortoperator VARCHAR(100) NOT NULL, vessellongoperator VARCHAR(100) NOT NULL, vesselyearbuilt VARCHAR(100) NOT NULL, vessellengthmetres INTEGER, vesselwidthmetres INTEGER, vesselgrosstonnage INTEGER, vesselaveragespeedknots VARCHAR(100), vesselmaxspeedknots INTEGER, vesselaveragedraughtmetres INTEGER, vesselimonumber INTEGER, vesselmmsnumber INTEGER, vesselcallsign VARCHAR(100), vesseltypicalpassengers VARCHAR(100), vesseltypicalcrew INTEGER)"
+        "CREATE TABLE IF NOT EXISTS vessels (vesselid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, vesselnameurl TEXT NOT NULL, title TEXT NOT NULL, vesseltype TEXT NOT NULL, vesselname TEXT NOT NULL, vesselflag TEXT NOT NULL, vesselshortoperator TEXT NOT NULL, vessellongoperator TEXT NOT NULL, vesselyearbuilt TEXT NOT NULL, vessellengthmetres INTEGER, vesselwidthmetres INTEGER, vesselgrosstonnage INTEGER, vesselaveragespeedknots REAL, vesselmaxspeedknots REAL, vesselaveragedraughtmetres REAL, vesselimonumber INTEGER, vesselmmsnumber INTEGER, vesselcallsign TEXT NOT NULL, vesseltypicalpassengers TEXT, vesseltypicalcrew INTEGER)"
+
+      db.all(sql, [], (err) => {
+        if (err) {
+          return console.error(err.message)
+        }
+        console.log("vessels Table successfully created")
+      })
+
+      // Disconnect from the SQLite database
+      closeSqlDbConnection(db)
+    } catch (e) {
+      console.error(e.message)
+    }
+  } else {
+    console.error("Cannot connect to database")
+  }
 }
 
 // -------------------------------------------------------

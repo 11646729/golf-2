@@ -23,12 +23,14 @@ export const createEmptyTemperatureTable = async () => {
   if (db !== null) {
     try {
       const sql =
-        "CREATE TABLE IF NOT EXISTS temperatures (temperatureid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, timeofmeasurement VARCHAR(100) NOT NULL, locationname VARCHAR(100) NOT NULL, locationtemperature REAL, locationlng REAL CHECK( locationlng >= -180 AND locationlng <= 180 ), locationlat REAL CHECK( locationlat >= -90 AND locationlat <= 90 ))"
+        // "CREATE TABLE IF NOT EXISTS temperatures (temperatureid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, timeofmeasurement VARCHAR(100) NOT NULL, locationname VARCHAR(100) NOT NULL, locationtemperature REAL, locationlng REAL CHECK( locationlng >= -180 AND locationlng <= 180 ), locationlat REAL CHECK( locationlat >= -90 AND locationlat <= 90 ))"
+        "CREATE TABLE IF NOT EXISTS temperatures (temperatureid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, timeofmeasurement TEXT NOT NULL, locationname TEXT NOT NULL, locationtemperature REAL, locationlng REAL CHECK( locationlng >= -180 AND locationlng <= 180 ), locationlat REAL CHECK( locationlat >= -90 AND locationlat <= 90 ))"
+
       db.all(sql, [], (err) => {
         if (err) {
           return console.error(err.message)
         }
-        console.log("Temperature Table successfully created")
+        console.log("temperature Table successfully created")
       })
 
       // Disconnect from the SQLite database
@@ -53,6 +55,7 @@ export const getAllTemperatureReadings = (req, res) => {
   if (db !== null) {
     try {
       const sql = "SELECT * FROM temperatures ORDER BY temperatureid"
+
       db.all(sql, [], (err, results) => {
         if (err) {
           return console.error(err.message)
@@ -87,6 +90,7 @@ export const saveTemperatureReadings = (temperatureReading) => {
     try {
       // Count the records in the database
       let sql = "SELECT COUNT(temperatureid) AS count FROM temperatures"
+
       // Must be get to work - db.all doesn't work
       db.get(sql, [], (err, results) => {
         if (err) {
@@ -98,6 +102,7 @@ export const saveTemperatureReadings = (temperatureReading) => {
       // Don't change the routine below
       const sql1 =
         "INSERT INTO temperatures (databaseversion, timeofmeasurement, locationname, locationtemperature, locationlng, locationlat) VALUES ($1, $2, $3, $4, $5, $6)"
+
       db.run(sql1, temperatureReading, function (err) {
         if (err) {
           return console.error(err.message)
@@ -127,6 +132,7 @@ export const deleteAllTemperatureReadings = () => {
   if (db !== null) {
     try {
       const sql_insert = "DELETE FROM temperatures"
+
       db.all(sql_insert, [], (err, results) => {
         if (err) {
           return console.error(err.message)

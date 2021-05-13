@@ -8,6 +8,8 @@ import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
+import { SQLcreateEmptyPortArrivalsTable } from "./controllers/cruiseControllers/v1/portArrivalsController"
+import { SQLcreateEmptyVesselsTable } from "./controllers/cruiseControllers/v1/vesselController"
 import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines"
 import { importGtfsToSQLite } from "./importGtfsToSQLite"
 import { deleteAllRoutes } from "./deleteAllRoutes"
@@ -21,6 +23,9 @@ export const runSwitchboard = (io) => {
   // createFilledGolfCourseTable()
   // -----------------------------
   // createEmptyTemperatureTable()
+  // -----------------------------
+  // SQLcreateEmptyPortArrivalsTable()
+  // SQLcreateEmptyVesselsTable()
   // -----------------------------
   // fetchPortArrivalsAndVessels()
   // -----------------------------

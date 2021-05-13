@@ -1,5 +1,9 @@
 import { PortArrivalSchema } from "../../../models/cruiseModels/v1/portArrivalSchema"
 import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
+import {
+  openSqlDbConnection,
+  closeSqlDbConnection,
+} from "../../../fileUtilities"
 
 // -------------------------------------------------------
 // Catalogue Home page
@@ -7,6 +11,38 @@ import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
 // -------------------------------------------------------
 export const index = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)
+}
+
+// -------------------------------------------------------
+// Create Port Arrivals Table in the SQLite Database
+// Path: Function called in switchBoard
+// -------------------------------------------------------
+export const SQLcreateEmptyPortArrivalsTable = async () => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
+
+  if (db !== null) {
+    try {
+      const sql =
+        // "CREATE TABLE IF NOT EXISTS portarrivals (portarrivalid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, portname VARCHAR(100) NOT NULL, portunlocode VARCHAR(100) NOT NULL, portcoordinatelng REAL CHECK( portcoordinatelng >= -180 AND portcoordinatelng <= 180 ), portcoordinatelat REAL CHECK( portcoordinatelat >= -90 AND portcoordinatelat <= 90 ), vesselshortcruisename VARCHAR(100) NOT NULL, vesseleta VARCHAR(100) NOT NULL, vesseletd VARCHAR(100) NOT NULL, vesselnameurl VARCHAR(100) NOT NULL)"
+        "CREATE TABLE IF NOT EXISTS portarrivals (portarrivalid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, portname TEXT NOT NULL, portunlocode TEXT NOT NULL, portcoordinatelng REAL CHECK( portcoordinatelng >= -180 AND portcoordinatelng <= 180 ), portcoordinatelat REAL CHECK( portcoordinatelat >= -90 AND portcoordinatelat <= 90 ), vesselshortcruisename TEXT NOT NULL, vesseleta TEXT NOT NULL, vesseletd TEXT NOT NULL, vesselnameurl TEXT NOT NULL)"
+
+      db.all(sql, [], (err) => {
+        if (err) {
+          return console.error(err.message)
+        }
+        console.log("portarrivals Table successfully created")
+      })
+
+      // Disconnect from the SQLite database
+      closeSqlDbConnection(db)
+    } catch (e) {
+      console.error(e.message)
+    }
+  } else {
+    console.error("Cannot connect to database")
+  }
 }
 
 // -------------------------------------------------------

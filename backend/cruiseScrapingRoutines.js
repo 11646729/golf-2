@@ -12,7 +12,6 @@ import { deleteAllVessels } from "./controllers/cruiseControllers/v1/vesselContr
 export const fetchPortArrivalsAndVessels = async (req, res) => {
   // Firstly delete all existing Port Arrivals & Vessel Details from the database
   deleteAllPortArrivals()
-
   deleteAllVessels()
 
   // Secondly get the Port Name & Associated values
