@@ -34,17 +34,17 @@ router.put("/portArrivals/:id", portArrivalsController.putPortArrival)
 /// Vessel Routes ///
 // GET all vessels from the database
 // -------------------------------------------------------
-router.get("/vessel", vesselController.getVessels)
+// router.get("/vessel", vesselController.getVessels)
 
 // -------------------------------------------------------
 // GET a vessel by id
 // -------------------------------------------------------
-router.get("/vessel/:id", vesselController.getVessel)
+// router.get("/vessel/:id", vesselController.getVessel)
 
 // -------------------------------------------------------
 // POST a vessel to the database
 // -------------------------------------------------------
-// router.post("/vessel", vesselController.SQLsaveVessel)
+router.post("/vessel", vesselController.saveVessel)
 
 // -------------------------------------------------------
 // PUT a vessel by id

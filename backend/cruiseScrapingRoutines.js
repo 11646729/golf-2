@@ -3,7 +3,7 @@ import cheerio from "cheerio"
 import { getAndSavePortArrivals } from "./scrapeArrivals"
 import { getSingleVesselDetails } from "./scrapeVessels"
 import { deleteAllPortArrivals } from "./controllers/cruiseControllers/v1/portArrivalsController"
-import { SQLdeleteAllVessels } from "./controllers/cruiseControllers/v1/vesselController"
+import { deleteAllVessels } from "./controllers/cruiseControllers/v1/vesselController"
 
 // -------------------------------------------------------
 // Fetch Port Arrivals & Vessel Details
@@ -12,7 +12,7 @@ import { SQLdeleteAllVessels } from "./controllers/cruiseControllers/v1/vesselCo
 export const fetchPortArrivalsAndVessels = async (req, res) => {
   // Firstly delete all existing Port Arrivals & Vessel Details from the database
   deleteAllPortArrivals()
-  SQLdeleteAllVessels()
+  deleteAllVessels()
 
   // Secondly get the Port Name & Associated values
   // const port = "Belfast".toUpperCase()

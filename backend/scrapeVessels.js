@@ -1,6 +1,6 @@
 import axios from "axios"
 import cheerio from "cheerio"
-import { SQLsaveVessel } from "./controllers/cruiseControllers/v1/vesselController"
+import { saveVessel } from "./controllers/cruiseControllers/v1/vesselController"
 
 // ----------------------------------------------------------
 // Fetch Details of a Single Vessel
@@ -210,5 +210,5 @@ export const getSingleVesselDetails = async (vesselUrl) => {
   // return newVessel
 
   // Now save in SQLite
-  SQLsaveVessel(newVessel)
+  saveVessel(newVessel)
 }

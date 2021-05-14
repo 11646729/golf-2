@@ -1,30 +1,13 @@
-import { VesselSchema } from "../../../models/cruiseModels/v1/vesselSchema"
 import {
   openSqlDbConnection,
   closeSqlDbConnection,
 } from "../../../fileUtilities"
 
 // -------------------------------------------------------
-// Vessels
-// Path localhost:5000/api/cruise/vessel
-// -------------------------------------------------------
-export function getVessels(req, res) {
-  VesselSchema.find({})
-    .then((data) => {
-      res.send(data)
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Some error ocurred while retrieving vessel",
-      })
-    })
-}
-
-// -------------------------------------------------------
 // Create Vessels Table in the SQLite Database
 // Path: Function called in switchBoard
 // -------------------------------------------------------
-export const SQLcreateEmptyVesselsTable = async () => {
+export const createEmptyVesselsTable = async () => {
   // Open a Database Connection
   let db = null
   db = openSqlDbConnection(process.env.SQL_URI)
@@ -52,30 +35,10 @@ export const SQLcreateEmptyVesselsTable = async () => {
 }
 
 // -------------------------------------------------------
-// Vessels
-// Path localhost:5000/api/cruise/vessel/:id
-// -------------------------------------------------------
-export function getVessel(req, res) {
-  const id = req.params.id
-
-  VesselSchema.findById(id)
-    .then((data) => {
-      if (!data)
-        res.status(404).send({ message: "Not found vessel with id " + id })
-      else res.send(data)
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Error retrieving vessel with id= " + id,
-      })
-    })
-}
-
-// -------------------------------------------------------
 // Save Vessel details to SQLite database
 // Path:
 // -------------------------------------------------------
-export const SQLsaveVessel = (newVessel) => {
+export const saveVessel = (newVessel) => {
   // Guard clause for null Vessel details
   if (newVessel == null) return
 
@@ -118,56 +81,10 @@ export const SQLsaveVessel = (newVessel) => {
 }
 
 // -------------------------------------------------------
-// Vessels
-// Path localhost:5000/api/cruise/vessel/:id
-// -------------------------------------------------------
-export function putVessel(req, res) {
-  if (!req.body) {
-    return res.status(400).send({
-      message: "Data to update cannot be empty!",
-    })
-  }
-
-  const id = req.params.id
-
-  VesselSchema.findByIdAndUpdate(id, req.body, {
-    useFindAndModify: false,
-  })
-    .then((data) => {
-      if (!data)
-        res.status(404).send({
-          message:
-            "Cannnot update vessel with id=${id}. Maybe vessel was not found!",
-        })
-      else res.send({ message: "Vessel was updated successfully." })
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Error updating vessel with id= " + id,
-      })
-    })
-}
-
-// -------------------------------------------------------
 // Delete all Vessels from SQLite database
 // Path:
 // -------------------------------------------------------
 export const deleteAllVessels = () => {
-  // Firstly delete all existing Vessels from the database
-  VesselSchema.deleteMany({})
-    .then((res) => {
-      console.log("No of old Vessels deleted: ", res.deletedCount)
-    })
-    .catch((err) => {
-      console.log(err.message)
-    })
-}
-
-// -------------------------------------------------------
-// Delete all Vessels from SQLite database
-// Path:
-// -------------------------------------------------------
-export const SQLdeleteAllVessels = () => {
   // Open a Database Connection
   let db = null
   db = openSqlDbConnection(process.env.SQL_URI)
