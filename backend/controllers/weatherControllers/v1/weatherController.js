@@ -96,7 +96,7 @@ export const saveTemperatureReading = (temperatureReading) => {
         if (err) {
           return console.error(err.message)
         }
-        console.log("Record Count Before: ", results.count)
+        console.log("Record Count Before Insertion: ", results.count)
       })
 
       // Don't change the routine below
@@ -107,7 +107,7 @@ export const saveTemperatureReading = (temperatureReading) => {
         if (err) {
           return console.error(err.message)
         }
-        console.warn("New Temperature Reading inserted id:", this.lastID)
+        console.warn("New id of inserted temperature reading:", this.lastID)
       })
 
       // Close the Database Connection

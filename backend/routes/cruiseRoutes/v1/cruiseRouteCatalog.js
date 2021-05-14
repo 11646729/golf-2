@@ -44,11 +44,11 @@ router.get("/vessel/:id", vesselController.getVessel)
 // -------------------------------------------------------
 // POST a vessel to the database
 // -------------------------------------------------------
-router.post("/vessel", vesselController.postVessel)
+// router.post("/vessel", vesselController.SQLsaveVessel)
 
 // -------------------------------------------------------
 // PUT a vessel by id
 // -------------------------------------------------------
-router.put("/vessel/:id", vesselController.putVessel)
+// router.put("/vessel/:id", vesselController.putVessel)
 
 module.exports = router

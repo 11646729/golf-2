@@ -54,7 +54,6 @@ export const createFilledGolfCourseTable = () => {
     try {
       // Firstly create an empty Table in the database - IF NEEDED
       const golfCourses_create =
-        // "CREATE TABLE IF NOT EXISTS golfcourses (courseid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, type VARCHAR(100) NOT NULL, crsurn VARCHAR(100) NOT NULL, name VARCHAR(100) NOT NULL, phonenumber VARCHAR(100) NOT NULL, phototitle VARCHAR(100) NOT NULL, photourl VARCHAR(100) NOT NULL, description VARCHAR(200), courselng REAL CHECK( courselng >= -180 AND courselng <= 180 ), courselat REAL CHECK( courselat >= -90 AND courselat <= 90 ))"
         "CREATE TABLE IF NOT EXISTS golfcourses (courseid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, type TEXT NOT NULL, crsurn TEXT NOT NULL, name TEXT NOT NULL, phonenumber TEXT NOT NULL, phototitle TEXT NOT NULL, photourl TEXT NOT NULL, description TEXT, courselng REAL CHECK( courselng >= -180 AND courselng <= 180 ), courselat REAL CHECK( courselat >= -90 AND courselat <= 90 ))"
 
       db.all(golfCourses_create, [], (err) => {

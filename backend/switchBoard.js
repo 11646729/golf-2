@@ -4,6 +4,7 @@ import {
   createEmptyTemperatureTable,
   deleteAllTemperatureReadings,
 } from "./controllers/weatherControllers/v1/weatherController"
+import { SQLsaveVessel } from "./controllers/cruiseControllers/v1/vesselController"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
@@ -27,7 +28,8 @@ export const runSwitchboard = (io) => {
   // SQLcreateEmptyPortArrivalsTable()
   // SQLcreateEmptyVesselsTable()
   // -----------------------------
-  // fetchPortArrivalsAndVessels()
+  // SQLsaveVessel()
+  fetchPortArrivalsAndVessels()
   // -----------------------------
   // importGtfsToSQLite()
   // -----------------------------
@@ -42,7 +44,7 @@ export const runSwitchboard = (io) => {
   // -----------------------------
   // Using socket.io for realtime
   // io.on("connection", (socket) => {
-  console.log("Client Connected")
+  // console.log("Client Connected")
   // Start listening for browser position data
   // socket.on("fetchLocation", (pos) => {
   //   console.log(

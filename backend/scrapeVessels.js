@@ -1,14 +1,14 @@
 import axios from "axios"
 import cheerio from "cheerio"
-import { VesselSchema } from "./models/cruiseModels/v1/vesselSchema"
+import { SQLsaveVessel } from "./controllers/cruiseControllers/v1/vesselController"
 
 // ----------------------------------------------------------
 // Fetch Details of a Single Vessel
 // Path: Local function called by fetchPortArrivalsAndVessels
 // ----------------------------------------------------------
-export const getSingleVesselDetails = async (VesselUrl) => {
+export const getSingleVesselDetails = async (vesselUrl) => {
   // Fetch the initial data
-  const { data: html } = await axios.get(VesselUrl)
+  const { data: html } = await axios.get(vesselUrl)
 
   // Load up cheerio
   const $ = cheerio.load(html)
@@ -16,8 +16,8 @@ export const getSingleVesselDetails = async (VesselUrl) => {
   // Title
   let title = $("#review .title").text().trim()
 
-  // Remove " Review and Specifications" from title to get vessel_name
-  let vessel_name = title.substring(0, title.length - 26)
+  // Remove " Review" from title to get vessel_name
+  let vessel_name = title.substring(0, title.length - 7)
 
   // Vessel Flag
   let vessel_flag = $("td")
@@ -182,31 +182,33 @@ export const getSingleVesselDetails = async (VesselUrl) => {
     .next()
     .text()
 
-  const newVessel = new VesselSchema({
-    databaseVersion: process.env.DATABASE_VERSION,
-    vesselNameUrl: VesselUrl,
-    title: title,
-    vesselType: "Passenger Ship",
+  const newVessel = [
+    process.env.DATABASE_VERSION,
+    vesselUrl,
+    title,
+    "Passenger Ship",
     // vessel_photo,
     // vessel_ais_name,
-    vesselName: vessel_name,
-    vesselFlag: vessel_flag,
-    vesselShortOperator: vessel_short_operator,
-    vesselLongOperator: vessel_long_operator,
-    vesselYearBuilt: vessel_year_built,
-    vesselLengthMetres: vessel_length_metres,
-    vesselWidthMetres: vessel_width_metres,
-    vesselGrossTonnage: vessel_gross_tonnage,
-    vesselAverageSpeedKnots: vessel_average_speed_knots,
-    vesselMaxSpeedKnots: vessel_max_speed_knots,
-    vesselAverageDraughtMetres: "7.9",
-    vesselImoNumber: "8217881",
-    vesselMmsiNumber: "311000343",
-    vesselCallsign: "C6BR5",
-    vesselTypicalPassengers: vessel_typical_passengers,
-    vesselTypicalCrew: vessel_typical_crew,
-  })
+    vessel_name,
+    vessel_flag,
+    vessel_short_operator,
+    vessel_long_operator,
+    vessel_year_built,
+    vessel_length_metres,
+    vessel_width_metres,
+    vessel_gross_tonnage,
+    vessel_average_speed_knots,
+    vessel_max_speed_knots,
+    "7.9",
+    "8217881",
+    "311000343",
+    "C6BR5",
+    vessel_typical_passengers,
+    vessel_typical_crew,
+  ]
 
-  // Now save in mongoDB
-  newVessel.save().catch((err) => console.log("Error: " + err))
+  // return newVessel
+
+  // Now save in SQLite
+  SQLsaveVessel(newVessel)
 }

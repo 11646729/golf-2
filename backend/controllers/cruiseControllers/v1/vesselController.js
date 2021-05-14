@@ -32,7 +32,6 @@ export const SQLcreateEmptyVesselsTable = async () => {
   if (db !== null) {
     try {
       const sql =
-        // "CREATE TABLE IF NOT EXISTS vessels (vesselid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, vesselnameurl VARCHAR(100) NOT NULL, title VARCHAR(100) NOT NULL, vesseltype VARCHAR(100) NOT NULL, vesselname VARCHAR(100) NOT NULL, vesselflag VARCHAR(100) NOT NULL, vesselshortoperator VARCHAR(100) NOT NULL, vessellongoperator VARCHAR(100) NOT NULL, vesselyearbuilt VARCHAR(100) NOT NULL, vessellengthmetres INTEGER, vesselwidthmetres INTEGER, vesselgrosstonnage INTEGER, vesselaveragespeedknots VARCHAR(100), vesselmaxspeedknots INTEGER, vesselaveragedraughtmetres INTEGER, vesselimonumber INTEGER, vesselmmsnumber INTEGER, vesselcallsign VARCHAR(100), vesseltypicalpassengers VARCHAR(100), vesseltypicalcrew INTEGER)"
         "CREATE TABLE IF NOT EXISTS vessels (vesselid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, vesselnameurl TEXT NOT NULL, title TEXT NOT NULL, vesseltype TEXT NOT NULL, vesselname TEXT NOT NULL, vesselflag TEXT NOT NULL, vesselshortoperator TEXT NOT NULL, vessellongoperator TEXT NOT NULL, vesselyearbuilt TEXT NOT NULL, vessellengthmetres INTEGER, vesselwidthmetres INTEGER, vesselgrosstonnage INTEGER, vesselaveragespeedknots REAL, vesselmaxspeedknots REAL, vesselaveragedraughtmetres REAL, vesselimonumber INTEGER, vesselmmsnumber INTEGER, vesselcallsign TEXT NOT NULL, vesseltypicalpassengers TEXT, vesseltypicalcrew INTEGER)"
 
       db.all(sql, [], (err) => {
@@ -73,51 +72,49 @@ export function getVessel(req, res) {
 }
 
 // -------------------------------------------------------
-// Vessels
-// Path localhost:5000/api/cruise/vessel
+// Save Vessel details to SQLite database
+// Path:
 // -------------------------------------------------------
-export function postVessel(req, res) {
-  // Validate request
-  if (!req.body.location_lat || !req.body.location_lng) {
-    res.status(400).send({ message: "Coordinates cannot be empty!" })
-    return
-  }
+export const SQLsaveVessel = (newVessel) => {
+  // Guard clause for null Vessel details
+  if (newVessel == null) return
 
-  const vessel = new VesselSchema({
-    databaseVersion: req.body.databaseVersion,
-    vesselNameUrl: req.body.vessel_name_url,
-    title: req.body.title,
-    vesselType: req.body.vessel_type,
-    vesselName: req.body.vessel_name,
-    vesselFlag: req.body.vessel_flag,
-    vesselShortOperator: req.body.vessel_short_operator,
-    vesselLongOperator: req.body.vessel_long_operator,
-    vesselYearBuilt: req.body.vessel_year_built,
-    vesselLengthMetres: req.body.vessel_length_metres,
-    vesselWidthMetres: req.body.vessel_width_metres,
-    vesselGrossTonnage: req.body.vessel_gross_tonnage,
-    vesselAverageSpeedKnots: req.body.vessel_average_speed_knots,
-    vesselMaxSpeedKnots: req.body.vessel_max_speed_knots,
-    vesselAverageDraughtMetres: req.body.vessel_average_draught_metres,
-    vesselImoNumber: req.body.vessel_imo_number,
-    vesselMmsiNumber: req.body.vessel_mmsi_number,
-    vesselCallsign: req.body.vessel_callsign,
-    vesselTypicalPassengers: req.body.vessel_typical_passengers,
-    vesselTypicalCrew: req.body.vessel_typical_crew,
-  })
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
 
-  // Save the vessel in the database
-  vessel
-    .save()
-    .then((data) => {
-      res.send(data)
-    })
-    .catch((err) =>
-      res.status(500).send({
-        message:
-          err.message || "Some error ocurred while creating the new vessel",
+  if (db !== null) {
+    try {
+      // Count the records in the database
+      let sql = "SELECT COUNT(vesselid) AS count FROM vessels"
+
+      // Must be get to work - db.all doesn't work
+      db.get(sql, [], (err, results) => {
+        if (err) {
+          return console.error(err.message)
+        }
+        // console.log("Record Count Before Insertion: ", results.count)
       })
-    )
+
+      // Don't change the routine below
+      const sql1 =
+        "INSERT INTO vessels (databaseversion, vesselnameurl, title, vesseltype, vesselname, vesselflag, vesselshortoperator, vessellongoperator, vesselyearbuilt, vessellengthmetres, vesselwidthmetres, vesselgrosstonnage, vesselaveragespeedknots, vesselmaxspeedknots, vesselaveragedraughtmetres, vesselimonumber, vesselmmsnumber, vesselcallsign, vesseltypicalpassengers, vesseltypicalcrew) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)"
+
+      db.run(sql1, newVessel, function (err) {
+        if (err) {
+          return console.error(err.message)
+        }
+        console.warn("New id of inserted vessel:", this.lastID)
+      })
+
+      // Close the Database Connection
+      closeSqlDbConnection(db)
+    } catch (err) {
+      console.error("Error in SQLsaveVessel: ", err)
+    }
+  } else {
+    console.error("Cannot connect to database")
+  }
 }
 
 // -------------------------------------------------------
@@ -182,8 +179,11 @@ export const SQLdeleteAllVessels = () => {
         if (err) {
           return console.error(err.message)
         }
-        console.warn("All Vessels deleted")
+        console.warn("All vessels deleted")
       })
+
+      // Reset the id number
+      // UPDATE sqlite_sequence SET seq = 0 WHERE ''
 
       // Close the Database Connection
       closeSqlDbConnection(db)
