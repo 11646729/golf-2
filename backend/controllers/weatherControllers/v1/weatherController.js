@@ -23,7 +23,6 @@ export const createEmptyTemperatureTable = async () => {
   if (db !== null) {
     try {
       const sql =
-        // "CREATE TABLE IF NOT EXISTS temperatures (temperatureid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, timeofmeasurement VARCHAR(100) NOT NULL, locationname VARCHAR(100) NOT NULL, locationtemperature REAL, locationlng REAL CHECK( locationlng >= -180 AND locationlng <= 180 ), locationlat REAL CHECK( locationlat >= -90 AND locationlat <= 90 ))"
         "CREATE TABLE IF NOT EXISTS temperatures (temperatureid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, timeofmeasurement TEXT NOT NULL, locationname TEXT NOT NULL, locationtemperature REAL, locationlng REAL CHECK( locationlng >= -180 AND locationlng <= 180 ), locationlat REAL CHECK( locationlat >= -90 AND locationlat <= 90 ))"
 
       db.all(sql, [], (err) => {
@@ -138,6 +137,16 @@ export const deleteAllTemperatureReadings = () => {
           return console.error(err.message)
         }
         console.warn("All Temperature Readings deleted")
+      })
+
+      // Reset the id number
+      const sql_reset =
+        "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'temperatures'"
+      db.all(sql_reset, [], (err, results) => {
+        if (err) {
+          return console.error(err.message)
+        }
+        console.warn("Reset id number")
       })
 
       // Close the Database Connection

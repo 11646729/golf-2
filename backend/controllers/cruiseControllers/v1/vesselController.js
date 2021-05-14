@@ -183,7 +183,14 @@ export const SQLdeleteAllVessels = () => {
       })
 
       // Reset the id number
-      // UPDATE sqlite_sequence SET seq = 0 WHERE ''
+      const sql_reset =
+        "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'vessels'"
+      db.all(sql_reset, [], (err, results) => {
+        if (err) {
+          return console.error(err.message)
+        }
+        console.warn("Reset id number")
+      })
 
       // Close the Database Connection
       closeSqlDbConnection(db)
