@@ -4,17 +4,22 @@ import { getAndSavePortArrivals } from "./scrapeArrivals"
 import { getSingleVesselDetails } from "./scrapeVessels"
 import { deleteAllPortArrivals } from "./controllers/cruiseControllers/v1/portArrivalsController"
 import { deleteAllVessels } from "./controllers/cruiseControllers/v1/vesselController"
+import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities"
 
 // -------------------------------------------------------
 // Fetch Port Arrivals & Vessel Details
 // Path: Function called in switchBoard
 // -------------------------------------------------------
 export const fetchPortArrivalsAndVessels = async (req, res) => {
-  // Firstly delete all existing Port Arrivals & Vessel Details from the database
-  deleteAllPortArrivals()
-  deleteAllVessels()
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
 
-  // Secondly get the Port Name & Associated values
+  // Delete all existing Port Arrivals & Vessel Details from the database
+  deleteAllPortArrivals(db)
+  deleteAllVessels(db)
+
+  // Get the Port Name & Associated values
   // const port = "Belfast".toUpperCase()
   // const port = "Geiranger".toUpperCase()
   const port = "Bergen".toUpperCase()
@@ -29,6 +34,7 @@ export const fetchPortArrivalsAndVessels = async (req, res) => {
   } else {
     // Fourthly get all the Vessel Arrivals per Month
     let vesselUrls = await getAndSavePortArrivals(
+      db,
       scheduledPeriods,
       port,
       portName
@@ -43,7 +49,8 @@ export const fetchPortArrivalsAndVessels = async (req, res) => {
     let loop = 0
     do {
       // Extract urls for vessels & store in newVessel array
-      await getSingleVesselDetails(DeduplicatedVesselUrlArray[loop])
+      await getSingleVesselDetails(db, DeduplicatedVesselUrlArray[loop])
+      // saveVessel(DeduplicatedVesselUrlArray[loop])
 
       loop++
     } while (loop < DeduplicatedVesselUrlArray.length)
@@ -52,6 +59,9 @@ export const fetchPortArrivalsAndVessels = async (req, res) => {
     console.log(vesselUrls.length + " Port Arrivals added")
     console.log(DeduplicatedVesselUrlArray.length + " Vessels added")
   }
+
+  // Disconnect from the SQLite database
+  closeSqlDbConnection(db)
 }
 
 // -------------------------------------------------------

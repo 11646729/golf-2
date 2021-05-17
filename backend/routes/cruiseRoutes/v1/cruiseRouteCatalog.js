@@ -23,7 +23,7 @@ router.get("/portArrivals/:id", portArrivalsController.getPortArrival)
 // -------------------------------------------------------
 // POST a port arrival to the database
 // -------------------------------------------------------
-router.post("/portArrivals", portArrivalsController.postPortArrival)
+router.post("/portArrivals", portArrivalsController.savePortArrival)
 
 // -------------------------------------------------------
 // PUT a port arrival by id

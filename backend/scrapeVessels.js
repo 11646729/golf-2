@@ -6,7 +6,7 @@ import { saveVessel } from "./controllers/cruiseControllers/v1/vesselController"
 // Fetch Details of a Single Vessel
 // Path: Local function called by fetchPortArrivalsAndVessels
 // ----------------------------------------------------------
-export const getSingleVesselDetails = async (vesselUrl) => {
+export const getSingleVesselDetails = async (db, vesselUrl) => {
   // Fetch the initial data
   const { data: html } = await axios.get(vesselUrl)
 
@@ -210,5 +210,5 @@ export const getSingleVesselDetails = async (vesselUrl) => {
   // return newVessel
 
   // Now save in SQLite
-  saveVessel(newVessel)
+  saveVessel(db, newVessel)
 }

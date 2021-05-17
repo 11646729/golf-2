@@ -1,13 +1,13 @@
 import axios from "axios"
 import cheerio from "cheerio"
-import { PortArrivalSchema } from "./models/cruiseModels/v1/portArrivalSchema"
-import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
+import { savePortArrival } from "./controllers/cruiseControllers/v1/portArrivalsController"
 
 // -------------------------------------------------------
 // Fetch All Port Arrivals Details
 // Path: Local function called by fetchPortArrivalsAndVessels
 // -------------------------------------------------------
 export const getAndSavePortArrivals = async (
+  db,
   scheduledPeriods,
   port,
   portName
@@ -19,6 +19,7 @@ export const getAndSavePortArrivals = async (
   do {
     const period = String(scheduledPeriods[loop].monthYearString)
     periodVesselArrivals = await getSingleMonthPortArrival(
+      db,
       period,
       port,
       portName
@@ -41,7 +42,7 @@ export const getAndSavePortArrivals = async (
 // Fetch a Single Port Arrival
 // Path: Local function called by getAndSavePortArrivals
 // -----------------------------------------------------
-const getSingleMonthPortArrival = async (period, port, portName) => {
+const getSingleMonthPortArrival = async (db, period, port, portName) => {
   let arrivalUrl =
     process.env.CRUISE_MAPPER_URL +
     portName +
@@ -60,9 +61,6 @@ const getSingleMonthPortArrival = async (period, port, portName) => {
   $(".portItemSchedule tr").each((i, item) => {
     // Ignore the table heading
     if (i > 0) {
-      // Database version
-      const database_version = process.env.DATABASE_VERSION
-
       // Port Name Associated values
       const port_name = portName
       const portLat = port + "_PORT_LATITUDE"
@@ -72,11 +70,9 @@ const getSingleMonthPortArrival = async (period, port, portName) => {
       // Port UN Locode
       const port_un_locode = process.env[portUnLocode]
 
-      // Belfast Port Coordinates in GeoJSON
-      const port_coordinates = new CoordsSchema({
-        lat: process.env[portLat],
-        lng: process.env[portLng],
-      })
+      // Port Coordinates
+      const portcoordinateslat = process.env[portLat]
+      const portcoordinateslng = process.env[portLng]
 
       // Name of Vessel
       const vessel_short_cruise_name = $(item).find("a").text()
@@ -124,19 +120,20 @@ const getSingleMonthPortArrival = async (period, port, portName) => {
       // it's something else
       else console.log("Error, vessel_name_url is not a string")
 
-      const portArrival = new PortArrivalSchema({
-        databaseVersion: database_version,
-        portName: port_name,
-        portUnLocode: port_un_locode,
-        portCoordinates: port_coordinates,
-        vesselShortCruiseName: vessel_short_cruise_name,
-        vesselEta: vessel_eta,
-        vesselEtd: vessel_etd,
-        vesselNameUrl: vessel_name_url,
-      })
+      const newPortArrival = [
+        process.env.DATABASE_VERSION,
+        port_name,
+        port_un_locode,
+        portcoordinateslng,
+        portcoordinateslat,
+        vessel_short_cruise_name,
+        vessel_eta,
+        vessel_etd,
+        vessel_name_url,
+      ]
 
-      // Now save in mongoDB
-      portArrival.save().catch((err) => console.log("Error: " + err))
+      // Now save in SQLite
+      savePortArrival(db, newPortArrival)
     }
   })
 
