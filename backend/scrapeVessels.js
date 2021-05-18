@@ -1,12 +1,11 @@
 import axios from "axios"
 import cheerio from "cheerio"
-import { saveVessel } from "./controllers/cruiseControllers/v1/vesselController"
 
 // ----------------------------------------------------------
 // Fetch Details of a Single Vessel
 // Path: Local function called by fetchPortArrivalsAndVessels
 // ----------------------------------------------------------
-export const getSingleVesselDetails = async (db, vesselUrl) => {
+export const scrapeVessel = async (vesselUrl) => {
   // Fetch the initial data
   const { data: html } = await axios.get(vesselUrl)
 
@@ -182,7 +181,7 @@ export const getSingleVesselDetails = async (db, vesselUrl) => {
     .next()
     .text()
 
-  const newVessel = [
+  const scrapedVessel = [
     process.env.DATABASE_VERSION,
     vesselUrl,
     title,
@@ -207,8 +206,5 @@ export const getSingleVesselDetails = async (db, vesselUrl) => {
     vessel_typical_crew,
   ]
 
-  // return newVessel
-
-  // Now save in SQLite
-  saveVessel(db, newVessel)
+  return scrapedVessel
 }

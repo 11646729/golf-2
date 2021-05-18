@@ -44,11 +44,21 @@ export const saveVessel = (db, newVessel) => {
   if (newVessel == null) return
 
   try {
+    // const sql =
+    //   "CREATE TABLE IF NOT EXISTS vessels (vesselid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, vesselnameurl TEXT NOT NULL, title TEXT NOT NULL, vesseltype TEXT NOT NULL, vesselname TEXT NOT NULL, vesselflag TEXT NOT NULL, vesselshortoperator TEXT NOT NULL, vessellongoperator TEXT NOT NULL, vesselyearbuilt TEXT NOT NULL, vessellengthmetres INTEGER, vesselwidthmetres INTEGER, vesselgrosstonnage INTEGER, vesselaveragespeedknots REAL, vesselmaxspeedknots REAL, vesselaveragedraughtmetres REAL, vesselimonumber INTEGER, vesselmmsnumber INTEGER, vesselcallsign TEXT NOT NULL, vesseltypicalpassengers TEXT, vesseltypicalcrew INTEGER)"
+
+    // db.all(sql, [], (err) => {
+    //   if (err) {
+    //     return console.error(err.message)
+    //   }
+    //   console.log("vessels Table successfully created")
+    // })
+
     // Count the records in the database
-    let sql = "SELECT COUNT(vesselid) AS count FROM vessels"
+    let sql1 = "SELECT COUNT(vesselid) AS count FROM vessels"
 
     // Must be get to work - db.all doesn't work
-    db.get(sql, [], (err, results) => {
+    db.get(sql1, [], (err, results) => {
       if (err) {
         return console.error(err.message)
       }
@@ -56,10 +66,10 @@ export const saveVessel = (db, newVessel) => {
     })
 
     // Don't change the routine below
-    const sql1 =
+    const sql2 =
       "INSERT INTO vessels (databaseversion, vesselnameurl, title, vesseltype, vesselname, vesselflag, vesselshortoperator, vessellongoperator, vesselyearbuilt, vessellengthmetres, vesselwidthmetres, vesselgrosstonnage, vesselaveragespeedknots, vesselmaxspeedknots, vesselaveragedraughtmetres, vesselimonumber, vesselmmsnumber, vesselcallsign, vesseltypicalpassengers, vesseltypicalcrew) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)"
 
-    db.run(sql1, newVessel, function (err) {
+    db.run(sql2, newVessel, function (err) {
       if (err) {
         return console.error(err.message)
       }
