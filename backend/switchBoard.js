@@ -26,7 +26,7 @@ export const runSwitchboard = (io) => {
   // -----------------------------
   // createEmptyPortArrivalsTable()
   // createEmptyVesselsTable()
-  // fetchPortArrivalsAndVessels()
+  fetchPortArrivalsAndVessels()
   // -----------------------------
   // importGtfsToSQLite()
   // -----------------------------

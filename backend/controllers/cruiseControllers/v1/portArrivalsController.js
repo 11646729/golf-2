@@ -85,69 +85,69 @@ export const savePortArrival = (db, newPortArrival) => {
 // Port Arrivals
 // Path localhost:5000/api/cruise/portArrivals
 // -------------------------------------------------------
-export function getPortArrivals(req, res) {
-  PortArrivalSchema.find({})
-    .then((data) => {
-      res.send(data)
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error ocurred while retrieving portArrivals.",
-      })
-    })
-}
+// export function getPortArrivals(req, res) {
+//   PortArrivalSchema.find({})
+//     .then((data) => {
+//       res.send(data)
+//     })
+//     .catch((err) => {
+//       res.status(500).send({
+//         message:
+//           err.message || "Some error ocurred while retrieving portArrivals.",
+//       })
+//     })
+// }
 
 // -------------------------------------------------------
 // Port Arrivals
 // Path localhost:5000/api/cruise/portArrivals/:id
 // -------------------------------------------------------
-export function getPortArrival(req, res) {
-  const id = req.params.id
+// export function getPortArrival(req, res) {
+//   const id = req.params.id
 
-  PortArrivalSchema.findById(id)
-    .then((data) => {
-      if (!data)
-        res.status(404).send({ message: "Not found portArrival with id " + id })
-      else res.send(data)
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Error retrieving portArrival with id= " + id,
-      })
-    })
-}
+//   PortArrivalSchema.findById(id)
+//     .then((data) => {
+//       if (!data)
+//         res.status(404).send({ message: "Not found portArrival with id " + id })
+//       else res.send(data)
+//     })
+//     .catch((err) => {
+//       res.status(500).send({
+//         message: err.message || "Error retrieving portArrival with id= " + id,
+//       })
+//     })
+// }
 
 // -------------------------------------------------------
 // Port Arrivals
 // Path localhost:5000/api/cruise/portArrivals/:id
 // -------------------------------------------------------
-export function putPortArrival(req, res) {
-  if (!req.body) {
-    return res.status(400).send({
-      message: "Data to update cannot be empty!",
-    })
-  }
+// export function putPortArrival(req, res) {
+//   if (!req.body) {
+//     return res.status(400).send({
+//       message: "Data to update cannot be empty!",
+//     })
+//   }
 
-  const id = req.params.id
+//   const id = req.params.id
 
-  PortArrivalSchema.findByIdAndUpdate(id, req.body, {
-    useFindAndModify: false,
-  })
-    .then((data) => {
-      if (!data)
-        res.status(404).send({
-          message:
-            "Cannnot update portArrivals with id=${id}. Maybe portArrivals was not found!",
-        })
-      else res.send({ message: "PortArrivals was updated successfully." })
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Error updating portArrivals with id= " + id,
-      })
-    })
-}
+//   PortArrivalSchema.findByIdAndUpdate(id, req.body, {
+//     useFindAndModify: false,
+//   })
+//     .then((data) => {
+//       if (!data)
+//         res.status(404).send({
+//           message:
+//             "Cannnot update portArrivals with id=${id}. Maybe portArrivals was not found!",
+//         })
+//       else res.send({ message: "PortArrivals was updated successfully." })
+//     })
+//     .catch((err) => {
+//       res.status(500).send({
+//         message: err.message || "Error updating portArrivals with id= " + id,
+//       })
+//     })
+// }
 
 // -------------------------------------------------------
 // Delete all Port Arrivals from SQLite database
