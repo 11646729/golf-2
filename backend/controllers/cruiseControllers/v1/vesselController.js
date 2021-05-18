@@ -7,30 +7,22 @@ import {
 // Create Vessels Table in the SQLite Database
 // Path: Function called in switchBoard
 // -------------------------------------------------------
-export const createEmptyVesselsTable = async () => {
-  // Open a Database Connection
-  let db = null
-  db = openSqlDbConnection(process.env.SQL_URI)
+export const createEmptyVesselsTable = async (db) => {
+  // Guard clause for null Database Connection
+  if (db === null) return
 
-  if (db !== null) {
-    try {
-      const sql =
-        "CREATE TABLE IF NOT EXISTS vessels (vesselid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, vesselnameurl TEXT NOT NULL, title TEXT NOT NULL, vesseltype TEXT NOT NULL, vesselname TEXT NOT NULL, vesselflag TEXT NOT NULL, vesselshortoperator TEXT NOT NULL, vessellongoperator TEXT NOT NULL, vesselyearbuilt TEXT NOT NULL, vessellengthmetres INTEGER, vesselwidthmetres INTEGER, vesselgrosstonnage INTEGER, vesselaveragespeedknots REAL, vesselmaxspeedknots REAL, vesselaveragedraughtmetres REAL, vesselimonumber INTEGER, vesselmmsnumber INTEGER, vesselcallsign TEXT NOT NULL, vesseltypicalpassengers TEXT, vesseltypicalcrew INTEGER)"
+  try {
+    const sql =
+      "CREATE TABLE IF NOT EXISTS vessels (vesselid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, vesselnameurl TEXT NOT NULL, title TEXT NOT NULL, vesseltype TEXT NOT NULL, vesselname TEXT NOT NULL, vesselflag TEXT NOT NULL, vesselshortoperator TEXT NOT NULL, vessellongoperator TEXT NOT NULL, vesselyearbuilt TEXT NOT NULL, vessellengthmetres INTEGER, vesselwidthmetres INTEGER, vesselgrosstonnage INTEGER, vesselaveragespeedknots REAL, vesselmaxspeedknots REAL, vesselaveragedraughtmetres REAL, vesselimonumber INTEGER, vesselmmsnumber INTEGER, vesselcallsign TEXT NOT NULL, vesseltypicalpassengers TEXT, vesseltypicalcrew INTEGER)"
 
-      db.all(sql, [], (err) => {
-        if (err) {
-          return console.error(err.message)
-        }
-        console.log("vessels Table successfully created")
-      })
-
-      // Disconnect from the SQLite database
-      closeSqlDbConnection(db)
-    } catch (e) {
-      console.error(e.message)
-    }
-  } else {
-    console.error("Cannot connect to database")
+    db.all(sql, [], (err) => {
+      if (err) {
+        return console.error(err.message)
+      }
+      console.log("vessels table successfully created")
+    })
+  } catch (e) {
+    console.error(e.message)
   }
 }
 
@@ -44,16 +36,6 @@ export const saveVessel = (db, newVessel) => {
   if (newVessel == null) return
 
   try {
-    // const sql =
-    //   "CREATE TABLE IF NOT EXISTS vessels (vesselid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, vesselnameurl TEXT NOT NULL, title TEXT NOT NULL, vesseltype TEXT NOT NULL, vesselname TEXT NOT NULL, vesselflag TEXT NOT NULL, vesselshortoperator TEXT NOT NULL, vessellongoperator TEXT NOT NULL, vesselyearbuilt TEXT NOT NULL, vessellengthmetres INTEGER, vesselwidthmetres INTEGER, vesselgrosstonnage INTEGER, vesselaveragespeedknots REAL, vesselmaxspeedknots REAL, vesselaveragedraughtmetres REAL, vesselimonumber INTEGER, vesselmmsnumber INTEGER, vesselcallsign TEXT NOT NULL, vesseltypicalpassengers TEXT, vesseltypicalcrew INTEGER)"
-
-    // db.all(sql, [], (err) => {
-    //   if (err) {
-    //     return console.error(err.message)
-    //   }
-    //   console.log("vessels Table successfully created")
-    // })
-
     // Count the records in the database
     let sql1 = "SELECT COUNT(vesselid) AS count FROM vessels"
 

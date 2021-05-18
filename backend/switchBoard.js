@@ -1,5 +1,5 @@
 import cron from "node-cron"
-import { createFilledGolfCourseTable } from "./controllers/golfControllers/v2/golfController"
+import { fetchGolfCourses } from "./controllers/golfControllers/v2/golfController"
 import {
   createEmptyTemperatureTable,
   deleteAllTemperatureReadings,
@@ -8,8 +8,6 @@ import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
-import { createEmptyPortArrivalsTable } from "./controllers/cruiseControllers/v1/portArrivalsController"
-import { createEmptyVesselsTable } from "./controllers/cruiseControllers/v1/vesselController"
 import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines"
 import { importGtfsToSQLite } from "./importGtfsToSQLite"
 import { deleteAllRoutes } from "./deleteAllRoutes"
@@ -20,17 +18,15 @@ import { createStops } from "./createStops"
 import { createGtfsStops } from "./createGtfsStops"
 
 export const runSwitchboard = (io) => {
-  // createFilledGolfCourseTable()
+  fetchGolfCourses()
   // -----------------------------
   // createEmptyTemperatureTable()
   // -----------------------------
-  // createEmptyPortArrivalsTable()
-  // createEmptyVesselsTable()
-  fetchPortArrivalsAndVessels()
-  // -----------------------------
-  // importGtfsToSQLite()
+  // fetchPortArrivalsAndVessels()
   // -----------------------------
   // deleteAllTemperatureReadings()
+  // -----------------------------
+  // importGtfsToSQLite()
   // deleteAllRoutes()
   // deleteAllStops()
   // -----------------------------
