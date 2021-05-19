@@ -72,7 +72,7 @@ export const deleteAllVessels = (db) => {
 
   try {
     const sql_insert = "DELETE FROM vessels"
-    db.all(sql_insert, [], (err, results) => {
+    db.all(sql_insert, [], (err) => {
       if (err) {
         return console.error(err.message)
       }
@@ -82,7 +82,7 @@ export const deleteAllVessels = (db) => {
     // Reset the id number
     const sql_reset =
       "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'vessels'"
-    db.all(sql_reset, [], (err, results) => {
+    db.all(sql_reset, [], (err) => {
       if (err) {
         return console.error(err.message)
       }

@@ -63,6 +63,14 @@ export const fetchGolfCourses = () => {
         console.log("golfcourses Table successfully created")
       })
 
+      const sql_insert = "DELETE FROM golfcourses"
+      db.all(sql_insert, [], (err) => {
+        if (err) {
+          return console.error(err.message)
+        }
+        console.warn("All golfcourses deleted")
+      })
+
       // Secondly fetch all the Golf Courses data
       fs.readFile(
         process.env.RAW_GOLF_COURSE_DATA_FILEPATH,
