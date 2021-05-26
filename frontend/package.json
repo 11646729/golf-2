@@ -41,7 +41,8 @@
     "supercluster": "^7.1.0",
     "typescript": "^3.7.3",
     "use-position": "0.0.6",
-    "use-supercluster": "^0.2.8"
+    "use-supercluster": "^0.2.8",
+    "xmlhttprequest-ssl": "^1.6.3"
   },
   "scripts": {
     "start": "react-scripts start",

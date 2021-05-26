@@ -56,13 +56,24 @@ export const fetchGolfCourses = () => {
       const golfCourses_create =
         "CREATE TABLE IF NOT EXISTS golfcourses (courseid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, type TEXT NOT NULL, crsurn TEXT NOT NULL, name TEXT NOT NULL, phonenumber TEXT NOT NULL, phototitle TEXT NOT NULL, photourl TEXT NOT NULL, description TEXT, courselng REAL CHECK( courselng >= -180 AND courselng <= 180 ), courselat REAL CHECK( courselat >= -90 AND courselat <= 90 ))"
 
-      db.all(golfCourses_create, [], (err) => {
+      db.get(golfCourses_create, [], (err, results) => {
         if (err) {
           return console.error(err.message)
         }
         console.log("golfcourses Table successfully created")
       })
 
+      // const golfCourses_rowcount =
+      //   "SELECT seq id FROM sqlite_sequence WHERE name = 'golfcourses'"
+
+      // db.get(golfCourses_rowcount, [], (err, results) => {
+      //   if (err) {
+      //     return console.error(err.message)
+      //   }
+      //   console.log("Here ", results.id)
+      // })
+
+      // Secondly delete any data
       const sql_insert = "DELETE FROM golfcourses"
       db.all(sql_insert, [], (err) => {
         if (err) {
@@ -71,7 +82,17 @@ export const fetchGolfCourses = () => {
         console.warn("All golfcourses deleted")
       })
 
-      // Secondly fetch all the Golf Courses data
+      // Thirdly reset the id number
+      const sql_reset =
+        "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'golfcourses'"
+      db.all(sql_reset, [], (err) => {
+        if (err) {
+          return console.error(err.message)
+        }
+        console.warn("Reset golfcourses id number")
+      })
+
+      // Fourthly fetch all the Golf Courses data
       fs.readFile(
         process.env.RAW_GOLF_COURSE_DATA_FILEPATH,
         "utf8",
@@ -80,7 +101,7 @@ export const fetchGolfCourses = () => {
             throw err
           }
 
-          // Thirdly save the data in the Golf Courses Table in the SQLite database
+          // Fifthly save the data in the Golf Courses Table in the SQLite database
           let courses = JSON.parse(data)
           populateGolfCourses(db, courses)
         }

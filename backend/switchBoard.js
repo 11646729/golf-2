@@ -18,7 +18,7 @@ import { createStops } from "./createStops"
 import { createGtfsStops } from "./createGtfsStops"
 
 export const runSwitchboard = (io) => {
-  fetchGolfCourses()
+  // fetchGolfCourses()
   // -----------------------------
   // createEmptyTemperatureTable()
   // -----------------------------
