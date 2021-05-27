@@ -1,6 +1,6 @@
 import express from "express"
 const router = express.Router()
-const transportController = require("../../../controllers/transportControllers/v1/transportController")
+const transportController = require("../controllers/transportController")
 
 // -------------------------------------------------------
 // Bus Catalogue Home Page

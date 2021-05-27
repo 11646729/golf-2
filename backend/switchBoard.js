@@ -1,9 +1,9 @@
 import cron from "node-cron"
-import { fetchGolfCourses } from "./controllers/golfControllers/v2/golfController"
+import { fetchGolfCourses } from "./controllers/golfController"
 import {
   createEmptyTemperatureTable,
   deleteAllTemperatureReadings,
-} from "./controllers/weatherControllers/v1/weatherController"
+} from "./controllers/weatherController"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,

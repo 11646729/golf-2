@@ -41,10 +41,10 @@ addMongoose()
 runSwitchboard(io)
 
 // Routers use Controllers as per Express Tutorial
-const golfRouter = require("./routes/golfRoutes/v2/golfRouteCatalog")
-const weatherRouter = require("./routes/weatherRoutes/v1/weatherRouteCatalog")
-const cruiseRouter = require("./routes/cruiseRoutes/v1/cruiseRouteCatalog")
-const transportRouter = require("./routes/transportRoutes/v1/transportRouteCatalog")
+const golfRouter = require("./routes/golfRouteCatalog")
+const weatherRouter = require("./routes/weatherRouteCatalog")
+const cruiseRouter = require("./routes/cruiseRouteCatalog")
+const transportRouter = require("./routes/transportRouteCatalog")
 
 // Routes
 app.use("/api/golf", golfRouter)

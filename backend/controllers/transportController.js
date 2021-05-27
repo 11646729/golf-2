@@ -1,6 +1,6 @@
-import { RouteSchema } from "../../../models/transportModels/v1/routeSchema"
-import { StopSchema } from "../../../models/transportModels/v1/stopSchema"
-import { ShapeSchema } from "../../../models/transportModels/v1/shapeSchema"
+import { RouteSchema } from "../models/transportModels/v1/routeSchema"
+import { StopSchema } from "../models/transportModels/v1/stopSchema"
+import { ShapeSchema } from "../models/transportModels/v1/shapeSchema"
 
 // -------------------------------------------------------
 // Catalogue Home page

@@ -1,7 +1,4 @@
-import {
-  openSqlDbConnection,
-  closeSqlDbConnection,
-} from "../../../fileUtilities"
+import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities"
 
 // -------------------------------------------------------
 // Create Vessels Table in the SQLite Database

@@ -1,8 +1,5 @@
 const fs = require("fs")
-import {
-  openSqlDbConnection,
-  closeSqlDbConnection,
-} from "../../../fileUtilities"
+import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities"
 
 // -------------------------------------------------------
 // Catalogue Home page

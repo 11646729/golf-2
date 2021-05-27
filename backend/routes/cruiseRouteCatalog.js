@@ -1,7 +1,7 @@
 import express from "express"
 var router = express.Router()
-const portArrivalsController = require("../../../controllers/cruiseControllers/v1/portArrivalsController")
-const vesselController = require("../../../controllers/cruiseControllers/v1/vesselController")
+const portArrivalsController = require("../controllers/portArrivalsController")
+const vesselController = require("../controllers/vesselController")
 
 // -------------------------------------------------------
 // Cruise Routes

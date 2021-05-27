@@ -1,6 +1,6 @@
 import express from "express"
 const router = express.Router()
-const golfController = require("../../../controllers/golfControllers/v2/golfController")
+const golfController = require("../controllers/golfController")
 
 // -------------------------------------------------------
 // GET catalogue home page

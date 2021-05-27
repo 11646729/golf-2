@@ -1,9 +1,6 @@
-import { PortArrivalSchema } from "../../../models/cruiseModels/v1/portArrivalSchema"
-import { CoordsSchema } from "../../../models/commonModels/v1/coordsSchema"
-import {
-  openSqlDbConnection,
-  closeSqlDbConnection,
-} from "../../../fileUtilities"
+import { PortArrivalSchema } from "../models/cruiseModels/v1/portArrivalSchema"
+import { CoordsSchema } from "../models/commonModels/v1/coordsSchema"
+import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities"
 
 // -------------------------------------------------------
 // Catalogue Home page

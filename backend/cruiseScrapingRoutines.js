@@ -5,12 +5,12 @@ import { scrapeVessel } from "./scrapeVessels"
 import {
   deleteAllPortArrivals,
   createEmptyPortArrivalsTable,
-} from "./controllers/cruiseControllers/v1/portArrivalsController"
+} from "./controllers/portArrivalsController"
 import {
   deleteAllVessels,
   saveVessel,
   createEmptyVesselsTable,
-} from "./controllers/cruiseControllers/v1/vesselController"
+} from "./controllers/vesselController"
 import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities"
 
 // -------------------------------------------------------
