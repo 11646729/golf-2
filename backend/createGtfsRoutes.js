@@ -1,7 +1,7 @@
 const fs = require("fs")
 const path = require("path")
-import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
-import { RouteSchema } from "./models/transportModels/v1/routeSchema"
+import { CoordsSchema } from "./models/coordsSchema"
+import { RouteSchema } from "./models/routeSchema"
 import {
   readRouteDirectory,
   readRouteFile,

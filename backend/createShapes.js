@@ -1,6 +1,6 @@
 const fs = require("fs")
-import { ShapeSchema } from "./models/transportModels/v1/shapeSchema"
-import { CoordsSchema } from "./models/commonModels/v1/coordsSchema"
+import { ShapeSchema } from "./models/shapeSchema"
+import { CoordsSchema } from "./models/coordsSchema"
 
 // -------------------------------------------------------
 // Create Bus Shapes in the Database

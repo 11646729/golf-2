@@ -1,4 +1,4 @@
-import { StopSchema } from "./models/transportModels/v1/stopSchema"
+import { StopSchema } from "./models/stopSchema"
 
 export const deleteAllStops = async (req, res) => {
   // Firstly delete all existing Stops in the database
