@@ -8,8 +8,8 @@ import {
 } from "./controllers/portArrivalsController"
 import {
   deleteAllVessels,
-  saveVessel,
   createEmptyVesselsTable,
+  saveVessel,
 } from "./controllers/vesselController"
 import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities"
 
