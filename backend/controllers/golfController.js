@@ -49,47 +49,13 @@ export const fetchGolfCourses = () => {
 
   if (db !== null) {
     try {
-      // Firstly create an empty Table in the database - IF NEEDED
-      const golfCourses_create =
-        "CREATE TABLE IF NOT EXISTS golfcourses (courseid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, type TEXT NOT NULL, crsurn TEXT NOT NULL, name TEXT NOT NULL, phonenumber TEXT NOT NULL, phototitle TEXT NOT NULL, photourl TEXT NOT NULL, description TEXT, courselng REAL CHECK( courselng >= -180 AND courselng <= 180 ), courselat REAL CHECK( courselat >= -90 AND courselat <= 90 ))"
+      // Firstly drop the Table in the database - IF NEEDED
+      deleteGolfCourseTable(db)
 
-      db.get(golfCourses_create, [], (err, results) => {
-        if (err) {
-          return console.error(err.message)
-        }
-        console.log("golfcourses Table successfully created")
-      })
+      // Secondly create an empty Table in the database - IF NEEDED
+      createGolfCourseTable(db)
 
-      // const golfCourses_rowcount =
-      //   "SELECT seq id FROM sqlite_sequence WHERE name = 'golfcourses'"
-
-      // db.get(golfCourses_rowcount, [], (err, results) => {
-      //   if (err) {
-      //     return console.error(err.message)
-      //   }
-      //   console.log("Here ", results.id)
-      // })
-
-      // Secondly delete any data
-      const sql_insert = "DELETE FROM golfcourses"
-      db.all(sql_insert, [], (err) => {
-        if (err) {
-          return console.error(err.message)
-        }
-        console.warn("All golfcourses deleted")
-      })
-
-      // Thirdly reset the id number
-      const sql_reset =
-        "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'golfcourses'"
-      db.all(sql_reset, [], (err) => {
-        if (err) {
-          return console.error(err.message)
-        }
-        console.warn("Reset golfcourses id number")
-      })
-
-      // Fourthly fetch all the Golf Courses data
+      // Thirdly fetch all the Golf Courses data
       fs.readFile(
         process.env.RAW_GOLF_COURSE_DATA_FILEPATH,
         "utf8",
@@ -98,7 +64,7 @@ export const fetchGolfCourses = () => {
             throw err
           }
 
-          // Fifthly save the data in the Golf Courses Table in the SQLite database
+          // Fourthly save the data in the Golf Courses Table in the SQLite database
           let courses = JSON.parse(data)
           populateGolfCourses(db, courses)
         }
@@ -153,4 +119,33 @@ const populateGolfCourses = async (db, courses) => {
   } catch (e) {
     console.error(e.message)
   }
+}
+
+// -------------------------------------------------------
+// Delete golfcourses Table from SQLite database
+// Path:
+// -------------------------------------------------------
+export const deleteGolfCourseTable = (db) => {
+  const golfCourses_drop = "DROP TABLE IF EXISTS golfcourses"
+  db.get(golfCourses_drop, [], (err, results) => {
+    if (err) {
+      return console.error(err.message)
+    }
+    console.log("golfcourses Table successfully dropped")
+  })
+}
+
+// -------------------------------------------------------
+// Create golfcourses Table from SQLite database
+// Path:
+// -------------------------------------------------------
+export const createGolfCourseTable = (db) => {
+  const golfCourses_create =
+    "CREATE TABLE IF NOT EXISTS golfcourses (courseid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, type TEXT NOT NULL, crsurn TEXT NOT NULL, name TEXT NOT NULL, phonenumber TEXT NOT NULL, phototitle TEXT NOT NULL, photourl TEXT NOT NULL, description TEXT, courselng REAL CHECK( courselng >= -180 AND courselng <= 180 ), courselat REAL CHECK( courselat >= -90 AND courselat <= 90 ))"
+  db.get(golfCourses_create, [], (err, results) => {
+    if (err) {
+      return console.error(err.message)
+    }
+    console.log("golfcourses Table successfully created")
+  })
 }

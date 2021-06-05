@@ -1,30 +1,30 @@
-import cron from "node-cron"
 import { fetchGolfCourses } from "./controllers/golfController"
 import {
   createEmptyTemperatureTable,
   deleteAllTemperatureReadings,
 } from "./controllers/weatherController"
+import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines"
+import { importGtfsToSQLite } from "./importGtfsToSQLite"
+import { deleteAllRoutes } from "./deleteAllRoutes"
+import { deleteAllStops } from "./deleteAllStops"
+import { createGtfsRoutes } from "./createGtfsRoutes"
+import { createGtfsStops } from "./createGtfsStops"
+import { createShapes } from "./createShapes"
+import { createStops } from "./createStops"
+import cron from "node-cron"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
 } from "./getDarkSkiesDataAndEmit"
-import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines"
-import { importGtfsToSQLite } from "./importGtfsToSQLite"
-import { deleteAllRoutes } from "./deleteAllRoutes"
-import { createGtfsRoutes } from "./createGtfsRoutes"
-import { createShapes } from "./createShapes"
-import { deleteAllStops } from "./deleteAllStops"
-import { createStops } from "./createStops"
-import { createGtfsStops } from "./createGtfsStops"
 
 export const runSwitchboard = (io) => {
-  // fetchGolfCourses()
+  // -----------------------------
+  fetchGolfCourses()
   // -----------------------------
   // createEmptyTemperatureTable()
+  // deleteAllTemperatureReadings()
   // -----------------------------
   // fetchPortArrivalsAndVessels()
-  // -----------------------------
-  // deleteAllTemperatureReadings()
   // -----------------------------
   // importGtfsToSQLite()
   // deleteAllRoutes()
