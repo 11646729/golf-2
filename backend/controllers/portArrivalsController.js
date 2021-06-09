@@ -12,7 +12,7 @@ export const index = async (req, res) => {
 // Create Port Arrivals Table in the SQLite Database
 // Path: Function called in switchBoard
 // -------------------------------------------------------
-export const createEmptyPortArrivalsTable = async (db) => {
+export const createPortArrivalsTable = (db) => {
   // Guard clause for null Database Connection
   if (db === null) return
 
@@ -20,7 +20,7 @@ export const createEmptyPortArrivalsTable = async (db) => {
     const sql =
       "CREATE TABLE IF NOT EXISTS portarrivals (portarrivalid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, portname TEXT NOT NULL, portunlocode TEXT NOT NULL, portcoordinatelng REAL CHECK( portcoordinatelng >= -180 AND portcoordinatelng <= 180 ), portcoordinatelat REAL CHECK( portcoordinatelat >= -90 AND portcoordinatelat <= 90 ), vesselshortcruisename TEXT, vesseleta TEXT, vesseletd TEXT, vesselnameurl TEXT)"
 
-    db.all(sql, [], (err) => {
+    db.run(sql, [], (err) => {
       if (err) {
         return console.error(err.message)
       }
@@ -96,5 +96,26 @@ export const deleteAllPortArrivals = (db) => {
     })
   } catch (err) {
     console.error("Error in deleteAllPortArrivals: ", err)
+  }
+}
+
+// -------------------------------------------------------
+// Delete all Port Arrivals from SQLite database
+// Path:
+// -------------------------------------------------------
+export const dropPortArrivalsTable = (db) => {
+  // Guard clause for null Database Connection
+  if (db === null) return
+
+  try {
+    const vessels_drop = "DROP TABLE IF EXISTS portarrivals"
+    db.all(vessels_drop, [], (err) => {
+      if (err) {
+        return console.error(err.message)
+      }
+      console.log("portarrivals Table successfully dropped")
+    })
+  } catch (err) {
+    console.error("Error in dropPortArrivalsTable: ", err)
   }
 }

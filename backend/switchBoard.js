@@ -19,7 +19,7 @@ import {
 
 export const runSwitchboard = (io) => {
   // -----------------------------
-  fetchGolfCourses()
+  // fetchGolfCourses()
   // -----------------------------
   // createEmptyTemperatureTable()
   // deleteAllTemperatureReadings()

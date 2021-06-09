@@ -4,12 +4,14 @@ import { getAndSavePortArrivals } from "./scrapeArrivals"
 import { scrapeVessel } from "./scrapeVessels"
 import {
   deleteAllPortArrivals,
-  createEmptyPortArrivalsTable,
+  createPortArrivalsTable,
+  dropPortArrivalsTable,
 } from "./controllers/portArrivalsController"
 import {
   deleteAllVessels,
-  createEmptyVesselsTable,
+  createVesselsTable,
   saveVessel,
+  dropVesselsTable,
 } from "./controllers/vesselController"
 import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities"
 
@@ -22,12 +24,26 @@ export const fetchPortArrivalsAndVessels = async (req, res) => {
   let db = null
   db = openSqlDbConnection(process.env.SQL_URI)
 
-  createEmptyPortArrivalsTable(db)
-  createEmptyVesselsTable(db)
+  // Firstly drop the Tables in the database - IF NEEDED
+  // NB - THROWS ERROR
+  // dropPortArrivalsTable(db)
+  // dropVesselsTable(db)
+
+  // Secondly create the empty Tables in the database - IF NEEDED
+  createPortArrivalsTable(db)
+  createVesselsTable(db)
 
   // Delete all existing Port Arrivals & Vessel Details from the database
   deleteAllPortArrivals(db)
   deleteAllVessels(db)
+
+  // // Firstly drop the Tables in the database - IF NEEDED
+  // dropPortArrivalsTable(db)
+  // dropVesselsTable(db)
+
+  // // Secondly create the empty Tables in the database - IF NEEDED
+  // createPortArrivalsTable(db)
+  // createVesselsTable(db)
 
   // Get the Port Name & Associated values
   // const port = "Belfast".toUpperCase()

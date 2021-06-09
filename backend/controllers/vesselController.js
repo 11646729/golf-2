@@ -4,7 +4,7 @@ import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities"
 // Create Vessels Table in the SQLite Database
 // Path: Function called in switchBoard
 // -------------------------------------------------------
-export const createEmptyVesselsTable = async (db) => {
+export const createVesselsTable = async (db) => {
   // Guard clause for null Database Connection
   if (db === null) return
 
@@ -12,7 +12,7 @@ export const createEmptyVesselsTable = async (db) => {
     const sql =
       "CREATE TABLE IF NOT EXISTS vessels (vesselid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, vesselnameurl TEXT NOT NULL, title TEXT NOT NULL, vesseltype TEXT NOT NULL, vesselname TEXT NOT NULL, vesselflag TEXT NOT NULL, vesselshortoperator TEXT NOT NULL, vessellongoperator TEXT NOT NULL, vesselyearbuilt TEXT NOT NULL, vessellengthmetres INTEGER, vesselwidthmetres INTEGER, vesselgrosstonnage INTEGER, vesselaveragespeedknots REAL, vesselmaxspeedknots REAL, vesselaveragedraughtmetres REAL, vesselimonumber INTEGER, vesselmmsnumber INTEGER, vesselcallsign TEXT NOT NULL, vesseltypicalpassengers TEXT, vesseltypicalcrew INTEGER)"
 
-    db.all(sql, [], (err) => {
+    db.run(sql, (err) => {
       if (err) {
         return console.error(err.message)
       }
@@ -69,9 +69,9 @@ export const deleteAllVessels = (db) => {
 
   try {
     const sql_insert = "DELETE FROM vessels"
-    db.all(sql_insert, [], (err) => {
+    db.run(sql_insert, (err) => {
       if (err) {
-        return console.error(err.message)
+        return console.error("Here", err.message)
       }
       console.warn("All vessels deleted")
     })
@@ -87,5 +87,26 @@ export const deleteAllVessels = (db) => {
     })
   } catch (err) {
     console.error("Error in deleteAllVessels: ", err)
+  }
+}
+
+// -------------------------------------------------------
+// Drop vessels Table from SQLite database
+// Path:
+// -------------------------------------------------------
+export const dropVesselsTable = (db) => {
+  // Guard clause for null Database Connection
+  if (db === null) return
+
+  try {
+    const vessels_drop = "DROP TABLE IF EXISTS vessels"
+    db.all(vessels_drop, [], (err, results) => {
+      if (err) {
+        return console.error(err.message)
+      }
+      console.log("vessels Table successfully dropped")
+    })
+  } catch (err) {
+    console.error("Error in dropVesselsTable: ", err)
   }
 }

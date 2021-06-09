@@ -50,10 +50,10 @@ export const fetchGolfCourses = () => {
   if (db !== null) {
     try {
       // Firstly drop the Table in the database - IF NEEDED
-      deleteGolfCourseTable(db)
+      dropGolfCoursesTable(db)
 
       // Secondly create an empty Table in the database - IF NEEDED
-      createGolfCourseTable(db)
+      createGolfCoursesTable(db)
 
       // Thirdly fetch all the Golf Courses data
       fs.readFile(
@@ -65,7 +65,7 @@ export const fetchGolfCourses = () => {
           }
 
           // Fourthly save the data in the Golf Courses Table in the SQLite database
-          let courses = JSON.parse(data)
+          const courses = JSON.parse(data)
           populateGolfCourses(db, courses)
         }
       )
@@ -122,24 +122,31 @@ const populateGolfCourses = async (db, courses) => {
 }
 
 // -------------------------------------------------------
-// Delete golfcourses Table from SQLite database
+// Drop golfcourses Table from SQLite database
 // Path:
 // -------------------------------------------------------
-export const deleteGolfCourseTable = (db) => {
-  const golfCourses_drop = "DROP TABLE IF EXISTS golfcourses"
-  db.get(golfCourses_drop, [], (err, results) => {
-    if (err) {
-      return console.error(err.message)
-    }
-    console.log("golfcourses Table successfully dropped")
-  })
+export const dropGolfCoursesTable = (db) => {
+  // Guard clause for null Database Connection
+  if (db === null) return
+
+  try {
+    const golfCourses_drop = "DROP TABLE IF EXISTS golfcourses"
+    db.get(golfCourses_drop, [], (err) => {
+      if (err) {
+        return console.error(err.message)
+      }
+      console.log("golfcourses Table successfully dropped")
+    })
+  } catch (err) {
+    console.error("Error in dropGolfCoursesTable: ", err)
+  }
 }
 
 // -------------------------------------------------------
 // Create golfcourses Table from SQLite database
 // Path:
 // -------------------------------------------------------
-export const createGolfCourseTable = (db) => {
+export const createGolfCoursesTable = (db) => {
   const golfCourses_create =
     "CREATE TABLE IF NOT EXISTS golfcourses (courseid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, type TEXT NOT NULL, crsurn TEXT NOT NULL, name TEXT NOT NULL, phonenumber TEXT NOT NULL, phototitle TEXT NOT NULL, photourl TEXT NOT NULL, description TEXT, courselng REAL CHECK( courselng >= -180 AND courselng <= 180 ), courselat REAL CHECK( courselat >= -90 AND courselat <= 90 ))"
   db.get(golfCourses_create, [], (err, results) => {
