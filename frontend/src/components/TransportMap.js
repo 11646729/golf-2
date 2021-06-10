@@ -40,6 +40,8 @@ function TransportMap() {
     return () => (isSubscribed = false)
   }, [])
 
+  console.log(uniqueBusShapesCollection)
+
   return (
     <TransportMapView
       uniqueBusShapesCollection={uniqueBusShapesCollection}

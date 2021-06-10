@@ -19,6 +19,7 @@ const Keys = ["7", "8", "9", "10", "11", "16", "17"]
 // const Keys = ["1", "2", "3", "4", "5", "6"]
 
 export const getAllShapes = async (req, res) => {
+  console.log("Here Shapes")
   ShapeSchema.find({ shapeKey: Keys }) // 3 = Train, 1&2 = Route Endpoints
     .then((shapeSchema) => res.json(shapeSchema))
     .catch((err) => res.status(400).json("Error " + err))
