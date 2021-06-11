@@ -15,6 +15,6 @@ export const importGtfsToSQLite = async () => {
         console.error(err)
       })
   } catch (error) {
-    console.log("\n\nError in convertGtfsToGeoJSON: ", error)
+    console.log("\n\nError in importGtfsToSQLite: ", error)
   }
 }

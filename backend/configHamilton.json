@@ -6,5 +6,5 @@
     }
   ],
   "verbose": true,
-  "sqlitePath": "/Users/briansmith/Documents/GTD/golf-2/backend/gtfs data/Hamilton Ontario Street Railway/gtfs.db"
+  "sqlitePath": "/Users/briansmith/Documents/GTD/golf-2/backend/sqlite3 data/general.db"
 }
