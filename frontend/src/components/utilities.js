@@ -30,11 +30,27 @@ export const getStopsData = async (url) => {
   // return removeDuplicates(resultData.data, "coordsString")
 }
 
-// Function to fetch Unique Shapes data
-export const getShapesData = async (url) => {
-  const resultData = await fetchData(url, {})
+// -------------------------------------------------------
+// Local function
+// Function to fetch Shapes data for a specific shapeID
+// -------------------------------------------------------
+export const getShapesData = async (url, shapeID) => {
+  // Guard clauses
+  if (url == null) return
+  if (shapeID == null) return
+
+  const resultData = await axios({
+    url: url,
+    params: {
+      shape: shapeID,
+    },
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
   return resultData.data
-  // removeDuplicates(result.data, "routeNumber")
 }
 
 // Function to remove Gtfs data fields routeVisible === false

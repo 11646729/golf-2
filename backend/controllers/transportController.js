@@ -1,6 +1,5 @@
 import { RouteSchema } from "../models/routeSchema"
 import { StopSchema } from "../models/stopSchema"
-import { ShapeSchema } from "../models/shapeSchema"
 import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities"
 
 // -------------------------------------------------------
@@ -12,35 +11,24 @@ export const index = async (req, res) => {
 }
 
 // -------------------------------------------------------
-// Bus Shapes
-// Path: localhost:5000/api/transport/tshape/
+// Bus Route Shapes
+// Path: localhost:5000/api/transport/shapes/
 // -------------------------------------------------------
-const Keys = ["7", "8", "9", "10", "11", "16", "17"]
-// const Keys = ["1", "2", "3", "4", "5", "6", "3195", "3196"]
-// const Keys = ["1", "2", "3", "4", "5", "6"]
-
 export const getAllShapes = (req, res) => {
-  // ShapeSchema.find({ shapeKey: Keys }) // 3 = Train, 1&2 = Route Endpoints
-  //   .then((shapeSchema) => res.json(shapeSchema))
-  //   .catch((err) => res.status(400).json("Error " + err))
-
   // Open a Database Connection
   let db = null
-  db = openSqlDbConnection(
-    "/Users/briansmith/Documents/GTD/golf-2/backend/sqlite3 data/general.db"
-  )
+  db = openSqlDbConnection(process.env.SQL_URI)
+
+  let shapeID = req.query.shape
 
   if (db !== null) {
     try {
-      let sql =
-        "SELECT id, shape_id, shape_pt_lat, shape_pt_lon, shape_pt_sequence FROM shapes WHERE shape_id = '26501' ORDER BY shape_id, shape_pt_sequence"
+      let sql = `SELECT id, shape_id, shape_pt_lat, shape_pt_lon, shape_pt_sequence FROM shapes WHERE shape_id = ${shapeID} ORDER BY shape_id, shape_pt_sequence`
       db.all(sql, [], (err, results) => {
         if (err) {
           return console.error(err.message)
         }
-
-        console.log(results)
-        // res.send(results)
+        res.send(results)
       })
 
       // Close the Database Connection

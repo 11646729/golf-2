@@ -11,7 +11,7 @@ import { CssBaseline, Grid } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
-import { getShapesData, getStopsData, getDisplayData } from "./Utilities"
+import { getShapesData2, getStopsData, getDisplayData } from "./Utilities"
 
 // -------------------------------------------------------
 // React Controller component
@@ -25,9 +25,10 @@ function TransportMap() {
   useEffect(() => {
     let isSubscribed = true
 
-    getShapesData("http://localhost:5000/api/transport/shapes/")
-      .then((returnedData) =>
-        isSubscribed ? setUniqueBusShapesCollection(returnedData) : null
+    getShapesData("http://localhost:5000/api/transport/shapes/", "26501")
+      .then(
+        (returnedData) => console.log(returnedData)
+        // isSubscribed ? setUniqueBusShapesCollection(returnedData) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
