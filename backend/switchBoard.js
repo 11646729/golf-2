@@ -9,7 +9,6 @@ import { deleteAllRoutes } from "./deleteAllRoutes"
 import { deleteAllStops } from "./deleteAllStops"
 import { createGtfsRoutes } from "./createGtfsRoutes"
 import { createGtfsStops } from "./createGtfsStops"
-import { createShapes } from "./createShapes"
 import { createStops } from "./createStops"
 import cron from "node-cron"
 import {
@@ -32,7 +31,6 @@ export const runSwitchboard = (io) => {
   // -----------------------------
   // createGtfsRoutes()
   // createGtfsStops()
-  // createShapes()
   // createStops()
   // -----------------------------
   // Using socket.io for realtime

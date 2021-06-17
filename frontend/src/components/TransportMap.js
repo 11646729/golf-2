@@ -11,12 +11,7 @@ import { CssBaseline, Grid } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
-import {
-  getShapesData,
-  getStopsData,
-  getDisplayData,
-  consolidateCoords,
-} from "./Utilities"
+import { getShapesData, getStopsData } from "./Utilities"
 
 // -------------------------------------------------------
 // React Controller component

@@ -25,13 +25,15 @@ export const getAllShapes = (req, res) => {
   if (db !== null) {
     try {
       // db.serialize(() => {
-      let sql = `SELECT id, shape_id, shape_pt_lat, shape_pt_lon, shape_pt_sequence FROM shapes WHERE shape_id = ${shapeID} ORDER BY shape_id, shape_pt_sequence`
+      let sql = `SELECT shape_id, shape_pt_lat, shape_pt_lon, shape_pt_sequence FROM shapes WHERE shape_id = ${shapeID} ORDER BY shape_id, shape_pt_sequence`
+      // let sql1 = `SELECT shape_id, shape_pt_lat, shape_pt_lon, shape_pt_sequence FROM shapes ORDER BY shape_id, shape_pt_sequence`
       db.all(sql, [], (err, results) => {
         if (err) {
           return console.error(err.message)
         }
 
-        newResults = consolidateShape(results)
+        console.log(results.length)
+        // newResults = consolidateShapeCoordinates(results, shapeID)
 
         res.send(newResults)
       })
@@ -88,7 +90,7 @@ export const getAllStops = async (req, res) => {
 // Local function
 // Function to put all Shapes coordinates into an array
 // -------------------------------------------------------
-const consolidateShape = (results) => {
+const consolidateShapeCoordinates = (results, shapeID) => {
   // Guard clauses
   if (results == null) return
 
@@ -108,7 +110,7 @@ const consolidateShape = (results) => {
     j++
   } while (j < loopend)
 
-  newResults.shapeKey = "7"
+  newResults.shapeKey = shapeID
   newResults.shapeCoordinates = pathArray
 
   return newResults
