@@ -11,14 +11,18 @@ import { CssBaseline, Grid } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
-import { getShapesData2, getStopsData, getDisplayData } from "./Utilities"
+import {
+  getShapesData,
+  getStopsData,
+  getDisplayData,
+  consolidateCoords,
+} from "./Utilities"
 
 // -------------------------------------------------------
 // React Controller component
 // -------------------------------------------------------
 function TransportMap() {
-  // const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
-  const [uniqueBusShapesCollection, setUniqueBusShapesCollection] = useState([])
+  const [busShapesCollection, setBusShapesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
   const [loadingError, setLoadingError] = useState("")
 
@@ -26,9 +30,8 @@ function TransportMap() {
     let isSubscribed = true
 
     getShapesData("http://localhost:5000/api/transport/shapes/", "26501")
-      .then(
-        (returnedData) => console.log(returnedData)
-        // isSubscribed ? setUniqueBusShapesCollection(returnedData) : null
+      .then((returnedData) =>
+        isSubscribed ? setBusShapesCollection(returnedData) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
@@ -41,11 +44,9 @@ function TransportMap() {
     return () => (isSubscribed = false)
   }, [])
 
-  console.log(uniqueBusShapesCollection)
-
   return (
     <TransportMapView
-      uniqueBusShapesCollection={uniqueBusShapesCollection}
+      busShapesCollection={busShapesCollection}
       busStopsCollection={busStopsCollection}
       loadingError={loadingError}
     />
@@ -142,23 +143,25 @@ function TransportMapView(props) {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {props.uniqueBusShapesCollection
-              ? props.uniqueBusShapesCollection.map((busRoute) => (
-                  <Polyline
-                    key={busRoute.shapeKey}
-                    path={busRoute.shapeCoordinates}
-                    options={{
-                      strokeColor: "#FF0000",
-                      strokeOpacity: "1.0",
-                      strokeWeight: 2,
-                    }}
-                    onClick={() => {
-                      handleBusShapeClick()
-                    }}
-                  />
-                ))
-              : null}
-            {props.busStopsCollection
+            {/* {props.busShapesCollection
+              ? props.busShapesCollection.map((busRoute) => ( */}
+            <Polyline
+              // key={busRoute.shapeKey}
+              // path={busRoute.shapeCoordinates}
+              key={props.busShapesCollection.shapeKey}
+              path={props.busShapesCollection.shapeCoordinates}
+              options={{
+                strokeColor: "#FF0000",
+                strokeOpacity: "1.0",
+                strokeWeight: 2,
+              }}
+              onClick={() => {
+                handleBusShapeClick()
+              }}
+            />
+            {/* ))
+              : null} */}
+            {/* {props.busStopsCollection
               ? props.busStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stopKey}
@@ -174,7 +177,7 @@ function TransportMapView(props) {
                     }}
                   />
                 ))
-              : null}
+              : null} */}
           </GoogleMap>
         </Grid>
         <Grid item xs={12} sm={3}>

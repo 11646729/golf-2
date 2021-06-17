@@ -17,18 +17,23 @@ export const index = async (req, res) => {
 export const getAllShapes = (req, res) => {
   // Open a Database Connection
   let db = null
-  db = openSqlDbConnection(process.env.SQL_URI)
+  db = openSqlDbConnection(process.env.HAMILTON_SQL_URI)
 
+  let newResults = null
   let shapeID = req.query.shape
 
   if (db !== null) {
     try {
+      // db.serialize(() => {
       let sql = `SELECT id, shape_id, shape_pt_lat, shape_pt_lon, shape_pt_sequence FROM shapes WHERE shape_id = ${shapeID} ORDER BY shape_id, shape_pt_sequence`
       db.all(sql, [], (err, results) => {
         if (err) {
           return console.error(err.message)
         }
-        res.send(results)
+
+        newResults = consolidateShape(results)
+
+        res.send(newResults)
       })
 
       // Close the Database Connection
@@ -77,4 +82,34 @@ export const getAllStops = async (req, res) => {
   StopSchema.find(req.query)
     .then((stopSchema) => res.json(stopSchema))
     .catch((err) => res.status(400).json("Error " + err))
+}
+
+// -------------------------------------------------------
+// Local function
+// Function to put all Shapes coordinates into an array
+// -------------------------------------------------------
+const consolidateShape = (results) => {
+  // Guard clauses
+  if (results == null) return
+
+  let j = 0
+  let pathArray = []
+  let loopend = results.length
+  let newResults = {}
+
+  do {
+    var coords = {
+      lat: results[j].shape_pt_lat,
+      lng: results[j].shape_pt_lon,
+    }
+
+    pathArray.push(coords)
+
+    j++
+  } while (j < loopend)
+
+  newResults.shapeKey = "7"
+  newResults.shapeCoordinates = pathArray
+
+  return newResults
 }

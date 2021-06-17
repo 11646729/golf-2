@@ -5,7 +5,7 @@ import sqlite3 from "sqlite3"
 // -------------------------------------------------------
 // Local function to read the geojson filenames in a directory
 // -------------------------------------------------------
-export function readRouteDirectory(dirPath, suffix) {
+export var readRouteDirectory = (dirPath, suffix) => {
   try {
     let fileArray = []
 
@@ -23,7 +23,7 @@ export function readRouteDirectory(dirPath, suffix) {
 // -------------------------------------------------------
 // Local function to read a Route file
 // -------------------------------------------------------
-export function readRouteFile(fileUrl) {
+export var readRouteFile = (fileUrl) => {
   try {
     // Firstly read all existing Bus Stops in the file
     const data = fs.readFileSync(fileUrl, "utf8")
@@ -41,7 +41,7 @@ export function readRouteFile(fileUrl) {
 // -------------------------------------------------------
 // Local function to read a set of files in a directory
 // -------------------------------------------------------
-export function prepReadGtfsFile(firstFile, iterationSize, arraylength) {
+export var prepReadGtfsFile = (firstFile, iterationSize, arraylength) => {
   let fileFetchArray = []
   let fileFetch = []
 
@@ -94,7 +94,7 @@ export function prepReadGtfsFile(firstFile, iterationSize, arraylength) {
 // -------------------------------------------------------
 // Function to open the SQLite database file connection
 // -------------------------------------------------------
-export const openSqlDbConnection = () => {
+export var openSqlDbConnection = (url) => {
   let db = null
   if (process.env.NODE_ENV === "production") {
     // PostgreSQL in production
@@ -102,7 +102,7 @@ export const openSqlDbConnection = () => {
     //
   } else {
     // SQLite by default
-    db = new sqlite3.Database(process.env.SQL_URI)
+    db = new sqlite3.Database(url)
 
     if (db !== null) {
       console.log("Connected to the SQLite database")
@@ -118,7 +118,7 @@ export const openSqlDbConnection = () => {
 // -------------------------------------------------------
 // Function to close the SQLite database connection
 // -------------------------------------------------------
-export const closeSqlDbConnection = (db) => {
+export var closeSqlDbConnection = (db) => {
   db.close()
   console.log("Disconnected from the SQLite database")
 }

@@ -1,16 +1,16 @@
 import axios from "axios"
 
-const fetchData = async (url) => {
+var fetchData = async (url) => {
   return await axios(url)
 }
 
-export const getData = async (url) => {
+export var getData = async (url) => {
   const resultData = await fetchData(url)
   return resultData.data
 }
 
 // Function to fetch Unique Gtfs Route data
-export const getRoutesData = async (url) => {
+export var getRoutesData = async (url) => {
   // const resultData = await fetchData(url, {})
 
   // Filter out Duplicate Routes here
@@ -25,7 +25,7 @@ export const getRoutesData = async (url) => {
 }
 
 // Function to fetch Unique Gtfs Stops data
-export const getStopsData = async (url) => {
+export var getStopsData = async (url) => {
   // const resultData = await fetchData(url, {})
   // return removeDuplicates(resultData.data, "coordsString")
 }
@@ -34,7 +34,7 @@ export const getStopsData = async (url) => {
 // Local function
 // Function to fetch Shapes data for a specific shapeID
 // -------------------------------------------------------
-export const getShapesData = async (url, shapeID) => {
+export var getShapesData = async (url, shapeID) => {
   // Guard clauses
   if (url == null) return
   if (shapeID == null) return
@@ -50,11 +50,14 @@ export const getShapesData = async (url, shapeID) => {
       "Content-Type": "application/json",
     },
   })
+
+  // console.log(resultData)
+
   return resultData.data
 }
 
 // Function to remove Gtfs data fields routeVisible === false
-export const getDisplayData = (originalArray) => {
+export var getDisplayData = (originalArray) => {
   let displayArray = []
   let index = 0
   do {
@@ -68,12 +71,12 @@ export const getDisplayData = (originalArray) => {
 }
 
 // Function to remove duplicates from array
-// const removeDuplicates = (originalArray, prop) => {
+// var removeDuplicates = (originalArray, prop) => {
 //   return [...new Map(originalArray.map((item) => [item[prop], item])).values()]
 // }
 
 // Function to fetch Bus Agencies
-export const getAgencyNames = (originalArray) => {
+export var getAgencyNames = (originalArray) => {
   let namesArray = []
   let index = 0
   do {
