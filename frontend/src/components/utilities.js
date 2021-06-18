@@ -26,8 +26,19 @@ export var getRoutesData = async (url) => {
 
 // Function to fetch Unique Gtfs Stops data
 export var getStopsData = async (url) => {
-  // const resultData = await fetchData(url, {})
-  // return removeDuplicates(resultData.data, "coordsString")
+  // Guard clauses
+  if (url == null) return
+
+  const resultData = await axios({
+    url: url,
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  return resultData.data
 }
 
 // -------------------------------------------------------
@@ -51,7 +62,7 @@ export var getShapesData = async (url, shapeID) => {
     },
   })
 
-  // console.log(resultData)
+  console.log(resultData.data)
 
   return resultData.data
 }

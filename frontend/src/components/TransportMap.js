@@ -70,8 +70,8 @@ function TransportMapView(props) {
     const bounds = new window.google.maps.LatLngBounds()
     props.busStopsCollection.map((busStop) => {
       const myLatLng = new window.google.maps.LatLng({
-        lat: busStop.stopCoordinates.lat,
-        lng: busStop.stopCoordinates.lng,
+        lat: busStop.stop_lat,
+        lng: busStop.stop_lon,
       })
 
       bounds.extend(myLatLng)
@@ -141,8 +141,6 @@ function TransportMapView(props) {
             {/* {props.busShapesCollection
               ? props.busShapesCollection.map((busRoute) => ( */}
             <Polyline
-              // key={busRoute.shapeKey}
-              // path={busRoute.shapeCoordinates}
               key={props.busShapesCollection.shapeKey}
               path={props.busShapesCollection.shapeCoordinates}
               options={{
@@ -156,13 +154,13 @@ function TransportMapView(props) {
             />
             {/* ))
               : null} */}
-            {/* {props.busStopsCollection
+            {props.busStopsCollection
               ? props.busStopsCollection.map((busStop) => (
                   <Marker
-                    key={busStop.stopKey}
+                    key={busStop.stop_id}
                     position={{
-                      lat: busStop.stopCoordinates.lat,
-                      lng: busStop.stopCoordinates.lng,
+                      lat: busStop.stop_lat,
+                      lng: busStop.stop_lon,
                     }}
                     icon={{
                       url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
@@ -172,7 +170,7 @@ function TransportMapView(props) {
                     }}
                   />
                 ))
-              : null} */}
+              : null}
           </GoogleMap>
         </Grid>
         <Grid item xs={12} sm={3}>

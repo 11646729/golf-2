@@ -1,5 +1,4 @@
 import { RouteSchema } from "../models/routeSchema"
-import { StopSchema } from "../models/stopSchema"
 import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities"
 
 // -------------------------------------------------------
@@ -24,16 +23,13 @@ export const getAllShapes = (req, res) => {
 
   if (db !== null) {
     try {
-      // db.serialize(() => {
       let sql = `SELECT shape_id, shape_pt_lat, shape_pt_lon, shape_pt_sequence FROM shapes WHERE shape_id = ${shapeID} ORDER BY shape_id, shape_pt_sequence`
-      // let sql1 = `SELECT shape_id, shape_pt_lat, shape_pt_lon, shape_pt_sequence FROM shapes ORDER BY shape_id, shape_pt_sequence`
       db.all(sql, [], (err, results) => {
         if (err) {
           return console.error(err.message)
         }
 
-        console.log(results.length)
-        // newResults = consolidateShapeCoordinates(results, shapeID)
+        newResults = consolidateShapeCoordinates(results, shapeID)
 
         res.send(newResults)
       })
@@ -47,6 +43,37 @@ export const getAllShapes = (req, res) => {
     console.error("Cannot connect to database")
   }
 }
+
+// -------------------------------------------------------
+// Bus Stops
+// Path: localhost:5000/api/transport/stops/
+// -------------------------------------------------------
+export const getAllStops = (req, res) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.HAMILTON_SQL_URI)
+
+  if (db !== null) {
+    try {
+      let sql = `SELECT stop_id, stop_lat, stop_lon FROM stops ORDER BY stop_id`
+      db.all(sql, [], (err, results) => {
+        if (err) {
+          return console.error(err.message)
+        }
+
+        res.send(results)
+      })
+
+      // Close the Database Connection
+      closeSqlDbConnection(db)
+    } catch (e) {
+      console.error(e.message)
+    }
+  } else {
+    console.error("Cannot connect to database")
+  }
+}
+
 // -------------------------------------------------------
 // Bus Routes
 // Path: localhost:5000/api/transport/groutes/
@@ -73,16 +100,6 @@ export const putSelectedRoutes = async (req, res) => {
 
   RouteSchema.updateMany(filter, update)
     .then((routeSchema) => res.json(routeSchema))
-    .catch((err) => res.status(400).json("Error " + err))
-}
-
-// -------------------------------------------------------
-// Bus Stops
-// Path: localhost:5000/api/transport/stops/
-// -------------------------------------------------------
-export const getAllStops = async (req, res) => {
-  StopSchema.find(req.query)
-    .then((stopSchema) => res.json(stopSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
