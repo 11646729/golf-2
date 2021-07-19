@@ -9,10 +9,16 @@ const transportController = require("../controllers/transportController")
 router.get("/", transportController.index)
 
 // -------------------------------------------------------
-// Translink Bus Shapes
+// Bus Route Shapes
 // -------------------------------------------------------
-// GET all Translink Shapes
+// GET all Bus Route Shapes
 router.get("/shapes/", transportController.getAllShapes)
+
+// GET a Bus Route Shape
+router.get("/shape/", transportController.getShape)
+
+// GET all Bus Route Shape IDs
+// router.get("/shapeIDs/", transportController.getAllShapeIDs)
 
 // -------------------------------------------------------
 // Bus Routes

@@ -11,7 +11,7 @@ import { CssBaseline, Grid } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
-import { getShapesData, getStopsData } from "./Utilities"
+import { getAllShapes, getStopsData } from "./Utilities"
 
 // -------------------------------------------------------
 // React Controller component
@@ -24,7 +24,8 @@ function TransportMap() {
   useEffect(() => {
     let isSubscribed = true
 
-    getShapesData("http://localhost:5000/api/transport/shapes/", "26501")
+    // This function does some reduction & reformatting
+    getAllShapes("http://localhost:5000/api/transport/shapes/")
       .then((returnedData) =>
         isSubscribed ? setBusShapesCollection(returnedData) : null
       )
@@ -138,23 +139,23 @@ function TransportMapView(props) {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {/* {props.busShapesCollection
-              ? props.busShapesCollection.map((busRoute) => ( */}
-            <Polyline
-              key={props.busShapesCollection.shapeKey}
-              path={props.busShapesCollection.shapeCoordinates}
-              options={{
-                strokeColor: "#FF0000",
-                strokeOpacity: "1.0",
-                strokeWeight: 2,
-              }}
-              onClick={() => {
-                handleBusShapeClick()
-              }}
-            />
-            {/* ))
-              : null} */}
-            {props.busStopsCollection
+            {props.busShapesCollection
+              ? props.busShapesCollection.map((busShape) => (
+                  <Polyline
+                    key={busShape.shapeKey}
+                    path={busShape.shapeCoordinates}
+                    options={{
+                      strokeColor: "#FF0000",
+                      strokeOpacity: "1.0",
+                      strokeWeight: 2,
+                    }}
+                    onClick={() => {
+                      handleBusShapeClick()
+                    }}
+                  />
+                ))
+              : null}
+            {/* {props.busStopsCollection
               ? props.busStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stop_id}
@@ -170,7 +171,7 @@ function TransportMapView(props) {
                     }}
                   />
                 ))
-              : null}
+                  : null} */}
           </GoogleMap>
         </Grid>
         <Grid item xs={12} sm={3}>

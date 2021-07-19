@@ -5,7 +5,7 @@ import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities"
 // Catalogue Home page
 // Path: localhost:5000/api/transport/
 // -------------------------------------------------------
-export const index = async (req, res) => {
+export var index = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)
 }
 
@@ -13,7 +13,41 @@ export const index = async (req, res) => {
 // Bus Route Shapes
 // Path: localhost:5000/api/transport/shapes/
 // -------------------------------------------------------
-export const getAllShapes = (req, res) => {
+export var getAllShapes = (req, res) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.HAMILTON_SQL_URI)
+
+  let newResults = null
+
+  if (db !== null) {
+    try {
+      let sql = `SELECT * FROM shapes ORDER BY shape_id, shape_pt_sequence`
+      db.all(sql, [], (err, results) => {
+        if (err) {
+          return console.error(err.message)
+        }
+
+        // newResults = consolidateShapeCoordinates(results, shapeID)
+
+        res.send(results)
+      })
+
+      // Close the Database Connection
+      closeSqlDbConnection(db)
+    } catch (e) {
+      console.error(e.message)
+    }
+  } else {
+    console.error("Cannot connect to database")
+  }
+}
+
+// -------------------------------------------------------
+// Bus Route Shape
+// Path: localhost:5000/api/transport/shape/:shapeID
+// -------------------------------------------------------
+export var getShape = (req, res) => {
   // Open a Database Connection
   let db = null
   db = openSqlDbConnection(process.env.HAMILTON_SQL_URI)
@@ -45,10 +79,51 @@ export const getAllShapes = (req, res) => {
 }
 
 // -------------------------------------------------------
+// Bus Route Shape IDs
+// Path: localhost:5000/api/transport/shapeIDs/
+// -------------------------------------------------------
+// export var getAllShapeIDs = (req, res) => {
+//   // Open a Database Connection
+//   let db = null
+//   db = openSqlDbConnection(process.env.HAMILTON_SQL_URI)
+
+//   if (db !== null) {
+//     try {
+//       let sql = `SELECT DISTINCT shape_id FROM shapes`
+//       db.all(sql, [], (err, results) => {
+//         if (err) {
+//           return console.error(err.message)
+//         }
+
+//         let j = 0
+//         let shapeID = []
+
+//         do {
+//           shapeID.push(results[j].shape_id)
+
+//           j++
+//         } while (j < results.length)
+
+//         // console.log(shapeID)
+
+//         // res.send(results)
+//       })
+
+//       // Close the Database Connection
+//       closeSqlDbConnection(db)
+//     } catch (e) {
+//       console.error(e.message)
+//     }
+//   } else {
+//     console.error("Cannot connect to database")
+//   }
+// }
+
+// -------------------------------------------------------
 // Bus Stops
 // Path: localhost:5000/api/transport/stops/
 // -------------------------------------------------------
-export const getAllStops = (req, res) => {
+export var getAllStops = (req, res) => {
   // Open a Database Connection
   let db = null
   db = openSqlDbConnection(process.env.HAMILTON_SQL_URI)
@@ -78,14 +153,14 @@ export const getAllStops = (req, res) => {
 // Bus Routes
 // Path: localhost:5000/api/transport/groutes/
 // -------------------------------------------------------
-export const getAllRoutes = async (req, res) => {
+export var getAllRoutes = async (req, res) => {
   RouteSchema.find(req.query)
     .then((routeSchema) => res.json(routeSchema))
     .catch((err) => res.status(400).json("Error " + err))
 }
 
 // Get Panel Selected Routes
-export const getSelectedRoutes = async (req, res) => {
+export var getSelectedRoutes = async (req, res) => {
   const filter = { routeVisible: "true" }
 
   RouteSchema.find(filter)
