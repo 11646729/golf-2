@@ -17,8 +17,14 @@ router.get("/shapes/", transportController.getAllShapes)
 // GET a Bus Route Shape
 router.get("/shape/", transportController.getShape)
 
-// GET all Bus Route Shape IDs
-// router.get("/shapeIDs/", transportController.getAllShapeIDs)
+// -------------------------------------------------------
+// Bus Stops
+// -------------------------------------------------------
+// GET all Bus Stops
+// router.get("/gstop/", transportController.getAllStops)
+
+// GET all Translink Bus Stops
+router.get("/stops/", transportController.getAllStops)
 
 // -------------------------------------------------------
 // Bus Routes
@@ -34,14 +40,5 @@ router.get("/groutes/:routevisible", transportController.getSelectedRoutes)
 
 // UPDATE Selected Status in the Bus Routes documents
 router.put("/groutes/:routenumber", transportController.putSelectedRoutes)
-
-// -------------------------------------------------------
-// Bus Stops
-// -------------------------------------------------------
-// GET all Bus Stops
-// router.get("/gstop/", transportController.getAllStops)
-
-// GET all Translink Bus Stops
-router.get("/stops/", transportController.getAllStops)
 
 module.exports = router

@@ -11,7 +11,7 @@ import { CssBaseline, Grid } from "@material-ui/core"
 import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
-import { getAllShapes, getStopsData } from "./Utilities"
+import { getAllShapes, getAllStops } from "./Utilities"
 
 // -------------------------------------------------------
 // React Controller component
@@ -31,7 +31,7 @@ function TransportMap() {
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
-    getStopsData("http://localhost:5000/api/transport/stops/")
+    getAllStops("http://localhost:5000/api/transport/stops/")
       .then((returnedData) =>
         isSubscribed ? setBusStopsCollection(returnedData) : null
       )
@@ -39,6 +39,8 @@ function TransportMap() {
 
     return () => (isSubscribed = false)
   }, [])
+
+  console.log(busStopsCollection)
 
   return (
     <TransportMapView
@@ -145,7 +147,7 @@ function TransportMapView(props) {
                     key={busShape.shapeKey}
                     path={busShape.shapeCoordinates}
                     options={{
-                      strokeColor: "#FF0000",
+                      strokeColor: busShape.defaultColor,
                       strokeOpacity: "1.0",
                       strokeWeight: 2,
                     }}

@@ -32,8 +32,6 @@ export var getAllShapes = async (url) => {
   // Now reformat busShapesCollection into a new array
   const reformattedShapes = reformatShapesData(uniqueShape_ids, resultData.data)
 
-  console.log(reformattedShapes)
-
   return reformattedShapes
 }
 
@@ -62,10 +60,10 @@ export var getShape = async (url, shapeID) => {
 }
 
 // -------------------------------------------------------
-// Function
+// Local Function
 // Function to fetch all shape_ids
 // -------------------------------------------------------
-export var getShapeIDs = (busShapesCollection) => {
+var getShapeIDs = (busShapesCollection) => {
   // Now extract all unique shape_ids
   const uniqueShape_ids = [
     ...new Set(busShapesCollection.map((item) => item.shape_id)),
@@ -80,10 +78,10 @@ export var getShapeIDs = (busShapesCollection) => {
 }
 
 // -------------------------------------------------------
-// Function
+// Local Function
 // Function to reformat coordinates into a new array
 // -------------------------------------------------------
-export var reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
+var reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
   var modifiedShapeArray = []
 
   for (var k = 0; k < uniqueShapeIDs.length; k++) {
@@ -117,21 +115,33 @@ export var reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
         j++
       } while (j < tempArray.length)
 
+      // const colors = [
+      //   "#C2272D",
+      //   "#F8931F",
+      //   "#FFFF01",
+      //   "#009245",
+      //   "#0193D9",
+      //   "#0C04ED",
+      //   "#612F90",
+      // ]
+      // for (var i = 0; i < colors.length; i++) {
+      //   listItems[i].style.color = colors[i]
+      // }
+
       // Add other relevant values into the object
       var modifiedShape = {
         agencyId: "HAMILTON",
         shapeKey: uniqueShapeIDs[k],
         shapeCoordinates: finalArray,
+        display: "yes",
+        markerTypre: "LineString",
+        defaultColor: "#C2272D",
       }
 
       // Store the object in modifiedShapeArray
       modifiedShapeArray.push(modifiedShape)
     }
   }
-
-  // if (modifiedShapeArray.length > 0) {
-  //   console.log(modifiedShapeArray)
-  // }
 
   return modifiedShapeArray
 }
@@ -151,8 +161,11 @@ export var getRoutesData = async (url) => {
   return res
 }
 
+// -------------------------------------------------------
+// Function
 // Function to fetch Unique Gtfs Stops data
-export var getStopsData = async (url) => {
+// -------------------------------------------------------
+export var getAllStops = async (url) => {
   // Guard clauses
   if (url == null) return
 

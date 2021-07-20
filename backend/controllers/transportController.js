@@ -79,47 +79,6 @@ export var getShape = (req, res) => {
 }
 
 // -------------------------------------------------------
-// Bus Route Shape IDs
-// Path: localhost:5000/api/transport/shapeIDs/
-// -------------------------------------------------------
-// export var getAllShapeIDs = (req, res) => {
-//   // Open a Database Connection
-//   let db = null
-//   db = openSqlDbConnection(process.env.HAMILTON_SQL_URI)
-
-//   if (db !== null) {
-//     try {
-//       let sql = `SELECT DISTINCT shape_id FROM shapes`
-//       db.all(sql, [], (err, results) => {
-//         if (err) {
-//           return console.error(err.message)
-//         }
-
-//         let j = 0
-//         let shapeID = []
-
-//         do {
-//           shapeID.push(results[j].shape_id)
-
-//           j++
-//         } while (j < results.length)
-
-//         // console.log(shapeID)
-
-//         // res.send(results)
-//       })
-
-//       // Close the Database Connection
-//       closeSqlDbConnection(db)
-//     } catch (e) {
-//       console.error(e.message)
-//     }
-//   } else {
-//     console.error("Cannot connect to database")
-//   }
-// }
-
-// -------------------------------------------------------
 // Bus Stops
 // Path: localhost:5000/api/transport/stops/
 // -------------------------------------------------------

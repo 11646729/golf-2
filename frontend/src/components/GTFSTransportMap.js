@@ -13,7 +13,7 @@ import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
 import {
   getRoutesData,
-  getStopsData,
+  getAllStops,
   getDisplayData,
   getAgencyNames,
 } from "./Utilities"
@@ -47,7 +47,7 @@ function GTFSTransportMap() {
       .then((returnedData) => (isSubscribed ? saveToHooks(returnedData) : null))
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
-    getStopsData("http://localhost:5000/api/transport/stops/")
+    getAllStops("http://localhost:5000/api/transport/stops/")
       .then((returnedData) =>
         isSubscribed ? setUniqueBusStopsCollection(returnedData) : null
       )
