@@ -40,8 +40,6 @@ function TransportMap() {
     return () => (isSubscribed = false)
   }, [])
 
-  console.log(busStopsCollection)
-
   return (
     <TransportMapView
       busShapesCollection={busShapesCollection}
@@ -173,15 +171,15 @@ function TransportMapView(props) {
                     }}
                   />
                 ))
-                  : null} */}
+              : null} */}
           </GoogleMap>
         </Grid>
         <Grid item xs={12} sm={3}>
-          {/* <RouteSelectionPanel
-            busRoutesCollection={props.uniqueBusRoutesCollection}
+          <RouteSelectionPanel
+            busRoutesCollection={props.busShapesCollection}
             busStopsCollection={props.busStopsCollection}
-            busRoutesSelectedAgency={busRouteAgencyName}
-          /> */}
+            // busRoutesSelectedAgency={busRouteAgencyName}
+          />
         </Grid>
       </Grid>
     </div>
