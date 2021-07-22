@@ -27,6 +27,12 @@ router.get("/shape/", transportController.getShape)
 router.get("/stops/", transportController.getAllStops)
 
 // -------------------------------------------------------
+// Bus Route Agency
+// -------------------------------------------------------
+// GET all Bus Route Shapes
+router.get("/agencyname/", transportController.getAgencyName)
+
+// -------------------------------------------------------
 // Bus Routes
 // -------------------------------------------------------
 // GET all Bus Routes

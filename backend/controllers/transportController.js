@@ -28,8 +28,6 @@ export var getAllShapes = (req, res) => {
           return console.error(err.message)
         }
 
-        // newResults = consolidateShapeCoordinates(results, shapeID)
-
         res.send(results)
       })
 
@@ -90,6 +88,36 @@ export var getAllStops = (req, res) => {
   if (db !== null) {
     try {
       let sql = `SELECT stop_id, stop_lat, stop_lon FROM stops ORDER BY stop_id`
+      db.all(sql, [], (err, results) => {
+        if (err) {
+          return console.error(err.message)
+        }
+
+        res.send(results)
+      })
+
+      // Close the Database Connection
+      closeSqlDbConnection(db)
+    } catch (e) {
+      console.error(e.message)
+    }
+  } else {
+    console.error("Cannot connect to database")
+  }
+}
+
+// -------------------------------------------------------
+// Bus Agency Name
+// Path: localhost:5000/api/transport/agencyname/
+// -------------------------------------------------------
+export var getAgencyName = (req, res) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.HAMILTON_SQL_URI)
+
+  if (db !== null) {
+    try {
+      let sql = `SELECT agency_name FROM agency`
       db.all(sql, [], (err, results) => {
         if (err) {
           return console.error(err.message)

@@ -130,11 +130,9 @@ var reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
 
       // Add other relevant values into the object
       var modifiedShape = {
-        agencyId: "HAMILTON",
         shapeKey: uniqueShapeIDs[k],
         shapeCoordinates: finalArray,
         display: "yes",
-        markerTypre: "LineString",
         defaultColor: "#C2272D",
       }
 
@@ -201,19 +199,20 @@ export var getDisplayData = (originalArray) => {
 // }
 
 // Function to fetch Bus Agencies
-export var getAgencyNames = (originalArray) => {
-  let namesArray = []
-  let index = 0
-  do {
-    namesArray.push(originalArray[index].agencyName)
-    index++
-  } while (index < originalArray.length)
+export var getAgencyName = async (url) => {
+  // Guard clauses
+  if (url == null) return
 
-  console.log(originalArray.length)
+  const resultData = await axios({
+    url: url,
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
 
-  return [
-    ...new Map(namesArray.map((item) => [item["agencyName"], item])).values(),
-  ]
+  return resultData.data
 }
 
 export { getData as default }
