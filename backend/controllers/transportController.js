@@ -138,12 +138,32 @@ export var getAgencyName = (req, res) => {
 
 // -------------------------------------------------------
 // Bus Routes
-// Path: localhost:5000/api/transport/groutes/
+// Path: localhost:5000/api/transport/routes/
 // -------------------------------------------------------
-export var getAllRoutes = async (req, res) => {
-  RouteSchema.find(req.query)
-    .then((routeSchema) => res.json(routeSchema))
-    .catch((err) => res.status(400).json("Error " + err))
+export var getAllRoutes = (req, res) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.HAMILTON_SQL_URI)
+
+  if (db !== null) {
+    try {
+      let sql = `SELECT * FROM routes ORDER BY route_short_name`
+      db.all(sql, [], (err, results) => {
+        if (err) {
+          return console.error(err.message)
+        }
+
+        res.send(results)
+      })
+
+      // Close the Database Connection
+      closeSqlDbConnection(db)
+    } catch (e) {
+      console.error(e.message)
+    }
+  } else {
+    console.error("Cannot connect to database")
+  }
 }
 
 // Get Panel Selected Routes

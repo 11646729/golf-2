@@ -1,13 +1,13 @@
 import React from "react"
 import Checkbox from "@material-ui/core/Checkbox"
 import {
-  createMuiTheme,
+  createTheme,
   makeStyles,
   ThemeProvider,
 } from "@material-ui/core/styles"
 import { blue } from "@material-ui/core/colors"
 
-const theme = createMuiTheme({
+const theme = createTheme({
   status: {
     danger: blue[500],
   },

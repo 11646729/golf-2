@@ -11,6 +11,26 @@ export var getData = async (url) => {
 
 // -------------------------------------------------------
 // Function
+// Function to fetch Bus Agency
+// -------------------------------------------------------
+export var getAgencyName = async (url) => {
+  // Guard clauses
+  if (url == null) return
+
+  const resultData = await axios({
+    url: url,
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  return resultData.data
+}
+
+// -------------------------------------------------------
+// Function
 // Function to fetch all Shapes data
 // -------------------------------------------------------
 export var getAllShapes = async (url) => {
@@ -144,26 +164,31 @@ var reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
   return modifiedShapeArray
 }
 
-// Function to fetch Unique Gtfs Route data
-export var getRoutesData = async (url) => {
-  // const resultData = await fetchData(url, {})
-
-  // Filter out Duplicate Routes here
-  // let sortedDisplayArray = removeDuplicates(resultData.data, "routeNumber")
-
-  // Sort Routes code here
-  let res = []
-  // sortedDisplayArray.sort((a, b) => (a.routeNumber > b.routeNumber ? 1 : -1))
-  // res[0] = sortedDisplayArray
-
-  return res
-}
-
 // -------------------------------------------------------
 // Function
 // Function to fetch Unique Gtfs Stops data
 // -------------------------------------------------------
 export var getAllStops = async (url) => {
+  // Guard clauses
+  if (url == null) return
+
+  const resultData = await axios({
+    url: url,
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  return resultData.data
+}
+
+// -------------------------------------------------------
+// Function
+// Function to fetch Unique Gtfs Routes data
+// -------------------------------------------------------
+export var getAllRoutes = async (url) => {
   // Guard clauses
   if (url == null) return
 
@@ -198,21 +223,19 @@ export var getDisplayData = (originalArray) => {
 //   return [...new Map(originalArray.map((item) => [item[prop], item])).values()]
 // }
 
-// Function to fetch Bus Agencies
-export var getAgencyName = async (url) => {
-  // Guard clauses
-  if (url == null) return
+// Function to fetch Unique Gtfs Route data
+// export var getRoutesData = async (url) => {
+// const resultData = await fetchData(url, {})
 
-  const resultData = await axios({
-    url: url,
-    method: "GET",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+// Filter out Duplicate Routes here
+// let sortedDisplayArray = removeDuplicates(resultData.data, "routeNumber")
 
-  return resultData.data
-}
+// Sort Routes code here
+// let res = []
+// sortedDisplayArray.sort((a, b) => (a.routeNumber > b.routeNumber ? 1 : -1))
+// res[0] = sortedDisplayArray
+
+// return res
+// }
 
 export { getData as default }

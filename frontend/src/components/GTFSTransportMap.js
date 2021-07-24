@@ -12,27 +12,27 @@ import Title from "./Title"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionPanel from "./RouteSelectionPanel"
 import {
-  getRoutesData,
-  getAllStops,
-  getDisplayData,
   getAgencyName,
+  getAllStops,
+  getAllRoutes,
+  getDisplayData,
 } from "./Utilities"
 
 // -------------------------------------------------------
 // React Controller component
 // -------------------------------------------------------
 function GTFSTransportMap() {
+  const [busAgencyName, setBusAgencyName] = useState()
   const [busStopsCollection, setBusStopsCollection] = useState([])
-  const [uniqueBusRoutesCollection, setUniqueBusRoutesCollection] = useState([])
-  const [displayBusRoutesCollection, setDisplayBusRoutesCollection] = useState(
-    []
-  )
-  const [busRouteAgencyName, setBusRouteAgencyName] = useState([])
+  const [busRoutesCollection, setBusRoutesCollection] = useState([])
+  // const [displayBusRoutesCollection, setDisplayBusRoutesCollection] = useState(
+  //   []
+  // )
   const [loadingError, setLoadingError] = useState("")
 
   function saveToHooks(array) {
-    setUniqueBusRoutesCollection(array[0])
-    setDisplayBusRoutesCollection(getDisplayData(array[0]))
+    setBusRoutesCollection(array)
+    // setDisplayBusRoutesCollection(getDisplayData(array[0]))
 
     // Also need to add:
     // List of Agencies
@@ -42,9 +42,11 @@ function GTFSTransportMap() {
   useEffect(() => {
     let isSubscribed = true
 
-    // getRoutesData("http://localhost:5000/api/transport/groutes/")
-    //   .then((returnedData) => (isSubscribed ? saveToHooks(returnedData) : null))
-    //   .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+    getAgencyName("http://localhost:5000/api/transport/agencyname/")
+      .then((returnedData) =>
+        isSubscribed ? setBusAgencyName(returnedData[0].agency_name) : null
+      )
+      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     getAllStops("http://localhost:5000/api/transport/stops/")
       .then((returnedData) =>
@@ -52,24 +54,27 @@ function GTFSTransportMap() {
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
-    getAgencyName("http://localhost:5000/api/transport/agencyname/")
-      .then((returnedData) =>
-        isSubscribed ? setBusRouteAgencyName(returnedData) : null
-      )
+    getAllRoutes("http://localhost:5000/api/transport/routes/")
+      .then((returnedData) => (isSubscribed ? saveToHooks(returnedData) : null))
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     return () => (isSubscribed = false)
   }, [])
 
-  // console.log(busStopsCollection)
-  console.log(busRouteAgencyName[0])
+  // if (busAgencyName != "") {
+  //   console.log(busAgencyName)
+  // }
+
+  // if (busRoutesCollection.length > 0) {
+  //   console.log(busRoutesCollection[0])
+  // }
 
   return (
     <GTFSTransportMapView
-      // sortedUniqueBusRoutesCollection={uniqueBusRoutesCollection}
-      // displayBusRoutesCollection={displayBusRoutesCollection}
+      busAgencyName={busAgencyName}
       busStopsCollection={busStopsCollection}
-      busRouteAgencyName={busRouteAgencyName[0]}
+      busRoutesCollection={busRoutesCollection}
+      // displayBusRoutesCollection={displayBusRoutesCollection}
       loadingError={loadingError}
     />
   )
@@ -89,11 +94,6 @@ function GTFSTransportMapView(props) {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
-
-  // let busRouteAgencyName = ""
-  // if (props.sortedUniqueBusRoutesCollection.length > 0) {
-  //   busRouteAgencyName = props.sortedUniqueBusRoutesCollection[0].agencyName
-  // }
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -161,7 +161,7 @@ function GTFSTransportMapView(props) {
               width: "97%",
             }}
           >
-            <Title>GTFS Transport UI Test</Title>
+            <Title>{props.busAgencyName}</Title>
             {props.loadingError ? (
               <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
@@ -187,7 +187,7 @@ function GTFSTransportMapView(props) {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {props.busStopsCollection
+            {/* {props.busStopsCollection
               ? props.busStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stop_id}
@@ -203,7 +203,7 @@ function GTFSTransportMapView(props) {
                     }}
                   />
                 ))
-              : null}
+              : null} */}
             {/* {busStopSelected ? (
               <InfoWindow
                 position={{
@@ -224,12 +224,10 @@ function GTFSTransportMapView(props) {
           </GoogleMap>
         </Grid>
         <Grid item xs={12} sm={3}>
-          {/* <RouteSelectionPanel
-            sortedUniqueBusRoutesCollection={
-              props.sortedUniqueBusRoutesCollection
-            }
-            busRoutesSelectedAgency={busRouteAgencyName}
-          /> */}
+          <RouteSelectionPanel
+            busRoutesCollection={props.busRoutesCollection}
+            busAgencyName={props.busAgencyName}
+          />
         </Grid>
       </Grid>
     </div>

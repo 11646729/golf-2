@@ -9,7 +9,7 @@ export default function LoadingTitle(props) {
       component="div"
       display="inline"
       variant="h6"
-      color="secondary"
+      color="primary"
       p={1}
       m={1}
     >

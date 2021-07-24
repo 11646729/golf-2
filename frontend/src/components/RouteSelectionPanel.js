@@ -2,7 +2,6 @@ import React from "react"
 import { Paper, makeStyles } from "@material-ui/core"
 import LoadingTitle from "./LoadingTitle"
 import RouteSelectionList from "./RouteSelectionList"
-import PanelRadioButtons from "./PanelRadioButtons"
 
 const useStyles = makeStyles({
   routeSelectionList: {
@@ -22,19 +21,16 @@ export default function RouteSelectionPanel(props) {
   return (
     <Paper className={classes.routeSelectionList}>
       <LoadingTitle> Available Bus Routes</LoadingTitle>
-      <PanelRadioButtons
-        busRoutesSelectedAgency={props.busRoutesSelectedAgency}
-      />
 
-      {props.sortedUniqueBusRoutesCollection
-        ? props.sortedUniqueBusRoutesCollection.map((busRoute) => (
+      {props.busRoutesCollection
+        ? props.busRoutesCollection.map((busRoute) => (
             <RouteSelectionList
-              key={busRoute.routeKey}
-              routeVisible={busRoute.routeVisible}
-              routeColor={busRoute.routeColor}
-              routeNumber={busRoute.routeNumber}
-              routeName={busRoute.routeLongName}
-              routeVia={busRoute.routeNumber}
+              key={busRoute.route_id}
+              routeVisible={true}
+              routeColor={busRoute.route_color}
+              routeNumber={busRoute.route_short_name}
+              routeName={busRoute.route_long_name}
+              routeVia={busRoute.route_short_name}
             />
           ))
         : null}
