@@ -8,7 +8,8 @@ const useStyles = makeStyles({
     minWidth: "40px",
     minHeight: "40px",
     position: "relative",
-    color: "#ffffff", // white
+    // color: "#ff0000", // red
+    color: "primary",
     fontSize: "16px",
     title: props.title,
     backgroundColor: props.routeColor,

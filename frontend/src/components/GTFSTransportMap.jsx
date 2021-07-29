@@ -33,10 +33,6 @@ function GTFSTransportMap() {
   function saveToHooks(array) {
     setBusRoutesCollection(array)
     // setDisplayBusRoutesCollection(getDisplayData(array[0]))
-
-    // Also need to add:
-    // List of Agencies
-    // Current or Next Trip ??
   }
 
   useEffect(() => {
@@ -60,14 +56,6 @@ function GTFSTransportMap() {
 
     return () => (isSubscribed = false)
   }, [])
-
-  // if (busAgencyName != "") {
-  //   console.log(busAgencyName)
-  // }
-
-  // if (busRoutesCollection.length > 0) {
-  //   console.log(busRoutesCollection[0])
-  // }
 
   return (
     <GTFSTransportMapView

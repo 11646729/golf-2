@@ -88,8 +88,7 @@ function GolfCoursesMapView(props) {
   // VIEW SECTION
   // -----------------------------------------------------
   const iconPin = {
-    path:
-      "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
+    path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
     fillColor: "#78a32e",
     fillOpacity: 0.7,
     scale: 0.03, // to reduce the size of icons

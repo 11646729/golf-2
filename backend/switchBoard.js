@@ -5,8 +5,6 @@ import {
 } from "./controllers/weatherController"
 import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines"
 import { importGtfsToSQLite } from "./importGtfsToSQLite"
-import { deleteAllRoutes } from "./deleteAllRoutes"
-import { deleteAllStops } from "./deleteAllStops"
 import { createGtfsRoutes } from "./createGtfsRoutes"
 import { createGtfsStops } from "./createGtfsStops"
 import { createStops } from "./createStops"
@@ -26,12 +24,9 @@ export const runSwitchboard = (io) => {
   // fetchPortArrivalsAndVessels()
   // -----------------------------
   // importGtfsToSQLite()
-  // deleteAllRoutes()
-  // deleteAllStops()
   // -----------------------------
   // createGtfsRoutes()
   // createGtfsStops()
-  // createStops()
   // -----------------------------
   // Using socket.io for realtime
   // io.on("connection", (socket) => {

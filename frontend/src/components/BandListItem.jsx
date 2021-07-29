@@ -51,6 +51,8 @@ export default function BandListItem(props) {
     }
   }
 
+  console.log(props.routeColor)
+
   return (
     <ListItem
       button
@@ -62,7 +64,7 @@ export default function BandListItem(props) {
         routeColor={props.routeColor}
         routeNumber={props.routeNumber}
       />
-      <BandListItemText routeName={props.routeName} routeVia={props.routeVia} />
+      <BandListItemText routeName={props.routeName} />
     </ListItem>
   )
 }

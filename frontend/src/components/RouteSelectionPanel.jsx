@@ -5,6 +5,7 @@ import RouteSelectionList from "./RouteSelectionList"
 
 const useStyles = makeStyles({
   routeSelectionList: {
+    marginLeft: 20,
     marginRight: 20,
     marginBottom: 50,
     height: "600px",
@@ -20,8 +21,7 @@ export default function RouteSelectionPanel(props) {
 
   return (
     <Paper className={classes.routeSelectionList}>
-      <LoadingTitle> Available Bus Routes</LoadingTitle>
-
+      <LoadingTitle>Available Bus Routes</LoadingTitle>
       {props.busRoutesCollection
         ? props.busRoutesCollection.map((busRoute) => (
             <RouteSelectionList
