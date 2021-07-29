@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo } from "react"
+import React, { useState, useEffect, useCallback, memo } from "react"
 import {
   GoogleMap,
   useJsApiLoader,
@@ -8,26 +8,39 @@ import {
 } from "@react-google-maps/api"
 import { CssBaseline, Grid } from "@material-ui/core"
 
-import Title from "./Title"
-import LoadingTitle from "./LoadingTitle"
-import RouteSelectionPanel from "./RouteSelectionPanel"
-import { getAllShapes, getAllStops } from "./Utilities"
+import Title from "../Title"
+import LoadingTitle from "../LoadingTitle"
+import RouteSelectionPanel from "../RouteSelectionPanel"
+import {
+  getAgencyName,
+  getAllStops,
+  getAllRoutes,
+  getDisplayData,
+} from "../Utilities"
 
 // -------------------------------------------------------
 // React Controller component
 // -------------------------------------------------------
-function TransportMap() {
-  const [busShapesCollection, setBusShapesCollection] = useState([])
+function GTFSTransportMap() {
+  const [busAgencyName, setBusAgencyName] = useState()
   const [busStopsCollection, setBusStopsCollection] = useState([])
+  const [busRoutesCollection, setBusRoutesCollection] = useState([])
+  // const [displayBusRoutesCollection, setDisplayBusRoutesCollection] = useState(
+  //   []
+  // )
   const [loadingError, setLoadingError] = useState("")
+
+  function saveToHooks(array) {
+    setBusRoutesCollection(array)
+    // setDisplayBusRoutesCollection(getDisplayData(array[0]))
+  }
 
   useEffect(() => {
     let isSubscribed = true
 
-    // This function does some reduction & reformatting
-    getAllShapes("http://localhost:5000/api/transport/shapes/")
+    getAgencyName("http://localhost:5000/api/transport/agencyname/")
       .then((returnedData) =>
-        isSubscribed ? setBusShapesCollection(returnedData) : null
+        isSubscribed ? setBusAgencyName(returnedData[0].agency_name) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
@@ -37,13 +50,19 @@ function TransportMap() {
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
+    getAllRoutes("http://localhost:5000/api/transport/routes/")
+      .then((returnedData) => (isSubscribed ? saveToHooks(returnedData) : null))
+      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+
     return () => (isSubscribed = false)
   }, [])
 
   return (
-    <TransportMapView
-      busShapesCollection={busShapesCollection}
+    <GTFSTransportMapView
+      busAgencyName={busAgencyName}
       busStopsCollection={busStopsCollection}
+      busRoutesCollection={busRoutesCollection}
+      // displayBusRoutesCollection={displayBusRoutesCollection}
       loadingError={loadingError}
     />
   )
@@ -52,9 +71,12 @@ function TransportMap() {
 // -------------------------------------------------------
 // React View component
 // -------------------------------------------------------
-function TransportMapView(props) {
+function GTFSTransportMapView(props) {
   const [map, setMap] = useState(null)
-  const newLocal = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
+  const newLocal = parseInt(
+    process.env.REACT_APP_MAP_DEFAULT_ZOOM,
+    process.env.REACT_APP_MAP_DEFAULT_ZOOM
+  )
   const [mapZoom] = useState(newLocal)
   const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
@@ -81,25 +103,38 @@ function TransportMapView(props) {
     map.fitBounds(bounds)
   }
 
-  // -----------------------------------------------------
-  // EVENT HANDLERS SECTION
-  // -----------------------------------------------------
-  // Store a reference to the google map instance
-  const onLoadHandler = (map) => {
+  // Store a reference to the google map instance in state
+  const onLoadHandler = useCallback(function callback(map) {
+    // if (map && props.uniqueBusStopsCollection != null) {
+    //   const bounds = new window.google.maps.LatLngBounds()
+    //   props.uniqueBusStopsCollection.map((busStop) => {
+    //     const myLatLng = new window.google.maps.LatLng({
+    //       lat: busStop.stopCoordinates.lat,
+    //       lng: busStop.stopCoordinates.lng,
+    //     })
+    //     bounds.extend(myLatLng)
+    //     return bounds
+    //   })
+    //   map.fitBounds(bounds)
+    // }
     setMap(map)
-  }
+  }, [])
 
   // Clear the reference to the google map instance
-  const onUnmountHandler = () => {
+  const onUnmountHandler = useCallback(function callback(map) {
     setMap(null)
-  }
+  }, [])
 
   const handleBusStopClick = (event) => {
     console.log(event)
+    // console.log(busStopSelected)
+    // setBusStopSelected(busStop)
   }
 
-  const handleBusShapeClick = (event) => {
+  const handleBusRouteClick = (event) => {
     console.log(event)
+    // console.log(busRouteSelected)
+    // setBusRouteSelected(busRoute)
   }
 
   return isLoaded ? (
@@ -114,7 +149,7 @@ function TransportMapView(props) {
               width: "97%",
             }}
           >
-            <Title>Transport UI Test</Title>
+            <Title>{props.busAgencyName}</Title>
             {props.loadingError ? (
               <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
@@ -124,10 +159,11 @@ function TransportMapView(props) {
           <GoogleMap
             mapContainerStyle={{
               height: "600px",
+              width: "97%",
               border: "1px solid #ccc",
               marginLeft: 20,
               marginRight: 10,
-              marginBottom: 50,
+              marginBottom: 20,
             }}
             center={mapCenter}
             zoom={mapZoom}
@@ -139,22 +175,6 @@ function TransportMapView(props) {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {props.busShapesCollection
-              ? props.busShapesCollection.map((busShape) => (
-                  <Polyline
-                    key={busShape.shapeKey}
-                    path={busShape.shapeCoordinates}
-                    options={{
-                      strokeColor: busShape.defaultColor,
-                      strokeOpacity: "1.0",
-                      strokeWeight: 2,
-                    }}
-                    onClick={() => {
-                      handleBusShapeClick()
-                    }}
-                  />
-                ))
-              : null}
             {/* {props.busStopsCollection
               ? props.busStopsCollection.map((busStop) => (
                   <Marker
@@ -172,13 +192,29 @@ function TransportMapView(props) {
                   />
                 ))
               : null} */}
+            {/* {busStopSelected ? (
+              <InfoWindow
+                position={{
+                  lat: busStopSelected.stop_lat,
+                  lng: busStopSelected.stop_lon,
+                }}
+                onCloseClick={() => {
+                  setBusStopSelected(null)
+                }}
+              >
+                <div style={classes.divStyle}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {busStopSelected.stop_name}
+                  </Typography>
+                </div>
+              </InfoWindow>
+            ) : null} */}
           </GoogleMap>
         </Grid>
         <Grid item xs={12} sm={3}>
           <RouteSelectionPanel
-            busRoutesCollection={props.busShapesCollection}
-            busStopsCollection={props.busStopsCollection}
-            // busRoutesSelectedAgency={busRouteAgencyName}
+            busRoutesCollection={props.busRoutesCollection}
+            busAgencyName={props.busAgencyName}
           />
         </Grid>
       </Grid>
@@ -186,4 +222,4 @@ function TransportMapView(props) {
   ) : null
 }
 
-export default memo(TransportMap)
+export default memo(GTFSTransportMap)

@@ -15,12 +15,12 @@ import HomeIcon from "@material-ui/icons/Home"
 import MenuIcon from "@material-ui/icons/Menu"
 
 import Album from "./components/Album"
-import TemperaturesChart from "./components/TemperaturesChart"
-import GolfCoursesMap from "./components/GolfCoursesMap"
-import CruiseTable from "./components/CruiseTable"
-import CrimesMap from "./components/CrimesMap"
-import TransportMap from "./components/TransportMap"
-import GTFSTransportMap from "./components/GTFSTransportMap"
+import TemperaturesChart from "./components/temperatureschart/TemperaturesChart"
+import GolfCoursesMap from "./components/golfcourses/GolfCoursesMap"
+import CruiseTable from "./components/cruisetable/CruiseTable"
+import CrimesMap from "./components/crimesmap/CrimesMap"
+import TransportMap from "./components/transportmap/TransportMap"
+import GTFSTransportMap from "./components/gtfstransportmap/GTFSTransportMap"
 
 const useStyles = makeStyles((theme) => ({
   root: {

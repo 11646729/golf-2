@@ -36,34 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-.cluster-marker {
-  color: #fff;
-  background: #1978c8;
-  border-radius: 50%;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.crime-marker {
-  background: none;
-  border: none;
-}
-
-.crime-marker img {
-  width: 25px;
-}
-
-.cluster-infowindow {
-  background-color: white;
-  padding: 10px;
-  width: 220px;
-  bottom: 150px;
-  left: -45px;
-  box-shadow: "0 2px 7px 1px rgba(0, 0, 0, 0.3)";
-  position: relative;
-  font-size: 14;
-  z-index: 100;
-}

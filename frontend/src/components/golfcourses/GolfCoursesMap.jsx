@@ -17,9 +17,9 @@ import {
   CardActions,
 } from "@material-ui/core"
 
-import Title from "./Title"
-import LoadingTitle from "./LoadingTitle"
-import getData from "./Utilities"
+import Title from "../Title"
+import LoadingTitle from "../LoadingTitle"
+import getData from "../Utilities"
 
 // -------------------------------------------------------
 // React Controller component

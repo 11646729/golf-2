@@ -13,8 +13,8 @@ import {
   Grid,
 } from "@material-ui/core"
 
-import Title from "./Title"
-import LoadingTitle from "./LoadingTitle"
+import Title from "../Title"
+import LoadingTitle from "../LoadingTitle"
 
 const columns = [
   { id: "name", label: "Name", minWidth: 70 },

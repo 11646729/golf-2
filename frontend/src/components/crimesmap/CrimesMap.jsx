@@ -12,10 +12,10 @@ import {
   Grid,
 } from "@material-ui/core"
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
-import Title from "./Title"
-import LoadingTitle from "./LoadingTitle"
+import Title from "../Title"
+import LoadingTitle from "../LoadingTitle"
 
-import "../App.css"
+import "./CrimesMap.css"
 
 const Marker = ({ children }) => children
 
@@ -32,9 +32,8 @@ export default function CrimesMapContainer() {
   })
   const [homeCheckbox, setHomeCheckbox] = useState(true)
   const [latestDataCheckbox, setLatestDataCheckbox] = useState(true)
-  const [latestDataCheckboxEnabled, setLatestDataCheckboxEnabled] = useState(
-    true
-  )
+  const [latestDataCheckboxEnabled, setLatestDataCheckboxEnabled] =
+    useState(true)
   // dateInfo e.g. &date=2020-05 is the date string to be appended to the coordinates for downloading data
   const [dateInfo, setDateInfo] = useState("")
   // selectedDate e.g. 2020-04 is the date chosen by the user to obtain data
@@ -286,10 +285,8 @@ export default function CrimesMapContainer() {
               >
                 {clusters.map((cluster) => {
                   const [longitude, latitude] = cluster.geometry.coordinates
-                  const {
-                    cluster: isCluster,
-                    point_count: pointCount,
-                  } = cluster.properties
+                  const { cluster: isCluster, point_count: pointCount } =
+                    cluster.properties
 
                   if (isCluster) {
                     return (
