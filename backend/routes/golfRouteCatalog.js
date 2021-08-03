@@ -1,24 +1,16 @@
 import express from "express"
 var golfRouter = express.Router()
-import golfController from "../controllers/golfController.js"
+import { index, getAllCourses } from "../controllers/golfController.js"
 
 // -------------------------------------------------------
 // GET Golf Catalogue home page
 // -------------------------------------------------------
-// golfRouter.get("/", golfController.index())
-
-golfRouter.get("/", function (req, res) {
-  res.send("Wiki home page")
-})
+golfRouter.get("/", index)
 
 // -------------------------------------------------------
 // GET all Golf Courses
 // -------------------------------------------------------
-// golfRouter.get("/nearbyGolfCourses", golfController.getAllCourses)
-
-golfRouter.get("/nearbyGolfCourses", function (req, res) {
-  res.send("get NearbyGolfCourses page")
-})
+golfRouter.get("/nearbyGolfCourses", getAllNearbyGolfCourses)
 
 // -------------------------------------------------------
 // GET a Golf Course by id

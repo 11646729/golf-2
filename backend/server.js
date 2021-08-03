@@ -24,7 +24,7 @@ dotenv.config()
 
 const app = express()
 const httpServer = http.createServer(app)
-const io = new Server(httpServer)
+// const io = new Server(httpServer)
 
 const port = process.env.PORT || 5000
 
@@ -61,7 +61,7 @@ httpServer.listen(port, (err) => {
 
 addMongoose()
 
-runSwitchboard(io)
+// runSwitchboard(io)
 
 async function addMongoose() {
   try {

@@ -6,15 +6,14 @@ import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 // Path: localhost:5000/api/golf/
 // -------------------------------------------------------
 export var index = (req, res) => {
-  // res.send({ response: "I am alive" }).status(200)
-  res.send("Wiki home page")
+  res.send({ response: "Golf Route Catalog home page" }).status(200)
 }
 
 // -------------------------------------------------------
 // Get all Golf Courses
 // Path: localhost:5000/api/golf/courses
 // -------------------------------------------------------
-export const getAllCourses = (req, res) => {
+export const getAllNearbyGolfCourses = (req, res) => {
   // Open a Database Connection
   let db = null
   db = openSqlDbConnection(process.env.SQL_URI)

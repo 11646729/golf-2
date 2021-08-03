@@ -31,7 +31,7 @@ function GolfCoursesMap() {
   useEffect(() => {
     let isSubscribed = true
 
-    getData("http://localhost:5000/api/golf/nearbyGolfCourses")
+    getData("http://localhost:5000/api/golf/nearbyGolfcourses")
       .then((returnedData) =>
         isSubscribed ? setGolfCoursesData(returnedData) : null
       )
