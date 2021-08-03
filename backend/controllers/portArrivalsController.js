@@ -119,3 +119,5 @@ export const dropPortArrivalsTable = (db) => {
     console.error("Error in dropPortArrivalsTable: ", err)
   }
 }
+
+export default savePortArrival

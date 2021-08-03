@@ -1,4 +1,5 @@
-import mongoose, { Schema } from "mongoose"
+import mongoose from "mongoose"
+const Schema = mongoose.Schema
 
 // NB No id created to eliminate _id problem
 const tripIdSchema = new Schema(

@@ -1,18 +1,18 @@
-import { fetchGolfCourses } from "./controllers/golfController"
+import { fetchGolfCourses } from "./controllers/golfController.js"
 import {
   createEmptyTemperatureTable,
   deleteAllTemperatureReadings,
-} from "./controllers/weatherController"
-import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines"
-import { importGtfsToSQLite } from "./importGtfsToSQLite"
-import { createGtfsRoutes } from "./createGtfsRoutes"
-import { createGtfsStops } from "./createGtfsStops"
-import { createStops } from "./createStops"
+} from "./controllers/weatherController.js"
+import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines.js"
+import { importGtfsToSQLite } from "./importGtfs.js"
+import { createGtfsRoutes } from "./createGtfsRoutes.js"
+import { createGtfsStops } from "./createGtfsStops.js"
+import { createStops } from "./createStops.js"
 import cron from "node-cron"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
-} from "./getDarkSkiesDataAndEmit"
+} from "./getDarkSkiesDataAndEmit.js"
 
 export const runSwitchboard = (io) => {
   // -----------------------------

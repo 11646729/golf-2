@@ -1,12 +1,13 @@
-const fs = require("fs")
-import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities"
+import fs from "fs"
+import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 
 // -------------------------------------------------------
 // Catalogue Home page
 // Path: localhost:5000/api/golf/
 // -------------------------------------------------------
-export const index = async (req, res) => {
-  res.send({ response: "I am alive" }).status(200)
+export var index = (req, res) => {
+  // res.send({ response: "I am alive" }).status(200)
+  res.send("Wiki home page")
 }
 
 // -------------------------------------------------------
@@ -156,3 +157,5 @@ export const createGolfCoursesTable = (db) => {
     console.log("golfcourses Table successfully created")
   })
 }
+
+export default getAllCourses

@@ -1,5 +1,5 @@
 import axios from "axios"
-import { saveTemperatureReading } from "./controllers/weatherController"
+import { saveTemperatureReading } from "./controllers/weatherController.js"
 
 // -------------------------------------------------------
 // Fetch weather data from the Dark Skies website

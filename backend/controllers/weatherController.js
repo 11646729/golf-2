@@ -1,4 +1,4 @@
-import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities"
+import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 
 // -------------------------------------------------------
 // Catalogue Home page
@@ -155,3 +155,5 @@ export const deleteAllTemperatureReadings = () => {
     console.error("Cannot connect to database")
   }
 }
+
+export default getAllTemperatureReadings

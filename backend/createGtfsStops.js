@@ -1,8 +1,8 @@
-const fs = require("fs")
-const path = require("path")
-import { CoordsSchema } from "./models/coordsSchema"
-import { StopSchema } from "./models/stopSchema"
-import { readRouteDirectory } from "./fileUtilities"
+import fs from "fs"
+import path from "path"
+import { CoordsSchema } from "./models/coordsSchema.js"
+import { StopSchema } from "./models/stopSchema.js"
+import { readRouteDirectory } from "./fileUtilities.js"
 
 // -------------------------------------------------------
 // Function to fetch all the GeoJson route filenames in a directory irrespective of trip direction

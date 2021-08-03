@@ -1,19 +1,19 @@
 import axios from "axios"
 import cheerio from "cheerio"
-import { getAndSavePortArrivals } from "./scrapeArrivals"
-import { scrapeVessel } from "./scrapeVessels"
+import { getAndSavePortArrivals } from "./scrapeArrivals.js"
+import { scrapeVessel } from "./scrapeVessels.js"
 import {
   deleteAllPortArrivals,
   createPortArrivalsTable,
   dropPortArrivalsTable,
-} from "./controllers/portArrivalsController"
+} from "./controllers/portArrivalsController.js"
 import {
   deleteAllVessels,
   createVesselsTable,
   saveVessel,
   dropVesselsTable,
-} from "./controllers/vesselController"
-import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities"
+} from "./controllers/vesselController.js"
+import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities.js"
 
 // -------------------------------------------------------
 // Fetch Port Arrivals & Vessel Details

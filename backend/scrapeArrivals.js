@@ -1,6 +1,6 @@
 import axios from "axios"
 import cheerio from "cheerio"
-import { savePortArrival } from "./controllers/portArrivalsController"
+import { savePortArrival } from "./controllers/portArrivalsController.js"
 
 // -------------------------------------------------------
 // Fetch All Port Arrivals Details

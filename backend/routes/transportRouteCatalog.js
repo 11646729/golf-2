@@ -1,42 +1,65 @@
 import express from "express"
-const router = express.Router()
-const transportController = require("../controllers/transportController")
+const transportRouter = express.Router()
+import transportController from "../controllers/transportController.js"
 
 // -------------------------------------------------------
-// Bus Catalogue Home Page
+// Get Bus Catalogue Home Page
 // -------------------------------------------------------
-// GET index
-router.get("/", transportController.index)
+// transportRouter.get("/", transportController.index)
 
-// -------------------------------------------------------
-// Bus Route Shapes
+transportRouter.get("/", function (req, res) {
+  res.send("Transport Controller home page")
+})
+
 // -------------------------------------------------------
 // GET all Bus Route Shapes
-router.get("/shapes/", transportController.getAllShapes)
+// -------------------------------------------------------
+// transportRouter.get("/shapes", transportController.getAllShapes)
 
-// GET a Bus Route Shape
-router.get("/shape/", transportController.getShape)
+transportRouter.get("/shapes", function (req, res) {
+  res.send("Transport Controller home page")
+})
 
 // -------------------------------------------------------
-// Bus Stops
+// GET a Bus Route Shape
+// -------------------------------------------------------
+// transportRouter.get("/shape", transportController.getShape)
+
+transportRouter.get("/shape", function (req, res) {
+  res.send("Transport Controller get Shape home page")
+})
+
 // -------------------------------------------------------
 // GET all Bus Stops
-// router.get("/gstop/", transportController.getAllStops)
+// -------------------------------------------------------
+// router.get("/gstop", transportController.getAllStops)
 
+// -------------------------------------------------------
 // GET all Translink Bus Stops
-router.get("/stops/", transportController.getAllStops)
+// -------------------------------------------------------
+// transportRouter.get("/stops", transportController.getAllStops)
+
+transportRouter.get("/stops", function (req, res) {
+  res.send("Transport Controller get Stops home page")
+})
 
 // -------------------------------------------------------
 // Bus Route Agency
 // -------------------------------------------------------
-// GET all Bus Route Shapes
-router.get("/agencyname/", transportController.getAgencyName)
+// transportRouter.get("/agencyname", transportController.getAgencyName)
+
+transportRouter.get("/agencyname", function (req, res) {
+  res.send("Transport Controller get Agency Name home page")
+})
 
 // -------------------------------------------------------
-// Bus Routes
-// -------------------------------------------------------
 // GET all Bus Routes
-router.get("/routes/", transportController.getAllRoutes)
+// -------------------------------------------------------
+// transportRouter.get("/routes", transportController.getAllRoutes)
+
+transportRouter.get("/routes", function (req, res) {
+  res.send("Transport Controller get Routes home page")
+})
 
 // GET all Selected Panel List Bus Routes
 // router.get("/groutes/:routevisible", transportController.getSelectedRoutes)
@@ -47,4 +70,4 @@ router.get("/routes/", transportController.getAllRoutes)
 // UPDATE Selected Status in the Bus Routes documents
 // router.put("/groutes/:routenumber", transportController.putSelectedRoutes)
 
-module.exports = router
+export default transportRouter

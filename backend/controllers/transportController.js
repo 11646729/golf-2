@@ -1,5 +1,5 @@
-import { RouteSchema } from "../models/routeSchema"
-import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities"
+import { RouteSchema } from "../models/routeSchema.js"
+import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 
 // -------------------------------------------------------
 // Catalogue Home page
@@ -214,3 +214,5 @@ const consolidateShapeCoordinates = (results, shapeID) => {
 
   return newResults
 }
+
+export default getAllShapes

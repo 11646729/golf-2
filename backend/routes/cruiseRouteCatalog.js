@@ -1,16 +1,19 @@
 import express from "express"
-var router = express.Router()
-const portArrivalsController = require("../controllers/portArrivalsController")
-const vesselController = require("../controllers/vesselController")
+var cruiseRouter = express.Router()
+import portArrivalsController from "../controllers/portArrivalsController.js"
+import vesselController from "../controllers/vesselController.js"
 
 // -------------------------------------------------------
 // Cruise Routes
 // GET catalogue home page
 // -------------------------------------------------------
-router.get("/", portArrivalsController.index)
+// cruiseRouter.get("/", portArrivalsController.index)
+
+cruiseRouter.get("/", function (req, res) {
+  res.send("Cruise Routes home page")
+})
 
 // -------------------------------------------------------
-/// PortArrivals Routes ///
 // GET all port arrivals from the database
 // -------------------------------------------------------
 // router.get("/portArrivals", portArrivalsController.getPortArrivals)
@@ -23,7 +26,11 @@ router.get("/", portArrivalsController.index)
 // -------------------------------------------------------
 // POST a port arrival to the database
 // -------------------------------------------------------
-router.post("/portArrivals", portArrivalsController.savePortArrival)
+// cruiseRouter.post("/portArrivals", portArrivalsController.savePortArrival)
+
+cruiseRouter.get("/portArrivals", function (req, res) {
+  res.send("Cruise Router post home page")
+})
 
 // -------------------------------------------------------
 // PUT a port arrival by id
@@ -44,11 +51,15 @@ router.post("/portArrivals", portArrivalsController.savePortArrival)
 // -------------------------------------------------------
 // POST a vessel to the database
 // -------------------------------------------------------
-router.post("/vessel", vesselController.saveVessel)
+// cruiseRouter.post("/vessel", vesselController.saveVessel)
+
+cruiseRouter.get("/vessel", function (req, res) {
+  res.send("Cruise Router Vessel home page")
+})
 
 // -------------------------------------------------------
 // PUT a vessel by id
 // -------------------------------------------------------
 // router.put("/vessel/:id", vesselController.putVessel)
 
-module.exports = router
+export default cruiseRouter

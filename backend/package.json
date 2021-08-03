@@ -1,10 +1,11 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "This is the backend project for my own project",
+  "description": "This is the backend project for my own project mon -r esm",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "nodemon -r esm server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -23,12 +24,12 @@
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
-    "gtfs": "^2.0.8",
+    "gtfs": "^3.0.4",
     "mongoose": "^5.12.0",
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",
     "normalize-url": "^7.0.0",
-    "socket.io": "^2.4.0",
+    "socket.io": "^4.1.3",
     "sqlite": "^4.0.21",
     "sqlite3": "^5.0.2",
     "xmlhttprequest-ssl": "^1.6.3"

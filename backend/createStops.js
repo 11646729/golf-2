@@ -1,6 +1,6 @@
-const fs = require("fs")
-import { CoordsSchema } from "./models/coordsSchema"
-import { StopSchema } from "./models/stopSchema"
+import fs from "fs"
+import { CoordsSchema } from "./models/coordsSchema.js"
+import { StopSchema } from "./models/stopSchema.js"
 
 // -------------------------------------------------------
 // Create Bus Stops in the Database

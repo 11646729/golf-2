@@ -1,4 +1,4 @@
-import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities"
+import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 
 // -------------------------------------------------------
 // Create Vessels Table in the SQLite Database
@@ -110,3 +110,5 @@ export const dropVesselsTable = (db) => {
     console.error("Error in dropVesselsTable: ", err)
   }
 }
+
+export default saveVessel

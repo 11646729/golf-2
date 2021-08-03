@@ -1,20 +1,28 @@
 import express from "express"
-const router = express.Router()
-const golfController = require("../controllers/golfController")
+var golfRouter = express.Router()
+import golfController from "../controllers/golfController.js"
 
 // -------------------------------------------------------
-// GET catalogue home page
+// GET Golf Catalogue home page
 // -------------------------------------------------------
-router.get("/", golfController.index)
+// golfRouter.get("/", golfController.index())
+
+golfRouter.get("/", function (req, res) {
+  res.send("Wiki home page")
+})
 
 // -------------------------------------------------------
 // GET all Golf Courses
 // -------------------------------------------------------
-router.get("/nearbyGolfCourses/", golfController.getAllCourses)
+// golfRouter.get("/nearbyGolfCourses", golfController.getAllCourses)
+
+golfRouter.get("/nearbyGolfCourses", function (req, res) {
+  res.send("get NearbyGolfCourses page")
+})
 
 // -------------------------------------------------------
 // GET a Golf Course by id
 // -------------------------------------------------------
 // router.get("/course/:id", golfController.getOneCourse)
 
-module.exports = router
+export default golfRouter

@@ -1,5 +1,6 @@
-import mongoose, { Schema } from "mongoose"
-import { CoordsSchema } from "./coordsSchema"
+import mongoose from "mongoose"
+const Schema = mongoose.Schema
+import { CoordsSchema } from "./coordsSchema.js"
 
 const routeSchema = new Schema(
   {

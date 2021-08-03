@@ -1,22 +1,30 @@
 import express from "express"
 import http from "http"
 import path from "path"
-import socketIo from "socket.io"
+const __dirname = path.resolve()
+import { Server } from "socket.io"
+import dotenv from "dotenv"
 import cors from "cors"
 import mongoose from "mongoose"
 import toJson from "@meanie/mongoose-to-json"
-import dotenv from "dotenv"
-import { runSwitchboard } from "./switchBoard"
+
+import { runSwitchboard } from "./switchBoard.js"
 
 // const cookieParser = require("cookie-parser")
 // const logger = require("morgan")
 // const createError = require("http-errors")
 
+// Routers use Controllers as per Express Tutorial
+import golfRouter from "./routes/golfRouteCatalog.js"
+import weatherRouter from "./routes/weatherRouteCatalog.js"
+import cruiseRouter from "./routes/cruiseRouteCatalog.js"
+import transportRouter from "./routes/transportRouteCatalog.js"
+
 dotenv.config()
 
 const app = express()
-const server = http.createServer(app)
-const io = socketIo(server)
+const httpServer = http.createServer(app)
+const io = new Server(httpServer)
 
 const port = process.env.PORT || 5000
 
@@ -36,16 +44,6 @@ app.use(express.static(path.join(__dirname, "public")))
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }))
 
-addMongoose()
-
-runSwitchboard(io)
-
-// Routers use Controllers as per Express Tutorial
-const golfRouter = require("./routes/golfRouteCatalog")
-const weatherRouter = require("./routes/weatherRouteCatalog")
-const cruiseRouter = require("./routes/cruiseRouteCatalog")
-const transportRouter = require("./routes/transportRouteCatalog")
-
 // Routes
 app.use("/api/golf", golfRouter)
 app.use("/api/weather", weatherRouter)
@@ -53,13 +51,17 @@ app.use("/api/cruise", cruiseRouter)
 app.use("/api/transport", transportRouter)
 
 // Start Express server
-server.listen(port, (err) => {
+httpServer.listen(port, (err) => {
   if (err) {
     throw err
   } else {
     console.log("Server running on port: " + port)
   }
 })
+
+addMongoose()
+
+runSwitchboard(io)
 
 async function addMongoose() {
   try {
