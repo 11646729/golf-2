@@ -14,7 +14,6 @@ import GolfCoursesCard from "./GolfCoursesCard"
 import CrimesCard from "./CrimesCard"
 import CruiseTableCard from "./CruiseTableCard"
 import TransportCard from "./TransportCard"
-import GTFSTransportCard from "./GTFSTransportCard"
 
 function Copyright() {
   return (
@@ -131,9 +130,6 @@ export default function Album() {
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <TransportCard />
-            </Grid>
-            <Grid item sm={4} style={{ padding: 20 }}>
-              <GTFSTransportCard />
             </Grid>
           </Grid>
         </Container>

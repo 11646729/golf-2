@@ -20,7 +20,6 @@ import GolfCoursesMap from "./components/golfcourses/GolfCoursesMap"
 import CruiseTable from "./components/cruisetable/CruiseTable"
 import CrimesMap from "./components/crimesmap/CrimesMap"
 import TransportMap from "./components/transportmap/TransportMap"
-import GTFSTransportMap from "./components/gtfstransportmap/GTFSTransportMap"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -90,7 +89,6 @@ export default function App() {
         <Route path="cruisetable" element={<CruiseTableLink />} />
         <Route path="crimesmap" element={<CrimesMapLink />} />
         <Route path="transportmap" element={<TransportMapLink />} />
-        <Route path="gtfstransportmap" element={<GTFSTransportMapLink />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
@@ -119,10 +117,6 @@ function CrimesMapLink() {
 
 function TransportMapLink() {
   return <TransportMap />
-}
-
-function GTFSTransportMapLink() {
-  return <GTFSTransportMap />
 }
 
 function NotFound() {

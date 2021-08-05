@@ -28,29 +28,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function GTFSTransportCard() {
+export default function TransportCard() {
   const classes = useStyles()
 
   return (
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        image="/static/images/GTFS_UI.png"
-        // image="/static/images/HamiltonBus.jpg"
-        title="Transport Map"
+        image="/static/images/CoachTransport.jpg"
+        title="Bus Transport Map"
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          GTFS Hamilton UI Test
+          Bus Transport
         </Typography>
-        <Typography>GTFS UI Test</Typography>
+        <Typography>This shows Bus Transport in the Province</Typography>
       </CardContent>
       <CardActions>
         <Button
           size="small"
           color="primary"
           component={Link}
-          to="/gtfstransportmap"
+          to="/transportmap"
         >
           View
         </Button>

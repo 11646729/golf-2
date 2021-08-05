@@ -8,11 +8,11 @@ import BandListItemText from "./BandListItemText"
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    maxWidth: 360,
+    maxWidth: "360px",
     backgroundColor: theme.palette.background.paper,
   },
   item: {
-    padding: 0,
+    padding: "0px",
   },
 }))
 

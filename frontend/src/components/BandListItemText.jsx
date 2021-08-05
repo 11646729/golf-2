@@ -3,15 +3,15 @@ import { makeStyles, ListItemText, Typography } from "@material-ui/core"
 
 const useStyles = makeStyles({
   routeNameId: (props) => ({
-    paddingLeft: 10,
-    fontSize: 16,
-    fontWeight: 500,
+    paddingLeft: "10px",
+    fontSize: "14px",
+    fontWeight: "400",
     variant: "caption",
   }),
   routeViaId: (props) => ({
-    paddingLeft: 10,
-    fontSize: 12,
-    fontWeight: 50,
+    paddingLeft: "10px",
+    fontSize: "12px",
+    fontWeight: "50",
   }),
 })
 
