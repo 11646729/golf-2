@@ -1,38 +1,24 @@
 import express from "express"
 var weatherRouter = express.Router()
-import weatherController from "../controllers/weatherController.js"
+import {
+  index,
+  getAllTemperatureReadings,
+  deleteAllTemperatureReadings,
+} from "../controllers/weatherController.js"
 
 // -------------------------------------------------------
 // GET catalogue home page
 // -------------------------------------------------------
-// weatherRouter.get("/", weatherController.index)
-
-weatherRouter.get("/", function (req, res) {
-  res.send("WeatherController home page")
-})
+weatherRouter.get("/", index)
 
 // -------------------------------------------------------
 // GET all temperature readings from the database
 // -------------------------------------------------------
-// weatherRouter.get(
-//   "/temperatureReadings",
-//   weatherController.getAllTemperatureReadings
-// )
-
-weatherRouter.get("/temperatureReadings", function (req, res) {
-  res.send("get temperatureReadings page")
-})
+weatherRouter.get("/temperatureReadings", getAllTemperatureReadings)
 
 // -------------------------------------------------------
 // DELETE all temperature readings from the database
 // -------------------------------------------------------
-// weatherRouter.delete(
-//   "/temperatureReadings",
-//   weatherController.deleteAllTemperatureReadings
-// )
-
-weatherRouter.delete("/temperatureReadings", function (req, res) {
-  res.send("delete temperatureReadings page")
-})
+weatherRouter.delete("/temperatureReadings", deleteAllTemperatureReadings)
 
 export default weatherRouter

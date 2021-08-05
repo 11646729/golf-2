@@ -4,7 +4,7 @@
 // Catalogue Home page
 // Path: localhost:5000/api/cruise/
 // -------------------------------------------------------
-export const index = async (req, res) => {
+export var index = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)
 }
 

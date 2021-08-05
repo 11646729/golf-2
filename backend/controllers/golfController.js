@@ -10,8 +10,8 @@ export var index = (req, res) => {
 }
 
 // -------------------------------------------------------
-// Get all Golf Courses
-// Path: localhost:5000/api/golf/courses
+// Get All Nearby Golf Courses
+// Path: localhost:5000/api/golf/nearbyGolfCourses
 // -------------------------------------------------------
 export const getAllNearbyGolfCourses = (req, res) => {
   // Open a Database Connection
@@ -157,4 +157,4 @@ export const createGolfCoursesTable = (db) => {
   })
 }
 
-export default getAllCourses
+export default getAllNearbyGolfCourses

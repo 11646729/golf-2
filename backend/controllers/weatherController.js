@@ -4,7 +4,7 @@ import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 // Catalogue Home page
 // Path: localhost:5000/api/weather/
 // -------------------------------------------------------
-export function index(req, res) {
+export var index = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)
 }
 

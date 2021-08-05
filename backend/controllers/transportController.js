@@ -166,7 +166,9 @@ export var getAllRoutes = (req, res) => {
   }
 }
 
+// -------------------------------------------------------
 // Get Panel Selected Routes
+// -------------------------------------------------------
 export var getSelectedRoutes = async (req, res) => {
   const filter = { routeVisible: "true" }
 
@@ -175,7 +177,9 @@ export var getSelectedRoutes = async (req, res) => {
     .catch((err) => res.status(400).json("Error " + err))
 }
 
+// -------------------------------------------------------
 // Update Selected Routes
+// -------------------------------------------------------
 export const putSelectedRoutes = async (req, res) => {
   const filter = { routeNumber: req.body.routeNumber }
   const update = { routeVisible: req.body.routeVisible }
