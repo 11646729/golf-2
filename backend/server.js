@@ -1,10 +1,17 @@
 import express from "express"
-import http from "http"
+import cors from "cors"
+import dotenv from "dotenv"
+const app = express()
+
+import { createServer } from "http"
+import { Server } from "socket.io" //replaces (import socketIo from 'socket.io')
+
+const httpServer = createServer(app)
+const io = new Server(httpServer, { cors: { origin: "*" } })
+
 import path from "path"
 const __dirname = path.resolve()
-import { Server } from "socket.io"
-import dotenv from "dotenv"
-import cors from "cors"
+
 import mongoose from "mongoose"
 import toJson from "@meanie/mongoose-to-json"
 
@@ -21,10 +28,6 @@ import cruiseRouter from "./routes/cruiseRouteCatalog.js"
 import transportRouter from "./routes/transportRouteCatalog.js"
 
 dotenv.config()
-
-const app = express()
-const httpServer = http.createServer(app)
-const io = new Server(httpServer)
 
 const port = process.env.PORT || 5000
 
@@ -59,7 +62,7 @@ httpServer.listen(port, (err) => {
   }
 })
 
-addMongoose()
+// addMongoose()
 
 runSwitchboard(io)
 

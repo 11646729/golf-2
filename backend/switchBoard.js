@@ -7,7 +7,6 @@ import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines.js"
 import { importGtfsToSQLite } from "./importGtfs.js"
 import { createGtfsRoutes } from "./createGtfsRoutes.js"
 import { createGtfsStops } from "./createGtfsStops.js"
-import { createStops } from "./createStops.js"
 import cron from "node-cron"
 import {
   getAndSaveDarkSkiesData,
@@ -28,35 +27,36 @@ export const runSwitchboard = (io) => {
   // createGtfsRoutes()
   // createGtfsStops()
   // -----------------------------
-  // Using socket.io for realtime
-  // io.on("connection", (socket) => {
-  // console.log("Client Connected")
-  // Start listening for browser position data
-  // socket.on("fetchLocation", (pos) => {
-  //   console.log(
-  //     "Start listening to the fetchLocation event in the switchboard file"
-  //   )
-  // })
-  // -----------------------------
-  // Fetch data Daily at 07:00
-  // cron.schedule("0 7 * * *", () => {
-  // Fetch data every 15 Minutes
-  // cron.schedule("*/15 * * * *", () => {
-  // Fetch data every Minute
-  // cron.schedule("*/1 * * * *", () => {
-  //   // -----------------------------
-  // getAndSaveDarkSkiesData().then((result) => {
-  //     emitDarkSkiesData(socket, result)
-  // .then(() => {})
-  // })
-  // })
-  // socket.off("fetchLocation", () => {
-  //   console.log(
-  //     "Stop listening to the fetchLocation event in the switchboard file"
-  //   )
-  // })
-  // socket.on("disconnect", () => {
-  //   console.log("Client Disconnected")
-  // })
-  // })
+
+  // Using socket.io for realtime data transmission
+  io.on("connection", (socket) => {
+    console.log("Client Connected")
+
+    // Join a room
+    const { roomId } = socket.handshake.query
+    socket.join(roomId)
+    console.log("Joined Room")
+
+    // -----------------------------
+    // Fetch data every Day at 07:00
+    // cron.schedule("0 7 * * *", () => {
+
+    // Fetch data every 15 Minutes
+    // cron.schedule("*/15 * * * *", () => {
+
+    // Fetch data every Minute
+    cron.schedule("*/1 * * * *", () => {
+      // -----------------------------
+      getAndSaveDarkSkiesData().then((result) => {
+        console.log("Send temperature: " + result)
+        emitDarkSkiesData(socket, result)
+      })
+    })
+
+    socket.on("disconnect", () => {
+      // Leave the room
+      socket.leave(roomId)
+      console.log("Left Room & Client Disconnected")
+    })
+  })
 }

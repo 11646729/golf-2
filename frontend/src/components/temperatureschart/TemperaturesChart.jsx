@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import moment from "moment"
-import { io } from "socket.io-client"
+import io from "socket.io-client"
 import {
   useTheme,
   Paper,
@@ -23,7 +23,7 @@ import Title from "../Title"
 import LoadingTitle from "../LoadingTitle"
 import getData from "../Utilities"
 
-// const socket = io(process.env.REACT_APP_SOCKET_ENDPOINT)
+const socket = io(process.env.REACT_APP_SOCKET_ENDPOINT)
 
 export default function TemperaturesChart() {
   // -----------------------------------------------------
@@ -47,19 +47,24 @@ export default function TemperaturesChart() {
   // Now delete all except the last 20 readings
   temperatureData.splice(0, temperatureData.length - 20)
 
-  // const fetchRTTemperatureData = (temperatures) => {
-  //   socket.on("DataFromDarkSkiesAPI", (currentData) => {
-  //     // Need to cancel the Promise here to stop errors
-  //     setTemperatureData((temps) => [...temps, currentData.temperature])
-  //   })
-  //   // Only display data for the last 20 values
-  //   // temperatureValues.splice(0, temperatureValues.length - 20)
-  // }
+  const fetchRTTemperatureData = (temperatures) => {
+    socket.on("DataFromDarkSkiesAPI", (currentData) => {
+      console.log(currentData)
+      // Need to cancel the Promise here to stop errors
+      // setTemperatureData((temps) => [...temps, currentData.temperature])
+    })
+    // Only display data for the last 20 values
+    // temperatureValues.splice(0, temperatureValues.length - 20)
+  }
+
+  // socket.on("connect", () => {
+  //   console.log(socket.id) // x8WIv7-mJelg7on_ALbx
+  // })
 
   // Listen for realtime temperature data and update the state
-  // if (temperatureData.length > 0) {
-  //   fetchRTTemperatureData(temperatureData)
-  // }
+  if (temperatureData.length > 0) {
+    fetchRTTemperatureData(temperatureData)
+  }
 
   // const clearDataArray = () => {
   //   // Error here
