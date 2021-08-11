@@ -15,6 +15,7 @@ import HomeIcon from "@material-ui/icons/Home"
 import MenuIcon from "@material-ui/icons/Menu"
 
 import Album from "./components/Album"
+import RawDataLoad from "./components/rawdataload/RawDataLoad"
 import TemperaturesChart from "./components/temperatureschart/TemperaturesChart"
 import GolfCoursesMap from "./components/golfcourses/GolfCoursesMap"
 import CruiseTable from "./components/cruisetable/CruiseTable"
@@ -84,6 +85,7 @@ export default function App() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="loadrawdata" element={<RawDataLoadLink />} />
         <Route path="temperatureschart" element={<TemperaturesChartLink />} />
         <Route path="golfcoursesmap" element={<GolfCoursesMapLink />} />
         <Route path="cruisetable" element={<CruiseTableLink />} />
@@ -97,6 +99,10 @@ export default function App() {
 
 function Home() {
   return <Album />
+}
+
+function RawDataLoadLink() {
+  return <RawDataLoad />
 }
 
 function TemperaturesChartLink() {
