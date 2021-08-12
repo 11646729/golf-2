@@ -40,9 +40,9 @@ export default function NearbyCrimesCard() {
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          Crime
+          Crimes
         </Typography>
-        <Typography>This shows Crime in the Province</Typography>
+        <Typography>This shows Crimes in the Province</Typography>
       </CardContent>
       <CardActions>
         <Button size="small" color="primary" component={Link} to="/crimesmap">

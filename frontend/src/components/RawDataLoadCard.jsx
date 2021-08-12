@@ -35,7 +35,7 @@ export default function TemperaturesCard() {
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        image="/static/images/Temperature.jpg"
+        image="/static/images/SaveData.jpg"
         title="Load Data"
       />
       <CardContent className={classes.cardContent}>
