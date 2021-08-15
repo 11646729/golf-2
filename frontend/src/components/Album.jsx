@@ -12,7 +12,7 @@ import RawDataLoadCard from "./RawDataLoadCard"
 import TemperaturesCard from "./TemperaturesCard"
 import GolfCoursesCard from "./GolfCoursesCard"
 import CrimesCard from "./CrimesCard"
-import CruiseTableCard from "./CruiseTableCard"
+import CruiseCard from "./CruiseCard"
 import TransportCard from "./TransportCard"
 
 const useStyles = makeStyles((theme) => ({
@@ -114,7 +114,7 @@ export default function Album() {
               <CrimesCard />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
-              <CruiseTableCard />
+              <CruiseCard />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <TransportCard />
@@ -137,7 +137,6 @@ export default function Album() {
         </Typography>
         <CopyRight />
       </footer>
-      End footer
     </div>
   )
 }

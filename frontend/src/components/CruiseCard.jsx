@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function CruiseTableCard() {
+export default function CruiseCard() {
   const classes = useStyles()
 
   return (

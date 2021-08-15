@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, memo } from "react"
 import axios from "axios"
 import {
   Paper,
@@ -135,7 +135,7 @@ const useStyles = makeStyles({
   },
 })
 
-export default function CruiseTableCard() {
+function CruiseTable() {
   const classes = useStyles()
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
@@ -251,3 +251,5 @@ export default function CruiseTableCard() {
     </Paper>
   )
 }
+
+export default memo(CruiseTable)
