@@ -1,7 +1,7 @@
 import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { CssBaseline } from "@material-ui/core"
 
+import TopBar from "./components/topbar/TopBar"
 import Album from "./components/Album"
 import RawDataLoad from "./components/rawdataload/RawDataLoad"
 import TemperaturesChart from "./components/temperatureschart/TemperaturesChart"
@@ -9,24 +9,25 @@ import GolfCoursesMap from "./components/golfcourses/GolfCoursesMap"
 import CruiseTable from "./components/cruisetable/CruiseTable"
 import CrimesMap from "./components/crimesmap/CrimesMap"
 import TransportMap from "./components/transportmap/TransportMap"
-import TopBar from "./components/topbar/TopBar"
 
 export default function App() {
   return (
-    <Router>
-      <CssBaseline />
+    <div>
       <TopBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="loadrawdata" element={<RawDataLoadLink />} />
-        <Route path="temperatureschart" element={<TemperaturesChartLink />} />
-        <Route path="golfcoursesmap" element={<GolfCoursesMapLink />} />
-        <Route path="crimesmap" element={<CrimesMapLink />} />
-        <Route path="cruisetable" element={<CruiseTableLink />} />
-        <Route path="transportmap" element={<TransportMapLink />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
+
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="loadrawdata" element={<RawDataLoadLink />} />
+          <Route path="temperatureschart" element={<TemperaturesChartLink />} />
+          <Route path="golfcoursesmap" element={<GolfCoursesMapLink />} />
+          <Route path="crimesmap" element={<CrimesMapLink />} />
+          <Route path="cruisetable" element={<CruiseTableLink />} />
+          <Route path="transportmap" element={<TransportMapLink />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Router>
+    </div>
   )
 }
 

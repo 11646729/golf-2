@@ -1,34 +1,19 @@
 import React from "react"
 import {
   Button,
-  CssBaseline,
   Grid,
   Typography,
-  Link,
   Container,
   makeStyles,
 } from "@material-ui/core"
 
+import CopyRight from "../components/copyright/CopyRight"
 import RawDataLoadCard from "./RawDataLoadCard"
 import TemperaturesCard from "./TemperaturesCard"
 import GolfCoursesCard from "./GolfCoursesCard"
 import CrimesCard from "./CrimesCard"
 import CruiseTableCard from "./CruiseTableCard"
 import TransportCard from "./TransportCard"
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        My Website
-      </Link>
-      {/* {"/"} */}
-      {new Date().getFullYear()}
-      {/* {"."} */}
-    </Typography>
-  )
-}
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -76,7 +61,6 @@ export default function Album() {
 
   return (
     <div>
-      <CssBaseline />
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
@@ -151,7 +135,7 @@ export default function Album() {
         >
           Something here to give the footer a purpose!
         </Typography>
-        <Copyright />
+        <CopyRight />
       </footer>
       End footer
     </div>
