@@ -2,6 +2,7 @@ import express from "express"
 var cruiseRouter = express.Router()
 import {
   index,
+  getPortArrivals,
   savePortArrival,
 } from "../controllers/portArrivalsController.js"
 import { saveVessel } from "../controllers/vesselController.js"
@@ -15,7 +16,7 @@ cruiseRouter.get("/", index)
 // -------------------------------------------------------
 // GET all port arrivals from the database
 // -------------------------------------------------------
-// cruiseRouter.get("/portArrivals", getPortArrivals)
+cruiseRouter.get("/portArrivals", getPortArrivals)
 
 // -------------------------------------------------------
 // GET a port arrival by id

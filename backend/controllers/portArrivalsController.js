@@ -1,4 +1,4 @@
-// import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities"
+import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 
 // -------------------------------------------------------
 // Catalogue Home page
@@ -117,6 +117,38 @@ export const dropPortArrivalsTable = (db) => {
     })
   } catch (err) {
     console.error("Error in dropPortArrivalsTable: ", err)
+  }
+}
+
+// -------------------------------------------------------
+// Get all Port Arrivals from SQLite database
+// Path: localhost:5000/api/cruise/portArrivals
+// -------------------------------------------------------
+export const getPortArrivals = (req, res) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
+
+  if (db !== null) {
+    try {
+      const sql =
+        "SELECT * FROM portarrivals WHERE vesseleta != 'Not Known' AND vesseletd != 'Not Known'"
+
+      db.all(sql, [], (err, results) => {
+        if (err) {
+          return console.error(err.message)
+        }
+        console.log("Record Count Before: ", results.count)
+        res.send(results)
+      })
+
+      // Close the Database Connection
+      closeSqlDbConnection(db)
+    } catch (e) {
+      console.error(e.message)
+    }
+  } else {
+    console.error("Cannot connect to database")
   }
 }
 

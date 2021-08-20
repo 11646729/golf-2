@@ -98,8 +98,8 @@ export default function Album() {
             </div>
           </Container>
         </div>
+        {/* End hero unit */}
         <Container className={classes.cardGrid} maxWidth="xl">
-          {/* End hero unit */}
           <Grid container>
             <Grid item sm={4} style={{ padding: 20 }}>
               <RawDataLoadCard />

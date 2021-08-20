@@ -1,5 +1,4 @@
 import React, { useState, useEffect, memo } from "react"
-import axios from "axios"
 import {
   Paper,
   Table,
@@ -15,37 +14,7 @@ import {
 
 import Title from "../Title"
 import LoadingTitle from "../LoadingTitle"
-
-const columns = [
-  { id: "name", label: "Name", minWidth: 70 },
-  { id: "code", label: "ISO\u00a0Code", minWidth: 50 },
-  {
-    id: "population",
-    label: "Population",
-    minWidth: 100,
-    align: "right",
-    format: (value) => value.toLocaleString(),
-  },
-  {
-    id: "size",
-    label: "Size\u00a0(km\u00b2)",
-    minWidth: 100,
-    align: "right",
-    format: (value) => value.toLocaleString(),
-  },
-  {
-    id: "density",
-    label: "Density",
-    minWidth: 100,
-    align: "right",
-    format: (value) => value.toFixed(2),
-  },
-]
-
-function createData(name, code, population, size) {
-  const density = population / size
-  return { name, code, population, size, density }
-}
+import getData from "../Utilities"
 
 // const portArrivalSchema = new Schema(
 //   {
@@ -102,76 +71,84 @@ function createData(name, code, population, size) {
 //   "__v":0
 // }
 
-const rows = [
-  createData("India", "IN", 1324171354, 3287263),
-  createData("China", "CN", 1403500365, 9596961),
-  createData("Italy", "IT", 60483973, 301340),
-  createData("United States", "US", 327167434, 9833520),
-  createData("Canada", "CA", 37602103, 9984670),
-  createData("Australia", "AU", 25475400, 7692024),
-  createData("Germany", "DE", 83019200, 357578),
-  createData("Ireland", "IE", 4857000, 70273),
-  createData("Mexico", "MX", 126577691, 1972550),
-  createData("Japan", "JP", 126317000, 377973),
-  createData("France", "FR", 67022000, 640679),
-  createData("United Kingdom", "GB", 67545757, 242495),
-  createData("Russia", "RU", 146793744, 17098246),
-  createData("Nigeria", "NG", 200962417, 923768),
-  createData("Brazil", "BR", 210147125, 8515767),
-]
-
-const useStyles = makeStyles({
-  root: {
-    width: "100%",
-  },
-  container: {
-    marginTop: 50,
-    maxHeight: 440,
-  },
-  headerSelection: {
-    marginTop: 55,
-    marginLeft: 20,
-    width: "97%",
-  },
-})
-
+// -------------------------------------------------------
+// React Controller component
+// -------------------------------------------------------
 function CruiseTable() {
-  const classes = useStyles()
+  const [portArrivals, setData] = useState([])
+  const [loadingError, setLoadingError] = useState("")
+
+  useEffect(() => {
+    let isSubscribed = true
+
+    getData("http://localhost:5000/api/cruise/portArrivals")
+      .then((returnedData) => (isSubscribed ? setData(returnedData) : null))
+      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+
+    return () => (isSubscribed = false)
+  }, [])
+
+  const cruiseData = [
+    createData("India", "IN", 1324171354, 3287263),
+    createData("China", "CN", 1403500365, 9596961),
+    createData("Italy", "IT", 60483973, 301340),
+    createData("United States", "US", 327167434, 9833520),
+    createData("Canada", "CA", 37602103, 9984670),
+    createData("Australia", "AU", 25475400, 7692024),
+    createData("Germany", "DE", 83019200, 357578),
+    createData("Ireland", "IE", 4857000, 70273),
+    createData("Mexico", "MX", 126577691, 1972550),
+    createData("Japan", "JP", 126317000, 377973),
+    createData("France", "FR", 67022000, 640679),
+    createData("United Kingdom", "GB", 67545757, 242495),
+    createData("Russia", "RU", 146793744, 17098246),
+    createData("Nigeria", "NG", 200962417, 923768),
+    createData("Brazil", "BR", 210147125, 8515767),
+  ]
+
+  function createData(name, code, population, size) {
+    const density = population / size
+    return { name, code, population, size, density }
+  }
+
+  if (portArrivals.length > 0) {
+    console.log(portArrivals)
+  }
+
+  return (
+    <CruiseTableView cruiseData={portArrivals} loadingError={loadingError} />
+  )
+}
+
+// -------------------------------------------------------
+// React View component
+// -------------------------------------------------------
+function CruiseTableView(props) {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
 
-  const [portArrivals, setData] = useState([])
-  const [loadingData, setLoadingData] = useState(false)
-  const [loadingError, setLoadingError] = useState("")
+  const useStyles = makeStyles({
+    root: {
+      width: "100%",
+    },
+    container: {
+      marginTop: 50,
+      maxHeight: 440,
+    },
+    headerSelection: {
+      marginTop: 55,
+      marginLeft: 20,
+      width: "97%",
+    },
+  })
 
-  const getAllData = async () => {
-    const source = axios.CancelToken.source()
-    setLoadingData(true)
-    await axios
-      .get("http://localhost:5000/api/cruise/portArrivals", {
-        cancelToken: source.token,
-      })
-      .then((response) => {
-        setData(response.data)
-        setLoadingData(false)
-      })
-      .catch((error) => {
-        if (axios.isCancel(error)) {
-          console.log(error) // Component unmounted, request is cancelled
-        } else {
-          setLoadingError(error)
-        }
-      })
-    return () => {
-      source.cancel("Component unmounted, request is cancelled")
-    }
-  }
+  const classes = useStyles()
 
-  useEffect(() => {
-    getAllData()
-  }, [])
-
-  console.log(portArrivals[0])
+  const columns = [
+    { id: "vesselshortcruisename", label: "Vessel", minWidth: 70 },
+    { id: "vesseleta", label: "ETA", minWidth: 50 },
+    { id: "vesseletd", label: "ETD", minWidth: 50 },
+  ]
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
@@ -189,8 +166,7 @@ function CruiseTable() {
           <Grid item xs={12} sm={12}>
             <div className={classes.headerSelection}>
               <Title>Cruise Ship Arrivals</Title>
-              {loadingData ? <LoadingTitle>Loading...</LoadingTitle> : null}
-              {loadingError ? (
+              {props.loadingError ? (
                 <LoadingTitle>Error Loading...</LoadingTitle>
               ) : null}
             </div>
@@ -212,7 +188,7 @@ function CruiseTable() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {rows
+                  {props.cruiseData
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((row) => (
                       <TableRow
@@ -241,7 +217,7 @@ function CruiseTable() {
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
-          count={rows.length}
+          count={props.cruiseData.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}
