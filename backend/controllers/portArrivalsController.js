@@ -132,13 +132,13 @@ export const getPortArrivals = (req, res) => {
   if (db !== null) {
     try {
       const sql =
-        "SELECT * FROM portarrivals WHERE vesseleta != 'Not Known' AND vesseletd != 'Not Known'"
+        "SELECT * FROM portarrivals WHERE vesseleta >= DATE('now') AND vesseleta < DATE('now', '+1 month') AND vesseletd != 'Not Known'"
 
       db.all(sql, [], (err, results) => {
         if (err) {
           return console.error(err.message)
         }
-        console.log("Record Count Before: ", results.count)
+
         res.send(results)
       })
 
