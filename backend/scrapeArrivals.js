@@ -67,6 +67,11 @@ const getSingleMonthPortArrival = async (db, period, port, portName) => {
       const portLng = port + "_PORT_LONGITUDE"
       const portUnLocode = port + "_PORT_UN_LOCODE"
 
+      var sentence_case_port = port
+        .split(" ")
+        .map((w) => w[0].toUpperCase() + w.substr(1).toLowerCase())
+        .join(" ")
+
       // Port UN Locode
       const port_un_locode = process.env[portUnLocode]
 
@@ -76,6 +81,17 @@ const getSingleMonthPortArrival = async (db, period, port, portName) => {
 
       // Name of Vessel
       const vessel_short_cruise_name = $(item).find("a").text()
+
+      // -------------------------------------------------------
+      var weekdayArray = new Array(7)
+      weekdayArray[0] = "Sunday"
+      weekdayArray[1] = "Monday"
+      weekdayArray[2] = "Tuesday"
+      weekdayArray[3] = "Wednesday"
+      weekdayArray[4] = "Thursday"
+      weekdayArray[5] = "Friday"
+      weekdayArray[6] = "Saturday"
+      // -------------------------------------------------------
 
       //  Date of Arrival
       let arrivalDate = $(item)
@@ -87,13 +103,18 @@ const getSingleMonthPortArrival = async (db, period, port, portName) => {
       // Expected Time of Arrival
       let vessel_eta = $(item).children("td").next("td").next("td").html()
 
+      let weekday = ""
+
       // If No Arrival Time Given
       if (vessel_eta == "") {
         vessel_eta = "Not Known"
+        weekday = "NA"
       } else {
         vessel_eta = Date.parse(arrivalDate + " " + vessel_eta + " GMT")
         var d = new Date(vessel_eta)
         vessel_eta = d.toISOString()
+
+        weekday = weekdayArray[d.getDay()]
       }
 
       // Expected Time of Departure
@@ -122,11 +143,13 @@ const getSingleMonthPortArrival = async (db, period, port, portName) => {
 
       const newPortArrival = [
         process.env.DATABASE_VERSION,
+        sentence_case_port,
         port_name,
         port_un_locode,
         portcoordinateslng,
         portcoordinateslat,
         vessel_short_cruise_name,
+        weekday,
         vessel_eta,
         vessel_etd,
         vessel_name_url,

@@ -18,7 +18,7 @@ export const createPortArrivalsTable = (db) => {
 
   try {
     const sql =
-      "CREATE TABLE IF NOT EXISTS portarrivals (portarrivalid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, portname TEXT NOT NULL, portunlocode TEXT NOT NULL, portcoordinatelng REAL CHECK( portcoordinatelng >= -180 AND portcoordinatelng <= 180 ), portcoordinatelat REAL CHECK( portcoordinatelat >= -90 AND portcoordinatelat <= 90 ), vesselshortcruisename TEXT, vesseleta TEXT, vesseletd TEXT, vesselnameurl TEXT)"
+      "CREATE TABLE IF NOT EXISTS portarrivals (portarrivalid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, sentencecaseport TEXT NOT NULL, portname TEXT NOT NULL, portunlocode TEXT NOT NULL, portcoordinatelng REAL CHECK( portcoordinatelng >= -180 AND portcoordinatelng <= 180 ), portcoordinatelat REAL CHECK( portcoordinatelat >= -90 AND portcoordinatelat <= 90 ), vesselshortcruisename TEXT, weekday TEXT, vesseleta TEXT, vesseletd TEXT, vesselnameurl TEXT)"
 
     db.run(sql, [], (err) => {
       if (err) {
@@ -40,6 +40,15 @@ export const savePortArrival = (db, newPortArrival) => {
   if (newPortArrival == null) return
   if (db === null) return
 
+  // TODO
+  // Cruise Line
+  // Port Name - without code
+  // Cruise Line Logo
+  // Add Day of the Week
+  // Add Notification of change (except End of Month rollover)
+  // Details of this Cruise?
+  // Current Position - to plot on a map
+
   try {
     // Count the records in the database
     let sql1 = "SELECT COUNT(portarrivalid) AS count FROM portarrivals"
@@ -49,19 +58,16 @@ export const savePortArrival = (db, newPortArrival) => {
       if (err) {
         return console.error(err.message)
       }
-      // console.log("Record Count Before Insertion: ", results.count)
     })
 
     // Don't change the routine below
     const sql2 =
-      "INSERT INTO portarrivals (databaseversion, portname, portunlocode, portcoordinatelng, portcoordinatelat, vesselshortcruisename, vesseleta, vesseletd, vesselnameurl) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)"
+      "INSERT INTO portarrivals (databaseversion, sentencecaseport, portname, portunlocode, portcoordinatelng, portcoordinatelat, vesselshortcruisename, weekday, vesseleta, vesseletd, vesselnameurl) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)"
 
     db.run(sql2, newPortArrival, function (err) {
       if (err) {
-        // console.log("Here")
         return console.error(err.message)
       }
-      // console.warn("New id of inserted portarrival:", this.lastID)
     })
   } catch (err) {
     console.error("Error in SQLsavePortArrival: ", err)
