@@ -129,6 +129,13 @@ const getSingleMonthPortArrival = async (db, period, port, portName) => {
         vessel_etd = d.toISOString()
       }
 
+      // Url of Cruise Line Logo image
+      const cruise_line_logo_url = $(item).find("img").attr("src")
+
+      // Name of Cruise Line
+      const raw_cruise_line = $(item).find("img").attr("title")
+      const cruise_line = raw_cruise_line.substr(0, raw_cruise_line.length - 20)
+
       // Url of Vessel Web Page
       const vessel_name_url = $(item).find("a").attr("href")
       if (
@@ -148,6 +155,8 @@ const getSingleMonthPortArrival = async (db, period, port, portName) => {
         port_un_locode,
         portcoordinateslng,
         portcoordinateslat,
+        cruise_line,
+        cruise_line_logo_url,
         vessel_short_cruise_name,
         weekday,
         vessel_eta,

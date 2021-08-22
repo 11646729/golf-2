@@ -18,7 +18,7 @@ export const createPortArrivalsTable = (db) => {
 
   try {
     const sql =
-      "CREATE TABLE IF NOT EXISTS portarrivals (portarrivalid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, sentencecaseport TEXT NOT NULL, portname TEXT NOT NULL, portunlocode TEXT NOT NULL, portcoordinatelng REAL CHECK( portcoordinatelng >= -180 AND portcoordinatelng <= 180 ), portcoordinatelat REAL CHECK( portcoordinatelat >= -90 AND portcoordinatelat <= 90 ), vesselshortcruisename TEXT, weekday TEXT, vesseleta TEXT, vesseletd TEXT, vesselnameurl TEXT)"
+      "CREATE TABLE IF NOT EXISTS portarrivals (portarrivalid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, sentencecaseport TEXT NOT NULL, portname TEXT NOT NULL, portunlocode TEXT NOT NULL, portcoordinatelng REAL CHECK( portcoordinatelng >= -180 AND portcoordinatelng <= 180 ), portcoordinatelat REAL CHECK( portcoordinatelat >= -90 AND portcoordinatelat <= 90 ), cruiseline TEXT, cruiselinelogo, vesselshortcruisename TEXT, weekday TEXT, vesseleta TEXT, vesseletd TEXT, vesselnameurl TEXT)"
 
     db.run(sql, [], (err) => {
       if (err) {
@@ -42,9 +42,7 @@ export const savePortArrival = (db, newPortArrival) => {
 
   // TODO
   // Cruise Line
-  // Port Name - without code
   // Cruise Line Logo
-  // Add Day of the Week
   // Add Notification of change (except End of Month rollover)
   // Details of this Cruise?
   // Current Position - to plot on a map
@@ -62,7 +60,7 @@ export const savePortArrival = (db, newPortArrival) => {
 
     // Don't change the routine below
     const sql2 =
-      "INSERT INTO portarrivals (databaseversion, sentencecaseport, portname, portunlocode, portcoordinatelng, portcoordinatelat, vesselshortcruisename, weekday, vesseleta, vesseletd, vesselnameurl) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)"
+      "INSERT INTO portarrivals (databaseversion, sentencecaseport, portname, portunlocode, portcoordinatelng, portcoordinatelat, cruiseline, cruiselinelogo, vesselshortcruisename, weekday, vesseleta, vesseletd, vesselnameurl) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)"
 
     db.run(sql2, newPortArrival, function (err) {
       if (err) {
