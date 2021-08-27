@@ -1,0 +1,36 @@
+.widgetLg {
+  flex: 4;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+}
+
+.widgetLgTitle {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.widgetLgTr {
+  text-align: left;
+}
+
+.widgetLgDay {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.widgetLgDayOfWeek {
+  font-weight: 800;
+}
+
+.widgetLgShipName {
+  width: 250px;
+}
+
+.widgetLgArrivalTime {
+  width: 100px;
+}
+
+.widgetLgDepartureTime {
+  width: 100px;
+}

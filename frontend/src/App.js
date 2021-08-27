@@ -6,9 +6,9 @@ import Album from "./components/Album"
 import RawDataLoad from "./components/rawdataload/RawDataLoad"
 import TemperaturesChart from "./components/temperatureschart/TemperaturesChart"
 import GolfCoursesMap from "./components/golfcourses/GolfCoursesMap"
-import CruiseTable from "./components/cruisetable/CruiseTable"
 import CrimesMap from "./components/crimesmap/CrimesMap"
 import TransportMap from "./components/transportmap/TransportMap"
+import CruisePage from "./components/pages/CruisePage"
 
 export default function App() {
   return (
@@ -48,7 +48,7 @@ function GolfCoursesMapLink() {
 }
 
 function CruiseTableLink() {
-  return <CruiseTable />
+  return <CruisePage />
 }
 
 function CrimesMapLink() {

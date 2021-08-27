@@ -103,6 +103,8 @@ const getSingleMonthPortArrival = async (db, period, port, portName) => {
       // Expected Time of Arrival
       let vessel_eta = $(item).children("td").next("td").next("td").html()
 
+      console.log(vessel_eta)
+
       let weekday = ""
 
       // If No Arrival Time Given
