@@ -1,36 +1,63 @@
 .widgetLg {
-  flex: 4;
+  flex: 3;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 }
 
 .widgetLgTitle {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
+  padding-left: 20px;
+}
+
+.widgetLgTable {
+  width: 100%;
+  border-spacing: 20px;
+}
+
+.widgetLgTh {
+  text-align: left;
+  font-size: 14px;
 }
 
 .widgetLgTr {
-  text-align: left;
-}
-
-.widgetLgDay {
-  width: 150px;
-  display: flex;
-  flex-direction: column;
+  font-size: 13px;
 }
 
 .widgetLgDayOfWeek {
-  font-weight: 800;
+  font-weight: 600;
+}
+
+.widgetLgShip {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.widgetLgShipImage {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  margin-right: 5px;
 }
 
 .widgetLgShipName {
-  width: 250px;
+  text-decoration: underline;
+  color: blue;
 }
 
-.widgetLgArrivalTime {
-  width: 100px;
+.widgetLgButton {
+  padding: 5px 7px;
+  border: none;
+  border-radius: 10px;
 }
 
-.widgetLgDepartureTime {
-  width: 100px;
+.widgetLgButton.Show {
+  background-color: lightgreen;
+  color: darkgreen;
+}
+
+.widgetLgButton.Hide {
+  background-color: lightsalmon;
+  color: darkred;
 }
