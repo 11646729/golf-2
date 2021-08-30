@@ -1,7 +1,7 @@
 import React from "react"
 import "./cruisepage.css"
 import NewCruiseTable from "../newcruisetable/NewCruiseTable"
-import OtherPages from "../otherpages/OtherPages"
+import CruiseMap from "../cruisemap/CruiseMap"
 
 export default function CruisePage() {
   return (
@@ -18,7 +18,7 @@ export default function CruisePage() {
           eta={"08:00"}
           etd={"18:00"}
         />
-        <OtherPages />
+        <CruiseMap CruiseMapTitle={"Map"} />
       </div>
     </div>
   )
