@@ -6,7 +6,6 @@ import CruiseMap from "../cruisemap/CruiseMap"
 export default function CruisePage() {
   return (
     <div>
-      <div>toptest</div>
       <div className="container">
         <NewCruiseTable
           ChartTitle={"Cruise Ships Arriving Soon"}
@@ -20,6 +19,7 @@ export default function CruisePage() {
         />
         <CruiseMap CruiseMapTitle={"Map"} />
       </div>
+      <div>bottomtest</div>
     </div>
   )
 }
