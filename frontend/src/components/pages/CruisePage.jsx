@@ -1,14 +1,16 @@
 import React from "react"
 import "./cruisepage.css"
-import NewCruiseTable from "../newcruisetable/NewCruiseTable"
+// import NewCruiseTable from "../newcruisetable/NewCruiseTable"
 import CruiseMap from "../cruisemap/CruiseMap"
+import CruiseTable from "../cruisetable/CruiseTable"
 
 export default function CruisePage() {
   return (
     <div>
       <div className="container">
-        <NewCruiseTable
+        {/* <NewCruiseTable
           ChartTitle={"Cruise Ships Arriving Soon"}
+          Id={"1"}
           Date={"1 August 2021"}
           DayOfWeek={"Monday"}
           CruiseLineLogo={"/static/images/20.png"}
@@ -16,7 +18,8 @@ export default function CruisePage() {
           NameOfShip={"Marella Explorer 2"}
           eta={"08:00"}
           etd={"18:00"}
-        />
+        /> */}
+        <CruiseTable />
         <CruiseMap CruiseMapTitle={"Map"} />
       </div>
       <div>bottomtest</div>

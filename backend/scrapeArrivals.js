@@ -101,18 +101,18 @@ const getSingleMonthPortArrival = async (db, period, port, portName) => {
         .replace(/,/, "") // Removes the comma
 
       // Expected Time of Arrival
-      let vessel_eta = $(item).children("td").next("td").next("td").html()
+      let vessel_eta_time = $(item).children("td").next("td").next("td").html()
 
-      console.log(vessel_eta)
-
+      let vessel_eta = ""
       let weekday = ""
 
       // If No Arrival Time Given
-      if (vessel_eta == "") {
+      if (vessel_eta_time == "") {
         vessel_eta = "Not Known"
+        vessel_eta_time = "Not Known"
         weekday = "NA"
       } else {
-        vessel_eta = Date.parse(arrivalDate + " " + vessel_eta + " GMT")
+        vessel_eta = Date.parse(arrivalDate + " " + vessel_eta_time + " GMT")
         var d = new Date(vessel_eta)
         vessel_eta = d.toISOString()
 
@@ -120,13 +120,15 @@ const getSingleMonthPortArrival = async (db, period, port, portName) => {
       }
 
       // Expected Time of Departure
-      let vessel_etd = $(item).children("td").last("td").html()
+      let vessel_etd_time = $(item).children("td").last("td").html()
+      let vessel_etd = ""
 
       // If No Departure Time Given
-      if (vessel_etd == "") {
+      if (vessel_etd_time == "") {
         vessel_etd = "Not Known"
+        vessel_etd_time = "Not Known"
       } else {
-        vessel_etd = Date.parse(arrivalDate + " " + vessel_etd + " GMT")
+        vessel_etd = Date.parse(arrivalDate + " " + vessel_etd_time + " GMT")
         var d = new Date(vessel_etd)
         vessel_etd = d.toISOString()
       }
@@ -160,9 +162,12 @@ const getSingleMonthPortArrival = async (db, period, port, portName) => {
         cruise_line,
         cruise_line_logo_url,
         vessel_short_cruise_name,
+        arrivalDate,
         weekday,
         vessel_eta,
+        vessel_eta_time,
         vessel_etd,
+        vessel_etd_time,
         vessel_name_url,
       ]
 

@@ -12,6 +12,7 @@ export default function NewCruiseTable(props) {
       <table className="widgetLgTable">
         <thead>
           <tr className="widgetLgTh">
+            <th className="widgetLgThID">ID</th>
             <th className="widgetLgThDay">Day</th>
             <th className="widgetLgThShip">Ship</th>
             <th className="widgetLgThArrival">Arrival</th>
@@ -21,6 +22,7 @@ export default function NewCruiseTable(props) {
         </thead>
         <tbody>
           <tr className="widgetLgTr">
+            <td className="widgetLgID">{props.Id}</td>
             <td className="widgetLgDay">
               <div className="widgetLgDate">{props.Date}</div>
               <div className="widgetLgDayOfWeek">{props.DayOfWeek}</div>
@@ -40,6 +42,7 @@ export default function NewCruiseTable(props) {
             </td>
           </tr>
           <tr className="widgetLgTr">
+            <td className="widgetLgID">{props.Id}</td>
             <td className="widgetLgDay">
               <div className="widgetLgDate">{props.Date}</div>
               <div className="widgetLgDayOfWeek">{props.DayOfWeek}</div>
@@ -59,6 +62,7 @@ export default function NewCruiseTable(props) {
             </td>
           </tr>
           <tr className="widgetLgTr">
+            <td className="widgetLgID">{props.Id}</td>
             <td className="widgetLgDay">
               <div className="widgetLgDate">{props.Date}</div>
               <div className="widgetLgDayOfWeek">{props.DayOfWeek}</div>
@@ -78,6 +82,7 @@ export default function NewCruiseTable(props) {
             </td>
           </tr>
           <tr className="widgetLgTr">
+            <td className="widgetLgID">{props.Id}</td>
             <td className="widgetLgDay">
               <div className="widgetLgDate">{props.Date}</div>
               <div className="widgetLgDayOfWeek">{props.DayOfWeek}</div>

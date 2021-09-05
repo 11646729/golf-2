@@ -18,7 +18,7 @@ export const createPortArrivalsTable = (db) => {
 
   try {
     const sql =
-      "CREATE TABLE IF NOT EXISTS portarrivals (portarrivalid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, sentencecaseport TEXT NOT NULL, portname TEXT NOT NULL, portunlocode TEXT NOT NULL, portcoordinatelng REAL CHECK( portcoordinatelng >= -180 AND portcoordinatelng <= 180 ), portcoordinatelat REAL CHECK( portcoordinatelat >= -90 AND portcoordinatelat <= 90 ), cruiseline TEXT, cruiselinelogo, vesselshortcruisename TEXT, weekday TEXT, vesseleta TEXT, vesseletd TEXT, vesselnameurl TEXT)"
+      "CREATE TABLE IF NOT EXISTS portarrivals (portarrivalid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, sentencecaseport TEXT NOT NULL, portname TEXT NOT NULL, portunlocode TEXT NOT NULL, portcoordinatelng REAL CHECK( portcoordinatelng >= -180 AND portcoordinatelng <= 180 ), portcoordinatelat REAL CHECK( portcoordinatelat >= -90 AND portcoordinatelat <= 90 ), cruiseline TEXT, cruiselinelogo, vesselshortcruisename TEXT, arrivalDate TEXT, weekday TEXT, vesseleta TEXT, vesseletatime TEXT, vesseletd TEXT, vesseletdtime TEXT, vesselnameurl TEXT)"
 
     db.run(sql, [], (err) => {
       if (err) {
@@ -60,7 +60,7 @@ export const savePortArrival = (db, newPortArrival) => {
 
     // Don't change the routine below
     const sql2 =
-      "INSERT INTO portarrivals (databaseversion, sentencecaseport, portname, portunlocode, portcoordinatelng, portcoordinatelat, cruiseline, cruiselinelogo, vesselshortcruisename, weekday, vesseleta, vesseletd, vesselnameurl) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)"
+      "INSERT INTO portarrivals (databaseversion, sentencecaseport, portname, portunlocode, portcoordinatelng, portcoordinatelat, cruiseline, cruiselinelogo, vesselshortcruisename, arrivalDate, weekday, vesseleta, vesseletatime, vesseletd, vesseletdtime, vesselnameurl) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)"
 
     db.run(sql2, newPortArrival, function (err) {
       if (err) {

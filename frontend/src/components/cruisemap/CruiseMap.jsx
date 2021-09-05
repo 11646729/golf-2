@@ -33,7 +33,6 @@ function CruiseMap(props) {
           center={center}
           zoom={10}
           options={{
-            // mapTypeId: "hybrid",
             disableDefaultUI: true,
             zoomControl: true,
           }}
