@@ -1,5 +1,6 @@
 import React, { useState, useEffect, memo } from "react"
 import {
+  Box,
   Table,
   TableBody,
   TableCell,
@@ -40,15 +41,7 @@ function CruiseTable() {
 // -------------------------------------------------------
 function CruiseTableView(props) {
   const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(6)
-
-  const columns = [
-    { id: "arrivalDate", label: "Date", minWidth: 50 },
-    { id: "weekday", label: "Day", minWidth: 50 },
-    { id: "vesselshortcruisename", label: "Vessel", minWidth: 70 },
-    { id: "vesseletatime", label: "ETA", minWidth: 50 },
-    { id: "vesseletdtime", label: "ETD", minWidth: 50 },
-  ]
+  const [rowsPerPage, setRowsPerPage] = useState(10)
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage)
@@ -61,35 +54,49 @@ function CruiseTableView(props) {
 
   return (
     <div className="widgetCt">
-      <Table stickyHeader aria-label="sticky table">
+      <Table size="small" stickyHeader aria-label="sticky table">
         <TableHead>
           <TableRow>
-            {columns.map((column) => (
-              <TableCell
-                key={column.id}
-                align={column.align}
-                style={{ minWidth: column.minWidth }}
-              >
-                {column.label}
-              </TableCell>
-            ))}
+            <TableCell style={{ minWidth: 70 }} align="left">
+              Date
+            </TableCell>
+            <TableCell style={{ minWidth: 50 }} align="left">
+              Day
+            </TableCell>
+            {/* <TableCell style={{ minWidth: 20 }} align="left">
+              Img
+            </TableCell> */}
+            <TableCell style={{ minWidth: 50 }} align="left">
+              Vessel
+            </TableCell>
+            <TableCell style={{ minWidth: 30 }} align="left">
+              ETA
+            </TableCell>
+            <TableCell style={{ minWidth: 30 }} align="left">
+              ETD
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {props.cruiseData
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((row) => (
-              <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                {columns.map((column) => {
-                  const value = row[column.id]
-                  return (
-                    <TableCell key={column.id} align={column.align}>
-                      {column.format && typeof value === "number"
-                        ? column.format(value)
-                        : value}
-                    </TableCell>
-                  )
-                })}
+              <TableRow key={row.portarrivalid}>
+                <TableCell align="left">{row.arrivalDate}</TableCell>
+                <TableCell align="left">{row.weekday}</TableCell>
+                <TableCell className="widgetCruiseTableRow">
+                  <Box
+                    component="img"
+                    sx={{ height: 20, width: 20 }}
+                    src={row.cruiselinelogo}
+                  />
+                  {row.vesselshortcruisename}
+                </TableCell>
+                {/* <TableCell className="widgetLgShipName"> */}
+                {/* {row.vesselshortcruisename} */}
+                {/* </TableCell> */}
+                <TableCell align="left">{row.vesseletatime}</TableCell>
+                <TableCell align="left">{row.vesseletdtime}</TableCell>
               </TableRow>
             ))}
         </TableBody>

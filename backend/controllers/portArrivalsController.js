@@ -136,7 +136,7 @@ export const getPortArrivals = (req, res) => {
   if (db !== null) {
     try {
       const sql =
-        "SELECT * FROM portarrivals WHERE vesseleta >= DATE('now') AND vesseleta < DATE('now', '+1 month') AND vesseletd != 'Not Known'"
+        "SELECT * FROM portarrivals WHERE vesseleta >= DATE('now', '-1 day') AND vesseleta < DATE('now', '+1 month') AND vesseletd != 'Not Known'"
 
       db.all(sql, [], (err, results) => {
         if (err) {
