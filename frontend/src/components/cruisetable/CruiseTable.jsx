@@ -63,9 +63,6 @@ function CruiseTableView(props) {
             <TableCell style={{ minWidth: 50 }} align="left">
               Day
             </TableCell>
-            {/* <TableCell style={{ minWidth: 20 }} align="left">
-              Img
-            </TableCell> */}
             <TableCell style={{ minWidth: 50 }} align="left">
               Vessel
             </TableCell>
@@ -92,9 +89,6 @@ function CruiseTableView(props) {
                   />
                   {row.vesselshortcruisename}
                 </TableCell>
-                {/* <TableCell className="widgetLgShipName"> */}
-                {/* {row.vesselshortcruisename} */}
-                {/* </TableCell> */}
                 <TableCell align="left">{row.vesseletatime}</TableCell>
                 <TableCell align="left">{row.vesseletdtime}</TableCell>
               </TableRow>

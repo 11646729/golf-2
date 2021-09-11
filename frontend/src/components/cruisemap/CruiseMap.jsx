@@ -27,6 +27,7 @@ function CruiseMap(props) {
 
   return (
     <div className="widgetCm">
+      <h3 className="widgetCmTitle">{""}</h3>
       <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_KEY}>
         <GoogleMap
           mapContainerStyle={containerStyle}
