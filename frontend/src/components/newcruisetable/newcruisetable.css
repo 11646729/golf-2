@@ -18,8 +18,13 @@
   border-collapse: collapse;
 }
 
+table.widgetLgTable tr:hover {
+  background-color: #ebeccd;
+}
+
 th,
 td {
+  height: 34px;
   margin: 0;
   padding: 0.5rem;
   border-bottom: 1px solid lightgray;
@@ -46,14 +51,15 @@ td:last-child {
 }
 
 .widgetLgShip {
-  /* display: flex; */
-  /* flex-direction: row; */
+  display: flex;
+  flex-direction: row;
   align-items: center;
 }
 
 .widgetLgShipImage {
   width: 30px;
   height: 30px;
+  /* padding-bottom: 7px; */
   object-fit: cover;
   margin-right: 5px;
 }

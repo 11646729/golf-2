@@ -34,7 +34,7 @@ function NewCruiseTableView(props) {
     return <button className={"widgetLgButton " + type}>{type}</button>
   }
 
-  console.log(props.cruiseData)
+  console.log(props.cruiseData[1])
 
   return (
     <div className="widgetLg">
@@ -64,9 +64,9 @@ function NewCruiseTableView(props) {
                   src={row.cruiselinelogo}
                   alt={"Cruise Line Logo"}
                 ></img>
-                <span className="widgetLgShipName">
+                <div className="widgetLgShipName">
                   {row.vesselshortcruisename}
-                </span>
+                </div>
               </td>
               <td className="widgetLgArrivalTime">{row.vesseletatime}</td>
               <td className="widgetLgDepartureTime">{row.vesseletdtime}</td>
