@@ -19,11 +19,9 @@ function NewCruiseTable() {
     return () => (isSubscribed = false)
   }, [])
 
-  // if (portArrivals.cruiseData.length > 0) {
   return (
     <NewCruiseTableView cruiseData={portArrivals} loadingError={loadingError} />
   )
-  // }
 }
 
 // -------------------------------------------------------
@@ -34,15 +32,12 @@ function NewCruiseTableView(props) {
     return <button className={"widgetLgButton " + type}>{type}</button>
   }
 
-  console.log(props.cruiseData[1])
-
   return (
     <div className="widgetLg">
       <h3 className="widgetLgTitle">{"Cruise Ships Arriving Soon"}</h3>
       <table className="widgetLgTable">
         <thead>
           <tr className="widgetLgTh">
-            <th className="widgetLgThID">ID</th>
             <th className="widgetLgThDay">Day</th>
             <th className="widgetLgThShip">Ship</th>
             <th className="widgetLgThArrival">Arrival</th>
@@ -52,8 +47,7 @@ function NewCruiseTableView(props) {
         </thead>
         <tbody>
           {props.cruiseData.map((row) => (
-            <tr className="widgetLgTr">
-              <td className="widgetLgID">{row.portarrivalid}</td>
+            <tr className="widgetLgTr" key={row.portarrivalid}>
               <td className="widgetLgDay">
                 <div className="widgetLgDate">{row.arrivalDate}</div>
                 <div className="widgetLgDayOfWeek">{row.weekday}</div>
