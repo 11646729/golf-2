@@ -1,13 +1,13 @@
 import React from "react"
 import "./cruisepage.css"
 import CruiseMap from "../cruisemap/CruiseMap"
-import NewCruiseTable from "../newcruisetable/NewCruiseTable"
+import CruiseTable from "../cruisetable/CruiseTable"
 
 export default function CruisePage() {
   return (
     <div>
       <div className="container">
-        <NewCruiseTable />
+        <CruiseTable />
         <CruiseMap CruiseMapTitle={"Map"} />
       </div>
       <div>bottomtest</div>

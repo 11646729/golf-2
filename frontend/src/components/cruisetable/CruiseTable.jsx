@@ -1,16 +1,4 @@
 import React, { useState, useEffect, memo } from "react"
-import {
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TablePagination,
-  TableRow,
-} from "@material-ui/core"
-
-// import Title from "../Title"
-// import LoadingTitle from "../LoadingTitle"
 import getData from "../Utilities"
 import "./cruisetable.css"
 
@@ -40,70 +28,49 @@ function CruiseTable() {
 // React View component
 // -------------------------------------------------------
 function CruiseTableView(props) {
-  const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(10)
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage)
-  }
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value)
-    setPage(0)
+  const Button = ({ type }) => {
+    return <button className={"widgetLgButton " + type}>{type}</button>
   }
 
   return (
-    <div className="widgetCt">
-      <Table size="small" stickyHeader aria-label="sticky table">
-        <TableHead>
-          <TableRow>
-            <TableCell style={{ minWidth: 70 }} align="left">
-              Date
-            </TableCell>
-            <TableCell style={{ minWidth: 50 }} align="left">
-              Day
-            </TableCell>
-            <TableCell style={{ minWidth: 50 }} align="left">
-              Vessel
-            </TableCell>
-            <TableCell style={{ minWidth: 30 }} align="left">
-              ETA
-            </TableCell>
-            <TableCell style={{ minWidth: 30 }} align="left">
-              ETD
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.cruiseData
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((row) => (
-              <TableRow key={row.portarrivalid}>
-                <TableCell align="left">{row.arrivalDate}</TableCell>
-                <TableCell align="left">{row.weekday}</TableCell>
-                <TableCell className="widgetCruiseTableRow">
-                  <Box
-                    component="img"
-                    sx={{ height: 20, width: 20 }}
-                    src={row.cruiselinelogo}
-                  />
+    <div className="widgetLg">
+      <h3 className="widgetLgTitle">{"Cruise Ships Arriving Soon"}</h3>
+      <table className="widgetLgTable">
+        <thead>
+          <tr className="widgetLgTh">
+            <th className="widgetLgThDay">Day</th>
+            <th className="widgetLgThShip">Ship</th>
+            <th className="widgetLgThArrival">Arrival</th>
+            <th className="widgetLgThDeparture">Departure</th>
+            <th className="widgetLgThDeparture">Itinerary</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.cruiseData.map((row) => (
+            <tr className="widgetLgTr" key={row.portarrivalid}>
+              <td className="widgetLgDay">
+                <div className="widgetLgDate">{row.arrivalDate}</div>
+                <div className="widgetLgDayOfWeek">{row.weekday}</div>
+              </td>
+              <td className="widgetLgShip">
+                <img
+                  className="widgetLgShipImage"
+                  src={row.cruiselinelogo}
+                  alt={"Cruise Line Logo"}
+                ></img>
+                <div className="widgetLgShipName">
                   {row.vesselshortcruisename}
-                </TableCell>
-                <TableCell align="left">{row.vesseletatime}</TableCell>
-                <TableCell align="left">{row.vesseletdtime}</TableCell>
-              </TableRow>
-            ))}
-        </TableBody>
-      </Table>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={props.cruiseData.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
-      />
+                </div>
+              </td>
+              <td className="widgetLgArrivalTime">{row.vesseletatime}</td>
+              <td className="widgetLgDepartureTime">{row.vesseletdtime}</td>
+              <td className="widgetLgItinerary">
+                <Button type="Show" />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   )
 }
