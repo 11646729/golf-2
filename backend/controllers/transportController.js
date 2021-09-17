@@ -1,4 +1,3 @@
-import { RouteSchema } from "../models/routeSchema.js"
 import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 
 // -------------------------------------------------------
@@ -172,9 +171,11 @@ export var getAllRoutes = (req, res) => {
 export var getSelectedRoutes = async (req, res) => {
   const filter = { routeVisible: "true" }
 
-  RouteSchema.find(filter)
-    .then((routeSchema) => res.json(routeSchema))
-    .catch((err) => res.status(400).json("Error " + err))
+  console.log("Probably to do")
+
+  // RouteSchema.find(filter)
+  //   .then((routeSchema) => res.json(routeSchema))
+  //   .catch((err) => res.status(400).json("Error " + err))
 }
 
 // -------------------------------------------------------
@@ -184,9 +185,11 @@ export const putSelectedRoutes = async (req, res) => {
   const filter = { routeNumber: req.body.routeNumber }
   const update = { routeVisible: req.body.routeVisible }
 
-  RouteSchema.updateMany(filter, update)
-    .then((routeSchema) => res.json(routeSchema))
-    .catch((err) => res.status(400).json("Error " + err))
+  console.log("Probably to do")
+
+  // RouteSchema.updateMany(filter, update)
+  //   .then((routeSchema) => res.json(routeSchema))
+  //   .catch((err) => res.status(400).json("Error " + err))
 }
 
 // -------------------------------------------------------

@@ -5,8 +5,6 @@ import {
 } from "./controllers/weatherController.js"
 import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines.js"
 import { importGtfsToSQLite } from "./importGtfs.js"
-import { createGtfsRoutes } from "./createGtfsRoutes.js"
-import { createGtfsStops } from "./createGtfsStops.js"
 import cron from "node-cron"
 import {
   getAndSaveDarkSkiesData,
@@ -23,9 +21,6 @@ export const runSwitchboard = (io) => {
   // fetchPortArrivalsAndVessels()
   // -----------------------------
   // importGtfsToSQLite()
-  // -----------------------------
-  // createGtfsRoutes()
-  // createGtfsStops()
   // -----------------------------
 
   // Using socket.io for realtime data transmission

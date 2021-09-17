@@ -1,7 +1,0 @@
-Feed Version: Unknown
-GTFS-to-geoJSON Version: 1.0.5
-Date Generated: Wed Mar 24 2021 09:10:42 GMT+0000 (Greenwich Mean Time)
-Route Count: 41
-GeoJSON File Count: 111
-Output Type: route
-Source: http://transitfeeds.com/p/hamilton-street-railway/31/latest/download

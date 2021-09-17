@@ -41,8 +41,6 @@ export const savePortArrival = (db, newPortArrival) => {
   if (db === null) return
 
   // TODO
-  // Cruise Line
-  // Cruise Line Logo
   // Add Notification of change (except End of Month rollover)
   // Details of this Cruise?
   // Current Position - to plot on a map
