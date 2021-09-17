@@ -12,8 +12,8 @@ import {
   Grid,
 } from "@material-ui/core"
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
-import Title from "../Title"
-import LoadingTitle from "../LoadingTitle"
+import Title from "../title/Title"
+import LoadingTitle from "../loadingtitle/LoadingTitle"
 
 import "./CrimesMap.css"
 

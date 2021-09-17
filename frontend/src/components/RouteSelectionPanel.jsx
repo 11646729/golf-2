@@ -1,6 +1,6 @@
 import React from "react"
 import { Paper, makeStyles } from "@material-ui/core"
-import LoadingTitle from "./LoadingTitle"
+import LoadingTitle from "./loadingtitle/LoadingTitle"
 import RouteSelectionList from "./RouteSelectionList"
 
 const useStyles = makeStyles({

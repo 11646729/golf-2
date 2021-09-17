@@ -2,21 +2,21 @@ import React, { useState, useEffect, useCallback, memo } from "react"
 import {
   GoogleMap,
   useJsApiLoader,
-  Marker,
+  // Marker,
   Polyline,
-  InfoWindow,
+  // InfoWindow,
 } from "@react-google-maps/api"
 import { CssBaseline, Grid } from "@material-ui/core"
 
-import Title from "../Title"
-import LoadingTitle from "../LoadingTitle"
+import Title from "../title/Title"
+import LoadingTitle from "../loadingtitle/LoadingTitle"
 import RouteSelectionPanel from "../RouteSelectionPanel"
 import {
   getAgencyName,
   getAllStops,
   getAllShapes,
   getAllRoutes,
-  getDisplayData,
+  // getDisplayData,
 } from "../Utilities"
 
 // -------------------------------------------------------

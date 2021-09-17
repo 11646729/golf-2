@@ -17,8 +17,8 @@ import {
   CardActions,
 } from "@material-ui/core"
 
-import Title from "../Title"
-import LoadingTitle from "../LoadingTitle"
+import Title from "../title/Title"
+import LoadingTitle from "../loadingtitle/LoadingTitle"
 import getData from "../Utilities"
 
 // -------------------------------------------------------

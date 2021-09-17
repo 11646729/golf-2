@@ -19,8 +19,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts"
-import Title from "../Title"
-import LoadingTitle from "../LoadingTitle"
+import Title from "../title/Title"
+import LoadingTitle from "../loadingtitle/LoadingTitle"
 import getData from "../Utilities"
 
 const socket = io(process.env.REACT_APP_SOCKET_ENDPOINT)
