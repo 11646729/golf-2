@@ -242,10 +242,10 @@ function TransportMapView(props) {
           </GoogleMap>
         </Grid>
         <Grid item xs={12} sm={3}>
-          <RouteSelectionPanel
+          {/* <RouteSelectionPanel
             busRoutesCollection={props.busRoutesCollection}
             busAgencyName={props.busAgencyName}
-          />
+          /> */}
         </Grid>
       </Grid>
     </div>

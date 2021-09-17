@@ -1,7 +1,7 @@
 import React from "react"
 import "./cruisepage.css"
-import CruiseMap from "../cruisemap/CruiseMap"
-import CruiseTable from "../cruisetable/CruiseTable"
+import CruiseMap from "../../cruisemap/CruiseMap"
+import CruiseTable from "../../cruisetable/CruiseTable"
 
 export default function CruisePage() {
   return (

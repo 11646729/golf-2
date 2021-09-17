@@ -7,8 +7,8 @@ import RawDataLoad from "./components/rawdataload/RawDataLoad"
 import TemperaturesChart from "./components/temperatureschart/TemperaturesChart"
 import GolfCoursesMap from "./components/golfcourses/GolfCoursesMap"
 import CrimesMap from "./components/crimesmap/CrimesMap"
-import TransportMap from "./components/transportmap/TransportMap"
-import CruisePage from "./components/pages/CruisePage"
+import CruisePage from "./components/pages/cruise/CruisePage"
+import TransportPage from "./components/pages/transport/TransportPage"
 
 export default function App() {
   return (
@@ -56,7 +56,7 @@ function CrimesMapLink() {
 }
 
 function TransportMapLink() {
-  return <TransportMap />
+  return <TransportPage />
 }
 
 function NotFound() {
