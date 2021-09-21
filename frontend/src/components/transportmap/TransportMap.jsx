@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, memo } from "react"
+import React, { useState, useCallback, memo } from "react"
 import {
   GoogleMap,
   useJsApiLoader,
@@ -10,78 +10,13 @@ import { CssBaseline, Grid } from "@material-ui/core"
 
 import Title from "../title/Title"
 import LoadingTitle from "../loadingtitle/LoadingTitle"
-import RouteSelectionPanel from "../RouteSelectionPanel"
-import {
-  getAgencyName,
-  getAllStops,
-  getAllShapes,
-  getAllRoutes,
-  // getDisplayData,
-} from "../Utilities"
-
-// -------------------------------------------------------
-// React Controller component
-// -------------------------------------------------------
-function TransportMap() {
-  const [busAgencyName, setBusAgencyName] = useState()
-  const [busShapesCollection, setBusShapesCollection] = useState([])
-  const [busStopsCollection, setBusStopsCollection] = useState([])
-  const [busRoutesCollection, setBusRoutesCollection] = useState([])
-  // const [displayBusRoutesCollection, setDisplayBusRoutesCollection] = useState(
-  //   []
-  // )
-  const [loadingError, setLoadingError] = useState("")
-
-  function saveToHooks(array) {
-    setBusRoutesCollection(array)
-    // setDisplayBusRoutesCollection(getDisplayData(array[0]))
-  }
-
-  useEffect(() => {
-    let isSubscribed = true
-
-    getAgencyName("http://localhost:5000/api/transport/agencyname/")
-      .then((returnedData) =>
-        isSubscribed ? setBusAgencyName(returnedData[0].agency_name) : null
-      )
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
-
-    // This function does some reduction & reformatting
-    getAllShapes("http://localhost:5000/api/transport/shapes/")
-      .then((returnedData) =>
-        isSubscribed ? setBusShapesCollection(returnedData) : null
-      )
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
-
-    getAllStops("http://localhost:5000/api/transport/stops/")
-      .then((returnedData) =>
-        isSubscribed ? setBusStopsCollection(returnedData) : null
-      )
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
-
-    getAllRoutes("http://localhost:5000/api/transport/routes/")
-      .then((returnedData) => (isSubscribed ? saveToHooks(returnedData) : null))
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
-
-    return () => (isSubscribed = false)
-  }, [])
-
-  return (
-    <TransportMapView
-      busAgencyName={busAgencyName}
-      busShapesCollection={busShapesCollection}
-      busStopsCollection={busStopsCollection}
-      busRoutesCollection={busRoutesCollection}
-      // displayBusRoutesCollection={displayBusRoutesCollection}
-      loadingError={loadingError}
-    />
-  )
-}
+// import RouteSelectionPanel from "../RouteSelectionPanel"
+import "./transportmap.css"
 
 // -------------------------------------------------------
 // React View component
 // -------------------------------------------------------
-function TransportMapView(props) {
+function TransportMap(props) {
   const [map, setMap] = useState(null)
   const newLocal = parseInt(
     process.env.REACT_APP_MAP_DEFAULT_ZOOM,
@@ -135,77 +70,78 @@ function TransportMapView(props) {
     setMap(null)
   }, [])
 
-  const handleBusStopClick = (event) => {
-    console.log(event)
-    // console.log(busStopSelected)
-    // setBusStopSelected(busStop)
-  }
+  // const handleBusStopClick = (event) => {
+  //   console.log(event)
+  //   // console.log(busStopSelected)
+  //   // setBusStopSelected(busStop)
+  // }
 
   const handleBusShapeClick = (event) => {
     console.log(event)
   }
 
-  const handleBusRouteClick = (event) => {
-    console.log(event)
-    // console.log(busRouteSelected)
-    // setBusRouteSelected(busRoute)
-  }
+  // const handleBusRouteClick = (event) => {
+  //   console.log(event)
+  //   // console.log(busRouteSelected)
+  //   // setBusRouteSelected(busRoute)
+  // }
 
   return isLoaded ? (
-    <div>
-      <CssBaseline />
-      <Grid container spacing={1}>
-        <Grid item xs={12} sm={12}>
-          <div
-            style={{
-              marginTop: 55,
-              marginLeft: 20,
-              width: "97%",
-            }}
-          >
-            <Title>{props.busAgencyName}</Title>
-            {props.loadingError ? (
-              <LoadingTitle>Error Loading...</LoadingTitle>
-            ) : null}
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={9}>
-          <GoogleMap
-            mapContainerStyle={{
-              height: "600px",
-              width: "97%",
-              border: "1px solid #ccc",
-              marginLeft: 20,
-              marginRight: 10,
-              marginBottom: 20,
-            }}
-            center={mapCenter}
-            zoom={mapZoom}
-            options={{
-              // mapTypeId: "hybrid",
-              disableDefaultUI: true,
-              zoomControl: true,
-            }}
-            onLoad={onLoadHandler}
-            onUnmount={onUnmountHandler}
-          >
-            {props.busShapesCollection
-              ? props.busShapesCollection.map((busShape) => (
-                  <Polyline
-                    key={busShape.shapeKey}
-                    path={busShape.shapeCoordinates}
-                    options={{
-                      strokeColor: busShape.defaultColor,
-                      strokeOpacity: "1.0",
-                      strokeWeight: 2,
-                    }}
-                    onClick={() => {
-                      handleBusShapeClick()
-                    }}
-                  />
-                ))
-              : null}
-            {/* {props.busStopsCollection
+    <div className="widgetCm">
+      <div>
+        <CssBaseline />
+        <Grid container spacing={1}>
+          <Grid item xs={12} sm={12}>
+            <div
+              style={{
+                marginTop: 55,
+                marginLeft: 20,
+                width: "97%",
+              }}
+            >
+              <Title>{props.busAgencyName}</Title>
+              {props.loadingError ? (
+                <LoadingTitle>Error Loading...</LoadingTitle>
+              ) : null}
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={9}>
+            <GoogleMap
+              mapContainerStyle={{
+                height: "600px",
+                width: "97%",
+                border: "1px solid #ccc",
+                marginLeft: 20,
+                marginRight: 10,
+                marginBottom: 20,
+              }}
+              center={mapCenter}
+              zoom={mapZoom}
+              options={{
+                // mapTypeId: "hybrid",
+                disableDefaultUI: true,
+                zoomControl: true,
+              }}
+              onLoad={onLoadHandler}
+              onUnmount={onUnmountHandler}
+            >
+              {props.busShapesCollection
+                ? props.busShapesCollection.map((busShape) => (
+                    <Polyline
+                      key={busShape.shapeKey}
+                      path={busShape.shapeCoordinates}
+                      options={{
+                        strokeColor: busShape.defaultColor,
+                        strokeOpacity: "1.0",
+                        strokeWeight: 2,
+                      }}
+                      onClick={() => {
+                        handleBusShapeClick()
+                      }}
+                    />
+                  ))
+                : null}
+              {/* {props.busStopsCollection
               ? props.busStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stop_id}
@@ -222,7 +158,7 @@ function TransportMapView(props) {
                   />
                 ))
               : null} */}
-            {/* {busStopSelected ? (
+              {/* {busStopSelected ? (
               <InfoWindow
                 position={{
                   lat: busStopSelected.stop_lat,
@@ -239,15 +175,16 @@ function TransportMapView(props) {
                 </div>
               </InfoWindow>
             ) : null} */}
-          </GoogleMap>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          {/* <RouteSelectionPanel
+            </GoogleMap>
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            {/* <RouteSelectionPanel
             busRoutesCollection={props.busRoutesCollection}
             busAgencyName={props.busAgencyName}
           /> */}
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
     </div>
   ) : null
 }

@@ -1,33 +1,10 @@
-import React, { useState, useEffect, memo } from "react"
-import getData from "../Utilities"
+import React, { memo } from "react"
 import "./cruisetable.css"
 
 // -------------------------------------------------------
-// React Controller component
+// React component
 // -------------------------------------------------------
-function CruiseTable() {
-  const [portArrivals, setData] = useState([])
-  const [loadingError, setLoadingError] = useState("")
-
-  useEffect(() => {
-    let isSubscribed = true
-
-    getData("http://localhost:5000/api/cruise/portArrivals")
-      .then((returnedData) => (isSubscribed ? setData(returnedData) : null))
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
-
-    return () => (isSubscribed = false)
-  }, [])
-
-  return (
-    <CruiseTableView cruiseData={portArrivals} loadingError={loadingError} />
-  )
-}
-
-// -------------------------------------------------------
-// React View component
-// -------------------------------------------------------
-function CruiseTableView(props) {
+function CruiseTable(props) {
   const Button = ({ type }) => {
     return <button className={"widgetLgButton " + type}>{type}</button>
   }
