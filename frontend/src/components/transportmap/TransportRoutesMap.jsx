@@ -6,27 +6,30 @@ import {
   Polyline,
   // InfoWindow,
 } from "@react-google-maps/api"
-import { CssBaseline, Grid } from "@material-ui/core"
 
 import Title from "../title/Title"
-import LoadingTitle from "../loadingtitle/LoadingTitle"
-// import RouteSelectionPanel from "../RouteSelectionPanel"
-import "./transportmap.css"
+// import LoadingTitle from "../loadingtitle/LoadingTitle"
+import "./transportroutesmap.css"
 
 // -------------------------------------------------------
 // React View component
 // -------------------------------------------------------
-function TransportMap(props) {
+function TransportRoutesMap(props) {
   const [map, setMap] = useState(null)
-  const newLocal = parseInt(
-    process.env.REACT_APP_MAP_DEFAULT_ZOOM,
-    process.env.REACT_APP_MAP_DEFAULT_ZOOM
-  )
-  const [mapZoom] = useState(newLocal)
+  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
   const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
+
+  const mapContainerStyle = {
+    height: "480px",
+    width: "94%",
+    border: "1px solid #ccc",
+    marginLeft: 20,
+    marginRight: 10,
+    marginBottom: 20,
+  }
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -87,61 +90,50 @@ function TransportMap(props) {
   // }
 
   return isLoaded ? (
-    <div className="widgetCm">
-      <div>
-        <CssBaseline />
-        <Grid container spacing={1}>
-          <Grid item xs={12} sm={12}>
-            <div
-              style={{
-                marginTop: 55,
-                marginLeft: 20,
-                width: "97%",
-              }}
-            >
-              <Title>{props.busAgencyName}</Title>
-              {props.loadingError ? (
-                <LoadingTitle>Error Loading...</LoadingTitle>
-              ) : null}
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={9}>
-            <GoogleMap
-              mapContainerStyle={{
-                height: "600px",
-                width: "97%",
-                border: "1px solid #ccc",
-                marginLeft: 20,
-                marginRight: 10,
-                marginBottom: 20,
-              }}
-              center={mapCenter}
-              zoom={mapZoom}
-              options={{
-                // mapTypeId: "hybrid",
-                disableDefaultUI: true,
-                zoomControl: true,
-              }}
-              onLoad={onLoadHandler}
-              onUnmount={onUnmountHandler}
-            >
-              {props.busShapesCollection
-                ? props.busShapesCollection.map((busShape) => (
-                    <Polyline
-                      key={busShape.shapeKey}
-                      path={busShape.shapeCoordinates}
-                      options={{
-                        strokeColor: busShape.defaultColor,
-                        strokeOpacity: "1.0",
-                        strokeWeight: 2,
-                      }}
-                      onClick={() => {
-                        handleBusShapeClick()
-                      }}
-                    />
-                  ))
-                : null}
-              {/* {props.busStopsCollection
+    <div className="transportmap">
+      <div className="transportmaptitle">
+        <div
+          style={{
+            marginTop: 35,
+            marginLeft: 20,
+            width: "97%",
+          }}
+        >
+          <Title>{props.busAgencyName}</Title>
+          {/* {props.loadingError ? (
+          <LoadingTitle>Error Loading...</LoadingTitle>
+        ) : null} */}
+        </div>
+        <div className="transportgooglemapcontainer">
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            center={mapCenter}
+            zoom={mapZoom}
+            options={{
+              // mapTypeId: "hybrid",
+              disableDefaultUI: true,
+              zoomControl: true,
+            }}
+            onLoad={onLoadHandler}
+            onUnmount={onUnmountHandler}
+          >
+            {props.busShapesCollection
+              ? props.busShapesCollection.map((busShape) => (
+                  <Polyline
+                    key={busShape.shapeKey}
+                    path={busShape.shapeCoordinates}
+                    options={{
+                      strokeColor: busShape.defaultColor,
+                      strokeOpacity: "1.0",
+                      strokeWeight: 2,
+                    }}
+                    onClick={() => {
+                      handleBusShapeClick()
+                    }}
+                  />
+                ))
+              : null}
+            {/* {props.busStopsCollection
               ? props.busStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stop_id}
@@ -158,7 +150,7 @@ function TransportMap(props) {
                   />
                 ))
               : null} */}
-              {/* {busStopSelected ? (
+            {/* {busStopSelected ? (
               <InfoWindow
                 position={{
                   lat: busStopSelected.stop_lat,
@@ -175,18 +167,11 @@ function TransportMap(props) {
                 </div>
               </InfoWindow>
             ) : null} */}
-            </GoogleMap>
-          </Grid>
-          <Grid item xs={12} sm={3}>
-            {/* <RouteSelectionPanel
-            busRoutesCollection={props.busRoutesCollection}
-            busAgencyName={props.busAgencyName}
-          /> */}
-          </Grid>
-        </Grid>
+          </GoogleMap>
+        </div>
       </div>
     </div>
   ) : null
 }
 
-export default memo(TransportMap)
+export default memo(TransportRoutesMap)

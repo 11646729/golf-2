@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from "react"
-import "./transportpage.css"
-import TransportMap from "../../transportmap/TransportMap"
-import RouteSelectionPanel from "../../routeselectionpanel/RouteSelectionPanel"
+import React, { useState, useEffect, memo } from "react"
 import {
   getAgencyName,
   getAllStops,
@@ -10,7 +7,11 @@ import {
   // getDisplayData,
 } from "../../Utilities"
 
-export default function TransportPage() {
+import "./transportpage.css"
+import TransportRoutesMap from "../../transportmap/TransportRoutesMap"
+import TransportRouteSelectionTable from "../../transportrouteselectiontable/TransportRouteSelectionTable"
+
+function TransportPage() {
   const [busAgencyName, setBusAgencyName] = useState()
   const [busShapesCollection, setBusShapesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
@@ -56,17 +57,26 @@ export default function TransportPage() {
 
   return (
     <div>
-      <div className="container"></div>
-      <TransportMap
-        busAgencyName={busAgencyName}
-        busShapesCollection={busShapesCollection}
-        busStopsCollection={busStopsCollection}
-        busRoutesCollection={busRoutesCollection}
-        // displayBusRoutesCollection={displayBusRoutesCollection}
-        loadingError={loadingError}
-      />
-
-      {/* <RouteSelectionPanel /> */}
+      <div className="container">
+        <div className="transportroutetablecontainer">
+          <TransportRouteSelectionTable
+            routesTableTitle={"Routes Table"}
+            busRoutesCollection={busRoutesCollection}
+          />
+        </div>
+        <div className="transportmapcontainer">
+          <TransportRoutesMap
+            busAgencyName={busAgencyName}
+            busShapesCollection={busShapesCollection}
+            busStopsCollection={busStopsCollection}
+            busRoutesCollection={busRoutesCollection}
+            // displayBusRoutesCollection={displayBusRoutesCollection}
+            loadingError={loadingError}
+          />
+        </div>
+      </div>
     </div>
   )
 }
+
+export default memo(TransportPage)

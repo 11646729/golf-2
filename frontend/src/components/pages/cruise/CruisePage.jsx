@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, memo } from "react"
 import getData from "../../Utilities"
+
 import "./cruisepage.css"
 import CruiseMap from "../../cruisemap/CruiseMap"
 import CruiseTable from "../../cruisetable/CruiseTable"
 
-export default function CruisePage() {
+function CruisePage() {
   const [portArrivals, setData] = useState([])
   const [loadingError, setLoadingError] = useState("")
 
@@ -21,13 +22,19 @@ export default function CruisePage() {
   return (
     <div>
       <div className="container">
-        {/* <CruiseTable
-          CruiseTableTitle={"Cruise Arrivals"}
-          cruiseData={portArrivals}
-          loadingError={loadingError}
-        /> */}
-        <CruiseMap CruiseMapTitle={"Map"} />
+        <div className="cruisetablecontainer">
+          <CruiseTable
+            CruiseTableTitle={"Cruise Ships Arriving Soon"}
+            cruiseData={portArrivals}
+            loadingError={loadingError}
+          />
+        </div>
+        <div className="cruisemapcontainer">
+          <CruiseMap CruiseMapTitle={"Current Locations"} />
+        </div>
       </div>
     </div>
   )
 }
+
+export default memo(CruisePage)

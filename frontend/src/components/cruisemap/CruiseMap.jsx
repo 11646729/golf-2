@@ -1,26 +1,30 @@
-import React, { useState, useCallback } from "react"
+import React, { useState, useCallback, memo } from "react"
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api"
+
+import Title from "../title/Title"
 import "./cruisemap.css"
 
 function CruiseMap(props) {
   const [map, setMap] = useState(null)
-
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
-  })
-
-  const containerStyle = {
-    width: "100%",
-    height: "400px",
-  }
-
+  const mapZoom = 4
   const mapCenter = {
     lat: parseFloat(process.env.REACT_APP_BELFAST_PORT_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_BELFAST_PORT_LONGITUDE),
   }
 
-  const mapZoom = 4
+  const mapContainerStyle = {
+    height: "450px",
+    width: "94%",
+    border: "1px solid #ccc",
+    marginLeft: 20,
+    marginRight: 10,
+    marginBottom: 20,
+  }
+
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
+  })
 
   const HomePosition = {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
@@ -28,10 +32,6 @@ function CruiseMap(props) {
   }
 
   const AnthemOfTheSeasPosition = {
-    // lat: 49.74872,
-    // lng: -5.20943,
-    // lat: 53.39031,
-    // lng: -5.32638,
     lat: 55.95473,
     lng: -4.758,
   }
@@ -44,6 +44,21 @@ function CruiseMap(props) {
     strokeColor: "#2f4024",
     strokeWeight: 1,
   }
+
+  // Now compute bounds of map to display
+  // if (map && props.busStopsCollection != null) {
+  //   const bounds = new window.google.maps.LatLngBounds()
+  //   props.busStopsCollection.map((busStop) => {
+  //     const myLatLng = new window.google.maps.LatLng({
+  //       lat: busStop.stop_lat,
+  //       lng: busStop.stop_lon,
+  //     })
+
+  //     bounds.extend(myLatLng)
+  //     return bounds
+  //   })
+  //   map.fitBounds(bounds)
+  // }
 
   // Store a reference to the google map instance in state
   const onLoadHandler = useCallback(function callback(map) {
@@ -69,15 +84,20 @@ function CruiseMap(props) {
 
   return isLoaded ? (
     <div className="widgetCm">
-      <GoogleMap
-        mapContainerStyle={{
-          height: "600px",
-          width: "97%",
-          border: "1px solid #ccc",
+      <div
+        style={{
+          marginTop: 35,
           marginLeft: 20,
-          marginRight: 10,
-          marginBottom: 20,
+          width: "97%",
         }}
+      >
+        <Title>{props.CruiseMapTitle}</Title>
+        {/* {props.loadingError ? (
+          <LoadingTitle>Error Loading...</LoadingTitle>
+        ) : null} */}
+      </div>
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
         center={mapCenter}
         zoom={mapZoom}
         options={{
@@ -94,60 +114,9 @@ function CruiseMap(props) {
           position={AnthemOfTheSeasPosition}
           icon={iconPin}
         />
-
-        {/* {props.busShapesCollection
-  ? props.busShapesCollection.map((busShape) => (
-      <Polyline
-        key={busShape.shapeKey}
-        path={busShape.shapeCoordinates}
-        options={{
-          strokeColor: busShape.defaultColor,
-          strokeOpacity: "1.0",
-          strokeWeight: 2,
-        }}
-        onClick={() => {
-          handleBusShapeClick()
-        }}
-      />
-    ))
-  : null} */}
-        {/* {props.busStopsCollection
-? props.busStopsCollection.map((busStop) => (
-    <Marker
-      key={busStop.stop_id}
-      position={{
-        lat: busStop.stop_lat,
-        lng: busStop.stop_lon,
-      }}
-      icon={{
-        url: "http://maps.google.com/mapfiles/ms/icons/blue.png",
-      }}
-      onClick={() => {
-        handleBusStopClick()
-      }}
-    />
-  ))
-: null}
-{busStopSelected ? (
-<InfoWindow
-  position={{
-    lat: busStopSelected.stop_lat,
-    lng: busStopSelected.stop_lon,
-  }}
-  onCloseClick={() => {
-    setBusStopSelected(null)
-  }}
->
-  <div style={classes.divStyle}>
-    <Typography gutterBottom variant="h5" component="h2">
-      {busStopSelected.stop_name}
-    </Typography>
-  </div>
-</InfoWindow>
-) : null} */}
       </GoogleMap>
     </div>
   ) : null
 }
 
-export default React.memo(CruiseMap)
+export default memo(CruiseMap)

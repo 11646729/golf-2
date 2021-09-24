@@ -1,4 +1,6 @@
 import React, { memo } from "react"
+
+import Title from "../title/Title"
 import "./cruisetable.css"
 
 // -------------------------------------------------------
@@ -11,7 +13,19 @@ function CruiseTable(props) {
 
   return (
     <div className="widgetLg">
-      <h3 className="widgetLgTitle">{"Cruise Ships Arriving Soon"}</h3>
+      <div
+        style={{
+          marginTop: 35,
+          marginLeft: 20,
+          width: "97%",
+        }}
+      >
+        <Title>{props.CruiseTableTitle}</Title>
+        {/* {props.loadingError ? (
+          <LoadingTitle>Error Loading...</LoadingTitle>
+        ) : null} */}
+      </div>
+
       <table className="widgetLgTable">
         <thead>
           <tr className="widgetLgTh">
