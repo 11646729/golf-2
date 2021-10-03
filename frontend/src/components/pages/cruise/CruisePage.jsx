@@ -1,19 +1,43 @@
 import React, { useState, useEffect, memo } from "react"
-import getData from "../../Utilities"
-
 import "./cruisepage.css"
+
 import CruiseMap from "../../cruisemap/CruiseMap"
 import CruiseTable from "../../cruisetable/CruiseTable"
+import {
+  getCruiseVesselData,
+  getCruiseVesselPositionData,
+} from "../../Utilities"
 
 function CruisePage() {
-  const [portArrivals, setData] = useState([])
+  const [portArrivals, setPortArrivals] = useState([])
+  const [vesselPositions, setVesselPositions] = useState([])
   const [loadingError, setLoadingError] = useState("")
+
+  const HomePosition = {
+    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+  }
+
+  const AnthemOfTheSeasPosition = {
+    lat: 55.95473,
+    lng: -4.758,
+  }
 
   useEffect(() => {
     let isSubscribed = true
 
-    getData("http://localhost:5000/api/cruise/portArrivals")
-      .then((returnedData) => (isSubscribed ? setData(returnedData) : null))
+    getCruiseVesselData("http://localhost:5000/api/cruise/portArrivals")
+      .then((returnedData) =>
+        isSubscribed ? setPortArrivals(returnedData) : null
+      )
+      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+
+    getCruiseVesselPositionData(
+      "http://localhost:5000/api/cruise/vesselPosition"
+    )
+      .then((returnedData) =>
+        isSubscribed ? setVesselPositions(returnedData) : null
+      )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     return () => (isSubscribed = false)
@@ -30,7 +54,11 @@ function CruisePage() {
           />
         </div>
         <div className="cruisemapcontainer">
-          <CruiseMap CruiseMapTitle={"Current Locations"} />
+          <CruiseMap
+            CruiseMapTitle={"Current Locations"}
+            CruiseHomePosition={HomePosition}
+            CruiseVesselPositions={AnthemOfTheSeasPosition}
+          />
         </div>
       </div>
     </div>

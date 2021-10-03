@@ -26,16 +26,6 @@ function CruiseMap(props) {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
 
-  const HomePosition = {
-    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-  }
-
-  const AnthemOfTheSeasPosition = {
-    lat: 55.95473,
-    lng: -4.758,
-  }
-
   const iconPin = {
     path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
     fillColor: "#6dbef1",
@@ -108,10 +98,10 @@ function CruiseMap(props) {
         onLoad={onLoadHandler}
         onUnmount={onUnmountHandler}
       >
-        <Marker onLoad={onLoadHandler} position={HomePosition} />
+        <Marker onLoad={onLoadHandler} position={props.CruiseHomePosition} />
         <Marker
           onLoad={onLoadHandler}
-          position={AnthemOfTheSeasPosition}
+          position={props.CruiseVesselPositions}
           icon={iconPin}
         />
       </GoogleMap>

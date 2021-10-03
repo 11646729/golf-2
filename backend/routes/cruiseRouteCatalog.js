@@ -5,7 +5,10 @@ import {
   getPortArrivals,
   savePortArrival,
 } from "../controllers/portArrivalsController.js"
-import { saveVessel } from "../controllers/vesselController.js"
+import {
+  getVesselPosition,
+  saveVessel,
+} from "../controllers/vesselController.js"
 
 // -------------------------------------------------------
 // Cruise Routes
@@ -43,6 +46,11 @@ cruiseRouter.post("/portArrivals", savePortArrival)
 // GET a vessel by id
 // -------------------------------------------------------
 // cruiseRouter.get("/vessel/:id", getVessel)
+
+// -------------------------------------------------------
+// GET all vessel positions
+// -------------------------------------------------------
+cruiseRouter.get("/vesselPosition", getVesselPosition)
 
 // -------------------------------------------------------
 // POST a vessel to the database

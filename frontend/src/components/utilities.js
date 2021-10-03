@@ -1,11 +1,79 @@
 import axios from "axios"
 
-var fetchData = async (url) => {
-  return await axios(url)
+// -------------------------------------------------------
+// Function to fetch all Temperature data
+// -------------------------------------------------------
+export var getTemperatureData = async (url) => {
+  // Guard clause
+  if (url == null) return
+
+  const resultData = await axios({
+    url: url,
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  return resultData.data
 }
 
-export var getData = async (url) => {
-  const resultData = await fetchData(url)
+// -------------------------------------------------------
+// Function to fetch all Golf Course data
+// -------------------------------------------------------
+export var getGolfCourseData = async (url) => {
+  // Guard clause
+  if (url == null) return
+
+  const resultData = await axios({
+    url: url,
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  return resultData.data
+}
+
+// -------------------------------------------------------
+// Function to fetch all Cruise Vessel data
+// -------------------------------------------------------
+export var getCruiseVesselData = async (url) => {
+  // Guard clause
+  if (url == null) return
+
+  const resultData = await axios({
+    url: url,
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  return resultData.data
+}
+
+// -------------------------------------------------------
+// Function to fetch Cruise Vessel Position data
+// -------------------------------------------------------
+export var getCruiseVesselPositionData = async (url) => {
+  // Guard clause
+  if (url == null) return
+
+  // Fetch the initial data
+  const resultData = await axios({
+    url: url,
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
   return resultData.data
 }
 
@@ -14,7 +82,7 @@ export var getData = async (url) => {
 // Function to fetch Bus Agency
 // -------------------------------------------------------
 export var getAgencyName = async (url) => {
-  // Guard clauses
+  // Guard clause
   if (url == null) return
 
   const resultData = await axios({
@@ -238,4 +306,4 @@ export var getDisplayData = (originalArray) => {
 // return res
 // }
 
-export { getData as default }
+export { getTemperatureData as default }

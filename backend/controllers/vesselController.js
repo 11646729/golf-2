@@ -1,4 +1,16 @@
+import axios from "axios"
+import cheerio from "cheerio"
+import { DateTime } from "luxon"
+
+import { urlencoded } from "express"
 import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
+
+function VesselDetails(lat, lng, timestamp, destination) {
+  this.lat = lat
+  this.lng = lng
+  this.timestamp = timestamp
+  this.destination = destination
+}
 
 // -------------------------------------------------------
 // Create Vessels Table in the SQLite Database
@@ -109,6 +121,98 @@ export const dropVesselsTable = (db) => {
   } catch (err) {
     console.error("Error in dropVesselsTable: ", err)
   }
+}
+
+// -------------------------------------------------------
+// Find vesselNameUrl from vessels Table from SQLite database
+// Path:
+// -------------------------------------------------------
+export const getVesselPosition = async () => {
+  const vesselUrl = "https://www.cruisemapper.com/ships/Anthem-of-the-Seas-801"
+
+  // Fetch the initial data
+  const { data: html } = await axios.get(vesselUrl)
+
+  // Load up cheerio
+  const $ = cheerio.load(html) // html
+
+  // Paragraph containing position & time reported
+  let positionParagraph = $(
+    "#container > main > section > article > section > div:nth-child(3) > div > div.col-md-4.currentItineraryInfo > p"
+  )
+    .text()
+    .trim()
+
+  let VesselName = positionParagraph.substring(
+    0,
+    positionParagraph.indexOf("current ") - 1
+  )
+  console.log("VesselName: " + VesselName)
+
+  var lat = positionParagraph.substring(
+    positionParagraph.indexOf("coordinates ") + 12,
+    positionParagraph.indexOf("/") - 2
+  )
+  var lng = positionParagraph.substring(
+    positionParagraph.indexOf("/") + 2,
+    positionParagraph.indexOf(")") - 2
+  )
+
+  console.log("Latitude: " + lat)
+  console.log("Longitude: " + lng)
+
+  let secs = 0
+  if (positionParagraph.includes("second")) {
+    secs = 7
+    if (positionParagraph.includes("seconds")) {
+      secs = 8
+    }
+  }
+
+  let mins = 0
+  if (positionParagraph.includes("minute")) {
+    mins = 7
+    if (positionParagraph.includes("minutes")) {
+      mins = 8
+    }
+  }
+
+  var aistime = DateTime.now()
+    .minus({ minutes: mins, seconds: secs })
+    .toString()
+
+  console.log("AIS Reported Time: " + aistime)
+
+  var VesselDest = positionParagraph.substring(
+    positionParagraph.indexOf("route to ") + 9,
+    positionParagraph.indexOf(". The")
+  )
+
+  var destination =
+    VesselDest[0].toUpperCase() + VesselDest.substring(1).toLowerCase()
+
+  console.log("Destination: " + destination)
+
+  // var Anthem = new VesselDetails(
+  //   url,
+  //   lat,
+  //   lng,
+  //   aistime,
+  //   destination
+  // )
+
+  // function Car(make, model, year) {
+  //   this.make = make
+  //   this.model = model
+  //   this.year = year
+  // }
+
+  // var mycar = new Car("Eagle", "Talon TSi", 1993)
+
+  // Now need to remove duplicates & get current location
+
+  // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
+  // const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
 }
 
 export default saveVessel

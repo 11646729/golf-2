@@ -24,6 +24,7 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "gtfs": "^3.0.4",
+    "luxon": "^2.0.2",
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",
     "normalize-url": "^7.0.0",

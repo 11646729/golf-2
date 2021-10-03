@@ -13,20 +13,14 @@ function CruiseTable(props) {
 
   return (
     <div className="widgetLg">
-      <div
-        style={{
-          marginTop: 35,
-          marginLeft: 20,
-          width: "97%",
-        }}
-      >
+      <div className="cruisetablecontainertitle">
         <Title>{props.CruiseTableTitle}</Title>
         {/* {props.loadingError ? (
           <LoadingTitle>Error Loading...</LoadingTitle>
         ) : null} */}
       </div>
 
-      <table className="widgetLgTable">
+      <table className="cruisetable">
         <thead>
           <tr className="widgetLgTh">
             <th className="widgetLgThDay">Day</th>

@@ -19,7 +19,7 @@ import {
 
 import Title from "../title/Title"
 import LoadingTitle from "../loadingtitle/LoadingTitle"
-import getData from "../Utilities"
+import getGolfCourseData from "../Utilities"
 
 // -------------------------------------------------------
 // React Controller component
@@ -31,7 +31,7 @@ function GolfCoursesMap() {
   useEffect(() => {
     let isSubscribed = true
 
-    getData("http://localhost:5000/api/golf/nearbyGolfcourses")
+    getGolfCourseData("http://localhost:5000/api/golf/nearbyGolfcourses")
       .then((returnedData) =>
         isSubscribed ? setGolfCoursesData(returnedData) : null
       )
