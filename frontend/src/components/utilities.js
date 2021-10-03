@@ -67,6 +67,9 @@ export var getCruiseVesselPositionData = async (url) => {
   // Fetch the initial data
   const resultData = await axios({
     url: url,
+    // params: {
+    //   shape: shapeID,
+    // },
     method: "GET",
     timeout: 8000,
     headers: {

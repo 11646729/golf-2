@@ -128,10 +128,21 @@ export const dropVesselsTable = (db) => {
 // Path:
 // -------------------------------------------------------
 export const getVesselPosition = async () => {
-  const vesselUrl = "https://www.cruisemapper.com/ships/Anthem-of-the-Seas-801"
+  const urls = []
+  urls.push("https://www.cruisemapper.com/ships/Anthem-of-the-Seas-801")
+  urls.push("https://www.cruisemapper.com/ships/Sky-Princess-2154")
+
+  // Now need to remove duplicates & get current location
+
+  // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
+  // const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
+
+  // urls.forEach(function (item, index, array) {
+  //   console.log(item, index)
+  // })
 
   // Fetch the initial data
-  const { data: html } = await axios.get(vesselUrl)
+  const { data: html } = await axios.get(urls[0])
 
   // Load up cheerio
   const $ = cheerio.load(html) // html
@@ -181,6 +192,9 @@ export const getVesselPosition = async () => {
     .minus({ minutes: mins, seconds: secs })
     .toString()
 
+  // console.log("Time Now: " + DateTime.now().toString())
+  // console.log("Mins: " + mins)
+  // console.log("Secs: " + secs)
   console.log("AIS Reported Time: " + aistime)
 
   var VesselDest = positionParagraph.substring(
@@ -201,18 +215,7 @@ export const getVesselPosition = async () => {
   //   destination
   // )
 
-  // function Car(make, model, year) {
-  //   this.make = make
-  //   this.model = model
-  //   this.year = year
-  // }
-
-  // var mycar = new Car("Eagle", "Talon TSi", 1993)
-
-  // Now need to remove duplicates & get current location
-
-  // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
-  // const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
+  // return Anthem
 }
 
 export default saveVessel
