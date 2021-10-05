@@ -2,8 +2,8 @@ import axios from "axios"
 import cheerio from "cheerio"
 import { DateTime } from "luxon"
 
-import { urlencoded } from "express"
-import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
+// import { urlencoded } from "express"
+// import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 
 function VesselDetails(lat, lng, timestamp, destination) {
   this.lat = lat
@@ -128,6 +128,8 @@ export const dropVesselsTable = (db) => {
 // Path:
 // -------------------------------------------------------
 export const getVesselPosition = async () => {
+  console.log("Here")
+
   const urls = []
   urls.push("https://www.cruisemapper.com/ships/Anthem-of-the-Seas-801")
   urls.push("https://www.cruisemapper.com/ships/Sky-Princess-2154")
@@ -154,12 +156,14 @@ export const getVesselPosition = async () => {
     .text()
     .trim()
 
+  // Name of Vessel
   let VesselName = positionParagraph.substring(
     0,
     positionParagraph.indexOf("current ") - 1
   )
-  console.log("VesselName: " + VesselName)
+  // console.log("VesselName: " + VesselName)
 
+  // Reported Position
   var lat = positionParagraph.substring(
     positionParagraph.indexOf("coordinates ") + 12,
     positionParagraph.indexOf("/") - 2
@@ -169,9 +173,10 @@ export const getVesselPosition = async () => {
     positionParagraph.indexOf(")") - 2
   )
 
-  console.log("Latitude: " + lat)
-  console.log("Longitude: " + lng)
+  // console.log("Latitude: " + lat)
+  // console.log("Longitude: " + lng)
 
+  // AIS Reported Time
   let secs = 0
   if (positionParagraph.includes("second")) {
     secs = 7
@@ -195,27 +200,29 @@ export const getVesselPosition = async () => {
   // console.log("Time Now: " + DateTime.now().toString())
   // console.log("Mins: " + mins)
   // console.log("Secs: " + secs)
-  console.log("AIS Reported Time: " + aistime)
+  // console.log("AIS Reported Time: " + aistime)
 
+  // Destination
   var VesselDest = positionParagraph.substring(
     positionParagraph.indexOf("route to ") + 9,
     positionParagraph.indexOf(". The")
   )
 
-  var destination =
+  var Destination =
     VesselDest[0].toUpperCase() + VesselDest.substring(1).toLowerCase()
 
-  console.log("Destination: " + destination)
+  // console.log("Destination: " + destination)
 
-  // var Anthem = new VesselDetails(
-  //   url,
-  //   lat,
-  //   lng,
-  //   aistime,
-  //   destination
-  // )
+  var vesselDetails = {
+    vesselUrl: urls[0],
+    vesselName: VesselName,
+    latitude: lat,
+    longitude: lng,
+    positionReportedTime: aistime,
+    destination: Destination,
+  }
 
-  // return Anthem
+  return vesselDetails
 }
 
 export default saveVessel

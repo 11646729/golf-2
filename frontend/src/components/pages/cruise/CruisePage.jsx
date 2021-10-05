@@ -30,6 +30,7 @@ function CruisePage() {
       .then((returnedData) =>
         isSubscribed ? setPortArrivals(returnedData) : null
       )
+      // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     getCruiseVesselPositionData(
@@ -38,6 +39,7 @@ function CruisePage() {
       .then((returnedData) =>
         isSubscribed ? setVesselPositions(returnedData) : null
       )
+      // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     return () => (isSubscribed = false)

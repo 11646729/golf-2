@@ -49,7 +49,7 @@ export default function GolfCoursesCard() {
           size="small"
           color="primary"
           component={Link}
-          to="/golfcoursesmap"
+          to="/golfcoursespage"
         >
           View
         </Button>

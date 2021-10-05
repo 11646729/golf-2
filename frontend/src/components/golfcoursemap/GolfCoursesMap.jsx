@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, memo } from "react"
+import React, { useState, useCallback, memo } from "react"
 import {
   GoogleMap,
   useJsApiLoader,
@@ -19,39 +19,11 @@ import {
 
 import Title from "../title/Title"
 import LoadingTitle from "../loadingtitle/LoadingTitle"
-import getGolfCourseData from "../Utilities"
-
-// -------------------------------------------------------
-// React Controller component
-// -------------------------------------------------------
-function GolfCoursesMap() {
-  const [golfCoursesData, setGolfCoursesData] = useState([])
-  const [loadingError, setLoadingError] = useState("")
-
-  useEffect(() => {
-    let isSubscribed = true
-
-    getGolfCourseData("http://localhost:5000/api/golf/nearbyGolfcourses")
-      .then((returnedData) =>
-        isSubscribed ? setGolfCoursesData(returnedData) : null
-      )
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
-
-    return () => (isSubscribed = false)
-  }, [])
-
-  return (
-    <GolfCoursesMapView
-      golfCoursesData={golfCoursesData}
-      loadingError={loadingError}
-    />
-  )
-}
 
 // -------------------------------------------------------
 // React View component
 // -------------------------------------------------------
-function GolfCoursesMapView(props) {
+function GolfCoursesMap(props) {
   const [map, setMap] = useState(null)
   const [selected, setSelected] = useState(null)
 
@@ -192,7 +164,7 @@ function GolfCoursesMapView(props) {
                       size="small"
                       color="primary"
                       component={Link}
-                      // to="/golfcoursesmap"
+                      // to="/golfcoursespage"
                     >
                       View
                     </Button>

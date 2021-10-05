@@ -64,12 +64,11 @@ export var getCruiseVesselPositionData = async (url) => {
   // Guard clause
   if (url == null) return
 
+  console.log("Url: " + url)
+
   // Fetch the initial data
   const resultData = await axios({
     url: url,
-    // params: {
-    //   shape: shapeID,
-    // },
     method: "GET",
     timeout: 8000,
     headers: {
@@ -77,7 +76,9 @@ export var getCruiseVesselPositionData = async (url) => {
     },
   })
 
-  return resultData.data
+  // console.log(resultData)
+
+  return resultData
 }
 
 // -------------------------------------------------------
