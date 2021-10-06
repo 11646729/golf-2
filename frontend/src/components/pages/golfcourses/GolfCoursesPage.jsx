@@ -2,6 +2,7 @@ import React, { useState, useEffect, memo } from "react"
 
 import GolfCoursesMap from "../../golfcoursemap/GolfCoursesMap"
 import getGolfCourseData from "../../Utilities"
+import "./golfcoursespage.css"
 
 // -------------------------------------------------------
 // React Controller component
@@ -23,10 +24,16 @@ function GolfCoursesPage() {
   }, [])
 
   return (
-    <GolfCoursesMap
-      golfCoursesData={golfCoursesData}
-      loadingError={loadingError}
-    />
+    <div>
+      <div className="container">
+        <div className="golfcoursesmapcontainer">
+          <GolfCoursesMap
+            golfCoursesData={golfCoursesData}
+            loadingError={loadingError}
+          />
+        </div>
+      </div>
+    </div>
   )
 }
 
