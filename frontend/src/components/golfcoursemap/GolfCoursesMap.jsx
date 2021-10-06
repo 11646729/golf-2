@@ -27,6 +27,22 @@ function GolfCoursesMap(props) {
   const [map, setMap] = useState(null)
   const [selected, setSelected] = useState(null)
 
+  const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
+
+  const mapCenter = {
+    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+  }
+
+  const mapContainerStyle = {
+    height: "450px",
+    width: "94%",
+    border: "1px solid #ccc",
+    marginLeft: 20,
+    marginRight: 10,
+    marginBottom: 20,
+  }
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
@@ -56,9 +72,6 @@ function GolfCoursesMap(props) {
     map.fitBounds(bounds)
   }
 
-  // -----------------------------------------------------
-  // VIEW SECTION
-  // -----------------------------------------------------
   const iconPin = {
     path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
     fillColor: "#78a32e",
@@ -66,15 +79,6 @@ function GolfCoursesMap(props) {
     scale: 0.03, // to reduce the size of icons
     strokeColor: "#2f4024",
     strokeWeight: 1,
-  }
-
-  const mapZoom = parseInt(
-    process.env.REACT_APP_MAP_DEFAULT_ZOOM,
-    process.env.REACT_APP_MAP_DEFAULT_ZOOM
-  )
-  const mapCenter = {
-    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   }
 
   return isLoaded ? (
@@ -89,7 +93,7 @@ function GolfCoursesMap(props) {
               width: "97%",
             }}
           >
-            <Title>Golf Courses</Title>
+            <Title>{props.golfCoursesMapTitle}</Title>
             {props.loadingError ? (
               <LoadingTitle>Error Loading...</LoadingTitle>
             ) : null}
@@ -97,14 +101,7 @@ function GolfCoursesMap(props) {
         </Grid>
         <Grid item xs={12} sm={12}>
           <GoogleMap
-            mapContainerStyle={{
-              height: "600px",
-              width: "97%",
-              border: "1px solid #ccc",
-              marginLeft: 20,
-              marginRight: 10,
-              marginBottom: 20,
-            }}
+            mapContainerStyle={mapContainerStyle}
             center={mapCenter}
             zoom={mapZoom}
             options={{

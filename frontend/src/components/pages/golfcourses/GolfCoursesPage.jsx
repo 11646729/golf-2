@@ -28,10 +28,13 @@ function GolfCoursesPage() {
       <div className="container">
         <div className="golfcoursesmapcontainer">
           <GolfCoursesMap
+            golfCoursesMapTitle={"Golf Courses"}
             golfCoursesData={golfCoursesData}
             loadingError={loadingError}
           />
         </div>
+        <div classname="cruisetablecontainer"></div>
+        Table Location
       </div>
     </div>
   )

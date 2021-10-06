@@ -50,16 +50,16 @@ function CruisePage() {
       <div className="container">
         <div className="cruisetablecontainer">
           <CruiseTable
-            CruiseTableTitle={"Cruise Ships Arriving Soon"}
+            cruiseTableTitle={"Cruise Ships Arriving Soon"}
             cruiseData={portArrivals}
             loadingError={loadingError}
           />
         </div>
         <div className="cruisemapcontainer">
           <CruiseMap
-            CruiseMapTitle={"Current Locations"}
-            CruiseHomePosition={HomePosition}
-            CruiseVesselPositions={AnthemOfTheSeasPosition}
+            cruiseMapTitle={"Current Locations"}
+            cruiseHomePosition={HomePosition}
+            cruiseVesselPositions={AnthemOfTheSeasPosition}
           />
         </div>
       </div>

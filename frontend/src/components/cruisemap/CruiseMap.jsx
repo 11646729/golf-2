@@ -81,7 +81,7 @@ function CruiseMap(props) {
           width: "97%",
         }}
       >
-        <Title>{props.CruiseMapTitle}</Title>
+        <Title>{props.cruiseMapTitle}</Title>
         {/* {props.loadingError ? (
           <LoadingTitle>Error Loading...</LoadingTitle>
         ) : null} */}
@@ -98,10 +98,10 @@ function CruiseMap(props) {
         onLoad={onLoadHandler}
         onUnmount={onUnmountHandler}
       >
-        <Marker onLoad={onLoadHandler} position={props.CruiseHomePosition} />
+        <Marker onLoad={onLoadHandler} position={props.cruiseHomePosition} />
         <Marker
           onLoad={onLoadHandler}
-          position={props.CruiseVesselPositions}
+          position={props.cruiseVesselPositions}
           icon={iconPin}
         />
       </GoogleMap>

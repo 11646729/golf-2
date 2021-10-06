@@ -14,7 +14,7 @@ function CruiseTable(props) {
   return (
     <div className="widgetLg">
       <div className="cruisetablecontainertitle">
-        <Title>{props.CruiseTableTitle}</Title>
+        <Title>{props.cruiseTableTitle}</Title>
         {/* {props.loadingError ? (
           <LoadingTitle>Error Loading...</LoadingTitle>
         ) : null} */}
