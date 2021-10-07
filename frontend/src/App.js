@@ -5,10 +5,10 @@ import TopBar from "./components/topbar/TopBar"
 import Album from "./components/Album"
 import RawDataLoad from "./components/rawdataload/RawDataLoad"
 import TemperaturesChart from "./components/temperatureschart/TemperaturesChart"
-import GolfCoursesPage from "./components/pages/golfcourses/GolfCoursesPage"
+import GolfCoursesPage from "../src/pages/golfcourses/GolfCoursesPage"
 import CrimesMap from "./components/crimesmap/CrimesMap"
-import CruisePage from "./components/pages/cruise/CruisePage"
-import TransportPage from "./components/pages/transport/TransportPage"
+import CruisePage from "../src/pages/cruise/CruisePage"
+import TransportPage from "../src/pages/transport/TransportPage"
 
 export default function App() {
   return (

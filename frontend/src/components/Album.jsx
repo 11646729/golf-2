@@ -8,12 +8,12 @@ import {
 } from "@material-ui/core"
 
 import CopyRight from "../components/copyright/CopyRight"
-import RawDataLoadCard from "./RawDataLoadCard"
-import TemperaturesCard from "./TemperaturesCard"
-import GolfCoursesCard from "./GolfCoursesCard"
-import CrimesCard from "./CrimesCard"
-import CruiseCard from "./CruiseCard"
-import TransportCard from "./TransportCard"
+import RawDataLoadCard from "../cards/RawDataLoadCard"
+import TemperaturesCard from "../cards/TemperaturesCard"
+import GolfCoursesCard from "../cards/GolfCoursesCard"
+import CrimesCard from "../cards/CrimesCard"
+import CruiseCard from "../cards/CruiseCard"
+import TransportCard from "../cards/TransportCard"
 
 const useStyles = makeStyles((theme) => ({
   icon: {

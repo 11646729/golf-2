@@ -21,7 +21,7 @@ import {
 } from "recharts"
 import Title from "../title/Title"
 import LoadingTitle from "../loadingtitle/LoadingTitle"
-import getTemperatureData from "../Utilities"
+import getTemperatureData from "../../Utilities"
 
 const socket = io(process.env.REACT_APP_SOCKET_ENDPOINT)
 

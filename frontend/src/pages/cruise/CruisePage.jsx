@@ -1,8 +1,8 @@
 import React, { useState, useEffect, memo } from "react"
 import "./cruisepage.css"
 
-import CruiseMap from "../../cruisemap/CruiseMap"
-import CruiseTable from "../../cruisetable/CruiseTable"
+import CruiseMap from "../../components/cruisemap/CruiseMap"
+import CruiseTable from "../../components/cruisetable/CruiseTable"
 import {
   getCruiseVesselData,
   getCruiseVesselPositionData,

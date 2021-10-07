@@ -8,8 +8,8 @@ import {
 } from "../../Utilities"
 
 import "./transportpage.css"
-import TransportRoutesMap from "../../transportmap/TransportRoutesMap"
-import TransportRouteSelectionTable from "../../transportrouteselectiontable/TransportRouteSelectionTable"
+import TransportRoutesMap from "../../components/transportmap/TransportRoutesMap"
+import TransportRouteSelectionTable from "../../components/transportrouteselectiontable/TransportRouteSelectionTable"
 
 function TransportPage() {
   const [busAgencyName, setBusAgencyName] = useState()
