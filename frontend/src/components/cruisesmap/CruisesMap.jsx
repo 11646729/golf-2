@@ -3,9 +3,9 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api"
 
 import Title from "../title/Title"
 // import LoadingTitle from "../loadingtitle/LoadingTitle"
-import "./cruisemap.css"
+import "./cruisesmap.css"
 
-function CruiseMap(props) {
+function CruisesMap(props) {
   const [map, setMap] = useState(null)
   const mapZoom = 4
   const mapCenter = {
@@ -82,7 +82,7 @@ function CruiseMap(props) {
           width: "97%",
         }}
       >
-        <Title>{props.cruiseMapTitle}</Title>
+        <Title>{props.cruisesMapTitle}</Title>
         {/* {props.loadingError ? (
           <LoadingTitle>Error Loading...</LoadingTitle>
         ) : null} */}
@@ -99,10 +99,10 @@ function CruiseMap(props) {
         onLoad={onLoadHandler}
         onUnmount={onUnmountHandler}
       >
-        <Marker onLoad={onLoadHandler} position={props.cruiseHomePosition} />
+        <Marker onLoad={onLoadHandler} position={props.cruisesHomePosition} />
         <Marker
           onLoad={onLoadHandler}
-          position={props.cruiseVesselPositions}
+          position={props.cruisesVesselPositions}
           icon={iconPin}
         />
       </GoogleMap>
@@ -110,4 +110,4 @@ function CruiseMap(props) {
   ) : null
 }
 
-export default memo(CruiseMap)
+export default memo(CruisesMap)

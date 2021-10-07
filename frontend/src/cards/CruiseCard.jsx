@@ -47,7 +47,7 @@ export default function CruiseCard() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" component={Link} to="/cruisetable">
+        <Button size="small" color="primary" component={Link} to="/cruisespage">
           View
         </Button>
       </CardActions>

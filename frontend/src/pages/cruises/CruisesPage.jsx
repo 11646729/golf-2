@@ -1,15 +1,15 @@
 import React, { useState, useEffect, memo } from "react"
 
-import CruiseTable from "../../components/cruisetable/CruiseTable"
-import CruiseMap from "../../components/cruisemap/CruiseMap"
+import CruisesTable from "../../components/cruisestable/CruisesTable"
+import CruisesMap from "../../components/cruisesmap/CruisesMap"
 import {
   getCruiseVesselData,
   getCruiseVesselPositionData,
 } from "../../utilities"
 
-import "./cruisepage.css"
+import "./cruisespage.css"
 
-function CruisePage() {
+function CruisesPage() {
   const [portArrivals, setPortArrivals] = useState([])
   const [vesselPositions, setVesselPositions] = useState([])
   const [loadingError, setLoadingError] = useState("")
@@ -49,18 +49,18 @@ function CruisePage() {
   return (
     <div>
       <div className="container">
-        <div className="cruisetablecontainer">
-          <CruiseTable
-            cruiseTableTitle={"Cruise Ships Arriving Soon"}
-            cruiseData={portArrivals}
+        <div className="cruisestablecontainer">
+          <CruisesTable
+            cruisesTableTitle={"Cruise Ships Arriving Soon"}
+            cruisesData={portArrivals}
             loadingError={loadingError}
           />
         </div>
-        <div className="cruisemapcontainer">
-          <CruiseMap
-            cruiseMapTitle={"Current Locations"}
-            cruiseHomePosition={HomePosition}
-            cruiseVesselPositions={AnthemOfTheSeasPosition}
+        <div className="cruisesmapcontainer">
+          <CruisesMap
+            cruisesMapTitle={"Current Locations"}
+            cruisesHomePosition={HomePosition}
+            cruisesVesselPositions={AnthemOfTheSeasPosition}
           />
         </div>
       </div>
@@ -68,4 +68,4 @@ function CruisePage() {
   )
 }
 
-export default memo(CruisePage)
+export default memo(CruisesPage)

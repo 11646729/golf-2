@@ -83,7 +83,7 @@ export const deleteAllVessels = (db) => {
     const sql_insert = "DELETE FROM vessels"
     db.run(sql_insert, (err) => {
       if (err) {
-        return console.error("Here", err.message)
+        return console.error("Error: ", err.message)
       }
       console.warn("All vessels deleted")
     })
@@ -128,8 +128,6 @@ export const dropVesselsTable = (db) => {
 // Path:
 // -------------------------------------------------------
 export const getVesselPosition = async () => {
-  console.log("Here")
-
   const urls = []
   urls.push("https://www.cruisemapper.com/ships/Anthem-of-the-Seas-801")
   urls.push("https://www.cruisemapper.com/ships/Sky-Princess-2154")

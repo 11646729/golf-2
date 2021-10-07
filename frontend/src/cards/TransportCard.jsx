@@ -50,7 +50,7 @@ export default function GTFSTransportCard() {
           size="small"
           color="primary"
           component={Link}
-          to="/transportmap"
+          to="/transportpage"
         >
           View
         </Button>

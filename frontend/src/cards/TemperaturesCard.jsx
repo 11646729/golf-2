@@ -49,7 +49,7 @@ export default function TemperaturesCard() {
           size="small"
           color="primary"
           component={Link}
-          to="/temperatureschart"
+          to="/temperaturespage"
         >
           View
         </Button>

@@ -1,26 +1,26 @@
 import React, { memo } from "react"
 
 import Title from "../title/Title"
-import "./cruisetable.css"
+import "./cruisestable.css"
 
 // -------------------------------------------------------
 // React component
 // -------------------------------------------------------
-function CruiseTable(props) {
+function CruisesTable(props) {
   const Button = ({ type }) => {
     return <button className={"widgetLgButton " + type}>{type}</button>
   }
 
   return (
     <div className="widgetLg">
-      <div className="cruisetablecontainertitle">
-        <Title>{props.cruiseTableTitle}</Title>
+      <div className="cruisestablecontainertitle">
+        <Title>{props.cruisesTableTitle}</Title>
         {/* {props.loadingError ? (
           <LoadingTitle>Error Loading...</LoadingTitle>
         ) : null} */}
       </div>
 
-      <table className="cruisetable">
+      <table className="cruisestable">
         <thead>
           <tr className="widgetLgTh">
             <th className="widgetLgThDay">Day</th>
@@ -31,7 +31,7 @@ function CruiseTable(props) {
           </tr>
         </thead>
         <tbody>
-          {props.cruiseData.map((row) => (
+          {props.cruisesData.map((row) => (
             <tr className="widgetLgTr" key={row.portarrivalid}>
               <td className="widgetLgDay">
                 <div className="widgetLgDate">{row.arrivalDate}</div>
@@ -60,4 +60,4 @@ function CruiseTable(props) {
   )
 }
 
-export default memo(CruiseTable)
+export default memo(CruisesTable)

@@ -1,4 +1,4 @@
-.cruisetablecontainertitle {
+.cruisestablecontainertitle {
   margin-top: 35px;
   margin-left: 20px;
   margin-right: 20px;
@@ -12,7 +12,7 @@
   height: 30px;
 } */
 
-.cruisetable {
+.cruisestable {
   width: 94%;
   margin-left: 20px;
   margin-right: 20px;
@@ -21,7 +21,7 @@
   border-collapse: collapse;
 }
 
-table.cruisetable tr:hover {
+table.cruisestable tr:hover {
   background-color: #ebeccd;
 }
 

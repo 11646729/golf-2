@@ -7,7 +7,7 @@ import RawDataLoad from "./components/rawdataload/RawDataLoad"
 import TemperaturesChart from "./components/temperatureschart/TemperaturesChart"
 import GolfCoursesPage from "../src/pages/golfcourses/GolfCoursesPage"
 import CrimesMap from "./components/crimesmap/CrimesMap"
-import CruisePage from "../src/pages/cruises/CruisePage"
+import CruisesPage from "./pages/cruises/CruisesPage"
 import TransportPage from "../src/pages/transport/TransportPage"
 
 export default function App() {
@@ -19,11 +19,11 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="loadrawdata" element={<RawDataLoadLink />} />
-          <Route path="temperatureschart" element={<TemperaturesChartLink />} />
+          <Route path="temperaturespage" element={<TemperaturesPageLink />} />
           <Route path="golfcoursespage" element={<GolfCoursesPageLink />} />
-          <Route path="crimesmap" element={<CrimesMapLink />} />
-          <Route path="cruisetable" element={<CruisePageLink />} />
-          <Route path="transportmap" element={<TransportPageLink />} />
+          <Route path="crimespage" element={<CrimesPageLink />} />
+          <Route path="cruisespage" element={<CruisesPageLink />} />
+          <Route path="transportpage" element={<TransportPageLink />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
@@ -39,7 +39,7 @@ function RawDataLoadLink() {
   return <RawDataLoad />
 }
 
-function TemperaturesChartLink() {
+function TemperaturesPageLink() {
   return <TemperaturesChart />
 }
 
@@ -47,11 +47,11 @@ function GolfCoursesPageLink() {
   return <GolfCoursesPage />
 }
 
-function CruisePageLink() {
-  return <CruisePage />
+function CruisesPageLink() {
+  return <CruisesPage />
 }
 
-function CrimesMapLink() {
+function CrimesPageLink() {
   return <CrimesMap />
 }
 
