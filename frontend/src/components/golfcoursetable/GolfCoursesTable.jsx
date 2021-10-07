@@ -8,9 +8,6 @@ function GolfCoursesTable(props) {
     <div>
       <div className="golfcoursestablecontainertitle">
         <Title>{props.golfCoursesTableTitle}</Title>
-        {/* {props.loadingError ? (
-          <LoadingTitle>Error Loading...</LoadingTitle>
-        ) : null} */}
       </div>
       <div className="golfcoursestable">golf courses selection</div>
     </div>
