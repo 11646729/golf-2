@@ -7,7 +7,7 @@ import RawDataLoad from "./components/rawdataload/RawDataLoad"
 import TemperaturesChart from "./components/temperatureschart/TemperaturesChart"
 import GolfCoursesPage from "../src/pages/golfcourses/GolfCoursesPage"
 import CrimesMap from "./components/crimesmap/CrimesMap"
-import CruisePage from "../src/pages/cruise/CruisePage"
+import CruisePage from "../src/pages/cruises/CruisePage"
 import TransportPage from "../src/pages/transport/TransportPage"
 
 export default function App() {
