@@ -10,15 +10,14 @@ import {
   CardContent,
   CardMedia,
   Typography,
-  CssBaseline,
-  Grid,
   Button,
   Link,
   CardActions,
 } from "@material-ui/core"
 
 import Title from "../title/Title"
-import LoadingTitle from "../loadingtitle/LoadingTitle"
+// import LoadingTitle from "../loadingtitle/LoadingTitle"
+// import "./golfcoursesmap.css"
 
 // -------------------------------------------------------
 // React View component
@@ -82,96 +81,87 @@ function GolfCoursesMap(props) {
   }
 
   return isLoaded ? (
-    <div>
-      <CssBaseline />
-      <Grid container spacing={1}>
-        <Grid item xs={12} sm={12}>
-          <div
-            style={{
-              marginTop: 55,
-              marginLeft: 20,
-              width: "97%",
-            }}
-          >
-            <Title>{props.golfCoursesMapTitle}</Title>
-            {props.loadingError ? (
-              <LoadingTitle>Error Loading...</LoadingTitle>
-            ) : null}
-          </div>
-        </Grid>
-        <Grid item xs={12} sm={12}>
-          <GoogleMap
-            mapContainerStyle={mapContainerStyle}
-            center={mapCenter}
-            zoom={mapZoom}
-            options={{
-              // mapTypeId: "hybrid",
-              disableDefaultUI: true,
-              zoomControl: true,
-            }}
-            onLoad={onLoadHandler}
-            onUnmount={onUnmountHandler}
-          >
-            {props.golfCoursesData
-              ? props.golfCoursesData.map((golfcourse) => (
-                  <Marker
-                    key={golfcourse.name}
-                    position={{
-                      lat: golfcourse.courselat,
-                      lng: golfcourse.courselng,
-                    }}
-                    icon={iconPin}
-                    onClick={() => {
-                      setSelected(golfcourse)
-                    }}
-                  />
-                ))
-              : null}
-
-            {selected ? (
-              <InfoWindow
+    <div className="widgetCm">
+      <div
+        style={{
+          marginTop: 35,
+          marginLeft: 20,
+          width: "97%",
+        }}
+      >
+        <Title>{props.golfCoursesMapTitle}</Title>
+        {/* {props.loadingError ? (
+          <LoadingTitle>Error Loading...</LoadingTitle>
+        ) : null} */}
+      </div>
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        center={mapCenter}
+        zoom={mapZoom}
+        options={{
+          // mapTypeId: "hybrid",
+          disableDefaultUI: true,
+          zoomControl: true,
+        }}
+        onLoad={onLoadHandler}
+        onUnmount={onUnmountHandler}
+      >
+        {props.golfCoursesData
+          ? props.golfCoursesData.map((golfcourse) => (
+              <Marker
+                key={golfcourse.name}
                 position={{
-                  lat: selected.courselat,
-                  lng: selected.courselng,
+                  lat: golfcourse.courselat,
+                  lng: golfcourse.courselng,
                 }}
-                onCloseClick={() => {
-                  setSelected(null)
+                icon={iconPin}
+                onClick={() => {
+                  setSelected(golfcourse)
                 }}
-              >
-                <Card>
-                  <CardMedia
-                    style={{
-                      height: 0,
-                      paddingTop: "40%",
-                      marginTop: "30",
-                    }}
-                    image={selected.photourl}
-                    title={selected.phototitle}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {selected.name}
-                    </Typography>
-                    <Typography component="p">
-                      {selected.description}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button
-                      size="small"
-                      color="primary"
-                      component={Link}
-                      // to="/golfcoursespage"
-                    >
-                      View
-                    </Button>
-                  </CardActions>
-                </Card>
-              </InfoWindow>
-            ) : null}
-          </GoogleMap>
-        </Grid>
-      </Grid>
+              />
+            ))
+          : null}
+
+        {selected ? (
+          <InfoWindow
+            position={{
+              lat: selected.courselat,
+              lng: selected.courselng,
+            }}
+            onCloseClick={() => {
+              setSelected(null)
+            }}
+          >
+            <Card>
+              <CardMedia
+                style={{
+                  height: 0,
+                  paddingTop: "40%",
+                  marginTop: "30",
+                }}
+                image={selected.photourl}
+                title={selected.phototitle}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {selected.name}
+                </Typography>
+                <Typography component="p">{selected.description}</Typography>
+              </CardContent>
+              <CardActions>
+                <Button
+                  size="small"
+                  color="primary"
+                  component={Link}
+                  // to="/golfcoursespage"
+                >
+                  View
+                </Button>
+              </CardActions>
+            </Card>
+          </InfoWindow>
+        ) : null}
+      </GoogleMap>
     </div>
   ) : null
 }

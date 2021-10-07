@@ -2,6 +2,7 @@ import React, { useState, useCallback, memo } from "react"
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api"
 
 import Title from "../title/Title"
+// import LoadingTitle from "../loadingtitle/LoadingTitle"
 import "./cruisemap.css"
 
 function CruiseMap(props) {

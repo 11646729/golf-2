@@ -1,6 +1,7 @@
 import React, { useState, useEffect, memo } from "react"
 
 import GolfCoursesMap from "../../golfcoursemap/GolfCoursesMap"
+import GolfCoursesTable from "../../golfcoursetable/GolfCoursesTable"
 import getGolfCourseData from "../../Utilities"
 import "./golfcoursespage.css"
 
@@ -26,15 +27,16 @@ function GolfCoursesPage() {
   return (
     <div>
       <div className="container">
+        <div className="golfcoursestablecontainer">
+          <GolfCoursesTable golfCoursesTableTitle={"Golf Courses Table"} />
+        </div>
         <div className="golfcoursesmapcontainer">
           <GolfCoursesMap
-            golfCoursesMapTitle={"Golf Courses"}
+            golfCoursesMapTitle={"Golf Courses Map"}
             golfCoursesData={golfCoursesData}
             loadingError={loadingError}
           />
         </div>
-        <div classname="cruisetablecontainer"></div>
-        Table Location
       </div>
     </div>
   )

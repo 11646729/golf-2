@@ -58,7 +58,7 @@ function TransportPage() {
   return (
     <div>
       <div className="container">
-        <div className="transportroutetablecontainer">
+        <div className="transporttablecontainer">
           <TransportRouteSelectionTable
             routesTableTitle={"Routes Table"}
             busRoutesCollection={busRoutesCollection}
