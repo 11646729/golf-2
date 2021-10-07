@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import TopBar from "./components/topbar/TopBar"
 import Album from "./components/Album"
 import RawDataLoad from "./components/rawdataload/RawDataLoad"
-import TemperaturesChart from "./components/temperatureschart/TemperaturesChart"
+import TemperaturesPage from "../src/pages/temperatures/TemperaturesPage"
 import GolfCoursesPage from "../src/pages/golfcourses/GolfCoursesPage"
 import CrimesMap from "./components/crimesmap/CrimesMap"
 import CruisesPage from "./pages/cruises/CruisesPage"
@@ -40,7 +40,7 @@ function RawDataLoadLink() {
 }
 
 function TemperaturesPageLink() {
-  return <TemperaturesChart />
+  return <TemperaturesPage />
 }
 
 function GolfCoursesPageLink() {

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { memo } from "react"
 import moment from "moment"
-import io from "socket.io-client"
+// import io from "socket.io-client"
 import {
   useTheme,
   Paper,
@@ -19,70 +19,15 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts"
+
 import Title from "../title/Title"
 import LoadingTitle from "../loadingtitle/LoadingTitle"
-import getTemperatureData from "../../utilities"
-
-const socket = io(process.env.REACT_APP_SOCKET_ENDPOINT)
-
-export default function TemperaturesChart() {
-  // -----------------------------------------------------
-  // DATA HOOKS SECTION
-  // -----------------------------------------------------
-  const [temperatureData, setTemperatureData] = useState([])
-  const [loadingError, setLoadingError] = useState("")
-
-  useEffect(() => {
-    let isSubscribed = true
-
-    getTemperatureData("http://localhost:5000/api/weather/temperatureReadings")
-      .then((returnedData) =>
-        isSubscribed ? setTemperatureData(returnedData) : null
-      )
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
-
-    return () => (isSubscribed = false)
-  }, [])
-
-  // Now delete all except the last 20 readings
-  temperatureData.splice(0, temperatureData.length - 20)
-
-  const fetchRTTemperatureData = (temperatures) => {
-    socket.on("DataFromDarkSkiesAPI", (currentData) => {
-      console.log(currentData)
-      // Need to cancel the Promise here to stop errors
-      // setTemperatureData((temps) => [...temps, currentData.temperature])
-    })
-    // Only display data for the last 20 values
-    // temperatureValues.splice(0, temperatureValues.length - 20)
-  }
-
-  // socket.on("connect", () => {
-  //   console.log(socket.id) // x8WIv7-mJelg7on_ALbx
-  // })
-
-  // Listen for realtime temperature data and update the state
-  if (temperatureData.length > 0) {
-    fetchRTTemperatureData(temperatureData)
-  }
-
-  // const clearDataArray = () => {
-  //   // Error here
-  //   setTemperatureData(() => [])
-  // }
-
-  return (
-    <TemperaturesChartView
-      temperatureData={temperatureData}
-      loadingError={loadingError}
-    />
-  )
-}
+// import getTemperatureData from "../../utilities"
 
 // -------------------------------------------------------
 // React View component
 // -------------------------------------------------------
-function TemperaturesChartView(props) {
+function TemperaturesChart(props) {
   const theme = useTheme()
   const formatXAxis = (tickItem) => moment.unix(tickItem).format("HH:mm MMM Do")
   const formatYAxis = (tickItem) => +tickItem.toFixed(2)
@@ -98,7 +43,6 @@ function TemperaturesChartView(props) {
           marginBottom: 100,
         }}
       >
-        <CssBaseline />
         <Grid container>
           <Container maxWidth="xl">
             <Grid item xs={12} sm={12} style={{ marginTop: 50, width: "100%" }}>
@@ -176,3 +120,5 @@ function TemperaturesChartView(props) {
     </div>
   )
 }
+
+export default memo(TemperaturesChart)
