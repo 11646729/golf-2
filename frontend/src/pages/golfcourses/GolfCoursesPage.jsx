@@ -2,7 +2,8 @@ import React, { useState, useEffect, memo } from "react"
 
 import GolfCoursesTable from "../../components/golfcoursetable/GolfCoursesTable"
 import GolfCoursesMap from "../../components/golfcoursemap/GolfCoursesMap"
-import getGolfCourseData from "../../Utilities"
+import getGolfCourseData from "../../utilities"
+
 import "./golfcoursespage.css"
 
 // -------------------------------------------------------

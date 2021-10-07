@@ -1,12 +1,13 @@
 import React, { useState, useEffect, memo } from "react"
-import "./cruisepage.css"
 
-import CruiseMap from "../../components/cruisemap/CruiseMap"
 import CruiseTable from "../../components/cruisetable/CruiseTable"
+import CruiseMap from "../../components/cruisemap/CruiseMap"
 import {
   getCruiseVesselData,
   getCruiseVesselPositionData,
-} from "../../Utilities"
+} from "../../utilities"
+
+import "./cruisepage.css"
 
 function CruisePage() {
   const [portArrivals, setPortArrivals] = useState([])

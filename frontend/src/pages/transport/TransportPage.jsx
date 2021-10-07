@@ -1,15 +1,16 @@
 import React, { useState, useEffect, memo } from "react"
+
+import TransportTable from "../../components/transporttable/TransportTable"
+import TransportMap from "../../components/transportmap/TransportMap"
 import {
   getAgencyName,
   getAllStops,
   getAllShapes,
   getAllRoutes,
   // getDisplayData,
-} from "../../Utilities"
+} from "../../utilities"
 
 import "./transportpage.css"
-import TransportMap from "../../components/transportmap/TransportMap"
-import TransportTable from "../../components/transporttable/TransportTable"
 
 function TransportPage() {
   const [busAgencyName, setBusAgencyName] = useState()
