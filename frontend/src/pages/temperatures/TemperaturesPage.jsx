@@ -1,17 +1,12 @@
 import React, { useState, useEffect, memo } from "react"
-// import moment from "moment"
 import io from "socket.io-client"
 
 import TemperaturesChart from "../../components/temperatureschart/TemperaturesChart"
-
 import getTemperatureData from "../../utilities"
 
 const socket = io(process.env.REACT_APP_SOCKET_ENDPOINT)
 
 function TemperaturesPage() {
-  // -----------------------------------------------------
-  // DATA HOOKS SECTION
-  // -----------------------------------------------------
   const [temperatureData, setTemperatureData] = useState([])
   const [loadingError, setLoadingError] = useState("")
 

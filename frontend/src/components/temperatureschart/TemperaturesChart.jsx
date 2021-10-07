@@ -1,11 +1,9 @@
 import React, { memo } from "react"
 import moment from "moment"
-// import io from "socket.io-client"
 import {
   useTheme,
   Paper,
   Grid,
-  CssBaseline,
   Container,
   // Button,
 } from "@material-ui/core"
@@ -22,11 +20,7 @@ import {
 
 import Title from "../title/Title"
 import LoadingTitle from "../loadingtitle/LoadingTitle"
-// import getTemperatureData from "../../utilities"
 
-// -------------------------------------------------------
-// React View component
-// -------------------------------------------------------
 function TemperaturesChart(props) {
   const theme = useTheme()
   const formatXAxis = (tickItem) => moment.unix(tickItem).format("HH:mm MMM Do")
