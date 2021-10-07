@@ -1,12 +1,12 @@
 import React, { memo } from "react"
-import "./transportrouteselectiontable.css"
+import "./transporttable.css"
 
 import Title from "../title/Title"
 
-function TransportRouteSelectionTable(props) {
+function TransportTable(props) {
   return (
     <div className="routetablecontainer">
-      <div className="routetablecontainertitle">
+      <div className="routetabletitlecontainer">
         {/* <h3>{props.routesTableTitle}</h3> */}
         <Title>{props.routesTableTitle}</Title>
         {/* {props.loadingError ? (
@@ -18,4 +18,4 @@ function TransportRouteSelectionTable(props) {
   )
 }
 
-export default memo(TransportRouteSelectionTable)
+export default memo(TransportTable)

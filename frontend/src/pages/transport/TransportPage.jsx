@@ -8,8 +8,8 @@ import {
 } from "../../Utilities"
 
 import "./transportpage.css"
-import TransportRoutesMap from "../../components/transportmap/TransportRoutesMap"
-import TransportRouteSelectionTable from "../../components/transportrouteselectiontable/TransportRouteSelectionTable"
+import TransportMap from "../../components/transportmap/TransportMap"
+import TransportTable from "../../components/transporttable/TransportTable"
 
 function TransportPage() {
   const [busAgencyName, setBusAgencyName] = useState()
@@ -59,13 +59,13 @@ function TransportPage() {
     <div>
       <div className="container">
         <div className="transporttablecontainer">
-          <TransportRouteSelectionTable
+          <TransportTable
             routesTableTitle={"Routes Table"}
             busRoutesCollection={busRoutesCollection}
           />
         </div>
         <div className="transportmapcontainer">
-          <TransportRoutesMap
+          <TransportMap
             busAgencyName={busAgencyName}
             busShapesCollection={busShapesCollection}
             busStopsCollection={busStopsCollection}

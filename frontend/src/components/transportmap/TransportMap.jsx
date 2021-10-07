@@ -9,12 +9,12 @@ import {
 
 import Title from "../title/Title"
 // import LoadingTitle from "../loadingtitle/LoadingTitle"
-import "./transportroutesmap.css"
+import "./transportmap.css"
 
 // -------------------------------------------------------
 // React View component
 // -------------------------------------------------------
-function TransportRoutesMap(props) {
+function TransportMap(props) {
   const [map, setMap] = useState(null)
   const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
   const [mapCenter] = useState({
@@ -174,4 +174,4 @@ function TransportRoutesMap(props) {
   ) : null
 }
 
-export default memo(TransportRoutesMap)
+export default memo(TransportMap)
