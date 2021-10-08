@@ -45,7 +45,12 @@ export default function TemperaturesCard() {
         <Typography>This loads Raw Data into the SQL database</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" component={Link} to="/loadrawdata">
+        <Button
+          size="small"
+          color="primary"
+          component={Link}
+          to="/loadrawdatapage"
+        >
           Select Action
         </Button>
       </CardActions>

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 import TopBar from "./components/topbar/TopBar"
 import Album from "./components/Album"
-import RawDataLoad from "./components/rawdataload/RawDataLoad"
+import RawDataLoadPage from "../src/pages/rawdataload/RawDataLoadPage"
 import TemperaturesPage from "../src/pages/temperatures/TemperaturesPage"
 import GolfCoursesPage from "../src/pages/golfcourses/GolfCoursesPage"
 import CrimesMap from "./components/crimesmap/CrimesMap"
@@ -18,7 +18,7 @@ export default function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="loadrawdata" element={<RawDataLoadLink />} />
+          <Route path="loadrawdatapage" element={<RawDataLoadPageLink />} />
           <Route path="temperaturespage" element={<TemperaturesPageLink />} />
           <Route path="golfcoursespage" element={<GolfCoursesPageLink />} />
           <Route path="crimespage" element={<CrimesPageLink />} />
@@ -35,8 +35,8 @@ function Home() {
   return <Album />
 }
 
-function RawDataLoadLink() {
-  return <RawDataLoad />
+function RawDataLoadPageLink() {
+  return <RawDataLoadPage />
 }
 
 function TemperaturesPageLink() {
