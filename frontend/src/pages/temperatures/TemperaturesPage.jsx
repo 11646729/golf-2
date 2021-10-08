@@ -1,8 +1,11 @@
 import React, { useState, useEffect, memo } from "react"
 import io from "socket.io-client"
 
+import TemperaturesTable from "../../components/temperaturestable/TemperaturesTable"
 import TemperaturesChart from "../../components/temperatureschart/TemperaturesChart"
 import getTemperatureData from "../../utilities"
+
+import "./temperaturespage.css"
 
 const socket = io(process.env.REACT_APP_SOCKET_ENDPOINT)
 
@@ -50,10 +53,19 @@ function TemperaturesPage() {
   // }
 
   return (
-    <TemperaturesChart
-      temperatureData={temperatureData}
-      loadingError={loadingError}
-    />
+    <div>
+      <div className="container">
+        <div className="temperaturestablecontainer">
+          <TemperaturesTable temperaturesTableTitle={"Temperatures Table"} />
+        </div>
+        <div className="temperatureschartcontainer">
+          <TemperaturesChart
+            temperatureData={temperatureData}
+            loadingError={loadingError}
+          />
+        </div>
+      </div>
+    </div>
   )
 }
 
