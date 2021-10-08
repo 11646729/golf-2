@@ -55,6 +55,7 @@ function TemperaturesChart(props) {
               <LineChart data={props.temperatureData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
+                  tick={{ fontSize: 12 }}
                   stroke={theme.palette.text.secondary}
                   dataKey="timeofmeasurement"
                   tickFormatter={formatXAxis}
@@ -71,6 +72,7 @@ function TemperaturesChart(props) {
                   </Label>
                 </XAxis>
                 <YAxis
+                  tick={{ fontSize: 12 }}
                   stroke={theme.palette.text.secondary}
                   dataKey="locationtemperature"
                   tickFormatter={formatYAxis}
