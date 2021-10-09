@@ -1,9 +1,9 @@
 import React, { useState, memo } from "react"
 import axios from "axios"
 import { ListItem } from "@material-ui/core"
-import BandButton from "../BandButton"
+import BandButton from "../bandbutton/BandButton"
 import BandCheckbox from "../bandcheckbox/BandCheckbox"
-import BandListItemText from "../BandListItemText"
+import BandListItemText from "../bandlistitemtext/BandListItemText"
 
 import "./bandlistitem.css"
 
