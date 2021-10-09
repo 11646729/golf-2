@@ -1,11 +1,10 @@
-import React from "react"
-
+import React, { memo } from "react"
 import Title from "../title/Title"
-import RouteSelectionList from "../RouteSelectionList"
+import RouteSelectionList from "../routeselectionlist/RouteSelectionList"
 
 import "./routeselectionpanel.css"
 
-export default function RouteSelectionPanel(props) {
+function RouteSelectionPanel(props) {
   return (
     <div>
       <div className="routeselectionpaneltitlecontainer">
@@ -28,3 +27,5 @@ export default function RouteSelectionPanel(props) {
     </div>
   )
 }
+
+export default memo(RouteSelectionPanel)
