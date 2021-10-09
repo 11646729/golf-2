@@ -1,7 +1,7 @@
-import React from "react"
+import React, { memo } from "react"
 import { Typography, Link } from "@material-ui/core"
 
-export default function CopyRight() {
+function CopyRight() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
@@ -12,3 +12,5 @@ export default function CopyRight() {
     </Typography>
   )
 }
+
+export default memo(CopyRight)

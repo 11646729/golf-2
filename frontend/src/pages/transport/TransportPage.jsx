@@ -1,6 +1,7 @@
 import React, { useState, useEffect, memo } from "react"
 
-import TransportTable from "../../components/transporttable/TransportTable"
+// import TransportTable from "../../components/transporttable/TransportTable"
+import RouteSelectionPanel from "../../components/routeselectionpanel/RouteSelectionPanel"
 import TransportMap from "../../components/transportmap/TransportMap"
 import {
   getAgencyName,
@@ -60,7 +61,8 @@ function TransportPage() {
     <div>
       <div className="container">
         <div className="transporttablecontainer">
-          <TransportTable
+          {/* <TransportTable */}
+          <RouteSelectionPanel
             routesTableTitle={"Routes Table"}
             busRoutesCollection={busRoutesCollection}
           />
