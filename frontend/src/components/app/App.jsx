@@ -1,14 +1,14 @@
 import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
-import RawDataLoadPage from "./pages/rawdataload/RawDataLoadPage"
-import TemperaturesPage from "./pages/temperatures/TemperaturesPage"
-import GolfCoursesPage from "./pages/golfcourses/GolfCoursesPage"
-import CruisesPage from "./pages/cruises/CruisesPage"
-import TransportPage from "./pages/transport/TransportPage"
-import Album from "./components/album/Album"
-import TopBar from "./components/topbar/TopBar"
-import CrimesMap from "./components/crimesmap/CrimesMap"
+import RawDataLoadPage from "../../pages/rawdataload/RawDataLoadPage"
+import TemperaturesPage from "../../pages/temperatures/TemperaturesPage"
+import GolfCoursesPage from "../../pages/golfcourses/GolfCoursesPage"
+import CruisesPage from "../../pages/cruises/CruisesPage"
+import TransportPage from "../../pages/transport/TransportPage"
+import Album from "../album/Album"
+import TopBar from "../topbar/TopBar"
+import CrimesMap from "../crimesmap/CrimesMap"
 
 export default function App() {
   return (
