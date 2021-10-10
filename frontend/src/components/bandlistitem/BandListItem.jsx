@@ -1,28 +1,21 @@
 import React, { useState, memo } from "react"
-import axios from "axios"
 import { ListItem } from "@material-ui/core"
 import BandButton from "../bandbutton/BandButton"
 import BandCheckbox from "../bandcheckbox/BandCheckbox"
 import BandListItemText from "../bandlistitemtext/BandListItemText"
+import { selectedUniqueRoute } from "../../utilities"
 
-import "./bandlistitem.css"
+import styled from "styled-components"
 
-export async function selectedUniqueRoute(selectedBusRouteNumber, selected) {
-  await axios({
-    url: "http://localhost:5000/api/transport/groutes/:routenumber",
-    data: {
-      routeNumber: selectedBusRouteNumber,
-      routeVisible: selected,
-    },
-    method: "PUT",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-}
+const BandListItemContainer = styled.div`
+  width: 100%;
+  max-width: 360px;
+`
+const BandListContainer = styled.div`
+  padding: 0px;
+`
 
-function BandListItem(props) {
+const BandListItem = (props) => {
   const [routeVisibleCheckbox, setRouteVisibleCheckbox] = useState(
     props.routeVisible
   )
@@ -39,8 +32,8 @@ function BandListItem(props) {
   }
 
   return (
-    <div className="bandlistitemcontainer">
-      <div className="listitemcontainer">
+    <BandListContainer>
+      <BandListItemContainer>
         <ListItem
           button
           onClick={(event) => handleListItemClick(event, props.routeNumber)}
@@ -58,8 +51,8 @@ function BandListItem(props) {
             <BandListItemText routeName={props.routeName} />
           </div>
         </ListItem>
-      </div>
-    </div>
+      </BandListItemContainer>
+    </BandListContainer>
   )
 }
 

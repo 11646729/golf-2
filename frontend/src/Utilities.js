@@ -82,6 +82,24 @@ export var getCruiseVesselPositionData = async (url) => {
 }
 
 // -------------------------------------------------------
+// Function to fetch Position data for a Specific Route
+// -------------------------------------------------------
+export async function selectedUniqueRoute(selectedBusRouteNumber, selected) {
+  await axios({
+    url: "http://localhost:5000/api/transport/groutes/:routenumber",
+    data: {
+      routeNumber: selectedBusRouteNumber,
+      routeVisible: selected,
+    },
+    method: "PUT",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+}
+
+// -------------------------------------------------------
 // Function
 // Function to fetch Bus Agency
 // -------------------------------------------------------
