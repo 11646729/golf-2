@@ -84,9 +84,13 @@ export var getCruiseVesselPositionData = async (url) => {
 // -------------------------------------------------------
 // Function to fetch Position data for a Specific Route
 // -------------------------------------------------------
-export async function selectedUniqueRoute(selectedBusRouteNumber, selected) {
+export async function selectedUniqueRoute(
+  url,
+  selectedBusRouteNumber,
+  selected
+) {
   await axios({
-    url: "http://localhost:5000/api/transport/groutes/:routenumber",
+    url: url,
     data: {
       routeNumber: selectedBusRouteNumber,
       routeVisible: selected,

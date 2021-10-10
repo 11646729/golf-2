@@ -1,13 +1,28 @@
 import React, { useState, useEffect, memo } from "react"
 
-import CruisesTable from "../../components/cruisestable/CruisesTable"
-import CruisesMap from "../../components/cruisesmap/CruisesMap"
-import {
-  getCruiseVesselData,
-  getCruiseVesselPositionData,
-} from "../../utilities"
+import CruisesTable from "../components/cruisestable/CruisesTable"
+import CruisesMap from "../components/cruisesmap/CruisesMap"
+import { getCruiseVesselData, getCruiseVesselPositionData } from "../utilities"
 
-import "./cruisespage.css"
+import styled from "styled-components"
+
+const CruisesContainer = styled.div`
+  display: flex;
+`
+
+const CruisesTableContainer = styled.div`
+  flex: 2;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  min-height: 500px;
+`
+
+const CruisesMapContainer = styled.div`
+  flex: 2;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  min-height: 500px;
+`
 
 function CruisesPage() {
   const [portArrivals, setPortArrivals] = useState([])
@@ -47,24 +62,22 @@ function CruisesPage() {
   }, [])
 
   return (
-    <div>
-      <div className="container">
-        <div className="cruisestablecontainer">
-          <CruisesTable
-            cruisesTableTitle={"Cruise Ships Arriving Soon"}
-            cruisesData={portArrivals}
-            loadingError={loadingError}
-          />
-        </div>
-        <div className="cruisesmapcontainer">
-          <CruisesMap
-            cruisesMapTitle={"Current Locations"}
-            cruisesHomePosition={HomePosition}
-            cruisesVesselPositions={AnthemOfTheSeasPosition}
-          />
-        </div>
-      </div>
-    </div>
+    <CruisesContainer>
+      <CruisesTableContainer>
+        <CruisesTable
+          cruisesTableTitle={"Cruise Ships Arriving Soon"}
+          cruisesData={portArrivals}
+          loadingError={loadingError}
+        />
+      </CruisesTableContainer>
+      <CruisesMapContainer>
+        <CruisesMap
+          cruisesMapTitle={"Current Locations"}
+          cruisesHomePosition={HomePosition}
+          cruisesVesselPositions={AnthemOfTheSeasPosition}
+        />
+      </CruisesMapContainer>
+    </CruisesContainer>
   )
 }
 

@@ -24,10 +24,18 @@ const BandListItem = (props) => {
     // These if choices refer to checkbox state before changes
     if (routeVisibleCheckbox === true) {
       setRouteVisibleCheckbox(false)
-      selectedUniqueRoute(routeNumber, false)
+      selectedUniqueRoute(
+        "http://localhost:5000/api/transport/groutes/:routenumber",
+        routeNumber,
+        false
+      )
     } else {
       setRouteVisibleCheckbox(true)
-      selectedUniqueRoute(routeNumber, true)
+      selectedUniqueRoute(
+        "http://localhost:5000/api/transport/groutes/:routenumber",
+        routeNumber,
+        true
+      )
     }
   }
 
