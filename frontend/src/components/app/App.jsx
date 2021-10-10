@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 import RawDataLoadPage from "../../pages/rawdataload/RawDataLoadPage"
 import TemperaturesPage from "../../pages/temperatures/TemperaturesPage"
-import GolfCoursesPage from "../../pages/golfcourses/GolfCoursesPage"
+import GolfCoursesPage from "../../pages/GolfCoursesPage"
 import CruisesPage from "../../pages/cruises/CruisesPage"
 import TransportPage from "../../pages/transport/TransportPage"
 import Album from "../album/Album"
