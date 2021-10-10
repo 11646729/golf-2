@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-import BandListItem from "../bandlistitem/BandListItem"
+import BandListItem from "../BandListItem"
 
 import "./routeselectionlist.css"
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from "react"
 
-import GolfCoursesTable from "../../components/golfcoursetable/GolfCoursesTable"
+import GolfCoursesTable from "../../components/GolfCoursesTable"
 import GolfCoursesMap from "../../components/golfcoursemap/GolfCoursesMap"
 import getGolfCourseData from "../../utilities"
 
