@@ -11,7 +11,25 @@ import {
   // getDisplayData,
 } from "../../utilities"
 
-import "./transportpage.css"
+import styled from "styled-components"
+
+const TransportContainer = styled.div`
+  display: flex;
+`
+
+const TransportTableContainer = styled.div`
+  flex: 2;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  min-height: 500px;
+`
+
+const TransportMapContainer = styled.div`
+  flex: 2;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  min-height: 500px;
+`
 
 function TransportPage() {
   const [busAgencyName, setBusAgencyName] = useState()
@@ -58,27 +76,25 @@ function TransportPage() {
   }, [])
 
   return (
-    <div>
-      <div className="container">
-        <div className="transporttablecontainer">
-          {/* <TransportTable */}
-          <RouteSelectionPanel
-            routesTableTitle={"Routes Table"}
-            busRoutesCollection={busRoutesCollection}
-          />
-        </div>
-        <div className="transportmapcontainer">
-          <TransportMap
-            busAgencyName={busAgencyName}
-            busShapesCollection={busShapesCollection}
-            busStopsCollection={busStopsCollection}
-            busRoutesCollection={busRoutesCollection}
-            // displayBusRoutesCollection={displayBusRoutesCollection}
-            loadingError={loadingError}
-          />
-        </div>
-      </div>
-    </div>
+    <TransportContainer>
+      <TransportTableContainer>
+        {/* <TransportTable */}
+        <RouteSelectionPanel
+          routesTableTitle={"Routes Table"}
+          busRoutesCollection={busRoutesCollection}
+        />
+      </TransportTableContainer>
+      <TransportMapContainer>
+        <TransportMap
+          busAgencyName={busAgencyName}
+          busShapesCollection={busShapesCollection}
+          busStopsCollection={busStopsCollection}
+          busRoutesCollection={busRoutesCollection}
+          // displayBusRoutesCollection={displayBusRoutesCollection}
+          loadingError={loadingError}
+        />
+      </TransportMapContainer>
+    </TransportContainer>
   )
 }
 
