@@ -1,6 +1,10 @@
 import React, { memo } from "react"
 
-import "./rawdataloadpage.css"
+import styled from "styled-components"
+
+const RawDataContainer = styled.div`
+  display: flex;
+`
 
 function RawDataLoadPage() {
   const Button = ({ type }) => {
@@ -8,10 +12,10 @@ function RawDataLoadPage() {
   }
 
   return (
-    <div className="container">
+    <RawDataContainer>
       <div>In RawDataLoadPage.jsx</div>
       <Button type="Show" />
-    </div>
+    </RawDataContainer>
   )
 }
 

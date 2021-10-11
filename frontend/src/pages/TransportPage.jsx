@@ -1,15 +1,15 @@
 import React, { useState, useEffect, memo } from "react"
 
 // import TransportTable from "../../components/transporttable/TransportTable"
-import RouteSelectionPanel from "../../components/routeselectionpanel/RouteSelectionPanel"
-import TransportMap from "../../components/transportmap/TransportMap"
+import RouteSelectionPanel from "../components/routeselectionpanel/RouteSelectionPanel"
+import TransportMap from "../components/transportmap/TransportMap"
 import {
   getAgencyName,
   getAllStops,
   getAllShapes,
   getAllRoutes,
   // getDisplayData,
-} from "../../utilities"
+} from "../utilities"
 
 import styled from "styled-components"
 
