@@ -1,11 +1,29 @@
 import React, { useState, useEffect, memo } from "react"
 import io from "socket.io-client"
 
-import TemperaturesTable from "../../components/temperaturestable/TemperaturesTable"
-import TemperaturesChart from "../../components/temperatureschart/TemperaturesChart"
-import getTemperatureData from "../../utilities"
+import TemperaturesTable from "../components/temperaturestable/TemperaturesTable"
+import TemperaturesChart from "../components/temperatureschart/TemperaturesChart"
+import getTemperatureData from "../utilities"
 
-import "./temperaturespage.css"
+import styled from "styled-components"
+
+const TemperaturesContainer = styled.div`
+  display: flex;
+`
+
+const TemperaturesTableContainer = styled.div`
+  flex: 2;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  min-height: 500px;
+`
+
+const TemperaturesChartContainer = styled.div`
+  flex: 2;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  min-height: 500px;
+`
 
 const socket = io(process.env.REACT_APP_SOCKET_ENDPOINT)
 
@@ -53,19 +71,17 @@ function TemperaturesPage() {
   // }
 
   return (
-    <div>
-      <div className="container">
-        <div className="temperaturestablecontainer">
-          <TemperaturesTable temperaturesTableTitle={"Temperatures Table"} />
-        </div>
-        <div className="temperatureschartcontainer">
-          <TemperaturesChart
-            temperatureData={temperatureData}
-            loadingError={loadingError}
-          />
-        </div>
-      </div>
-    </div>
+    <TemperaturesContainer>
+      <TemperaturesTableContainer>
+        <TemperaturesTable temperaturesTableTitle={"Temperatures Table"} />
+      </TemperaturesTableContainer>
+      <TemperaturesChartContainer>
+        <TemperaturesChart
+          temperatureData={temperatureData}
+          loadingError={loadingError}
+        />
+      </TemperaturesChartContainer>
+    </TemperaturesContainer>
   )
 }
 

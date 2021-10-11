@@ -2,7 +2,7 @@ import React, { memo } from "react"
 
 import styled from "styled-components"
 
-const RawDataContainer = styled.div`
+const RawDataLoadContainer = styled.div`
   display: flex;
 `
 
@@ -12,10 +12,10 @@ function RawDataLoadPage() {
   }
 
   return (
-    <RawDataContainer>
+    <RawDataLoadContainer>
       <div>In RawDataLoadPage.jsx</div>
       <Button type="Show" />
-    </RawDataContainer>
+    </RawDataLoadContainer>
   )
 }
 

@@ -2,7 +2,7 @@ import React from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 import RawDataLoadPage from "../../pages/RawDataLoadPage"
-import TemperaturesPage from "../../pages/temperatures/TemperaturesPage"
+import TemperaturesPage from "../../pages/TemperaturesPage"
 import GolfCoursesPage from "../../pages/GolfCoursesPage"
 import CruisesPage from "../../pages/CruisesPage"
 import TransportPage from "../../pages/TransportPage"
