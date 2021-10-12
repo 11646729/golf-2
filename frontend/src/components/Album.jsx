@@ -7,7 +7,7 @@ import {
   makeStyles,
 } from "@material-ui/core"
 
-import CopyRight from "./copyright/CopyRight"
+import CopyRight from "./CopyRight"
 import RawDataLoadCard from "../cards/RawDataLoadCard"
 import TemperaturesCard from "../cards/TemperaturesCard"
 import GolfCoursesCard from "../cards/GolfCoursesCard"

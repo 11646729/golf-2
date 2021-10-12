@@ -15,9 +15,8 @@ import {
   CardActions,
 } from "@material-ui/core"
 
-import Title from "../Title"
+import Title from "./Title"
 // import LoadingTitle from "../loadingtitle/LoadingTitle"
-// import "./golfcoursesmap.css"
 
 // -------------------------------------------------------
 // React View component
