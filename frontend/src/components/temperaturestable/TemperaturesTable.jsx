@@ -1,7 +1,7 @@
 import React, { memo } from "react"
 import "./temperaturestable.css"
 
-import Title from "../title/Title"
+import Title from "../Title"
 
 function TemperaturesTable(props) {
   return (

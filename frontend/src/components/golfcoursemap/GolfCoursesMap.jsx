@@ -15,7 +15,7 @@ import {
   CardActions,
 } from "@material-ui/core"
 
-import Title from "../title/Title"
+import Title from "../Title"
 // import LoadingTitle from "../loadingtitle/LoadingTitle"
 // import "./golfcoursesmap.css"
 

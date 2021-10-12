@@ -7,7 +7,7 @@ import {
   // InfoWindow,
 } from "@react-google-maps/api"
 
-import Title from "../title/Title"
+import Title from "../Title"
 // import LoadingTitle from "../loadingtitle/LoadingTitle"
 import "./transportmap.css"
 

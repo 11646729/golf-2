@@ -1,6 +1,6 @@
 import React, { memo } from "react"
 
-import Title from "../title/Title"
+import Title from "../Title"
 import "./cruisestable.css"
 
 // -------------------------------------------------------

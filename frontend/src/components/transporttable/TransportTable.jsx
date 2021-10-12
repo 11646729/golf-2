@@ -1,7 +1,7 @@
 import React, { memo } from "react"
 import "./transporttable.css"
 
-import Title from "../title/Title"
+import Title from "../Title"
 
 function TransportTable(props) {
   return (

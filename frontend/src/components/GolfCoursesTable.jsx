@@ -1,7 +1,7 @@
 import React, { memo } from "react"
 import styled from "styled-components"
 
-import Title from "./title/Title"
+import Title from "./Title"
 
 const GolfCourseTableContainer = styled.div`
   min-width: 200px;

@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-import Title from "../title/Title"
+import Title from "../Title"
 import RouteSelectionList from "../routeselectionlist/RouteSelectionList"
 
 import "./routeselectionpanel.css"
