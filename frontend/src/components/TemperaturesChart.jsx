@@ -17,8 +17,8 @@ import {
   ResponsiveContainer,
 } from "recharts"
 
-import Title from "../Title"
-import LoadingTitle from "../loadingtitle/LoadingTitle"
+import Title from "./Title"
+import LoadingTitle from "./loadingtitle/LoadingTitle"
 
 function TemperaturesChart(props) {
   const theme = useTheme()

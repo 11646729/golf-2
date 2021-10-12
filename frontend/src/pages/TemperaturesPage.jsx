@@ -1,8 +1,8 @@
 import React, { useState, useEffect, memo } from "react"
 import io from "socket.io-client"
 
-import TemperaturesTable from "../components/temperaturestable/TemperaturesTable"
-import TemperaturesChart from "../components/temperatureschart/TemperaturesChart"
+import TemperaturesTable from "../components/TemperaturesTable"
+import TemperaturesChart from "../components/TemperaturesChart"
 import getTemperatureData from "../utilities"
 
 import styled from "styled-components"
