@@ -7,13 +7,13 @@ import {
   makeStyles,
 } from "@material-ui/core"
 
-import CopyRight from "../copyright/CopyRight"
-import RawDataLoadCard from "../../cards/RawDataLoadCard"
-import TemperaturesCard from "../../cards/TemperaturesCard"
-import GolfCoursesCard from "../../cards/GolfCoursesCard"
-import CrimesCard from "../../cards/CrimesCard"
-import CruiseCard from "../../cards/CruiseCard"
-import TransportCard from "../../cards/TransportCard"
+import CopyRight from "./copyright/CopyRight"
+import RawDataLoadCard from "../cards/RawDataLoadCard"
+import TemperaturesCard from "../cards/TemperaturesCard"
+import GolfCoursesCard from "../cards/GolfCoursesCard"
+import CrimesCard from "../cards/CrimesCard"
+import CruiseCard from "../cards/CruiseCard"
+import TransportCard from "../cards/TransportCard"
 
 const useStyles = makeStyles((theme) => ({
   icon: {
