@@ -8,7 +8,7 @@ import {
 } from "@react-google-maps/api"
 
 import Title from "../Title"
-// import LoadingTitle from "../loadingtitle/LoadingTitle"
+// import LoadingTitle from "../LoadingTitle"
 import "./transportmap.css"
 
 // -------------------------------------------------------

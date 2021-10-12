@@ -2,6 +2,7 @@ import React, { memo } from "react"
 import "./transporttable.css"
 
 import Title from "../Title"
+// import LoadingTitle from "../LoadingTitle"
 
 function TransportTable(props) {
   return (

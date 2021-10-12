@@ -16,7 +16,7 @@ import {
 } from "@material-ui/core"
 
 import Title from "./Title"
-// import LoadingTitle from "../loadingtitle/LoadingTitle"
+// import LoadingTitle from "../LoadingTitle"
 
 // -------------------------------------------------------
 // React View component

@@ -1,6 +1,7 @@
 import React, { memo } from "react"
 
 import Title from "../Title"
+// import LoadingTitle from "../LoadingTitle"
 import "./cruisestable.css"
 
 // -------------------------------------------------------
