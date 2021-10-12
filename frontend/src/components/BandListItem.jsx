@@ -1,8 +1,8 @@
 import React, { useState, memo } from "react"
 import { ListItem } from "@material-ui/core"
-import BandButton from "./bandbutton/BandButton"
-import BandCheckbox from "./bandcheckbox/BandCheckbox"
-import BandListItemText from "./bandlistitemtext/BandListItemText"
+import BandButton from "./BandButton"
+import BandCheckbox from "./BandCheckbox"
+import BandListItemText from "./BandListItemText"
 import { selectedUniqueRoute } from "../utilities"
 
 import styled from "styled-components"

@@ -7,7 +7,11 @@ import {
 } from "@material-ui/core/styles"
 import { blue } from "@material-ui/core/colors"
 
-import "./bandcheckbox.css"
+import styled from "styled-components"
+
+const CheckboxContainer = styled.div`
+  color: black;
+`
 
 const theme = createTheme({
   status: {
@@ -29,7 +33,7 @@ function CustomCheckbox(props) {
   const classes = useStyles()
 
   return (
-    <div className="checkboxcontainer">
+    <CheckboxContainer>
       <Checkbox
         checked={props.checked}
         classes={{
@@ -37,7 +41,7 @@ function CustomCheckbox(props) {
           checked: classes.checked,
         }}
       />
-    </div>
+    </CheckboxContainer>
   )
 }
 
