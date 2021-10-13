@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from "react"
 
-// import TransportTable from "../../components/transporttable/TransportTable"
+// import TransportTable from "../../components/TransportTable"
 import RouteSelectionPanel from "../components/routeselectionpanel/RouteSelectionPanel"
 import TransportMap from "../components/transportmap/TransportMap"
 import {
