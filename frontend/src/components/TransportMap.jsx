@@ -11,10 +11,11 @@ import styled from "styled-components"
 import Title from "./Title"
 // import LoadingTitle from "../LoadingTitle"
 
-const TransportMapTitleContainer = styled.div`
-  margintop: 35;
-  marginleft: 20;
-  width: "97%";
+const TransportMapContainer = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+  padding-left: 20px;
+  padding-top: 30px;
 `
 
 // -------------------------------------------------------
@@ -97,43 +98,42 @@ function TransportMap(props) {
 
   return isLoaded ? (
     <div>
-      <TransportMapTitleContainer>
+      <TransportMapContainer>
         <Title>{props.busAgencyName}</Title>
         {/* {props.loadingError ? (
           <LoadingTitle>Error Loading...</LoadingTitle>
         ) : null} */}
-      </TransportMapTitleContainer>
 
-      <div className="transportgooglemapcontainer">
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          center={mapCenter}
-          zoom={mapZoom}
-          options={{
-            // mapTypeId: "hybrid",
-            disableDefaultUI: true,
-            zoomControl: true,
-          }}
-          onLoad={onLoadHandler}
-          onUnmount={onUnmountHandler}
-        >
-          {props.busShapesCollection
-            ? props.busShapesCollection.map((busShape) => (
-                <Polyline
-                  key={busShape.shapeKey}
-                  path={busShape.shapeCoordinates}
-                  options={{
-                    strokeColor: busShape.defaultColor,
-                    strokeOpacity: "1.0",
-                    strokeWeight: 2,
-                  }}
-                  onClick={() => {
-                    handleBusShapeClick()
-                  }}
-                />
-              ))
-            : null}
-          {/* {props.busStopsCollection
+        <div className="transportgooglemapcontainer">
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            center={mapCenter}
+            zoom={mapZoom}
+            options={{
+              // mapTypeId: "hybrid",
+              disableDefaultUI: true,
+              zoomControl: true,
+            }}
+            onLoad={onLoadHandler}
+            onUnmount={onUnmountHandler}
+          >
+            {props.busShapesCollection
+              ? props.busShapesCollection.map((busShape) => (
+                  <Polyline
+                    key={busShape.shapeKey}
+                    path={busShape.shapeCoordinates}
+                    options={{
+                      strokeColor: busShape.defaultColor,
+                      strokeOpacity: "1.0",
+                      strokeWeight: 2,
+                    }}
+                    onClick={() => {
+                      handleBusShapeClick()
+                    }}
+                  />
+                ))
+              : null}
+            {/* {props.busStopsCollection
               ? props.busStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stop_id}
@@ -150,7 +150,7 @@ function TransportMap(props) {
                   />
                 ))
               : null} */}
-          {/* {busStopSelected ? (
+            {/* {busStopSelected ? (
               <InfoWindow
                 position={{
                   lat: busStopSelected.stop_lat,
@@ -167,8 +167,9 @@ function TransportMap(props) {
                 </div>
               </InfoWindow>
             ) : null} */}
-        </GoogleMap>
-      </div>
+          </GoogleMap>
+        </div>
+      </TransportMapContainer>
     </div>
   ) : null
 }

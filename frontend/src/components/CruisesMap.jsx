@@ -82,18 +82,10 @@ function CruisesMap(props) {
 
   return isLoaded ? (
     <CruisesMapContainer>
-      <div
-        style={{
-          marginTop: 35,
-          marginLeft: 20,
-          width: "97%",
-        }}
-      >
-        <Title>{props.cruisesMapTitle}</Title>
-        {/* {props.loadingError ? (
+      <Title>{props.cruisesMapTitle}</Title>
+      {/* {props.loadingError ? (
           <LoadingTitle>Error Loading...</LoadingTitle>
         ) : null} */}
-      </div>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={mapCenter}

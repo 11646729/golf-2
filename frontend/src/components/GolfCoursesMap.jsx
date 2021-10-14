@@ -14,9 +14,17 @@ import {
   Link,
   CardActions,
 } from "@material-ui/core"
+import styled from "styled-components"
 
 import Title from "./Title"
 // import LoadingTitle from "../LoadingTitle"
+
+const GolfCoursesMapContainer = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+  padding-left: 20px;
+  padding-top: 30px;
+`
 
 // -------------------------------------------------------
 // React View component
@@ -80,19 +88,12 @@ function GolfCoursesMap(props) {
   }
 
   return isLoaded ? (
-    <div className="widgetCm">
-      <div
-        style={{
-          marginTop: 35,
-          marginLeft: 20,
-          width: "97%",
-        }}
-      >
-        <Title>{props.golfCoursesMapTitle}</Title>
-        {/* {props.loadingError ? (
+    <GolfCoursesMapContainer>
+      <Title>{props.golfCoursesMapTitle}</Title>
+      {/* {props.loadingError ? (
           <LoadingTitle>Error Loading...</LoadingTitle>
         ) : null} */}
-      </div>
+
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={mapCenter}
@@ -161,7 +162,7 @@ function GolfCoursesMap(props) {
           </InfoWindow>
         ) : null}
       </GoogleMap>
-    </div>
+    </GolfCoursesMapContainer>
   ) : null
 }
 

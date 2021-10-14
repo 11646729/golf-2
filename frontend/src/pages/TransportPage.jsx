@@ -1,7 +1,7 @@
 import React, { useState, useEffect, memo } from "react"
 
-// import TransportTable from "../../components/TransportTable"
-import RouteSelectionPanel from "../components/routeselectionpanel/RouteSelectionPanel"
+import TransportTable from "../components/TransportTable"
+// import RouteSelectionPanel from "../components/routeselectionpanel/RouteSelectionPanel"
 import TransportMap from "../components/TransportMap"
 import {
   getAgencyName,
@@ -78,11 +78,11 @@ function TransportPage() {
   return (
     <TransportContainer>
       <TransportTableContainer>
-        {/* <TransportTable */}
-        <RouteSelectionPanel
-          routesTableTitle={"Routes Table"}
+        <TransportTable routesTableTitle={"Bus Routes Table"} />
+        {/* <RouteSelectionPanel
+          routesTableTitle={"Bus Routes Table"}
           busRoutesCollection={busRoutesCollection}
-        />
+        /> */}
       </TransportTableContainer>
       <TransportMapContainer>
         <TransportMap
