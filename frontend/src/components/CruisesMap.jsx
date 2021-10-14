@@ -1,9 +1,16 @@
 import React, { useState, useCallback, memo } from "react"
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api"
+import styled from "styled-components"
 
-import Title from "../Title"
+import Title from "./Title"
 // import LoadingTitle from "../LoadingTitle"
-import "./cruisesmap.css"
+
+const CruisesMapContainer = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+  padding-left: 20px;
+  padding-top: 30px;
+`
 
 function CruisesMap(props) {
   const [map, setMap] = useState(null)
@@ -74,7 +81,7 @@ function CruisesMap(props) {
   }, [])
 
   return isLoaded ? (
-    <div className="widgetCm">
+    <CruisesMapContainer>
       <div
         style={{
           marginTop: 35,
@@ -106,7 +113,7 @@ function CruisesMap(props) {
           icon={iconPin}
         />
       </GoogleMap>
-    </div>
+    </CruisesMapContainer>
   ) : null
 }
 

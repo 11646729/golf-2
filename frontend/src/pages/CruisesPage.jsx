@@ -1,7 +1,7 @@
 import React, { useState, useEffect, memo } from "react"
 
 import CruisesTable from "../components/cruisestable/CruisesTable"
-import CruisesMap from "../components/cruisesmap/CruisesMap"
+import CruisesMap from "../components/CruisesMap"
 import { getCruiseVesselData, getCruiseVesselPositionData } from "../utilities"
 
 import styled from "styled-components"
