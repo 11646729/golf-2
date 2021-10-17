@@ -202,7 +202,6 @@ export default function CrimesMapContainer() {
 
   return (
     <div>
-      <CssBaseline />
       <Grid container spacing={1}>
         <Container maxWidth="xl">
           <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
