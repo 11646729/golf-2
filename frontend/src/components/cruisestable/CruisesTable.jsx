@@ -14,11 +14,11 @@ function CruisesTable(props) {
       <table className="cruisestable">
         <thead>
           <tr className="widgetLgTh">
-            <th className="widgetLgThDay">Day</th>
-            <th className="widgetLgThShip">Ship</th>
-            <th className="widgetLgThArrival">Arrival</th>
-            <th className="widgetLgThDeparture">Departure</th>
-            <th className="widgetLgThDeparture">Itinerary</th>
+            <th>Day</th>
+            <th>Ship</th>
+            <th>Arrival</th>
+            <th>Departure</th>
+            <th>Itinerary</th>
           </tr>
         </thead>
         <tbody>
