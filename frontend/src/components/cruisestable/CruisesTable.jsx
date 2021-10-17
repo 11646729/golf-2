@@ -1,7 +1,4 @@
 import React, { memo } from "react"
-
-import Title from "../Title"
-// import LoadingTitle from "../LoadingTitle"
 import "./cruisestable.css"
 
 // -------------------------------------------------------
@@ -14,13 +11,6 @@ function CruisesTable(props) {
 
   return (
     <div className="widgetLg">
-      <div className="cruisestablecontainertitle">
-        <Title>{props.cruisesTableTitle}</Title>
-        {/* {props.loadingError ? (
-          <LoadingTitle>Error Loading...</LoadingTitle>
-        ) : null} */}
-      </div>
-
       <table className="cruisestable">
         <thead>
           <tr className="widgetLgTh">

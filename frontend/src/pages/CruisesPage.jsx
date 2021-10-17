@@ -1,10 +1,12 @@
 import React, { useState, useEffect, memo } from "react"
+import styled from "styled-components"
 
 import CruisesTable from "../components/cruisestable/CruisesTable"
 import CruisesMap from "../components/CruisesMap"
-import { getCruiseVesselData, getCruiseVesselPositionData } from "../utilities"
+import Title from "../components/Title"
+// import LoadingTitle from "../components/LoadingTitle"
 
-import styled from "styled-components"
+import { getCruiseVesselData, getCruiseVesselPositionData } from "../utilities"
 
 const CruisesContainer = styled.div`
   display: flex;
@@ -15,6 +17,13 @@ const CruisesTableContainer = styled.div`
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   min-height: 500px;
+`
+
+const CruisesTableContainerTitle = styled.div`
+  margin-top: 35px;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: "97%";
 `
 
 const CruisesMapContainer = styled.div`
@@ -64,11 +73,13 @@ function CruisesPage() {
   return (
     <CruisesContainer>
       <CruisesTableContainer>
-        <CruisesTable
-          cruisesTableTitle={"Cruise Ships Arriving Soon"}
-          cruisesData={portArrivals}
-          loadingError={loadingError}
-        />
+        <CruisesTableContainerTitle>
+          <Title>{"Cruise Ships Arriving Soon"}</Title>
+          {/* {props.loadingError ? (
+          <LoadingTitle>Error Loading...</LoadingTitle>
+        ) : null} */}
+        </CruisesTableContainerTitle>
+        <CruisesTable cruisesData={portArrivals} loadingError={loadingError} />
       </CruisesTableContainer>
       <CruisesMapContainer>
         <CruisesMap

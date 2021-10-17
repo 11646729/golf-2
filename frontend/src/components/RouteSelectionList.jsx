@@ -1,11 +1,16 @@
 import React, { memo } from "react"
-import BandListItem from "../BandListItem"
+import styled from "styled-components"
 
-import "./routeselectionlist.css"
+import BandListItem from "./BandListItem"
+
+const RouteSelectionListContainer = styled.div`
+  width: "100%";
+  max-width: 360px;
+`
 
 function RouteSelectionList(props) {
   return (
-    <div className="routeselectionlistcontainer">
+    <RouteSelectionListContainer>
       <BandListItem
         routeVisible={props.routeVisible}
         routeColor={props.routeColor}
@@ -13,7 +18,7 @@ function RouteSelectionList(props) {
         routeName={props.routeName}
         routeVia={props.routeVia}
       />
-    </div>
+    </RouteSelectionListContainer>
   )
 }
 
