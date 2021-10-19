@@ -12,7 +12,7 @@ const CruisesMapContainer = styled.div`
   padding-top: 30px;
 `
 
-function CruisesMap(props) {
+const CruisesMap = (props) => {
   const [map, setMap] = useState(null)
   const mapZoom = 4
   const mapCenter = {

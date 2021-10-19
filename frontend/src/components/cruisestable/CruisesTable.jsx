@@ -1,10 +1,7 @@
 import React, { memo } from "react"
 import "./cruisestable.css"
 
-// -------------------------------------------------------
-// React component
-// -------------------------------------------------------
-function CruisesTable(props) {
+const CruisesTable = (props) => {
   const Button = ({ type }) => {
     return <button className={"widgetLgButton " + type}>{type}</button>
   }
