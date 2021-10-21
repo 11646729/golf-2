@@ -1,9 +1,9 @@
 import React, { memo } from "react"
 import { useTable } from "react-table"
+import styled from "styled-components"
 
-const CruisesTable2 = (props) => {
-  const data = props.cruisesData
-  console.log(data)
+const CruisesTable2 = ({ data, loadingError }) => {
+  // console.log(data)
 
   const columns = React.useMemo(
     () => [
@@ -14,13 +14,23 @@ const CruisesTable2 = (props) => {
       {
         Header: "Ship",
         accessor: "vesselshortcruisename",
+        Cell: (tableProps) => (
+          <img
+            src={tableProps.row.original.cruiselinelogo}
+            alt={"Cruise Line Logo"}
+            width="30px"
+            height="30px"
+            object-fit="cover"
+            margin-right="5px"
+          />
+        ),
       },
       {
-        Header: "Arrival",
+        Header: "Arrival Time",
         accessor: "vesseletatime",
       },
       {
-        Header: "Departure",
+        Header: "Departure Time",
         accessor: "vesseletdtime",
       },
       {

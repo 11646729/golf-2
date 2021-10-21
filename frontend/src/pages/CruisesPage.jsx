@@ -80,8 +80,8 @@ function CruisesPage() {
           <LoadingTitle>Error Loading...</LoadingTitle>
         ) : null} */}
         </CruisesTableContainerTitle>
-        {/* <CruisesTable cruisesData={portArrivals} loadingError={loadingError} /> */}
-        <CruisesTable2 cruisesData={portArrivals} loadingError={loadingError} />
+        {/* <CruisesTable data={portArrivals} loadingError={loadingError} /> */}
+        <CruisesTable2 data={portArrivals} loadingError={loadingError} />
       </CruisesTableContainer>
       <CruisesMapContainer>
         <CruisesMap

@@ -19,7 +19,7 @@ const CruisesTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {props.cruisesData.map((row) => (
+          {props.data.map((row) => (
             <tr className="widgetLgTr" key={row.portarrivalid}>
               <td className="widgetLgDay">
                 <div className="widgetLgDate">{row.arrivalDate}</div>
