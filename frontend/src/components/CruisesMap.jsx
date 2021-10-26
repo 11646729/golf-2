@@ -99,11 +99,20 @@ const CruisesMap = (props) => {
         onUnmount={onUnmountHandler}
       >
         <Marker onLoad={onLoadHandler} position={props.cruisesHomePosition} />
-        <Marker
-          onLoad={onLoadHandler}
-          position={props.cruisesVesselPositions}
-          icon={iconPin}
-        />
+
+        {props.vesselPositions
+          ? props.vesselPositions.map((vesselPosition) => (
+              <Marker
+                key={vesselPosition.index}
+                onLoad={onLoadHandler}
+                position={{
+                  lat: vesselPosition.lat,
+                  lng: vesselPosition.lng,
+                }}
+                icon={iconPin}
+              />
+            ))
+          : null}
       </GoogleMap>
     </CruisesMapContainer>
   ) : null

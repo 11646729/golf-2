@@ -1,6 +1,11 @@
 import React, { memo } from "react"
 import { useTable } from "react-table"
-import styled from "styled-components"
+// import styled from "styled-components"
+import "../cruisestable/cruisestable.css"
+
+const Button = ({ type }) => {
+  return <button className={"widgetLgButton " + type}>{type}</button>
+}
 
 const CruisesTable2 = ({ data, loadingError }) => {
   // console.log(data)
@@ -20,8 +25,6 @@ const CruisesTable2 = ({ data, loadingError }) => {
             alt={"Cruise Line Logo"}
             width="30px"
             height="30px"
-            object-fit="cover"
-            margin-right="5px"
           />
         ),
       },
@@ -36,6 +39,7 @@ const CruisesTable2 = ({ data, loadingError }) => {
       {
         Header: "Itinerary",
         accessor: "cruiselinelogo",
+        Cell: () => <Button type="Show" />,
       },
     ],
     []

@@ -18,7 +18,7 @@ import {
 } from "recharts"
 
 import Title from "./Title"
-import LoadingTitle from "./LoadingTitle"
+// import LoadingTitle from "./LoadingTitle"
 
 function TemperaturesChart(props) {
   const theme = useTheme()

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, memo } from "react"
 import styled from "styled-components"
 
-import CruisesTable from "../components/cruisestable/CruisesTable"
+// import CruisesTable from "../components/cruisestable/CruisesTable"
 import CruisesTable2 from "../components/cruisestable2/CruisesTable2"
 import CruisesMap from "../components/CruisesMap"
 import Title from "../components/Title"
@@ -35,18 +35,41 @@ const CruisesMapContainer = styled.div`
 `
 
 function CruisesPage() {
+  var longlats = [
+    [55.95473, -4.758], // lat, lng
+    [55.843985, -4.9333],
+    [55.42563, -4.917513],
+    [55.001906, -5.34192],
+    [54.719465, -5.514335],
+    [54.62649822725435, -5.884617360308293],
+  ]
+
+  let shipPositions = []
+  let loop = 0
+  var i = setInterval(function () {
+    if (loop >= longlats.length) {
+      clearInterval(i)
+      // console.log(shipPositions)
+      setVesselPositions(shipPositions)
+    } else {
+      let shipPosition = {
+        index: loop + 1,
+        lat: longlats[loop][0],
+        lng: longlats[loop][1],
+      }
+
+      shipPositions.push(shipPosition)
+    }
+    loop++
+  }, 5000)
+
   const [portArrivals, setPortArrivals] = useState([])
   const [vesselPositions, setVesselPositions] = useState([])
   const [loadingError, setLoadingError] = useState("")
 
-  const HomePosition = {
+  const homePosition = {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-  }
-
-  const AnthemOfTheSeasPosition = {
-    lat: 55.95473,
-    lng: -4.758,
   }
 
   useEffect(() => {
@@ -59,14 +82,14 @@ function CruisesPage() {
       // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
-    getCruiseVesselPositionData(
-      "http://localhost:5000/api/cruise/vesselPosition"
-    )
-      .then((returnedData) =>
-        isSubscribed ? setVesselPositions(returnedData) : null
-      )
-      // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+    // getCruiseVesselPositionData(
+    //   "http://localhost:5000/api/cruise/vesselPosition"
+    // )
+    //   .then((returnedData) =>
+    //     isSubscribed ? setVesselPositions(returnedData) : null
+    //   )
+    //   // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
+    //   .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     return () => (isSubscribed = false)
   }, [])
@@ -86,8 +109,8 @@ function CruisesPage() {
       <CruisesMapContainer>
         <CruisesMap
           cruisesMapTitle={"Current Locations"}
-          cruisesHomePosition={HomePosition}
-          cruisesVesselPositions={AnthemOfTheSeasPosition}
+          cruisesHomePosition={homePosition}
+          vesselPositions={vesselPositions}
         />
       </CruisesMapContainer>
     </CruisesContainer>
