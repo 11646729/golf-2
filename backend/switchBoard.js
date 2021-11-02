@@ -24,13 +24,13 @@ export const runSwitchboard = (io) => {
   // -----------------------------
 
   // Using socket.io for realtime data transmission
+  var roomno = 1
   io.on("connection", (socket) => {
     console.log("Client Connected")
 
     // Join a room
-    const { roomId } = socket.handshake.query
-    socket.join(roomId)
-    console.log("Joined Room")
+    socket.join("room-" + roomno)
+    console.log("Joined Room No: " + roomno)
 
     // -----------------------------
     // Fetch data every Day at 07:00
@@ -50,7 +50,7 @@ export const runSwitchboard = (io) => {
 
     socket.on("disconnect", () => {
       // Leave the room
-      socket.leave(roomId)
+      socket.leave("room-" + roomno)
       console.log("Left Room & Client Disconnected")
     })
   })
