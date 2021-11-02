@@ -64,7 +64,25 @@ export var getCruiseVesselPositionData = async (url) => {
   // Guard clause
   if (url == null) return
 
-  console.log("Url: " + url)
+  // Fetch the initial data
+  const resultData = await axios({
+    url: url,
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  return resultData.data
+}
+
+// -------------------------------------------------------
+// Function to fetch Cruise Vessel Position data
+// -------------------------------------------------------
+export var getCruiseVesselPositionDataTest = async (url) => {
+  // Guard clause
+  if (url == null) return
 
   // Fetch the initial data
   const resultData = await axios({
@@ -76,9 +94,7 @@ export var getCruiseVesselPositionData = async (url) => {
     },
   })
 
-  // console.log(resultData)
-
-  return resultData
+  return resultData.data
 }
 
 // -------------------------------------------------------
