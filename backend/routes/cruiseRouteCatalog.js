@@ -7,9 +7,9 @@ import {
 } from "../controllers/portArrivalsController.js"
 import {
   getVesselPosition,
-  getVesselPositionTest,
   saveVessel,
 } from "../controllers/vesselController.js"
+import { getVesselPositionTestData } from "../getVesselPositionTestData.js"
 
 // -------------------------------------------------------
 // Cruise Routes
@@ -56,7 +56,7 @@ cruiseRouter.get("/vesselPosition", getVesselPosition)
 // -------------------------------------------------------
 // GET all vessel positions
 // -------------------------------------------------------
-cruiseRouter.get("/vesselPositionTest", getVesselPositionTest)
+cruiseRouter.get("/vesselPositionTest", getVesselPositionTestData)
 
 // -------------------------------------------------------
 // POST a vessel to the database

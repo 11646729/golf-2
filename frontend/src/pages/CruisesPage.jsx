@@ -9,8 +9,8 @@ import Title from "../components/Title"
 
 import {
   getCruiseVesselData,
-  getCruiseVesselPositionDataTest,
-} from "../utilities"
+  getCruiseVesselPositionTestData,
+} from "../utilities.js"
 
 const CruisesContainer = styled.div`
   display: flex;
@@ -66,7 +66,7 @@ function CruisesPage() {
     //   // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
     //   .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
-    getCruiseVesselPositionDataTest(
+    getCruiseVesselPositionTestData(
       "http://localhost:5000/api/cruise/vesselPositionTest"
     )
       .then((returnedData) =>

@@ -2,7 +2,7 @@ import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
 import { createServer } from "http"
-import { Server } from "socket.io" //replaces (import socketIo from 'socket.io')
+import { Server } from "socket.io"
 
 const app = express()
 
@@ -59,4 +59,4 @@ httpServer.listen(port, (err) => {
   }
 })
 
-runSwitchboard(io)
+// runSwitchboard(io)

@@ -80,7 +80,7 @@ export var getCruiseVesselPositionData = async (url) => {
 // -------------------------------------------------------
 // Function to fetch Cruise Vessel Position data
 // -------------------------------------------------------
-export var getCruiseVesselPositionDataTest = async (url) => {
+export var getCruiseVesselPositionTestData = async (url) => {
   // Guard clause
   if (url == null) return
 
