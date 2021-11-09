@@ -22,7 +22,7 @@ export const getAndSaveDarkSkiesData = async () => {
     // Reformat data into Transient object
     const temperatureReading = [
       process.env.DATABASE_VERSION,
-      data.data.currently.time,
+      unixToUtc(data.data.currently.time),
       "Home",
       data.data.currently.temperature,
       process.env.HOME_LATITUDE,
@@ -52,4 +52,11 @@ export const emitDarkSkiesData = async (socket, darkSkiesData) => {
   } catch (err) {
     console.log("Error in emitDarkSkiesData: ", err)
   }
+}
+
+// -------------------------------------------------------
+// Function to convert Unix timestamp to UTC
+// -------------------------------------------------------
+function unixToUtc(timestamp) {
+  return new Date(timestamp * 1000).toJSON()
 }

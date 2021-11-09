@@ -1,4 +1,5 @@
 import React, { memo } from "react"
+import { DateTime } from "luxon"
 import moment from "moment"
 import {
   useTheme,
@@ -22,7 +23,8 @@ import Title from "./Title"
 
 function TemperaturesChart(props) {
   const theme = useTheme()
-  const formatXAxis = (tickItem) => moment.unix(tickItem).format("HH:mm MMM Do")
+
+  const formatXAxis = (tickItem) => moment(tickItem).format("HH:mm MMM Do")
   const formatYAxis = (tickItem) => +tickItem.toFixed(2)
 
   return (
