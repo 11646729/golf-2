@@ -1,6 +1,6 @@
 import axios from "axios"
 import cheerio from "cheerio"
-import { DateTime } from "luxon"
+import moment from "moment"
 
 // import { urlencoded } from "express"
 // import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
@@ -155,11 +155,10 @@ export const getVesselPosition = async (req, res) => {
     .trim()
 
   // Name of Vessel
-  let VesselName = positionParagraph.substring(
+  let vesselName = positionParagraph.substring(
     0,
     positionParagraph.indexOf("current ") - 1
   )
-  // console.log("VesselName: " + VesselName)
 
   // Reported Position
   var lat = positionParagraph.substring(
@@ -171,54 +170,98 @@ export const getVesselPosition = async (req, res) => {
     positionParagraph.indexOf(")") - 2
   )
 
-  // console.log("Latitude: " + lat)
-  // console.log("Longitude: " + lng)
-
   // AIS Reported Time
   let secs = 0
   if (positionParagraph.includes("second")) {
-    secs = 7
+    var secs1 = positionParagraph.substring(
+      positionParagraph.indexOf("second"),
+      positionParagraph.indexOf("second") - 2
+    )
+
+    secs = secs1.trim()
+
     if (positionParagraph.includes("seconds")) {
-      secs = 8
+      var secs2 = positionParagraph.substring(
+        positionParagraph.indexOf("seconds"),
+        positionParagraph.indexOf("seconds") - 3
+      )
+
+      secs = secs2.trim()
     }
   }
 
   let mins = 0
   if (positionParagraph.includes("minute")) {
-    mins = 7
+    var mins1 = positionParagraph.substring(
+      positionParagraph.indexOf("minute"),
+      positionParagraph.indexOf("minute") - 2
+    )
+
+    mins = mins1.trim()
+
     if (positionParagraph.includes("minutes")) {
-      mins = 8
+      var mins2 = positionParagraph.substring(
+        positionParagraph.indexOf("minutes"),
+        positionParagraph.indexOf("minutes") - 3
+      )
+
+      mins = mins2.trim()
     }
   }
 
-  var aistime = DateTime.now()
-    .minus({ minutes: mins, seconds: secs })
-    .toString()
+  let hrs = 0
+  if (positionParagraph.includes("hour")) {
+    var hrs1 = positionParagraph.substring(
+      positionParagraph.indexOf("hour"),
+      positionParagraph.indexOf("hour") - 2
+    )
 
-  // console.log("Time Now: " + DateTime.now().toString())
-  // console.log("Mins: " + mins)
-  // console.log("Secs: " + secs)
-  // console.log("AIS Reported Time: " + aistime)
+    hrs = hrs1.trim()
+
+    if (positionParagraph.includes("hours")) {
+      var hrs2 = positionParagraph.substring(
+        positionParagraph.indexOf("hours"),
+        positionParagraph.indexOf("hours") - 3
+      )
+
+      hrs = hrs2.trim()
+    }
+  }
+
+  var aistime = moment()
+    .subtract(hrs, "hours")
+    .subtract(mins, "minutes")
+    .subtract(secs, "seconds")
+    .toDate()
+
+  var utcMoment = moment.utc()
+  var utcDate = new Date(utcMoment.format())
+
+  console.log("Moment Time Now: " + utcDate)
+  console.log("Hours: " + hrs)
+  console.log("Mins: " + mins)
+  console.log("Secs: " + secs)
+  console.log("AIS Reported Time: " + aistime)
 
   // Destination
-  var VesselDest = positionParagraph.substring(
+  var vesselDest = positionParagraph.substring(
     positionParagraph.indexOf("route to ") + 9,
     positionParagraph.indexOf(". The")
   )
 
-  var Destination =
-    VesselDest[0].toUpperCase() + VesselDest.substring(1).toLowerCase()
-
-  // console.log("Destination: " + destination)
+  var destination =
+    vesselDest[0].toUpperCase() + vesselDest.substring(1).toLowerCase()
 
   var vesselDetails = {
     vesselUrl: urls[0],
-    vesselName: VesselName,
+    vesselName: vesselName,
     latitude: lat,
     longitude: lng,
     positionReportedTime: aistime,
-    destination: Destination,
+    destination: destination,
   }
+
+  // console.log(vesselDetails)
 
   return vesselDetails
 }

@@ -9,6 +9,7 @@ import Title from "../components/Title"
 
 import {
   getCruiseVesselData,
+  getCruiseVesselPositionData,
   getCruiseVesselPositionTestData,
 } from "../utilities.js"
 
@@ -57,23 +58,23 @@ function CruisesPage() {
       // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
-    // getCruiseVesselPositionData(
-    //   "http://localhost:5000/api/cruise/vesselPosition"
+    getCruiseVesselPositionData(
+      "http://localhost:5000/api/cruise/vesselPosition"
+    )
+      // .then((returnedData) =>
+      //   isSubscribed ? setVesselPositions(returnedData) : null
+      // )
+      .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
+      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+
+    // getCruiseVesselPositionTestData(
+    //   "http://localhost:5000/api/cruise/vesselPositionTest"
     // )
     //   .then((returnedData) =>
     //     isSubscribed ? setVesselPositions(returnedData) : null
     //   )
     //   // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
     //   .catch((err) => (isSubscribed ? setLoadingError(err) : null))
-
-    getCruiseVesselPositionTestData(
-      "http://localhost:5000/api/cruise/vesselPositionTest"
-    )
-      .then((returnedData) =>
-        isSubscribed ? setVesselPositions(returnedData) : null
-      )
-      // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     return () => (isSubscribed = false)
   }, [])

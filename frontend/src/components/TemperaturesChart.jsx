@@ -1,5 +1,4 @@
 import React, { memo } from "react"
-import { DateTime } from "luxon"
 import moment from "moment"
 import {
   useTheme,
@@ -51,7 +50,12 @@ function TemperaturesChart(props) {
             item
             xs={12}
             sm={12}
-            style={{ marginTop: 20, width: "100%", height: 400 }}
+            style={{
+              marginTop: 20,
+              marginBottom: 20,
+              width: "100%",
+              height: 400,
+            }}
           >
             <ResponsiveContainer>
               <LineChart data={props.temperatureData}>
@@ -64,7 +68,7 @@ function TemperaturesChart(props) {
                 >
                   <Label
                     position="insideBottom"
-                    offset={-5}
+                    offset={-10}
                     style={{
                       textAnchor: "middle",
                       fill: theme.palette.text.primary,
@@ -93,7 +97,7 @@ function TemperaturesChart(props) {
                     Temperature &deg;F
                   </Label>
                 </YAxis>
-                <Tooltip labelFormatter={formatXAxis} />
+                {/* <Tooltip labelFormatter={formatXAxis} /> */}
                 <Line
                   type="monotone"
                   dataKey="locationtemperature"
