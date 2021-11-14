@@ -7,9 +7,9 @@ import {
 } from "../controllers/portArrivalsController.js"
 import {
   getVesselPosition,
+  getVesselPositionTestData,
   saveVessel,
 } from "../controllers/vesselController.js"
-import { getVesselPositionTestData } from "../getVesselPositionTestData.js"
 
 // -------------------------------------------------------
 // Cruise Routes

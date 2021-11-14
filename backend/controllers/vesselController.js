@@ -128,142 +128,188 @@ export const dropVesselsTable = (db) => {
 // Path:
 // -------------------------------------------------------
 export const getVesselPosition = async (req, res) => {
+  // Dummy data
   const urls = []
   urls.push("https://www.cruisemapper.com/ships/Anthem-of-the-Seas-801")
   urls.push("https://www.cruisemapper.com/ships/Sky-Princess-2154")
 
-  // Now need to remove duplicates & get current location
-
   // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
   // const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
 
-  // urls.forEach(function (item, index, array) {
-  //   console.log(item, index)
-  // })
+  // Now get current location & destination
+  var shipPositions = []
 
-  // Fetch the initial data
-  const { data: html } = await axios.get(urls[0])
+  var j = 0
+  do {
+    // Fetch the initial data
+    const { data: html } = await axios.get(urls[j])
 
-  // Load up cheerio
-  const $ = cheerio.load(html) // html
+    // Load up cheerio
+    const $ = cheerio.load(html) // html
 
-  // Paragraph containing position & time reported
-  let positionParagraph = $(
-    "#container > main > section > article > section > div:nth-child(3) > div > div.col-md-4.currentItineraryInfo > p"
-  )
-    .text()
-    .trim()
+    // Paragraph containing position & time reported
+    let positionParagraph = $(
+      "#container > main > section > article > section > div:nth-child(3) > div > div.col-md-4.currentItineraryInfo > p"
+    )
+      .text()
+      .trim()
 
-  // Name of Vessel
-  let vesselName = positionParagraph.substring(
-    0,
-    positionParagraph.indexOf("current ") - 1
-  )
-
-  // Reported Position
-  var lat = positionParagraph.substring(
-    positionParagraph.indexOf("coordinates ") + 12,
-    positionParagraph.indexOf("/") - 2
-  )
-  var lng = positionParagraph.substring(
-    positionParagraph.indexOf("/") + 2,
-    positionParagraph.indexOf(")") - 2
-  )
-
-  // AIS Reported Time
-  let secs = 0
-  if (positionParagraph.includes("second")) {
-    var secs1 = positionParagraph.substring(
-      positionParagraph.indexOf("second"),
-      positionParagraph.indexOf("second") - 2
+    // Name of Vessel
+    let vesselName = positionParagraph.substring(
+      0,
+      positionParagraph.indexOf("current ") - 1
     )
 
-    secs = secs1.trim()
-
-    if (positionParagraph.includes("seconds")) {
-      var secs2 = positionParagraph.substring(
-        positionParagraph.indexOf("seconds"),
-        positionParagraph.indexOf("seconds") - 3
-      )
-
-      secs = secs2.trim()
-    }
-  }
-
-  let mins = 0
-  if (positionParagraph.includes("minute")) {
-    var mins1 = positionParagraph.substring(
-      positionParagraph.indexOf("minute"),
-      positionParagraph.indexOf("minute") - 2
+    // Reported Position
+    var latitude = Number(
+      positionParagraph
+        .substring(
+          positionParagraph.indexOf("coordinates ") + 12,
+          positionParagraph.indexOf("/") - 2
+        )
+        .trim()
+    )
+    var longitude = Number(
+      positionParagraph
+        .substring(
+          positionParagraph.indexOf("/") + 2,
+          positionParagraph.indexOf(")") - 2
+        )
+        .trim()
     )
 
-    mins = mins1.trim()
-
-    if (positionParagraph.includes("minutes")) {
-      var mins2 = positionParagraph.substring(
-        positionParagraph.indexOf("minutes"),
-        positionParagraph.indexOf("minutes") - 3
+    // AIS Reported Time
+    let secs = 0
+    if (positionParagraph.includes("second")) {
+      var secs1 = positionParagraph.substring(
+        positionParagraph.indexOf("second"),
+        positionParagraph.indexOf("second") - 2
       )
 
-      mins = mins2.trim()
-    }
-  }
+      secs = secs1.trim()
 
-  let hrs = 0
-  if (positionParagraph.includes("hour")) {
-    var hrs1 = positionParagraph.substring(
-      positionParagraph.indexOf("hour"),
-      positionParagraph.indexOf("hour") - 2
+      if (positionParagraph.includes("seconds")) {
+        var secs2 = positionParagraph.substring(
+          positionParagraph.indexOf("seconds"),
+          positionParagraph.indexOf("seconds") - 3
+        )
+
+        secs = secs2.trim()
+      }
+    }
+
+    let mins = 0
+    if (positionParagraph.includes("minute")) {
+      var mins1 = positionParagraph.substring(
+        positionParagraph.indexOf("minute"),
+        positionParagraph.indexOf("minute") - 2
+      )
+
+      mins = mins1.trim()
+
+      if (positionParagraph.includes("minutes")) {
+        var mins2 = positionParagraph.substring(
+          positionParagraph.indexOf("minutes"),
+          positionParagraph.indexOf("minutes") - 3
+        )
+
+        mins = mins2.trim()
+      }
+    }
+
+    let hrs = 0
+    if (positionParagraph.includes("hour")) {
+      var hrs1 = positionParagraph.substring(
+        positionParagraph.indexOf("hour"),
+        positionParagraph.indexOf("hour") - 2
+      )
+
+      hrs = hrs1.trim()
+
+      if (positionParagraph.includes("hours")) {
+        var hrs2 = positionParagraph.substring(
+          positionParagraph.indexOf("hours"),
+          positionParagraph.indexOf("hours") - 3
+        )
+
+        hrs = hrs2.trim()
+      }
+    }
+
+    var aistime = moment
+      .utc()
+      .subtract(hrs, "hours")
+      .subtract(mins, "minutes")
+      .subtract(secs, "seconds")
+
+    var aistimestamp = new Date(aistime.format())
+
+    // Destination
+    var vesselDest = positionParagraph.substring(
+      positionParagraph.indexOf("route to ") + 9,
+      positionParagraph.indexOf(". The")
     )
 
-    hrs = hrs1.trim()
+    var destination =
+      vesselDest[0].toUpperCase() + vesselDest.substring(1).toLowerCase()
 
-    if (positionParagraph.includes("hours")) {
-      var hrs2 = positionParagraph.substring(
-        positionParagraph.indexOf("hours"),
-        positionParagraph.indexOf("hours") - 3
-      )
-
-      hrs = hrs2.trim()
+    var shipPosition = {
+      index: j,
+      vesselUrl: urls[j],
+      vesselName: vesselName,
+      lat: latitude,
+      lng: longitude,
+      timestamp: aistimestamp,
+      destination: destination,
     }
-  }
 
-  var aistime = moment()
-    .subtract(hrs, "hours")
-    .subtract(mins, "minutes")
-    .subtract(secs, "seconds")
-    .toDate()
+    shipPositions.push(shipPosition)
 
-  var utcMoment = moment.utc()
-  var utcDate = new Date(utcMoment.format())
+    j++
+  } while (j < urls.length)
 
-  console.log("Moment Time Now: " + utcDate)
-  console.log("Hours: " + hrs)
-  console.log("Mins: " + mins)
-  console.log("Secs: " + secs)
-  console.log("AIS Reported Time: " + aistime)
+  res.send(shipPositions)
+}
 
-  // Destination
-  var vesselDest = positionParagraph.substring(
-    positionParagraph.indexOf("route to ") + 9,
-    positionParagraph.indexOf(". The")
-  )
+// -------------------------------------------------------
+// Find vesselNameUrl from vessels Table from SQLite database
+// Path:
+// -------------------------------------------------------
+export const getVesselPositionTestData = async (req, res) => {
+  var longlats = [
+    [55.95473, -4.758], // lat, lng
+    [55.843985, -4.9333],
+    [55.42563, -4.917513],
+    [55.001906, -5.34192],
+    [54.719465, -5.514335],
+    [54.62649822725435, -5.884617360308293],
+    [30.95685, -74.87335],
+  ]
 
-  var destination =
-    vesselDest[0].toUpperCase() + vesselDest.substring(1).toLowerCase()
+  let shipPositions = []
+  let loop = 0
+  var i = setInterval(function () {
+    if (loop < longlats.length) {
+      var utcMoment = moment.utc()
+      var utcDate = new Date(utcMoment.format())
 
-  var vesselDetails = {
-    vesselUrl: urls[0],
-    vesselName: vesselName,
-    latitude: lat,
-    longitude: lng,
-    positionReportedTime: aistime,
-    destination: destination,
-  }
+      let shipPosition = {
+        index: loop + 1,
+        timestamp: utcDate,
+        lat: longlats[loop][0],
+        lng: longlats[loop][1],
+      }
 
-  // console.log(vesselDetails)
+      shipPositions.push(shipPosition)
+    } else {
+      clearInterval(i)
 
-  return vesselDetails
+      // console.log(shipPositions)
+
+      res.send(shipPositions)
+    }
+    loop++
+  }, 0)
 }
 
 export default saveVessel

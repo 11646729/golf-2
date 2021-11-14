@@ -61,10 +61,10 @@ function CruisesPage() {
     getCruiseVesselPositionData(
       "http://localhost:5000/api/cruise/vesselPosition"
     )
-      // .then((returnedData) =>
-      //   isSubscribed ? setVesselPositions(returnedData) : null
-      // )
-      .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
+      .then((returnedData) =>
+        isSubscribed ? setVesselPositions(returnedData) : null
+      )
+      // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     // getCruiseVesselPositionTestData(

@@ -1,5 +1,10 @@
 import React, { useState, useCallback, memo } from "react"
-import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api"
+import {
+  GoogleMap,
+  useJsApiLoader,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api"
 import styled from "styled-components"
 
 import Title from "./Title"
@@ -14,6 +19,9 @@ const CruisesMapContainer = styled.div`
 
 const CruisesMap = (props) => {
   const [map, setMap] = useState(null)
+  const [selected, setSelected] = useState(null)
+  console.log(selected)
+
   const mapZoom = 4
   const mapCenter = {
     lat: parseFloat(process.env.REACT_APP_BELFAST_PORT_LATITUDE),
@@ -110,9 +118,26 @@ const CruisesMap = (props) => {
                   lng: vesselPosition.lng,
                 }}
                 icon={iconPin}
+                onClick={() => {
+                  setSelected(vesselPosition)
+                }}
               />
             ))
           : null}
+
+        {selected ? (
+          <InfoWindow
+            position={{
+              lat: selected.lat,
+              lng: selected.lng,
+            }}
+            onCloseClick={() => {
+              setSelected(null)
+            }}
+          >
+            <span>En Route to: {selected.destination}</span>
+          </InfoWindow>
+        ) : null}
       </GoogleMap>
     </CruisesMapContainer>
   ) : null

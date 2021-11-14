@@ -74,6 +74,8 @@ export var getCruiseVesselPositionData = async (url) => {
     },
   })
 
+  // console.log(resultData)
+
   return resultData.data
 }
 
