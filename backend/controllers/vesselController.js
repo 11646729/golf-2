@@ -132,6 +132,7 @@ export const getVesselPosition = async (req, res) => {
   const urls = []
   urls.push("https://www.cruisemapper.com/ships/Anthem-of-the-Seas-801")
   urls.push("https://www.cruisemapper.com/ships/Sky-Princess-2154")
+  // urls.push("https://www.cruisemapper.com/ships/MSC-Bellissima-1359")
 
   // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
   // const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
@@ -303,8 +304,6 @@ export const getVesselPositionTestData = async (req, res) => {
       shipPositions.push(shipPosition)
     } else {
       clearInterval(i)
-
-      // console.log(shipPositions)
 
       res.send(shipPositions)
     }

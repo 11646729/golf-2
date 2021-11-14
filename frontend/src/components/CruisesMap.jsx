@@ -20,9 +20,9 @@ const CruisesMapContainer = styled.div`
 const CruisesMap = (props) => {
   const [map, setMap] = useState(null)
   const [selected, setSelected] = useState(null)
-  console.log(selected)
 
-  const mapZoom = 4
+  const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
+
   const mapCenter = {
     lat: parseFloat(process.env.REACT_APP_BELFAST_PORT_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_BELFAST_PORT_LONGITUDE),
@@ -42,6 +42,30 @@ const CruisesMap = (props) => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
 
+  // Store a reference to the google map instance in state
+  const onLoadHandler = useCallback(function callback(map) {
+    setMap(map)
+  }, [])
+
+  // Clear the reference to the google map instance
+  const onUnmountHandler = useCallback(function callback() {
+    setMap(null)
+  }, [])
+
+  // Now compute bounds of map to display
+  if (map && props.vesselPositions != null) {
+    const bounds = new window.google.maps.LatLngBounds()
+    props.vesselPositions.map((vesselPosition) => {
+      const myLatLng = new window.google.maps.LatLng({
+        lat: vesselPosition.lat,
+        lng: vesselPosition.lng,
+      })
+      bounds.extend(myLatLng)
+      return bounds
+    })
+    map.fitBounds(bounds)
+  }
+
   const iconPin = {
     path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
     fillColor: "#6dbef1",
@@ -51,49 +75,13 @@ const CruisesMap = (props) => {
     strokeWeight: 1,
   }
 
-  // Now compute bounds of map to display
-  // if (map && props.busStopsCollection != null) {
-  //   const bounds = new window.google.maps.LatLngBounds()
-  //   props.busStopsCollection.map((busStop) => {
-  //     const myLatLng = new window.google.maps.LatLng({
-  //       lat: busStop.stop_lat,
-  //       lng: busStop.stop_lon,
-  //     })
-
-  //     bounds.extend(myLatLng)
-  //     return bounds
-  //   })
-  //   map.fitBounds(bounds)
-  // }
-
-  // Store a reference to the google map instance in state
-  const onLoadHandler = useCallback(function callback(map) {
-    // if (map && props.uniqueBusStopsCollection != null) {
-    //   const bounds = new window.google.maps.LatLngBounds()
-    //   props.uniqueBusStopsCollection.map((busStop) => {
-    //     const myLatLng = new window.google.maps.LatLng({
-    //       lat: busStop.stopCoordinates.lat,
-    //       lng: busStop.stopCoordinates.lng,
-    //     })
-    //     bounds.extend(myLatLng)
-    //     return bounds
-    //   })
-    //   map.fitBounds(bounds)
-    // }
-    setMap(map)
-  }, [])
-
-  // Clear the reference to the google map instance
-  const onUnmountHandler = useCallback(function callback(map) {
-    setMap(null)
-  }, [])
-
   return isLoaded ? (
     <CruisesMapContainer>
       <Title>{props.cruisesMapTitle}</Title>
       {/* {props.loadingError ? (
           <LoadingTitle>Error Loading...</LoadingTitle>
         ) : null} */}
+
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={mapCenter}

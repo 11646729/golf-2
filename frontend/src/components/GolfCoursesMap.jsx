@@ -26,10 +26,7 @@ const GolfCoursesMapContainer = styled.div`
   padding-top: 30px;
 `
 
-// -------------------------------------------------------
-// React View component
-// -------------------------------------------------------
-function GolfCoursesMap(props) {
+const GolfCoursesMap = (props) => {
   const [map, setMap] = useState(null)
   const [selected, setSelected] = useState(null)
 
@@ -60,12 +57,12 @@ function GolfCoursesMap(props) {
   }, [])
 
   // Clear the reference to the google map instance
-  const onUnmountHandler = useCallback(function callback(map) {
+  const onUnmountHandler = useCallback(function callback() {
     setMap(null)
   }, [])
 
   // Now compute bounds of map to display
-  if (map != null && props.golfCoursesData.length !== 0) {
+  if (map && props.golfCoursesData != null) {
     const bounds = new window.google.maps.LatLngBounds()
     props.golfCoursesData.map((golfcourse) => {
       const myLatLng = new window.google.maps.LatLng({
