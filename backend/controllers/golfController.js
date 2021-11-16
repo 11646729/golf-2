@@ -102,7 +102,7 @@ const populateGolfCourses = async (db, courses) => {
       ]
 
       const sql =
-        "INSERT INTO golfcourses (databaseversion, type, crsurn, name, phonenumber, phototitle, photourl, description, courselng, courselat) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10 )"
+        "INSERT INTO golfcourses (databaseversion, type, crsurn, name, phonenumber, phototitle, photourl, description, lng, lat) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10 )"
       db.run(sql, course, function (err) {
         if (err) {
           return console.error(err.message)
@@ -148,7 +148,7 @@ export const dropGolfCoursesTable = (db) => {
 // -------------------------------------------------------
 export const createGolfCoursesTable = (db) => {
   const golfCourses_create =
-    "CREATE TABLE IF NOT EXISTS golfcourses (courseid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, type TEXT NOT NULL, crsurn TEXT NOT NULL, name TEXT NOT NULL, phonenumber TEXT NOT NULL, phototitle TEXT NOT NULL, photourl TEXT NOT NULL, description TEXT, courselng REAL CHECK( courselng >= -180 AND courselng <= 180 ), courselat REAL CHECK( courselat >= -90 AND courselat <= 90 ))"
+    "CREATE TABLE IF NOT EXISTS golfcourses (courseid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, type TEXT NOT NULL, crsurn TEXT NOT NULL, name TEXT NOT NULL, phonenumber TEXT NOT NULL, phototitle TEXT NOT NULL, photourl TEXT NOT NULL, description TEXT, lng REAL CHECK( lng >= -180 AND lng <= 180 ), lat REAL CHECK( lat >= -90 AND lat <= 90 ))"
   db.get(golfCourses_create, [], (err, results) => {
     if (err) {
       return console.error(err.message)

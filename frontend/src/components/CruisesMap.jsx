@@ -1,4 +1,4 @@
-import React, { useState, useCallback, memo } from "react"
+import React, { useState, useEffect, useCallback, memo } from "react"
 import {
   GoogleMap,
   useJsApiLoader,
@@ -43,28 +43,30 @@ const CruisesMap = (props) => {
   })
 
   // Store a reference to the google map instance in state
-  const onLoadHandler = useCallback(function callback(map) {
+  const onLoadHandler = useCallback((map) => {
     setMap(map)
   }, [])
 
   // Clear the reference to the google map instance
-  const onUnmountHandler = useCallback(function callback() {
+  const onUnmountHandler = useCallback(() => {
     setMap(null)
   }, [])
 
   // Now compute bounds of map to display
-  if (map && props.vesselPositions != null) {
-    const bounds = new window.google.maps.LatLngBounds()
-    props.vesselPositions.map((vesselPosition) => {
-      const myLatLng = new window.google.maps.LatLng({
-        lat: vesselPosition.lat,
-        lng: vesselPosition.lng,
+  useEffect(() => {
+    if (map && props.vesselPositions != null) {
+      const bounds = new window.google.maps.LatLngBounds()
+      props.vesselPositions.map((vesselPosition) => {
+        const myLatLng = new window.google.maps.LatLng({
+          lat: vesselPosition.lat,
+          lng: vesselPosition.lng,
+        })
+        bounds.extend(myLatLng)
+        return bounds
       })
-      bounds.extend(myLatLng)
-      return bounds
-    })
-    map.fitBounds(bounds)
-  }
+      map.fitBounds(bounds)
+    }
+  }, [map, props.vesselPositions])
 
   const iconPin = {
     path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
@@ -94,13 +96,12 @@ const CruisesMap = (props) => {
         onLoad={onLoadHandler}
         onUnmount={onUnmountHandler}
       >
-        <Marker onLoad={onLoadHandler} position={props.cruisesHomePosition} />
+        <Marker position={props.cruisesHomePosition} />
 
         {props.vesselPositions
           ? props.vesselPositions.map((vesselPosition) => (
               <Marker
                 key={vesselPosition.index}
-                onLoad={onLoadHandler}
                 position={{
                   lat: vesselPosition.lat,
                   lng: vesselPosition.lng,

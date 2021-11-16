@@ -1,4 +1,4 @@
-import React, { useState, useCallback, memo } from "react"
+import React, { useState, useEffect, useCallback, memo } from "react"
 import {
   GoogleMap,
   useJsApiLoader,
@@ -43,42 +43,32 @@ function TransportMap(props) {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
 
-  // Now compute bounds of map to display
-  if (map && props.busStopsCollection != null) {
-    const bounds = new window.google.maps.LatLngBounds()
-    props.busStopsCollection.map((busStop) => {
-      const myLatLng = new window.google.maps.LatLng({
-        lat: busStop.stop_lat,
-        lng: busStop.stop_lon,
-      })
-
-      bounds.extend(myLatLng)
-      return bounds
-    })
-    map.fitBounds(bounds)
-  }
-
   // Store a reference to the google map instance in state
-  const onLoadHandler = useCallback(function callback(map) {
-    // if (map && props.uniqueBusStopsCollection != null) {
-    //   const bounds = new window.google.maps.LatLngBounds()
-    //   props.uniqueBusStopsCollection.map((busStop) => {
-    //     const myLatLng = new window.google.maps.LatLng({
-    //       lat: busStop.stopCoordinates.lat,
-    //       lng: busStop.stopCoordinates.lng,
-    //     })
-    //     bounds.extend(myLatLng)
-    //     return bounds
-    //   })
-    //   map.fitBounds(bounds)
-    // }
+  const onLoadHandler = useCallback((map) => {
     setMap(map)
   }, [])
 
   // Clear the reference to the google map instance
-  const onUnmountHandler = useCallback(function callback(map) {
+  const onUnmountHandler = useCallback((map) => {
     setMap(null)
   }, [])
+
+  // Now compute bounds of map to display
+  useEffect(() => {
+    if (map && props.busStopsCollection != null) {
+      const bounds = new window.google.maps.LatLngBounds()
+      props.busStopsCollection.map((busStop) => {
+        const myLatLng = new window.google.maps.LatLng({
+          lat: busStop.stop_lat,
+          lng: busStop.stop_lon,
+        })
+
+        bounds.extend(myLatLng)
+        return bounds
+      })
+      map.fitBounds(bounds)
+    }
+  }, [map, props.busStopsCollection])
 
   // const handleBusStopClick = (event) => {
   //   console.log(event)

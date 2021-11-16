@@ -1,4 +1,4 @@
-import React, { useState, useCallback, memo } from "react"
+import React, { useState, useEffect, useCallback, memo } from "react"
 import {
   GoogleMap,
   useJsApiLoader,
@@ -52,28 +52,30 @@ const GolfCoursesMap = (props) => {
   })
 
   // Store a reference to the google map instance in state
-  const onLoadHandler = useCallback(function callback(map) {
+  const onLoadHandler = useCallback((map) => {
     setMap(map)
   }, [])
 
   // Clear the reference to the google map instance
-  const onUnmountHandler = useCallback(function callback() {
+  const onUnmountHandler = useCallback(() => {
     setMap(null)
   }, [])
 
   // Now compute bounds of map to display
-  if (map && props.golfCoursesData != null) {
-    const bounds = new window.google.maps.LatLngBounds()
-    props.golfCoursesData.map((golfcourse) => {
-      const myLatLng = new window.google.maps.LatLng({
-        lat: golfcourse.courselat,
-        lng: golfcourse.courselng,
+  useEffect(() => {
+    if (map && props.golfCoursesData != null) {
+      const bounds = new window.google.maps.LatLngBounds()
+      props.golfCoursesData.map((golfcourse) => {
+        const myLatLng = new window.google.maps.LatLng({
+          lat: golfcourse.lat,
+          lng: golfcourse.lng,
+        })
+        bounds.extend(myLatLng)
+        return bounds
       })
-      bounds.extend(myLatLng)
-      return bounds
-    })
-    map.fitBounds(bounds)
-  }
+      map.fitBounds(bounds)
+    }
+  }, [map, props.golfCoursesData])
 
   const iconPin = {
     path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
@@ -108,8 +110,8 @@ const GolfCoursesMap = (props) => {
               <Marker
                 key={golfcourse.name}
                 position={{
-                  lat: golfcourse.courselat,
-                  lng: golfcourse.courselng,
+                  lat: golfcourse.lat,
+                  lng: golfcourse.lng,
                 }}
                 icon={iconPin}
                 onClick={() => {
@@ -122,8 +124,8 @@ const GolfCoursesMap = (props) => {
         {selected ? (
           <InfoWindow
             position={{
-              lat: selected.courselat,
-              lng: selected.courselng,
+              lat: selected.lat,
+              lng: selected.lng,
             }}
             onCloseClick={() => {
               setSelected(null)
