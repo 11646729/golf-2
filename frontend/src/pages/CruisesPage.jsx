@@ -1,8 +1,8 @@
 import React, { useState, useEffect, memo } from "react"
 import styled from "styled-components"
 
-import CruisesTable from "../components/cruisestable/CruisesTable"
-// import CruisesTable2 from "../components/cruisestable2/CruisesTable2"
+// import CruisesTable from "../components/cruisestable/CruisesTable"
+import CruisesTable2 from "../components/CruisesTable2"
 import CruisesMap from "../components/CruisesMap"
 import Title from "../components/Title"
 // import LoadingTitle from "../components/LoadingTitle"
@@ -88,14 +88,15 @@ function CruisesPage() {
           <LoadingTitle>Error Loading...</LoadingTitle>
         ) : null} */}
         </CruisesTableContainerTitle>
-        <CruisesTable data={portArrivals} loadingError={loadingError} />
-        {/* <CruisesTable2 data={portArrivals} loadingError={loadingError} /> */}
+        {/* <CruisesTable data={portArrivals} loadingError={loadingError} /> */}
+        <CruisesTable2 data={portArrivals} loadingError={loadingError} />
       </CruisesTableContainer>
       <CruisesMapContainer>
         <CruisesMap
           cruisesMapTitle={"Current Locations"}
           cruisesHomePosition={homePosition}
           vesselPositions={vesselPositions}
+          // vesselDetails={portArrivals}
         />
       </CruisesMapContainer>
     </CruisesContainer>

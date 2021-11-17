@@ -1,15 +1,13 @@
 import React, { memo } from "react"
 import { useTable } from "react-table"
 // import styled from "styled-components"
-import "../cruisestable/cruisestable.css"
+import "./cruisestable/cruisestable.css"
 
 const Button = ({ type }) => {
   return <button className={"widgetLgButton " + type}>{type}</button>
 }
 
 const CruisesTable2 = ({ data, loadingError }) => {
-  // console.log(data)
-
   const columns = React.useMemo(
     () => [
       {
