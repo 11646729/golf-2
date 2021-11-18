@@ -49,7 +49,7 @@ function TransportMap(props) {
   }, [])
 
   // Clear the reference to the google map instance
-  const onUnmountHandler = useCallback((map) => {
+  const onUnmountHandler = useCallback(() => {
     setMap(null)
   }, [])
 

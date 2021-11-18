@@ -1,4 +1,5 @@
 import axios from "axios"
+import moment from "moment"
 
 // -------------------------------------------------------
 // Function to fetch all Temperature data
@@ -60,9 +61,13 @@ export var getCruiseVesselData = async (url) => {
 // -------------------------------------------------------
 // Function to fetch Cruise Vessel Position data
 // -------------------------------------------------------
-export var getCruiseVesselPositionData = async (url) => {
+export var getCruiseVesselPositionData = async (url, test) => {
   // Guard clause
   if (url == null) return
+
+  if (test === "Yes") {
+    console.log("Test recognised")
+  }
 
   // Fetch the initial data
   const resultData = await axios({
@@ -82,21 +87,43 @@ export var getCruiseVesselPositionData = async (url) => {
 // -------------------------------------------------------
 // Function to fetch Cruise Vessel Position data
 // -------------------------------------------------------
-export var getCruiseVesselPositionTestData = async (url) => {
-  // Guard clause
-  if (url == null) return
+export var getCruiseVesselPositionTestData = () => {
+  var longlats = [
+    [55.95473, -4.758], // lat, lng
+    [55.843985, -4.9333],
+    [55.42563, -4.917513],
+    [55.001906, -5.34192],
+    [54.719465, -5.514335],
+    [54.62649822725435, -5.884617360308293],
+    [30.95685, -74.87335],
+  ]
 
-  // Fetch the initial data
-  const resultData = await axios({
-    url: url,
-    method: "GET",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  let shipPositions = []
+  let loop = 0
+  var i = setInterval(function () {
+    if (loop < longlats.length) {
+      var utcMoment = moment.utc()
+      var utcDate = new Date(utcMoment.format())
 
-  return resultData.data
+      let shipPosition = {
+        index: loop + 1,
+        timestamp: utcDate,
+        lat: longlats[loop][0],
+        lng: longlats[loop][1],
+      }
+
+      // shipPositions.push(shipPosition)
+
+      console.log(shipPosition)
+      // res.send(shipPosition)
+      return shipPosition
+    } else {
+      clearInterval(i)
+
+      // res.send(shipPositions)
+    }
+    loop++
+  }, 5000)
 }
 
 // -------------------------------------------------------
@@ -316,7 +343,10 @@ export var getAllRoutes = async (url) => {
   return resultData.data
 }
 
+// -------------------------------------------------------
+// Function
 // Function to remove Gtfs data fields routeVisible === false
+// -------------------------------------------------------
 export var getDisplayData = (originalArray) => {
   let displayArray = []
   let index = 0

@@ -5,6 +5,15 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api"
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button,
+  Link,
+  CardActions,
+} from "@material-ui/core"
 import styled from "styled-components"
 
 import Title from "./Title"
@@ -124,7 +133,35 @@ const CruisesMap = (props) => {
               setSelected(null)
             }}
           >
-            <span>En Route to: {selected.destination}</span>
+            <Card>
+              <CardMedia
+                style={{
+                  height: 0,
+                  paddingTop: "40%",
+                  marginTop: "30",
+                }}
+                // image={selected.photourl}
+                // title={selected.phototitle}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {/* {selected.name} */}
+                </Typography>
+                <Typography component="p">
+                  En Route to {selected.destination}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button
+                  size="small"
+                  color="primary"
+                  component={Link}
+                  // to="/golfcoursespage"
+                >
+                  View
+                </Button>
+              </CardActions>
+            </Card>
           </InfoWindow>
         ) : null}
       </GoogleMap>
