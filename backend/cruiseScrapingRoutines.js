@@ -1,7 +1,6 @@
 import axios from "axios"
 import cheerio from "cheerio"
 import { getAndSavePortArrivals } from "./scrapeArrivals.js"
-import { scrapeVessel } from "./scrapeVessels.js"
 import {
   deleteAllPortArrivals,
   createPortArrivalsTable,
@@ -12,6 +11,7 @@ import {
   createVesselsTable,
   saveVessel,
   dropVesselsTable,
+  scrapeVessel,
 } from "./controllers/vesselController.js"
 import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities.js"
 
@@ -77,8 +77,6 @@ export const fetchPortArrivalsAndVessels = async (req, res) => {
       // Extract urls for vessels & store in newVessel array
       let scrapedVessel = await scrapeVessel(DeduplicatedVesselUrlArray[loop])
       saveVessel(db, scrapedVessel)
-
-      console.log(scrapeVessel)
 
       loop++
     } while (loop < DeduplicatedVesselUrlArray.length)
