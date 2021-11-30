@@ -38,7 +38,7 @@ const CruisesMapContainer = styled.div`
   min-height: 500px;
 `
 
-function CruisesPage() {
+const CruisesPage = () => {
   const [portArrivals, setPortArrivals] = useState([])
   const [vesselPositions, setVesselPositions] = useState([])
   const [loadingError, setLoadingError] = useState("")

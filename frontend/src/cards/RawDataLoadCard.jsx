@@ -40,7 +40,7 @@ export default function TemperaturesCard() {
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          Load Data
+          Find and Load Data
         </Typography>
         <Typography>This loads Raw Data into the SQL database</Typography>
       </CardContent>

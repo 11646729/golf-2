@@ -153,9 +153,6 @@ export const getPortArrivals = (req, res) => {
     console.error("Cannot connect to database")
   }
 }
-import axios from "axios"
-import cheerio from "cheerio"
-import { savePortArrival } from "./controllers/portArrivalsController.js"
 
 // -------------------------------------------------------
 // Fetch All Port Arrivals Details

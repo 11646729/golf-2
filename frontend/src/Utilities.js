@@ -36,6 +36,8 @@ export var getGolfCourseData = async (url) => {
     },
   })
 
+  console.log(resultData.data)
+
   return resultData.data
 }
 
