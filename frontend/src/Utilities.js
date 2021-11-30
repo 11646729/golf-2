@@ -36,8 +36,6 @@ export var getGolfCourseData = async (url) => {
     },
   })
 
-  console.log(resultData.data)
-
   return resultData.data
 }
 
@@ -131,12 +129,15 @@ export var getCruiseVesselPositionTestData = () => {
 // -------------------------------------------------------
 // Function to fetch Position data for a Specific Route
 // -------------------------------------------------------
-export async function selectedUniqueRoute(
+export var selectedUniqueRoute = async (
   url,
   selectedBusRouteNumber,
   selected
-) {
-  await axios({
+) => {
+  // Guard clause
+  if (url == null) return
+
+  const resultData = await axios({
     url: url,
     data: {
       routeNumber: selectedBusRouteNumber,
@@ -148,10 +149,40 @@ export async function selectedUniqueRoute(
       "Content-Type": "application/json",
     },
   })
+
+  // return resultData.data
 }
 
 // -------------------------------------------------------
-// Function
+// Function to instruct backend to load Golf Club Data into the database
+// -------------------------------------------------------
+export var loadGolfClubData = async (url) => {
+  // Guard clause
+  if (url == null) {
+    console.log("Error: url == null in loadGolfClubData in utilities")
+    return
+  }
+
+  const resultData = await axios({
+    url: url,
+    // data: {
+    //   routeNumber: selectedBusRouteNumber,
+    //   routeVisible: selected,
+    // },
+    method: "PUT",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  console.log("Here")
+
+  // return resultData
+  // return dataLoadedIntoDatabase
+}
+
+// -------------------------------------------------------
 // Function to fetch Bus Agency
 // -------------------------------------------------------
 export var getAgencyName = async (url) => {
