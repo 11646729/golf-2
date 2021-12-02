@@ -5,12 +5,11 @@ import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 // Path: localhost:5000/api/cruise/
 // -------------------------------------------------------
 export var index = async (req, res) => {
-  res.send({ response: "I am alive" }).status(200)
+  res.send({ response: "Port Arrivals Catalog home page" }).status(200)
 }
 
 // -------------------------------------------------------
-// Create Port Arrivals Table in the SQLite Database
-// Path: Function called in switchBoard
+// Create portarrivals Table in the SQLite Database
 // -------------------------------------------------------
 export const createPortArrivalsTable = (db) => {
   // Guard clause for null Database Connection
@@ -32,99 +31,29 @@ export const createPortArrivalsTable = (db) => {
 }
 
 // -------------------------------------------------------
-// Save Port Arrivals details to SQLite database
-// Path:
-// -------------------------------------------------------
-export const savePortArrival = (db, newPortArrival) => {
-  // Guard clause for null Port Arrival details
-  if (newPortArrival == null) return
-  if (db === null) return
-
-  // TODO
-  // Add Notification of change (except End of Month rollover)
-  // Details of this Cruise?
-  // Current Position - to plot on a map
-
-  try {
-    // Count the records in the database
-    let sql1 = "SELECT COUNT(portarrivalid) AS count FROM portarrivals"
-
-    // Must be get to work - db.all doesn't work
-    db.get(sql1, [], (err, results) => {
-      if (err) {
-        return console.error(err.message)
-      }
-    })
-
-    // Don't change the routine below
-    const sql2 =
-      "INSERT INTO portarrivals (databaseversion, sentencecaseport, portname, portunlocode, portcoordinatelng, portcoordinatelat, cruiseline, cruiselinelogo, vesselshortcruisename, arrivalDate, weekday, vesseleta, vesseletatime, vesseletd, vesseletdtime, vesselnameurl) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)"
-
-    db.run(sql2, newPortArrival, function (err) {
-      if (err) {
-        return console.error(err.message)
-      }
-    })
-  } catch (err) {
-    console.error("Error in SQLsavePortArrival: ", err)
-  }
-}
-
-// -------------------------------------------------------
-// Delete all Port Arrivals from SQLite database
-// Path:
-// -------------------------------------------------------
-export const deleteAllPortArrivals = (db) => {
-  // Guard clause for null Database Connection
-  if (db === null) return
-
-  try {
-    const sql_insert = "DELETE FROM portarrivals"
-    db.all(sql_insert, [], (err) => {
-      if (err) {
-        return console.error(err.message)
-      }
-      console.warn("All portarrivals deleted")
-    })
-
-    // Reset the id number
-    const sql_reset =
-      "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'portarrivals'"
-    db.all(sql_reset, [], (err) => {
-      if (err) {
-        return console.error(err.message)
-      }
-      console.warn("Reset portarrivals id number")
-    })
-  } catch (err) {
-    console.error("Error in deleteAllPortArrivals: ", err)
-  }
-}
-
-// -------------------------------------------------------
-// Delete all Port Arrivals from SQLite database
-// Path:
+// Drop portarrivals Table in the SQLite database
 // -------------------------------------------------------
 export const dropPortArrivalsTable = (db) => {
   // Guard clause for null Database Connection
   if (db === null) return
 
   try {
-    const vessels_drop = "DROP TABLE IF EXISTS portarrivals"
-    db.all(vessels_drop, [], (err) => {
+    const sql = "DROP TABLE IF EXISTS portarrivals"
+
+    db.all(sql, [], (err) => {
       if (err) {
         return console.error(err.message)
       }
       console.log("portarrivals Table successfully dropped")
     })
-  } catch (err) {
-    console.error("Error in dropPortArrivalsTable: ", err)
+  } catch (e) {
+    console.error("Error in dropPortArrivalsTable: ", e.message)
   }
 }
 
 // -------------------------------------------------------
 // Get all Port Arrivals from SQLite database
-// Path: localhost:5000/api/cruise/portArrivals
+// Path: localhost:5000/api/cruise/allPortArrivals
 // -------------------------------------------------------
 export const getPortArrivals = (req, res) => {
   // Open a Database Connection
@@ -151,6 +80,74 @@ export const getPortArrivals = (req, res) => {
     }
   } else {
     console.error("Cannot connect to database")
+  }
+}
+
+// -------------------------------------------------------
+// Save Port Arrivals details to SQLite database
+// -------------------------------------------------------
+export const savePortArrival = (db, newPortArrival) => {
+  // Guard clause for null Port Arrival details
+  if (newPortArrival == null) return
+  if (db === null) return
+
+  // TODO
+  // Add Notification of change (except End of Month rollover)
+  // Details of this Cruise?
+  // Current Position - to plot on a map
+
+  try {
+    // Count the records in the database
+    let sql1 = "SELECT COUNT(portarrivalid) AS count FROM portarrivals"
+
+    // Must be get to work - db.all doesn't work
+    db.get(sql1, [], (err) => {
+      if (err) {
+        return console.error(err.message)
+      }
+    })
+
+    // Don't change the routine below
+    const sql2 =
+      "INSERT INTO portarrivals (databaseversion, sentencecaseport, portname, portunlocode, portcoordinatelng, portcoordinatelat, cruiseline, cruiselinelogo, vesselshortcruisename, arrivalDate, weekday, vesseleta, vesseletatime, vesseletd, vesseletdtime, vesselnameurl) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)"
+
+    db.run(sql2, newPortArrival, function (err) {
+      if (err) {
+        return console.error(err.message)
+      }
+    })
+  } catch (err) {
+    console.error("Error in SQLsavePortArrival: ", err)
+  }
+}
+
+// -------------------------------------------------------
+// Delete all Port Arrivals records from SQLite database
+// -------------------------------------------------------
+export const deleteAllPortArrivals = (db) => {
+  // Guard clause for null Database Connection
+  if (db === null) return
+
+  try {
+    const sql_insert = "DELETE FROM portarrivals"
+    db.all(sql_insert, [], (err) => {
+      if (err) {
+        return console.error(err.message)
+      }
+      console.warn("All portarrivals deleted")
+    })
+
+    // Reset the id number
+    const sql_reset =
+      "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'portarrivals'"
+    db.all(sql_reset, [], (err) => {
+      if (err) {
+        return console.error(err.message)
+      }
+      console.warn("Reset portarrivals id number")
+    })
+  } catch (err) {
+    console.error("Error in deleteAllPortArrivals: ", err)
   }
 }
 

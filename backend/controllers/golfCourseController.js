@@ -10,10 +10,53 @@ export var index = (req, res) => {
 }
 
 // -------------------------------------------------------
-// Get All Nearby Golf Courses
-// Path: localhost:5000/api/golf/nearbyGolfCourses
+// Create golfcourses Table in the SQLite database
 // -------------------------------------------------------
-export const getAllNearbyGolfCourses = (req, res) => {
+export const createGolfCoursesTable = (db) => {
+  // Guard clause for null Database Connection
+  if (db === null) return
+
+  try {
+    const sql =
+      "CREATE TABLE IF NOT EXISTS golfcourses (courseid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, type TEXT NOT NULL, crsurn TEXT NOT NULL, name TEXT NOT NULL, phonenumber TEXT NOT NULL, phototitle TEXT NOT NULL, photourl TEXT NOT NULL, description TEXT, lng REAL CHECK( lng >= -180 AND lng <= 180 ), lat REAL CHECK( lat >= -90 AND lat <= 90 ))"
+
+    db.get(sql, [], (err) => {
+      if (err) {
+        return console.error(err.message)
+      }
+      console.log("golfcourses table successfully created")
+    })
+  } catch (e) {
+    console.error("Error in createGolfCoursesTable: ", e.message)
+  }
+}
+
+// -------------------------------------------------------
+// Drop golfcourses Table in the SQLite database
+// -------------------------------------------------------
+export const dropGolfCoursesTable = (db) => {
+  // Guard clause for null Database Connection
+  if (db === null) return
+
+  try {
+    const sql = "DROP TABLE IF EXISTS golfcourses"
+
+    db.get(sql, [], (err) => {
+      if (err) {
+        return console.error(err.message)
+      }
+      console.log("golfcourses table successfully dropped")
+    })
+  } catch (e) {
+    console.error("Error in dropGolfCoursesTable: ", e.message)
+  }
+}
+
+// -------------------------------------------------------
+// Get all Golf Courses from SQLite database
+// Path: localhost:5000/api/golf/getGolfCourses
+// -------------------------------------------------------
+export const getGolfCourses = (req, res) => {
   // Open a Database Connection
   let db = null
   db = openSqlDbConnection(process.env.SQL_URI)
@@ -21,10 +64,12 @@ export const getAllNearbyGolfCourses = (req, res) => {
   if (db !== null) {
     try {
       let sql = "SELECT * FROM golfcourses ORDER BY courseid"
+
       db.all(sql, [], (err, results) => {
         if (err) {
           return console.error(err.message)
         }
+
         res.send(results)
       })
 
@@ -42,7 +87,7 @@ export const getAllNearbyGolfCourses = (req, res) => {
 // Create Golf Courses Table in the SQLite Database
 // Path: Function called in switchBoard
 // -------------------------------------------------------
-export const fetchGolfCourses = () => {
+export const loadRawGolfCoursesData = () => {
   // Open a Database Connection
   let db = null
   db = openSqlDbConnection(process.env.SQL_URI)
@@ -121,40 +166,4 @@ const populateGolfCourses = async (db, courses) => {
   }
 }
 
-// -------------------------------------------------------
-// Drop golfcourses Table from SQLite database
-// Path:
-// -------------------------------------------------------
-export const dropGolfCoursesTable = (db) => {
-  // Guard clause for null Database Connection
-  if (db === null) return
-
-  try {
-    const golfCourses_drop = "DROP TABLE IF EXISTS golfcourses"
-    db.get(golfCourses_drop, [], (err) => {
-      if (err) {
-        return console.error(err.message)
-      }
-      console.log("golfcourses Table successfully dropped")
-    })
-  } catch (err) {
-    console.error("Error in dropGolfCoursesTable: ", err)
-  }
-}
-
-// -------------------------------------------------------
-// Create golfcourses Table from SQLite database
-// Path:
-// -------------------------------------------------------
-export const createGolfCoursesTable = (db) => {
-  const golfCourses_create =
-    "CREATE TABLE IF NOT EXISTS golfcourses (courseid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, type TEXT NOT NULL, crsurn TEXT NOT NULL, name TEXT NOT NULL, phonenumber TEXT NOT NULL, phototitle TEXT NOT NULL, photourl TEXT NOT NULL, description TEXT, lng REAL CHECK( lng >= -180 AND lng <= 180 ), lat REAL CHECK( lat >= -90 AND lat <= 90 ))"
-  db.get(golfCourses_create, [], (err, results) => {
-    if (err) {
-      return console.error(err.message)
-    }
-    console.log("golfcourses Table successfully created")
-  })
-}
-
-export default getAllNearbyGolfCourses
+export default getGolfCourses

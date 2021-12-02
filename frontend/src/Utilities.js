@@ -156,19 +156,15 @@ export var selectedUniqueRoute = async (
 // -------------------------------------------------------
 // Function to instruct backend to load Golf Club Data into the database
 // -------------------------------------------------------
-export var loadGolfClubData = async (url) => {
+export var loadRawGolfCoursesData = async (url) => {
   // Guard clause
   if (url == null) {
-    console.log("Error: url == null in loadGolfClubData in utilities")
+    console.log("Error: url == null in loadRawGolfCoursesData in utilities.js")
     return
   }
 
   const resultData = await axios({
     url: url,
-    // data: {
-    //   routeNumber: selectedBusRouteNumber,
-    //   routeVisible: selected,
-    // },
     method: "PUT",
     timeout: 8000,
     headers: {
@@ -176,10 +172,9 @@ export var loadGolfClubData = async (url) => {
     },
   })
 
-  console.log("Here")
+  resultData = "Golf Course data loaded into database"
 
-  // return resultData
-  // return dataLoadedIntoDatabase
+  return resultData
 }
 
 // -------------------------------------------------------

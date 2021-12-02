@@ -1,4 +1,4 @@
-import { fetchGolfCourses } from "./controllers/golfController.js"
+import { loadRawGolfCoursesData } from "./controllers/golfCourseController.js"
 import {
   createEmptyTemperatureTable,
   deleteAllTemperatureReadings,
@@ -13,7 +13,7 @@ import {
 
 export const runSwitchboard = (io) => {
   // -----------------------------
-  // fetchGolfCourses()
+  // loadRawGolfCoursesData()
   // -----------------------------
   // createEmptyTemperatureTable()
   // deleteAllTemperatureReadings()

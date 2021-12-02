@@ -34,7 +34,7 @@ function GolfCoursesPage() {
   useEffect(() => {
     let isSubscribed = true
 
-    getGolfCourseData("http://localhost:5000/api/golf/nearbyGolfcourses")
+    getGolfCourseData("http://localhost:5000/api/golf/getGolfCourses")
       .then((returnedData) =>
         isSubscribed ? setGolfCoursesData(returnedData) : null
       )
