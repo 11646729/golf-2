@@ -1,4 +1,6 @@
 import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
+import axios from "axios"
+import cheerio from "cheerio"
 
 // -------------------------------------------------------
 // Catalogue Home page
@@ -84,6 +86,38 @@ export const getPortArrivals = (req, res) => {
 }
 
 // -------------------------------------------------------
+// Delete all Port Arrivals records from SQLite database
+// -------------------------------------------------------
+export const deletePortArrivals = (db) => {
+  // Guard clause for null Database Connection
+  if (db === null) return
+
+  try {
+    const sql_insert = "DELETE FROM portarrivals"
+
+    db.all(sql_insert, [], (err) => {
+      if (err) {
+        return console.error(err.message)
+      }
+      console.warn("All portarrivals deleted")
+    })
+
+    // Reset the id number
+    const sql_reset =
+      "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'portarrivals'"
+
+    db.all(sql_reset, [], (err) => {
+      if (err) {
+        return console.error(err.message)
+      }
+      console.warn("Reset portarrivals id number")
+    })
+  } catch (e) {
+    console.error("Error in deletePortArrivals: ", e.message)
+  }
+}
+
+// -------------------------------------------------------
 // Save Port Arrivals details to SQLite database
 // -------------------------------------------------------
 export const savePortArrival = (db, newPortArrival) => {
@@ -118,36 +152,6 @@ export const savePortArrival = (db, newPortArrival) => {
     })
   } catch (err) {
     console.error("Error in SQLsavePortArrival: ", err)
-  }
-}
-
-// -------------------------------------------------------
-// Delete all Port Arrivals records from SQLite database
-// -------------------------------------------------------
-export const deleteAllPortArrivals = (db) => {
-  // Guard clause for null Database Connection
-  if (db === null) return
-
-  try {
-    const sql_insert = "DELETE FROM portarrivals"
-    db.all(sql_insert, [], (err) => {
-      if (err) {
-        return console.error(err.message)
-      }
-      console.warn("All portarrivals deleted")
-    })
-
-    // Reset the id number
-    const sql_reset =
-      "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'portarrivals'"
-    db.all(sql_reset, [], (err) => {
-      if (err) {
-        return console.error(err.message)
-      }
-      console.warn("Reset portarrivals id number")
-    })
-  } catch (err) {
-    console.error("Error in deleteAllPortArrivals: ", err)
   }
 }
 

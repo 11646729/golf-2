@@ -2,7 +2,7 @@ import React, { useState, useEffect, memo } from "react"
 
 import GolfCoursesTable from "../components/GolfCoursesTable"
 import GolfCoursesMap from "../components/GolfCoursesMap"
-import getGolfCourseData from "../utilities"
+import getGolfCoursesData from "../utilities"
 
 import styled from "styled-components"
 
@@ -28,13 +28,13 @@ const GolfCoursesMapContainer = styled.div`
 // React Controller component
 // -------------------------------------------------------
 function GolfCoursesPage() {
-  const [golfCoursesData, setGolfCoursesData] = useState([])
+  const [golfCourses, setGolfCoursesData] = useState([])
   const [loadingError, setLoadingError] = useState("")
 
   useEffect(() => {
     let isSubscribed = true
 
-    getGolfCourseData("http://localhost:5000/api/golf/getGolfCourses")
+    getGolfCoursesData("http://localhost:5000/api/golf/getGolfCourses")
       .then((returnedData) =>
         isSubscribed ? setGolfCoursesData(returnedData) : null
       )
@@ -51,7 +51,7 @@ function GolfCoursesPage() {
       <GolfCoursesMapContainer>
         <GolfCoursesMap
           golfCoursesMapTitle={"Golf Courses Map"}
-          golfCoursesData={golfCoursesData}
+          golfCourses={golfCourses}
           loadingError={loadingError}
         />
       </GolfCoursesMapContainer>

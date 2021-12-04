@@ -63,9 +63,9 @@ const GolfCoursesMap = (props) => {
 
   // Now compute bounds of map to display
   useEffect(() => {
-    if (map && props.golfCoursesData != null) {
+    if (map && props.golfCourses != null) {
       const bounds = new window.google.maps.LatLngBounds()
-      props.golfCoursesData.map((golfcourse) => {
+      props.golfCourses.map((golfcourse) => {
         const myLatLng = new window.google.maps.LatLng({
           lat: golfcourse.lat,
           lng: golfcourse.lng,
@@ -75,7 +75,7 @@ const GolfCoursesMap = (props) => {
       })
       map.fitBounds(bounds)
     }
-  }, [map, props.golfCoursesData])
+  }, [map, props.golfCourses])
 
   const iconPin = {
     path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
@@ -105,8 +105,8 @@ const GolfCoursesMap = (props) => {
         onLoad={onLoadHandler}
         onUnmount={onUnmountHandler}
       >
-        {props.golfCoursesData
-          ? props.golfCoursesData.map((golfcourse) => (
+        {props.golfCourses
+          ? props.golfCourses.map((golfcourse) => (
               <Marker
                 key={golfcourse.name}
                 position={{

@@ -6,7 +6,10 @@ import moment from "moment"
 // -------------------------------------------------------
 export var getTemperatureData = async (url) => {
   // Guard clause
-  if (url == null) return
+  if (url == null) {
+    console.log("Error: url == null in getTemperatureData in utilities.js")
+    return
+  }
 
   const resultData = await axios({
     url: url,
@@ -23,9 +26,12 @@ export var getTemperatureData = async (url) => {
 // -------------------------------------------------------
 // Function to fetch all Golf Course data
 // -------------------------------------------------------
-export var getGolfCourseData = async (url) => {
+export var getGolfCoursesData = async (url) => {
   // Guard clause
-  if (url == null) return
+  if (url == null) {
+    console.log("Error: url == null in getGolfCoursesData in utilities.js")
+    return
+  }
 
   const resultData = await axios({
     url: url,
@@ -40,11 +46,38 @@ export var getGolfCourseData = async (url) => {
 }
 
 // -------------------------------------------------------
+// Function to instruct backend to load Golf Club Data into the database
+// -------------------------------------------------------
+export var loadRawGolfCoursesData = async (url) => {
+  // Guard clause
+  if (url == null) {
+    console.log("Error: url == null in loadRawGolfCoursesData in utilities.js")
+    return
+  }
+
+  var resultData = await axios({
+    url: url,
+    method: "PUT",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  resultData = "Golf Course data loaded into database"
+
+  return resultData
+}
+
+// -------------------------------------------------------
 // Function to fetch all Cruise Vessel data
 // -------------------------------------------------------
 export var getCruiseVesselData = async (url) => {
   // Guard clause
-  if (url == null) return
+  if (url == null) {
+    console.log("Error: url == null in getCruiseVesselData in utilities.js")
+    return
+  }
 
   const resultData = await axios({
     url: url,
@@ -63,23 +96,33 @@ export var getCruiseVesselData = async (url) => {
 // -------------------------------------------------------
 export var getCruiseVesselPositionData = async (url, test) => {
   // Guard clause
-  if (url == null) return
-
-  if (test === "Yes") {
-    console.log("Test recognised")
+  if (url == null) {
+    console.log(
+      "Error: url == null in getCruiseVesselPositionData in utilities.js"
+    )
+    return
   }
 
-  // Fetch the initial data
-  const resultData = await axios({
-    url: url,
-    method: "GET",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  var resultData = []
 
-  // console.log(resultData)
+  if (test === "Yes") {
+    console.log("Test Data")
+    resultData = getCruiseVesselPositionTestData()
+  } else {
+    console.log("Not Test Data")
+
+    // Fetch the initial data
+    resultData = await axios({
+      url: url,
+      method: "GET",
+      timeout: 8000,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+  }
+
+  console.log(resultData)
 
   return resultData.data
 }
@@ -112,18 +155,21 @@ export var getCruiseVesselPositionTestData = () => {
         lng: longlats[loop][1],
       }
 
-      // shipPositions.push(shipPosition)
+      shipPositions.push(shipPosition)
 
-      console.log(shipPosition)
+      console.log(shipPositions)
       // res.send(shipPosition)
-      return shipPosition
+      // return shipPosition
     } else {
       clearInterval(i)
 
       // res.send(shipPositions)
     }
     loop++
-  }, 5000)
+  }, 0)
+
+  console.log(shipPositions)
+  return shipPositions
 }
 
 // -------------------------------------------------------
@@ -151,30 +197,6 @@ export var selectedUniqueRoute = async (
   })
 
   // return resultData.data
-}
-
-// -------------------------------------------------------
-// Function to instruct backend to load Golf Club Data into the database
-// -------------------------------------------------------
-export var loadRawGolfCoursesData = async (url) => {
-  // Guard clause
-  if (url == null) {
-    console.log("Error: url == null in loadRawGolfCoursesData in utilities.js")
-    return
-  }
-
-  const resultData = await axios({
-    url: url,
-    method: "PUT",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-
-  resultData = "Golf Course data loaded into database"
-
-  return resultData
 }
 
 // -------------------------------------------------------

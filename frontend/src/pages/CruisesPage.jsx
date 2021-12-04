@@ -58,24 +58,25 @@ const CruisesPage = () => {
       // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
+    return () => (isSubscribed = false)
+  }, [])
+
+  if (portArrivals.length !== 0) {
+    console.log(portArrivals)
+  }
+
+  useEffect(() => {
+    let isSubscribed = true
+
     getCruiseVesselPositionData(
       "http://localhost:5000/api/cruise/vesselPosition",
-      "Yes"
+      "No"
     )
       .then((returnedData) =>
         isSubscribed ? setVesselPositions(returnedData) : null
       )
       // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
-
-    // getCruiseVesselPositionTestData(
-    //   "http://localhost:5000/api/cruise/vesselPositionTest"
-    // )
-    //   .then((returnedData) =>
-    //     isSubscribed ? setVesselPositions(returnedData) : null
-    //   )
-    //   // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
-    //   .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     return () => (isSubscribed = false)
   }, [])

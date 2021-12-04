@@ -1,15 +1,13 @@
+import cron from "node-cron"
 import { loadRawGolfCoursesData } from "./controllers/golfCourseController.js"
+import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines.js"
+import { importGtfsToSQLite } from "./importGtfs.js"
 import {
   createEmptyTemperatureTable,
   deleteAllTemperatureReadings,
-} from "./controllers/weatherController.js"
-import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines.js"
-import { importGtfsToSQLite } from "./importGtfs.js"
-import cron from "node-cron"
-import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
-} from "./getDarkSkiesDataAndEmit.js"
+} from "./controllers/weatherController.js"
 
 export const runSwitchboard = (io) => {
   // -----------------------------

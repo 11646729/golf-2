@@ -1,16 +1,16 @@
 import axios from "axios"
 import cheerio from "cheerio"
-import { getAndSavePortArrivals } from "./scrapeArrivals.js"
 import {
-  deleteAllPortArrivals,
+  deletePortArrivals,
   createPortArrivalsTable,
-  dropPortArrivalsTable,
+  // dropPortArrivalsTable,
+  getAndSavePortArrivals,
 } from "./controllers/portArrivalsController.js"
 import {
   deleteAllVessels,
   createVesselsTable,
   saveVessel,
-  dropVesselsTable,
+  // dropVesselsTable,
   scrapeVessel,
 } from "./controllers/vesselController.js"
 import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities.js"
@@ -34,7 +34,7 @@ export const fetchPortArrivalsAndVessels = async (req, res) => {
   createVesselsTable(db)
 
   // Delete all existing Port Arrivals & Vessel Details from the database
-  deleteAllPortArrivals(db)
+  deletePortArrivals(db)
   deleteAllVessels(db)
 
   // // Firstly drop the Tables in the database - IF NEEDED
