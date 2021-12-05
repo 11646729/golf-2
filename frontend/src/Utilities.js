@@ -105,11 +105,11 @@ export var getCruiseVesselPositionData = async (url, test) => {
 
   var resultData = []
 
-  if (test === "Yes") {
-    console.log("Test Data")
+  if (test === "Test") {
+    console.log("Static Test Data")
     resultData = getCruiseVesselPositionTestData()
   } else {
-    console.log("Not Test Data")
+    console.log("Real Data")
 
     // Fetch the initial data
     resultData = await axios({
@@ -122,15 +122,13 @@ export var getCruiseVesselPositionData = async (url, test) => {
     })
   }
 
-  console.log(resultData)
-
   return resultData.data
 }
 
 // -------------------------------------------------------
 // Function to fetch Cruise Vessel Position data
 // -------------------------------------------------------
-export var getCruiseVesselPositionTestData = () => {
+var getCruiseVesselPositionTestData = () => {
   var longlats = [
     [55.95473, -4.758], // lat, lng
     [55.843985, -4.9333],
@@ -138,38 +136,46 @@ export var getCruiseVesselPositionTestData = () => {
     [55.001906, -5.34192],
     [54.719465, -5.514335],
     [54.62649822725435, -5.884617360308293],
-    [30.95685, -74.87335],
   ]
 
+  let resultData = {}
   let shipPositions = []
   let loop = 0
-  var i = setInterval(function () {
-    if (loop < longlats.length) {
-      var utcMoment = moment.utc()
-      var utcDate = new Date(utcMoment.format())
+  // var i = setInterval(function () {
+  do {
+    // if (loop < longlats.length) {
+    var utcMoment = moment.utc()
+    var utcDate = new Date(utcMoment.format())
 
-      let shipPosition = {
-        index: loop + 1,
-        timestamp: utcDate,
-        lat: longlats[loop][0],
-        lng: longlats[loop][1],
-      }
-
-      shipPositions.push(shipPosition)
-
-      console.log(shipPositions)
-      // res.send(shipPosition)
-      // return shipPosition
-    } else {
-      clearInterval(i)
-
-      // res.send(shipPositions)
+    let shipPosition = {
+      index: loop + 1,
+      timestamp: utcDate,
+      lat: longlats[loop][0],
+      lng: longlats[loop][1],
     }
-    loop++
-  }, 0)
 
-  console.log(shipPositions)
-  return shipPositions
+    shipPositions.push(shipPosition)
+
+    console.log(shipPositions)
+
+    loop++
+    // res.send(shipPosition)
+    // return shipPosition
+    // } else {
+    // clearInterval(i)
+    // res.send(shipPositions)
+    // }
+  } while (loop < longlats.length)
+  // }, 0)
+
+  resultData = {
+    config: "testData",
+    data: shipPositions,
+  }
+
+  console.log(resultData)
+
+  return resultData
 }
 
 // -------------------------------------------------------

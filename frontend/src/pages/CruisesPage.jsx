@@ -10,7 +10,6 @@ import Title from "../components/Title"
 import {
   getCruiseVesselData,
   getCruiseVesselPositionData,
-  getCruiseVesselPositionTestData,
 } from "../utilities.js"
 
 const CruisesContainer = styled.div`
@@ -61,16 +60,16 @@ const CruisesPage = () => {
     return () => (isSubscribed = false)
   }, [])
 
-  if (portArrivals.length !== 0) {
-    console.log(portArrivals)
-  }
+  // if (portArrivals.length !== 0) {
+  //   console.log(portArrivals)
+  // }
 
   useEffect(() => {
     let isSubscribed = true
 
     getCruiseVesselPositionData(
       "http://localhost:5000/api/cruise/vesselPosition",
-      "No"
+      "Real"
     )
       .then((returnedData) =>
         isSubscribed ? setVesselPositions(returnedData) : null
