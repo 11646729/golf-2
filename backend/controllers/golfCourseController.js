@@ -87,7 +87,7 @@ export const getGolfCourses = (req, res) => {
 // Create Golf Courses Table in the SQLite Database
 // Path: Function called in switchBoard
 // -------------------------------------------------------
-export const loadRawGolfCoursesData = () => {
+export const importGolfCoursesData = () => {
   // Open a Database Connection
   let db = null
   db = openSqlDbConnection(process.env.SQL_URI)

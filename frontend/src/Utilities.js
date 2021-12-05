@@ -48,10 +48,10 @@ export var getGolfCoursesData = async (url) => {
 // -------------------------------------------------------
 // Function to instruct backend to load Golf Club Data into the database
 // -------------------------------------------------------
-export var loadRawGolfCoursesData = async (url) => {
+export var importGolfCoursesData = async (url) => {
   // Guard clause
   if (url == null) {
-    console.log("Error: url == null in loadRawGolfCoursesData in utilities.js")
+    console.log("Error: url == null in importGolfCoursesData in utilities.js")
     return
   }
 

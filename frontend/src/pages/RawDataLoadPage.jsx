@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import Title from "../components/Title"
 
-import { loadRawGolfCoursesData } from "../utilities"
+import { importGolfCoursesData } from "../utilities"
 
 const RawDataContainer = styled.div`
   display: flex;
@@ -41,8 +41,8 @@ const Button = styled.button`
 
 function RawDataLoadPage() {
   const loadGolfCourseDataHandler = async () => {
-    await loadRawGolfCoursesData(
-      "http://localhost:5000/api/golf/loadRawGolfCoursesData"
+    await importGolfCoursesData(
+      "http://localhost:5000/api/golf/importGolfCoursesData"
     )
       .then((returnedData) => console.log(returnedData))
       .catch((err) => console.log(err))

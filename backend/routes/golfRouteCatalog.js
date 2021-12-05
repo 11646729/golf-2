@@ -3,7 +3,7 @@ var golfRouter = express.Router()
 import {
   index,
   getGolfCourses,
-  loadRawGolfCoursesData,
+  importGolfCoursesData,
 } from "../controllers/golfCourseController.js"
 
 // -------------------------------------------------------
@@ -19,6 +19,6 @@ golfRouter.get("/getGolfCourses", getGolfCourses)
 // -------------------------------------------------------
 // PUT all Golf Courses data into the database
 // -------------------------------------------------------
-golfRouter.put("/loadRawGolfCoursesData", loadRawGolfCoursesData)
+golfRouter.put("/importGolfCoursesData", importGolfCoursesData)
 
 export default golfRouter
