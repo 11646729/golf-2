@@ -48,7 +48,7 @@ export const saveVessel = (db, newVessel) => {
 
     // Don't change the routine below
     const sql2 =
-      "INSERT INTO vessels (databaseversion, vesselnameurl, title, vesseltype, vesselname, vesselflag, vesselshortoperator, vessellongoperator, vesselyearbuilt, vessellengthmetres, vesselwidthmetres, vesselgrosstonnage, vesselaveragespeedknots, vesselmaxspeedknots, vesselaveragedraughtmetres, vesselimonumber, vesselmmsnumber, vesselcallsign, vesseltypicalpassengers, vesseltypicalcrew) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20)"
+      "INSERT INTO vessels (databaseversion, vesselnameurl, title, vesseltype, vesselname, vesselflag, vesselshortoperator, vessellongoperator, vesselyearbuilt, vessellengthmetres, vesselwidthmetres, vesselgrosstonnage, vesselaveragespeedknots, vesselmaxspeedknots, vesselaveragedraughtmetres, vesselimonumber, vesselmmsnumber, vesselcallsign, vesseltypicalpassengers, vesseltypicalcrew, currentpositionlng, currentpositionlat, currentpositiontime) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23)"
 
     db.run(sql2, newVessel, function (err) {
       if (err) {
@@ -444,6 +444,10 @@ export const scrapeVessel = async (vesselUrl) => {
     .next()
     .text()
 
+  var vessel_current_position_lng = 0.0
+  var vessel_current_position_lat = 0.0
+  var vessel_current_position_time = "Not Known"
+
   const scrapedVessel = [
     process.env.DATABASE_VERSION,
     vesselUrl,
@@ -467,6 +471,9 @@ export const scrapeVessel = async (vesselUrl) => {
     "C6BR5",
     vessel_typical_passengers,
     vessel_typical_crew,
+    vessel_current_position_lng,
+    vessel_current_position_lat,
+    vessel_current_position_time,
   ]
 
   return scrapedVessel
