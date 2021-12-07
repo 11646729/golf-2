@@ -8,7 +8,7 @@ import Title from "../components/Title"
 // import LoadingTitle from "../components/LoadingTitle"
 
 import {
-  getCruiseVesselData,
+  getPortArrivalsData,
   getCruiseVesselPositionData,
 } from "../utilities.js"
 
@@ -50,7 +50,7 @@ const CruisesPage = () => {
   useEffect(() => {
     let isSubscribed = true
 
-    getCruiseVesselData("http://localhost:5000/api/cruise/portArrivals")
+    getPortArrivalsData("http://localhost:5000/api/cruise/portArrivals")
       .then((returnedData) =>
         isSubscribed ? setPortArrivals(returnedData) : null
       )
@@ -60,25 +60,25 @@ const CruisesPage = () => {
     return () => (isSubscribed = false)
   }, [])
 
-  // if (portArrivals.length !== 0) {
-  //   console.log(portArrivals)
-  // }
-
+  // This routine gets Cruise Vessel position data - after portArrivals array has been filled
   useEffect(() => {
     let isSubscribed = true
 
-    getCruiseVesselPositionData(
-      "http://localhost:5000/api/cruise/vesselPosition",
-      "Real"
-    )
-      .then((returnedData) =>
-        isSubscribed ? setVesselPositions(returnedData) : null
+    if (portArrivals.length !== 0) {
+      getCruiseVesselPositionData(
+        "http://localhost:5000/api/cruise/vesselPositions",
+        "Real",
+        portArrivals
       )
-      // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+        .then((returnedData) =>
+          isSubscribed ? setVesselPositions(returnedData) : null
+        )
+        // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
+        .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+    }
 
     return () => (isSubscribed = false)
-  }, [])
+  }, [portArrivals])
 
   return (
     <CruisesContainer>

@@ -117,7 +117,7 @@ export const dropVesselsTable = (db) => {
 // Find vesselNameUrl from vessels Table from SQLite database
 // Path:
 // -------------------------------------------------------
-export const getVesselPosition = async (req, res) => {
+export const getVesselPositions = async (req, res) => {
   // Dummy data
   const urls = []
   urls.push("https://www.cruisemapper.com/ships/Anthem-of-the-Seas-801")
@@ -126,6 +126,8 @@ export const getVesselPosition = async (req, res) => {
 
   // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
   // const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
+
+  let arrivals = req.query.portArrivals
 
   // Now get current location & destination
   var shipPositions = []

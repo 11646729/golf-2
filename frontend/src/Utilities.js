@@ -72,7 +72,7 @@ export var importGolfCoursesData = async (url) => {
 // -------------------------------------------------------
 // Function to fetch all Cruise Vessel data
 // -------------------------------------------------------
-export var getCruiseVesselData = async (url) => {
+export var getPortArrivalsData = async (url) => {
   // Guard clause
   if (url == null) {
     console.log("Error: url == null in getCruiseVesselData in utilities.js")
@@ -94,14 +94,36 @@ export var getCruiseVesselData = async (url) => {
 // -------------------------------------------------------
 // Function to fetch Cruise Vessel Position data
 // -------------------------------------------------------
-export var getCruiseVesselPositionData = async (url, test) => {
-  // Guard clause
+export var getCruiseVesselPositionData = async (url, test, portArrivals) => {
+  // Guard clauses
   if (url == null) {
     console.log(
       "Error: url == null in getCruiseVesselPositionData in utilities.js"
     )
     return
   }
+
+  if (portArrivals == null) {
+    console.log(
+      "Error: portArrivals == null in getCruiseVesselPositionData in utilities.js"
+    )
+    return
+  }
+
+  // Extract urls here - THIS WORKS
+  var urls = []
+  var loop = 0
+  do {
+    let shipUrl = {
+      url: portArrivals[loop].vesselnameurl,
+    }
+
+    urls.push(shipUrl)
+
+    loop++
+  } while (loop < portArrivals.length)
+
+  // console.log(urls)
 
   var resultData = []
 
@@ -114,6 +136,9 @@ export var getCruiseVesselPositionData = async (url, test) => {
     // Fetch the initial data
     resultData = await axios({
       url: url,
+      params: {
+        portArrivals: portArrivals,
+      },
       method: "GET",
       timeout: 8000,
       headers: {
