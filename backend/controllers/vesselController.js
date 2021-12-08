@@ -268,18 +268,21 @@ export const getVesselPositions = async (req, res) => {
 // Fetch Details of a Single Vessel
 // Path: Local function called by fetchPortArrivalsAndVessels
 // ----------------------------------------------------------
-export const scrapeVessel = async (vesselUrl) => {
+export const scrapeVessel = async (vessel_url) => {
   // Fetch the initial data
-  const { data: html } = await axios.get(vesselUrl)
+  const { data: html } = await axios.get(vessel_url)
 
   // Load up cheerio
   const $ = cheerio.load(html)
 
   // Title
-  let title = $("#review .title").text().trim()
+  let vessel_title = $("#review .title").text().trim()
+
+  // Vessel Type
+  let vessel_type = "Passenger Ship"
 
   // Remove " Review" from title to get vessel_name
-  let vessel_name = title.substring(0, title.length - 7)
+  let vessel_name = vessel_title.substring(0, vessel_title.length - 7)
 
   // Vessel Flag
   let vessel_flag = $("td")
@@ -296,7 +299,7 @@ export const scrapeVessel = async (vesselUrl) => {
   }
 
   // Short Name of Vessel Operator
-  let vessel_short_operator = title.substr(0, title.indexOf(" "))
+  let vessel_short_operator = vessel_title.substr(0, vessel_title.indexOf(" "))
 
   // Long Name of Vessel Operator
   let vessel_long_operator = $("td")
@@ -423,8 +426,11 @@ export const scrapeVessel = async (vesselUrl) => {
     vessel_max_speed_knots = "Not Known"
   }
 
+  // Vessel Callsign
+  let vessel_callsign = "C6BR5"
+
   // Typical Number of Passengers
-  const vessel_typical_passengers = $("td")
+  let vessel_typical_passengers = $("td")
     .filter(function () {
       return $(this).text().trim() === "Passengers"
     })
@@ -437,22 +443,22 @@ export const scrapeVessel = async (vesselUrl) => {
   }
 
   // Typical Number of Crew
-  const vessel_typical_crew = $("td")
+  let vessel_typical_crew = $("td")
     .filter(function () {
       return $(this).text().trim() === "Crew"
     })
     .next()
     .text()
 
-  var vessel_current_position_lng = 0.0
-  var vessel_current_position_lat = 0.0
-  var vessel_current_position_time = "Not Known"
+  let vessel_current_position_lng = 0.0
+  let vessel_current_position_lat = 0.0
+  let vessel_current_position_time = "Not Known"
 
   const scrapedVessel = [
     process.env.DATABASE_VERSION,
-    vesselUrl,
-    title,
-    "Passenger Ship",
+    vessel_url,
+    vessel_title,
+    vessel_type, // From where?
     // vessel_photo,
     // vessel_ais_name,
     vessel_name,
@@ -468,7 +474,7 @@ export const scrapeVessel = async (vesselUrl) => {
     "7.9",
     "8217881",
     "311000343",
-    "C6BR5",
+    vessel_callsign, // From where?
     vessel_typical_passengers,
     vessel_typical_crew,
     vessel_current_position_lng,
