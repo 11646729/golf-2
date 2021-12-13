@@ -69,7 +69,7 @@ const CruisesPage = () => {
         "http://localhost:5000/api/cruise/vesselPositions",
         "Real",
         portArrivals
-      )
+      ) // Real or Test
         .then((returnedData) =>
           isSubscribed ? setVesselPositions(returnedData) : null
         )

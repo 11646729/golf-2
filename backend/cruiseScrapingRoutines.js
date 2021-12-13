@@ -11,7 +11,7 @@ import {
   createVesselsTable,
   saveVessel,
   // dropVesselsTable,
-  scrapeVessel,
+  scrapeVesselDetails,
 } from "./controllers/vesselController.js"
 import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities.js"
 
@@ -37,13 +37,11 @@ export const fetchPortArrivalsAndVessels = async (req, res) => {
   deletePortArrivals(db)
   deleteAllVessels(db)
 
-  // // Firstly drop the Tables in the database - IF NEEDED
-  // dropPortArrivalsTable(db)
-  // dropVesselsTable(db)
+  // Firstly read the sql_sequence table to check if portarrivals exists
+  // If exists then delete all values
+  // Else create table
 
-  // // Secondly create the empty Tables in the database - IF NEEDED
-  // createPortArrivalsTable(db)
-  // createVesselsTable(db)
+  // Then repeat for vessels table & port table
 
   // Get the Port Name & Associated values
   const port = "Belfast".toUpperCase()
@@ -75,7 +73,9 @@ export const fetchPortArrivalsAndVessels = async (req, res) => {
     let loop = 0
     do {
       // Extract urls for vessels & store in newVessel array
-      let scrapedVessel = await scrapeVessel(DeduplicatedVesselUrlArray[loop])
+      let scrapedVessel = await scrapeVesselDetails(
+        DeduplicatedVesselUrlArray[loop]
+      )
       saveVessel(db, scrapedVessel)
 
       loop++

@@ -18,19 +18,22 @@ export const createPortArrivalsTable = (db) => {
   // Guard clause for null Database Connection
   if (db === null) return
 
-  try {
+  db.serialize(() => {
+    // try {
     const sql =
       "CREATE TABLE IF NOT EXISTS portarrivals (portarrivalid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, sentencecaseport TEXT NOT NULL, portname TEXT NOT NULL, portunlocode TEXT NOT NULL, portcoordinatelng REAL CHECK( portcoordinatelng >= -180 AND portcoordinatelng <= 180 ), portcoordinatelat REAL CHECK( portcoordinatelat >= -90 AND portcoordinatelat <= 90 ), cruiseline TEXT, cruiselinelogo TEXT, vesselshortcruisename TEXT, arrivalDate TEXT, weekday TEXT, vesseleta TEXT, vesseletatime TEXT, vesseletd TEXT, vesseletdtime TEXT, vesselnameurl TEXT)"
 
-    db.run(sql, [], (err) => {
+    db.run(sql, (err) => {
       if (err) {
         return console.error(err.message)
+      } else {
+        console.log("portarrivals table successfully created")
       }
-      console.log("portarrivals table successfully created")
     })
-  } catch (e) {
-    console.error(e.message)
-  }
+    // } catch (e) {
+    //   console.error(e.message)
+    // }
+  })
 }
 
 // -------------------------------------------------------
@@ -40,18 +43,20 @@ export const dropPortArrivalsTable = (db) => {
   // Guard clause for null Database Connection
   if (db === null) return
 
-  try {
+  db.serialize(() => {
+    // try {
     const sql = "DROP TABLE IF EXISTS portarrivals"
 
-    db.all(sql, [], (err) => {
+    db.all(sql, (err) => {
       if (err) {
         return console.error(err.message)
       }
       console.log("portarrivals Table successfully dropped")
     })
-  } catch (e) {
-    console.error("Error in dropPortArrivalsTable: ", e.message)
-  }
+    // } catch (e) {
+    //   console.error("Error in dropPortArrivalsTable: ", e.message)
+    // }
+  })
 }
 
 // -------------------------------------------------------
@@ -68,11 +73,12 @@ export const getPortArrivals = (req, res) => {
       const sql =
         "SELECT * FROM portarrivals WHERE vesseleta >= DATE('now', '-1 day') AND vesseleta < DATE('now', '+6 month') AND vesseletd != 'Not Known'"
 
-      db.all(sql, [], (err, results) => {
+      db.all(sql, (err, results) => {
         if (err) {
           return console.error(err.message)
         }
 
+        // console.log(results)
         res.send(results)
       })
 
@@ -122,9 +128,9 @@ export const deletePortArrivals = (db) => {
 // Save Port Arrivals details to SQLite database
 // -------------------------------------------------------
 export const savePortArrival = (db, newPortArrival) => {
-  // Guard clause for null Port Arrival details
-  if (newPortArrival == null) return
+  // Guard clauses
   if (db === null) return
+  if (newPortArrival == null) return
 
   // TODO
   // Add Notification of change (except End of Month rollover)
@@ -133,20 +139,20 @@ export const savePortArrival = (db, newPortArrival) => {
 
   try {
     // Count the records in the database
-    let sql1 = "SELECT COUNT(portarrivalid) AS count FROM portarrivals"
+    let sql = "SELECT COUNT(portarrivalid) AS count FROM portarrivals"
 
     // Must be get to work - db.all doesn't work
-    db.get(sql1, [], (err) => {
+    db.get(sql, (err) => {
       if (err) {
         return console.error(err.message)
       }
     })
 
     // Don't change the routine below
-    const sql2 =
+    const sql1 =
       "INSERT INTO portarrivals (databaseversion, sentencecaseport, portname, portunlocode, portcoordinatelng, portcoordinatelat, cruiseline, cruiselinelogo, vesselshortcruisename, arrivalDate, weekday, vesseleta, vesseletatime, vesseletd, vesseletdtime, vesselnameurl) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)"
 
-    db.run(sql2, newPortArrival, function (err) {
+    db.run(sql1, newPortArrival, (err) => {
       if (err) {
         return console.error(err.message)
       }
