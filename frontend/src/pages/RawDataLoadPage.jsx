@@ -39,8 +39,11 @@ const Button = styled.button`
   }
 `
 
-function RawDataLoadPage() {
+const RawDataLoadPage = () => {
   const loadGolfCourseDataHandler = async () => {
+    // Firstly prepare database
+
+    // Secondly import the file data into the database
     await importGolfCoursesData(
       "http://localhost:5000/api/golf/importGolfCoursesData"
     )

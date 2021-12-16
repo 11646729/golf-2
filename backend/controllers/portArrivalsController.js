@@ -12,6 +12,29 @@ export var index = async (req, res) => {
 }
 
 // -------------------------------------------------------
+// Prepare empty portarrivals Table ready to import data
+// -------------------------------------------------------
+export const prepareEmptyPortArrivalsTable = (db) => {
+  // Firstly read the sqlite_sequence table to check if portarrivals table exists
+  let sql = "SELECT seq FROM sqlite_sequence WHERE name = 'portarrivals'"
+
+  db.all(sql, (err, results) => {
+    if (err) {
+      return console.error(err.message)
+    }
+
+    // results.length shows 1 if exists or 0 if doesn't exist
+    if (results.length === 1) {
+      // If exists then delete all values
+      deletePortArrivals(db)
+    } else {
+      // Else create table
+      createPortArrivalsTable(db)
+    }
+  })
+}
+
+// -------------------------------------------------------
 // Create portarrivals Table in the SQLite Database
 // -------------------------------------------------------
 export const createPortArrivalsTable = (db) => {
@@ -37,26 +60,34 @@ export const createPortArrivalsTable = (db) => {
 }
 
 // -------------------------------------------------------
-// Drop portarrivals Table in the SQLite database
+// Delete all Port Arrivals records from SQLite database
 // -------------------------------------------------------
-export const dropPortArrivalsTable = (db) => {
+export const deletePortArrivals = (db) => {
   // Guard clause for null Database Connection
   if (db === null) return
 
-  db.serialize(() => {
-    // try {
-    const sql = "DROP TABLE IF EXISTS portarrivals"
+  try {
+    const sql_insert = "DELETE FROM portarrivals"
 
-    db.all(sql, (err) => {
+    db.all(sql_insert, [], (err) => {
       if (err) {
-        return console.error(err.message)
+        return console.error("Error: ", err.message)
       }
-      console.log("portarrivals Table successfully dropped")
     })
-    // } catch (e) {
-    //   console.error("Error in dropPortArrivalsTable: ", e.message)
-    // }
-  })
+
+    // Reset the id number
+    const sql_reset =
+      "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'portarrivals'"
+
+    db.all(sql_reset, [], (err) => {
+      if (err) {
+        return console.error("Error: ", err.message)
+      }
+      console.warn("All portarrivals deleted & id number reset")
+    })
+  } catch (err) {
+    console.error("Error in deletePortArrivals: ", err.message)
+  }
 }
 
 // -------------------------------------------------------
@@ -93,39 +124,7 @@ export const getPortArrivals = (req, res) => {
 }
 
 // -------------------------------------------------------
-// Delete all Port Arrivals records from SQLite database
-// -------------------------------------------------------
-export const deletePortArrivals = (db) => {
-  // Guard clause for null Database Connection
-  if (db === null) return
-
-  try {
-    const sql_insert = "DELETE FROM portarrivals"
-
-    db.all(sql_insert, [], (err) => {
-      if (err) {
-        return console.error(err.message)
-      }
-      console.warn("All portarrivals deleted")
-    })
-
-    // Reset the id number
-    const sql_reset =
-      "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'portarrivals'"
-
-    db.all(sql_reset, [], (err) => {
-      if (err) {
-        return console.error(err.message)
-      }
-      console.warn("Reset portarrivals id number")
-    })
-  } catch (e) {
-    console.error("Error in deletePortArrivals: ", e.message)
-  }
-}
-
-// -------------------------------------------------------
-// Save Port Arrivals details to SQLite database
+// Save Port Arrival details to SQLite database
 // -------------------------------------------------------
 export const savePortArrival = (db, newPortArrival) => {
   // Guard clauses

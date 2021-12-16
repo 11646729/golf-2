@@ -1,16 +1,12 @@
 import axios from "axios"
 import cheerio from "cheerio"
 import {
-  deletePortArrivals,
-  createPortArrivalsTable,
-  // dropPortArrivalsTable,
+  prepareEmptyPortArrivalsTable,
   getAndSavePortArrivals,
 } from "./controllers/portArrivalsController.js"
 import {
-  deleteAllVessels,
-  createVesselsTable,
+  prepareEmptyVesselsTable,
   saveVessel,
-  // dropVesselsTable,
   scrapeVesselDetails,
 } from "./controllers/vesselController.js"
 import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities.js"
@@ -24,24 +20,10 @@ export const fetchPortArrivalsAndVessels = async (req, res) => {
   let db = null
   db = openSqlDbConnection(process.env.SQL_URI)
 
-  // Firstly drop the Tables in the database - IF NEEDED
-  // NB - THROWS ERROR
-  // dropPortArrivalsTable(db)
-  // dropVesselsTable(db)
-
-  // Secondly create the empty Tables in the database - IF NEEDED
-  createPortArrivalsTable(db)
-  createVesselsTable(db)
-
-  // Delete all existing Port Arrivals & Vessel Details from the database
-  deletePortArrivals(db)
-  deleteAllVessels(db)
-
-  // Firstly read the sql_sequence table to check if portarrivals exists
-  // If exists then delete all values
-  // Else create table
-
-  // Then repeat for vessels table & port table
+  // Prepare the empty portarrivals table
+  prepareEmptyPortArrivalsTable(db)
+  prepareEmptyVesselsTable(db)
+  // Then repeat for port table
 
   // Get the Port Name & Associated values
   const port = "Belfast".toUpperCase()

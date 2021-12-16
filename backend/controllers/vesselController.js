@@ -3,7 +3,30 @@ import cheerio from "cheerio"
 import moment from "moment"
 
 // -------------------------------------------------------
-// Create Vessels Table in the SQLite Database
+// Prepare empty vessels Table ready to import data
+// -------------------------------------------------------
+export const prepareEmptyVesselsTable = (db) => {
+  // Firstly read the sqlite_sequence table to check if vessels table exists
+  let sql = "SELECT seq FROM sqlite_sequence WHERE name = 'vessels'"
+
+  db.all(sql, (err, results) => {
+    if (err) {
+      return console.error(err.message)
+    }
+
+    // results.length shows 1 if exists or 0 if doesn't exist
+    if (results.length === 1) {
+      // If exists then delete all values
+      deleteVessels(db)
+    } else {
+      // Else create table
+      createVesselsTable(db)
+    }
+  })
+}
+
+// -------------------------------------------------------
+// Create vessels Table in the SQLite Database
 // -------------------------------------------------------
 export const createVesselsTable = (db) => {
   // Guard clause for null Database Connection
@@ -23,23 +46,33 @@ export const createVesselsTable = (db) => {
 }
 
 // -------------------------------------------------------
-// Drop vessels Table from SQLite database
+// Delete all Vessels from SQLite database
 // -------------------------------------------------------
-export const dropVesselsTable = (db) => {
+export const deleteVessels = (db) => {
   // Guard clause for null Database Connection
   if (db === null) return
 
   try {
-    const sql = "DROP TABLE IF EXISTS vessels"
+    const sql = "DELETE FROM vessels"
 
     db.run(sql, (err) => {
       if (err) {
         return console.error("Error: ", err.message)
       }
-      console.log("vessels Table successfully dropped")
+    })
+
+    // Reset the id number
+    const sql_reset =
+      "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'vessels'"
+
+    db.run(sql_reset, (err) => {
+      if (err) {
+        return console.error("Error: ", err.message)
+      }
+      console.warn("All vessels deleted & id number reset")
     })
   } catch (err) {
-    console.error("Error in dropVesselsTable: ", err)
+    console.error("Error in deleteVessels: ", err.message)
   }
 }
 
@@ -75,40 +108,6 @@ export const saveVessel = (db, newVessel) => {
     })
     // } catch (err) {
     //   console.error("Error in SQLsaveVessel: ", err)
-    // }
-  })
-}
-
-// -------------------------------------------------------
-// Delete all Vessels from SQLite database
-// -------------------------------------------------------
-export const deleteAllVessels = (db) => {
-  // Guard clause for null Database Connection
-  if (db === null) return
-
-  db.serialize(() => {
-    // try {
-    const sql = "DELETE FROM vessels"
-
-    db.run(sql, (err) => {
-      if (err) {
-        return console.error("Error: ", err.message)
-      }
-      // console.warn("All vessels deleted")
-    })
-
-    // Reset the id number
-    const sql_reset =
-      "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'vessels'"
-
-    db.run(sql_reset, (err) => {
-      if (err) {
-        return console.error("Error: ", err.message)
-      }
-      console.warn("ALl vessels deleted & id number reset")
-    })
-    // } catch (err) {
-    //   console.error("Error in deleteAllVessels: ", err)
     // }
   })
 }
