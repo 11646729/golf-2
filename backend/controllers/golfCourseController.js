@@ -65,7 +65,7 @@ const createGolfCoursesTable = (db) => {
       if (err) {
         return console.error(err.message)
       }
-      console.log("Empty golfcourses table now ready")
+      console.log("Empty golfcourses table created")
     })
   } catch (e) {
     console.error("Error in createGolfCoursesTable: ", e.message)
@@ -89,11 +89,12 @@ const deleteGolfCourses = (db) => {
       }
 
       if (result[0].count > 0) {
-        // delete all data
+        // Delete all the data in the golfcourses table
         db.serialize(() => {
           const sql1 = "DELETE FROM golfcourses"
 
-          db.all(sql1, [], (err) => {
+          // initially all
+          db.run(sql1, [], (err) => {
             if (err) {
               return console.error("Error: ", err.message)
             }
@@ -103,7 +104,8 @@ const deleteGolfCourses = (db) => {
           const sql2 =
             "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'golfcourses'"
 
-          db.all(sql2, [], (err) => {
+          // initially all
+          db.run(sql2, [], (err) => {
             if (err) {
               return console.error("Error: ", err.message)
             }
