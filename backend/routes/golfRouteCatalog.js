@@ -2,8 +2,9 @@ import express from "express"
 var golfRouter = express.Router()
 import {
   index,
-  getGolfCourses,
+  prepareEmptyGolfCoursesTable,
   importGolfCoursesData,
+  getGolfCourses,
 } from "../controllers/golfCourseController.js"
 
 // -------------------------------------------------------
@@ -12,13 +13,18 @@ import {
 golfRouter.get("/", index)
 
 // -------------------------------------------------------
-// GET all Golf Courses
+// Prepare the golfcourses table in the SQL database
 // -------------------------------------------------------
-golfRouter.get("/getGolfCourses", getGolfCourses)
+golfRouter.put("/prepareGolfCoursesTable", prepareEmptyGolfCoursesTable)
 
 // -------------------------------------------------------
-// PUT all Golf Courses data into the database
+// PUT all Golf Courses data into the SQL database
 // -------------------------------------------------------
 golfRouter.put("/importGolfCoursesData", importGolfCoursesData)
+
+// -------------------------------------------------------
+// GET all Golf Courses data from the SQL database
+// -------------------------------------------------------
+golfRouter.get("/getGolfCourses", getGolfCourses)
 
 export default golfRouter

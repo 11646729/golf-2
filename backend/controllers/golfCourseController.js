@@ -10,21 +10,62 @@ export var index = (req, res) => {
 }
 
 // -------------------------------------------------------
+// Prepare empty golfcourses Table ready to import data
+// -------------------------------------------------------
+export const prepareEmptyGolfCoursesTable = () => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
+
+  if (db !== null) {
+    // Firstly read the sqlite_schema table to check if golfcourses table exists
+    let sql =
+      "SELECT name FROM sqlite_schema WHERE type = 'table' AND name = 'golfcourses'"
+
+    // Must use db.all not db.run
+    db.all(sql, [], (err, results) => {
+      if (err) {
+        return console.error(err.message)
+      }
+
+      // results.length shows 1 if exists or 0 if doesn't exist
+      if (results.length === 1) {
+        // If exists then delete all values
+        console.log("golfcourses table exists")
+        deleteGolfCourses(db)
+      } else {
+        // Else create table
+        console.log("golfcourses table does not exist")
+        createGolfCoursesTable(db)
+      }
+    })
+
+    // importGolfCoursesData(db)
+  } else {
+    console.error("Cannot connect to database")
+  }
+
+  // Close the Database Connection
+  closeSqlDbConnection(db)
+}
+
+// -------------------------------------------------------
 // Create golfcourses Table in the SQLite database
 // -------------------------------------------------------
-export const createGolfCoursesTable = (db) => {
+const createGolfCoursesTable = (db) => {
   // Guard clause for null Database Connection
   if (db === null) return
 
   try {
+    // IF NOT EXISTS isn't really necessary in next line
     const sql =
       "CREATE TABLE IF NOT EXISTS golfcourses (courseid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, type TEXT NOT NULL, crsurn TEXT NOT NULL, name TEXT NOT NULL, phonenumber TEXT NOT NULL, phototitle TEXT NOT NULL, photourl TEXT NOT NULL, description TEXT, lng REAL CHECK( lng >= -180 AND lng <= 180 ), lat REAL CHECK( lat >= -90 AND lat <= 90 ))"
 
-    db.get(sql, [], (err) => {
+    db.run(sql, [], (err) => {
       if (err) {
         return console.error(err.message)
       }
-      console.log("golfcourses table successfully created")
+      console.log("Empty golfcourses table now ready")
     })
   } catch (e) {
     console.error("Error in createGolfCoursesTable: ", e.message)
@@ -32,23 +73,119 @@ export const createGolfCoursesTable = (db) => {
 }
 
 // -------------------------------------------------------
-// Drop golfcourses Table in the SQLite database
+// Delete all Port Arrivals records from SQLite database
 // -------------------------------------------------------
-export const dropGolfCoursesTable = (db) => {
+const deleteGolfCourses = (db) => {
   // Guard clause for null Database Connection
   if (db === null) return
 
   try {
-    const sql = "DROP TABLE IF EXISTS golfcourses"
+    // Count the records in the database
+    const sql = "SELECT COUNT(courseid) AS count FROM golfcourses"
 
-    db.get(sql, [], (err) => {
+    db.all(sql, [], (err, result) => {
       if (err) {
-        return console.error(err.message)
+        return console.error("Error: ", err.message)
       }
-      console.log("golfcourses table successfully dropped")
+
+      if (result[0].count > 0) {
+        // delete all data
+        db.serialize(() => {
+          const sql1 = "DELETE FROM golfcourses"
+
+          db.all(sql1, [], (err) => {
+            if (err) {
+              return console.error("Error: ", err.message)
+            }
+          })
+
+          // Reset the id number
+          const sql2 =
+            "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'golfcourses'"
+
+          db.all(sql2, [], (err) => {
+            if (err) {
+              return console.error("Error: ", err.message)
+            }
+            console.log("All golfcourses data deleted & id number reset")
+          })
+        })
+      } else {
+        console.log("golfcourses table is empty so no data deleted")
+      }
     })
+  } catch (err) {
+    console.error("Error in deleteGolfCourses: ", err.message)
+  }
+}
+
+// -------------------------------------------------------
+// Create Golf Courses Table in the SQLite Database
+// Path: Function called in switchBoard
+// -------------------------------------------------------
+export const importGolfCoursesData = (db) => {
+  // Guard clause for null Database Connection
+  if (db === null) return
+
+  try {
+    // Fetch all the Golf Courses data
+    fs.readFile(
+      process.env.RAW_GOLF_COURSE_DATA_FILEPATH,
+      "utf8",
+      (err, data) => {
+        if (err) {
+          throw err
+        }
+
+        // Save the data in the golfcourses Table in the SQLite database
+        const courses = JSON.parse(data)
+        populateGolfCourses(db, courses)
+      }
+    )
   } catch (e) {
-    console.error("Error in dropGolfCoursesTable: ", e.message)
+    console.error(e.message)
+  }
+}
+
+// -------------------------------------------------------
+// Local function
+// -------------------------------------------------------
+const populateGolfCourses = async (db, courses) => {
+  // Guard clauses
+  if (db == null) return
+  if (courses == null) return
+
+  let loop = 0
+  try {
+    do {
+      const course = [
+        process.env.DATABASE_VERSION,
+        process.env.TYPE_GOLF_CLUB,
+        courses.crs.properties.name,
+        courses.features[loop].properties.name,
+        courses.features[loop].properties.phoneNumber,
+        courses.features[loop].properties.photoTitle,
+        courses.features[loop].properties.photoUrl,
+        courses.features[loop].properties.description,
+        courses.features[loop].geometry.coordinates[0],
+        courses.features[loop].geometry.coordinates[1],
+      ]
+
+      const sql =
+        "INSERT INTO golfcourses (databaseversion, type, crsurn, name, phonenumber, phototitle, photourl, description, lng, lat) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10 )"
+
+      db.run(sql, course, function (err) {
+        if (err) {
+          return console.error(err.message)
+        }
+      })
+
+      loop++
+    } while (loop < courses.features.length)
+
+    console.log("No of new Golf Courses created & saved: ", loop)
+  } catch (e) {
+    console.error(e.message)
   }
 }
 
@@ -80,89 +217,6 @@ export const getGolfCourses = (req, res) => {
     }
   } else {
     console.error("Cannot connect to database")
-  }
-}
-
-// -------------------------------------------------------
-// Create Golf Courses Table in the SQLite Database
-// Path: Function called in switchBoard
-// -------------------------------------------------------
-export const importGolfCoursesData = () => {
-  // Open a Database Connection
-  let db = null
-  db = openSqlDbConnection(process.env.SQL_URI)
-
-  if (db !== null) {
-    try {
-      // Firstly drop the Table in the database - IF NEEDED
-      dropGolfCoursesTable(db)
-
-      // Secondly create an empty Table in the database - IF NEEDED
-      createGolfCoursesTable(db)
-
-      // Thirdly fetch all the Golf Courses data
-      fs.readFile(
-        process.env.RAW_GOLF_COURSE_DATA_FILEPATH,
-        "utf8",
-        (err, data) => {
-          if (err) {
-            throw err
-          }
-
-          // Fourthly save the data in the Golf Courses Table in the SQLite database
-          const courses = JSON.parse(data)
-          populateGolfCourses(db, courses)
-        }
-      )
-    } catch (e) {
-      console.error(e.message)
-    }
-  } else {
-    console.error("Cannot connect to database")
-  }
-}
-
-// -------------------------------------------------------
-// Local function
-// -------------------------------------------------------
-const populateGolfCourses = async (db, courses) => {
-  // Guard clauses
-  if (db == null) return
-  if (courses == null) return
-
-  let loop = 0
-  try {
-    do {
-      const course = [
-        process.env.DATABASE_VERSION,
-        process.env.TYPE_GOLF_CLUB,
-        courses.crs.properties.name,
-        courses.features[loop].properties.name,
-        courses.features[loop].properties.phoneNumber,
-        courses.features[loop].properties.photoTitle,
-        courses.features[loop].properties.photoUrl,
-        courses.features[loop].properties.description,
-        courses.features[loop].geometry.coordinates[0],
-        courses.features[loop].geometry.coordinates[1],
-      ]
-
-      const sql =
-        "INSERT INTO golfcourses (databaseversion, type, crsurn, name, phonenumber, phototitle, photourl, description, lng, lat) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10 )"
-      db.run(sql, course, function (err) {
-        if (err) {
-          return console.error(err.message)
-        }
-      })
-
-      loop++
-    } while (loop < courses.features.length)
-
-    // Close the Database Connection
-    closeSqlDbConnection(db)
-
-    console.log("No of new Golf Courses created & saved: ", loop)
-  } catch (e) {
-    console.error(e.message)
   }
 }
 

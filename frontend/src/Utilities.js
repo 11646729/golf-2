@@ -24,25 +24,27 @@ export var getTemperatureData = async (url) => {
 }
 
 // -------------------------------------------------------
-// Function to fetch all Golf Course data
+// Function to prepare the golfcourses table in the SQL database
 // -------------------------------------------------------
-export var getGolfCoursesData = async (url) => {
+export var prepareGolfCoursesTable = async (url) => {
   // Guard clause
   if (url == null) {
-    console.log("Error: url == null in getGolfCoursesData in utilities.js")
+    console.log("Error: url == null in prepareGolfCoursesTable in utilities.js")
     return
   }
 
-  const resultData = await axios({
+  var resultData = await axios({
     url: url,
-    method: "GET",
+    method: "PUT",
     timeout: 8000,
     headers: {
       "Content-Type": "application/json",
     },
   })
 
-  return resultData.data
+  resultData = "golfcourses Table prepared in the SQL database"
+
+  return resultData
 }
 
 // -------------------------------------------------------
@@ -67,6 +69,28 @@ export var importGolfCoursesData = async (url) => {
   resultData = "Golf Course data loaded into database"
 
   return resultData
+}
+
+// -------------------------------------------------------
+// Function to fetch all Golf Course data
+// -------------------------------------------------------
+export var getGolfCoursesData = async (url) => {
+  // Guard clause
+  if (url == null) {
+    console.log("Error: url == null in getGolfCoursesData in utilities.js")
+    return
+  }
+
+  const resultData = await axios({
+    url: url,
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  return resultData.data
 }
 
 // -------------------------------------------------------

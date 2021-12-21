@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import Title from "../components/Title"
 
-import { importGolfCoursesData } from "../utilities"
+import { prepareGolfCoursesTable, importGolfCoursesData } from "../utilities"
 
 const RawDataContainer = styled.div`
   display: flex;
@@ -40,15 +40,26 @@ const Button = styled.button`
 `
 
 const RawDataLoadPage = () => {
-  const loadGolfCourseDataHandler = async () => {
-    // Firstly prepare database
+  const prepareAllDatabaseTablesHandler = () => {
+    alert("Prepare set of empty database tables")
+  }
 
-    // Secondly import the file data into the database
-    await importGolfCoursesData(
-      "http://localhost:5000/api/golf/importGolfCoursesData"
+  const loadGolfCourseDataHandler = () => {
+    // Firstly prepare database table
+    // i.e. create if doesn't exist
+    // or delete rows if it exists
+    prepareGolfCoursesTable(
+      "http://localhost:5000/api/golf/prepareGolfCoursesTable"
     )
       .then((returnedData) => console.log(returnedData))
       .catch((err) => console.log(err))
+
+    // Secondly import the file data into the database
+    // importGolfCoursesData(
+    //   "http://localhost:5000/api/golf/importGolfCoursesData"
+    // )
+    //   .then((returnedData) => console.log(returnedData))
+    //   .catch((err) => console.log(err))
   }
 
   const loadCruiseShipDataHandler = () => {
@@ -73,6 +84,12 @@ const RawDataLoadPage = () => {
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td>Prepare All Database Tables</td>
+              <td>
+                <Button onClick={prepareAllDatabaseTablesHandler}>Fetch</Button>
+              </td>
+            </tr>
             <tr>
               <td>Golf Course Data</td>
               <td>

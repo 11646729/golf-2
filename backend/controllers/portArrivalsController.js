@@ -18,7 +18,7 @@ export const prepareEmptyPortArrivalsTable = (db) => {
   // Firstly read the sqlite_sequence table to check if portarrivals table exists
   let sql = "SELECT seq FROM sqlite_sequence WHERE name = 'portarrivals'"
 
-  db.all(sql, (err, results) => {
+  db.run(sql, (err, results) => {
     if (err) {
       return console.error(err.message)
     }
