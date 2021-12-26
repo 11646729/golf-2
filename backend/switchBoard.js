@@ -1,5 +1,4 @@
 import cron from "node-cron"
-import { importGolfCoursesData } from "./controllers/golfCourseController.js"
 import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines.js"
 import { importGtfsToSQLite } from "./importGtfs.js"
 import {
@@ -10,8 +9,6 @@ import {
 } from "./controllers/weatherController.js"
 
 export const runSwitchboard = (io) => {
-  // -----------------------------
-  // importGolfCoursesData()
   // -----------------------------
   // createEmptyTemperatureTable()
   // deleteAllTemperatureReadings()
