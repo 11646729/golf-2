@@ -55,11 +55,11 @@ const RawDataLoadPage = () => {
       .catch((err) => console.log(err))
 
     // Secondly import the file data into the database
-    // importGolfCoursesData(
-    //   "http://localhost:5000/api/golf/importGolfCoursesData"
-    // )
-    //   .then((returnedData) => console.log(returnedData))
-    //   .catch((err) => console.log(err))
+    importGolfCoursesData(
+      "http://localhost:5000/api/golf/importGolfCoursesData"
+    )
+      .then((returnedData) => console.log(returnedData))
+      .catch((err) => console.log(err))
   }
 
   const loadCruiseShipDataHandler = () => {

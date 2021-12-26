@@ -141,6 +141,7 @@ export const savePortArrival = (db, newPortArrival) => {
     let sql = "SELECT COUNT(portarrivalid) AS count FROM portarrivals"
 
     // Must be get to work - db.all doesn't work
+    // SHOULD THIS BE run ?
     db.get(sql, (err) => {
       if (err) {
         return console.error(err.message)

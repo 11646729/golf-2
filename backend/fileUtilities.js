@@ -2,6 +2,8 @@ import fs from "fs"
 import path from "path"
 import sqlite3 from "sqlite3"
 
+sqlite3.verbose()
+
 // -------------------------------------------------------
 // Local function to read the geojson filenames in a directory
 // -------------------------------------------------------

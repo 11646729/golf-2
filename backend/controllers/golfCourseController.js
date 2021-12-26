@@ -12,7 +12,7 @@ export var index = (req, res) => {
 // -------------------------------------------------------
 // Prepare empty golfcourses Table ready to import data
 // -------------------------------------------------------
-export const prepareEmptyGolfCoursesTable = () => {
+export const prepareEmptyGolfCoursesTable = (req, res) => {
   // Open a Database Connection
   let db = null
   db = openSqlDbConnection(process.env.SQL_URI)
@@ -33,12 +33,18 @@ export const prepareEmptyGolfCoursesTable = () => {
         // If exists then delete all values
         console.log("golfcourses table exists")
         deleteGolfCourses(db)
+
+        // return "Returned Data"
       } else {
         // Else create table
         console.log("golfcourses table does not exist")
         createGolfCoursesTable(db)
       }
     })
+
+    res.send("Returned Data")
+
+    // return "Returned Data"
 
     // importGolfCoursesData(db)
   } else {
@@ -63,7 +69,7 @@ const createGolfCoursesTable = (db) => {
 
     db.run(sql, [], (err) => {
       if (err) {
-        return console.error(err.message)
+        console.error(err.message)
       }
       console.log("Empty golfcourses table created")
     })
@@ -80,41 +86,44 @@ const deleteGolfCourses = (db) => {
   if (db === null) return
 
   try {
+    // db.serialize(function () {
     // Count the records in the database
     const sql = "SELECT COUNT(courseid) AS count FROM golfcourses"
 
     db.all(sql, [], (err, result) => {
       if (err) {
-        return console.error("Error: ", err.message)
+        console.error(err.message)
       }
 
       if (result[0].count > 0) {
         // Delete all the data in the golfcourses table
-        db.serialize(() => {
-          const sql1 = "DELETE FROM golfcourses"
+        const sql1 = "DELETE FROM golfcourses"
 
-          // initially all
-          db.run(sql1, [], (err) => {
-            if (err) {
-              return console.error("Error: ", err.message)
-            }
-          })
+        // initially all
+        db.all(sql1, [], function (err, results) {
+          if (err) {
+            console.error(err.message)
+          }
+          console.log("All golfcourses data deleted")
+        })
 
-          // Reset the id number
-          const sql2 =
-            "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'golfcourses'"
+        // Reset the id number
+        const sql2 =
+          "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'golfcourses'"
 
-          // initially all
-          db.run(sql2, [], (err) => {
-            if (err) {
-              return console.error("Error: ", err.message)
-            }
-            console.log("All golfcourses data deleted & id number reset")
-          })
+        // initially all
+        db.run(sql2, [], (err) => {
+          if (err) {
+            console.error(err.message)
+          }
+          console.log(
+            "In sqlite_sequence table golfcourses seq number set to 0"
+          )
         })
       } else {
-        console.log("golfcourses table is empty so no data deleted")
+        console.log("golfcourses table was empty (so no data deleted)")
       }
+      // })
     })
   } catch (err) {
     console.error("Error in deleteGolfCourses: ", err.message)
@@ -125,7 +134,11 @@ const deleteGolfCourses = (db) => {
 // Create Golf Courses Table in the SQLite Database
 // Path: Function called in switchBoard
 // -------------------------------------------------------
-export const importGolfCoursesData = (db) => {
+export const importGolfCoursesData = (req, res) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
+
   // Guard clause for null Database Connection
   if (db === null) return
 
@@ -136,26 +149,29 @@ export const importGolfCoursesData = (db) => {
       "utf8",
       (err, data) => {
         if (err) {
-          throw err
+          console.error(err.message)
         }
 
         // Save the data in the golfcourses Table in the SQLite database
         const courses = JSON.parse(data)
-        populateGolfCourses(db, courses)
+        populateGolfCourses(courses)
       }
     )
-  } catch (e) {
-    console.error(e.message)
+  } catch (err) {
+    console.error("Error in importGolfCoursesData: ", err.message)
   }
+
+  // Close the Database Connection
+  closeSqlDbConnection(db)
 }
 
 // -------------------------------------------------------
 // Local function
 // -------------------------------------------------------
-const populateGolfCourses = async (db, courses) => {
-  // Guard clauses
-  if (db == null) return
-  if (courses == null) return
+const populateGolfCourses = (courses) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
 
   let loop = 0
   try {
@@ -176,9 +192,9 @@ const populateGolfCourses = async (db, courses) => {
       const sql =
         "INSERT INTO golfcourses (databaseversion, type, crsurn, name, phonenumber, phototitle, photourl, description, lng, lat) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10 )"
 
-      db.run(sql, course, function (err) {
+      db.run(sql, course, (err) => {
         if (err) {
-          return console.error(err.message)
+          console.error(err.message)
         }
       })
 
@@ -189,6 +205,9 @@ const populateGolfCourses = async (db, courses) => {
   } catch (e) {
     console.error(e.message)
   }
+
+  // Close the Database Connection
+  closeSqlDbConnection(db)
 }
 
 // -------------------------------------------------------

@@ -66,7 +66,7 @@ export var importGolfCoursesData = async (url) => {
     },
   })
 
-  resultData = "Golf Course data loaded into database"
+  resultData = "Golf Course data loaded into the SQL database"
 
   return resultData
 }
