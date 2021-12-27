@@ -14,24 +14,39 @@ export var index = async (req, res) => {
 // -------------------------------------------------------
 // Prepare empty portarrivals Table ready to import data
 // -------------------------------------------------------
-export const prepareEmptyPortArrivalsTable = (db) => {
-  // Firstly read the sqlite_sequence table to check if portarrivals table exists
-  let sql = "SELECT seq FROM sqlite_sequence WHERE name = 'portarrivals'"
+export const prepareEmptyPortArrivalsTable = (req, res) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
 
-  db.run(sql, (err, results) => {
-    if (err) {
-      return console.error(err.message)
-    }
+  if (db !== null) {
+    // Firstly read the sqlite_sequence table to check if portarrivals table exists
+    let sql = "SELECT seq FROM sqlite_sequence WHERE name = 'portarrivals'"
 
-    // results.length shows 1 if exists or 0 if doesn't exist
-    if (results.length === 1) {
-      // If exists then delete all values
-      deletePortArrivals(db)
-    } else {
-      // Else create table
-      createPortArrivalsTable(db)
-    }
-  })
+    db.all(sql, [], (err, results) => {
+      if (err) {
+        return console.error(err.message)
+      }
+
+      // results.length shows 1 if exists or 0 if doesn't exist
+      if (results.length === 1) {
+        // If exists then delete all values
+        console.log("portarrivals table exists")
+        deletePortArrivals(db)
+      } else {
+        // Else create table
+        console.log("portarrivals table does not exist")
+        createPortArrivalsTable(db)
+      }
+    })
+
+    res.send("Returned Data")
+  } else {
+    console.error("Cannot connect to database")
+  }
+
+  // Close the Database Connection
+  closeSqlDbConnection(db)
 }
 
 // -------------------------------------------------------
@@ -41,22 +56,20 @@ export const createPortArrivalsTable = (db) => {
   // Guard clause for null Database Connection
   if (db === null) return
 
-  db.serialize(() => {
-    // try {
+  try {
+    // IF NOT EXISTS isn't really necessary in next line
     const sql =
       "CREATE TABLE IF NOT EXISTS portarrivals (portarrivalid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, sentencecaseport TEXT NOT NULL, portname TEXT NOT NULL, portunlocode TEXT NOT NULL, portcoordinatelng REAL CHECK( portcoordinatelng >= -180 AND portcoordinatelng <= 180 ), portcoordinatelat REAL CHECK( portcoordinatelat >= -90 AND portcoordinatelat <= 90 ), cruiseline TEXT, cruiselinelogo TEXT, vesselshortcruisename TEXT, arrivalDate TEXT, weekday TEXT, vesseleta TEXT, vesseletatime TEXT, vesseletd TEXT, vesseletdtime TEXT, vesselnameurl TEXT)"
 
-    db.run(sql, (err) => {
+    db.run(sql, [], (err) => {
       if (err) {
-        return console.error(err.message)
-      } else {
-        console.log("portarrivals table successfully created")
+        console.error(err.message)
       }
+      console.log("Empty portarrivals table created")
     })
-    // } catch (e) {
-    //   console.error(e.message)
-    // }
-  })
+  } catch (e) {
+    console.error("Error in createPortArrivalsTable: ", e.message)
+  }
 }
 
 // -------------------------------------------------------
@@ -67,23 +80,42 @@ export const deletePortArrivals = (db) => {
   if (db === null) return
 
   try {
-    const sql_insert = "DELETE FROM portarrivals"
+    // db.serialize(function () {
+    // Count the records in the database
+    const sql = "SELECT COUNT(portarrivalid) AS count FROM portarrivals"
 
-    db.all(sql_insert, [], (err) => {
+    db.all(sql, [], (err, result) => {
       if (err) {
-        return console.error("Error: ", err.message)
+        console.error(err.message)
       }
-    })
 
-    // Reset the id number
-    const sql_reset =
-      "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'portarrivals'"
+      if (result[0].count > 0) {
+        // Delete all the data in the portarrivals table
+        const sql1 = "DELETE FROM portarrivals"
 
-    db.all(sql_reset, [], (err) => {
-      if (err) {
-        return console.error("Error: ", err.message)
+        db.all(sql1, [], function (err, results) {
+          if (err) {
+            console.error(err.message)
+          }
+          console.log("All portarrivals data deleted")
+        })
+
+        // Reset the id number
+        const sql2 =
+          "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'portarrivals'"
+
+        db.run(sql2, [], (err) => {
+          if (err) {
+            console.error(err.message)
+          }
+          console.log(
+            "In sqlite_sequence table portarrivals seq number set to 0"
+          )
+        })
+      } else {
+        console.log("portarrivals table was empty (so no data deleted)")
       }
-      console.warn("All portarrivals deleted & id number reset")
+      // })
     })
   } catch (err) {
     console.error("Error in deletePortArrivals: ", err.message)

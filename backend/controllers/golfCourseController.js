@@ -33,8 +33,6 @@ export const prepareEmptyGolfCoursesTable = (req, res) => {
         // If exists then delete all values
         console.log("golfcourses table exists")
         deleteGolfCourses(db)
-
-        // return "Returned Data"
       } else {
         // Else create table
         console.log("golfcourses table does not exist")
@@ -43,10 +41,6 @@ export const prepareEmptyGolfCoursesTable = (req, res) => {
     })
 
     res.send("Returned Data")
-
-    // return "Returned Data"
-
-    // importGolfCoursesData(db)
   } else {
     console.error("Cannot connect to database")
   }
@@ -99,7 +93,6 @@ const deleteGolfCourses = (db) => {
         // Delete all the data in the golfcourses table
         const sql1 = "DELETE FROM golfcourses"
 
-        // initially all
         db.all(sql1, [], function (err, results) {
           if (err) {
             console.error(err.message)
@@ -111,7 +104,6 @@ const deleteGolfCourses = (db) => {
         const sql2 =
           "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'golfcourses'"
 
-        // initially all
         db.run(sql2, [], (err) => {
           if (err) {
             console.error(err.message)

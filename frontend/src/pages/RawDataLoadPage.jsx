@@ -3,7 +3,11 @@ import styled from "styled-components"
 
 import Title from "../components/Title"
 
-import { prepareGolfCoursesTable, importGolfCoursesData } from "../utilities"
+import {
+  prepareGolfCoursesTable,
+  importGolfCoursesData,
+  preparePortArrivalsTable,
+} from "../utilities"
 
 const RawDataContainer = styled.div`
   display: flex;
@@ -40,9 +44,9 @@ const Button = styled.button`
 `
 
 const RawDataLoadPage = () => {
-  const prepareAllDatabaseTablesHandler = () => {
-    alert("Prepare set of empty database tables")
-  }
+  // const prepareAllDatabaseTablesHandler = () => {
+  //   alert("Prepare set of empty database tables")
+  // }
 
   const loadGolfCourseDataHandler = () => {
     // Firstly prepare database table
@@ -60,10 +64,21 @@ const RawDataLoadPage = () => {
     )
       .then((returnedData) => console.log(returnedData))
       .catch((err) => console.log(err))
+
+    alert("Empty golfcourses table prepared")
   }
 
   const loadCruiseShipDataHandler = () => {
-    alert("Load Cruise Ship Arrivals Data")
+    // Firstly prepare database table
+    // i.e. create if doesn't exist
+    // or delete rows if it exists
+    preparePortArrivalsTable(
+      "http://localhost:5000/api/cruise/preparePortArrivalsTable"
+    )
+      .then((returnedData) => console.log(returnedData))
+      .catch((err) => console.log(err))
+
+    alert("Empty portarrivals table prepared")
   }
 
   const loadGTFSTransportDataHandler = () => {
@@ -84,12 +99,12 @@ const RawDataLoadPage = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Prepare All Database Tables</td>
+            {/* <tr>
+              <td>Prepare Temperature Database Table</td>
               <td>
                 <Button onClick={prepareAllDatabaseTablesHandler}>Fetch</Button>
               </td>
-            </tr>
+            </tr> */}
             <tr>
               <td>Golf Course Data</td>
               <td>

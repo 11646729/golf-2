@@ -2,6 +2,7 @@ import express from "express"
 var cruiseRouter = express.Router()
 import {
   index,
+  prepareEmptyPortArrivalsTable,
   getPortArrivals,
   savePortArrival,
 } from "../controllers/portArrivalsController.js"
@@ -16,6 +17,11 @@ import {
 // GET catalogue home page
 // -------------------------------------------------------
 cruiseRouter.get("/", index)
+
+// -------------------------------------------------------
+// Prepare the golfcourses table in the SQL database
+// -------------------------------------------------------
+cruiseRouter.put("/preparePortArrivalsTable", prepareEmptyPortArrivalsTable)
 
 // -------------------------------------------------------
 // GET all port arrivals from the database
