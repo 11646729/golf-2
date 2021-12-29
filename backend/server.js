@@ -59,4 +59,4 @@ httpServer.listen(port, (err) => {
   }
 })
 
-// runSwitchboard(io)
+runSwitchboard(io)

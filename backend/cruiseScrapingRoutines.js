@@ -1,34 +1,20 @@
 import axios from "axios"
 import cheerio from "cheerio"
+import { getAndSavePortArrivals } from "./controllers/portArrivalsController.js"
 import {
-  prepareEmptyPortArrivalsTable,
-  getAndSavePortArrivals,
-} from "./controllers/portArrivalsController.js"
-import {
-  prepareEmptyVesselsTable,
   saveVessel,
   scrapeVesselDetails,
 } from "./controllers/vesselController.js"
-import { openSqlDbConnection, closeSqlDbConnection } from "./fileUtilities.js"
 
 // -------------------------------------------------------
 // Fetch Port Arrivals & Vessel Details
 // Path: Function called in switchBoard
 // -------------------------------------------------------
 export const fetchPortArrivalsAndVessels = async (req, res) => {
-  // Open a Database Connection
-  let db = null
-  db = openSqlDbConnection(process.env.SQL_URI)
-
-  // Prepare the empty portarrivals table
-  prepareEmptyPortArrivalsTable(db)
-  prepareEmptyVesselsTable(db)
-  // Then repeat for port table
-
   // Get the Port Name & Associated values
-  const port = "Belfast".toUpperCase()
-  // const port = "Geiranger".toUpperCase()
-  // const port = "Bergen".toUpperCase()
+  const port = process.env.BELFAST_PORT_NAME.toUpperCase()
+  // const port = process.env.GEIRANGER_PORT_NAME.toUpperCase()
+  // const port = process.env.BERGEN_PORT_NAME.toUpperCase()
   const portUrl = port + "_PORT_URL"
   const portName = process.env[portUrl]
 
@@ -40,7 +26,6 @@ export const fetchPortArrivalsAndVessels = async (req, res) => {
   } else {
     // Fourthly get all the Vessel Arrivals per Month
     let vesselUrls = await getAndSavePortArrivals(
-      db,
       scheduledPeriods,
       port,
       portName
@@ -58,7 +43,7 @@ export const fetchPortArrivalsAndVessels = async (req, res) => {
       let scrapedVessel = await scrapeVesselDetails(
         DeduplicatedVesselUrlArray[loop]
       )
-      saveVessel(db, scrapedVessel)
+      saveVessel(scrapedVessel)
 
       loop++
     } while (loop < DeduplicatedVesselUrlArray.length)
@@ -67,9 +52,6 @@ export const fetchPortArrivalsAndVessels = async (req, res) => {
     console.log(vesselUrls.length + " Port Arrivals added")
     console.log(DeduplicatedVesselUrlArray.length + " Vessels added")
   }
-
-  // Disconnect from the SQLite database
-  closeSqlDbConnection(db)
 }
 
 // -------------------------------------------------------

@@ -114,7 +114,11 @@ export const deleteVessels = (db) => {
 // -------------------------------------------------------
 // Save Vessel details to SQLite database
 // -------------------------------------------------------
-export const saveVessel = (db, newVessel) => {
+export const saveVessel = (newVessel) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
+
   // Guard clause for null Vessel details
   if (db === null) return
   if (newVessel == null) return
@@ -145,6 +149,9 @@ export const saveVessel = (db, newVessel) => {
     //   console.error("Error in SQLsaveVessel: ", err)
     // }
   })
+
+  // Disconnect from the SQLite database
+  closeSqlDbConnection(db)
 }
 
 // -------------------------------------------------------

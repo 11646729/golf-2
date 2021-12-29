@@ -13,7 +13,7 @@ export const runSwitchboard = (io) => {
   // createEmptyTemperatureTable()
   // deleteAllTemperatureReadings()
   // -----------------------------
-  // fetchPortArrivalsAndVessels()
+  fetchPortArrivalsAndVessels()
   // -----------------------------
   // importGtfsToSQLite()
   // -----------------------------

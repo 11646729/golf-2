@@ -197,11 +197,14 @@ export const savePortArrival = (db, newPortArrival) => {
 // Path: Local function called by fetchPortArrivalsAndVessels
 // -------------------------------------------------------
 export const getAndSavePortArrivals = async (
-  db,
   scheduledPeriods,
   port,
   portName
 ) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
+
   let allVesselArrivals = []
   let periodVesselArrivals = []
 
@@ -224,6 +227,9 @@ export const getAndSavePortArrivals = async (
 
     loop++
   } while (loop < scheduledPeriods.length)
+
+  // Disconnect from the SQLite database
+  closeSqlDbConnection(db)
 
   return allVesselArrivals
 }
