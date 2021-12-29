@@ -7,6 +7,7 @@ import {
   savePortArrival,
 } from "../controllers/portArrivalsController.js"
 import {
+  prepareEmptyVesselsTable,
   getVesselPosition,
   // getVesselPositionTestData,
   saveVessel,
@@ -19,9 +20,9 @@ import {
 cruiseRouter.get("/", index)
 
 // -------------------------------------------------------
-// Prepare the golfcourses table in the SQL database
+// Prepare the portarrivals table in the SQL database
 // -------------------------------------------------------
-cruiseRouter.put("/preparePortArrivalsTable", prepareEmptyPortArrivalsTable)
+cruiseRouter.post("/preparePortArrivalsTable", prepareEmptyPortArrivalsTable)
 
 // -------------------------------------------------------
 // GET all port arrivals from the database
@@ -42,6 +43,11 @@ cruiseRouter.post("/portArrivals", savePortArrival)
 // PUT a port arrival by id
 // -------------------------------------------------------
 // cruiseRouter.put("/portArrivals/:id", putPortArrival)
+
+// -------------------------------------------------------
+// Prepare the vessels table in the SQL database
+// -------------------------------------------------------
+cruiseRouter.post("/prepareVesselsTable", prepareEmptyVesselsTable)
 
 // -------------------------------------------------------
 /// Vessel Routes ///

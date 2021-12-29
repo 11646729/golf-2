@@ -35,7 +35,7 @@ export var prepareGolfCoursesTable = async (url) => {
 
   var resultData = await axios({
     url: url,
-    method: "PUT",
+    method: "POST",
     timeout: 8000,
     headers: {
       "Content-Type": "application/json",
@@ -107,7 +107,7 @@ export var preparePortArrivalsTable = async (url) => {
 
   var resultData = await axios({
     url: url,
-    method: "PUT",
+    method: "POST",
     timeout: 8000,
     headers: {
       "Content-Type": "application/json",
@@ -115,6 +115,32 @@ export var preparePortArrivalsTable = async (url) => {
   })
 
   resultData = "portarrivals Table prepared in the SQL database"
+
+  return resultData
+}
+
+// -------------------------------------------------------
+// Function to prepare the vessels table in the SQL database
+// -------------------------------------------------------
+export var prepareVesselsTable = async (url) => {
+  // Guard clause
+  if (url == null) {
+    console.log("Error: url == null in prepareVesselsTable in utilities.js")
+    return
+  }
+
+  console.log("1st Here")
+
+  var resultData = await axios({
+    url: url,
+    method: "POST",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  resultData = "vessels Table prepared in the SQL database"
 
   return resultData
 }

@@ -80,7 +80,6 @@ export const deletePortArrivals = (db) => {
   if (db === null) return
 
   try {
-    // db.serialize(function () {
     // Count the records in the database
     const sql = "SELECT COUNT(portarrivalid) AS count FROM portarrivals"
 
@@ -115,7 +114,6 @@ export const deletePortArrivals = (db) => {
       } else {
         console.log("portarrivals table was empty (so no data deleted)")
       }
-      // })
     })
   } catch (err) {
     console.error("Error in deletePortArrivals: ", err.message)

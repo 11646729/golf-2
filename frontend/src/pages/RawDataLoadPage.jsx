@@ -7,6 +7,7 @@ import {
   prepareGolfCoursesTable,
   importGolfCoursesData,
   preparePortArrivalsTable,
+  prepareVesselsTable,
 } from "../utilities"
 
 const RawDataContainer = styled.div`
@@ -78,7 +79,14 @@ const RawDataLoadPage = () => {
       .then((returnedData) => console.log(returnedData))
       .catch((err) => console.log(err))
 
-    alert("Empty portarrivals table prepared")
+    // Firstly prepare database table
+    // i.e. create if doesn't exist
+    // or delete rows if it exists
+    prepareVesselsTable("http://localhost:5000/api/cruise/prepareVesselsTable")
+      .then((returnedData) => console.log(returnedData))
+      .catch((err) => console.log(err))
+
+    alert("Empty vessels & portarrivals tables prepared")
   }
 
   const loadGTFSTransportDataHandler = () => {

@@ -2,27 +2,44 @@ import axios from "axios"
 import cheerio from "cheerio"
 import moment from "moment"
 
+import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
+
 // -------------------------------------------------------
 // Prepare empty vessels Table ready to import data
 // -------------------------------------------------------
-export const prepareEmptyVesselsTable = (db) => {
-  // Firstly read the sqlite_sequence table to check if vessels table exists
-  let sql = "SELECT seq FROM sqlite_sequence WHERE name = 'vessels'"
+export const prepareEmptyVesselsTable = (req, res) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
 
-  db.all(sql, (err, results) => {
-    if (err) {
-      return console.error(err.message)
-    }
+  if (db !== null) {
+    // Firstly read the sqlite_sequence table to check if vessels table exists
+    let sql = "SELECT seq FROM sqlite_sequence WHERE name = 'vessels'"
 
-    // results.length shows 1 if exists or 0 if doesn't exist
-    if (results.length === 1) {
-      // If exists then delete all values
-      deleteVessels(db)
-    } else {
-      // Else create table
-      createVesselsTable(db)
-    }
-  })
+    db.all(sql, [], (err, results) => {
+      if (err) {
+        return console.error(err.message)
+      }
+
+      // results.length shows 1 if exists or 0 if doesn't exist
+      if (results.length === 1) {
+        // If exists then delete all values
+        console.log("vessels table exists")
+        deleteVessels(db)
+      } else {
+        // Else create table
+        console.log("vessels table does not exist")
+        createVesselsTable(db)
+      }
+    })
+
+    res.send("Returned Data")
+  } else {
+    console.error("Cannot connect to database")
+  }
+
+  // Close the Database Connection
+  closeSqlDbConnection(db)
 }
 
 // -------------------------------------------------------
@@ -32,17 +49,20 @@ export const createVesselsTable = (db) => {
   // Guard clause for null Database Connection
   if (db === null) return
 
-  db.serialize(() => {
+  try {
+    // IF NOT EXISTS isn't really necessary in next line
     const sql =
       "CREATE TABLE IF NOT EXISTS vessels (vesselid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, vesselnameurl TEXT NOT NULL, title TEXT NOT NULL, vesseltype TEXT NOT NULL, vesselname TEXT NOT NULL, vesselflag TEXT NOT NULL, vesselshortoperator TEXT NOT NULL, vessellongoperator TEXT NOT NULL, vesselyearbuilt TEXT NOT NULL, vessellengthmetres INTEGER, vesselwidthmetres INTEGER, vesselgrosstonnage INTEGER, vesselaveragespeedknots REAL, vesselmaxspeedknots REAL, vesselaveragedraughtmetres REAL, vesselimonumber INTEGER, vesselmmsnumber INTEGER, vesselcallsign TEXT NOT NULL, vesseltypicalpassengers TEXT, vesseltypicalcrew INTEGER, currentpositionlng REAL CHECK( currentpositionlng >= -180 AND currentpositionlng <= 180 ), currentpositionlat REAL CHECK( currentpositionlat >= -90 AND currentpositionlat <= 90 ), currentpositiontime TEXT)"
 
-    db.run(sql, (err) => {
+    db.run(sql, [], (err) => {
       if (err) {
-        return console.error("Error: ", err.message)
+        return console.error(err.message)
       }
-      console.log("vessels table successfully created")
+      console.log("Empty vessels table created")
     })
-  })
+  } catch (e) {
+    console.error("Error in createVesselsTable: ", e.message)
+  }
 }
 
 // -------------------------------------------------------
@@ -53,23 +73,38 @@ export const deleteVessels = (db) => {
   if (db === null) return
 
   try {
-    const sql = "DELETE FROM vessels"
+    // Count the records in the database
+    const sql = "SELECT COUNT(vesselid) AS count FROM vessels"
 
-    db.run(sql, (err) => {
+    db.all(sql, [], (err, result) => {
       if (err) {
-        return console.error("Error: ", err.message)
+        console.error(err.message)
       }
-    })
 
-    // Reset the id number
-    const sql_reset =
-      "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'vessels'"
+      if (result[0].count > 0) {
+        // Delete all the data in the vessels table
+        const sql1 = "DELETE FROM vessels"
 
-    db.run(sql_reset, (err) => {
-      if (err) {
-        return console.error("Error: ", err.message)
+        db.all(sql1, [], function (err, results) {
+          if (err) {
+            console.error(err.message)
+          }
+          console.log("All vessels data deleted")
+        })
+
+        // Reset the id number
+        const sql2 = "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'vessels'"
+
+        db.run(sql2, [], (err) => {
+          if (err) {
+            console.error(err.message)
+          }
+          console.log("In sqlite_sequence table vessels seq number set to 0")
+        })
+      } else {
+        console.log("vessels table was empty (so no data deleted)")
       }
-      console.warn("All vessels deleted & id number reset")
+      // })
     })
   } catch (err) {
     console.error("Error in deleteVessels: ", err.message)

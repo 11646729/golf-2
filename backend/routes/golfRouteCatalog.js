@@ -15,7 +15,7 @@ golfRouter.get("/", index)
 // -------------------------------------------------------
 // Prepare the golfcourses table in the SQL database
 // -------------------------------------------------------
-golfRouter.put("/prepareGolfCoursesTable", prepareEmptyGolfCoursesTable)
+golfRouter.post("/prepareGolfCoursesTable", prepareEmptyGolfCoursesTable)
 
 // -------------------------------------------------------
 // PUT all Golf Courses data into the SQL database
