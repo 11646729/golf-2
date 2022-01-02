@@ -2,6 +2,35 @@ import axios from "axios"
 import moment from "moment"
 
 // -------------------------------------------------------
+// Function to prepare the temperatures table in the SQL database
+// -------------------------------------------------------
+export var prepareTemperaturesTable = async (url) => {
+  // Guard clause
+  if (url == null) {
+    console.log(
+      "Error: url == null in prepareTemperaturesTable in utilities.js"
+    )
+    return
+  }
+
+  // var resultData = "temperatures Table prepared in the SQL database"
+  await axios({
+    url: url,
+    method: "POST",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((resultData) => {
+    return resultData
+  })
+
+  // resultData = "temperatures Table prepared in the SQL database"
+
+  // return resultData
+}
+
+// -------------------------------------------------------
 // Function to fetch all Temperature data
 // -------------------------------------------------------
 export var getTemperatureData = async (url) => {
@@ -33,18 +62,21 @@ export var prepareGolfCoursesTable = async (url) => {
     return
   }
 
-  var resultData = await axios({
+  // var resultData = "golfcourses Table prepared in the SQL database"
+  await axios({
     url: url,
     method: "POST",
     timeout: 8000,
     headers: {
       "Content-Type": "application/json",
     },
+  }).then((resultData) => {
+    return resultData
   })
 
-  resultData = "golfcourses Table prepared in the SQL database"
+  // resultData = "golfcourses Table prepared in the SQL database"
 
-  return resultData
+  // return resultData
 }
 
 // -------------------------------------------------------
@@ -129,8 +161,6 @@ export var prepareVesselsTable = async (url) => {
     return
   }
 
-  console.log("1st Here")
-
   var resultData = await axios({
     url: url,
     method: "POST",
@@ -142,6 +172,41 @@ export var prepareVesselsTable = async (url) => {
 
   resultData = "vessels Table prepared in the SQL database"
 
+  return resultData
+}
+
+// -------------------------------------------------------
+// Function to fetch all Cruise PortArrivals & Vessel data
+// -------------------------------------------------------
+export var importPortArrivalsAndVesselsData = async (url, portName) => {
+  // Guard clause
+  if (url == null) {
+    console.log(
+      "Error: url == null in importPortArrivalsAndVesselsData in utilities.js"
+    )
+    return
+  }
+
+  if (portName == null) {
+    console.log(
+      "Error: portName == null in importPortArrivalsAndVesselsData in utilities.js"
+    )
+    return
+  }
+
+  const resultData = await axios({
+    url: url,
+    params: {
+      portName: portName,
+    },
+    method: "POST",
+    timeout: 20000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  resultData = "Hello"
   return resultData
 }
 

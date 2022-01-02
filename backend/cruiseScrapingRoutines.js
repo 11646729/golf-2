@@ -12,7 +12,8 @@ import {
 // -------------------------------------------------------
 export const fetchPortArrivalsAndVessels = async (req, res) => {
   // Get the Port Name & Associated values
-  const port = process.env.BELFAST_PORT_NAME.toUpperCase()
+  let port = req.query.portName.toUpperCase()
+  // const port = process.env.BELFAST_PORT_NAME.toUpperCase()
   // const port = process.env.GEIRANGER_PORT_NAME.toUpperCase()
   // const port = process.env.BERGEN_PORT_NAME.toUpperCase()
   const portUrl = port + "_PORT_URL"
@@ -51,6 +52,7 @@ export const fetchPortArrivalsAndVessels = async (req, res) => {
     // Length of vesselUrls array is the Number of Vessel Arrivals
     console.log(vesselUrls.length + " Port Arrivals added")
     console.log(DeduplicatedVesselUrlArray.length + " Vessels added")
+    // res.send(vesselUrls.length + " Port Arrivals added")
   }
 }
 

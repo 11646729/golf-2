@@ -4,10 +4,12 @@ import styled from "styled-components"
 import Title from "../components/Title"
 
 import {
+  prepareTemperaturesTable,
   prepareGolfCoursesTable,
   importGolfCoursesData,
   preparePortArrivalsTable,
   prepareVesselsTable,
+  importPortArrivalsAndVesselsData,
 } from "../utilities"
 
 const RawDataContainer = styled.div`
@@ -45,48 +47,64 @@ const Button = styled.button`
 `
 
 const RawDataLoadPage = () => {
-  // const prepareAllDatabaseTablesHandler = () => {
-  //   alert("Prepare set of empty database tables")
-  // }
+  const prepareTemperatureDataHandler = () => {
+    // Prepare temperatures table
+    prepareTemperaturesTable(
+      "http://localhost:5000/api/weather/prepareTemperaturesTable"
+    )
+      .then((returnedData) => console.log(returnedData))
+      .catch((err) => console.log(err))
+
+    alert("Empty temperatures table prepared")
+  }
 
   const loadGolfCourseDataHandler = () => {
-    // Firstly prepare database table
-    // i.e. create if doesn't exist
-    // or delete rows if it exists
+    // Prepare golfcourses table
+    // i.e. create if doesn't exist or delete rows if it exists
     prepareGolfCoursesTable(
       "http://localhost:5000/api/golf/prepareGolfCoursesTable"
     )
       .then((returnedData) => console.log(returnedData))
       .catch((err) => console.log(err))
 
-    // Secondly import the file data into the database
+    alert("Empty golfcourses table prepared")
+
+    // Import the file data into the database
     importGolfCoursesData(
       "http://localhost:5000/api/golf/importGolfCoursesData"
     )
       .then((returnedData) => console.log(returnedData))
       .catch((err) => console.log(err))
 
-    alert("Empty golfcourses table prepared")
+    alert("Golf Courses data imported")
   }
 
   const loadCruiseShipDataHandler = () => {
-    // Firstly prepare database table
-    // i.e. create if doesn't exist
-    // or delete rows if it exists
+    // Prepare portarrivals table
+    // i.e. create if doesn't exist or delete rows if it exists
     preparePortArrivalsTable(
       "http://localhost:5000/api/cruise/preparePortArrivalsTable"
     )
       .then((returnedData) => console.log(returnedData))
       .catch((err) => console.log(err))
 
-    // Firstly prepare database table
-    // i.e. create if doesn't exist
-    // or delete rows if it exists
+    // Prepare vessels table
+    // i.e. create if doesn't exist or delete rows if it exists
     prepareVesselsTable("http://localhost:5000/api/cruise/prepareVesselsTable")
       .then((returnedData) => console.log(returnedData))
       .catch((err) => console.log(err))
 
-    alert("Empty vessels & portarrivals tables prepared")
+    // alert("Empty portarrivals & vessels tables prepared")
+
+    // Import the scraped data into the database
+    importPortArrivalsAndVesselsData(
+      "http://localhost:5000/api/cruise/importPortArrivalsAndVesselsData",
+      "Belfast"
+    )
+      .then((returnedData) => console.log(returnedData))
+      .catch((err) => console.log(err))
+
+    alert("Port Arrivals & Vessels data imported")
   }
 
   const loadGTFSTransportDataHandler = () => {
@@ -107,12 +125,12 @@ const RawDataLoadPage = () => {
             </tr>
           </thead>
           <tbody>
-            {/* <tr>
-              <td>Prepare Temperature Database Table</td>
+            <tr>
+              <td>Temperatures Data</td>
               <td>
-                <Button onClick={prepareAllDatabaseTablesHandler}>Fetch</Button>
+                <Button onClick={prepareTemperatureDataHandler}>Fetch</Button>
               </td>
-            </tr> */}
+            </tr>
             <tr>
               <td>Golf Course Data</td>
               <td>

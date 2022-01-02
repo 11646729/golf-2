@@ -34,7 +34,7 @@ function TemperaturesPage() {
   useEffect(() => {
     let isSubscribed = true
 
-    getTemperatureData("http://localhost:5000/api/weather/temperatureReadings")
+    getTemperatureData("http://localhost:5000/api/weather/temperatures")
       .then((returnedData) =>
         isSubscribed ? setTemperatureData(returnedData) : null
       )

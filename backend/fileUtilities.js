@@ -107,7 +107,7 @@ export var openSqlDbConnection = (url) => {
     db = new sqlite3.Database(url)
 
     if (db !== null) {
-      console.log("Connected to the SQLite database")
+      // console.log("Connected to the SQLite database")
       return db
     } else {
       console.log("UNSUCCESSFUL connection to the SQLite database")
@@ -122,5 +122,5 @@ export var openSqlDbConnection = (url) => {
 // -------------------------------------------------------
 export var closeSqlDbConnection = (db) => {
   db.close()
-  console.log("Disconnected from the SQLite database")
+  // console.log("Disconnected from the SQLite database")
 }

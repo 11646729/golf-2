@@ -73,7 +73,7 @@ const createGolfCoursesTable = (db) => {
 }
 
 // -------------------------------------------------------
-// Delete all Port Arrivals records from SQLite database
+// Delete all golfcourses records from SQLite database
 // -------------------------------------------------------
 const deleteGolfCourses = (db) => {
   // Guard clause for null Database Connection

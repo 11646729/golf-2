@@ -1,19 +1,11 @@
 import cron from "node-cron"
-import { fetchPortArrivalsAndVessels } from "./cruiseScrapingRoutines.js"
 import { importGtfsToSQLite } from "./importGtfs.js"
 import {
-  createEmptyTemperatureTable,
-  deleteAllTemperatureReadings,
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
 } from "./controllers/weatherController.js"
 
 export const runSwitchboard = (io) => {
-  // -----------------------------
-  // createEmptyTemperatureTable()
-  // deleteAllTemperatureReadings()
-  // -----------------------------
-  fetchPortArrivalsAndVessels()
   // -----------------------------
   // importGtfsToSQLite()
   // -----------------------------

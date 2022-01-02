@@ -12,6 +12,7 @@ import {
   // getVesselPositionTestData,
   saveVessel,
 } from "../controllers/vesselController.js"
+import { fetchPortArrivalsAndVessels } from "../cruiseScrapingRoutines.js"
 
 // -------------------------------------------------------
 // Cruise Routes
@@ -79,5 +80,13 @@ cruiseRouter.post("/vessel", saveVessel)
 // PUT a vessel by id
 // -------------------------------------------------------
 // cruiseRouter.put("/vessel/:id", putVessel)
+
+// -------------------------------------------------------
+// PUT all Port Arrivals & Vessels data into the SQL database
+// -------------------------------------------------------
+cruiseRouter.post(
+  "/importPortArrivalsAndVesselsData",
+  fetchPortArrivalsAndVessels
+)
 
 export default cruiseRouter

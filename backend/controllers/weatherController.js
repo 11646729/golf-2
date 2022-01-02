@@ -10,10 +10,49 @@ export var index = async (req, res) => {
 }
 
 // -------------------------------------------------------
-// Create Temperatures Table in the SQLite Database
-// Path: Function called in switchBoard
+// Prepare empty temperatures Table ready to import data
 // -------------------------------------------------------
-export const createEmptyTemperatureTable = async () => {
+export const prepareEmptyTemperaturesTable = (req, res) => {
+  // Open a Database Connection
+  let db = null
+  db = openSqlDbConnection(process.env.SQL_URI)
+
+  if (db !== null) {
+    // Firstly read the sqlite_schema table to check if golfcourses table exists
+    let sql =
+      "SELECT name FROM sqlite_schema WHERE type = 'table' AND name = 'temperatures'"
+
+    // Must use db.all not db.run
+    db.all(sql, [], (err, results) => {
+      if (err) {
+        return console.error(err.message)
+      }
+
+      // results.length shows 1 if exists or 0 if doesn't exist
+      if (results.length === 1) {
+        // If exists then delete all values
+        console.log("temperatures table exists")
+        deleteTemperatures(db)
+      } else {
+        // Else create table
+        console.log("temperatures table does not exist")
+        createTemperaturesTable(db)
+      }
+    })
+
+    res.send("Returned Data")
+  } else {
+    console.error("Cannot connect to database")
+  }
+
+  // Close the Database Connection
+  closeSqlDbConnection(db)
+}
+
+// -------------------------------------------------------
+// Create temperatures Table in the SQLite Database
+// -------------------------------------------------------
+const createTemperaturesTable = (req, res) => {
   // Open a Database Connection
   let db = null
   db = openSqlDbConnection(process.env.SQL_URI)
@@ -21,13 +60,13 @@ export const createEmptyTemperatureTable = async () => {
   if (db !== null) {
     try {
       const sql =
-        "CREATE TABLE IF NOT EXISTS temperatures (temperatureid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, timeofmeasurement TEXT NOT NULL, locationname TEXT NOT NULL, locationtemperature REAL, locationlng REAL CHECK( locationlng >= -180 AND locationlng <= 180 ), locationlat REAL CHECK( locationlat >= -90 AND locationlat <= 90 ))"
+        "CREATE TABLE IF NOT EXISTS temperatures (temperatureid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, timeofmeasurement TEXT NOT NULL, locationname TEXT NOT NULL, locationtemperature REAL, lng REAL CHECK( lng >= -180 AND lng <= 180 ), lat REAL CHECK( lat >= -90 AND lat <= 90 ))"
 
       db.all(sql, [], (err) => {
         if (err) {
           return console.error(err.message)
         }
-        console.log("temperature Table successfully created")
+        console.log("temperatures table successfully created")
       })
 
       // Disconnect from the SQLite database
@@ -41,10 +80,57 @@ export const createEmptyTemperatureTable = async () => {
 }
 
 // -------------------------------------------------------
-// Get all Temperature Readings
-// Path: localhost:5000/api/weather/temperatures
+// Delete all temperatures records from SQLite database
 // -------------------------------------------------------
-export const getAllTemperatureReadings = (req, res) => {
+const deleteTemperatures = (db) => {
+  // Guard clause for null Database Connection
+  if (db === null) return
+
+  try {
+    // Count the records in the database
+    const sql = "SELECT COUNT(temperatureid) AS count FROM temperatures"
+
+    db.all(sql, [], (err, result) => {
+      if (err) {
+        console.error(err.message)
+      }
+
+      if (result[0].count > 0) {
+        // Delete all the data in the temperatures table
+        const sql1 = "DELETE FROM temperatures"
+
+        db.all(sql1, [], function (err, results) {
+          if (err) {
+            console.error(err.message)
+          }
+          console.log("All temperatures data deleted")
+        })
+
+        // Reset the id number
+        const sql2 =
+          "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'temperatures'"
+
+        db.run(sql2, [], (err) => {
+          if (err) {
+            console.error(err.message)
+          }
+          console.log(
+            "In sqlite_sequence table temperatures seq number set to 0"
+          )
+        })
+      } else {
+        console.log("temperatures table was empty (so no data deleted)")
+      }
+    })
+  } catch (err) {
+    console.error("Error in deleteTemperatures: ", err.message)
+  }
+}
+
+// -------------------------------------------------------
+// Get all temperatures
+// -------------------------------------------------------
+export const getTemperatures = (req, res) => {
   // Open a Database Connection
   let db = null
   db = openSqlDbConnection(process.env.SQL_URI)
@@ -72,10 +158,9 @@ export const getAllTemperatureReadings = (req, res) => {
 }
 
 // -------------------------------------------------------
-// Save Temperature Reading to SQLite database
-// Path:
+// Save temperatures to SQLite database
 // -------------------------------------------------------
-export const saveTemperatureReading = (temperatureReading) => {
+const saveTemperature = (temperatureReading) => {
   // Guard clause for null temperatureReading
   if (temperatureReading == null) return
 
@@ -98,7 +183,7 @@ export const saveTemperatureReading = (temperatureReading) => {
 
       // Don't change the routine below
       const sql1 =
-        "INSERT INTO temperatures (databaseversion, timeofmeasurement, locationname, locationtemperature, locationlng, locationlat) VALUES ($1, $2, $3, $4, $5, $6)"
+        "INSERT INTO temperatures (databaseversion, timeofmeasurement, locationname, locationtemperature, lng, lat) VALUES ($1, $2, $3, $4, $5, $6)"
 
       db.run(sql1, temperatureReading, function (err) {
         if (err) {
@@ -118,48 +203,7 @@ export const saveTemperatureReading = (temperatureReading) => {
 }
 
 // -------------------------------------------------------
-// Delete all Temperature Readings from SQLite database
-// Path:
-// -------------------------------------------------------
-export const deleteAllTemperatureReadings = () => {
-  // Open a Database Connection
-  let db = null
-  db = openSqlDbConnection(process.env.SQL_URI)
-
-  if (db !== null) {
-    try {
-      const sql_insert = "DELETE FROM temperatures"
-
-      db.all(sql_insert, [], (err, results) => {
-        if (err) {
-          return console.error(err.message)
-        }
-        console.warn("All Temperature Readings deleted")
-      })
-
-      // Reset the id number
-      const sql_reset =
-        "UPDATE sqlite_sequence SET seq = 0 WHERE name = 'temperatures'"
-      db.all(sql_reset, [], (err, results) => {
-        if (err) {
-          return console.error(err.message)
-        }
-        console.warn("Reset id number")
-      })
-
-      // Close the Database Connection
-      closeSqlDbConnection(db)
-    } catch (err) {
-      console.error("Error in deleteAllTemperatureReadings: ", err)
-    }
-  } else {
-    console.error("Cannot connect to database")
-  }
-}
-
-// -------------------------------------------------------
 // Fetch weather data from the Dark Skies website
-// Path:
 // -------------------------------------------------------
 export const getAndSaveDarkSkiesData = async () => {
   // build Dark Skies Url
@@ -186,7 +230,7 @@ export const getAndSaveDarkSkiesData = async () => {
     ]
 
     // Save data in the Database
-    saveTemperatureReading(temperatureReading)
+    saveTemperature(temperatureReading)
 
     return temperatureReading
   } catch (err) {
@@ -196,7 +240,6 @@ export const getAndSaveDarkSkiesData = async () => {
 
 // -------------------------------------------------------
 // Socket Emit weather data to be consumed by the client
-// Path:
 // -------------------------------------------------------
 export const emitDarkSkiesData = async (socket, darkSkiesData) => {
   // Guard clauses
