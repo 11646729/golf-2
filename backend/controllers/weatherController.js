@@ -260,4 +260,4 @@ function unixToUtc(timestamp) {
   return new Date(timestamp * 1000).toJSON()
 }
 
-export default getAllTemperatureReadings
+export default getTemperatures

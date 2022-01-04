@@ -3,7 +3,7 @@ import io from "socket.io-client"
 
 import TemperaturesTable from "../components/TemperaturesTable"
 import TemperaturesChart from "../components/TemperaturesChart"
-import getTemperatureData from "../utilities"
+import getTemperatureData from "../axiosUtilities"
 
 import styled from "styled-components"
 
@@ -34,7 +34,7 @@ function TemperaturesPage() {
   useEffect(() => {
     let isSubscribed = true
 
-    getTemperatureData("http://localhost:5000/api/weather/temperatures")
+    getTemperatureData("http://localhost:5000/api/weather/getTemperatures")
       .then((returnedData) =>
         isSubscribed ? setTemperatureData(returnedData) : null
       )

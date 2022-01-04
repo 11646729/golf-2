@@ -4,30 +4,23 @@ import moment from "moment"
 // -------------------------------------------------------
 // Function to prepare the temperatures table in the SQL database
 // -------------------------------------------------------
-export var prepareTemperaturesTable = async (url) => {
-  // Guard clause
-  if (url == null) {
-    console.log(
-      "Error: url == null in prepareTemperaturesTable in utilities.js"
-    )
-    return
-  }
-
-  // var resultData = "temperatures Table prepared in the SQL database"
-  await axios({
-    url: url,
-    method: "POST",
-    timeout: 8000,
+export var prepareTemperaturesTable = (returnResult) => {
+  let params = {}
+  let config = {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((resultData) => {
-    return resultData
-  })
+  }
+  axios
+    .post(
+      "http://localhost:5000/api/weather/prepareTemperaturesTable",
+      params,
+      config
+    )
+    .then((returnedData) => console.log(returnedData))
+    .catch((err) => console.log(err))
 
-  // resultData = "temperatures Table prepared in the SQL database"
-
-  // return resultData
+  if (returnResult == true) return "Empty temperatures table prepared"
 }
 
 // -------------------------------------------------------
@@ -55,28 +48,23 @@ export var getTemperatureData = async (url) => {
 // -------------------------------------------------------
 // Function to prepare the golfcourses table in the SQL database
 // -------------------------------------------------------
-export var prepareGolfCoursesTable = async (url) => {
-  // Guard clause
-  if (url == null) {
-    console.log("Error: url == null in prepareGolfCoursesTable in utilities.js")
-    return
-  }
-
-  // var resultData = "golfcourses Table prepared in the SQL database"
-  await axios({
-    url: url,
-    method: "POST",
-    timeout: 8000,
+export var prepareGolfCoursesTable = (returnResult) => {
+  let params = {}
+  let config = {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((resultData) => {
-    return resultData
-  })
+  }
+  axios
+    .post(
+      "http://localhost:5000/api/golf/prepareGolfCoursesTable",
+      params,
+      config
+    )
+    .then((returnedData) => console.log(returnedData))
+    .catch((err) => console.log(err))
 
-  // resultData = "golfcourses Table prepared in the SQL database"
-
-  // return resultData
+  if (returnResult == true) return "Empty golfcourses table prepared"
 }
 
 // -------------------------------------------------------

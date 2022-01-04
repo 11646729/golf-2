@@ -19,6 +19,6 @@ weatherRouter.post("/prepareTemperaturesTable", prepareEmptyTemperaturesTable)
 // -------------------------------------------------------
 // GET all temperature readings from the database
 // -------------------------------------------------------
-weatherRouter.get("/temperatures", getTemperatures)
+weatherRouter.get("/getTemperatures", getTemperatures)
 
 export default weatherRouter

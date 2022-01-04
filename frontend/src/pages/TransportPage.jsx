@@ -9,7 +9,7 @@ import {
   getAllShapes,
   getAllRoutes,
   // getDisplayData,
-} from "../utilities"
+} from "../axiosUtilities"
 
 import styled from "styled-components"
 

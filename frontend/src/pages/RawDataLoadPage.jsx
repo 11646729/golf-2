@@ -10,7 +10,7 @@ import {
   preparePortArrivalsTable,
   prepareVesselsTable,
   importPortArrivalsAndVesselsData,
-} from "../utilities"
+} from "../axiosUtilities"
 
 const RawDataContainer = styled.div`
   display: flex;
@@ -49,25 +49,26 @@ const Button = styled.button`
 const RawDataLoadPage = () => {
   const prepareTemperatureDataHandler = () => {
     // Prepare temperatures table
-    prepareTemperaturesTable(
-      "http://localhost:5000/api/weather/prepareTemperaturesTable"
-    )
-      .then((returnedData) => console.log(returnedData))
-      .catch((err) => console.log(err))
+    var showResult = true
+    var result = ""
 
-    alert("Empty temperatures table prepared")
+    result = prepareTemperaturesTable(showResult)
+
+    if (showResult) {
+      alert(result)
+    }
   }
 
   const loadGolfCourseDataHandler = () => {
     // Prepare golfcourses table
-    // i.e. create if doesn't exist or delete rows if it exists
-    prepareGolfCoursesTable(
-      "http://localhost:5000/api/golf/prepareGolfCoursesTable"
-    )
-      .then((returnedData) => console.log(returnedData))
-      .catch((err) => console.log(err))
+    var showResult = true
+    var result = ""
 
-    alert("Empty golfcourses table prepared")
+    result = prepareGolfCoursesTable(showResult)
+
+    if (showResult) {
+      alert(result)
+    }
 
     // Import the file data into the database
     importGolfCoursesData(

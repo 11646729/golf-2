@@ -2,7 +2,7 @@ import React, { useState, useEffect, memo } from "react"
 
 import GolfCoursesTable from "../components/GolfCoursesTable"
 import GolfCoursesMap from "../components/GolfCoursesMap"
-import getGolfCoursesData from "../utilities"
+import getGolfCoursesData from "../axiosUtilities"
 
 import styled from "styled-components"
 

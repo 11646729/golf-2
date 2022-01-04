@@ -10,7 +10,7 @@ import Title from "../components/Title"
 import {
   getPortArrivalsData,
   getCruiseVesselPositionData,
-} from "../utilities.js"
+} from "../axiosUtilities.js"
 
 const CruisesContainer = styled.div`
   display: flex;
