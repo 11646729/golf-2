@@ -3,16 +3,55 @@ import cors from "cors"
 import dotenv from "dotenv"
 import { createServer } from "http"
 import { Server } from "socket.io"
+import cron from "node-cron"
+import path from "path"
+import { importGtfsToSQLite } from "./importGtfs.js"
+import {
+  getAndSaveDarkSkiesData,
+  emitDarkSkiesData,
+} from "./controllers/weatherController.js"
+
+var switchOnRealtimeTemperatureData = (switchOn) => {
+  if (switchOn) {
+    // Using socket.io for realtime data transmission
+    var roomno = 1
+    io.on("connection", (socket) => {
+      console.log("Client Connected")
+
+      // Join a room
+      socket.join("room-" + roomno)
+      console.log("Joined Room No: " + roomno)
+
+      // -----------------------------
+      // Fetch data every Day at 07:00
+      // cron.schedule("0 7 * * *", () => {
+
+      // Fetch data every 15 Minutes
+      // cron.schedule("*/15 * * * *", () => {
+
+      // Fetch data every Minute
+      cron.schedule("*/1 * * * *", () => {
+        // -----------------------------
+        getAndSaveDarkSkiesData().then((result) => {
+          console.log("Send temperature: " + result)
+          emitDarkSkiesData(socket, result)
+        })
+      })
+
+      socket.on("disconnect", () => {
+        // Leave the room
+        socket.leave("room-" + roomno)
+        console.log("Left Room & Client Disconnected")
+      })
+    })
+  }
+}
 
 const app = express()
-
 const httpServer = createServer(app)
 const io = new Server(httpServer, { cors: { origin: "*" } })
 
-import path from "path"
 const __dirname = path.resolve()
-
-import { runSwitchboard } from "./switchBoard.js"
 
 // const cookieParser = require("cookie-parser")
 // const logger = require("morgan")
@@ -50,6 +89,12 @@ app.use("/api/weather", weatherRouter)
 app.use("/api/cruise", cruiseRouter)
 app.use("/api/transport", transportRouter)
 
+// -----------------------------
+importGtfsToSQLite()
+// -----------------------------
+
+switchOnRealtimeTemperatureData(false)
+
 // Start Express server
 httpServer.listen(port, (err) => {
   if (err) {
@@ -58,5 +103,3 @@ httpServer.listen(port, (err) => {
     console.log("Server running on port: " + port)
   }
 })
-
-// runSwitchboard(io)

@@ -20,7 +20,7 @@ export var prepareTemperaturesTable = (returnResult) => {
     .then((returnedData) => console.log(returnedData))
     .catch((err) => console.log(err))
 
-  if (returnResult == true) return "Empty temperatures table prepared"
+  if (returnResult === true) return "Empty temperatures table prepared"
 }
 
 // -------------------------------------------------------
@@ -33,7 +33,7 @@ export var getTemperatureData = async (url) => {
     return
   }
 
-  const resultData = await axios({
+  let resultData = await axios({
     url: url,
     method: "GET",
     timeout: 8000,
@@ -64,7 +64,7 @@ export var prepareGolfCoursesTable = (returnResult) => {
     .then((returnedData) => console.log(returnedData))
     .catch((err) => console.log(err))
 
-  if (returnResult == true) return "Empty golfcourses table prepared"
+  if (returnResult === true) return "Empty golfcourses table prepared"
 }
 
 // -------------------------------------------------------
@@ -77,7 +77,7 @@ export var importGolfCoursesData = async (url) => {
     return
   }
 
-  var resultData = await axios({
+  let resultData = await axios({
     url: url,
     method: "PUT",
     timeout: 8000,
@@ -101,7 +101,7 @@ export var getGolfCoursesData = async (url) => {
     return
   }
 
-  const resultData = await axios({
+  let resultData = await axios({
     url: url,
     method: "GET",
     timeout: 8000,
@@ -132,7 +132,7 @@ export var preparePortArrivalsTable = (returnResult) => {
     .then((returnedData) => console.log(returnedData))
     .catch((err) => console.log(err))
 
-  if (returnResult == true) return "Empty portarrivals table prepared"
+  if (returnResult === true) return "Empty portarrivals table prepared"
 }
 
 // -------------------------------------------------------
@@ -154,7 +154,7 @@ export var prepareVesselsTable = (returnResult) => {
     .then((returnedData) => console.log(returnedData))
     .catch((err) => console.log(err))
 
-  if (returnResult == true) return "Empty vessels table prepared"
+  if (returnResult === true) return "Empty vessels table prepared"
 }
 
 // -------------------------------------------------------
@@ -176,7 +176,7 @@ export var importPortArrivalsAndVesselsData = async (url, portName) => {
     return
   }
 
-  const resultData = await axios({
+  let resultData = await axios({
     url: url,
     params: {
       portName: portName,
@@ -202,7 +202,7 @@ export var getPortArrivalsData = async (url) => {
     return
   }
 
-  const resultData = await axios({
+  let resultData = await axios({
     url: url,
     method: "GET",
     timeout: 8000,
@@ -337,7 +337,7 @@ export var selectedUniqueRoute = async (
   // Guard clause
   if (url == null) return
 
-  const resultData = await axios({
+  let resultData = await axios({
     url: url,
     data: {
       routeNumber: selectedBusRouteNumber,
@@ -360,7 +360,7 @@ export var getAgencyName = async (url) => {
   // Guard clause
   if (url == null) return
 
-  const resultData = await axios({
+  let resultData = await axios({
     url: url,
     method: "GET",
     timeout: 8000,
@@ -380,7 +380,7 @@ export var getAllShapes = async (url) => {
   // Guard clause
   if (url == null) return
 
-  const resultData = await axios({
+  let resultData = await axios({
     url: url,
     method: "GET",
     timeout: 8000,
@@ -407,7 +407,7 @@ export var getShape = async (url, shapeID) => {
   if (url == null) return
   if (shapeID == null) return
 
-  const resultData = await axios({
+  let resultData = await axios({
     url: url,
     params: {
       shape: shapeID,
@@ -535,7 +535,7 @@ export var getAllRoutes = async (url) => {
   // Guard clauses
   if (url == null) return
 
-  const resultData = await axios({
+  let resultData = await axios({
     url: url,
     method: "GET",
     timeout: 8000,
