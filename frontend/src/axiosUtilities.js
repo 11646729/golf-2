@@ -116,27 +116,23 @@ export var getGolfCoursesData = async (url) => {
 // -------------------------------------------------------
 // Function to prepare the portarrivals table in the SQL database
 // -------------------------------------------------------
-export var preparePortArrivalsTable = async (url) => {
-  // Guard clause
-  if (url == null) {
-    console.log(
-      "Error: url == null in preparePortArrivalsTable in utilities.js"
-    )
-    return
-  }
-
-  var resultData = await axios({
-    url: url,
-    method: "POST",
-    timeout: 8000,
+export var preparePortArrivalsTable = (returnResult) => {
+  let params = {}
+  let config = {
     headers: {
       "Content-Type": "application/json",
     },
-  })
+  }
+  axios
+    .post(
+      "http://localhost:5000/api/cruise/preparePortArrivalsTable",
+      params,
+      config
+    )
+    .then((returnedData) => console.log(returnedData))
+    .catch((err) => console.log(err))
 
-  resultData = "portarrivals Table prepared in the SQL database"
-
-  return resultData
+  if (returnResult == true) return "Empty portarrivals table prepared"
 }
 
 // -------------------------------------------------------

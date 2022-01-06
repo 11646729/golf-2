@@ -82,12 +82,14 @@ const RawDataLoadPage = () => {
 
   const loadCruiseShipDataHandler = () => {
     // Prepare portarrivals table
-    // i.e. create if doesn't exist or delete rows if it exists
-    preparePortArrivalsTable(
-      "http://localhost:5000/api/cruise/preparePortArrivalsTable"
-    )
-      .then((returnedData) => console.log(returnedData))
-      .catch((err) => console.log(err))
+    var showResult = true
+    var result = ""
+
+    result = preparePortArrivalsTable(showResult)
+
+    if (showResult) {
+      alert(result)
+    }
 
     // Prepare vessels table
     // i.e. create if doesn't exist or delete rows if it exists
