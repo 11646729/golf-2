@@ -92,12 +92,14 @@ const RawDataLoadPage = () => {
     }
 
     // Prepare vessels table
-    // i.e. create if doesn't exist or delete rows if it exists
-    prepareVesselsTable("http://localhost:5000/api/cruise/prepareVesselsTable")
-      .then((returnedData) => console.log(returnedData))
-      .catch((err) => console.log(err))
+    var showResult1 = true
+    var result1 = ""
 
-    // alert("Empty portarrivals & vessels tables prepared")
+    result1 = prepareVesselsTable(showResult)
+
+    if (showResult1) {
+      alert(result1)
+    }
 
     // Import the scraped data into the database
     importPortArrivalsAndVesselsData(

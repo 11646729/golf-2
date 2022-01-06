@@ -138,25 +138,23 @@ export var preparePortArrivalsTable = (returnResult) => {
 // -------------------------------------------------------
 // Function to prepare the vessels table in the SQL database
 // -------------------------------------------------------
-export var prepareVesselsTable = async (url) => {
-  // Guard clause
-  if (url == null) {
-    console.log("Error: url == null in prepareVesselsTable in utilities.js")
-    return
-  }
-
-  var resultData = await axios({
-    url: url,
-    method: "POST",
-    timeout: 8000,
+export var prepareVesselsTable = (returnResult) => {
+  let params = {}
+  let config = {
     headers: {
       "Content-Type": "application/json",
     },
-  })
+  }
+  axios
+    .post(
+      "http://localhost:5000/api/cruise/prepareVesselsTable",
+      params,
+      config
+    )
+    .then((returnedData) => console.log(returnedData))
+    .catch((err) => console.log(err))
 
-  resultData = "vessels Table prepared in the SQL database"
-
-  return resultData
+  if (returnResult == true) return "Empty vessels table prepared"
 }
 
 // -------------------------------------------------------
