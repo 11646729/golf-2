@@ -1,11 +1,10 @@
 import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
-import { createServer } from "http"
-import { Server } from "socket.io"
 import cron from "node-cron"
 import path from "path"
-import { importGtfsToSQLite } from "./importGtfs.js"
+import { createServer } from "http"
+import { Server } from "socket.io"
 import {
   getAndSaveDarkSkiesData,
   emitDarkSkiesData,
@@ -88,10 +87,6 @@ app.use("/api/golf", golfRouter)
 app.use("/api/weather", weatherRouter)
 app.use("/api/cruise", cruiseRouter)
 app.use("/api/transport", transportRouter)
-
-// -----------------------------
-importGtfsToSQLite()
-// -----------------------------
 
 switchOnRealtimeTemperatureData(false)
 

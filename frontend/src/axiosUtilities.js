@@ -327,6 +327,24 @@ var getCruiseVesselPositionTestData = () => {
 }
 
 // -------------------------------------------------------
+// Function to import the GTFS data into the SQL database
+// -------------------------------------------------------
+export var importGTFSData = (returnResult) => {
+  let params = {}
+  let config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }
+  axios
+    .put("http://localhost:5000/api/transport/importGTFSData", params, config)
+    .then((returnedData) => console.log(returnedData))
+    .catch((err) => console.log(err))
+
+  if (returnResult === true) return "Import now successful"
+}
+
+// -------------------------------------------------------
 // Function to fetch Position data for a Specific Route
 // -------------------------------------------------------
 export var selectedUniqueRoute = async (
@@ -373,7 +391,6 @@ export var getAgencyName = async (url) => {
 }
 
 // -------------------------------------------------------
-// Function
 // Function to fetch all Shapes data
 // -------------------------------------------------------
 export var getAllShapes = async (url) => {
@@ -399,7 +416,6 @@ export var getAllShapes = async (url) => {
 }
 
 // -------------------------------------------------------
-// Function
 // Function to fetch Shapes data for a specific shapeID
 // -------------------------------------------------------
 export var getShape = async (url, shapeID) => {
@@ -423,8 +439,7 @@ export var getShape = async (url, shapeID) => {
 }
 
 // -------------------------------------------------------
-// Local Function
-// Function to fetch all shape_ids
+// Local Function to fetch all shape_ids
 // -------------------------------------------------------
 var getShapeIDs = (busShapesCollection) => {
   // Now extract all unique shape_ids
@@ -441,8 +456,7 @@ var getShapeIDs = (busShapesCollection) => {
 }
 
 // -------------------------------------------------------
-// Local Function
-// Function to reformat coordinates into a new array
+// Local Function to reformat coordinates into a new array
 // -------------------------------------------------------
 var reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
   var modifiedShapeArray = []
@@ -508,7 +522,6 @@ var reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
 }
 
 // -------------------------------------------------------
-// Function
 // Function to fetch Unique Gtfs Stops data
 // -------------------------------------------------------
 export var getAllStops = async (url) => {
@@ -528,7 +541,6 @@ export var getAllStops = async (url) => {
 }
 
 // -------------------------------------------------------
-// Function
 // Function to fetch Unique Gtfs Routes data
 // -------------------------------------------------------
 export var getAllRoutes = async (url) => {
@@ -548,7 +560,6 @@ export var getAllRoutes = async (url) => {
 }
 
 // -------------------------------------------------------
-// Function
 // Function to remove Gtfs data fields routeVisible === false
 // -------------------------------------------------------
 export var getDisplayData = (originalArray) => {

@@ -1,3 +1,7 @@
+import { importGtfs } from "gtfs"
+import config from "../configHamilton.js"
+// import config from "../configMetro.js"
+// import config from "../configDublin.js"
 import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 
 // -------------------------------------------------------
@@ -6,6 +10,23 @@ import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 // -------------------------------------------------------
 export var index = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)
+}
+
+// -------------------------------------------------------
+// Function to import GTFS data to SQLite database
+// -------------------------------------------------------
+export var importGtfsToSQLite = async () => {
+  try {
+    importGtfs(config)
+      .then(() => {
+        console.log("Import Successful")
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  } catch (error) {
+    console.log("\n\nError in importGtfsToSQLite: ", error)
+  }
 }
 
 // -------------------------------------------------------

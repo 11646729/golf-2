@@ -2,6 +2,7 @@ import express from "express"
 const transportRouter = express.Router()
 import {
   index,
+  importGtfsToSQLite,
   getAllShapes,
   getShape,
   getAllStops,
@@ -13,6 +14,11 @@ import {
 // Get Bus Catalogue Home Page
 // -------------------------------------------------------
 transportRouter.get("/", index)
+
+// -------------------------------------------------------
+// PUT all GTFS data into the SQL database
+// -------------------------------------------------------
+transportRouter.put("/importGTFSData", importGtfsToSQLite)
 
 // -------------------------------------------------------
 // GET all Bus Route Shapes

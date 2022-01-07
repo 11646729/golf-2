@@ -10,6 +10,7 @@ import {
   preparePortArrivalsTable,
   prepareVesselsTable,
   importPortArrivalsAndVesselsData,
+  importGTFSData,
 } from "../axiosUtilities"
 
 const RawDataContainer = styled.div`
@@ -113,6 +114,8 @@ const RawDataLoadPage = () => {
   }
 
   const loadGTFSTransportDataHandler = () => {
+    importGTFSData()
+
     alert("Load GTFS Transport Data")
   }
 
