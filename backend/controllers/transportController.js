@@ -15,10 +15,11 @@ export var index = async (req, res) => {
 // -------------------------------------------------------
 // Function to import GTFS data to SQLite database
 // -------------------------------------------------------
-export var importGtfsToSQLite = async () => {
+export var importGtfsToSQLite = (showResult) => {
   try {
     importGtfs(config)
       .then(() => {
+        // return
         console.log("Import Successful")
       })
       .catch((err) => {

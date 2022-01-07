@@ -114,9 +114,15 @@ const RawDataLoadPage = () => {
   }
 
   const loadGTFSTransportDataHandler = () => {
-    importGTFSData()
+    // Import GTFS Data from Website into local SQL database
+    var showResult = true
+    var result = ""
 
-    alert("Load GTFS Transport Data")
+    result = importGTFSData(showResult)
+
+    if (showResult) {
+      alert(result)
+    }
   }
 
   return (
