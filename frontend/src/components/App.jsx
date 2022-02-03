@@ -6,6 +6,7 @@ import TemperaturesPage from "../pages/TemperaturesPage"
 import GolfCoursesPage from "../pages/GolfCoursesPage"
 import CruisesPage from "../pages/CruisesPage"
 import TransportPage from "../pages/TransportPage"
+import ThreeRingsPage from "../pages/ThreeRingsPage"
 import Album from "./Album"
 import TopBar from "./TopBar"
 import CrimesMap from "./crimesmap/CrimesMap"
@@ -24,6 +25,7 @@ function App() {
           <Route path="crimespage" element={<CrimesPageLink />} />
           <Route path="cruisespage" element={<CruisesPageLink />} />
           <Route path="transportpage" element={<TransportPageLink />} />
+          <Route path="threeringspage" element={<ThreeRingsPageLink />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
@@ -57,6 +59,10 @@ function CrimesPageLink() {
 
 function TransportPageLink() {
   return <TransportPage />
+}
+
+function ThreeRingsPageLink() {
+  return <ThreeRingsPage />
 }
 
 function NotFound() {

@@ -12,6 +12,7 @@ import {
   importPortArrivalsAndVesselsData,
   importGTFSData,
 } from "../axiosUtilities"
+import { useState } from "react"
 
 const RawDataContainer = styled.div`
   display: flex;
@@ -48,20 +49,26 @@ const Button = styled.button`
 `
 
 const RawDataLoadPage = () => {
+  const [temperaturesTableStatus, setData] = useState("")
+
   const prepareTemperatureDataHandler = () => {
     // Prepare temperatures table
     var showResult = true
-    var result = ""
 
-    result = prepareTemperaturesTable(showResult)
+    const result = prepareTemperaturesTable()
+    setData(result)
 
     if (showResult) {
-      alert(result)
+      if (temperaturesTableStatus !== "") {
+        alert(temperaturesTableStatus)
+      }
     }
   }
 
+  //
+  // Prepare golfcourses table
+  //
   const loadGolfCourseDataHandler = () => {
-    // Prepare golfcourses table
     var showResult = true
     var result = ""
 
@@ -71,7 +78,9 @@ const RawDataLoadPage = () => {
       alert(result)
     }
 
+    //
     // Import the file data into the database
+    //
     importGolfCoursesData(
       "http://localhost:5000/api/golf/importGolfCoursesData"
     )
@@ -96,7 +105,7 @@ const RawDataLoadPage = () => {
     var showResult1 = true
     var result1 = ""
 
-    result1 = prepareVesselsTable(showResult)
+    result1 = prepareVesselsTable(showResult1)
 
     if (showResult1) {
       alert(result1)
@@ -125,6 +134,10 @@ const RawDataLoadPage = () => {
     }
   }
 
+  const startRealtimeDataHandler = () => {
+    alert("Realtime data available")
+  }
+
   return (
     <RawDataContainer>
       <RawDataTableContainer>
@@ -135,32 +148,44 @@ const RawDataLoadPage = () => {
           <thead>
             <tr className="rawdatatableTh">
               <th>Import Raw Data Types</th>
+              <th>Status</th>
               <th>Select</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Temperatures Data</td>
+              <td>Ready</td>
               <td>
                 <Button onClick={prepareTemperatureDataHandler}>Fetch</Button>
               </td>
             </tr>
             <tr>
               <td>Golf Course Data</td>
+              <td>Ready</td>
               <td>
                 <Button onClick={loadGolfCourseDataHandler}>Fetch</Button>
               </td>
             </tr>
             <tr>
               <td>Cruise Ship Arrivals Data</td>
+              <td>Ready</td>
               <td>
                 <Button onClick={loadCruiseShipDataHandler}>Fetch</Button>
               </td>
             </tr>
             <tr>
               <td>GTFS Transport Data</td>
+              <td>Ready</td>
               <td>
                 <Button onClick={loadGTFSTransportDataHandler}>Fetch</Button>
+              </td>
+            </tr>
+            <tr>
+              <td>Realtime Data</td>
+              <td>Currently: Off</td>
+              <td>
+                <Button onClick={startRealtimeDataHandler}>Fetch</Button>
               </td>
             </tr>
           </tbody>

@@ -4,7 +4,7 @@ import moment from "moment"
 // -------------------------------------------------------
 // Function to prepare the temperatures table in the SQL database
 // -------------------------------------------------------
-export var prepareTemperaturesTable = (returnResult) => {
+export var prepareTemperaturesTable = () => {
   let params = {}
   let config = {
     headers: {
@@ -20,7 +20,7 @@ export var prepareTemperaturesTable = (returnResult) => {
     .then((returnedData) => console.log(returnedData))
     .catch((err) => console.log(err))
 
-  if (returnResult === true) return "Empty temperatures table prepared"
+  return "Empty temperatures table prepared"
 }
 
 // -------------------------------------------------------
@@ -329,19 +329,29 @@ var getCruiseVesselPositionTestData = () => {
 // -------------------------------------------------------
 // Function to import the GTFS data into the SQL database
 // -------------------------------------------------------
-export var importGTFSData = (returnResult) => {
-  let params = {}
-  let config = {
+export var importGTFSData = async (returnResult) => {
+  // let params = {}
+  // let config = {
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // }
+  // axios
+  //   .put("http://localhost:5000/api/transport/importGTFSData", params, config)
+  //   .then((returnedData) => console.log(returnedData))
+  //   .catch((err) => console.log(err))
+
+  let resultData = await axios({
+    url: "http://localhost:5000/api/transport/importGTFSData",
+    method: "PUT",
+    timeout: 8000,
     headers: {
       "Content-Type": "application/json",
     },
-  }
-  axios
-    .put("http://localhost:5000/api/transport/importGTFSData", params, config)
-    .then((returnedData) => console.log(returnedData))
-    .catch((err) => console.log(err))
+  })
 
-  if (returnResult === true) return "Import now successful"
+  return resultData
+  // if (returnResult === true) return "Import now successful"
 }
 
 // -------------------------------------------------------

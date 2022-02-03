@@ -39,14 +39,14 @@ export const prepareEmptyTemperaturesTable = (req, res) => {
         createTemperaturesTable(db)
       }
     })
-
-    res.send("Returned Data")
   } else {
     console.error("Cannot connect to database")
   }
 
   // Close the Database Connection
   closeSqlDbConnection(db)
+
+  // res.send("prepareEmptyTemperaturesTable return value")
 }
 
 // -------------------------------------------------------

@@ -4,48 +4,8 @@ import dotenv from "dotenv"
 import path from "path"
 import { createServer } from "http"
 import { Server } from "socket.io"
-// import cron from "node-cron"
-// import {
-//   getAndSaveDarkSkiesData,
-//   emitDarkSkiesData,
-// } from "./controllers/weatherController.js"
+
 import { switchOnRealtimeTemperatureData } from "./enableRealtimeData.js"
-
-// var switchOnRealtimeTemperatureData = (switchOn) => {
-//   if (switchOn) {
-//     // Using socket.io for realtime data transmission
-//     var roomno = 1
-//     io.on("connection", (socket) => {
-//       console.log("Client Connected")
-
-//       // Join a room
-//       socket.join("room-" + roomno)
-//       console.log("Joined Room No: " + roomno)
-
-//       // -----------------------------
-//       // Fetch data every Day at 07:00
-//       // cron.schedule("0 7 * * *", () => {
-
-//       // Fetch data every 15 Minutes
-//       // cron.schedule("*/15 * * * *", () => {
-
-//       // Fetch data every Minute
-//       cron.schedule("*/1 * * * *", () => {
-//         // -----------------------------
-//         getAndSaveDarkSkiesData().then((result) => {
-//           console.log("Send temperature: " + result)
-//           emitDarkSkiesData(socket, result)
-//         })
-//       })
-
-//       socket.on("disconnect", () => {
-//         // Leave the room
-//         socket.leave("room-" + roomno)
-//         console.log("Left Room & Client Disconnected")
-//       })
-//     })
-//   }
-// }
 
 const app = express()
 const httpServer = createServer(app)
@@ -90,8 +50,8 @@ app.use("/api/cruise", cruiseRouter)
 app.use("/api/transport", transportRouter)
 
 // Enable Realtime data sources (true = enable, false = disable)
-var resultReturned = switchOnRealtimeTemperatureData(io, true)
-console.log(resultReturned)
+// var resultReturned = switchOnRealtimeTemperatureData(io, false)
+// console.log(resultReturned)
 
 // Start Express server
 httpServer.listen(port, (err) => {
