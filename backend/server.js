@@ -25,7 +25,7 @@ import transportRouter from "./routes/transportRouteCatalog.js"
 
 dotenv.config()
 
-const port = process.env.PORT || 4000
+const port = process.env.EXPRESS_SERVER_PORT || 4000
 
 // cors settings from https://blog.jscrambler.com/setting-up-5-useful-middlewares-for-an-express-api/
 app.use(
@@ -51,7 +51,7 @@ app.use("/api/transport", transportRouter)
 
 // Enable Realtime data sources (true = enable, false = disable)
 var resultReturned = switchOnRealtimeTemperatureData(io, false)
-// console.log(resultReturned)
+console.log(resultReturned)
 
 // Start Express server
 httpServer.listen(port, (err) => {
