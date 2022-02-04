@@ -1,5 +1,5 @@
-import React, { memo } from "react"
-import axios from "axios"
+import React, { useState, useEffect, memo } from "react"
+import { getThreeRingsShiftData } from "../axiosUtilities"
 
 import styled from "styled-components"
 
@@ -8,24 +8,23 @@ const ThreeRingsContainer = styled.div`
 `
 
 function ThreeRingsPage() {
-  console.log("here")
-  // --------------------------------------------------------------
-  // CODE FOR SAMARITANS
-  // Attempt to load today's shifts
-  // axios
-  //   .get("https://www.3r.org.uk/stats/export_rotas.json", {
-  //     headers: {
-  //       Authorization: "APIKEY mXdvaUQjLxAeO9ixqSuMyQtt",
-  //     },
-  //   })
-  //   .then((res) => {
-  //     console.log("Success")
-  //     console.log(res.data)
-  //   })
-  //   .catch((error) => {
-  //     console.log("Error :" + error)
-  //   })
-  // --------------------------------------------------------------
+  const [threeRingsShiftData, setThreeRingsShiftData] = useState()
+  const [loadingError, setLoadingError] = useState("")
+
+  useEffect(() => {
+    let isSubscribed = true
+
+    getThreeRingsShiftData("http://localhost:4000/api/threerings/shifts")
+      .then((returnedData) =>
+        isSubscribed
+          ? console.log(returnedData)
+          : // setThreeRingsShiftData(returnedData[0].agency_name)
+            null
+      )
+      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+
+    return () => (isSubscribed = false)
+  }, [])
 
   return <ThreeRingsContainer></ThreeRingsContainer>
 }

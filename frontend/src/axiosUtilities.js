@@ -215,6 +215,31 @@ export var getPortArrivalsData = async (url) => {
 }
 
 // -------------------------------------------------------
+// Function to fetch all 3Rings Shift data
+// -------------------------------------------------------
+export var getThreeRingsShiftData = async (url) => {
+  // Guard clause
+  if (url == null) {
+    console.log(
+      "Error: url == null in getThreeRingsShiftData in axiosUtilities.js"
+    )
+    return
+  }
+
+  let resultData = await axios({
+    url: url,
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  console.log(resultData)
+  return resultData.data
+}
+
+// -------------------------------------------------------
 // Function to fetch Cruise Vessel Position data
 // -------------------------------------------------------
 export var getCruiseVesselPositionData = async (url, test, portArrivals) => {

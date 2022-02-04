@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import path from "path"
 import { createServer } from "http"
 import { Server } from "socket.io"
+// import axios from "axios"
 
 import { switchOnRealtimeTemperatureData } from "./enableRealtimeData.js"
 
@@ -22,6 +23,7 @@ import golfRouter from "./routes/golfRouteCatalog.js"
 import weatherRouter from "./routes/weatherRouteCatalog.js"
 import cruiseRouter from "./routes/cruiseRouteCatalog.js"
 import transportRouter from "./routes/transportRouteCatalog.js"
+import threeRingsRouter from "./routes/threeRingsRouteCatalog.js"
 
 dotenv.config()
 
@@ -48,10 +50,29 @@ app.use("/api/golf", golfRouter)
 app.use("/api/weather", weatherRouter)
 app.use("/api/cruise", cruiseRouter)
 app.use("/api/transport", transportRouter)
+app.use("/api/threerings", threeRingsRouter)
 
 // Enable Realtime data sources (true = enable, false = disable)
 var resultReturned = switchOnRealtimeTemperatureData(io, false)
-console.log(resultReturned)
+// console.log(resultReturned)
+
+// --------------------------------------------------------------
+// CODE FOR SAMARITANS
+// Attempt to load today's shifts
+// axios
+//   .get("https://www.3r.org.uk/stats/export_rotas.json", {
+//     headers: {
+//       Authorization: "APIKEY mXdvaUQjLxAeO9ixqSuMyQtt",
+//     },
+//   })
+//   .then((res) => {
+//     console.log("Success")
+//     console.log(res.data)
+//   })
+//   .catch((error) => {
+//     console.log("Error :" + error)
+//   })
+// --------------------------------------------------------------
 
 // Start Express server
 httpServer.listen(port, (err) => {
