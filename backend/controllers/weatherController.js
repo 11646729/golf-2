@@ -3,7 +3,7 @@ import axios from "axios"
 
 // -------------------------------------------------------
 // Catalogue Home page
-// Path: localhost:5000/api/weather/
+// Path: localhost:4000/api/weather/
 // -------------------------------------------------------
 export var index = async (req, res) => {
   res.send({ response: "I am alive" }).status(200)

@@ -82,7 +82,7 @@ const RawDataLoadPage = () => {
     // Import the file data into the database
     //
     importGolfCoursesData(
-      "http://localhost:5000/api/golf/importGolfCoursesData"
+      "http://localhost:4000/api/golf/importGolfCoursesData"
     )
       .then((returnedData) => console.log(returnedData))
       .catch((err) => console.log(err))
@@ -113,7 +113,7 @@ const RawDataLoadPage = () => {
 
     // Import the scraped data into the database
     importPortArrivalsAndVesselsData(
-      "http://localhost:5000/api/cruise/importPortArrivalsAndVesselsData",
+      "http://localhost:4000/api/cruise/importPortArrivalsAndVesselsData",
       "Belfast"
     )
       .then((returnedData) => console.log(returnedData))

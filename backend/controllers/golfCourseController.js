@@ -3,7 +3,7 @@ import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 
 // -------------------------------------------------------
 // Catalogue Home page
-// Path: localhost:5000/api/golf/
+// Path: localhost:4000/api/golf/
 // -------------------------------------------------------
 export var index = (req, res) => {
   res.send({ response: "Golf Route Catalog home page" }).status(200)
@@ -204,7 +204,7 @@ const populateGolfCourses = (courses) => {
 
 // -------------------------------------------------------
 // Get all Golf Courses from SQLite database
-// Path: localhost:5000/api/golf/getGolfCourses
+// Path: localhost:4000/api/golf/getGolfCourses
 // -------------------------------------------------------
 export const getGolfCourses = (req, res) => {
   // Open a Database Connection

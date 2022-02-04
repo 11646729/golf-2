@@ -50,7 +50,7 @@ const CruisesPage = () => {
   useEffect(() => {
     let isSubscribed = true
 
-    getPortArrivalsData("http://localhost:5000/api/cruise/portArrivals")
+    getPortArrivalsData("http://localhost:4000/api/cruise/portArrivals")
       .then((returnedData) =>
         isSubscribed ? setPortArrivals(returnedData) : null
       )
@@ -66,7 +66,7 @@ const CruisesPage = () => {
 
     if (portArrivals.length !== 0) {
       getCruiseVesselPositionData(
-        "http://localhost:5000/api/cruise/vesselPositions",
+        "http://localhost:4000/api/cruise/vesselPositions",
         "Real",
         portArrivals
       ) // Real or Test

@@ -13,7 +13,7 @@ export var prepareTemperaturesTable = () => {
   }
   axios
     .post(
-      "http://localhost:5000/api/weather/prepareTemperaturesTable",
+      "http://localhost:4000/api/weather/prepareTemperaturesTable",
       params,
       config
     )
@@ -57,7 +57,7 @@ export var prepareGolfCoursesTable = (returnResult) => {
   }
   axios
     .post(
-      "http://localhost:5000/api/golf/prepareGolfCoursesTable",
+      "http://localhost:4000/api/golf/prepareGolfCoursesTable",
       params,
       config
     )
@@ -125,7 +125,7 @@ export var preparePortArrivalsTable = (returnResult) => {
   }
   axios
     .post(
-      "http://localhost:5000/api/cruise/preparePortArrivalsTable",
+      "http://localhost:4000/api/cruise/preparePortArrivalsTable",
       params,
       config
     )
@@ -147,7 +147,7 @@ export var prepareVesselsTable = (returnResult) => {
   }
   axios
     .post(
-      "http://localhost:5000/api/cruise/prepareVesselsTable",
+      "http://localhost:4000/api/cruise/prepareVesselsTable",
       params,
       config
     )
@@ -337,12 +337,12 @@ export var importGTFSData = async (returnResult) => {
   //   },
   // }
   // axios
-  //   .put("http://localhost:5000/api/transport/importGTFSData", params, config)
+  //   .put("http://localhost:4000/api/transport/importGTFSData", params, config)
   //   .then((returnedData) => console.log(returnedData))
   //   .catch((err) => console.log(err))
 
   let resultData = await axios({
-    url: "http://localhost:5000/api/transport/importGTFSData",
+    url: "http://localhost:4000/api/transport/importGTFSData",
     method: "PUT",
     timeout: 8000,
     headers: {

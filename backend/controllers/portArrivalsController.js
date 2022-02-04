@@ -5,7 +5,7 @@ import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 
 // -------------------------------------------------------
 // Catalogue Home page
-// Path: localhost:5000/api/cruise/
+// Path: localhost:4000/api/cruise/
 // -------------------------------------------------------
 export var index = async (req, res) => {
   res.send({ response: "Port Arrivals Catalog home page" }).status(200)
@@ -122,7 +122,7 @@ export const deletePortArrivals = (db) => {
 
 // -------------------------------------------------------
 // Get all Port Arrivals from SQLite database
-// Path: localhost:5000/api/cruise/allPortArrivals
+// Path: localhost:4000/api/cruise/allPortArrivals
 // -------------------------------------------------------
 export const getPortArrivals = (req, res) => {
   // Open a Database Connection
