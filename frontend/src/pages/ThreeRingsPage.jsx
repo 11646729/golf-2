@@ -16,15 +16,14 @@ function ThreeRingsPage() {
 
     getThreeRingsShiftData("http://localhost:4000/api/threerings/shifts")
       .then((returnedData) =>
-        isSubscribed
-          ? console.log(returnedData)
-          : // setThreeRingsShiftData(returnedData[0].agency_name)
-            null
+        isSubscribed ? setThreeRingsShiftData(returnedData.shifts) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     return () => (isSubscribed = false)
   }, [])
+
+  console.log(threeRingsShiftData)
 
   return <ThreeRingsContainer></ThreeRingsContainer>
 }

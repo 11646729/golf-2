@@ -235,7 +235,6 @@ export var getThreeRingsShiftData = async (url) => {
     },
   })
 
-  console.log(resultData)
   return resultData.data
 }
 

@@ -12,7 +12,7 @@ export var index = (req, res) => {
 // Fetch Three Rings Shift Data
 // Path:
 // -----------------------------------------------------
-export const getThreeRingsShiftData = async () => {
+export const getThreeRingsShiftData = async (req, res) => {
   let resultData = await axios({
     url: "https://www.3r.org.uk/stats/export_rotas.json",
     method: "GET",
@@ -22,6 +22,6 @@ export const getThreeRingsShiftData = async () => {
     },
   })
 
-  console.log(resultData.data) // Good to here
-  return resultData.data
+  // console.log(resultData.data) // Good to here
+  res.send(resultData.data)
 }
