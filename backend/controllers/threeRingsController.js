@@ -9,10 +9,10 @@ export var index = (req, res) => {
 }
 
 // -----------------------------------------------------
-// Fetch Three Rings Shift Data
+// Fetch Three Rings Shifts Data
 // Path:
 // -----------------------------------------------------
-export const getThreeRingsShiftData = async (req, res) => {
+export const getThreeRingsShiftsData = async (req, res) => {
   let resultData = await axios({
     url: "https://www.3r.org.uk/stats/export_rotas.json",
     method: "GET",
@@ -22,6 +22,39 @@ export const getThreeRingsShiftData = async (req, res) => {
     },
   })
 
-  // console.log(resultData.data) // Good to here
+  res.send(resultData.data)
+}
+
+// -----------------------------------------------------
+// Fetch Three Rings News Data
+// Path:
+// -----------------------------------------------------
+export const getThreeRingsNewsData = async (req, res) => {
+  let resultData = await axios({
+    url: "https://www.3r.org.uk/news.json",
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      Authorization: "APIKEY mXdvaUQjLxAeO9ixqSuMyQtt",
+    },
+  })
+
+  res.send(resultData.data)
+}
+
+// -----------------------------------------------------
+// Fetch Three Rings Events Data
+// Path:
+// -----------------------------------------------------
+export const getThreeRingsEventsData = async (req, res) => {
+  let resultData = await axios({
+    url: "https://www.3r.org.uk/events.json",
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      Authorization: "APIKEY mXdvaUQjLxAeO9ixqSuMyQtt",
+    },
+  })
+
   res.send(resultData.data)
 }
