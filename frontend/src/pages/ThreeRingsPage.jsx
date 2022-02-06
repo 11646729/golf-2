@@ -42,9 +42,9 @@ const ThreeRingsEventsContainer = styled.div`
 `
 
 function ThreeRingsPage() {
-  const [threeRingsShiftsData, setThreeRingsShiftsData] = useState()
-  const [threeRingsNewsData, setThreeRingsNewsData] = useState()
-  const [threeRingsEventsData, setThreeRingsEventsData] = useState()
+  const [shiftsData, setShiftsData] = useState()
+  const [newsData, setNewsData] = useState()
+  const [eventsData, setEventsData] = useState()
   const [loadingError, setLoadingError] = useState("")
 
   useEffect(() => {
@@ -52,28 +52,28 @@ function ThreeRingsPage() {
 
     getThreeRingsShiftsData("http://localhost:4000/api/threerings/shifts")
       .then((returnedData) =>
-        isSubscribed ? setThreeRingsShiftsData(returnedData.shifts) : null
+        isSubscribed ? setShiftsData(returnedData.shifts) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     getThreeRingsNewsData("http://localhost:4000/api/threerings/news")
       .then((returnedData) =>
-        isSubscribed ? setThreeRingsNewsData(returnedData.news_items) : null
+        isSubscribed ? setNewsData(returnedData.news_items) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     getThreeRingsEventsData("http://localhost:4000/api/threerings/events")
       .then((returnedData) =>
-        isSubscribed ? setThreeRingsEventsData(returnedData.events) : null
+        isSubscribed ? setEventsData(returnedData.events) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     return () => (isSubscribed = false)
   }, [])
 
-  console.log(threeRingsShiftsData)
-  console.log(threeRingsNewsData)
-  console.log(threeRingsEventsData)
+  console.log(shiftsData)
+  console.log(newsData)
+  console.log(eventsData)
 
   return (
     <ThreeRingsContainer>
