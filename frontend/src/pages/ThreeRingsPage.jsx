@@ -73,7 +73,7 @@ function ThreeRingsPage() {
     return () => (isSubscribed = false)
   }, [])
 
-  // console.log(shiftsData)
+  console.log(shiftsData)
   // console.log(newsData)
   // console.log(eventsData)
 
