@@ -1,7 +1,7 @@
 import React, { useState, useEffect, memo } from "react"
 import styled from "styled-components"
 
-// import CruisesTable from "../components/cruisestable/CruisesTable"
+import CruisesTable from "../components/cruisestable/CruisesTable"
 import CruisesTable2 from "../components/CruisesTable2"
 import CruisesMap from "../components/CruisesMap"
 import Title from "../components/Title"
@@ -89,8 +89,8 @@ const CruisesPage = () => {
           <LoadingTitle>Error Loading...</LoadingTitle>
         ) : null} */}
         </CruisesTableContainerTitle>
-        {/* <CruisesTable data={portArrivals} loadingError={loadingError} /> */}
-        <CruisesTable2 data={portArrivals} loadingError={loadingError} />
+        <CruisesTable data={portArrivals} loadingError={loadingError} />
+        {/* <CruisesTable2 data={portArrivals} loadingError={loadingError} /> */}
       </CruisesTableContainer>
       <CruisesMapContainer>
         <CruisesMap

@@ -5,6 +5,8 @@ import {
   getThreeRingsEventsData,
 } from "../axiosUtilities"
 
+import ThreeRingsShiftsList from "../components/ThreeRingsShiftsList"
+
 import Title from "../components/Title"
 
 import styled from "styled-components"
@@ -24,7 +26,7 @@ const ThreeRingsShiftContainer = styled.div`
   flex: 3;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-  min-height: 500px;
+  min-height: 600px;
 `
 
 const ThreeRingsNewsContainer = styled.div`
@@ -42,9 +44,9 @@ const ThreeRingsEventsContainer = styled.div`
 `
 
 function ThreeRingsPage() {
-  const [shiftsData, setShiftsData] = useState()
-  const [newsData, setNewsData] = useState()
-  const [eventsData, setEventsData] = useState()
+  const [shiftsData, setShiftsData] = useState([])
+  const [newsData, setNewsData] = useState([])
+  const [eventsData, setEventsData] = useState([])
   const [loadingError, setLoadingError] = useState("")
 
   useEffect(() => {
@@ -71,16 +73,21 @@ function ThreeRingsPage() {
     return () => (isSubscribed = false)
   }, [])
 
-  console.log(shiftsData)
-  console.log(newsData)
-  console.log(eventsData)
+  // console.log(shiftsData)
+  // console.log(newsData)
+  // console.log(eventsData)
 
   return (
     <ThreeRingsContainer>
       <ThreeRingsShiftContainer>
         <ThreeRingsContainerTitle>
-          <Title>{"Three Rings Operations Display"}</Title>
+          {/* <Title>{"Three Rings Operations Display"}</Title> */}
         </ThreeRingsContainerTitle>
+        <ThreeRingsShiftsList
+          shiftsData={shiftsData}
+          newsData={newsData}
+          events={eventsData}
+        ></ThreeRingsShiftsList>
       </ThreeRingsShiftContainer>
       <ThreeRingsNewsContainer></ThreeRingsNewsContainer>
       <ThreeRingsEventsContainer></ThreeRingsEventsContainer>
