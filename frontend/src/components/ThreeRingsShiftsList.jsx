@@ -1,56 +1,85 @@
 import React, { memo } from "react"
 import moment from "moment"
+
 import styled from "styled-components"
 
+const ShiftsTableContainer = styled.table`
+  width: 100%;
+  justify-content: center;
+`
+
+const ShiftsHeaderContainer = styled.thead`
+  background-color: #f5fcee;
+  width: 100%;
+  justify-content: center;
+`
+
+const ShiftsDateContainer = styled.div`
+  border: 2px solid grey;
+  border-style: solid;
+`
+const ShiftsBodyContainer = styled.tbody`
+  flex: 1;
+  background-color: lightgrey;
+  width: 100%;
+  justify-content: center;
+`
+
+const ShiftsPeriodContainer = styled.tr``
+
 const DateToday = styled.div`
-  margin-top: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
-  width: "97%";
+  margin: 30px;
+  font-weight: bold;
+  font-size: 30px;
+  color: darkblue;
+  text-align: center;
 `
 
-const ShiftPeriod = styled.div`
-  margin-top: 10px;
-  margin-left: 20px;
-  margin-right: 20px;
-  width: "97%";
+const ShiftPeriod = styled.td`
+  border: 2px solid grey;
+  border-style: solid;
 `
 
-const RotaName = styled.div`
+const ShiftTimes = styled.div`
+  margin: 10px;
+  font-weight: bold;
+`
+
+const ShiftPosition = styled.div`
   margin-top: 10px;
   margin-left: 20px;
   margin-right: 20px;
-  width: "97%";
+  width: "100%";
 `
 
 const ThreeRingsShiftsList = (props) => {
   return (
-    <div className="shiftsWidget">
-      <table className="shiftsTable">
-        <thead>
-          <DateToday>
-            <DateToday>{moment().format("DD/MM/YYYY")}</DateToday>
-          </DateToday>
-        </thead>
-        <tbody>
-          {props.shiftsData.map((shift) => (
-            <tr className="widgetLgTr" key={shift.id}>
-              <td className="widgetLgDay">
-                <ShiftPeriod>
-                  <a>Shift: </a>
-                  {moment(shift.start_datetime).format("HH:mm")}
-                  <a> to </a>
-                  {moment(shift.start_datetime)
-                    .add(shift.duration, "s")
-                    .format("HH:mm")}
-                </ShiftPeriod>
-                <RotaName>{shift.rota}</RotaName>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <ShiftsTableContainer>
+      <ShiftsHeaderContainer>
+        <ShiftsDateContainer>
+          {/* <tr> */}
+          <DateToday>{moment().format("Do MMMM YYYY")}</DateToday>
+          {/* </tr> */}
+        </ShiftsDateContainer>
+      </ShiftsHeaderContainer>
+      <ShiftsBodyContainer>
+        {props.shiftsData.map((shift) => (
+          <ShiftsPeriodContainer key={shift.id}>
+            <ShiftPeriod>
+              <ShiftTimes>
+                Shift:
+                {moment(shift.start_datetime).format(" HH:mm ")}
+                to
+                {moment(shift.start_datetime)
+                  .add(shift.duration, "s")
+                  .format(" HH:mm")}
+              </ShiftTimes>
+              <ShiftPosition>{shift.rota}</ShiftPosition>
+            </ShiftPeriod>
+          </ShiftsPeriodContainer>
+        ))}
+      </ShiftsBodyContainer>
+    </ShiftsTableContainer>
   )
 }
 

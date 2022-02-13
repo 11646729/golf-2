@@ -6,44 +6,37 @@ import {
 } from "../axiosUtilities"
 
 import ThreeRingsShiftsList from "../components/ThreeRingsShiftsList"
-
-import Title from "../components/Title"
+import ThreeRingsNewsList from "../components/ThreeRingsNewsList"
+import ThreeRingsEventsList from "../components/ThreeRingsEventsList"
 
 import styled from "styled-components"
 
-const ThreeRingsContainer = styled.div`
+const IIIRContainer = styled.div`
   display: flex;
 `
 
-const ThreeRingsContainerTitle = styled.div`
-  margin-top: 35px;
-  margin-left: 20px;
-  margin-right: 20px;
-  width: "97%";
-`
-
-const ThreeRingsShiftContainer = styled.div`
+const IIIRShiftContainer = styled.div`
   flex: 3;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   min-height: 600px;
 `
 
-const ThreeRingsNewsContainer = styled.div`
+const IIIRNewsContainer = styled.div`
   flex: 3;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   min-height: 500px;
 `
 
-const ThreeRingsEventsContainer = styled.div`
+const IIIREventsContainer = styled.div`
   flex: 3;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   min-height: 500px;
 `
 
-function ThreeRingsPage() {
+const ThreeRingsPage = () => {
   const [shiftsData, setShiftsData] = useState([])
   const [newsData, setNewsData] = useState([])
   const [eventsData, setEventsData] = useState([])
@@ -73,25 +66,22 @@ function ThreeRingsPage() {
     return () => (isSubscribed = false)
   }, [])
 
-  console.log(shiftsData)
+  // console.log(shiftsData)
   // console.log(newsData)
-  // console.log(eventsData)
+  console.log(eventsData)
 
   return (
-    <ThreeRingsContainer>
-      <ThreeRingsShiftContainer>
-        <ThreeRingsContainerTitle>
-          {/* <Title>{"Three Rings Operations Display"}</Title> */}
-        </ThreeRingsContainerTitle>
-        <ThreeRingsShiftsList
-          shiftsData={shiftsData}
-          newsData={newsData}
-          events={eventsData}
-        ></ThreeRingsShiftsList>
-      </ThreeRingsShiftContainer>
-      <ThreeRingsNewsContainer></ThreeRingsNewsContainer>
-      <ThreeRingsEventsContainer></ThreeRingsEventsContainer>
-    </ThreeRingsContainer>
+    <IIIRContainer>
+      <IIIRShiftContainer>
+        <ThreeRingsShiftsList shiftsData={shiftsData}></ThreeRingsShiftsList>
+      </IIIRShiftContainer>
+      <IIIRNewsContainer>
+        <ThreeRingsNewsList newsData={newsData}></ThreeRingsNewsList>
+      </IIIRNewsContainer>
+      <IIIREventsContainer>
+        <ThreeRingsEventsList eventsData={eventsData}></ThreeRingsEventsList>
+      </IIIREventsContainer>
+    </IIIRContainer>
   )
 }
 
