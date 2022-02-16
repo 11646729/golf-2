@@ -1,6 +1,5 @@
 import React, { memo } from "react"
 import moment from "moment"
-
 import styled from "styled-components"
 
 const ShiftsTableContainer = styled.table`
@@ -58,7 +57,7 @@ const ThreeRingsShiftsList = (props) => {
       <ShiftsHeaderContainer>
         <ShiftsDateContainer>
           {/* <tr> */}
-          <DateToday>{moment().format("Do MMMM YYYY")}</DateToday>
+          <DateToday>{moment().format("dddd[] Do MMMM YYYY")}</DateToday>
           {/* </tr> */}
         </ShiftsDateContainer>
       </ShiftsHeaderContainer>

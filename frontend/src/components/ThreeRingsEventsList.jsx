@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-
+import moment from "moment"
 import styled from "styled-components"
 
 const EventsTableContainer = styled.table`
@@ -7,19 +7,15 @@ const EventsTableContainer = styled.table`
   justify-content: center;
 `
 
-const EventsTHeadContainer = styled.thead`
-  background-color: #f5fcee;
-  width: 100%;
-`
+const EventsTHeadContainer = styled.thead``
 
 const EventsTRowContainer = styled.tr``
 
-const EventsTBodyContainer = styled.tbody`
-  background-color: #f5fcee;
-  width: 100%;
-`
+const EventsTBodyContainer = styled.tbody``
 
 const EventsHeader = styled.th`
+  // width: 100%;
+  background-color: #f5fcee;
   border: 2px solid grey;
   border-style: solid;
   padding: 30px;
@@ -32,7 +28,32 @@ const EventsHeader = styled.th`
 
 const EventsItemContainer = styled.tr``
 
-const EventsItem = styled.div`
+const EventItem = styled.td`
+  background-color: lightgrey;
+  width: 90%;
+  border: 2px solid grey;
+  border-style: solid;
+  // padding: 30px;
+  text-align: center;
+  justify-content: center;
+`
+
+const EventItemDate = styled.div`
+  margin: 10px;
+  font-weight: bold;
+`
+
+const EventItemTitle = styled.div`
+  margin: 10px;
+  font-weight: bold;
+  font-size: 20px;
+`
+
+const EventItemDetails = styled.div`
+  margin: 10px;
+`
+
+const EventItemAuthor = styled.div`
   margin: 10px;
 `
 
@@ -66,14 +87,20 @@ const ThreeRingsEventsList = (props) => {
           <EventsHeader>Events</EventsHeader>
         </EventsTRowContainer>
       </EventsTHeadContainer>
-      {props.eventsData.map((eventsItem) => (
-        <EventsTBodyContainer>
+      <EventsTBodyContainer>
+        {props.eventsData.map((eventsItem) => (
           <EventsItemContainer key={eventsItem.id}>
-            <EventsItem>{eventsItem.name}</EventsItem>
-            <EventsItem>{eventsItem.description}</EventsItem>
+            <EventItem>
+              {/* <EventItemDate>
+                {moment(eventsItem.date).utc().format("dddd[] Do MMMM YYYY")}
+              </EventItemDate>
+              <EventItemTitle>{eventsItem.name}</EventItemTitle>
+              <EventItemDetails>{eventsItem.description}</EventItemDetails>
+              <EventItemAuthor>{eventsItem.creator.name}</EventItemAuthor> */}
+            </EventItem>
           </EventsItemContainer>
-        </EventsTBodyContainer>
-      ))}
+        ))}
+      </EventsTBodyContainer>{" "}
     </EventsTableContainer>
   )
 }

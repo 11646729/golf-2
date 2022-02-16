@@ -13,12 +13,14 @@ export var index = (req, res) => {
 // Path:
 // -----------------------------------------------------
 export const getThreeRingsShiftsData = async (req, res) => {
+  const apiKey = process.env.THREE_RINGS_API_KEY
+
   let resultData = await axios({
     url: "https://www.3r.org.uk/stats/export_rotas.json",
     method: "GET",
     timeout: 8000,
     headers: {
-      Authorization: "APIKEY mXdvaUQjLxAeO9ixqSuMyQtt",
+      Authorization: apiKey,
     },
   })
 
@@ -30,12 +32,14 @@ export const getThreeRingsShiftsData = async (req, res) => {
 // Path:
 // -----------------------------------------------------
 export const getThreeRingsNewsData = async (req, res) => {
+  const apiKey = process.env.THREE_RINGS_API_KEY
+
   let resultData = await axios({
     url: "https://www.3r.org.uk/news.json",
     method: "GET",
     timeout: 8000,
     headers: {
-      Authorization: "APIKEY mXdvaUQjLxAeO9ixqSuMyQtt",
+      Authorization: apiKey,
     },
   })
 
@@ -47,12 +51,14 @@ export const getThreeRingsNewsData = async (req, res) => {
 // Path:
 // -----------------------------------------------------
 export const getThreeRingsEventsData = async (req, res) => {
+  const apiKey = process.env.THREE_RINGS_API_KEY
+
   let resultData = await axios({
     url: "https://www.3r.org.uk/events.json",
     method: "GET",
     timeout: 8000,
     headers: {
-      Authorization: "APIKEY mXdvaUQjLxAeO9ixqSuMyQtt",
+      Authorization: apiKey,
     },
   })
 

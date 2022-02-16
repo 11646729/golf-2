@@ -1,0 +1,17 @@
+.cruisestable {
+  width: 94%;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-spacing: 20px;
+  border: 1px solid lightgray;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  height: 34px;
+  margin: 0;
+  padding: 0.5rem;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+}

@@ -1,5 +1,4 @@
 import React, { memo } from "react"
-
 import styled from "styled-components"
 
 const NewsTableContainer = styled.table`
@@ -15,7 +14,7 @@ const NewsTHeadContainer = styled.thead`
 const NewsTRowContainer = styled.tr``
 
 const NewsTBodyContainer = styled.tbody`
-  background-color: #f5fcee;
+  background-color: lightgrey;
   width: 100%;
 `
 
@@ -30,9 +29,12 @@ const NewsHeader = styled.th`
   justify-content: center;
 `
 
-const NewsItemContainer = styled.tr``
+const NewsItemContainer = styled.tr`
+  border: 2px solid grey;
+`
 
 const NewsItem = styled.div`
+  background-color: lightgrey;
   margin: 10px;
 `
 
