@@ -14,8 +14,8 @@ const ShiftsHeaderContainer = styled.thead`
 `
 
 const ShiftsDateContainer = styled.div`
-  border: 2px solid grey;
-  border-style: solid;
+  // border: 2px solid grey;
+  // border-style: solid;
 `
 const ShiftsBodyContainer = styled.tbody`
   flex: 1;
@@ -35,8 +35,8 @@ const DateToday = styled.div`
 `
 
 const ShiftPeriod = styled.td`
-  border: 2px solid grey;
-  border-style: solid;
+  // border: 2px solid grey;
+  // border-style: solid;
 `
 
 const ShiftTimes = styled.div`
@@ -46,9 +46,14 @@ const ShiftTimes = styled.div`
 
 const ShiftPosition = styled.div`
   margin-top: 10px;
-  margin-left: 20px;
+  margin-left: 10px;
   margin-right: 20px;
   width: "100%";
+`
+
+const ShiftName = styled.div`
+  margin: 10px;
+  color: darkblue;
 `
 
 const ThreeRingsShiftsList = (props) => {
@@ -73,7 +78,10 @@ const ThreeRingsShiftsList = (props) => {
                   .add(shift.duration, "s")
                   .format(" HH:mm")}
               </ShiftTimes>
-              <ShiftPosition>{shift.rota}</ShiftPosition>
+              <ShiftPosition>{shift.rota}:</ShiftPosition>
+              {shift.volunteers.map((volunteer) => (
+                <ShiftName>{volunteer.name}</ShiftName>
+              ))}
             </ShiftPeriod>
           </ShiftsPeriodContainer>
         ))}

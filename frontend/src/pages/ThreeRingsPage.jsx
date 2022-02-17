@@ -7,7 +7,7 @@ import {
 
 import ThreeRingsShiftsList from "../components/ThreeRingsShiftsList"
 import ThreeRingsNewsList from "../components/ThreeRingsNewsList"
-import ThreeRingsEventsList from "../components/ThreeRingsEventsList2"
+import ThreeRingsEventsList from "../components/ThreeRingsEventsList"
 
 import styled from "styled-components"
 
@@ -89,8 +89,8 @@ const ThreeRingsPage = () => {
   }, [])
 
   console.log(shiftsData)
-  console.log(newsData)
-  console.log(eventsData)
+  // console.log(newsData)
+  // console.log(eventsData)
 
   return (
     <IIIRContainer>

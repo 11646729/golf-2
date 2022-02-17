@@ -16,8 +16,8 @@ const EventsTBodyContainer = styled.tbody``
 const EventsHeader = styled.th`
   // width: 100%;
   background-color: #f5fcee;
-  border: 2px solid grey;
-  border-style: solid;
+  // border: 2px solid grey;
+  // border-style: solid;
   padding: 30px;
   font-weight: bold;
   font-size: 30px;
@@ -30,10 +30,9 @@ const EventsItemContainer = styled.tr``
 
 const EventItem = styled.td`
   background-color: lightgrey;
-  width: 90%;
-  border: 2px solid grey;
-  border-style: solid;
-  // padding: 30px;
+  // width: 50%;
+  // border: 20px solid grey;
+  // border-style: solid;
   text-align: center;
   justify-content: center;
 `
@@ -55,32 +54,11 @@ const EventItemDetails = styled.div`
 
 const EventItemAuthor = styled.div`
   margin: 10px;
+  color: darkblue;
 `
 
 const ThreeRingsEventsList = (props) => {
   return (
-    // <table className="cruisestable">
-    //   <thead>
-    //     <tr className="widgetLgTh">
-    //       <th>Day</th>
-    //     </tr>
-    //   </thead>
-    //   <tbody>
-    //     {props.data.map((row) => (
-    //       <tr className="widgetLgTr" key={row.portarrivalid}>
-    //         <td className="widgetLgDay">
-    //           <div className="widgetLgDayOfWeek">{row.weekday}</div>
-    //         </td>
-    //         <td className="widgetLgShip">
-    //           <div className="widgetLgShipName">
-    //             {row.vesselshortcruisename}
-    //           </div>
-    //         </td>
-    //         <td className="widgetLgArrivalTime">{row.vesseletatime}</td>
-    //       </tr>
-    //     ))}
-    //   </tbody>
-    // </table>
     <EventsTableContainer>
       <EventsTHeadContainer>
         <EventsTRowContainer>
@@ -91,16 +69,16 @@ const ThreeRingsEventsList = (props) => {
         {props.eventsData.map((eventsItem) => (
           <EventsItemContainer key={eventsItem.id}>
             <EventItem>
-              {/* <EventItemDate>
+              <EventItemDate>
                 {moment(eventsItem.date).utc().format("dddd[] Do MMMM YYYY")}
               </EventItemDate>
               <EventItemTitle>{eventsItem.name}</EventItemTitle>
               <EventItemDetails>{eventsItem.description}</EventItemDetails>
-              <EventItemAuthor>{eventsItem.creator.name}</EventItemAuthor> */}
+              <EventItemAuthor>{eventsItem.creator.name}</EventItemAuthor>
             </EventItem>
           </EventsItemContainer>
         ))}
-      </EventsTBodyContainer>{" "}
+      </EventsTBodyContainer>
     </EventsTableContainer>
   )
 }

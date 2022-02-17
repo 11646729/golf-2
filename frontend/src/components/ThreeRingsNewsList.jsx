@@ -19,8 +19,8 @@ const NewsTBodyContainer = styled.tbody`
 `
 
 const NewsHeader = styled.th`
-  border: 2px solid grey;
-  border-style: solid;
+  // border: 2px solid grey;
+  // border-style: solid;
   padding: 30px;
   font-weight: bold;
   font-size: 30px;
@@ -30,7 +30,7 @@ const NewsHeader = styled.th`
 `
 
 const NewsItemContainer = styled.tr`
-  border: 2px solid grey;
+  // border: 2px solid grey;
 `
 
 const NewsItem = styled.div`
