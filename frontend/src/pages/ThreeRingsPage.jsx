@@ -88,8 +88,8 @@ const ThreeRingsPage = () => {
     }
   }, [])
 
-  console.log(shiftsData)
-  // console.log(newsData)
+  // console.log(shiftsData)
+  console.log(newsData)
   // console.log(eventsData)
 
   return (

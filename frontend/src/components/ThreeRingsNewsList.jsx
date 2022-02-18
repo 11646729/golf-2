@@ -38,30 +38,19 @@ const NewsItem = styled.div`
   margin: 10px;
 `
 
+const NewsItemTitle = styled.div`
+  margin: 10px;
+  font-weight: bold;
+  font-size: 20px;
+`
+
+const NewsItemAuthor = styled.div`
+  margin: 10px;
+  color: darkblue;
+`
+
 const ThreeRingsNewsList = (props) => {
   return (
-    // <table className="cruisestable">
-    //   <thead>
-    //     <tr className="widgetLgTh">
-    //       <th>Day</th>
-    //     </tr>
-    //   </thead>
-    //   <tbody>
-    //     {props.data.map((row) => (
-    //       <tr className="widgetLgTr" key={row.portarrivalid}>
-    //         <td className="widgetLgDay">
-    //           <div className="widgetLgDayOfWeek">{row.weekday}</div>
-    //         </td>
-    //         <td className="widgetLgShip">
-    //           <div className="widgetLgShipName">
-    //             {row.vesselshortcruisename}
-    //           </div>
-    //         </td>
-    //         <td className="widgetLgArrivalTime">{row.vesseletatime}</td>
-    //       </tr>
-    //     ))}
-    //   </tbody>
-    // </table>
     <NewsTableContainer>
       <NewsTHeadContainer>
         <NewsTRowContainer>
@@ -71,7 +60,12 @@ const ThreeRingsNewsList = (props) => {
       {props.newsData.map((newsItem) => (
         <NewsTBodyContainer>
           <NewsItemContainer key={newsItem.id}>
-            <NewsItem>{newsItem.body}</NewsItem>
+            <NewsItemTitle>{newsItem.title}</NewsItemTitle>
+            <NewsItem>
+              {/* Next line removes all html tags in newsItem body */}
+              <div dangerouslySetInnerHTML={{ __html: newsItem.body }}></div>
+            </NewsItem>
+            <NewsItemAuthor>Posted by: {newsItem.creator.name}</NewsItemAuthor>
           </NewsItemContainer>
         </NewsTBodyContainer>
       ))}
