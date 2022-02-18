@@ -62,7 +62,7 @@ const ThreeRingsShiftsList = (props) => {
       <ShiftsHeaderContainer>
         <ShiftsDateContainer>
           {/* <tr> */}
-          <DateToday>{moment().format("dddd[] Do MMMM YYYY")}</DateToday>
+          <DateToday>Today: {moment().format("dddd[] Do MMMM YYYY")}</DateToday>
           {/* </tr> */}
         </ShiftsDateContainer>
       </ShiftsHeaderContainer>
@@ -78,9 +78,11 @@ const ThreeRingsShiftsList = (props) => {
                   .add(shift.duration, "s")
                   .format(" HH:mm")}
               </ShiftTimes>
-              <ShiftPosition>{shift.rota}:</ShiftPosition>
+              {/* <ShiftPosition>{shift.rota}:</ShiftPosition> */}
               {shift.volunteers.map((volunteer) => (
-                <ShiftName>{volunteer.name}</ShiftName>
+                <ShiftName>
+                  {shift.rota}: {volunteer.name}
+                </ShiftName> // map.size = array length
               ))}
             </ShiftPeriod>
           </ShiftsPeriodContainer>

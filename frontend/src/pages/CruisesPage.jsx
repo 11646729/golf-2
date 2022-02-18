@@ -89,8 +89,8 @@ const CruisesPage = () => {
           <LoadingTitle>Error Loading...</LoadingTitle>
         ) : null} */}
         </CruisesTableContainerTitle>
-        <CruisesTable data={portArrivals} loadingError={loadingError} />
-        {/* <CruisesTable2 data={portArrivals} loadingError={loadingError} /> */}
+        {/* <CruisesTable data={portArrivals} loadingError={loadingError} /> */}
+        <CruisesTable2 data={portArrivals} loadingError={loadingError} />
       </CruisesTableContainer>
       <CruisesMapContainer>
         <CruisesMap

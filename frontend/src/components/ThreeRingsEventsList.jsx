@@ -62,7 +62,7 @@ const ThreeRingsEventsList = (props) => {
     <EventsTableContainer>
       <EventsTHeadContainer>
         <EventsTRowContainer>
-          <EventsHeader>Events</EventsHeader>
+          <EventsHeader>Coming Events</EventsHeader>
         </EventsTRowContainer>
       </EventsTHeadContainer>
       <EventsTBodyContainer>
@@ -73,8 +73,12 @@ const ThreeRingsEventsList = (props) => {
                 {moment(eventsItem.date).utc().format("dddd[] Do MMMM YYYY")}
               </EventItemDate>
               <EventItemTitle>{eventsItem.name}</EventItemTitle>
-              <EventItemDetails>{eventsItem.description}</EventItemDetails>
-              <EventItemAuthor>{eventsItem.creator.name}</EventItemAuthor>
+              <EventItemDetails>
+                Description: {eventsItem.description}
+              </EventItemDetails>
+              <EventItemAuthor>
+                Posted by: {eventsItem.creator.name}
+              </EventItemAuthor>
             </EventItem>
           </EventsItemContainer>
         ))}
