@@ -6,21 +6,19 @@ const NewsTableContainer = styled.table`
   justify-content: center;
 `
 
-const NewsTHeadContainer = styled.thead`
+const NewsHeaderContainer = styled.thead`
   background-color: #f5fcee;
   width: 100%;
 `
 
 const NewsTRowContainer = styled.tr``
 
-const NewsTBodyContainer = styled.tbody`
+const NewsBodyContainer = styled.tbody`
   background-color: lightgrey;
   width: 100%;
 `
 
 const NewsHeader = styled.th`
-  // border: 2px solid grey;
-  // border-style: solid;
   padding: 30px;
   font-weight: bold;
   font-size: 30px;
@@ -29,9 +27,7 @@ const NewsHeader = styled.th`
   justify-content: center;
 `
 
-const NewsItemContainer = styled.tr`
-  // border: 2px solid grey;
-`
+const NewsItemContainer = styled.tr``
 
 const NewsItem = styled.div`
   background-color: lightgrey;
@@ -50,25 +46,31 @@ const NewsItemAuthor = styled.div`
 `
 
 const ThreeRingsNewsList = (props) => {
+  // if (props.newsData.length !== 0) console.log(props.newsData)
+
   return (
     <NewsTableContainer>
-      <NewsTHeadContainer>
+      <NewsHeaderContainer>
         <NewsTRowContainer>
           <NewsHeader>News</NewsHeader>
         </NewsTRowContainer>
-      </NewsTHeadContainer>
-      {props.newsData.map((newsItem) => (
-        <NewsTBodyContainer>
+      </NewsHeaderContainer>
+      <NewsBodyContainer>
+        {props.newsData.map((newsItem) => (
           <NewsItemContainer key={newsItem.id}>
-            <NewsItemTitle>{newsItem.title}</NewsItemTitle>
-            <NewsItem>
-              {/* Next line removes all html tags in newsItem body */}
-              <div dangerouslySetInnerHTML={{ __html: newsItem.body }}></div>
-            </NewsItem>
-            <NewsItemAuthor>Posted by: {newsItem.creator.name}</NewsItemAuthor>
+            <td>
+              <NewsItemTitle>{newsItem.title}</NewsItemTitle>
+              <NewsItem>
+                {/* Next line removes all html tags in newsItem body */}
+                <div dangerouslySetInnerHTML={{ __html: newsItem.body }}></div>
+              </NewsItem>
+              <NewsItemAuthor>
+                Posted by: {newsItem.creator.name}
+              </NewsItemAuthor>
+            </td>
           </NewsItemContainer>
-        </NewsTBodyContainer>
-      ))}
+        ))}
+      </NewsBodyContainer>
     </NewsTableContainer>
   )
 }

@@ -437,18 +437,18 @@ export var selectedUniqueRoute = async (
   // Guard clause
   if (url == null) return
 
-  let resultData = await axios({
-    url: url,
-    data: {
-      routeNumber: selectedBusRouteNumber,
-      routeVisible: selected,
-    },
-    method: "PUT",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  // let resultData = await axios({
+  //   url: url,
+  //   data: {
+  //     routeNumber: selectedBusRouteNumber,
+  //     routeVisible: selected,
+  //   },
+  //   method: "PUT",
+  //   timeout: 8000,
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // })
 
   // return resultData.data
 }

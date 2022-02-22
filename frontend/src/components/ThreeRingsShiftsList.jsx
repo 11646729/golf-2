@@ -13,10 +13,8 @@ const ShiftsHeaderContainer = styled.thead`
   justify-content: center;
 `
 
-const ShiftsDateContainer = styled.div`
-  // border: 2px solid grey;
-  // border-style: solid;
-`
+const ShiftsDateContainer = styled.tr``
+
 const ShiftsBodyContainer = styled.tbody`
   flex: 1;
   background-color: lightgrey;
@@ -26,29 +24,19 @@ const ShiftsBodyContainer = styled.tbody`
 
 const ShiftsPeriodContainer = styled.tr``
 
-const DateToday = styled.div`
-  margin: 30px;
+const DateToday = styled.th`
+  padding: 30px;
   font-weight: bold;
   font-size: 30px;
   color: darkblue;
   text-align: center;
 `
 
-const ShiftPeriod = styled.td`
-  // border: 2px solid grey;
-  // border-style: solid;
-`
+const ShiftPeriod = styled.td``
 
 const ShiftTimes = styled.div`
   margin: 10px;
   font-weight: bold;
-`
-
-const ShiftPosition = styled.div`
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 20px;
-  width: "100%";
 `
 
 const ShiftName = styled.div`
@@ -57,13 +45,13 @@ const ShiftName = styled.div`
 `
 
 const ThreeRingsShiftsList = (props) => {
+  // if (props.shiftsData.length !== 0) console.log(props.shiftsData)
+
   return (
     <ShiftsTableContainer>
       <ShiftsHeaderContainer>
         <ShiftsDateContainer>
-          {/* <tr> */}
-          <DateToday>Today: {moment().format("dddd[] Do MMMM YYYY")}</DateToday>
-          {/* </tr> */}
+          <DateToday>{moment().format("dddd[] Do MMMM YYYY")}</DateToday>
         </ShiftsDateContainer>
       </ShiftsHeaderContainer>
       <ShiftsBodyContainer>
@@ -78,9 +66,8 @@ const ThreeRingsShiftsList = (props) => {
                   .add(shift.duration, "s")
                   .format(" HH:mm")}
               </ShiftTimes>
-              {/* <ShiftPosition>{shift.rota}:</ShiftPosition> */}
               {shift.volunteers.map((volunteer) => (
-                <ShiftName>
+                <ShiftName key={volunteer.id}>
                   {shift.rota}: {volunteer.name}
                 </ShiftName> // map.size = array length
               ))}

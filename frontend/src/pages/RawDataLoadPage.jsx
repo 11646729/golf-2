@@ -1,8 +1,6 @@
 import React, { memo } from "react"
 import styled from "styled-components"
 
-import Title from "../components/Title"
-
 import {
   prepareTemperaturesTable,
   prepareGolfCoursesTable,
@@ -23,13 +21,6 @@ const RawDataTableContainer = styled.div`
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   min-height: 500px;
-`
-
-const RawDataTableTitleContainer = styled.div`
-  margin-top: 35px;
-  margin-left: 20px;
-  margin-right: 20px;
-  width: "97%";
 `
 
 const Button = styled.button`
@@ -141,9 +132,6 @@ const RawDataLoadPage = () => {
   return (
     <RawDataContainer>
       <RawDataTableContainer>
-        <RawDataTableTitleContainer>
-          {/* <Title>{"In RawDataLoadPage.jsx"}</Title> */}
-        </RawDataTableTitleContainer>
         <table className="cruisestable">
           <thead>
             <tr className="rawdatatableTh">

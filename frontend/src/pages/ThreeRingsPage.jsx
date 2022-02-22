@@ -36,6 +36,12 @@ const IIIREventsContainer = styled.div`
   min-height: 600px;
 `
 
+// const IIIFooterContainer = styled.div`
+//   flex: 1;
+//   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+//   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+// `
+
 const ThreeRingsPage = () => {
   const [shiftsData, setShiftsData] = useState([])
   const [newsData, setNewsData] = useState([])
@@ -88,8 +94,12 @@ const ThreeRingsPage = () => {
     }
   }, [])
 
+  if (loadingError !== "") {
+    alert(loadingError)
+  }
+
   // console.log(shiftsData)
-  console.log(newsData)
+  // console.log(newsData)
   // console.log(eventsData)
 
   return (
@@ -103,6 +113,7 @@ const ThreeRingsPage = () => {
       <IIIREventsContainer>
         <ThreeRingsEventsList eventsData={eventsData}></ThreeRingsEventsList>
       </IIIREventsContainer>
+      {/* <IIIFooterContainer /> */}
     </IIIRContainer>
   )
 }

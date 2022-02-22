@@ -13,7 +13,7 @@ import {
   XAxis,
   YAxis,
   Label,
-  Tooltip,
+  // Tooltip,
   ResponsiveContainer,
 } from "recharts"
 
