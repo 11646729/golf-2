@@ -69,7 +69,11 @@ const ThreeRingsPage = () => {
       if (shiftsData[loop].volunteers.length > 1) {
         let innerLoop = 0
         do {
-          namesString += shiftsData[loop].volunteers[innerLoop].name + "  "
+          if (innerLoop == 1) {
+            namesString += shiftsData[loop].volunteers[innerLoop].name
+          } else {
+            namesString += shiftsData[loop].volunteers[innerLoop].name + " & "
+          }
 
           innerLoop++
         } while (innerLoop < shiftsData[loop].volunteers.length)
