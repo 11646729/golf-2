@@ -46,8 +46,6 @@ const NewsItemAuthor = styled.div`
 `
 
 const ThreeRingsNewsList = (props) => {
-  // if (props.newsData.length !== 0) console.log(props.newsData)
-
   return (
     <NewsTableContainer>
       <NewsHeaderContainer>

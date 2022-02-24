@@ -58,8 +58,6 @@ const EventItemAuthor = styled.div`
 `
 
 const ThreeRingsEventsList = (props) => {
-  // if (props.eventsData.length !== 0) console.log(props.eventsData)
-
   return (
     <EventsTableContainer>
       <EventsTHeadContainer>

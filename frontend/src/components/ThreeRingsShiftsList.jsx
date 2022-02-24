@@ -45,8 +45,6 @@ const ShiftName = styled.div`
 `
 
 const ThreeRingsShiftsList = (props) => {
-  // if (props.shiftsData.length !== 0) console.log(props.shiftsData)
-
   return (
     <ShiftsTableContainer>
       <ShiftsHeaderContainer>
@@ -66,11 +64,9 @@ const ThreeRingsShiftsList = (props) => {
                   .add(shift.duration, "s")
                   .format(" HH:mm")}
               </ShiftTimes>
-              {shift.volunteers.map((volunteer) => (
-                <ShiftName key={volunteer.id}>
-                  {shift.rota}: {volunteer.name}
-                </ShiftName> // map.size = array length
-              ))}
+              <ShiftName>
+                {shift.rota}: {shift.nameString}
+              </ShiftName>
             </ShiftPeriod>
           </ShiftsPeriodContainer>
         ))}
