@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from "react"
 import {
-  getThreeRingsShiftsData,
+  getThreeRingsModifiedShiftsData,
   getThreeRingsNewsData,
   getThreeRingsEventsData,
 } from "../axiosUtilities"
@@ -37,15 +37,16 @@ const IIIREventsContainer = styled.div`
 `
 
 const ThreeRingsPage = () => {
-  const [shiftsData, setShiftsData] = useState([])
-  const [filteredShiftsData, setFilteredShiftsData] = useState([])
+  const [shiftsData, setModifiedShiftsData] = useState([])
   const [newsData, setNewsData] = useState([])
   const [eventsData, setEventsData] = useState([])
   const [loadingError, setLoadingError] = useState("")
 
-  const getShiftsData = () => {
-    getThreeRingsShiftsData("http://localhost:4000/api/threerings/shifts")
-      .then((returnedData) => setShiftsData(returnedData.shifts))
+  const getModifiedShiftsData = () => {
+    getThreeRingsModifiedShiftsData(
+      "http://localhost:4000/api/threerings/shifts"
+    )
+      .then((returnedData) => setModifiedShiftsData(returnedData.shifts))
       .catch((err) => setLoadingError(err))
   }
 
@@ -61,50 +62,17 @@ const ThreeRingsPage = () => {
       .catch((err) => setLoadingError(err))
   }
 
-  const filterShiftListNames = (shiftsData) => {
-    let loop = 0
-    let namesString = ""
-
-    do {
-      if (shiftsData[loop].volunteers.length > 1) {
-        let innerLoop = 0
-        do {
-          if (innerLoop == 1) {
-            namesString += shiftsData[loop].volunteers[innerLoop].name
-          } else {
-            namesString += shiftsData[loop].volunteers[innerLoop].name + " & "
-          }
-
-          innerLoop++
-        } while (innerLoop < shiftsData[loop].volunteers.length)
-      } else {
-        namesString += shiftsData[loop].volunteers[0].name
-      }
-
-      shiftsData[loop]["nameString"] = namesString
-
-      namesString = ""
-
-      loop++
-    } while (loop < shiftsData.length)
-
-    setFilteredShiftsData(shiftsData)
-  }
-
   const newsRotateSpeedInSeconds = 4
   const refreshIntervalInMinutes = 1
 
   useEffect(() => {
     // This is to fire these function immediately - then the interval timer takes over
-    getShiftsData()
-    if (shiftsData.length !== 0) {
-      filterShiftListNames(shiftsData)
-    }
+    getModifiedShiftsData()
     getNewsData()
     getEventsData()
 
     var shiftsInterval = setInterval(
-      getShiftsData,
+      getModifiedShiftsData,
       refreshIntervalInMinutes * 1000 * 60
     )
 
@@ -120,23 +88,20 @@ const ThreeRingsPage = () => {
       clearInterval(newsInterval)
       clearInterval(eventsInterval)
     }
-  }, [shiftsData])
+  }, [])
 
   if (loadingError !== "") {
     alert(loadingError)
   }
 
   // console.log(shiftsData)
-  console.log(filteredShiftsData)
   // console.log(newsData)
   // console.log(eventsData)
 
   return (
     <IIIRContainer>
       <IIIRShiftContainer>
-        <ThreeRingsShiftsList
-          shiftsData={filteredShiftsData}
-        ></ThreeRingsShiftsList>
+        <ThreeRingsShiftsList shiftsData={shiftsData}></ThreeRingsShiftsList>
       </IIIRShiftContainer>
       <IIIRNewsContainer>
         <ThreeRingsNewsList newsData={newsData}></ThreeRingsNewsList>

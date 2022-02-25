@@ -215,9 +215,40 @@ export var getPortArrivalsData = async (url) => {
 }
 
 // -------------------------------------------------------
+// Function to concatenate 3Rings Shift data volunteer names into a string
+// -------------------------------------------------------
+const concatenateShiftListNames = (shiftsData) => {
+  let loop = 0
+  let innerLoop = 0
+  let namesString = ""
+
+  do {
+    innerLoop = 0
+
+    do {
+      if (innerLoop < shiftsData[loop].volunteers.length - 1) {
+        namesString += shiftsData[loop].volunteers[innerLoop].name + " & "
+      } else {
+        namesString += shiftsData[loop].volunteers[innerLoop].name
+      }
+
+      innerLoop++
+    } while (innerLoop < shiftsData[loop].volunteers.length)
+
+    shiftsData[loop]["nameString"] = namesString
+
+    namesString = ""
+
+    loop++
+  } while (loop < shiftsData.length)
+
+  return shiftsData
+}
+
+// -------------------------------------------------------
 // Function to fetch all 3Rings Shift data
 // -------------------------------------------------------
-export var getThreeRingsShiftsData = async (url) => {
+export var getThreeRingsModifiedShiftsData = async (url) => {
   // Guard clause
   if (url == null) {
     console.log(
@@ -226,6 +257,7 @@ export var getThreeRingsShiftsData = async (url) => {
     return
   }
 
+  //  Fetch data from Three Rings
   let resultData = await axios({
     url: url,
     method: "GET",
@@ -234,6 +266,11 @@ export var getThreeRingsShiftsData = async (url) => {
       "Content-Type": "application/json",
     },
   })
+
+  // Now concatenate string with volunteer names
+  if (resultData.length !== 0) {
+    concatenateShiftListNames(resultData.data.shifts)
+  }
 
   return resultData.data
 }
