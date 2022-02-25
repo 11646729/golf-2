@@ -223,8 +223,6 @@ const concatenateShiftListNames = (shiftsData) => {
   let namesString = ""
 
   do {
-    innerLoop = 0
-
     do {
       if (innerLoop < shiftsData[loop].volunteers.length - 1) {
         namesString += shiftsData[loop].volunteers[innerLoop].name + " & "
@@ -238,6 +236,7 @@ const concatenateShiftListNames = (shiftsData) => {
     shiftsData[loop]["nameString"] = namesString
 
     namesString = ""
+    innerLoop = 0
 
     loop++
   } while (loop < shiftsData.length)
