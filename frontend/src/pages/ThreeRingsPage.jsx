@@ -3,7 +3,7 @@ import {
   getThreeRingsModifiedShiftsData,
   getThreeRingsNewsData,
   getThreeRingsEventsData,
-} from "../axiosUtilities"
+} from "../threeRingsUtilities"
 
 import ThreeRingsShiftsList from "../components/ThreeRingsShiftsList"
 import ThreeRingsNewsList from "../components/ThreeRingsNewsList"
@@ -94,7 +94,7 @@ const ThreeRingsPage = () => {
     alert(loadingError)
   }
 
-  // console.log(shiftsData)
+  console.log(shiftsData)
   // console.log(newsData)
   // console.log(eventsData)
 

@@ -2,8 +2,6 @@ import React, { memo } from "react"
 import moment from "moment"
 import styled from "styled-components"
 
-// Test
-
 const ShiftsTableContainer = styled.table`
   width: 100%;
   justify-content: center;
