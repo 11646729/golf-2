@@ -426,6 +426,34 @@
         "photoUrl": "static/images/WarrenpointGolfClub.jpg",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-5.67828, 54.33838]
+      },
+      "properties": {
+        "name": "St. Patricks Golf Club",
+        "phoneNumber": "028 4461 5947",
+        "photoTitle": "St. Patricks Golf Club Photo",
+        "photoUrl": "static/images/StPatricksGolfClub.jpg",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-5.91171, 54.39499]
+      },
+      "properties": {
+        "name": "Spa Golf Club",
+        "phoneNumber": "028 9756 2365",
+        "photoTitle": "Spa Golf Club Photo",
+        "photoUrl": "static/images/SpaGolfClub.jpg",
+        "description": "TODO"
+      }
     }
   ]
 }
