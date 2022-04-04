@@ -412,6 +412,20 @@
         "photoUrl": "static/images/RoyalCountyDownGolfClub.jpg",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.264594, 54.108301]
+      },
+      "properties": {
+        "name": "Warrenpoint Golf Club",
+        "phoneNumber": "028 4175 3695",
+        "photoTitle": "Warrenpoint Golf Club Photo",
+        "photoUrl": "static/images/WarrenpointGolfClub.jpg",
+        "description": "TODO"
+      }
     }
   ]
 }

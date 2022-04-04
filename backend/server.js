@@ -4,7 +4,6 @@ import dotenv from "dotenv"
 import path from "path"
 import { createServer } from "http"
 import { Server } from "socket.io"
-// import axios from "axios"
 
 import { switchOnRealtimeTemperatureData } from "./enableRealtimeData.js"
 
@@ -54,25 +53,7 @@ app.use("/api/threerings", threeRingsRouter)
 
 // Enable Realtime data sources (true = enable, false = disable)
 var resultReturned = switchOnRealtimeTemperatureData(io, false)
-// console.log(resultReturned)
-
-// --------------------------------------------------------------
-// CODE FOR SAMARITANS
-// Attempt to load today's shifts
-// axios
-//   .get("https://www.3r.org.uk/stats/export_rotas.json", {
-//     headers: {
-//       Authorization: "APIKEY mXdvaUQjLxAeO9ixqSuMyQtt",
-//     },
-//   })
-//   .then((res) => {
-//     console.log("Success")
-//     console.log(res.data)
-//   })
-//   .catch((error) => {
-//     console.log("Error :" + error)
-//   })
-// --------------------------------------------------------------
+console.log(resultReturned)
 
 // Start Express server
 httpServer.listen(port, (err) => {
