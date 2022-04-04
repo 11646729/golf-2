@@ -13,7 +13,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "antd": "^4.6.4",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "bootstrap": "^4.4.1",
     "bufferutil": "^4.0.1",
     "css-what": "^5.0.1",
