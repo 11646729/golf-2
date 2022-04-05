@@ -18,7 +18,7 @@ export const prepareEmptyTemperaturesTable = (req, res) => {
   db = openSqlDbConnection(process.env.SQL_URI)
 
   if (db !== null) {
-    // Firstly read the sqlite_schema table to check if golfcourses table exists
+    // Firstly read the sqlite_schema table to check if temperatures table exists
     let sql =
       "SELECT name FROM sqlite_schema WHERE type = 'table' AND name = 'temperatures'"
 

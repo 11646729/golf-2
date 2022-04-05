@@ -454,6 +454,62 @@
         "photoUrl": "static/images/SpaGolfClub.jpg",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.239458, 54.19414]
+      },
+      "properties": {
+        "name": "Mayobridge Golf Club",
+        "phoneNumber": "028 3085 0295",
+        "photoTitle": "Mayobridge Golf Club Photo",
+        "photoUrl": "static/images/MayobridgeGolfClub.jpg",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.045188, 54.078019]
+      },
+      "properties": {
+        "name": "Kilkeel Golf Club",
+        "phoneNumber": "028 4176 5095",
+        "photoTitle": "Kilkeel Golf Club Photo",
+        "photoUrl": "static/images/KilkeelGolfClub.jpg",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-5.686714, 54.275819]
+      },
+      "properties": {
+        "name": "Bright Castle Golf Club",
+        "phoneNumber": "028 4484 1319",
+        "photoTitle": "Bright Castle Golf Club Photo",
+        "photoUrl": "static/images/BrightCastleGolfClub.jpg",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.279381, 54.360636]
+      },
+      "properties": {
+        "name": "Banbridge Golf Club",
+        "phoneNumber": "028 4066 2211",
+        "photoTitle": "Banbridge Golf Club Photo",
+        "photoUrl": "static/images/BanbridgeGolfClub.jpg",
+        "description": "TODO"
+      }
     }
   ]
 }

@@ -169,6 +169,7 @@ const populateGolfCourses = (courses) => {
   try {
     do {
       const course = [
+        loop,
         process.env.DATABASE_VERSION,
         process.env.TYPE_GOLF_CLUB,
         courses.crs.properties.name,
@@ -182,7 +183,7 @@ const populateGolfCourses = (courses) => {
       ]
 
       const sql =
-        "INSERT INTO golfcourses (databaseversion, type, crsurn, name, phonenumber, phototitle, photourl, description, lng, lat) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10 )"
+        "INSERT INTO golfcourses (courseid, databaseversion, type, crsurn, name, phonenumber, phototitle, photourl, description, lng, lat) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11 )"
 
       db.run(sql, course, (err) => {
         if (err) {
