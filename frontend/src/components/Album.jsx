@@ -14,7 +14,6 @@ import GolfCoursesCard from "../cards/GolfCoursesCard"
 import CrimesCard from "../cards/CrimesCard"
 import CruiseCard from "../cards/CruiseCard"
 import TransportCard from "../cards/TransportCard"
-import ThreeRingsCard from "../cards/ThreeRingsCard"
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -119,9 +118,6 @@ export default function Album() {
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <TransportCard />
-            </Grid>
-            <Grid item sm={4} style={{ padding: 20 }}>
-              <ThreeRingsCard />
             </Grid>
           </Grid>
         </Container>

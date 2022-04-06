@@ -168,6 +168,7 @@ const populateGolfCourses = (courses) => {
   let loop = 0
   try {
     do {
+      // courseid == loop
       const course = [
         loop,
         process.env.DATABASE_VERSION,
