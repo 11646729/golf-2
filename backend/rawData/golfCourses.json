@@ -510,6 +510,34 @@
         "photoUrl": "static/images/BanbridgeGolfClub.jpg",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.983191872633398, 54.43248025381644]
+      },
+      "properties": {
+        "name": "Aughnacloy Golf Club",
+        "phoneNumber": "028 8555 7050",
+        "photoTitle": "Aughnacloy Golf Club Photo",
+        "photoUrl": "static/images/AughnacloyGolfClub.jpg",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-7.334693572603746, 54.36765263411943]
+      },
+      "properties": {
+        "name": "Clogher Valley Golf Club",
+        "phoneNumber": "028 8952 1739",
+        "photoTitle": "Clogher Valley Golf Club Photo",
+        "photoUrl": "static/images/ClogherValleyGolfClub.jpg",
+        "description": "TODO"
+      }
     }
   ]
 }
