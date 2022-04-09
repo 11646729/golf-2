@@ -538,6 +538,20 @@
         "photoUrl": "static/images/ClogherValleyGolfClub.jpg",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.78304, 54.51839]
+      },
+      "properties": {
+        "name": "Dungannon Golf Club",
+        "phoneNumber": "028 8772 2098",
+        "photoTitle": "Dungannon Golf Club Photo",
+        "photoUrl": "static/images/DungannonGolfClub.jpg",
+        "description": "TODO"
+      }
     }
   ]
 }
