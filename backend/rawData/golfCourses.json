@@ -552,6 +552,20 @@
         "photoUrl": "static/images/DungannonGolfClub.jpg",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-7.31500428684998, 54.495336367587925]
+      },
+      "properties": {
+        "name": "Fintona Golf Club",
+        "phoneNumber": "028 8284 1480",
+        "photoTitle": "Fintona Golf Club Photo",
+        "photoUrl": "static/images/FintonaGolfClub.jpg",
+        "description": "TODO"
+      }
     }
   ]
 }
