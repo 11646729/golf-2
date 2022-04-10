@@ -566,6 +566,20 @@
         "photoUrl": "static/images/FintonaGolfClub.jpg",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.721628860918972, 54.63543051325273]
+      },
+      "properties": {
+        "name": "Kilymoon Golf Club",
+        "phoneNumber": "028 8676 3762",
+        "photoTitle": "Kilymoon Golf Club Photo",
+        "photoUrl": "static/images/KilymoonGolfClub.jpg",
+        "description": "TODO"
+      }
     }
   ]
 }
