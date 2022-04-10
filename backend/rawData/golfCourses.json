@@ -18,6 +18,7 @@
         "phoneNumber": "028 44 841 219",
         "photoTitle": "Ardglass Golf Club Photo",
         "photoUrl": "static/images/ArdglassGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -32,6 +33,7 @@
         "phoneNumber": "028 4277 1321",
         "photoTitle": "Ardminnan Golf Club Photo",
         "photoUrl": "static/images/ArdminnanGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -46,6 +48,7 @@
         "phoneNumber": "028 9038 1514",
         "photoTitle": "Balmoral Golf Club Photo",
         "photoUrl": "static/images/BalmoralGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -60,6 +63,7 @@
         "phoneNumber": "028 9127 0922",
         "photoTitle": "Bangor Golf Club Photo",
         "photoUrl": "static/images/BangorGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -74,6 +78,7 @@
         "phoneNumber": "028 9049 1693",
         "photoTitle": "Belvoir Park Golf Club Photo",
         "photoUrl": "static/images/BelvoirParkGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -84,10 +89,11 @@
         "coordinates": [-5.726133, 54.630849]
       },
       "properties": {
-        "name": "Blackwood Golf Centre",
+        "name": "Blackwood Golf Centre",
         "phoneNumber": "028 9185 2706",
-        "photoTitle": "Blackwood Golf Centre Photo",
+        "photoTitle": "Blackwood Golf Centre Photo",
         "photoUrl": "static/images/BlackwoodGolfCentre.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -102,6 +108,7 @@
         "phoneNumber": "028 9127 0368",
         "photoTitle": "Carnalea Golf Club Photo",
         "photoUrl": "static/images/CarnaleaGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -112,10 +119,11 @@
         "coordinates": [-5.831853, 54.571461]
       },
       "properties": {
-        "name": "Castlereagh Hills Golf Club",
+        "name": "Castlereagh Hills Golf Club",
         "phoneNumber": "028 9044 8477",
-        "photoTitle": "Castlereagh Hills Golf Club Photo",
+        "photoTitle": "Castlereagh Hills Golf Club Photo",
         "photoUrl": "static/images/CastlereaghHillsGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -130,6 +138,7 @@
         "phoneNumber": "028 7084 8314",
         "photoTitle": "Castlerock Golf Club Photo",
         "photoUrl": "static/images/CastlerockGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -144,7 +153,8 @@
         "phoneNumber": "028 9127 1767",
         "photoTitle": "Clandeboye Golf Club Photo",
         "photoUrl": "static/images/ClandeboyeGolfClub.jpg",
-        "description": "Situated in the country surrounds of Lady Dufferin’s Estate, we offer two courses of international standing. The Dufferin Course is one of the Highest Rated Championship Courses in Ireland. The Ava Course is shorter but offers a real test of accuracy."
+        "county": "Down",
+        "description": "Situated in the country surrounds of Lady Dufferins Estate, we offer two courses of international standing. The Dufferin Course is one of the Highest Rated Championship Courses in Ireland. The Ava Course is shorter but offers a real test of accuracy."
       }
     },
     {
@@ -158,6 +168,7 @@
         "phoneNumber": "028 9074 4158",
         "photoTitle": "Cliftonville Golf Club Photo",
         "photoUrl": "static/images/CliftonvilleGolfClub.jpg",
+        "county": "Antrim",
         "description": "TODO"
       }
     },
@@ -168,10 +179,11 @@
         "coordinates": [-5.549328, 54.653172]
       },
       "properties": {
-        "name": "Donaghadee Golf Club",
+        "name": "Donaghadee Golf Club",
         "phoneNumber": "028 9188 3624",
-        "photoTitle": "Donaghadee Golf Club Photo",
+        "photoTitle": "Donaghadee Golf Club Photo",
         "photoUrl": "static/images/DonaghadeeGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -186,6 +198,7 @@
         "phoneNumber": "028 9062 1314",
         "photoTitle": "Dunmurry Golf Club Photo",
         "photoUrl": "static/images/DunmurryGolfClub.jpg",
+        "county": "Antrim",
         "description": "TODO"
       }
     },
@@ -200,6 +213,7 @@
         "phoneNumber": "028 9261 9241",
         "photoTitle": "Edenmore Country Club Photo",
         "photoUrl": "static/images/EdenmoreCountryClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -214,6 +228,7 @@
         "phoneNumber": "028 2564 6161",
         "photoTitle": "Galgorm Castle Golf Club Photo",
         "photoUrl": "static/images/GalgormCastleGolfClub.jpg",
+        "county": "Antrim",
         "description": "TODO"
       }
     },
@@ -224,10 +239,11 @@
         "coordinates": [-5.738059, 54.668818]
       },
       "properties": {
-        "name": "Helen's Bay Golf Course",
+        "name": "Helen's Bay Golf Course",
         "phoneNumber": "028 9185 2815",
-        "photoTitle": "Helens Bay Golf Club Photo",
+        "photoTitle": "Helens Bay Golf Club Photo",
         "photoUrl": "static/images/HelensBayGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -242,6 +258,7 @@
         "phoneNumber": "028 9042 3135",
         "photoTitle": "Holywood Golf Club Photo",
         "photoUrl": "static/images/HolywoodGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -256,6 +273,7 @@
         "phoneNumber": "028 4277 1233",
         "photoTitle": "Kirkistown Castle Golf Club Photo",
         "photoUrl": "static/images/KirkistownCastleGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -270,6 +288,7 @@
         "phoneNumber": "028 9048 3251",
         "photoTitle": "Knock Golf Club Photo",
         "photoUrl": "static/images/KnockGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -284,6 +303,7 @@
         "phoneNumber": "028 9061 2758",
         "photoTitle": "Malone Golf Club Photo",
         "photoUrl": "static/images/MaloneGolfClub.jpg",
+        "county": "Antrim",
         "description": "TODO"
       }
     },
@@ -298,6 +318,7 @@
         "phoneNumber": "028 9064 0700",
         "photoTitle": "Ormeau Golf Club Photo",
         "photoUrl": "static/images/OrmeauGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -312,6 +333,7 @@
         "phoneNumber": "028 7083 2015",
         "photoTitle": "Portstewart Golf Club Photo",
         "photoUrl": "static/images/PortstewartGolfClub.jpg",
+        "county": "Derry",
         "description": "TODO"
       }
     },
@@ -326,6 +348,7 @@
         "phoneNumber": "028 9081 2279",
         "photoTitle": "Rockmount Golf Club Photo",
         "photoUrl": "static/images/RockmountGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -340,6 +363,7 @@
         "phoneNumber": "028 7082 2311",
         "photoTitle": "Royal Portrush Golf Club Photo",
         "photoUrl": "static/images/RoyalPortrushGolfClub.jpg",
+        "county": "Antrim",
         "description": "TODO"
       }
     },
@@ -354,6 +378,7 @@
         "phoneNumber": "028 9181 2355",
         "photoTitle": "Scrabo Golf Club Photo",
         "photoUrl": "static/images/ScraboGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -368,6 +393,7 @@
         "phoneNumber": "028 9080 5030",
         "photoTitle": "Shandon Park Golf Club Photo",
         "photoUrl": "static/images/ShandonParkGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -382,6 +408,7 @@
         "phoneNumber": "028 9263 9213",
         "photoTitle": "Temple Golf & Country Club Photo",
         "photoUrl": "static/images/TempleGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -392,10 +419,11 @@
         "coordinates": [-5.783817, 54.661631]
       },
       "properties": {
-        "name": "The Royal Belfast Golf Club",
+        "name": "The Royal Belfast Golf Club",
         "phoneNumber": "028 9042 8165",
-        "photoTitle": "Royal Belfast Golf Club Photo",
+        "photoTitle": "Royal Belfast Golf Club Photo",
         "photoUrl": "static/images/RoyalBelfastGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -410,6 +438,7 @@
         "phoneNumber": "028 4372 3314",
         "photoTitle": "Royal County Down Golf Club Photo",
         "photoUrl": "static/images/RoyalCountyDownGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -424,6 +453,7 @@
         "phoneNumber": "028 4175 3695",
         "photoTitle": "Warrenpoint Golf Club Photo",
         "photoUrl": "static/images/WarrenpointGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -438,6 +468,7 @@
         "phoneNumber": "028 4461 5947",
         "photoTitle": "St. Patricks Golf Club Photo",
         "photoUrl": "static/images/StPatricksGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -452,6 +483,7 @@
         "phoneNumber": "028 9756 2365",
         "photoTitle": "Spa Golf Club Photo",
         "photoUrl": "static/images/SpaGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -466,6 +498,7 @@
         "phoneNumber": "028 3085 0295",
         "photoTitle": "Mayobridge Golf Club Photo",
         "photoUrl": "static/images/MayobridgeGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -480,6 +513,7 @@
         "phoneNumber": "028 4176 5095",
         "photoTitle": "Kilkeel Golf Club Photo",
         "photoUrl": "static/images/KilkeelGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -494,6 +528,7 @@
         "phoneNumber": "028 4484 1319",
         "photoTitle": "Bright Castle Golf Club Photo",
         "photoUrl": "static/images/BrightCastleGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -508,6 +543,7 @@
         "phoneNumber": "028 4066 2211",
         "photoTitle": "Banbridge Golf Club Photo",
         "photoUrl": "static/images/BanbridgeGolfClub.jpg",
+        "county": "Down",
         "description": "TODO"
       }
     },
@@ -522,6 +558,7 @@
         "phoneNumber": "028 8555 7050",
         "photoTitle": "Aughnacloy Golf Club Photo",
         "photoUrl": "static/images/AughnacloyGolfClub.jpg",
+        "county": "Tyrone",
         "description": "TODO"
       }
     },
@@ -536,6 +573,7 @@
         "phoneNumber": "028 8952 1739",
         "photoTitle": "Clogher Valley Golf Club Photo",
         "photoUrl": "static/images/ClogherValleyGolfClub.jpg",
+        "county": "Tyrone",
         "description": "TODO"
       }
     },
@@ -550,6 +588,7 @@
         "phoneNumber": "028 8772 2098",
         "photoTitle": "Dungannon Golf Club Photo",
         "photoUrl": "static/images/DungannonGolfClub.jpg",
+        "county": "Tyrone",
         "description": "TODO"
       }
     },
@@ -564,6 +603,7 @@
         "phoneNumber": "028 8284 1480",
         "photoTitle": "Fintona Golf Club Photo",
         "photoUrl": "static/images/FintonaGolfClub.jpg",
+        "county": "Tyrone",
         "description": "TODO"
       }
     },
@@ -578,6 +618,7 @@
         "phoneNumber": "028 8676 3762",
         "photoTitle": "Kilymoon Golf Club Photo",
         "photoUrl": "static/images/KilymoonGolfClub.jpg",
+        "county": "Tyrone",
         "description": "TODO"
       }
     }
