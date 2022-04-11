@@ -621,6 +621,21 @@
         "county": "Tyrone",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-7.419494333425449, 54.705061003229964]
+      },
+      "properties": {
+        "name": "Newtownstewart Golf Club",
+        "phoneNumber": "028 8166 1466",
+        "photoTitle": "Newtownstewart Golf Club Photo",
+        "photoUrl": "static/images/NewtownstewartGolfClub.jpg",
+        "county": "Tyrone",
+        "description": "TODO"
+      }
     }
   ]
 }
