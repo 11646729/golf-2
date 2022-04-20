@@ -636,6 +636,36 @@
         "county": "Tyrone",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-7.291891848219793, 54.59475793627723]
+      },
+      "properties": {
+        "name": "Omagh Golf Club",
+        "phoneNumber": "028 8224 3160",
+        "photoTitle": "Omagh Golf Club Photo",
+        "photoUrl": "static/images/OmaghGolfClub.jpg",
+        "county": "Tyrone",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-7.463716564110354, 54.8145339705608]
+      },
+      "properties": {
+        "name": "Strabane Golf Club",
+        "phoneNumber": "028 7138 2271",
+        "photoTitle": "Strabane Golf Club Photo",
+        "photoUrl": "static/images/StrabaneGolfClub.jpg",
+        "county": "Tyrone",
+        "description": "TODO"
+      }
     }
   ]
 }
