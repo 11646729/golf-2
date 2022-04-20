@@ -681,6 +681,36 @@
         "county": "Fermanagh",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-7.61312323287734, 54.338598061284664]
+      },
+      "properties": {
+        "name": "Enniskillen Golf Club",
+        "phoneNumber": "028 6632 5250",
+        "photoTitle": "Enniskillen Golf Club Photo",
+        "photoUrl": "static/images/EnniskillenGolfClub.jpg",
+        "county": "Fermanagh",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-7.6901296186311034, 54.398589834567716]
+      },
+      "properties": {
+        "name": "Lough Erne Golf Club",
+        "phoneNumber": "028 6632 3230",
+        "photoTitle": "Lough Erne Golf Club Photo",
+        "photoUrl": "static/images/LoughErneGolfClub.jpg",
+        "county": "Fermanagh",
+        "description": "TODO"
+      }
     }
   ]
 }
