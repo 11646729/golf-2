@@ -666,6 +666,21 @@
         "county": "Tyrone",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-7.691285612878256, 54.39423567735139]
+      },
+      "properties": {
+        "name": "Castlehume Golf Club",
+        "phoneNumber": "028 6632 7077",
+        "photoTitle": "Castlehume Golf Club Photo",
+        "photoUrl": "static/images/CastlehumeGolfClub.jpg",
+        "county": "Fermanagh",
+        "description": "TODO"
+      }
     }
   ]
 }
