@@ -786,6 +786,21 @@
         "county": "Derry",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-7.2838139197273195, 55.041202245937086]
+      },
+      "properties": {
+        "name": "Foyle International Golf Centre",
+        "phoneNumber": "028 7135 2222",
+        "photoTitle": "Foyle International Golf Centre Photo",
+        "photoUrl": "static/images/FoyleInternationalGolfCentre.jpg",
+        "county": "Derry",
+        "description": "TODO"
+      }
     }
   ]
 }
