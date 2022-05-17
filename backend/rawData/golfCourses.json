@@ -876,6 +876,51 @@
         "county": "Derry",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.574488180549026, 54.112016953027535]
+      },
+      "properties": {
+        "name": "Ashfield Golf Course",
+        "phoneNumber": "028 3086 8180",
+        "photoTitle": "Ashfield Golf Course Photo",
+        "photoUrl": "static/images/AshfieldGolfCourse.jpg",
+        "county": "Armagh",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.4872796043848675, 54.104849119053284]
+      },
+      "properties": {
+        "name": "Cloverhill Golf Course",
+        "phoneNumber": "028 3088 9374",
+        "photoTitle": "Cloverhill Golf Course Photo",
+        "photoUrl": "static/images/CloverhillGolfCourse.jpg",
+        "county": "Armagh",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.645618694247154, 54.34526116452986]
+      },
+      "properties": {
+        "name": "County Armagh Golf Course",
+        "phoneNumber": "028 3752 5861",
+        "photoTitle": "County Armagh Golf Course Photo",
+        "photoUrl": "static/images/CountyArmaghGolfCourse.jpg",
+        "county": "Armagh",
+        "description": "TODO"
+      }
     }
   ]
 }
