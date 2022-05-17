@@ -138,7 +138,7 @@
         "phoneNumber": "028 7084 8314",
         "photoTitle": "Castlerock Golf Club Photo",
         "photoUrl": "static/images/CastlerockGolfClub.jpg",
-        "county": "Down",
+        "county": "Derry",
         "description": "TODO"
       }
     },
@@ -709,6 +709,81 @@
         "photoTitle": "Lough Erne Golf Club Photo",
         "photoUrl": "static/images/LoughErneGolfClub.jpg",
         "county": "Fermanagh",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.677383993699045, 55.19734903584852]
+      },
+      "properties": {
+        "name": "Ballyreagh Golf Club",
+        "phoneNumber": "028 7082 2028",
+        "photoTitle": "Ballyreagh Golf Club Photo",
+        "photoUrl": "static/images/BallyreaghGolfClub.jpg",
+        "county": "Derry",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.871139048305521, 55.162498055775586]
+      },
+      "properties": {
+        "name": "Benone Golf Club",
+        "phoneNumber": "028 7775 0555",
+        "photoTitle": "Benone Golf Club Photo",
+        "photoUrl": "static/images/BenoneGolfClub.jpg",
+        "county": "Derry",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.599812818631104, 55.03776900977935]
+      },
+      "properties": {
+        "name": "Brown Trout Golf Club",
+        "phoneNumber": "028 7086 8209",
+        "photoTitle": "Brown Trout Golf Club Photo",
+        "photoUrl": "static/images/BrownTroutGolfClub.jpg",
+        "county": "Derry",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-7.346160226576385, 54.972196297640345]
+      },
+      "properties": {
+        "name": "City of Derry Golf Club",
+        "phoneNumber": "028 7134 6369",
+        "photoTitle": "City of Derry Golf Club Photo",
+        "photoUrl": "static/images/CityofDerryGolfClub.jpg",
+        "county": "Derry",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-7.245901048767901, 55.02128753780968]
+      },
+      "properties": {
+        "name": "Faughan Valley Golf Club",
+        "phoneNumber": "028 7186 0707",
+        "photoTitle": "Faughan Valley Golf Club Photo",
+        "photoUrl": "static/images/FaughanValleyGolfClub.jpg",
+        "county": "Derry",
         "description": "TODO"
       }
     }
