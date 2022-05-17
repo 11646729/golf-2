@@ -801,6 +801,81 @@
         "county": "Derry",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.549838271507528, 54.94488220841804]
+      },
+      "properties": {
+        "name": "Kilrea Golf Club",
+        "phoneNumber": "028 2954 0044",
+        "photoTitle": "Kilrea Golf Club Photo",
+        "photoUrl": "static/images/KilreaGolfClub.jpg",
+        "county": "Derry",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.547362764658464, 54.95372490944649]
+      },
+      "properties": {
+        "name": "Manor Golf Club",
+        "phoneNumber": "028 2954 0205",
+        "photoTitle": "Manor Golf Club Photo",
+        "photoUrl": "static/images/ManorGolfClub.jpg",
+        "county": "Derry",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.565871673151853, 54.7846850725667]
+      },
+      "properties": {
+        "name": "Moyola Park Golf Club",
+        "phoneNumber": "028 7946 8468",
+        "photoTitle": "Moyola Park Golf Club Photo",
+        "photoUrl": "static/images/MoyolaParkGolfClub.jpg",
+        "county": "Derry",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.953096794795263, 55.038754703147106]
+      },
+      "properties": {
+        "name": "Roe Park Golf Club",
+        "phoneNumber": "028 7772 2222",
+        "photoTitle": "Roe Park Golf Club Photo",
+        "photoUrl": "static/images/RoeParkGolfClub.jpg",
+        "county": "Derry",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.524989056165075, 54.72420139403844]
+      },
+      "properties": {
+        "name": "Traad Ponds Golf Club",
+        "phoneNumber": "028 7941 8942",
+        "photoTitle": "Traad Ponds Golf Club Photo",
+        "photoUrl": "static/images/TraadPondsGolfClub.jpg",
+        "county": "Derry",
+        "description": "TODO"
+      }
     }
   ]
 }
