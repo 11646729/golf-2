@@ -951,6 +951,51 @@
         "county": "Armagh",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.40750734931601, 54.40544940833581]
+      },
+      "properties": {
+        "name": "Portadown Golf Club",
+        "phoneNumber": "028 3835 5356",
+        "photoTitle": "Portadown Golf Club Photo",
+        "photoUrl": "static/images/PortadownGolfClub.jpg",
+        "county": "Armagh",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.357027202740542, 54.475862778530825]
+      },
+      "properties": {
+        "name": "Silverwood Golf Centre",
+        "phoneNumber": "028 3832 5380",
+        "photoTitle": "Silverwood Golf Centre Photo",
+        "photoUrl": "static/images/SilverwoodGolfCentre.jpg",
+        "county": "Armagh",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.415715171507528, 54.349913521107034]
+      },
+      "properties": {
+        "name": "Tandragee Golf Centre",
+        "phoneNumber": "028 3884 1272",
+        "photoTitle": "Tandragee Golf Centre Photo",
+        "photoUrl": "static/images/TandrageeGolfCentre.jpg",
+        "county": "Armagh",
+        "description": "TODO"
+      }
     }
   ]
 }
