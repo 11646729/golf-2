@@ -899,10 +899,10 @@
         "coordinates": [-6.4872796043848675, 54.104849119053284]
       },
       "properties": {
-        "name": "Cloverhill Golf Course",
+        "name": "Cloverhill Golf Club",
         "phoneNumber": "028 3088 9374",
-        "photoTitle": "Cloverhill Golf Course Photo",
-        "photoUrl": "static/images/CloverhillGolfCourse.jpg",
+        "photoTitle": "Cloverhill Golf Club Photo",
+        "photoUrl": "static/images/CloverhillGolfClub.jpg",
         "county": "Armagh",
         "description": "TODO"
       }
@@ -914,10 +914,40 @@
         "coordinates": [-6.645618694247154, 54.34526116452986]
       },
       "properties": {
-        "name": "County Armagh Golf Course",
+        "name": "County Armagh Golf Club",
         "phoneNumber": "028 3752 5861",
-        "photoTitle": "County Armagh Golf Course Photo",
-        "photoUrl": "static/images/CountyArmaghGolfCourse.jpg",
+        "photoTitle": "County Armagh Golf Club Photo",
+        "photoUrl": "static/images/CountyArmaghGolfClub.jpg",
+        "county": "Armagh",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.59928240383676, 54.40872994834995]
+      },
+      "properties": {
+        "name": "Loughgall Country Park & Golf Course",
+        "phoneNumber": "028 3889 2900",
+        "photoTitle": "Loughgall Country Park & Golf Course Photo",
+        "photoUrl": "static/images/LoughgallCountryParkGolfCourse.jpg",
+        "county": "Armagh",
+        "description": "TODO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.322935932877341, 54.4690544315884]
+      },
+      "properties": {
+        "name": "Lurgan Golf Club",
+        "phoneNumber": "028 3832 2087",
+        "photoTitle": "Lurgan Golf Club Photo",
+        "photoUrl": "static/images/LurganGolfClub.jpg",
         "county": "Armagh",
         "description": "TODO"
       }
