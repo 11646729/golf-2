@@ -996,6 +996,21 @@
         "county": "Armagh",
         "description": "TODO"
       }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-6.2454561641103545, 54.726153488286684]
+      },
+      "properties": {
+        "name": "Antrim Golf Club",
+        "phoneNumber": "028 94429001",
+        "photoTitle": "Antrim Golf Club Photo",
+        "photoUrl": "static/images/AntrimGolfClub.jpg",
+        "county": "Antrim",
+        "description": "TODO"
+      }
     }
   ]
 }
