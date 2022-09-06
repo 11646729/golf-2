@@ -219,7 +219,7 @@ export const putSelectedRoutes = async (req, res) => {
 // Function to put all Shapes coordinates into an array
 // -------------------------------------------------------
 const consolidateShapeCoordinates = (results, shapeID) => {
-  // Guard clauses
+  // Guard clause
   if (results == null) return
 
   let j = 0

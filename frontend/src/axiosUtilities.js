@@ -535,7 +535,7 @@ var reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
 // Function to fetch Unique Gtfs Stops data
 // -------------------------------------------------------
 export var getAllStops = async (url) => {
-  // Guard clauses
+  // Guard clause
   if (url == null) return
 
   const resultData = await axios({

@@ -97,12 +97,18 @@ export var prepReadGtfsFile = (firstFile, iterationSize, arraylength) => {
 // Function to open the SQLite database file connection
 // -------------------------------------------------------
 export var openSqlDbConnection = (url) => {
+  // Guard clause for null Database Url
+  if (url === null) {
+    console.log("Invalid Database url")
+    return
+  }
+
   let db = null
   if (process.env.NODE_ENV === "production") {
     // PostgreSQL in production
     // TODO
     //
-  } else {
+  } else if (process.env.NODE_ENV === "development") {
     // SQLite by default
     db = new sqlite3.Database(url)
 
@@ -110,7 +116,7 @@ export var openSqlDbConnection = (url) => {
       // console.log("Connected to the SQLite database")
       return db
     } else {
-      console.log("UNSUCCESSFUL connection to the SQLite database")
+      console.log("UNSUCCESSFUL in connecting to the SQLite database")
     }
 
     return db
@@ -121,6 +127,12 @@ export var openSqlDbConnection = (url) => {
 // Function to close the SQLite database connection
 // -------------------------------------------------------
 export var closeSqlDbConnection = (db) => {
+  // Guard clause for null Database Connection
+  if (db === null) {
+    console.log("Database Connection not closed")
+    return
+  }
+
   db.close()
   // console.log("Disconnected from the SQLite database")
 }
