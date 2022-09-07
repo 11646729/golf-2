@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function GTFSTransportCard() {
+export default function GTFSBusTransportCard() {
   const classes = useStyles()
 
   return (
