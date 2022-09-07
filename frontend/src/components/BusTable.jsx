@@ -19,7 +19,7 @@ const RouteTableContainer = styled.div`
   margin-bottom: 20px;
 `
 
-function TransportTable(props) {
+function BusTable(props) {
   return (
     <div>
       <RouteTableTitleContainer>
@@ -34,4 +34,4 @@ function TransportTable(props) {
   )
 }
 
-export default memo(TransportTable)
+export default memo(BusTable)

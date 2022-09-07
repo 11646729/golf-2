@@ -11,7 +11,7 @@ import styled from "styled-components"
 import Title from "./Title"
 // import LoadingTitle from "../LoadingTitle"
 
-const TransportMapContainer = styled.div`
+const BusMapContainer = styled.div`
   font-size: 20px;
   font-weight: 600;
   padding-left: 20px;
@@ -21,7 +21,7 @@ const TransportMapContainer = styled.div`
 // -------------------------------------------------------
 // React View component
 // -------------------------------------------------------
-function TransportMap(props) {
+function BusMap(props) {
   const [map, setMap] = useState(null)
   const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
   const [mapCenter] = useState({
@@ -88,13 +88,13 @@ function TransportMap(props) {
 
   return isLoaded ? (
     <div>
-      <TransportMapContainer>
+      <BusMapContainer>
         <Title>{props.busAgencyName}</Title>
         {/* {props.loadingError ? (
           <LoadingTitle>Error Loading...</LoadingTitle>
         ) : null} */}
 
-        <div className="transportgooglemapcontainer">
+        <div className="busgooglemapcontainer">
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
             center={mapCenter}
@@ -159,9 +159,9 @@ function TransportMap(props) {
             ) : null} */}
           </GoogleMap>
         </div>
-      </TransportMapContainer>
+      </BusMapContainer>
     </div>
   ) : null
 }
 
-export default memo(TransportMap)
+export default memo(BusMap)

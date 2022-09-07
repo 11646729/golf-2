@@ -1,8 +1,8 @@
 import React, { useState, useEffect, memo } from "react"
 
-// import TransportTable from "../components/TransportTable"
+// import BusTable from "../components/BusTable"
 import RouteSelectionPanel from "../components/RouteSelectionPanel"
-import TransportMap from "../components/TransportMap"
+import BusMap from "../components/BusMap"
 import {
   getAgencyName,
   getAllStops,
@@ -13,25 +13,25 @@ import {
 
 import styled from "styled-components"
 
-const TransportContainer = styled.div`
+const BusContainer = styled.div`
   display: flex;
 `
 
-const TransportTableContainer = styled.div`
+const BusTableContainer = styled.div`
   flex: 2;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   min-height: 500px;
 `
 
-const TransportMapContainer = styled.div`
+const BusMapContainer = styled.div`
   flex: 2;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   min-height: 500px;
 `
 
-function TransportPage() {
+function BusPage() {
   const [busAgencyName, setBusAgencyName] = useState()
   const [busShapesCollection, setBusShapesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
@@ -49,26 +49,26 @@ function TransportPage() {
   useEffect(() => {
     let isSubscribed = true
 
-    getAgencyName("http://localhost:4000/api/transport/agencyname/")
+    getAgencyName("http://localhost:4000/api/bus/agencyname/")
       .then((returnedData) =>
         isSubscribed ? setBusAgencyName(returnedData[0].agency_name) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     // This function does some reduction & reformatting
-    getAllShapes("http://localhost:4000/api/transport/shapes/")
+    getAllShapes("http://localhost:4000/api/bus/shapes/")
       .then((returnedData) =>
         isSubscribed ? setBusShapesCollection(returnedData) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
-    getAllStops("http://localhost:4000/api/transport/stops/")
+    getAllStops("http://localhost:4000/api/bus/stops/")
       .then((returnedData) =>
         isSubscribed ? setBusStopsCollection(returnedData) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
-    getAllRoutes("http://localhost:4000/api/transport/routes/")
+    getAllRoutes("http://localhost:4000/api/bus/routes/")
       .then((returnedData) => (isSubscribed ? saveToHooks(returnedData) : null))
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
@@ -76,16 +76,16 @@ function TransportPage() {
   }, [])
 
   return (
-    <TransportContainer>
-      <TransportTableContainer>
-        {/* <TransportTable routesTableTitle={"Bus Routes Table"} /> */}
+    <BusContainer>
+      <BusTableContainer>
+        {/* <BusTable routesTableTitle={"Bus Routes Table"} /> */}
         <RouteSelectionPanel
           routesTableTitle={"Bus Routes Table"}
           busRoutesCollection={busRoutesCollection}
         />
-      </TransportTableContainer>
-      <TransportMapContainer>
-        <TransportMap
+      </BusTableContainer>
+      <BusMapContainer>
+        <BusMap
           busAgencyName={busAgencyName}
           busShapesCollection={busShapesCollection}
           busStopsCollection={busStopsCollection}
@@ -93,9 +93,9 @@ function TransportPage() {
           // displayBusRoutesCollection={displayBusRoutesCollection}
           loadingError={loadingError}
         />
-      </TransportMapContainer>
-    </TransportContainer>
+      </BusMapContainer>
+    </BusContainer>
   )
 }
 
-export default memo(TransportPage)
+export default memo(BusPage)

@@ -1,7 +1,7 @@
 var config = {
   agencies: [
     {
-      agency_key: "Transport For Ireland",
+      agency_key: "Bus Transport For Ireland",
       path: "/Users/briansmith/Documents/GTD/golf-2/backend/gtfs data/Dublin TFI",
     },
   ],

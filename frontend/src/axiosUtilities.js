@@ -337,12 +337,12 @@ export var importGTFSData = async (returnResult) => {
   //   },
   // }
   // axios
-  //   .put("http://localhost:4000/api/transport/importGTFSData", params, config)
+  //   .put("http://localhost:4000/api/bus/importGTFSData", params, config)
   //   .then((returnedData) => console.log(returnedData))
   //   .catch((err) => console.log(err))
 
   let resultData = await axios({
-    url: "http://localhost:4000/api/transport/importGTFSData",
+    url: "http://localhost:4000/api/bus/importGTFSData",
     method: "PUT",
     timeout: 8000,
     headers: {

@@ -25,14 +25,14 @@ const BandListItem = (props) => {
     if (routeVisibleCheckbox === true) {
       setRouteVisibleCheckbox(false)
       selectedUniqueRoute(
-        "http://localhost:4000/api/transport/groutes/:routenumber",
+        "http://localhost:4000/api/bus/groutes/:routenumber",
         routeNumber,
         false
       )
     } else {
       setRouteVisibleCheckbox(true)
       selectedUniqueRoute(
-        "http://localhost:4000/api/transport/groutes/:routenumber",
+        "http://localhost:4000/api/bus/groutes/:routenumber",
         routeNumber,
         true
       )

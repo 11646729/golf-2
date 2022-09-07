@@ -113,7 +113,7 @@ const RawDataLoadPage = () => {
     alert("Port Arrivals & Vessels data imported")
   }
 
-  const loadGTFSTransportDataHandler = () => {
+  const loadGTFSBusTransportDataHandler = () => {
     // Import GTFS Data from Website into local SQL database
     var showResult = true
     var result = ""
@@ -163,10 +163,10 @@ const RawDataLoadPage = () => {
               </td>
             </tr>
             <tr>
-              <td>GTFS Transport Data</td>
+              <td>GTFS Bus Transport Data</td>
               <td>Ready</td>
               <td>
-                <Button onClick={loadGTFSTransportDataHandler}>Fetch</Button>
+                <Button onClick={loadGTFSBusTransportDataHandler}>Fetch</Button>
               </td>
             </tr>
             <tr>

@@ -5,7 +5,7 @@ import RawDataLoadPage from "../pages/RawDataLoadPage"
 import TemperaturesPage from "../pages/TemperaturesPage"
 import GolfCoursesPage from "../pages/GolfCoursesPage"
 import CruisesPage from "../pages/CruisesPage"
-import TransportPage from "../pages/TransportPage"
+import BusPage from "../pages/BusPage"
 import Album from "./Album"
 import TopBar from "./TopBar"
 import CrimesMap from "./crimesmap/CrimesMap"
@@ -23,7 +23,7 @@ function App() {
           <Route path="golfcoursespage" element={<GolfCoursesPageLink />} />
           <Route path="crimespage" element={<CrimesPageLink />} />
           <Route path="cruisespage" element={<CruisesPageLink />} />
-          <Route path="transportpage" element={<TransportPageLink />} />
+          <Route path="buspage" element={<BusPageLink />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
@@ -55,8 +55,8 @@ function CrimesPageLink() {
   return <CrimesMap />
 }
 
-function TransportPageLink() {
-  return <TransportPage />
+function BusPageLink() {
+  return <BusPage />
 }
 
 function NotFound() {

@@ -109,6 +109,8 @@ const CruisesMap = (props) => {
 
         {props.vesselPositions
           ? props.vesselPositions.map((vesselPosition) => (
+              //                console.log(vesselPosition.index),
+              //                (
               <Marker
                 key={vesselPosition.index}
                 position={{
@@ -120,6 +122,7 @@ const CruisesMap = (props) => {
                   setSelected(vesselPosition)
                 }}
               />
+              //                )
             ))
           : null}
 

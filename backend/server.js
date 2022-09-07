@@ -21,7 +21,7 @@ const __dirname = path.resolve()
 import golfRouter from "./routes/golfRouteCatalog.js"
 import weatherRouter from "./routes/weatherRouteCatalog.js"
 import cruiseRouter from "./routes/cruiseRouteCatalog.js"
-import transportRouter from "./routes/transportRouteCatalog.js"
+import busRouter from "./routes/busRouteCatalog.js"
 
 dotenv.config()
 
@@ -47,7 +47,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use("/api/golf", golfRouter)
 app.use("/api/weather", weatherRouter)
 app.use("/api/cruise", cruiseRouter)
-app.use("/api/transport", transportRouter)
+app.use("/api/bus", busRouter)
 
 // Enable Realtime data sources (true = enable, false = disable)
 var resultReturned = switchOnRealtimeTemperatureData(io, false)

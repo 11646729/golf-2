@@ -46,12 +46,7 @@ export default function GTFSTransportCard() {
         <Typography>This shows Bus Transport in the Province</Typography>
       </CardContent>
       <CardActions>
-        <Button
-          size="small"
-          color="primary"
-          component={Link}
-          to="/transportpage"
-        >
+        <Button size="small" color="primary" component={Link} to="/buspage">
           View
         </Button>
       </CardActions>
