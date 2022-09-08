@@ -23,7 +23,7 @@ cruiseRouter.get("/", index)
 // ---------------------------------------------------
 // Port Arrivals
 // ---------------------------------------------------
-// Prepare the Port Arrivals table in the SQL database
+// Prepare the Port Arrivals table in the database
 cruiseRouter.post("/preparePortArrivalsTable", prepareEmptyPortArrivalsTable)
 
 // GET all Port Arrivals from the database
@@ -41,7 +41,7 @@ cruiseRouter.post("/portArrivals", savePortArrival)
 // ---------------------------------------------------
 // Vessel Routes
 // ---------------------------------------------------
-// Prepare the vessels table in the SQL database
+// Prepare the vessels table in the database
 cruiseRouter.post("/prepareVesselsTable", prepareEmptyVesselsTable)
 
 // GET all vessels from the database
@@ -56,7 +56,7 @@ cruiseRouter.get("/vesselPositions", getVesselPosition)
 // POST a vessel to the database
 cruiseRouter.post("/vessel", saveVessel)
 
-// POST all Port Arrivals & Vessels data into the SQL database
+// POST all Port Arrivals & Vessels data to the database
 cruiseRouter.post(
   "/importPortArrivalsAndVesselsData",
   fetchPortArrivalsAndVessels

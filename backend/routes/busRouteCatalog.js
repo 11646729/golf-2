@@ -1,5 +1,4 @@
 import express from "express"
-var busRouter = express.Router()
 import {
   index,
   importGtfsToSQLite,
@@ -10,44 +9,33 @@ import {
   getAllRoutes,
 } from "../controllers/busController.js"
 
+var busRouter = express.Router()
+
 // -------------------------------------------------------
-// Get Bus Catalogue Home Page
+// Bus Routes
 // -------------------------------------------------------
+// GET catalogue home page
 busRouter.get("/", index)
 
-// -------------------------------------------------------
 // PUT all GTFS data into the SQL database
-// -------------------------------------------------------
 busRouter.put("/importGTFSData", importGtfsToSQLite)
 
-// -------------------------------------------------------
 // GET all Bus Route Shapes
-// -------------------------------------------------------
 busRouter.get("/shapes", getAllShapes)
 
-// -------------------------------------------------------
 // GET a Bus Route Shape
-// -------------------------------------------------------
 busRouter.get("/shape", getShape)
 
-// -------------------------------------------------------
 // GET all Bus Stops
-// -------------------------------------------------------
-// router.get("/gstop", getAllStops)
+// busRouter.get("/gstop", getAllStops)
 
-// -------------------------------------------------------
 // GET all Translink Bus Stops
-// -------------------------------------------------------
 busRouter.get("/stops", getAllStops)
 
-// -------------------------------------------------------
 // Bus Route Agency
-// -------------------------------------------------------
 busRouter.get("/agencyname", getAgencyName)
 
-// -------------------------------------------------------
 // GET all Bus Routes
-// -------------------------------------------------------
 busRouter.get("/routes", getAllRoutes)
 
 busRouter.get("/routes", function (req, res) {
@@ -55,12 +43,12 @@ busRouter.get("/routes", function (req, res) {
 })
 
 // GET all Selected Panel List Bus Routes
-// router.get("/groutes/:routevisible", busController.getSelectedRoutes)
+// busRouter.get("/groutes/:routevisible", busController.getSelectedRoutes)
 
 // GET all Translink Bus Routes
-// router.get("/groutes/", busController.getAllTranslinkRoutes)
+// busRouter.get("/groutes/", busController.getAllTranslinkRoutes)
 
-// UPDATE Selected Status in the Bus Routes documents
-// router.put("/groutes/:routenumber", busController.putSelectedRoutes)
+// PUT Selected Status in the Bus Routes documents
+// busRouter.put("/groutes/:routenumber", busController.putSelectedRoutes)
 
 export default busRouter
