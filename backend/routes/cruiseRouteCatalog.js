@@ -14,29 +14,36 @@ import { fetchPortArrivalsAndVessels } from "../cruiseScrapingRoutines.js"
 
 var cruiseRouter = express.Router()
 
+// ---------------------------------------------------
 // Cruise Routes
+// ---------------------------------------------------
 // GET catalogue home page
 cruiseRouter.get("/", index)
 
-// Prepare the portarrivals table in the SQL database
+// ---------------------------------------------------
+// Port Arrivals
+// ---------------------------------------------------
+// Prepare the Port Arrivals table in the SQL database
 cruiseRouter.post("/preparePortArrivalsTable", prepareEmptyPortArrivalsTable)
 
-// GET all port arrivals from the database
+// GET all Port Arrivals from the database
 cruiseRouter.get("/portArrivals", getPortArrivals)
 
-// GET a port arrival by id
+// GET a Port Arrival by id
 // cruiseRouter.get("/portArrivals/:id", getPortArrival)
 
-// POST a port arrival to the database
+// POST a Port Arrival to the database
 cruiseRouter.post("/portArrivals", savePortArrival)
 
-// PUT a port arrival by id
+// PUT a Port Arrival by id
 // cruiseRouter.put("/portArrivals/:id", putPortArrival)
 
+// ---------------------------------------------------
+// Vessel Routes
+// ---------------------------------------------------
 // Prepare the vessels table in the SQL database
 cruiseRouter.post("/prepareVesselsTable", prepareEmptyVesselsTable)
 
-// Vessel Routes
 // GET all vessels from the database
 // cruiseRouter.get("/vessel", getVessels)
 
