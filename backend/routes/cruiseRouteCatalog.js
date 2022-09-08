@@ -1,5 +1,4 @@
 import express from "express"
-var cruiseRouter = express.Router()
 import {
   index,
   prepareEmptyPortArrivalsTable,
@@ -9,10 +8,11 @@ import {
 import {
   prepareEmptyVesselsTable,
   getVesselPosition,
-  // getVesselPositionTestData,
   saveVessel,
 } from "../controllers/vesselController.js"
 import { fetchPortArrivalsAndVessels } from "../cruiseScrapingRoutines.js"
+
+var cruiseRouter = express.Router()
 
 // -------------------------------------------------------
 // Cruise Routes
@@ -65,11 +65,6 @@ cruiseRouter.post("/prepareVesselsTable", prepareEmptyVesselsTable)
 // GET all vessel positions
 // -------------------------------------------------------
 cruiseRouter.get("/vesselPositions", getVesselPosition)
-
-// -------------------------------------------------------
-// GET all vessel positions
-// -------------------------------------------------------
-// cruiseRouter.get("/vesselPositionTest", getVesselPositionTestData)
 
 // -------------------------------------------------------
 // POST a vessel to the database
