@@ -1,7 +1,6 @@
 import axios from "axios"
 import * as cheerio from "cheerio"
 import moment from "moment"
-
 import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 
 // -------------------------------------------------------

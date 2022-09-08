@@ -1,5 +1,5 @@
-import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 import axios from "axios"
+import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 
 // -------------------------------------------------------
 // Catalogue Home page

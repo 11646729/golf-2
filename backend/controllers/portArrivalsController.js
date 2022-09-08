@@ -1,6 +1,5 @@
 import axios from "axios"
-import cheerio from "cheerio"
-
+import * as cheerio from "cheerio"
 import { openSqlDbConnection, closeSqlDbConnection } from "../fileUtilities.js"
 
 // -------------------------------------------------------
