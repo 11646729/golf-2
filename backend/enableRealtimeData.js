@@ -7,6 +7,7 @@ import {
 export var switchOnRealtimeTemperatureData = (io, switchOn) => {
   if (switchOn) {
     return "Realtime data enabled"
+
     // Using socket.io for realtime data transmission
     var roomno = 1
     io.on("connection", (socket) => {
