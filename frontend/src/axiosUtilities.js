@@ -160,7 +160,7 @@ export var prepareVesselsTable = (returnResult) => {
 // -------------------------------------------------------
 // Function to fetch all Cruise PortArrivals & Vessel data
 // -------------------------------------------------------
-export var importPortArrivalsAndVesselsData = async (url, portName) => {
+/* export var importPortArrivalsAndVesselsData = async (url, portName) => {
   // Guard clause
   if (url == null) {
     console.log(
@@ -191,6 +191,7 @@ export var importPortArrivalsAndVesselsData = async (url, portName) => {
   resultData = "Hello"
   return resultData
 }
+*/
 
 // -------------------------------------------------------
 // Function to fetch all Cruise Vessel data

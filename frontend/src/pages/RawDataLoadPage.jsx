@@ -1,16 +1,13 @@
-import React, { memo } from "react"
+import React, { memo, useState } from "react"
 import styled from "styled-components"
-
 import {
   prepareTemperaturesTable,
   prepareGolfCoursesTable,
   importGolfCoursesData,
-  preparePortArrivalsTable,
-  prepareVesselsTable,
-  importPortArrivalsAndVesselsData,
   importGTFSData,
 } from "../axiosUtilities"
-import { useState } from "react"
+
+import { loadCruiseShipArrivalsDataHandler } from "../functionHandlers/loadCruiseShipArrivalsDataHandler.js"
 
 const RawDataContainer = styled.div`
   display: flex;
@@ -56,9 +53,7 @@ const RawDataLoadPage = () => {
     }
   }
 
-  //
   // Prepare golfcourses table
-  //
   const loadGolfCourseDataHandler = () => {
     var showResult = true
     var result = ""
@@ -69,9 +64,7 @@ const RawDataLoadPage = () => {
       alert(result)
     }
 
-    //
     // Import the file data into the database
-    //
     importGolfCoursesData(
       "http://localhost:4000/api/golf/importGolfCoursesData"
     )
@@ -81,6 +74,7 @@ const RawDataLoadPage = () => {
     alert("Golf Courses data imported")
   }
 
+  /* 
   const loadCruiseShipDataHandler = () => {
     // Prepare portarrivals table
     var showResult = true
@@ -112,6 +106,7 @@ const RawDataLoadPage = () => {
 
     alert("Port Arrivals & Vessels data imported")
   }
+ */
 
   const loadGTFSBusTransportDataHandler = () => {
     // Import GTFS Data from Website into local SQL database
@@ -159,7 +154,9 @@ const RawDataLoadPage = () => {
               <td>Cruise Ship Arrivals Data</td>
               <td>Ready</td>
               <td>
-                <Button onClick={loadCruiseShipDataHandler}>Fetch</Button>
+                <Button onClick={loadCruiseShipArrivalsDataHandler}>
+                  Fetch
+                </Button>
               </td>
             </tr>
             <tr>
