@@ -1,16 +1,8 @@
-//import axios from "axios"
 import {
   preparePortArrivalsTable,
   prepareVesselsTable,
   importPortArrivalsAndVesselsData,
 } from "../axiosUtilities"
-
-/*
-Logic:
-Check if tables exist
-If they exist then empty
-If they don't exist then create them
-*/
 
 // Function to fetch all Cruise PortArrivals & Vessel data
 export const loadCruiseShipArrivalsDataHandler = async () => {
