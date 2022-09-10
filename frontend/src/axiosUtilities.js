@@ -159,7 +159,7 @@ export var prepareVesselsTable = (returnResult) => {
 // -------------------------------------------------------
 // Function to fetch all Cruise PortArrivals & Vessel data
 // -------------------------------------------------------
-export var importPortArrivalsAndVesselsData = () => {
+export var importPortArrivalsAndVesselsData = (returnResult) => {
   let params = {
     portName: "Belfast",
   }
@@ -179,8 +179,8 @@ export var importPortArrivalsAndVesselsData = () => {
     .then((returnedData) => console.log(returnedData))
     .catch((err) => console.log(err))
 
-  //  resultData = "Hello"
-  //  return resultData
+  if (returnResult === true)
+    return "Loading scraped vessel and port arrivals data"
 }
 
 // -------------------------------------------------------

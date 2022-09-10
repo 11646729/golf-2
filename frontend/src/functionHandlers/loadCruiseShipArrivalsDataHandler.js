@@ -5,16 +5,15 @@ import {
 } from "../axiosUtilities"
 
 // Function to fetch all Cruise PortArrivals & Vessel data
-export const loadCruiseShipArrivalsDataHandler = async () => {
-  // Prepare vessels & portarrivals tables
-  var showResult = true
+export const loadCruiseShipArrivalsDataHandler = () => {
+  // Prepare empty port arrivals table in the database & show result
+  alert(preparePortArrivalsTable(true))
 
-  alert(preparePortArrivalsTable(showResult))
+  // Prepare empty vessels table in the database & show result
+  alert(prepareVesselsTable(true))
 
-  alert(prepareVesselsTable(showResult))
+  // Import the scraped data into the database & show result
+  alert(importPortArrivalsAndVesselsData(true))
 
-  // Import the scraped data into the database
-  importPortArrivalsAndVesselsData()
-
-  alert(`Port Arrivals & Vessels data imported`)
+  //  alert("Port Arrivals & Vessels data imported")
 }
