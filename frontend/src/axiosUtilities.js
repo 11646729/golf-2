@@ -55,6 +55,7 @@ export var prepareGolfCoursesTable = (returnResult) => {
       "Content-Type": "application/json",
     },
   }
+
   axios
     .post(
       "http://localhost:4000/api/golf/prepareGolfCoursesTable",
@@ -77,7 +78,7 @@ export var importGolfCoursesData = async (url) => {
     return
   }
 
-  let resultData = await axios({
+  await axios({
     url: url,
     method: "PUT",
     timeout: 8000,
@@ -86,9 +87,7 @@ export var importGolfCoursesData = async (url) => {
     },
   })
 
-  resultData = "Golf Course data loaded into the SQL database"
-
-  return resultData
+  return "Golf Course data loaded into the SQL database"
 }
 
 // -------------------------------------------------------
@@ -160,38 +159,29 @@ export var prepareVesselsTable = (returnResult) => {
 // -------------------------------------------------------
 // Function to fetch all Cruise PortArrivals & Vessel data
 // -------------------------------------------------------
-/* export var importPortArrivalsAndVesselsData = async (url, portName) => {
-  // Guard clause
-  if (url == null) {
-    console.log(
-      "Error: url == null in importPortArrivalsAndVesselsData in utilities.js"
-    )
-    return
+export var importPortArrivalsAndVesselsData = () => {
+  let params = {
+    portName: "Belfast",
   }
-
-  if (portName == null) {
-    console.log(
-      "Error: portName == null in importPortArrivalsAndVesselsData in utilities.js"
-    )
-    return
-  }
-
-  let resultData = await axios({
-    url: url,
-    params: {
-      portName: portName,
-    },
-    method: "POST",
+  let config = {
     timeout: 20000,
     headers: {
       "Content-Type": "application/json",
     },
-  })
+  }
 
-  resultData = "Hello"
-  return resultData
+  axios
+    .post(
+      "http://localhost:4000/api/cruise/importPortArrivalsAndVesselsData",
+      params,
+      config
+    )
+    .then((returnedData) => console.log(returnedData))
+    .catch((err) => console.log(err))
+
+  //  resultData = "Hello"
+  //  return resultData
 }
-*/
 
 // -------------------------------------------------------
 // Function to fetch all Cruise Vessel data

@@ -1,7 +1,8 @@
-import axios from "axios"
+//import axios from "axios"
 import {
   preparePortArrivalsTable,
   prepareVesselsTable,
+  importPortArrivalsAndVesselsData,
 } from "../axiosUtilities"
 
 /*
@@ -13,40 +14,15 @@ If they don't exist then create them
 
 // Function to fetch all Cruise PortArrivals & Vessel data
 export const loadCruiseShipArrivalsDataHandler = async () => {
-  // Prepare portarrivals table
+  // Prepare vessels & portarrivals tables
   var showResult = true
-  var result = ""
 
-  result = preparePortArrivalsTable(showResult)
+  alert(preparePortArrivalsTable(showResult))
 
-  if (showResult) {
-    alert(result)
-  }
-
-  // Prepare vessels table
-  showResult = true
-  result = ""
-
-  result = prepareVesselsTable(showResult)
-
-  if (showResult) {
-    alert(result)
-  }
+  alert(prepareVesselsTable(showResult))
 
   // Import the scraped data into the database
-  await axios({
-    url: "http://localhost:4000/api/cruise/importPortArrivalsAndVesselsData",
-    params: {
-      portName: "Belfast",
-    },
-    method: "POST",
-    timeout: 20000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((resultData) => console.log(resultData))
-    .catch((err) => console.log(err))
+  importPortArrivalsAndVesselsData()
 
-  alert("Port Arrivals & Vessels data imported")
+  alert(`Port Arrivals & Vessels data imported`)
 }

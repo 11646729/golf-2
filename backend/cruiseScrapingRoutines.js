@@ -12,8 +12,9 @@ import {
 // -------------------------------------------------------
 export const fetchPortArrivalsAndVessels = async (req, res) => {
   // Get the Port Name & Associated values
-  let port = req.query.portName.toUpperCase()
-  // const port = process.env.BELFAST_PORT_NAME.toUpperCase()
+  //  let port = req.query.portName.toUpperCase()
+
+  const port = process.env.BELFAST_PORT_NAME.toUpperCase()
   // const port = process.env.GEIRANGER_PORT_NAME.toUpperCase()
   // const port = process.env.BERGEN_PORT_NAME.toUpperCase()
   const portUrl = port + "_PORT_URL"
