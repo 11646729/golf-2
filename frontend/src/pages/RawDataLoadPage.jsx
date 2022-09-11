@@ -90,10 +90,17 @@ const RawDataLoadPage = () => {
               </td>
             </tr>
             <tr>
-              <td>GTFS Bus Transport Data</td>
+              <td>Bus Transport Data</td>
               <td>Ready</td>
               <td>
                 <Button onClick={loadBusTransportDataHandler}>Fetch</Button>
+              </td>
+            </tr>
+            <tr>
+              <td>Crime Data</td>
+              <td>Currently: Off</td>
+              <td>
+                {/* <Button onClick={startRealtimeDataHandler}>Fetch</Button> */}
               </td>
             </tr>
             <tr>
