@@ -1,13 +1,9 @@
 import React, { memo, useState } from "react"
 import styled from "styled-components"
-import {
-  prepareTemperaturesTable,
-  prepareGolfCoursesTable,
-  importGolfCoursesData,
-  importGTFSData,
-} from "../axiosUtilities"
+import { prepareTemperaturesTable, importGTFSData } from "../axiosUtilities"
 
 import { loadCruiseShipArrivalsDataHandler } from "../functionHandlers/loadCruiseShipArrivalsDataHandler.js"
+import { loadGolfCourseDataHandler } from "../functionHandlers/loadGolfCourseDataHandler.js"
 
 const RawDataContainer = styled.div`
   display: flex;
@@ -52,61 +48,6 @@ const RawDataLoadPage = () => {
       }
     }
   }
-
-  // Prepare golfcourses table
-  const loadGolfCourseDataHandler = () => {
-    var showResult = true
-    var result = ""
-
-    result = prepareGolfCoursesTable(showResult)
-
-    if (showResult) {
-      alert(result)
-    }
-
-    // Import the file data into the database
-    importGolfCoursesData(
-      "http://localhost:4000/api/golf/importGolfCoursesData"
-    )
-      .then((returnedData) => console.log(returnedData))
-      .catch((err) => console.log(err))
-
-    alert("Golf Courses data imported")
-  }
-
-  /* 
-  const loadCruiseShipDataHandler = () => {
-    // Prepare portarrivals table
-    var showResult = true
-    var result = ""
-
-    result = preparePortArrivalsTable(showResult)
-
-    if (showResult) {
-      alert(result)
-    }
-
-    // Prepare vessels table
-    var showResult1 = true
-    var result1 = ""
-
-    result1 = prepareVesselsTable(showResult1)
-
-    if (showResult1) {
-      alert(result1)
-    }
-
-    // Import the scraped data into the database
-    importPortArrivalsAndVesselsData(
-      "http://localhost:4000/api/cruise/importPortArrivalsAndVesselsData",
-      "Belfast"
-    )
-      .then((returnedData) => console.log(returnedData))
-      .catch((err) => console.log(err))
-
-    alert("Port Arrivals & Vessels data imported")
-  }
- */
 
   const loadGTFSBusTransportDataHandler = () => {
     // Import GTFS Data from Website into local SQL database

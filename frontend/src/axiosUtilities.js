@@ -46,51 +46,6 @@ export var getTemperatureData = async (url) => {
 }
 
 // -------------------------------------------------------
-// Function to prepare the golfcourses table in the SQL database
-// -------------------------------------------------------
-export var prepareGolfCoursesTable = (returnResult) => {
-  let params = {}
-  let config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }
-
-  axios
-    .post(
-      "http://localhost:4000/api/golf/prepareGolfCoursesTable",
-      params,
-      config
-    )
-    .then((returnedData) => console.log(returnedData))
-    .catch((err) => console.log(err))
-
-  if (returnResult === true) return "Empty golfcourses table prepared"
-}
-
-// -------------------------------------------------------
-// Function to instruct backend to load Golf Club Data into the database
-// -------------------------------------------------------
-export var importGolfCoursesData = async (url) => {
-  // Guard clause
-  if (url == null) {
-    console.log("Error: url == null in importGolfCoursesData in utilities.js")
-    return
-  }
-
-  await axios({
-    url: url,
-    method: "PUT",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-
-  return "Golf Course data loaded into the SQL database"
-}
-
-// -------------------------------------------------------
 // Function to fetch all Golf Course data
 // -------------------------------------------------------
 export var getGolfCoursesData = async (url) => {
@@ -110,77 +65,6 @@ export var getGolfCoursesData = async (url) => {
   })
 
   return resultData.data
-}
-
-// -------------------------------------------------------
-// Function to prepare the portarrivals table in the SQL database
-// -------------------------------------------------------
-export var preparePortArrivalsTable = (returnResult) => {
-  let params = {}
-  let config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }
-  axios
-    .post(
-      "http://localhost:4000/api/cruise/preparePortArrivalsTable",
-      params,
-      config
-    )
-    .then((returnedData) => console.log(returnedData))
-    .catch((err) => console.log(err))
-
-  if (returnResult === true) return "Empty portarrivals table prepared"
-}
-
-// -------------------------------------------------------
-// Function to prepare the vessels table in the SQL database
-// -------------------------------------------------------
-export var prepareVesselsTable = (returnResult) => {
-  let params = {}
-  let config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }
-  axios
-    .post(
-      "http://localhost:4000/api/cruise/prepareVesselsTable",
-      params,
-      config
-    )
-    .then((returnedData) => console.log(returnedData))
-    .catch((err) => console.log(err))
-
-  if (returnResult === true) return "Empty vessels table prepared"
-}
-
-// -------------------------------------------------------
-// Function to fetch all Cruise PortArrivals & Vessel data
-// -------------------------------------------------------
-export var importPortArrivalsAndVesselsData = (returnResult) => {
-  let params = {
-    portName: "Belfast",
-  }
-  let config = {
-    timeout: 20000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }
-
-  axios
-    .post(
-      "http://localhost:4000/api/cruise/importPortArrivalsAndVesselsData",
-      params,
-      config
-    )
-    .then((returnedData) => console.log(returnedData))
-    .catch((err) => console.log(err))
-
-  if (returnResult === true)
-    return "Loading scraped vessel and port arrivals data"
 }
 
 // -------------------------------------------------------
