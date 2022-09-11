@@ -1,6 +1,8 @@
 import axios from "axios"
 
-// Prepare golfcourses table
+// -------------------------------------------------------
+// Function to fetch all Golf Courses data into the SQL database
+// -------------------------------------------------------
 export var loadGolfCourseDataHandler = () => {
   // Prepare empty golf courses table in the database & show result
   prepareGolfCoursesTable()

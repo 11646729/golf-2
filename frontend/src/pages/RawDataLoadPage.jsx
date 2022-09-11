@@ -1,9 +1,10 @@
 import React, { memo, useState } from "react"
 import styled from "styled-components"
-import { prepareTemperaturesTable, importGTFSData } from "../axiosUtilities"
+import { prepareTemperaturesTable } from "../axiosUtilities"
 
 import { loadCruiseShipArrivalsDataHandler } from "../functionHandlers/loadCruiseShipArrivalsDataHandler.js"
 import { loadGolfCourseDataHandler } from "../functionHandlers/loadGolfCourseDataHandler.js"
+import { loadBusTransportDataHandler } from "../functionHandlers/loadBusTransportDataHandler.js"
 
 const RawDataContainer = styled.div`
   display: flex;
@@ -46,18 +47,6 @@ const RawDataLoadPage = () => {
       if (temperaturesTableStatus !== "") {
         alert(temperaturesTableStatus)
       }
-    }
-  }
-
-  const loadGTFSBusTransportDataHandler = () => {
-    // Import GTFS Data from Website into local SQL database
-    var showResult = true
-    var result = ""
-
-    result = importGTFSData(showResult)
-
-    if (showResult) {
-      alert(result)
     }
   }
 
@@ -104,7 +93,7 @@ const RawDataLoadPage = () => {
               <td>GTFS Bus Transport Data</td>
               <td>Ready</td>
               <td>
-                <Button onClick={loadGTFSBusTransportDataHandler}>Fetch</Button>
+                <Button onClick={loadBusTransportDataHandler}>Fetch</Button>
               </td>
             </tr>
             <tr>

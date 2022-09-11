@@ -17,8 +17,8 @@ var busRouter = express.Router()
 // GET catalogue home page
 busRouter.get("/", index)
 
-// PUT all GTFS data into the SQL database
-busRouter.put("/importGTFSData", importGtfsToSQLite)
+// POST all GTFS data into the SQL database
+busRouter.post("/importGTFSBusData", importGtfsToSQLite)
 
 // GET all Bus Route Shapes
 busRouter.get("/shapes", getAllShapes)

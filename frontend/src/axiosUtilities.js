@@ -202,34 +202,6 @@ var getCruiseVesselPositionTestData = () => {
 }
 
 // -------------------------------------------------------
-// Function to import the GTFS data into the SQL database
-// -------------------------------------------------------
-export var importGTFSData = async (returnResult) => {
-  // let params = {}
-  // let config = {
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // }
-  // axios
-  //   .put("http://localhost:4000/api/bus/importGTFSData", params, config)
-  //   .then((returnedData) => console.log(returnedData))
-  //   .catch((err) => console.log(err))
-
-  let resultData = await axios({
-    url: "http://localhost:4000/api/bus/importGTFSData",
-    method: "PUT",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-
-  return resultData
-  // if (returnResult === true) return "Import now successful"
-}
-
-// -------------------------------------------------------
 // Function to fetch Position data for a Specific Route
 // -------------------------------------------------------
 export var selectedUniqueRoute = async (

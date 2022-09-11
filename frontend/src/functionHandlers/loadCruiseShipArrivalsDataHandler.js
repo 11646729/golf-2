@@ -1,7 +1,7 @@
 import axios from "axios"
 
 // -------------------------------------------------------
-// Function to fetch all Cruise PortArrivals & Vessel data
+// Function to fetch all Cruise PortArrivals & Vessel data into the SQL database
 // -------------------------------------------------------
 export const loadCruiseShipArrivalsDataHandler = () => {
   // Prepare empty port arrivals table in the database & show result
