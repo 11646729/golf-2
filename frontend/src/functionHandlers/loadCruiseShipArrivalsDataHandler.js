@@ -12,8 +12,6 @@ export const loadCruiseShipArrivalsDataHandler = () => {
 
   // Import the scraped data into the database & show result
   importPortArrivalsAndVesselsData()
-
-  //  alert("Port Arrivals & Vessels data imported")
 }
 
 // -------------------------------------------------------

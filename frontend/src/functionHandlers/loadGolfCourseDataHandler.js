@@ -7,8 +7,6 @@ export var loadGolfCourseDataHandler = () => {
 
   // Import the golf course file data into the database
   importGolfCoursesData()
-
-  //  alert("Golf Courses data imported")
 }
 
 // -------------------------------------------------------
@@ -47,7 +45,11 @@ var importGolfCoursesData = async () => {
   }
 
   await axios
-    .put("http://localhost:4000/api/golf/importGolfCoursesData", params, config)
+    .post(
+      "http://localhost:4000/api/golf/importGolfCoursesData",
+      params,
+      config
+    )
     //    .then((returnedData) => console.log(returnedData))
     .then(() => alert("Golf Course data loaded into the SQL database"))
     .catch((err) => console.log(err))

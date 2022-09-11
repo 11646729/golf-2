@@ -7,10 +7,10 @@ import {
 } from "./controllers/vesselController.js"
 
 // -------------------------------------------------------
-// Fetch Port Arrivals & Vessel Details
+// Import Port Arrivals & Vessel Details
 // Path: Function called in switchBoard
 // -------------------------------------------------------
-export const fetchPortArrivalsAndVessels = async (req, res) => {
+export const importPortArrivalsAndVessels = async (req, res) => {
   // Get the Port Name & Associated values
   //  let port = req.query.portName.toUpperCase()
 
@@ -59,7 +59,7 @@ export const fetchPortArrivalsAndVessels = async (req, res) => {
 
 // -------------------------------------------------------
 // Fetch Year & Months which show Vessel Arrival Data
-// Path: Local function called by fetchPortArrivalsAndVessels
+// Path: Local function called by importPortArrivalsAndVessels
 // -------------------------------------------------------
 const getScheduleMonths = async (portName) => {
   let scheduledPeriods = []

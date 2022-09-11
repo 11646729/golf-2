@@ -193,7 +193,7 @@ export const savePortArrival = (db, newPortArrival) => {
 
 // -------------------------------------------------------
 // Fetch All Port Arrivals Details
-// Path: Local function called by fetchPortArrivalsAndVessels
+// Path: Local function called by importPortArrivalsAndVessels
 // -------------------------------------------------------
 export const getAndSavePortArrivals = async (
   scheduledPeriods,

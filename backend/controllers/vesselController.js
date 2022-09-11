@@ -305,7 +305,7 @@ export const getVesselPosition = async (req, res) => {
 
 // ----------------------------------------------------------
 // Fetch Details of a Single Vessel
-// Path: Local function called by fetchPortArrivalsAndVessels
+// Path: Local function called by importPortArrivalsAndVessels
 // ----------------------------------------------------------
 export const scrapeVesselDetails = async (vessel_url) => {
   // Fetch the initial data
