@@ -2,9 +2,11 @@ import React, { memo, useState } from "react"
 import styled from "styled-components"
 import { prepareTemperaturesTable } from "../axiosUtilities"
 
-import { loadCruiseShipArrivalsDataHandler } from "../functionHandlers/loadCruiseShipArrivalsDataHandler.js"
-import { loadGolfCourseDataHandler } from "../functionHandlers/loadGolfCourseDataHandler.js"
-import { loadBusTransportDataHandler } from "../functionHandlers/loadBusTransportDataHandler.js"
+import { loadGolfCourseDataHandler } from "../functionHandlers/loadGolfCourseDataHandler"
+import { loadCruiseShipArrivalsDataHandler } from "../functionHandlers/loadCruiseShipArrivalsDataHandler"
+import { loadBusTransportDataHandler } from "../functionHandlers/loadBusTransportDataHandler"
+import { loadCrimeDataHandler } from "../functionHandlers/loadCrimeDataHandler"
+import { startRealtimeDataHandler } from "../functionHandlers/startRealtimeDataHandler"
 
 const RawDataContainer = styled.div`
   display: flex;
@@ -48,10 +50,6 @@ const RawDataLoadPage = () => {
         alert(temperaturesTableStatus)
       }
     }
-  }
-
-  const startRealtimeDataHandler = () => {
-    alert("Realtime data available")
   }
 
   return (
@@ -98,9 +96,9 @@ const RawDataLoadPage = () => {
             </tr>
             <tr>
               <td>Crime Data</td>
-              <td>Currently: Off</td>
+              <td>Ready</td>
               <td>
-                {/* <Button onClick={startRealtimeDataHandler}>Fetch</Button> */}
+                <Button onClick={loadCrimeDataHandler}>Fetch</Button>
               </td>
             </tr>
             <tr>

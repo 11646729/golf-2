@@ -53,6 +53,6 @@ var importGolfCoursesData = async () => {
       config
     )
     //    .then((returnedData) => console.log(returnedData))
-    .then(() => alert("Golf Course data loaded into the SQL database"))
+    .then(() => console.log("Golf Course data loaded into the SQL database"))
     .catch((err) => console.log(err))
 }
