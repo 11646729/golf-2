@@ -2,28 +2,6 @@ import axios from "axios"
 import moment from "moment"
 
 // -------------------------------------------------------
-// Function to prepare the temperatures table in the SQL database
-// -------------------------------------------------------
-export var prepareTemperaturesTable = () => {
-  let params = {}
-  let config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }
-  axios
-    .post(
-      "http://localhost:4000/api/weather/prepareTemperaturesTable",
-      params,
-      config
-    )
-    .then((returnedData) => console.log(returnedData))
-    .catch((err) => console.log(err))
-
-  return "Empty temperatures table prepared"
-}
-
-// -------------------------------------------------------
 // Function to fetch all Temperature data
 // -------------------------------------------------------
 export var getTemperatureData = async (url) => {

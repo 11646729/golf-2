@@ -1,12 +1,12 @@
-import React, { memo, useState } from "react"
+import React, { memo } from "react"
 import styled from "styled-components"
-import { prepareTemperaturesTable } from "../axiosUtilities"
 
 import { loadGolfCourseDataHandler } from "../functionHandlers/loadGolfCourseDataHandler"
 import { loadCruiseShipArrivalsDataHandler } from "../functionHandlers/loadCruiseShipArrivalsDataHandler"
 import { loadBusTransportDataHandler } from "../functionHandlers/loadBusTransportDataHandler"
 import { loadCrimeDataHandler } from "../functionHandlers/loadCrimeDataHandler"
 import { startRealtimeDataHandler } from "../functionHandlers/startRealtimeDataHandler"
+import { loadTemperaturesDataHandler } from "../functionHandlers/loadTemperaturesDataHandler"
 
 const RawDataContainer = styled.div`
   display: flex;
@@ -36,22 +36,6 @@ const Button = styled.button`
 `
 
 const RawDataLoadPage = () => {
-  const [temperaturesTableStatus, setData] = useState("")
-
-  const prepareTemperatureDataHandler = () => {
-    // Prepare temperatures table
-    var showResult = true
-
-    const result = prepareTemperaturesTable()
-    setData(result)
-
-    if (showResult) {
-      if (temperaturesTableStatus !== "") {
-        alert(temperaturesTableStatus)
-      }
-    }
-  }
-
   return (
     <RawDataContainer>
       <RawDataTableContainer>
@@ -68,7 +52,7 @@ const RawDataLoadPage = () => {
               <td>Temperatures Data</td>
               <td>Ready</td>
               <td>
-                <Button onClick={prepareTemperatureDataHandler}>Fetch</Button>
+                <Button onClick={loadTemperaturesDataHandler}>Fetch</Button>
               </td>
             </tr>
             <tr>
