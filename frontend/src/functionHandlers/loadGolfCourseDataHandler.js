@@ -56,3 +56,27 @@ var importGolfCoursesData = async () => {
     .then(() => console.log("Golf Course data loaded into the SQL database"))
     .catch((err) => console.log(err))
 }
+
+// -------------------------------------------------------
+// Function to fetch all Golf Course data
+// -------------------------------------------------------
+export var getGolfCoursesData = async (url) => {
+  // Guard clause
+  if (url == null) {
+    console.log("Error: url == null in getGolfCoursesData in utilities.js")
+    return
+  }
+
+  let resultData = await axios({
+    url: url,
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  return resultData.data
+}
+
+export { getGolfCoursesData as default }

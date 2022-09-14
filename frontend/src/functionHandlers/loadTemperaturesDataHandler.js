@@ -29,3 +29,27 @@ var prepareTemperaturesTable = async () => {
     .then(() => alert("Empty temperatures table prepared"))
     .catch((err) => console.log(err))
 }
+
+// -------------------------------------------------------
+// Function to fetch all Temperature data
+// -------------------------------------------------------
+export var getTemperatureData = async (url) => {
+  // Guard clause
+  if (url == null) {
+    console.log("Error: url == null in getTemperatureData in utilities.js")
+    return
+  }
+
+  let resultData = await axios({
+    url: url,
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  return resultData.data
+}
+
+export { getTemperatureData as default }

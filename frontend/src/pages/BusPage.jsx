@@ -9,7 +9,7 @@ import {
   getAllShapes,
   getAllRoutes,
   // getDisplayData,
-} from "../axiosUtilities"
+} from "../functionHandlers/loadBusTransportDataHandler"
 
 import styled from "styled-components"
 

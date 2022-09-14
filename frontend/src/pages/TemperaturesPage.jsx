@@ -3,7 +3,7 @@ import io from "socket.io-client"
 
 import TemperaturesTable from "../components/TemperaturesTable"
 import TemperaturesChart from "../components/TemperaturesChart"
-import getTemperatureData from "../axiosUtilities"
+import getTemperatureData from "../functionHandlers/loadTemperaturesDataHandler"
 
 import styled from "styled-components"
 
