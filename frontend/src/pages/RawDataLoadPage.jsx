@@ -1,10 +1,10 @@
 import React, { memo } from "react"
 import styled from "styled-components"
 
-import { loadGolfCourseDataHandler } from "../functionHandlers/loadGolfCourseDataHandler"
+import { loadGolfCoursesDataHandler } from "../functionHandlers/loadGolfCoursesDataHandler"
 import { loadCruiseShipArrivalsDataHandler } from "../functionHandlers/loadCruiseShipArrivalsDataHandler"
 import { loadBusTransportDataHandler } from "../functionHandlers/loadBusTransportDataHandler"
-import { loadCrimeDataHandler } from "../functionHandlers/loadCrimeDataHandler"
+import { loadCrimesDataHandler } from "../functionHandlers/loadCrimesDataHandler"
 import { startRealtimeDataHandler } from "../functionHandlers/startRealtimeDataHandler"
 import { loadTemperaturesDataHandler } from "../functionHandlers/loadTemperaturesDataHandler"
 
@@ -59,7 +59,7 @@ const RawDataLoadPage = () => {
               <td>Golf Course Data</td>
               <td>Ready</td>
               <td>
-                <Button onClick={loadGolfCourseDataHandler}>Fetch</Button>
+                <Button onClick={loadGolfCoursesDataHandler}>Fetch</Button>
               </td>
             </tr>
             <tr>
@@ -82,7 +82,7 @@ const RawDataLoadPage = () => {
               <td>Crime Data</td>
               <td>Ready</td>
               <td>
-                <Button onClick={loadCrimeDataHandler}>Fetch</Button>
+                <Button onClick={loadCrimesDataHandler}>Fetch</Button>
               </td>
             </tr>
             <tr>
