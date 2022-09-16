@@ -7,8 +7,8 @@ export var loadGolfCoursesDataHandler = () => {
   // Prepare empty golf courses table in the database & show result
   prepareGolfCoursesTable()
 
-  // Import the golf course file data into the database
-  importGolfCoursesData()
+  // Initial import of the golf course file data into the database
+  initialImportOfGolfCoursesData()
 }
 
 // -------------------------------------------------------
@@ -37,7 +37,7 @@ var prepareGolfCoursesTable = async () => {
 // -------------------------------------------------------
 // Function to instruct backend to load Golf Club Data into the database
 // -------------------------------------------------------
-var importGolfCoursesData = async () => {
+var initialImportOfGolfCoursesData = async () => {
   let params = {}
   let config = {
     timeout: 20000,
@@ -47,11 +47,7 @@ var importGolfCoursesData = async () => {
   }
 
   await axios
-    .post(
-      "http://localhost:4000/api/golf/importGolfCoursesData",
-      params,
-      config
-    )
+    .get("http://localhost:4000/api/golf/importGolfCoursesData", params, config)
     //    .then((returnedData) => console.log(returnedData))
     .then(() => console.log("Golf Course data loaded into the SQL database"))
     .catch((err) => console.log(err))
@@ -60,15 +56,23 @@ var importGolfCoursesData = async () => {
 // -------------------------------------------------------
 // Function to fetch all Golf Course data
 // -------------------------------------------------------
-export var getGolfCoursesData = async (url) => {
-  // Guard clause
-  if (url == null) {
-    console.log("Error: url == null in getGolfCoursesData in utilities.js")
-    return
-  }
+export var getGolfCoursesData = async () => {
+  // let params = {}
+  // let config = {
+  //   timeout: 8000,
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // }
+
+  // await axios
+  //   .get("http://localhost:4000/api/golf/getGolfCourses", params, config)
+  //   .then((returnedData) => console.log(returnedData.data))
+  //   .then(() => console.log("Fetched Golf Course data"))
+  //   .catch((err) => console.log(err))
 
   let resultData = await axios({
-    url: url,
+    url: "http://localhost:4000/api/golf/getGolfCourses",
     method: "GET",
     timeout: 8000,
     headers: {

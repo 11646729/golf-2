@@ -2,7 +2,7 @@ import React, { useState, useEffect, memo } from "react"
 
 import GolfCoursesTable from "../components/GolfCoursesTable"
 import GolfCoursesMap from "../components/GolfCoursesMap"
-import getGolfCoursesData from "../functionHandlers/loadGolfCourseDataHandler"
+import getGolfCoursesData from "../functionHandlers/loadGolfCoursesDataHandler"
 
 import styled from "styled-components"
 
@@ -34,7 +34,8 @@ function GolfCoursesPage() {
   useEffect(() => {
     let isSubscribed = true
 
-    getGolfCoursesData("http://localhost:4000/api/golf/getGolfCourses")
+    //    getGolfCoursesData("http://localhost:4000/api/golf/getGolfCourses")
+    getGolfCoursesData()
       .then((returnedData) =>
         isSubscribed ? setGolfCoursesData(returnedData) : null
       )
