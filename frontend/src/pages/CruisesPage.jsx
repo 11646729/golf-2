@@ -67,6 +67,8 @@ const CruisesPage = () => {
     return () => (isSubscribed = false)
   }, [portArrivals])
 
+  //  console.log(vesselPositions)
+
   return (
     <CruisesContainer>
       <CruisesTableContainer>

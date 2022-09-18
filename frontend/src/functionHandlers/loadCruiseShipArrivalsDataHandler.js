@@ -114,20 +114,14 @@ export var getCruiseVesselPositionData = async (portArrivals) => {
     return
   }
 
-  // Extract urls here - THIS WORKS
+  // Extract urls
   var urls = []
   var loop = 0
   do {
-    let shipUrl = {
-      url: portArrivals[loop].vesselnameurl,
-    }
-
-    urls.push(shipUrl)
+    urls.push(portArrivals[loop].vesselnameurl)
 
     loop++
   } while (loop < portArrivals.length)
-
-  console.log(urls)
 
   var resultData = []
 
@@ -135,7 +129,7 @@ export var getCruiseVesselPositionData = async (portArrivals) => {
   resultData = await axios({
     url: "http://localhost:4000/api/cruise/vesselPositions",
     params: {
-      portArrivals: portArrivals,
+      portArrivals: urls,
     },
     method: "GET",
     timeout: 8000,
@@ -143,8 +137,6 @@ export var getCruiseVesselPositionData = async (portArrivals) => {
       "Content-Type": "application/json",
     },
   })
-
-  console.log(resultData.data)
 
   return resultData.data
 }

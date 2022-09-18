@@ -147,9 +147,8 @@ const CruisesMap = (props) => {
                 // title={selected.phototitle}
               />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  {/* {selected.name} */}
-                </Typography>
+                {/* <Typography gutterBottom variant="h5" component="h2"> */}
+                <Typography component="p">{selected.vesselName}</Typography>
                 <Typography component="p">
                   En Route to {selected.destination}
                 </Typography>

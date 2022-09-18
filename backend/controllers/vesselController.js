@@ -157,16 +157,8 @@ export const saveVessel = (newVessel) => {
 // Find vesselNameUrl from vessels Table from SQLite database
 // -------------------------------------------------------
 export const getVesselPosition = async (req, res) => {
-  // Dummy data
-  const urls = []
-  urls.push("https://www.cruisemapper.com/ships/Anthem-of-the-Seas-801")
-  urls.push("https://www.cruisemapper.com/ships/Sky-Princess-2154")
-  urls.push("https://www.cruisemapper.com/ships/MSC-Bellissima-1359")
-
-  // Now remove duplicates and store Urls in DeduplicatedVesselUrlArray array
-  // const DeduplicatedVesselUrlArray = Array.from(new Set(vesselUrls))
-
-  let arrivals = req.query.portArrivals
+  // Remove duplicates and store Urls in arrivals array
+  const arrivals = Array.from(new Set(req.query.portArrivals))
 
   // Now get current location & destination
   var shipPositions = []
@@ -174,7 +166,7 @@ export const getVesselPosition = async (req, res) => {
   var j = 0
   do {
     // Fetch the initial data
-    const { data: html } = await axios.get(urls[j])
+    const { data: html } = await axios.get(arrivals[j])
 
     // Load up cheerio
     const $ = cheerio.load(html) // html
@@ -287,7 +279,7 @@ export const getVesselPosition = async (req, res) => {
 
     var shipPosition = {
       index: j,
-      vesselUrl: urls[j],
+      vesselUrl: arrivals[j],
       vesselName: vesselName,
       lat: latitude,
       lng: longitude,
@@ -298,7 +290,9 @@ export const getVesselPosition = async (req, res) => {
     shipPositions.push(shipPosition)
 
     j++
-  } while (j < urls.length)
+  } while (j < arrivals.length)
+
+  console.log(shipPosition)
 
   res.send(shipPositions)
 }

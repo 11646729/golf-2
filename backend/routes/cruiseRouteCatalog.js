@@ -32,12 +32,6 @@ cruiseRouter.post("/portArrivals", savePortArrival)
 // GET all Port Arrivals from the database
 cruiseRouter.get("/portArrivals", getPortArrivals)
 
-// GET a Port Arrival by id
-// cruiseRouter.get("/portArrivals/:id", getPortArrival)
-
-// PUT a Port Arrival by id
-// cruiseRouter.put("/portArrivals/:id", putPortArrival)
-
 // ---------------------------------------------------
 // Vessel Routes
 // ---------------------------------------------------
@@ -50,19 +44,10 @@ cruiseRouter.post(
   importPortArrivalsAndVessels
 )
 
-// GET all vessels from the database
-// cruiseRouter.get("/vessel", getVessels)
-
-// GET a vessel by id
-// cruiseRouter.get("/vessel/:id", getVessel)
-
-// GET all vessel positions
-cruiseRouter.get("/vesselPositions", getVesselPosition)
-
 // POST a vessel to the database
 cruiseRouter.post("/vessel", saveVessel)
 
-// PUT a vessel by id
-// cruiseRouter.put("/vessel/:id", putVessel)
+// GET all vessel positions
+cruiseRouter.get("/vesselPositions", getVesselPosition)
 
 export default cruiseRouter
