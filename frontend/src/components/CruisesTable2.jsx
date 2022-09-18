@@ -1,13 +1,28 @@
 import React, { memo } from "react"
 import { useTable } from "react-table"
-// import styled from "styled-components"
-import "./cruisestable/cruisestable.css"
+import styled from "styled-components"
+
+import Title from "./Title"
+
+const CruisesTableContainer = styled.div`
+  min-width: 200px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+`
+
+const CruisesTableTitleContainer = styled.div`
+  margin-top: 35px;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: "97%";
+`
 
 const Button = ({ type }) => {
   return <button className={"widgetLgButton " + type}>{type}</button>
 }
 
-const CruisesTable2 = ({ data, loadingError }) => {
+const CruisesTable2 = ({ cruisesTableTitle, data, loadingError }) => {
   const columns = React.useMemo(
     () => [
       {
@@ -18,12 +33,15 @@ const CruisesTable2 = ({ data, loadingError }) => {
         Header: "Ship",
         accessor: "vesselshortcruisename",
         Cell: (tableProps) => (
-          <img
-            src={tableProps.row.original.cruiselinelogo}
-            alt={"Cruise Line Logo"}
-            width="30px"
-            height="30px"
-          />
+          <div>
+            <img
+              src={tableProps.row.original.cruiselinelogo}
+              alt={"Cruise Line Logo"}
+              width="30px"
+              height="30px"
+            />
+            <i> This text is bold</i>
+          </div>
         ),
       },
       {
@@ -47,61 +65,68 @@ const CruisesTable2 = ({ data, loadingError }) => {
     useTable({ columns, data })
 
   return (
-    <table
-      {...getTableProps()}
-      style={{
-        width: "94%",
-        marginLeft: "20px",
-        marginRight: "20px",
-        borderSpacing: "20px",
-        border: "1px solid lightgray",
-        borderCollapse: "collapse",
-      }}
-    >
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map((column) => (
-              <th
-                {...column.getHeaderProps()}
-                style={{
-                  fontSize: "14px",
-                  padding: "10px",
-                  color: "black",
-                }}
-              >
-                {column.render("Header")}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map((row) => {
-          prepareRow(row)
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map((cell) => {
-                return (
-                  <td
-                    {...cell.getCellProps()}
+    <div>
+      <CruisesTableTitleContainer>
+        <Title>{cruisesTableTitle}</Title>
+      </CruisesTableTitleContainer>
+      <CruisesTableContainer>
+        <table
+          {...getTableProps()}
+          style={{
+            width: "94%",
+            marginLeft: "20px",
+            marginRight: "20px",
+            borderSpacing: "20px",
+            border: "1px solid lightgray",
+            borderCollapse: "collapse",
+          }}
+        >
+          <thead>
+            {headerGroups.map((headerGroup) => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <th
+                    {...column.getHeaderProps()}
                     style={{
-                      fontSize: "13px",
+                      fontSize: "14px",
                       padding: "10px",
-                      border: "solid 1px lightgray",
-                      background: "papayawhip",
-                      textAlign: "center",
+                      color: "black",
                     }}
                   >
-                    {cell.render("Cell")}
-                  </td>
-                )
-              })}
-            </tr>
-          )
-        })}
-      </tbody>
-    </table>
+                    {column.render("Header")}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {rows.map((row) => {
+              prepareRow(row)
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => {
+                    return (
+                      <td
+                        {...cell.getCellProps()}
+                        style={{
+                          fontSize: "13px",
+                          padding: "10px",
+                          border: "solid 1px lightgray",
+                          background: "papayawhip",
+                          textAlign: "center",
+                        }}
+                      >
+                        {cell.render("Cell")}
+                      </td>
+                    )
+                  })}
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </CruisesTableContainer>
+    </div>
   )
 }
 

@@ -1,5 +1,5 @@
 import axios from "axios"
-import moment from "moment"
+// import moment from "moment"
 
 // -------------------------------------------------------
 // Function to fetch all Cruise PortArrivals & Vessel data into the SQL database
@@ -89,15 +89,9 @@ var importPortArrivalsAndVesselsData = async () => {
 // -------------------------------------------------------
 // Function to fetch all Cruise Vessel data
 // -------------------------------------------------------
-export var getPortArrivalsData = async (url) => {
-  // Guard clause
-  if (url == null) {
-    console.log("Error: url == null in getCruiseVesselData in utilities.js")
-    return
-  }
-
+export var getPortArrivalsData = async () => {
   let resultData = await axios({
-    url: url,
+    url: "http://localhost:4000/api/cruise/portArrivals",
     method: "GET",
     timeout: 8000,
     headers: {
@@ -111,15 +105,8 @@ export var getPortArrivalsData = async (url) => {
 // -------------------------------------------------------
 // Function to fetch Cruise Vessel Position data
 // -------------------------------------------------------
-export var getCruiseVesselPositionData = async (url, test, portArrivals) => {
-  // Guard clauses
-  if (url == null) {
-    console.log(
-      "Error: url == null in getCruiseVesselPositionData in utilities.js"
-    )
-    return
-  }
-
+export var getCruiseVesselPositionData = async (portArrivals) => {
+  // Guard clause
   if (portArrivals == null) {
     console.log(
       "Error: portArrivals == null in getCruiseVesselPositionData in utilities.js"
@@ -140,82 +127,24 @@ export var getCruiseVesselPositionData = async (url, test, portArrivals) => {
     loop++
   } while (loop < portArrivals.length)
 
-  // console.log(urls)
+  console.log(urls)
 
   var resultData = []
 
-  if (test === "Test") {
-    console.log("Static Test Data")
-    resultData = getCruiseVesselPositionTestData()
-  } else {
-    console.log("Real Data")
+  // Fetch the initial data
+  resultData = await axios({
+    url: "http://localhost:4000/api/cruise/vesselPositions",
+    params: {
+      portArrivals: portArrivals,
+    },
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
 
-    // Fetch the initial data
-    resultData = await axios({
-      url: url,
-      params: {
-        portArrivals: portArrivals,
-      },
-      method: "GET",
-      timeout: 8000,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-  }
+  console.log(resultData.data)
 
   return resultData.data
-}
-
-// -------------------------------------------------------
-// Function to fetch Cruise Vessel Position data
-// -------------------------------------------------------
-var getCruiseVesselPositionTestData = () => {
-  var longlats = [
-    [55.95473, -4.758], // lat, lng
-    [55.843985, -4.9333],
-    [55.42563, -4.917513],
-    [55.001906, -5.34192],
-    [54.719465, -5.514335],
-    [54.62649822725435, -5.884617360308293],
-  ]
-
-  let resultData = {}
-  let shipPositions = []
-  let loop = 0
-  // var i = setInterval(function () {
-  do {
-    // if (loop < longlats.length) {
-    var utcMoment = moment.utc()
-    var utcDate = new Date(utcMoment.format())
-
-    let shipPosition = {
-      index: loop + 1,
-      timestamp: utcDate,
-      lat: longlats[loop][0],
-      lng: longlats[loop][1],
-    }
-
-    shipPositions.push(shipPosition)
-
-    console.log(shipPositions)
-
-    loop++
-    // res.send(shipPosition)
-    // return shipPosition
-    // } else {
-    // clearInterval(i)
-    // res.send(shipPositions)
-    // }
-  } while (loop < longlats.length)
-  // }, 0)
-
-  resultData = {
-    config: "testData",
-    data: shipPositions,
-  }
-
-  console.log(resultData)
-
-  return resultData
 }

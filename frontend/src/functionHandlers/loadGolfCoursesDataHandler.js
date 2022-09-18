@@ -54,24 +54,10 @@ var initialImportOfGolfCoursesData = async () => {
 }
 
 // -------------------------------------------------------
-// Function to fetch all Golf Course data
+// Function to fetch all Golf Course data - DON'T TRY TO REFACTOR THIS
 // -------------------------------------------------------
 export var getGolfCoursesData = async () => {
-  // let params = {}
-  // let config = {
-  //   timeout: 8000,
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // }
-
-  // await axios
-  //   .get("http://localhost:4000/api/golf/getGolfCourses", params, config)
-  //   .then((returnedData) => console.log(returnedData.data))
-  //   .then(() => console.log("Fetched Golf Course data"))
-  //   .catch((err) => console.log(err))
-
-  let resultData = await axios({
+  const resultData = await axios({
     url: "http://localhost:4000/api/golf/getGolfCourses",
     method: "GET",
     timeout: 8000,

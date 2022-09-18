@@ -17,7 +17,7 @@ const GolfCourseTableTitleContainer = styled.div`
   width: "97%";
 `
 
-function GolfCoursesTable(props) {
+const GolfCoursesTable = (props) => {
   return (
     <div>
       <GolfCourseTableTitleContainer>

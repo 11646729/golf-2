@@ -1,11 +1,9 @@
 import React, { useState, useEffect, memo } from "react"
 import styled from "styled-components"
 
-import CruisesTable from "../components/cruisestable/CruisesTable"
-// import CruisesTable2 from "../components/CruisesTable2"
+// import CruisesTable from "../components/cruisestable/CruisesTable"
+import CruisesTable2 from "../components/CruisesTable2"
 import CruisesMap from "../components/CruisesMap"
-import Title from "../components/Title"
-// import LoadingTitle from "../components/LoadingTitle"
 
 import {
   getPortArrivalsData,
@@ -21,13 +19,6 @@ const CruisesTableContainer = styled.div`
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   min-height: 500px;
-`
-
-const CruisesTableContainerTitle = styled.div`
-  margin-top: 35px;
-  margin-left: 20px;
-  margin-right: 20px;
-  width: "97%";
 `
 
 const CruisesMapContainer = styled.div`
@@ -50,12 +41,12 @@ const CruisesPage = () => {
   useEffect(() => {
     let isSubscribed = true
 
-    getPortArrivalsData("http://localhost:4000/api/cruise/portArrivals")
+    getPortArrivalsData()
       .then((returnedData) =>
         isSubscribed ? setPortArrivals(returnedData) : null
       )
-      // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+    // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
 
     return () => (isSubscribed = false)
   }, [])
@@ -65,16 +56,12 @@ const CruisesPage = () => {
     let isSubscribed = true
 
     if (portArrivals.length !== 0) {
-      getCruiseVesselPositionData(
-        "http://localhost:4000/api/cruise/vesselPositions",
-        "Real",
-        portArrivals
-      ) // Real or Test
+      getCruiseVesselPositionData(portArrivals)
         .then((returnedData) =>
           isSubscribed ? setVesselPositions(returnedData) : null
         )
-        // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
         .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+      // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
     }
 
     return () => (isSubscribed = false)
@@ -83,18 +70,20 @@ const CruisesPage = () => {
   return (
     <CruisesContainer>
       <CruisesTableContainer>
-        <CruisesTableContainerTitle>
-          <Title>{"Cruise Ships Arriving Soon"}</Title>
-          {/* {props.loadingError ? (
-          <LoadingTitle>Error Loading...</LoadingTitle>
-        ) : null} */}
-        </CruisesTableContainerTitle>
-        <CruisesTable data={portArrivals} loadingError={loadingError} />
-        {/* <CruisesTable2 data={portArrivals} loadingError={loadingError} /> */}
+        {/* <CruisesTable
+          cruisesTableTitle={"Cruise Ships Arriving Soon"}
+          data={portArrivals}
+          loadingError={loadingError}
+        /> */}
+        <CruisesTable2
+          cruisesTableTitle={"Cruise Ships Arriving Soon"}
+          data={portArrivals}
+          loadingError={loadingError}
+        />
       </CruisesTableContainer>
       <CruisesMapContainer>
         <CruisesMap
-          cruisesMapTitle={"Current Locations"}
+          cruisesMapTitle={"Cruise Ship Positions"}
           cruisesHomePosition={homePosition}
           vesselPositions={vesselPositions}
           // vesselDetails={portArrivals}

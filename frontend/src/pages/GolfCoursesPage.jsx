@@ -27,14 +27,13 @@ const GolfCoursesMapContainer = styled.div`
 // -------------------------------------------------------
 // React Controller component
 // -------------------------------------------------------
-function GolfCoursesPage() {
+const GolfCoursesPage = () => {
   const [golfCourses, setGolfCoursesData] = useState([])
   const [loadingError, setLoadingError] = useState("")
 
   useEffect(() => {
     let isSubscribed = true
 
-    //    getGolfCoursesData("http://localhost:4000/api/golf/getGolfCourses")
     getGolfCoursesData()
       .then((returnedData) =>
         isSubscribed ? setGolfCoursesData(returnedData) : null
@@ -51,7 +50,7 @@ function GolfCoursesPage() {
       </GolfCoursesTableContainer>
       <GolfCoursesMapContainer>
         <GolfCoursesMap
-          golfCoursesMapTitle={"Golf Courses Map"}
+          golfCoursesMapTitle={"Golf Course Locations"}
           golfCourses={golfCourses}
           loadingError={loadingError}
         />
