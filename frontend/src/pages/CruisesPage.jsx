@@ -51,6 +51,8 @@ const CruisesPage = () => {
     return () => (isSubscribed = false)
   }, [])
 
+  // console.log(portArrivals)
+
   // This routine gets Cruise Vessel position data - after portArrivals array has been filled
   useEffect(() => {
     let isSubscribed = true

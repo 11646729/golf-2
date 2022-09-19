@@ -292,7 +292,7 @@ export const getVesselPosition = async (req, res) => {
     j++
   } while (j < arrivals.length)
 
-  console.log(shipPosition)
+  //  console.log(shipPosition)
 
   res.send(shipPositions)
 }

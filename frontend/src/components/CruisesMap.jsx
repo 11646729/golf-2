@@ -149,6 +149,7 @@ const CruisesMap = (props) => {
               <CardContent>
                 {/* <Typography gutterBottom variant="h5" component="h2"> */}
                 <Typography component="p">{selected.vesselName}</Typography>
+                <Typography component="p">{selected.timestamp}</Typography>
                 <Typography component="p">
                   En Route to {selected.destination}
                 </Typography>
