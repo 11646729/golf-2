@@ -44,8 +44,8 @@ export const selectedUniqueRoute = async (
 ) => {
   // Guard clause
   if (url == null) return
-  let resultData = await axios({
-    url: url,
+  const resultData = await axios({
+    url: { url },
     data: {
       routeNumber: selectedBusRouteNumber,
       routeVisible: selected,
