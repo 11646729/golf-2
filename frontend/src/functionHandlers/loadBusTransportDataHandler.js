@@ -1,21 +1,11 @@
 import axios from "axios"
 
 // -------------------------------------------------------
-// Function to fetch all GTFS Bus data into the SQL database
-// -------------------------------------------------------
-export var loadBusTransportDataHandler = () => {
-  // The import GTFS function prepares the empty database table
-
-  // Import GTFS Data from Website into local SQL database
-  importGTFSBusData()
-}
-
-// -------------------------------------------------------
 // Function to import the GTFS data into the SQL database
 // -------------------------------------------------------
-var importGTFSBusData = async () => {
-  let params = {}
-  let config = {
+const importGTFSBusData = async () => {
+  const params = {}
+  const config = {
     timeout: 20000,
     headers: {
       "Content-Type": "application/json",
@@ -30,41 +20,54 @@ var importGTFSBusData = async () => {
 }
 
 // -------------------------------------------------------
+// Local Function to fetch all shape_ids
+// -------------------------------------------------------
+const getShapeIDs = (busShapesCollection) => {
+  // Now extract all unique shape_ids
+  const uniqueShapeIds = [
+    ...new Set(busShapesCollection.map((item) => item.shape_id)),
+  ]
+
+  // And sort into ascending order
+  uniqueShapeIds.sort((a, b) => parseFloat(a.shape_id) - parseFloat(b.shape_id))
+
+  return uniqueShapeIds
+}
+
+// -------------------------------------------------------
 // Function to fetch Position data for a Specific Route
 // -------------------------------------------------------
-export var selectedUniqueRoute = async (
+export const selectedUniqueRoute = async (
   url,
   selectedBusRouteNumber,
   selected
 ) => {
   // Guard clause
   if (url == null) return
-
-  // let resultData = await axios({
-  //   url: url,
-  //   data: {
-  //     routeNumber: selectedBusRouteNumber,
-  //     routeVisible: selected,
-  //   },
-  //   method: "PUT",
-  //   timeout: 8000,
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // })
-
-  // return resultData.data
+  let resultData = await axios({
+    url: url,
+    data: {
+      routeNumber: selectedBusRouteNumber,
+      routeVisible: selected,
+    },
+    method: "PUT",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+  return resultData.data
 }
 
 // -------------------------------------------------------
 // Function to fetch Bus Agency
 // -------------------------------------------------------
-export var getAgencyName = async (url) => {
+export const getAgencyName = async (url) => {
   // Guard clause
   if (url == null) return
 
-  let resultData = await axios({
-    url: url,
+  const resultData = await axios({
+    url: { url },
     method: "GET",
     timeout: 8000,
     headers: {
@@ -76,40 +79,15 @@ export var getAgencyName = async (url) => {
 }
 
 // -------------------------------------------------------
-// Function to fetch all Shapes data
-// -------------------------------------------------------
-export var getAllShapes = async (url) => {
-  // Guard clause
-  if (url == null) return
-
-  let resultData = await axios({
-    url: url,
-    method: "GET",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-
-  // Now extract all unique shape_id and sort into ascending order
-  const uniqueShape_ids = getShapeIDs(resultData.data)
-
-  // Now reformat busShapesCollection into a new array
-  const reformattedShapes = reformatShapesData(uniqueShape_ids, resultData.data)
-
-  return reformattedShapes
-}
-
-// -------------------------------------------------------
 // Function to fetch Shapes data for a specific shapeID
 // -------------------------------------------------------
-export var getShape = async (url, shapeID) => {
+export const getShape = async (url, shapeID) => {
   // Guard clauses
   if (url == null) return
   if (shapeID == null) return
 
-  let resultData = await axios({
-    url: url,
+  const resultData = await axios({
+    url: { url },
     params: {
       shape: shapeID,
     },
@@ -124,34 +102,17 @@ export var getShape = async (url, shapeID) => {
 }
 
 // -------------------------------------------------------
-// Local Function to fetch all shape_ids
-// -------------------------------------------------------
-var getShapeIDs = (busShapesCollection) => {
-  // Now extract all unique shape_ids
-  const uniqueShape_ids = [
-    ...new Set(busShapesCollection.map((item) => item.shape_id)),
-  ]
-
-  // And sort into ascending order
-  uniqueShape_ids.sort(
-    (a, b) => parseFloat(a.shape_id) - parseFloat(b.shape_id)
-  )
-
-  return uniqueShape_ids
-}
-
-// -------------------------------------------------------
 // Local Function to reformat coordinates into a new array
 // -------------------------------------------------------
-var reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
-  var modifiedShapeArray = []
+const reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
+  const modifiedShapeArray = []
 
-  for (var k = 0; k < uniqueShapeIDs.length; k++) {
-    var tempArray = []
-    var finalArray = []
+  for (let k = 0; k < uniqueShapeIDs.length; k += 1) {
+    const tempArray = []
+    const finalArray = []
 
     // Select all busShape objects with the same shape_id & store in tempArray
-    for (var i = 0; i < busShapesCollection.length; i++) {
+    for (let i = 0; i < busShapesCollection.length; i += 1) {
       if (busShapesCollection[i].shape_id === uniqueShapeIDs[k]) {
         tempArray.push(busShapesCollection[i])
       }
@@ -165,16 +126,16 @@ var reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
       )
 
       // Iterate over shape_pt_sequence & store all lat & lng values in an object
-      var j = 0
+      let j = 0
       do {
-        var coords = {
+        const coords = {
           lat: tempArray[j].shape_pt_lat,
           lng: tempArray[j].shape_pt_lon,
         }
 
         finalArray.push(coords)
 
-        j++
+        j += 1
       } while (j < tempArray.length)
 
       // const colors = [
@@ -191,7 +152,7 @@ var reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
       // }
 
       // Add other relevant values into the object
-      var modifiedShape = {
+      const modifiedShape = {
         shapeKey: uniqueShapeIDs[k],
         shapeCoordinates: finalArray,
         display: "yes",
@@ -209,12 +170,12 @@ var reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
 // -------------------------------------------------------
 // Function to fetch Unique Gtfs Stops data
 // -------------------------------------------------------
-export var getAllStops = async (url) => {
+export const getAllStops = async (url) => {
   // Guard clause
   if (url == null) return
 
   const resultData = await axios({
-    url: url,
+    url: { url },
     method: "GET",
     timeout: 8000,
     headers: {
@@ -228,12 +189,12 @@ export var getAllStops = async (url) => {
 // -------------------------------------------------------
 // Function to fetch Unique Gtfs Routes data
 // -------------------------------------------------------
-export var getAllRoutes = async (url) => {
+export const getAllRoutes = async (url) => {
   // Guard clauses
   if (url == null) return
 
-  let resultData = await axios({
-    url: url,
+  const resultData = await axios({
+    url: { url },
     method: "GET",
     timeout: 8000,
     headers: {
@@ -247,17 +208,52 @@ export var getAllRoutes = async (url) => {
 // -------------------------------------------------------
 // Function to remove Gtfs data fields routeVisible === false
 // -------------------------------------------------------
-export var getDisplayData = (originalArray) => {
-  let displayArray = []
+export const getDisplayData = (originalArray) => {
+  const displayArray = []
   let index = 0
   do {
     if (originalArray[index].routeVisible === true) {
       displayArray.push(originalArray[index])
     }
-    index++
+    index += 1
   } while (index < originalArray.length)
 
   return displayArray
+}
+
+// -------------------------------------------------------
+// Function to fetch all Shapes data
+// -------------------------------------------------------
+export const getAllShapes = async (url) => {
+  // Guard clause
+  if (url == null) return
+
+  const resultData = await axios({
+    url: { url },
+    method: "GET",
+    timeout: 8000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
+  // Now extract all unique shape_id and sort into ascending order
+  const uniqueShapeIds = getShapeIDs(resultData.data)
+
+  // Now reformat busShapesCollection into a new array
+  const reformattedShapes = reformatShapesData(uniqueShapeIds, resultData.data)
+
+  return reformattedShapes
+}
+
+// -------------------------------------------------------
+// Function to fetch all GTFS Bus data into the SQL database
+// -------------------------------------------------------
+export const loadBusTransportDataHandler = () => {
+  // The import GTFS function prepares the empty database table
+
+  // Import GTFS Data from Website into local SQL database
+  importGTFSBusData()
 }
 
 // Function to remove duplicates from array

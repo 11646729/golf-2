@@ -19,7 +19,7 @@ const theme = createTheme({
   },
 })
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     color: theme.status.danger,
     "&$checked": {

@@ -44,9 +44,9 @@ function BusMap(props) {
   })
 
   // Store a reference to the google map instance in state
-  const onLoadHandler = useCallback((map) => {
+  const onLoadHandler = useCallback(() => {
     setMap(map)
-  }, [])
+  }, [map])
 
   // Clear the reference to the google map instance
   const onUnmountHandler = useCallback(() => {

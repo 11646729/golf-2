@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     color: "#000000", // props.textColor ?
     fontSize: "14px",
     title: props.title,
-    backgroundColor: "#" + props.routeColor, // A fudge because database doesn't contain the hash
+    backgroundColor: `#${props.routeColor}`, // A fudge because database doesn't contain the hash
     // backgroundColor: "#ff0000",
   }),
 })
@@ -20,5 +20,5 @@ const useStyles = makeStyles({
 export default function BandButton(props) {
   const classes = useStyles(props)
   console.log(props)
-  return <Button className={classes.button}>{props.routeNumber}</Button>
+  return <Button className={classes.button}>{routeNumber} = this.props</Button>
 }

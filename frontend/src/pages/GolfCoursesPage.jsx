@@ -1,10 +1,9 @@
 import React, { useState, useEffect, memo } from "react"
+import styled from "styled-components"
 
 import GolfCoursesTable from "../components/GolfCoursesTable"
 import GolfCoursesMap from "../components/GolfCoursesMap"
-import getGolfCoursesData from "../functionHandlers/loadGolfCoursesDataHandler"
-
-import styled from "styled-components"
+import { getGolfCoursesData } from "../functionHandlers/loadGolfCoursesDataHandler"
 
 const GolfCoursesContainer = styled.div`
   display: flex;
@@ -46,11 +45,11 @@ const GolfCoursesPage = () => {
   return (
     <GolfCoursesContainer>
       <GolfCoursesTableContainer>
-        <GolfCoursesTable golfCoursesTableTitle={"Golf Courses Table"} />
+        <GolfCoursesTable golfCoursesTableTitle="Golf Courses Table" />
       </GolfCoursesTableContainer>
       <GolfCoursesMapContainer>
         <GolfCoursesMap
-          golfCoursesMapTitle={"Golf Course Locations"}
+          golfCoursesMapTitle="Golf Course Locations"
           golfCourses={golfCourses}
           loadingError={loadingError}
         />

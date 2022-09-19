@@ -2,25 +2,11 @@ import axios from "axios"
 // import moment from "moment"
 
 // -------------------------------------------------------
-// Function to fetch all Cruise PortArrivals & Vessel data into the SQL database
-// -------------------------------------------------------
-export const loadCruiseShipArrivalsDataHandler = () => {
-  // Prepare empty port arrivals table in the database & show result
-  preparePortArrivalsTable()
-
-  // Prepare empty vessels table in the database & show result
-  prepareVesselsTable()
-
-  // Import the scraped data into the database & show result
-  importPortArrivalsAndVesselsData()
-}
-
-// -------------------------------------------------------
 // Function to prepare the portarrivals table in the SQL database
 // -------------------------------------------------------
-var preparePortArrivalsTable = async () => {
-  let params = {}
-  let config = {
+const preparePortArrivalsTable = async () => {
+  const params = {}
+  const config = {
     timeout: 8000,
     headers: {
       "Content-Type": "application/json",
@@ -41,9 +27,9 @@ var preparePortArrivalsTable = async () => {
 // -------------------------------------------------------
 // Function to prepare the vessels table in the SQL database
 // -------------------------------------------------------
-var prepareVesselsTable = async () => {
-  let params = {}
-  let config = {
+const prepareVesselsTable = async () => {
+  const params = {}
+  const config = {
     timeout: 8000,
     headers: {
       "Content-Type": "application/json",
@@ -64,11 +50,11 @@ var prepareVesselsTable = async () => {
 // -------------------------------------------------------
 // Function to fetch all Cruise PortArrivals & Vessel data
 // -------------------------------------------------------
-var importPortArrivalsAndVesselsData = async () => {
-  let params = {
+const importPortArrivalsAndVesselsData = async () => {
+  const params = {
     portName: "Belfast",
   }
-  let config = {
+  const config = {
     timeout: 20000,
     headers: {
       "Content-Type": "application/json",
@@ -89,8 +75,8 @@ var importPortArrivalsAndVesselsData = async () => {
 // -------------------------------------------------------
 // Function to fetch all Cruise Vessel data
 // -------------------------------------------------------
-export var getPortArrivalsData = async () => {
-  let resultData = await axios({
+export const getPortArrivalsData = async () => {
+  const resultData = await axios({
     url: "http://localhost:4000/api/cruise/portArrivals",
     method: "GET",
     timeout: 8000,
@@ -105,7 +91,7 @@ export var getPortArrivalsData = async () => {
 // -------------------------------------------------------
 // Function to fetch Cruise Vessel Position data
 // -------------------------------------------------------
-export var getCruiseVesselPositionData = async (portArrivals) => {
+export const getCruiseVesselPositionData = async (portArrivals) => {
   // Guard clause
   if (portArrivals == null) {
     console.log(
@@ -115,15 +101,15 @@ export var getCruiseVesselPositionData = async (portArrivals) => {
   }
 
   // Extract urls
-  var urls = []
-  var loop = 0
+  const urls = []
+  let loop = 0
   do {
     urls.push(portArrivals[loop].vesselnameurl)
 
-    loop++
+    loop += 1
   } while (loop < portArrivals.length)
 
-  var resultData = []
+  let resultData = []
 
   // Fetch the initial data
   resultData = await axios({
@@ -139,4 +125,18 @@ export var getCruiseVesselPositionData = async (portArrivals) => {
   })
 
   return resultData.data
+}
+
+// -------------------------------------------------------
+// Function to fetch all Cruise PortArrivals & Vessel data into the SQL database
+// -------------------------------------------------------
+export const loadCruiseShipArrivalsDataHandler = () => {
+  // Prepare empty port arrivals table in the database & show result
+  preparePortArrivalsTable()
+
+  // Prepare empty vessels table in the database & show result
+  prepareVesselsTable()
+
+  // Import the scraped data into the database & show result
+  importPortArrivalsAndVesselsData()
 }

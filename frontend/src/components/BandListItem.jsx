@@ -1,11 +1,10 @@
 import React, { useState, memo } from "react"
+import styled from "styled-components"
 import { ListItem } from "@material-ui/core"
 import BandButton from "./BandButton"
 import BandCheckbox from "./BandCheckbox"
 import BandListItemText from "./BandListItemText"
 import { selectedUniqueRoute } from "../functionHandlers/loadBusTransportDataHandler"
-
-import styled from "styled-components"
 
 const BandListItemContainer = styled.div`
   width: 100%;

@@ -2,13 +2,13 @@ import React from "react"
 import { makeStyles, ListItemText, Typography } from "@material-ui/core"
 
 const useStyles = makeStyles({
-  routeNameId: (props) => ({
+  routeNameId: () => ({
     paddingLeft: "10px",
     fontSize: "14px",
     fontWeight: "400",
     variant: "caption",
   }),
-  routeViaId: (props) => ({
+  routeViaId: () => ({
     paddingLeft: "10px",
     fontSize: "12px",
     fontWeight: "50",

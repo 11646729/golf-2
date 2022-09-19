@@ -35,68 +35,64 @@ const Button = styled.button`
   }
 `
 
-const RawDataLoadPage = () => {
-  return (
-    <RawDataContainer>
-      <RawDataTableContainer>
-        <table className="cruisestable">
-          <thead>
-            <tr className="rawdatatableTh">
-              <th>Import Raw Data Types</th>
-              <th>Status</th>
-              <th>Select</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Temperatures Data</td>
-              <td>Ready</td>
-              <td>
-                <Button onClick={loadTemperaturesDataHandler}>Fetch</Button>
-              </td>
-            </tr>
-            <tr>
-              <td>Golf Course Data</td>
-              <td>Ready</td>
-              <td>
-                <Button onClick={loadGolfCoursesDataHandler}>Fetch</Button>
-              </td>
-            </tr>
-            <tr>
-              <td>Cruise Ship Arrivals Data</td>
-              <td>Ready</td>
-              <td>
-                <Button onClick={loadCruiseShipArrivalsDataHandler}>
-                  Fetch
-                </Button>
-              </td>
-            </tr>
-            <tr>
-              <td>Bus Transport Data</td>
-              <td>Ready</td>
-              <td>
-                <Button onClick={loadBusTransportDataHandler}>Fetch</Button>
-              </td>
-            </tr>
-            <tr>
-              <td>Crime Data</td>
-              <td>Ready</td>
-              <td>
-                <Button onClick={loadCrimesDataHandler}>Fetch</Button>
-              </td>
-            </tr>
-            <tr>
-              <td>Realtime Data</td>
-              <td>Currently: Off</td>
-              <td>
-                <Button onClick={startRealtimeDataHandler}>Fetch</Button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </RawDataTableContainer>
-    </RawDataContainer>
-  )
-}
+const RawDataLoadPage = () => (
+  <RawDataContainer>
+    <RawDataTableContainer>
+      <table className="cruisestable">
+        <thead>
+          <tr className="rawdatatableTh">
+            <th>Import Raw Data Types</th>
+            <th>Status</th>
+            <th>Select</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Temperatures Data</td>
+            <td>Ready</td>
+            <td>
+              <Button onClick={loadTemperaturesDataHandler}>Fetch</Button>
+            </td>
+          </tr>
+          <tr>
+            <td>Golf Course Data</td>
+            <td>Ready</td>
+            <td>
+              <Button onClick={loadGolfCoursesDataHandler}>Fetch</Button>
+            </td>
+          </tr>
+          <tr>
+            <td>Cruise Ship Arrivals Data</td>
+            <td>Ready</td>
+            <td>
+              <Button onClick={loadCruiseShipArrivalsDataHandler}>Fetch</Button>
+            </td>
+          </tr>
+          <tr>
+            <td>Bus Transport Data</td>
+            <td>Ready</td>
+            <td>
+              <Button onClick={loadBusTransportDataHandler}>Fetch</Button>
+            </td>
+          </tr>
+          <tr>
+            <td>Crime Data</td>
+            <td>Ready</td>
+            <td>
+              <Button onClick={loadCrimesDataHandler}>Fetch</Button>
+            </td>
+          </tr>
+          <tr>
+            <td>Realtime Data</td>
+            <td>Currently: Off</td>
+            <td>
+              <Button onClick={startRealtimeDataHandler}>Fetch</Button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </RawDataTableContainer>
+  </RawDataContainer>
+)
 
 export default memo(RawDataLoadPage)

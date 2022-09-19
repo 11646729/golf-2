@@ -8,7 +8,7 @@ function CopyRight() {
       <Link color="inherit" href="https://material-ui.com/">
         My Website
       </Link>
-      {" " + new Date().getFullYear()}
+      {` ${new Date().getFullYear()}`}
     </Typography>
   )
 }

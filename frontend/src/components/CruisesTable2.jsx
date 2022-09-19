@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-import { useTable } from "react-table"
+import { useTable } from "@tanstack/react-table"
 import styled from "styled-components"
 
 import Title from "./Title"
@@ -18,11 +18,11 @@ const CruisesTableTitleContainer = styled.div`
   width: "97%";
 `
 
-const Button = ({ type }) => {
-  return <button className={"widgetLgButton " + type}>{type}</button>
-}
+const Button = ({ type }) => (
+  <button className={`widgetLgButton ${type}`}>{type}</button>
+)
 
-const CruisesTable2 = ({ cruisesTableTitle, data, loadingError }) => {
+const CruisesTable2 = ({ cruisesTableTitle, data }) => {
   const columns = React.useMemo(
     () => [
       {
@@ -36,7 +36,7 @@ const CruisesTable2 = ({ cruisesTableTitle, data, loadingError }) => {
           <div>
             <img
               src={tableProps.row.original.cruiselinelogo}
-              alt={"Cruise Line Logo"}
+              alt="Cruise Line Logo"
               width="30px"
               height="30px"
             />
@@ -104,22 +104,20 @@ const CruisesTable2 = ({ cruisesTableTitle, data, loadingError }) => {
               prepareRow(row)
               return (
                 <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <td
-                        {...cell.getCellProps()}
-                        style={{
-                          fontSize: "13px",
-                          padding: "10px",
-                          border: "solid 1px lightgray",
-                          background: "papayawhip",
-                          textAlign: "center",
-                        }}
-                      >
-                        {cell.render("Cell")}
-                      </td>
-                    )
-                  })}
+                  {row.cells.map((cell) => (
+                    <td
+                      {...cell.getCellProps()}
+                      style={{
+                        fontSize: "13px",
+                        padding: "10px",
+                        border: "solid 1px lightgray",
+                        background: "papayawhip",
+                        textAlign: "center",
+                      }}
+                    >
+                      {cell.render("Cell")}
+                    </td>
+                  ))}
                 </tr>
               )
             })}

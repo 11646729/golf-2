@@ -17,17 +17,13 @@ const GolfCourseTableTitleContainer = styled.div`
   width: "97%";
 `
 
-const GolfCoursesTable = (props) => {
-  return (
-    <div>
-      <GolfCourseTableTitleContainer>
-        <Title>{props.golfCoursesTableTitle}</Title>
-      </GolfCourseTableTitleContainer>
-      <GolfCourseTableContainer>
-        golf courses selection
-      </GolfCourseTableContainer>
-    </div>
-  )
-}
+const GolfCoursesTable = (props) => (
+  <div>
+    <GolfCourseTableTitleContainer>
+      <Title>{props.golfCoursesTableTitle}</Title>
+    </GolfCourseTableTitleContainer>
+    <GolfCourseTableContainer>golf courses selection</GolfCourseTableContainer>
+  </div>
+)
 
 export default memo(GolfCoursesTable)

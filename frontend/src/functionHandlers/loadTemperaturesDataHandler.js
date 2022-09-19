@@ -1,19 +1,11 @@
 import axios from "axios"
 
 // -------------------------------------------------------
-// Function to fetch all Temperatures data into the SQL database
-// -------------------------------------------------------
-export const loadTemperaturesDataHandler = () => {
-  // Prepare empty temperatures table in the database & show result
-  prepareTemperaturesTable()
-}
-
-// -------------------------------------------------------
 // Function to prepare the temperatures table in the SQL database
 // -------------------------------------------------------
-var prepareTemperaturesTable = async () => {
-  let params = {}
-  let config = {
+const prepareTemperaturesTable = async () => {
+  const params = {}
+  const config = {
     timeout: 8000,
     headers: {
       "Content-Type": "application/json",
@@ -33,15 +25,15 @@ var prepareTemperaturesTable = async () => {
 // -------------------------------------------------------
 // Function to fetch all Temperature data
 // -------------------------------------------------------
-export var getTemperatureData = async (url) => {
+export const getTemperatureData = async (url) => {
   // Guard clause
   if (url == null) {
     console.log("Error: url == null in getTemperatureData in utilities.js")
     return
   }
 
-  let resultData = await axios({
-    url: url,
+  const resultData = await axios({
+    url: { url },
     method: "GET",
     timeout: 8000,
     headers: {
@@ -50,6 +42,14 @@ export var getTemperatureData = async (url) => {
   })
 
   return resultData.data
+}
+
+// -------------------------------------------------------
+// Function to fetch all Temperatures data into the SQL database
+// -------------------------------------------------------
+export const loadTemperaturesDataHandler = () => {
+  // Prepare empty temperatures table in the database & show result
+  prepareTemperaturesTable()
 }
 
 export { getTemperatureData as default }

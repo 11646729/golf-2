@@ -18,11 +18,11 @@ const TemperaturesTableTitleContainer = styled.div`
   width: "97%";
 `
 
-function TemperaturesTable(props) {
+function TemperaturesTable() {
   return (
     <div>
       <TemperaturesTableTitleContainer>
-        <Title>{props.temperaturesTableTitle}</Title>
+        <Title temperaturesTableTitle="Temperatures Table" />
       </TemperaturesTableTitleContainer>
       <TemperaturesTableContainer>
         temperatures selection

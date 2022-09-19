@@ -1,22 +1,11 @@
 import axios from "axios"
 
 // -------------------------------------------------------
-// Function to fetch all Golf Courses data into the SQL database
-// -------------------------------------------------------
-export var loadGolfCoursesDataHandler = () => {
-  // Prepare empty golf courses table in the database & show result
-  prepareGolfCoursesTable()
-
-  // Initial import of the golf course file data into the database
-  initialImportOfGolfCoursesData()
-}
-
-// -------------------------------------------------------
 // Function to prepare the golfcourses table in the SQL database
 // -------------------------------------------------------
-var prepareGolfCoursesTable = async () => {
-  let params = {}
-  let config = {
+const prepareGolfCoursesTable = async () => {
+  const params = {}
+  const config = {
     timeout: 8000,
     headers: {
       "Content-Type": "application/json",
@@ -37,9 +26,9 @@ var prepareGolfCoursesTable = async () => {
 // -------------------------------------------------------
 // Function to instruct backend to load Golf Club Data into the database
 // -------------------------------------------------------
-var initialImportOfGolfCoursesData = async () => {
-  let params = {}
-  let config = {
+const initialImportOfGolfCoursesData = async () => {
+  const params = {}
+  const config = {
     timeout: 20000,
     headers: {
       "Content-Type": "application/json",
@@ -56,7 +45,7 @@ var initialImportOfGolfCoursesData = async () => {
 // -------------------------------------------------------
 // Function to fetch all Golf Course data - DON'T TRY TO REFACTOR THIS
 // -------------------------------------------------------
-export var getGolfCoursesData = async () => {
+export const getGolfCoursesData = async () => {
   const resultData = await axios({
     url: "http://localhost:4000/api/golf/getGolfCourses",
     method: "GET",
@@ -67,6 +56,17 @@ export var getGolfCoursesData = async () => {
   })
 
   return resultData.data
+}
+
+// -------------------------------------------------------
+// Function to fetch all Golf Courses data into the SQL database
+// -------------------------------------------------------
+export const loadGolfCoursesDataHandler = () => {
+  // Prepare empty golf courses table in the database & show result
+  prepareGolfCoursesTable()
+
+  // Initial import of the golf course file data into the database
+  initialImportOfGolfCoursesData()
 }
 
 export { getGolfCoursesData as default }

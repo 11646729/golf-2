@@ -1,11 +1,10 @@
 import React, { useState, useEffect, memo } from "react"
 import io from "socket.io-client"
+import styled from "styled-components"
 
 import TemperaturesTable from "../components/TemperaturesTable"
 import TemperaturesChart from "../components/TemperaturesChart"
-import getTemperatureData from "../functionHandlers/loadTemperaturesDataHandler"
-
-import styled from "styled-components"
+import { getTemperatureData } from "../functionHandlers/loadTemperaturesDataHandler"
 
 const TemperaturesContainer = styled.div`
   display: flex;
@@ -73,7 +72,7 @@ function TemperaturesPage() {
   return (
     <TemperaturesContainer>
       <TemperaturesTableContainer>
-        <TemperaturesTable temperaturesTableTitle={"Temperatures Table"} />
+        <TemperaturesTable />
       </TemperaturesTableContainer>
       <TemperaturesChartContainer>
         <TemperaturesChart

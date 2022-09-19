@@ -1,4 +1,5 @@
 import React, { useState, useEffect, memo } from "react"
+import styled from "styled-components"
 
 // import BusTable from "../components/BusTable"
 import RouteSelectionPanel from "../components/RouteSelectionPanel"
@@ -10,8 +11,6 @@ import {
   getAllRoutes,
   // getDisplayData,
 } from "../functionHandlers/loadBusTransportDataHandler"
-
-import styled from "styled-components"
 
 const BusContainer = styled.div`
   display: flex;
@@ -80,7 +79,7 @@ function BusPage() {
       <BusTableContainer>
         {/* <BusTable routesTableTitle={"Bus Routes Table"} /> */}
         <RouteSelectionPanel
-          routesTableTitle={"Bus Routes Table"}
+          routesTableTitle="Bus Routes Table"
           busRoutesCollection={busRoutesCollection}
         />
       </BusTableContainer>

@@ -80,14 +80,14 @@ const CruisesPage = () => {
           loadingError={loadingError}
         /> */}
         <CruisesTable2
-          cruisesTableTitle={"Cruise Ships Arriving Soon"}
+          cruisesTableTitle="Cruise Ships Arriving Soon"
           data={portArrivals}
           loadingError={loadingError}
         />
       </CruisesTableContainer>
       <CruisesMapContainer>
         <CruisesMap
-          cruisesMapTitle={"Cruise Ship Positions"}
+          cruisesMapTitle="Cruise Ship Positions"
           cruisesHomePosition={homePosition}
           vesselPositions={vesselPositions}
           // vesselDetails={portArrivals}
