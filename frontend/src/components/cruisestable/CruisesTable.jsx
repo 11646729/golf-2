@@ -1,4 +1,5 @@
 import React, { memo } from "react"
+import PropTypes from "prop-types"
 import "./cruisestable.css"
 import styled from "styled-components"
 
@@ -19,14 +20,21 @@ const CruisesTableTitleContainer = styled.div`
 `
 
 const CruisesTable = (props) => {
-  const Button = ({ type }) => {
-    return <button className={"widgetLgButton " + type}>{type}</button>
+  const { cruisesTableTitle, data } = props
+
+  CruisesTable.propTypes = {
+    cruisesTableTitle: PropTypes.string,
+    data: PropTypes.object,
   }
+
+  const Button = ({ type }) => (
+    <button className={`widgetLgButton ${type}`}>{type}</button>
+  )
 
   return (
     <div className="widgetLg">
       <CruisesTableTitleContainer>
-        <Title>{props.cruisesTableTitle}</Title>
+        <Title>{cruisesTableTitle}</Title>
       </CruisesTableTitleContainer>
       <CruisesTableContainer>
         <table className="cruisestable">
@@ -40,7 +48,7 @@ const CruisesTable = (props) => {
             </tr>
           </thead>
           <tbody>
-            {props.data.map((row) => (
+            {data.map((row) => (
               <tr className="widgetLgTr" key={row.portarrivalid}>
                 <td className="widgetLgDay">
                   <div className="widgetLgDate">{row.arrivalDate}</div>
@@ -50,8 +58,8 @@ const CruisesTable = (props) => {
                   <img
                     className="widgetLgShipImage"
                     src={row.cruiselinelogo}
-                    alt={"Cruise Line Logo"}
-                  ></img>
+                    alt="Cruise Line Logo"
+                  />
                   <div className="widgetLgShipName">
                     {row.vesselshortcruisename}
                   </div>

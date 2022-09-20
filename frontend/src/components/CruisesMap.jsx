@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, memo } from "react"
+import PropTypes from "prop-types"
 import {
   GoogleMap,
   useJsApiLoader,
@@ -17,7 +18,6 @@ import {
 import styled from "styled-components"
 
 import Title from "./Title"
-// import LoadingTitle from "../LoadingTitle"
 
 const CruisesMapContainer = styled.div`
   font-size: 20px;
@@ -27,6 +27,14 @@ const CruisesMapContainer = styled.div`
 `
 
 const CruisesMap = (props) => {
+  const { cruisesMapTitle, cruisesHomePosition, vesselPositions } = props
+
+  CruisesMap.propTypes = {
+    cruisesMapTitle: PropTypes.string,
+    cruisesHomePosition: PropTypes.object,
+    vesselPositions: PropTypes.array,
+  }
+
   const [map, setMap] = useState(null)
   const [selected, setSelected] = useState(null)
 
@@ -63,9 +71,9 @@ const CruisesMap = (props) => {
 
   // Now compute bounds of map to display
   useEffect(() => {
-    if (map && props.vesselPositions != null) {
+    if (map && vesselPositions != null) {
       const bounds = new window.google.maps.LatLngBounds()
-      props.vesselPositions.map((vesselPosition) => {
+      vesselPositions.map((vesselPosition) => {
         const myLatLng = new window.google.maps.LatLng({
           lat: vesselPosition.lat,
           lng: vesselPosition.lng,
@@ -75,7 +83,7 @@ const CruisesMap = (props) => {
       })
       map.fitBounds(bounds)
     }
-  }, [map, props.vesselPositions])
+  }, [map, vesselPositions])
 
   const iconPin = {
     path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
@@ -88,11 +96,7 @@ const CruisesMap = (props) => {
 
   return isLoaded ? (
     <CruisesMapContainer>
-      <Title>{props.cruisesMapTitle}</Title>
-      {/* {props.loadingError ? (
-          <LoadingTitle>Error Loading...</LoadingTitle>
-        ) : null} */}
-
+      <Title>{cruisesMapTitle}</Title>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={mapCenter}
@@ -105,10 +109,10 @@ const CruisesMap = (props) => {
         onLoad={onLoadHandler}
         onUnmount={onUnmountHandler}
       >
-        <Marker position={props.cruisesHomePosition} />
+        <Marker position={cruisesHomePosition} />
 
-        {props.vesselPositions
-          ? props.vesselPositions.map((vesselPosition) => (
+        {vesselPositions
+          ? vesselPositions.map((vesselPosition) => (
               //                console.log(vesselPosition.index),
               //                (
               <Marker

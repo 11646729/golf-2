@@ -1,4 +1,5 @@
 import React, { memo } from "react"
+import PropTypes from "prop-types"
 import { useTable } from "@tanstack/react-table"
 import styled from "styled-components"
 
@@ -22,7 +23,15 @@ const Button = ({ type }) => (
   <button className={`widgetLgButton ${type}`}>{type}</button>
 )
 
-const CruisesTable2 = ({ cruisesTableTitle, data }) => {
+const CruisesTable2 = (props) => {
+  const { cruisesTableTitle, data } = props
+
+  CruisesTable2.propTypes = {
+    cruisesTableTitle: PropTypes.string,
+    data: PropTypes.object,
+    loadingError: PropTypes.string,
+  }
+
   const columns = React.useMemo(
     () => [
       {

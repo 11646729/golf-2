@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, memo } from "react"
+import PropTypes from "prop-types"
 import {
   GoogleMap,
   useJsApiLoader,
@@ -17,7 +18,6 @@ import {
 import styled from "styled-components"
 
 import Title from "./Title"
-// import LoadingTitle from "../LoadingTitle"
 
 const GolfCoursesMapContainer = styled.div`
   font-size: 20px;
@@ -27,6 +27,13 @@ const GolfCoursesMapContainer = styled.div`
 `
 
 const GolfCoursesMap = (props) => {
+  const { golfCourses, golfCoursesMapTitle } = props
+
+  GolfCoursesMap.propTypes = {
+    golfCoursesMapTitle: PropTypes.string,
+    golfCourses: PropTypes.array,
+  }
+
   const [map, setMap] = useState(null)
   const [selected, setSelected] = useState(null)
 
@@ -63,9 +70,9 @@ const GolfCoursesMap = (props) => {
 
   // Now compute bounds of map to display
   useEffect(() => {
-    if (map && props.golfCourses != null) {
+    if (map && golfCourses != null) {
       const bounds = new window.google.maps.LatLngBounds()
-      props.golfCourses.map((golfcourse) => {
+      golfCourses.map((golfcourse) => {
         const myLatLng = new window.google.maps.LatLng({
           lat: golfcourse.lat,
           lng: golfcourse.lng,
@@ -75,7 +82,7 @@ const GolfCoursesMap = (props) => {
       })
       map.fitBounds(bounds)
     }
-  }, [map, props.golfCourses])
+  }, [map, golfCourses])
 
   const iconPin = {
     path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
@@ -88,11 +95,7 @@ const GolfCoursesMap = (props) => {
 
   return isLoaded ? (
     <GolfCoursesMapContainer>
-      <Title>{props.golfCoursesMapTitle}</Title>
-      {/* {props.loadingError ? (
-          <LoadingTitle>Error Loading...</LoadingTitle>
-        ) : null} */}
-
+      <Title>{golfCoursesMapTitle}</Title>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={mapCenter}
@@ -105,8 +108,8 @@ const GolfCoursesMap = (props) => {
         onLoad={onLoadHandler}
         onUnmount={onUnmountHandler}
       >
-        {props.golfCourses
-          ? props.golfCourses.map((golfcourse) => (
+        {golfCourses
+          ? golfCourses.map((golfcourse) => (
               <Marker
                 key={golfcourse.name}
                 position={{
