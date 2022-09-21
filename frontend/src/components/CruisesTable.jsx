@@ -1,9 +1,30 @@
 import React, { memo } from "react"
 import PropTypes from "prop-types"
-import "./cruisestable.css"
 import styled from "styled-components"
 
-import Title from "../Title"
+import Title from "./Title"
+
+const TableRow = styled.tr`
+  &:hover {
+    background-color: #ebeccd;
+  }
+`
+
+const TableHeader = styled.th`
+  height: 34px;
+  margin: 0;
+  padding: 0.5rem;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+`
+
+const TableDataCell = styled.td`
+  height: 34px;
+  margin: 0;
+  padding: 0.5rem;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+`
 
 const CruisesTableTitleContainer = styled.div`
   margin-top: 35px;
@@ -27,17 +48,14 @@ const CruisesTableStyle = styled.table`
   border: 1px solid lightgray;
   border-collapse: collapse;
   font-size: 13px;
-
-  /* table.cruisestable tr:hover {
-    background-color: #ebeccd;
-  } */
-
-  &:tr:hover {
-    background-color: #ebeccd;
-    color: white;
-    cursor: pointer;
-  }
 `
+
+const CruisesTableHeaderStyle = styled.thead`
+  /* text-align: left; */
+  font-size: 14px;
+`
+
+const CruisesTableBodyStyle = styled.tbody``
 
 const CruiseShip = styled.div`
   display: flex;
@@ -55,6 +73,7 @@ const CruiseLineLogo = styled.img`
 const CruiseShipName = styled.div`
   text-decoration: underline;
   color: blue;
+  cursor: pointer;
 `
 
 const CruiseShipArrivalTime = styled.div``
@@ -102,32 +121,31 @@ const CruisesTable = (props) => {
   }
 
   return (
-    <div className="widgetLg">
+    <div>
       <CruisesTableTitleContainer>
         <Title>{cruisesTableTitle}</Title>
       </CruisesTableTitleContainer>
       <CruisesTableContainer>
-        <table className="cruisestable">
-          {/* <CruisesTableStyle> */}
-          <thead>
-            <tr className="widgetLgTh">
-              <th>Day</th>
-              <th>Ship</th>
-              <th>Arrival</th>
-              <th>Departure</th>
-              <th>Itinerary</th>
-            </tr>
-          </thead>
-          <tbody>
+        <CruisesTableStyle>
+          <CruisesTableHeaderStyle>
+            <TableRow>
+              <TableHeader>Day</TableHeader>
+              <TableHeader>Ship</TableHeader>
+              <TableHeader>Arrival</TableHeader>
+              <TableHeader>Departure</TableHeader>
+              <TableHeader>Itinerary</TableHeader>
+            </TableRow>
+          </CruisesTableHeaderStyle>
+          <CruisesTableBodyStyle>
             {data.map((row) => (
-              <tr className="widgetLgTr" key={row.portarrivalid}>
-                <td>
+              <TableRow key={row.portarrivalid}>
+                <TableDataCell>
                   <CruiseShipArrivalTime>
                     <DateOfArrival>{row.arrivalDate}</DateOfArrival>
                     <DayOfTheWeek>{row.weekday}</DayOfTheWeek>
                   </CruiseShipArrivalTime>
-                </td>
-                <td>
+                </TableDataCell>
+                <TableDataCell>
                   <CruiseShip>
                     <CruiseLineLogo
                       src={row.cruiselinelogo}
@@ -135,21 +153,20 @@ const CruisesTable = (props) => {
                     />
                     <CruiseShipName>{row.vesselshortcruisename}</CruiseShipName>
                   </CruiseShip>
-                </td>
-                <td>
+                </TableDataCell>
+                <TableDataCell>
                   <ArrivalTime>{row.vesseletatime}</ArrivalTime>
-                </td>
-                <td>
+                </TableDataCell>
+                <TableDataCell>
                   <DepartureTime>{row.vesseletdtime}</DepartureTime>
-                </td>
-                <td>
+                </TableDataCell>
+                <TableDataCell>
                   <Button>Show</Button>
-                </td>
-              </tr>
+                </TableDataCell>
+              </TableRow>
             ))}
-          </tbody>
-          {/* </CruisesTableStyle> */}
-        </table>
+          </CruisesTableBodyStyle>
+        </CruisesTableStyle>
       </CruisesTableContainer>
     </div>
   )
