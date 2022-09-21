@@ -19,16 +19,14 @@ const CruisesTableTitleContainer = styled.div`
   width: "97%";
 `
 
-const Button = ({ type }) => (
-  <button className={`widgetLgButton ${type}`}>{type}</button>
-)
+const Button = () => <button type="button">Show</button>
 
 const CruisesTable2 = (props) => {
   const { cruisesTableTitle, data } = props
 
   CruisesTable2.propTypes = {
     cruisesTableTitle: PropTypes.string,
-    data: PropTypes.object,
+    data: PropTypes.array,
     loadingError: PropTypes.string,
   }
 

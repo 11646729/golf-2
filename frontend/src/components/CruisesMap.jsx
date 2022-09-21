@@ -32,7 +32,7 @@ const CruisesMap = (props) => {
   CruisesMap.propTypes = {
     cruisesMapTitle: PropTypes.string,
     cruisesHomePosition: PropTypes.object,
-    vesselPositions: PropTypes.array,
+    vesselPositions: PropTypes.object,
   }
 
   const [map, setMap] = useState(null)

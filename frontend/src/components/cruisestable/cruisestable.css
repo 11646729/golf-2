@@ -5,6 +5,7 @@
   border-spacing: 20px;
   border: 1px solid lightgray;
   border-collapse: collapse;
+  font-size: 13px;
 }
 
 table.cruisestable tr:hover {
@@ -28,58 +29,4 @@ td:last-child {
 .widgetLgTh {
   /* text-align: left; */
   font-size: 14px;
-}
-
-.widgetLgTr {
-  font-size: 13px;
-  text-align: left;
-}
-
-.widgetLgDayOfWeek {
-  font-weight: 600;
-}
-
-.widgetLgShip {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.widgetLgShipImage {
-  width: 30px;
-  height: 30px;
-  /* padding-bottom: 7px; */
-  object-fit: cover;
-  margin-right: 5px;
-}
-
-.widgetLgShipName {
-  text-decoration: underline;
-  color: blue;
-}
-
-.widgetLgArrivalTime {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.widgetLgItinerary {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.widgetLgButton {
-  padding: 5px 7px;
-  border: none;
-  border-radius: 10px;
-}
-
-.widgetLgButton.Show {
-  background-color: lightgreen;
-  color: darkgreen;
-}
-
-.widgetLgButton.Hide {
-  background-color: lightsalmon;
-  color: darkred;
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, memo } from "react"
+import PropTypes from "prop-types"
 import {
   GoogleMap,
   useJsApiLoader,
@@ -9,7 +10,6 @@ import {
 import styled from "styled-components"
 
 import Title from "./Title"
-// import LoadingTitle from "../LoadingTitle"
 
 const BusMapContainer = styled.div`
   font-size: 20px;
@@ -21,7 +21,21 @@ const BusMapContainer = styled.div`
 // -------------------------------------------------------
 // React View component
 // -------------------------------------------------------
-function BusMap(props) {
+const BusMap = (props) => {
+  const {
+    busAgencyName,
+    busShapesCollection,
+    busStopsCollection,
+    // busRoutesCollection,
+  } = props
+
+  BusMap.propTypes = {
+    busAgencyName: PropTypes.string,
+    busShapesCollection: PropTypes.array,
+    busStopsCollection: PropTypes.array,
+    // busRoutesCollection: PropTypes.array,
+  }
+
   const [map, setMap] = useState(null)
   const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
   const [mapCenter] = useState({
@@ -55,9 +69,9 @@ function BusMap(props) {
 
   // Now compute bounds of map to display
   useEffect(() => {
-    if (map && props.busStopsCollection != null) {
+    if (map && busStopsCollection != null) {
       const bounds = new window.google.maps.LatLngBounds()
-      props.busStopsCollection.map((busStop) => {
+      busStopsCollection.map((busStop) => {
         const myLatLng = new window.google.maps.LatLng({
           lat: busStop.stop_lat,
           lng: busStop.stop_lon,
@@ -68,7 +82,7 @@ function BusMap(props) {
       })
       map.fitBounds(bounds)
     }
-  }, [map, props.busStopsCollection])
+  }, [map, busStopsCollection])
 
   // const handleBusStopClick = (event) => {
   //   console.log(event)
@@ -89,10 +103,7 @@ function BusMap(props) {
   return isLoaded ? (
     <div>
       <BusMapContainer>
-        <Title>{props.busAgencyName}</Title>
-        {/* {props.loadingError ? (
-          <LoadingTitle>Error Loading...</LoadingTitle>
-        ) : null} */}
+        <Title>{busAgencyName}</Title>
 
         <div className="busgooglemapcontainer">
           <GoogleMap
@@ -107,8 +118,8 @@ function BusMap(props) {
             onLoad={onLoadHandler}
             onUnmount={onUnmountHandler}
           >
-            {props.busShapesCollection
-              ? props.busShapesCollection.map((busShape) => (
+            {busShapesCollection
+              ? busShapesCollection.map((busShape) => (
                   <Polyline
                     key={busShape.shapeKey}
                     path={busShape.shapeCoordinates}
@@ -123,8 +134,8 @@ function BusMap(props) {
                   />
                 ))
               : null}
-            {/* {props.busStopsCollection
-              ? props.busStopsCollection.map((busStop) => (
+            {/* {busStopsCollection
+              ? busStopsCollection.map((busStop) => (
                   <Marker
                     key={busStop.stop_id}
                     position={{
