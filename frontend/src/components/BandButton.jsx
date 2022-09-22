@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { Button, makeStyles } from "@material-ui/core"
 
 const useStyles = makeStyles({
@@ -19,6 +20,10 @@ const useStyles = makeStyles({
 
 export default function BandButton(props) {
   const classes = useStyles(props)
-  console.log(props)
-  return <Button className={classes.button}>{routeNumber} = this.props</Button>
+  const { routeNumber } = props
+  BandButton.propTypes = {
+    routeNumber: PropTypes.string,
+  }
+
+  return <Button className={classes.button}>{routeNumber}</Button>
 }

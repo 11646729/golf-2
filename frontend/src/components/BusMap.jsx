@@ -44,7 +44,7 @@ const BusMap = (props) => {
   })
 
   const mapContainerStyle = {
-    height: "480px",
+    height: "450px",
     width: "94%",
     border: "1px solid #ccc",
     marginLeft: 20,
@@ -105,7 +105,7 @@ const BusMap = (props) => {
       <BusMapContainer>
         <Title>{busAgencyName}</Title>
 
-        <div className="busgooglemapcontainer">
+        <div>
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
             center={mapCenter}

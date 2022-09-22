@@ -62,18 +62,17 @@ export const selectedUniqueRoute = async (
 // -------------------------------------------------------
 // Function to fetch Bus Agency
 // -------------------------------------------------------
-export const getAgencyName = async (url) => {
-  // Guard clause
-  if (url == null) return
-
+export const getAgencyName = async () => {
   const resultData = await axios({
-    url: { url },
+    url: "http://localhost:4000/api/bus/agencyname/",
     method: "GET",
     timeout: 8000,
     headers: {
       "Content-Type": "application/json",
     },
   })
+
+  // console.log(resultData.data)
 
   return resultData.data
 }
@@ -170,12 +169,9 @@ const reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
 // -------------------------------------------------------
 // Function to fetch Unique Gtfs Stops data
 // -------------------------------------------------------
-export const getAllStops = async (url) => {
-  // Guard clause
-  if (url == null) return
-
+export const getAllStops = async () => {
   const resultData = await axios({
-    url: { url },
+    url: "http://localhost:4000/api/bus/stops/",
     method: "GET",
     timeout: 8000,
     headers: {
@@ -189,12 +185,9 @@ export const getAllStops = async (url) => {
 // -------------------------------------------------------
 // Function to fetch Unique Gtfs Routes data
 // -------------------------------------------------------
-export const getAllRoutes = async (url) => {
-  // Guard clauses
-  if (url == null) return
-
+export const getAllRoutes = async () => {
   const resultData = await axios({
-    url: { url },
+    url: "http://localhost:4000/api/bus/routes/",
     method: "GET",
     timeout: 8000,
     headers: {
@@ -224,12 +217,9 @@ export const getDisplayData = (originalArray) => {
 // -------------------------------------------------------
 // Function to fetch all Shapes data
 // -------------------------------------------------------
-export const getAllShapes = async (url) => {
-  // Guard clause
-  if (url == null) return
-
+export const getAllShapes = async () => {
   const resultData = await axios({
-    url: { url },
+    url: "http://localhost:4000/api/bus/shapes/",
     method: "GET",
     timeout: 8000,
     headers: {

@@ -48,26 +48,26 @@ function BusPage() {
   useEffect(() => {
     let isSubscribed = true
 
-    getAgencyName("http://localhost:4000/api/bus/agencyname/")
+    getAgencyName()
       .then((returnedData) =>
         isSubscribed ? setBusAgencyName(returnedData[0].agency_name) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
     // This function does some reduction & reformatting
-    getAllShapes("http://localhost:4000/api/bus/shapes/")
+    getAllShapes()
       .then((returnedData) =>
         isSubscribed ? setBusShapesCollection(returnedData) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
-    getAllStops("http://localhost:4000/api/bus/stops/")
+    getAllStops()
       .then((returnedData) =>
         isSubscribed ? setBusStopsCollection(returnedData) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
-    getAllRoutes("http://localhost:4000/api/bus/routes/")
+    getAllRoutes()
       .then((returnedData) => (isSubscribed ? saveToHooks(returnedData) : null))
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
 
