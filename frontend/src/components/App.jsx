@@ -1,7 +1,7 @@
 import React, { memo } from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
-import RawDataLoadPage from "../pages/RawDataLoadPage"
+import RawDataPage from "../pages/RawDataPage"
 import TemperaturesPage from "../pages/TemperaturesPage"
 import GolfCoursesPage from "../pages/GolfCoursesPage"
 import CruisesPage from "../pages/CruisesPage"
@@ -18,7 +18,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="loadrawdatapage" element={<RawDataLoadPageLink />} />
+          <Route path="rawdatapage" element={<RawDataPageLink />} />
           <Route path="temperaturespage" element={<TemperaturesPageLink />} />
           <Route path="golfcoursespage" element={<GolfCoursesPageLink />} />
           <Route path="crimespage" element={<CrimesPageLink />} />
@@ -35,8 +35,8 @@ function Home() {
   return <Album />
 }
 
-function RawDataLoadPageLink() {
-  return <RawDataLoadPage />
+function RawDataPageLink() {
+  return <RawDataPage />
 }
 
 function TemperaturesPageLink() {

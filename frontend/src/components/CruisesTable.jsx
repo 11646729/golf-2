@@ -4,28 +4,6 @@ import styled from "styled-components"
 
 import Title from "./Title"
 
-const TableRow = styled.tr`
-  &:hover {
-    background-color: #ebeccd;
-  }
-`
-
-const TableHeader = styled.th`
-  height: 34px;
-  margin: 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid lightgray;
-  border-right: 1px solid lightgray;
-`
-
-const TableDataCell = styled.td`
-  height: 34px;
-  margin: 0;
-  padding: 0.5rem;
-  border-bottom: 1px solid lightgray;
-  border-right: 1px solid lightgray;
-`
-
 const CruisesTableTitleContainer = styled.div`
   margin-top: 35px;
   margin-left: 20px;
@@ -53,6 +31,28 @@ const CruisesTableStyle = styled.table`
 const CruisesTableHeaderStyle = styled.thead`
   /* text-align: left; */
   font-size: 14px;
+`
+
+const TableRow = styled.tr`
+  &:hover {
+    background-color: #ebeccd;
+  }
+`
+
+const TableHeader = styled.th`
+  height: 34px;
+  margin: 0;
+  padding: 0.5rem;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+`
+
+const TableDataCell = styled.td`
+  height: 34px;
+  margin: 0;
+  padding: 0.5rem;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
 `
 
 const CruisesTableBodyStyle = styled.tbody``
@@ -125,6 +125,7 @@ const CruisesTable = (props) => {
       <CruisesTableTitleContainer>
         <Title>{cruisesTableTitle}</Title>
       </CruisesTableTitleContainer>
+
       <CruisesTableContainer>
         <CruisesTableStyle>
           <CruisesTableHeaderStyle>
