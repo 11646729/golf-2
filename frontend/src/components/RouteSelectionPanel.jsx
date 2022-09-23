@@ -1,4 +1,5 @@
 import React, { memo } from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import Title from "./Title"
@@ -19,22 +20,31 @@ const RouteSelectionPanelListContainer = styled.div`
   max-height: 100%;
 `
 
-function RouteSelectionPanel(props) {
+const RouteSelectionPanel = (props) => {
+  const { busRoutesCollection } = props
+
+  RouteSelectionPanel.propTypes = {
+    busRoutesCollection: PropTypes.array,
+  }
+
+  // Fudge
+  const routeVisibleTrue = true
+
   return (
     <div>
       <RouteSelectionPanelTitleContainer>
         <Title>Available Bus Routes</Title>
       </RouteSelectionPanelTitleContainer>
       <RouteSelectionPanelListContainer>
-        {props.busRoutesCollection
-          ? props.busRoutesCollection.map((busRoute) => (
+        {busRoutesCollection
+          ? busRoutesCollection.map((busRoute) => (
               <RouteSelectionList
-                key={busRoute.route_id}
-                routeVisible={true}
-                routeColor={busRoute.route_color}
-                routeNumber={busRoute.route_short_name}
-                routeName={busRoute.route_long_name}
-                routeVia={busRoute.route_short_name}
+                key={busRoute.routeId}
+                routeVisible={routeVisibleTrue}
+                routeColor={busRoute.routeColor}
+                routeNumber={busRoute.routeShortName}
+                routeName={busRoute.routeLongName}
+                routeVia={busRoute.routeShortName}
               />
             ))
           : null}

@@ -1,4 +1,5 @@
-import React from "react"
+import React, { memo } from "react"
+import PropTypes from "prop-types"
 import { makeStyles, ListItemText, Typography } from "@material-ui/core"
 
 const useStyles = makeStyles({
@@ -15,19 +16,26 @@ const useStyles = makeStyles({
   }),
 })
 
-export default function BandListItemText(props) {
+const BandListItemText = (props) => {
+  const { routeNameId, routeVia } = props
+
   const classes = useStyles(props)
+
+  BandListItemText.propTypes = {
+    routeNameId: PropTypes.string,
+    routeVia: PropTypes.string,
+  }
 
   return (
     <ListItemText
       primary={
-        <Typography className={classes.routeNameId}>
-          {props.routeName}
-        </Typography>
+        <Typography className={classes.routeNameId}>{routeNameId}</Typography>
       }
       secondary={
-        <Typography className={classes.routeViaId}>{props.routeVia}</Typography>
+        <Typography className={classes.routeViaId}>{routeVia}</Typography>
       }
     />
   )
 }
+
+export default memo(BandListItemText)

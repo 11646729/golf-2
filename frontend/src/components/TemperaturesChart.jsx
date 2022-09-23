@@ -1,5 +1,6 @@
 import React, { memo } from "react"
 import moment from "moment"
+import PropTypes from "prop-types"
 import {
   useTheme,
   Grid,
@@ -20,7 +21,13 @@ import {
 import Title from "./Title"
 // import LoadingTitle from "./LoadingTitle"
 
-function TemperaturesChart(props) {
+const TemperaturesChart = (props) => {
+  const { temperatureData } = props
+
+  TemperaturesChart.propTypes = {
+    temperatureData: PropTypes.array,
+  }
+
   const theme = useTheme()
 
   const formatXAxis = (tickItem) => moment(tickItem).format("HH:mm MMM Do")
@@ -31,12 +38,12 @@ function TemperaturesChart(props) {
       <Grid container>
         <Container maxWidth="xl">
           <Grid item xs={12} sm={12} style={{ marginTop: 50, width: "100%" }}>
-            {props.temperatureData.length < 1 ? (
+            {temperatureData.length < 1 ? (
               <Title>Home Temperature is loading...</Title>
             ) : (
               <Title>
                 Home Temperature is: &nbsp;
-                {Object.values(props.temperatureData[0])[4]} °F
+                {Object.values(temperatureData[0])[4]} °F
               </Title>
             )}
             {/* {props.loadingError ? (
@@ -58,7 +65,7 @@ function TemperaturesChart(props) {
             }}
           >
             <ResponsiveContainer>
-              <LineChart data={props.temperatureData}>
+              <LineChart data={temperatureData}>
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                   tick={{ fontSize: 12 }}

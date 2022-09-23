@@ -36,6 +36,7 @@ const GolfCoursesMap = (props) => {
 
   const [map, setMap] = useState(null)
   const [selected, setSelected] = useState(null)
+  const [extents, setExtents] = useState(null)
 
   const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
 
@@ -78,11 +79,13 @@ const GolfCoursesMap = (props) => {
           lng: golfcourse.lng,
         })
         bounds.extend(myLatLng)
+        setExtents(bounds)
         return bounds
       })
-      map.fitBounds(bounds)
+      //      map.fitBounds(bounds)
+      map.fitBounds(extents)
     }
-  }, [map, golfCourses])
+  }, [map, golfCourses, extents])
 
   const iconPin = {
     path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",

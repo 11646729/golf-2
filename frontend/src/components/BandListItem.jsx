@@ -1,10 +1,12 @@
 import React, { useState, memo } from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
+
 import { ListItem } from "@material-ui/core"
 import BandButton from "./BandButton"
 import BandCheckbox from "./BandCheckbox"
 import BandListItemText from "./BandListItemText"
-import { selectedUniqueRoute } from "../functionHandlers/loadBusTransportDataHandler"
+// import { selectedUniqueRoute } from "../functionHandlers/loadBusTransportDataHandler"
 
 const BandListItemContainer = styled.div`
   width: 100%;
@@ -15,47 +17,52 @@ const BandListContainer = styled.div`
 `
 
 const BandListItem = (props) => {
-  const [routeVisibleCheckbox, setRouteVisibleCheckbox] = useState(
-    props.routeVisible
-  )
+  const { routeVisible, routeNumber, routeName, routeColor } = props
 
-  const handleListItemClick = (event, routeNumber) => {
-    // These if choices refer to checkbox state before changes
-    if (routeVisibleCheckbox === true) {
-      setRouteVisibleCheckbox(false)
-      selectedUniqueRoute(
-        "http://localhost:4000/api/bus/groutes/:routenumber",
-        routeNumber,
-        false
-      )
-    } else {
-      setRouteVisibleCheckbox(true)
-      selectedUniqueRoute(
-        "http://localhost:4000/api/bus/groutes/:routenumber",
-        routeNumber,
-        true
-      )
-    }
+  BandListItem.propTypes = {
+    routeVisible: PropTypes.bool,
+    routeNumber: PropTypes.number,
+    routeName: PropTypes.string,
+    routeColor: PropTypes.string,
   }
+
+  // const [routeVisibleCheckbox, setRouteVisibleCheckbox] = useState(routeVisible)
+  const [routeVisibleCheckbox] = useState(routeVisible)
+
+  // const handleListItemClick = (event, routeNumber) => {
+  //   // These if choices refer to checkbox state before changes
+  //   if (routeVisibleCheckbox === true) {
+  //     setRouteVisibleCheckbox(false)
+  //     selectedUniqueRoute(
+  //       "http://localhost:4000/api/bus/groutes/:routenumber",
+  //       routeNumber,
+  //       false
+  //     )
+  //   } else {
+  //     setRouteVisibleCheckbox(true)
+  //     selectedUniqueRoute(
+  //       "http://localhost:4000/api/bus/groutes/:routenumber",
+  //       routeNumber,
+  //       true
+  //     )
+  //   }
+  // }
 
   return (
     <BandListContainer>
       <BandListItemContainer>
         <ListItem
           button
-          onClick={(event) => handleListItemClick(event, props.routeNumber)}
+          // onClick={(event) => handleListItemClick(event, routeNumber)}
         >
           <div className="bandcheckboxcontainer">
             <BandCheckbox checked={routeVisibleCheckbox} />
           </div>
           <div className="bandbuttoncontainer">
-            <BandButton
-              routeColor={props.routeColor}
-              routeNumber={props.routeNumber}
-            />
+            <BandButton routeColor={routeColor} routeNumber={routeNumber} />
           </div>
           <div className="bandlistitemtextcontainer">
-            <BandListItemText routeName={props.routeName} />
+            <BandListItemText routeName={routeName} />
           </div>
         </ListItem>
       </BandListItemContainer>

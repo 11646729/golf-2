@@ -78,9 +78,11 @@ const CruisesMap = (props) => {
           lat: vesselPosition.lat,
           lng: vesselPosition.lng,
         })
+
         bounds.extend(myLatLng)
         return bounds
       })
+
       map.fitBounds(bounds)
     }
   }, [map, vesselPositions])

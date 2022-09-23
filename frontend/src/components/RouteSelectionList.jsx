@@ -1,4 +1,5 @@
 import React, { memo } from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import BandListItem from "./BandListItem"
@@ -8,15 +9,25 @@ const RouteSelectionListContainer = styled.div`
   max-width: 360px;
 `
 
-function RouteSelectionList(props) {
+const RouteSelectionList = (props) => {
+  const { routeVisible, routeColor, routeNumber, routeName, routeVia } = props
+
+  RouteSelectionList.propTypes = {
+    routeVisible: PropTypes.bool,
+    routeColor: PropTypes.string,
+    routeNumber: PropTypes.number,
+    routeName: PropTypes.string,
+    routeVia: PropTypes.string,
+  }
+
   return (
     <RouteSelectionListContainer>
       <BandListItem
-        routeVisible={props.routeVisible}
-        routeColor={props.routeColor}
-        routeNumber={props.routeNumber}
-        routeName={props.routeName}
-        routeVia={props.routeVia}
+        routeVisible={routeVisible}
+        routeColor={routeColor}
+        routeNumber={routeNumber}
+        routeName={routeName}
+        routeVia={routeVia}
       />
     </RouteSelectionListContainer>
   )

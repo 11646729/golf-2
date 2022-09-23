@@ -1,17 +1,10 @@
-import React from "react"
-import Checkbox from "@material-ui/core/Checkbox"
-import {
-  createTheme,
-  makeStyles,
-  ThemeProvider,
-} from "@material-ui/core/styles"
+import React, { memo } from "react"
+import PropTypes from "prop-types"
+
+import { createTheme, ThemeProvider } from "@material-ui/core/styles"
 import { blue } from "@material-ui/core/colors"
 
-import styled from "styled-components"
-
-const CheckboxContainer = styled.div`
-  color: black;
-`
+import CustomCheckbox from "./CustomCheckbox"
 
 const theme = createTheme({
   status: {
@@ -19,36 +12,18 @@ const theme = createTheme({
   },
 })
 
-const useStyles = makeStyles(() => ({
-  root: {
-    color: theme.status.danger,
-    "&$checked": {
-      color: theme.status.danger,
-    },
-  },
-  checked: {},
-}))
+const BandCheckbox = (props) => {
+  const { checked } = props
 
-function CustomCheckbox(props) {
-  const classes = useStyles()
+  BandCheckbox.propTypes = {
+    checked: PropTypes.bool,
+  }
 
-  return (
-    <CheckboxContainer>
-      <Checkbox
-        checked={props.checked}
-        classes={{
-          root: classes.root,
-          checked: classes.checked,
-        }}
-      />
-    </CheckboxContainer>
-  )
-}
-
-export default function BandCheckbox(props) {
   return (
     <ThemeProvider theme={theme}>
-      <CustomCheckbox checked={props.checked} />
+      <CustomCheckbox checked={checked} />
     </ThemeProvider>
   )
 }
+
+export default memo(BandCheckbox)
