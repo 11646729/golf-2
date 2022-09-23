@@ -1,4 +1,5 @@
 import React, { memo } from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import Title from "./Title"
@@ -17,13 +18,23 @@ const GolfCourseTableTitleContainer = styled.div`
   width: "97%";
 `
 
-const GolfCoursesTable = (props) => (
-  <div>
-    <GolfCourseTableTitleContainer>
-      <Title>{props.golfCoursesTableTitle}</Title>
-    </GolfCourseTableTitleContainer>
-    <GolfCourseTableContainer>golf courses selection</GolfCourseTableContainer>
-  </div>
-)
+const GolfCoursesTable = (props) => {
+  const { golfCoursesTableTitle } = props
+
+  GolfCoursesTable.propTypes = {
+    golfCoursesTableTitle: PropTypes.string,
+  }
+
+  return (
+    <div>
+      <GolfCourseTableTitleContainer>
+        <Title>{golfCoursesTableTitle}</Title>
+      </GolfCourseTableTitleContainer>
+      <GolfCourseTableContainer>
+        golf courses selection
+      </GolfCourseTableContainer>
+    </div>
+  )
+}
 
 export default memo(GolfCoursesTable)

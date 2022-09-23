@@ -55,12 +55,20 @@ const TableDataCell = styled.td`
   border-right: 1px solid lightgray;
 `
 
+const TableDataCellCenter = styled.td`
+  height: 34px;
+  margin: 0;
+  padding: 0.5rem;
+  border-bottom: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  text-align: center;
+`
+
 const CruisesTableBodyStyle = styled.tbody``
 
 const CruiseShip = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
 `
 
 const CruiseLineLogo = styled.img`
@@ -146,7 +154,7 @@ const CruisesTable = (props) => {
                     <DayOfTheWeek>{row.weekday}</DayOfTheWeek>
                   </CruiseShipArrivalTime>
                 </TableDataCell>
-                <TableDataCell>
+                <TableDataCellCenter>
                   <CruiseShip>
                     <CruiseLineLogo
                       src={row.cruiselinelogo}
@@ -154,7 +162,7 @@ const CruisesTable = (props) => {
                     />
                     <CruiseShipName>{row.vesselshortcruisename}</CruiseShipName>
                   </CruiseShip>
-                </TableDataCell>
+                </TableDataCellCenter>
                 <TableDataCell>
                   <ArrivalTime>{row.vesseletatime}</ArrivalTime>
                 </TableDataCell>

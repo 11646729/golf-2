@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 import TemperaturesTable from "../components/TemperaturesTable"
 import TemperaturesChart from "../components/TemperaturesChart"
+
 import { getTemperatureData } from "../functionHandlers/loadTemperaturesDataHandler"
 
 const TemperaturesContainer = styled.div`
@@ -72,7 +73,7 @@ function TemperaturesPage() {
   return (
     <TemperaturesContainer>
       <TemperaturesTableContainer>
-        <TemperaturesTable />
+        <TemperaturesTable temperaturesTableTitle="Temperatures Table" />
       </TemperaturesTableContainer>
       <TemperaturesChartContainer>
         <TemperaturesChart

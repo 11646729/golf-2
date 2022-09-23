@@ -1,10 +1,10 @@
 import React, { memo } from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import Title from "./Title"
 
 const TemperaturesTableContainer = styled.div`
-  /* padding-left: 20px; */
   min-width: 200px;
   margin-left: 20px;
   margin-right: 10px;
@@ -18,11 +18,17 @@ const TemperaturesTableTitleContainer = styled.div`
   width: "97%";
 `
 
-function TemperaturesTable() {
+const TemperaturesTable = (props) => {
+  const { temperaturesTableTitle } = props
+
+  TemperaturesTable.propTypes = {
+    temperaturesTableTitle: PropTypes.string,
+  }
+
   return (
     <div>
       <TemperaturesTableTitleContainer>
-        <Title temperaturesTableTitle="Temperatures Table" />
+        <Title>{temperaturesTableTitle}</Title>
       </TemperaturesTableTitleContainer>
       <TemperaturesTableContainer>
         temperatures selection
