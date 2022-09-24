@@ -66,7 +66,7 @@ const BandListItem = (props) => {
             <BandButton routeColor={routeColor} routeNumber={routeNumber} />
           </div>
           <div className="bandlistitemtextcontainer">
-            <BandListItemText routeName={routeName} />
+            <BandListItemText routeName={routeName} routeVia={routeVia} />
           </div>
         </ListItem>
       </BandListItemContainer>

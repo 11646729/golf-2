@@ -25,7 +25,7 @@ const RouteSelectionList = (props) => {
               routeColor={busRoute.routeColor}
               routeNumber={busRoute.routeShortName}
               routeName={busRoute.routeLongName}
-              routeVia={busRoute.routeVia}
+              routeVia={busRoute.routeLongName}
             />
           ))
         : null}
