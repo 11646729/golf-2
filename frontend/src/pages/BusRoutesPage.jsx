@@ -1,8 +1,7 @@
 import React, { useState, useEffect, memo } from "react"
 import styled from "styled-components"
 
-import BusRoutesTable from "../components/BusRoutesTable"
-// import RouteSelectionPanel from "../components/RouteSelectionPanel"
+import BusRouteSelectionPanel from "../components/BusRouteSelectionPanel"
 import BusRoutesMap from "../components/BusRoutesMap"
 import {
   getAgencyName,
@@ -77,11 +76,10 @@ const BusRoutesPage = () => {
   return (
     <BusRoutesContainer>
       <BusRoutesTableContainer>
-        <BusRoutesTable routesTableTitle="Bus Routes Table" />
-        {/* <RouteSelectionPanel
+        <BusRouteSelectionPanel
           routesTableTitle="Bus Routes Table"
           busRoutesCollection={busRoutesCollection}
-        /> */}
+        />
       </BusRoutesTableContainer>
       <BusRoutesMapContainer>
         <BusRoutesMap
