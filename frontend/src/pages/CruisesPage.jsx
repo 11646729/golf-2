@@ -2,7 +2,6 @@ import React, { useState, useEffect, memo } from "react"
 import styled from "styled-components"
 
 import CruisesTable from "../components/CruisesTable"
-// import CruisesTable2 from "../components/CruisesTable2"
 import CruisesMap from "../components/CruisesMap"
 
 import {
@@ -51,8 +50,6 @@ const CruisesPage = () => {
     return () => (isSubscribed = false)
   }, [])
 
-  // console.log(portArrivals)
-
   // This routine gets Cruise Vessel position data - after portArrivals array has been filled
   useEffect(() => {
     let isSubscribed = true
@@ -69,8 +66,6 @@ const CruisesPage = () => {
     return () => (isSubscribed = false)
   }, [portArrivals])
 
-  //  console.log(vesselPositions)
-
   return (
     <CruisesContainer>
       <CruisesTableContainer>
@@ -79,11 +74,6 @@ const CruisesPage = () => {
           data={portArrivals}
           loadingError={loadingError}
         />
-        {/* <CruisesTable2
-          cruisesTableTitle="Cruise Ships Arriving Soon"
-          data={portArrivals}
-          loadingError={loadingError}
-        /> */}
       </CruisesTableContainer>
       <CruisesMapContainer>
         <CruisesMap

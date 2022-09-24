@@ -75,13 +75,14 @@ const CruiseLineLogo = styled.img`
   width: 30px;
   height: 30px;
   object-fit: cover;
-  margin-right: 5px;
+  margin-left: 70px;
 `
 
 const CruiseShipName = styled.div`
   text-decoration: underline;
   color: blue;
   cursor: pointer;
+  margin-left: 10px;
 `
 
 const CruiseShipArrivalTime = styled.div``

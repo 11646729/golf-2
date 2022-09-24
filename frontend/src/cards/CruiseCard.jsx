@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import { Link } from "react-router-dom"
 import {
   Button,
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function CruiseCard() {
+const CruiseCard = () => {
   const classes = useStyles()
 
   return (
@@ -54,3 +54,5 @@ export default function CruiseCard() {
     </Card>
   )
 }
+
+export default memo(CruiseCard)

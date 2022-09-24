@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import { Link } from "react-router-dom"
 import {
   Button,
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function NearbyCrimesCard() {
+const NearbyCrimesCard = () => {
   const classes = useStyles()
 
   return (
@@ -52,3 +52,5 @@ export default function NearbyCrimesCard() {
     </Card>
   )
 }
+
+export default memo(NearbyCrimesCard)

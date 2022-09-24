@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import PropTypes from "prop-types"
 import { Button, makeStyles } from "@material-ui/core"
 
@@ -18,12 +18,16 @@ const useStyles = makeStyles({
   }),
 })
 
-export default function BandButton(props) {
+const BandButton = (props) => {
   const classes = useStyles(props)
+
   const { routeNumber } = props
+
   BandButton.propTypes = {
     routeNumber: PropTypes.string,
   }
 
   return <Button className={classes.button}>{routeNumber}</Button>
 }
+
+export default memo(BandButton)

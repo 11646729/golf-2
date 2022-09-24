@@ -1,9 +1,14 @@
-import React from "react"
+import React, { memo } from "react"
 import PropTypes from "prop-types"
 import Typography from "@material-ui/core/Typography"
 
-export default function LoadingTitle(props) {
+const LoadingTitle = (props) => {
   const { children } = props
+
+  LoadingTitle.propTypes = {
+    children: PropTypes.node,
+  }
+
   return (
     <Typography
       component="div"
@@ -18,6 +23,4 @@ export default function LoadingTitle(props) {
   )
 }
 
-LoadingTitle.propTypes = {
-  children: PropTypes.node,
-}
+export default memo(LoadingTitle)

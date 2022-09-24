@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import styled from "styled-components"
 import { NotificationsNone, Language, Settings } from "@material-ui/icons"
 
@@ -61,28 +61,28 @@ const TopAvatar = styled.img`
   cursor: pointer;
 `
 
-export default function TopBar() {
-  return (
-    <Container>
-      <TopBarWrapper>
-        {/* <div className="topLeft"> */}
-        <Logo>My Website</Logo>
-        {/* </div> */}
-        <TopRight>
-          <TopBarIconContainer>
-            <NotificationsNone />
-            <TopIconBadge>1</TopIconBadge>
-          </TopBarIconContainer>
-          <TopBarIconContainer>
-            <Language />
-            <TopIconBadge>2</TopIconBadge>
-          </TopBarIconContainer>
-          <TopBarIconContainer>
-            <Settings />
-          </TopBarIconContainer>
-          <TopAvatar src="/static/images/brian.jpeg" alt="" />
-        </TopRight>
-      </TopBarWrapper>
-    </Container>
-  )
-}
+const TopBar = () => (
+  <Container>
+    <TopBarWrapper>
+      {/* <div className="topLeft"> */}
+      <Logo>My Website</Logo>
+      {/* </div> */}
+      <TopRight>
+        <TopBarIconContainer>
+          <NotificationsNone />
+          <TopIconBadge>1</TopIconBadge>
+        </TopBarIconContainer>
+        <TopBarIconContainer>
+          <Language />
+          <TopIconBadge>2</TopIconBadge>
+        </TopBarIconContainer>
+        <TopBarIconContainer>
+          <Settings />
+        </TopBarIconContainer>
+        <TopAvatar src="/static/images/brian.jpeg" alt="" />
+      </TopRight>
+    </TopBarWrapper>
+  </Container>
+)
+
+export default memo(TopBar)

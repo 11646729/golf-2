@@ -20,7 +20,7 @@ const importGTFSBusData = async () => {
 }
 
 // -------------------------------------------------------
-// Local Function to fetch all shape_ids
+// Function to fetch all shape_ids
 // -------------------------------------------------------
 const getShapeIDs = (busShapesCollection) => {
   // Now extract all unique shape_ids
@@ -101,7 +101,7 @@ export const getShape = async (url, shapeID) => {
 }
 
 // -------------------------------------------------------
-// Local Function to reformat coordinates into a new array
+// Function to reformat coordinates into a new array
 // -------------------------------------------------------
 const reformatShapesData = (uniqueShapeIDs, busShapesCollection) => {
   const modifiedShapeArray = []

@@ -21,7 +21,7 @@ const BusMapContainer = styled.div`
 // -------------------------------------------------------
 // React View component
 // -------------------------------------------------------
-const BusMap = (props) => {
+const BusRoutesMap = (props) => {
   const {
     busAgencyName,
     busShapesCollection,
@@ -29,7 +29,7 @@ const BusMap = (props) => {
     // busRoutesCollection,
   } = props
 
-  BusMap.propTypes = {
+  BusRoutesMap.propTypes = {
     busAgencyName: PropTypes.string,
     busShapesCollection: PropTypes.array,
     busStopsCollection: PropTypes.array,
@@ -178,4 +178,4 @@ const BusMap = (props) => {
   ) : null
 }
 
-export default memo(BusMap)
+export default memo(BusRoutesMap)

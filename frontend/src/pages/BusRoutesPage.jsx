@@ -1,9 +1,9 @@
 import React, { useState, useEffect, memo } from "react"
 import styled from "styled-components"
 
-// import BusTable from "../components/BusTable"
-import RouteSelectionPanel from "../components/RouteSelectionPanel"
-import BusMap from "../components/BusMap"
+import BusRoutesTable from "../components/BusRoutesTable"
+// import RouteSelectionPanel from "../components/RouteSelectionPanel"
+import BusRoutesMap from "../components/BusRoutesMap"
 import {
   getAgencyName,
   getAllStops,
@@ -12,25 +12,25 @@ import {
   // getDisplayData,
 } from "../functionHandlers/loadBusTransportDataHandler"
 
-const BusContainer = styled.div`
+const BusRoutesContainer = styled.div`
   display: flex;
 `
 
-const BusTableContainer = styled.div`
+const BusRoutesTableContainer = styled.div`
   flex: 2;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   min-height: 500px;
 `
 
-const BusMapContainer = styled.div`
+const BusRoutesMapContainer = styled.div`
   flex: 2;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   min-height: 500px;
 `
 
-function BusPage() {
+const BusRoutesPage = () => {
   const [busAgencyName, setBusAgencyName] = useState()
   const [busShapesCollection, setBusShapesCollection] = useState([])
   const [busStopsCollection, setBusStopsCollection] = useState([])
@@ -40,7 +40,7 @@ function BusPage() {
   // )
   const [loadingError, setLoadingError] = useState("")
 
-  function saveToHooks(array) {
+  const saveToHooks = (array) => {
     setBusRoutesCollection(array)
     // setDisplayBusRoutesCollection(getDisplayData(array[0]))
   }
@@ -75,16 +75,16 @@ function BusPage() {
   }, [])
 
   return (
-    <BusContainer>
-      <BusTableContainer>
-        {/* <BusTable routesTableTitle={"Bus Routes Table"} /> */}
-        <RouteSelectionPanel
+    <BusRoutesContainer>
+      <BusRoutesTableContainer>
+        <BusRoutesTable routesTableTitle="Bus Routes Table" />
+        {/* <RouteSelectionPanel
           routesTableTitle="Bus Routes Table"
           busRoutesCollection={busRoutesCollection}
-        />
-      </BusTableContainer>
-      <BusMapContainer>
-        <BusMap
+        /> */}
+      </BusRoutesTableContainer>
+      <BusRoutesMapContainer>
+        <BusRoutesMap
           busAgencyName={busAgencyName}
           busShapesCollection={busShapesCollection}
           busStopsCollection={busStopsCollection}
@@ -92,9 +92,9 @@ function BusPage() {
           // displayBusRoutesCollection={displayBusRoutesCollection}
           loadingError={loadingError}
         />
-      </BusMapContainer>
-    </BusContainer>
+      </BusRoutesMapContainer>
+    </BusRoutesContainer>
   )
 }
 
-export default memo(BusPage)
+export default memo(BusRoutesPage)

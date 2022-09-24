@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import {
   Button,
   Grid,
@@ -13,7 +13,7 @@ import TemperaturesCard from "../cards/TemperaturesCard"
 import GolfCoursesCard from "../cards/GolfCoursesCard"
 import CrimesCard from "../cards/CrimesCard"
 import CruiseCard from "../cards/CruiseCard"
-import BusCard from "../cards/BusCard"
+import BusRoutesCard from "../cards/BusRoutesCard"
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function Album() {
+const Album = () => {
   const classes = useStyles()
 
   return (
@@ -117,7 +117,7 @@ export default function Album() {
               <CruiseCard />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
-              <BusCard />
+              <BusRoutesCard />
             </Grid>
           </Grid>
         </Container>
@@ -140,3 +140,5 @@ export default function Album() {
     </div>
   )
 }
+
+export default memo(Album)

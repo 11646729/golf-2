@@ -27,7 +27,7 @@ const TemperaturesChartContainer = styled.div`
 
 const socket = io(process.env.REACT_APP_SOCKET_ENDPOINT)
 
-function TemperaturesPage() {
+const TemperaturesPage = () => {
   const [temperatureData, setTemperatureData] = useState([])
   const [loadingError, setLoadingError] = useState("")
 

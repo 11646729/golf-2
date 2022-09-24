@@ -1,8 +1,8 @@
 import React, { memo } from "react"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import Title from "./Title"
-// import LoadingTitle from "../LoadingTitle"
 
 const RouteTableTitleContainer = styled.div`
   margin-top: 35px;
@@ -12,26 +12,27 @@ const RouteTableTitleContainer = styled.div`
 `
 
 const RouteTableContainer = styled.div`
-  /* padding-left: 20px; */
   min-width: 200px;
   margin-left: 20px;
   margin-right: 10px;
   margin-bottom: 20px;
 `
 
-function BusTable(props) {
+const BusRoutesTable = (props) => {
+  const { routesTableTitle } = props
+
+  BusRoutesTable.propTypes = {
+    routesTableTitle: PropTypes.string,
+  }
+
   return (
     <div>
       <RouteTableTitleContainer>
-        {/* <h3>{props.routesTableTitle}</h3> */}
-        <Title>{props.routesTableTitle}</Title>
-        {/* {props.loadingError ? (
-          <LoadingTitle>Error Loading...</LoadingTitle>
-        ) : null} */}
+        <Title>{routesTableTitle}</Title>
       </RouteTableTitleContainer>
       <RouteTableContainer>route selection</RouteTableContainer>
     </div>
   )
 }
 
-export default memo(BusTable)
+export default memo(BusRoutesTable)

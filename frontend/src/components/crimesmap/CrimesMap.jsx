@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, memo } from "react"
 import axios from "axios"
 import GoogleMapReact from "google-map-react"
 import useSupercluster from "use-supercluster"
@@ -13,7 +13,7 @@ import "./CrimesMap.css"
 
 const Marker = ({ children }) => children
 
-export default function CrimesMapContainer() {
+const CrimesMapContainer = () => {
   // State
   const mapRef = useRef()
   const [mapBounds, setBounds] = useState(null)
@@ -361,3 +361,5 @@ export default function CrimesMapContainer() {
     </div>
   )
 }
+
+export default memo(CrimesMapContainer)

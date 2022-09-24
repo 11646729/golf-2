@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import { Link } from "react-router-dom"
 import {
   Button,
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function GTFSBusTransportCard() {
+const GTFSBusTransportCard = () => {
   const classes = useStyles()
 
   return (
@@ -46,10 +46,17 @@ export default function GTFSBusTransportCard() {
         <Typography>This shows Bus Transport in the Province</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" component={Link} to="/buspage">
+        <Button
+          size="small"
+          color="primary"
+          component={Link}
+          to="/busroutespage"
+        >
           View
         </Button>
       </CardActions>
     </Card>
   )
 }
+
+export default memo(GTFSBusTransportCard)
