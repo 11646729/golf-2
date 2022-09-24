@@ -174,6 +174,9 @@ export var getAllRoutes = (req, res) => {
           return console.error(err.message)
         }
 
+        // NEED TO CHANGE FIELDNAMES TO CAMEL CASE
+        console.log(results)
+
         res.send(results)
       })
 

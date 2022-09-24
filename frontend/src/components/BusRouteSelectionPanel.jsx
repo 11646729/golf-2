@@ -3,16 +3,16 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import Title from "./Title"
-import RouteSelectionList from "./RouteSelectionList"
+import BusRouteSelectionList from "./BusRouteSelectionList"
 
-const RouteSelectionPanelTitleContainer = styled.div`
+const TitleContainer = styled.div`
   margin-top: 35px;
   margin-left: 20px;
   margin-right: 20px;
   width: "97%";
 `
 
-const RouteSelectionPanelListContainer = styled.div`
+const BusRouteSelectionPanelListContainer = styled.div`
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 50px;
@@ -20,10 +20,10 @@ const RouteSelectionPanelListContainer = styled.div`
   max-height: 100%;
 `
 
-const RouteSelectionPanel = (props) => {
+const BusRouteSelectionPanel = (props) => {
   const { busRoutesCollection } = props
 
-  RouteSelectionPanel.propTypes = {
+  BusRouteSelectionPanel.propTypes = {
     busRoutesCollection: PropTypes.array,
   }
 
@@ -32,13 +32,13 @@ const RouteSelectionPanel = (props) => {
 
   return (
     <div>
-      <RouteSelectionPanelTitleContainer>
+      <TitleContainer>
         <Title>Available Bus Routes</Title>
-      </RouteSelectionPanelTitleContainer>
-      <RouteSelectionPanelListContainer>
+      </TitleContainer>
+      <BusRouteSelectionPanelListContainer>
         {busRoutesCollection
           ? busRoutesCollection.map((busRoute) => (
-              <RouteSelectionList
+              <BusRouteSelectionList
                 key={busRoute.routeId}
                 routeVisible={routeVisibleTrue}
                 routeColor={busRoute.routeColor}
@@ -48,9 +48,9 @@ const RouteSelectionPanel = (props) => {
               />
             ))
           : null}
-      </RouteSelectionPanelListContainer>
+      </BusRouteSelectionPanelListContainer>
     </div>
   )
 }
 
-export default memo(RouteSelectionPanel)
+export default memo(BusRouteSelectionPanel)
