@@ -60,9 +60,9 @@ const CruisesMap = (props) => {
   })
 
   // Store a reference to the google map instance in state
-  const onLoadHandler = useCallback(() => {
-    setMap(map)
-  }, [map])
+  const onLoadHandler = useCallback((Mymap) => {
+    setMap(Mymap)
+  }, [])
 
   // Clear the reference to the google map instance
   const onUnmountHandler = useCallback(() => {
@@ -71,19 +71,22 @@ const CruisesMap = (props) => {
 
   // Now compute bounds of map to display
   useEffect(() => {
-    if (map && vesselPositions != null) {
-      const bounds = new window.google.maps.LatLngBounds()
-      vesselPositions.map((vesselPosition) => {
-        const myLatLng = new window.google.maps.LatLng({
-          lat: vesselPosition.lat,
-          lng: vesselPosition.lng,
+    if (map) {
+      if (vesselPositions.length > 0) {
+        const bounds = new window.google.maps.LatLngBounds()
+
+        vesselPositions.map((vesselPosition) => {
+          const myLatLng = new window.google.maps.LatLng({
+            lat: vesselPosition.lat,
+            lng: vesselPosition.lng,
+          })
+          bounds.extend(myLatLng)
+
+          return bounds
         })
 
-        bounds.extend(myLatLng)
-        return bounds
-      })
-
-      map.fitBounds(bounds)
+        map.fitBounds(bounds)
+      }
     }
   }, [map, vesselPositions])
 

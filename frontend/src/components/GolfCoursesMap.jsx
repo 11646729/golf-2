@@ -36,7 +36,6 @@ const GolfCoursesMap = (props) => {
 
   const [map, setMap] = useState(null)
   const [selected, setSelected] = useState(null)
-  const [extents, setExtents] = useState(null)
 
   const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
 
@@ -60,32 +59,34 @@ const GolfCoursesMap = (props) => {
   })
 
   // Store a reference to the google map instance in state
-  const onLoadHandler = useCallback(() => {
-    setMap(map)
-  }, [map])
+  const onLoadHandler = useCallback((Mymap) => {
+    setMap(Mymap)
+  }, [])
 
   // Clear the reference to the google map instance
   const onUnmountHandler = useCallback(() => {
     setMap(null)
   }, [])
 
-  // Now compute bounds of map to display
   useEffect(() => {
-    if (map && golfCourses != null) {
-      const bounds = new window.google.maps.LatLngBounds()
-      golfCourses.map((golfcourse) => {
-        const myLatLng = new window.google.maps.LatLng({
-          lat: golfcourse.lat,
-          lng: golfcourse.lng,
+    if (map) {
+      if (golfCourses.length > 0) {
+        const bounds = new window.google.maps.LatLngBounds()
+
+        golfCourses.map((golfcourse) => {
+          const myLatLng = new window.google.maps.LatLng({
+            lat: golfcourse.lat,
+            lng: golfcourse.lng,
+          })
+          bounds.extend(myLatLng)
+
+          return bounds
         })
-        bounds.extend(myLatLng)
-        setExtents(bounds)
-        return bounds
-      })
-      //      map.fitBounds(bounds)
-      map.fitBounds(extents)
+
+        map.fitBounds(bounds)
+      }
     }
-  }, [map, golfCourses, extents])
+  }, [map, golfCourses])
 
   const iconPin = {
     path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",

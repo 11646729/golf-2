@@ -58,9 +58,9 @@ const BusMap = (props) => {
   })
 
   // Store a reference to the google map instance in state
-  const onLoadHandler = useCallback(() => {
-    setMap(map)
-  }, [map])
+  const onLoadHandler = useCallback((Mymap) => {
+    setMap(Mymap)
+  }, [])
 
   // Clear the reference to the google map instance
   const onUnmountHandler = useCallback(() => {
@@ -69,18 +69,21 @@ const BusMap = (props) => {
 
   // Now compute bounds of map to display
   useEffect(() => {
-    if (map && busStopsCollection != null) {
-      const bounds = new window.google.maps.LatLngBounds()
-      busStopsCollection.map((busStop) => {
-        const myLatLng = new window.google.maps.LatLng({
-          lat: busStop.stop_lat,
-          lng: busStop.stop_lon,
-        })
+    if (map) {
+      if (busStopsCollection.length > 0) {
+        const bounds = new window.google.maps.LatLngBounds()
 
-        bounds.extend(myLatLng)
-        return bounds
-      })
-      map.fitBounds(bounds)
+        busStopsCollection.map((busStop) => {
+          const myLatLng = new window.google.maps.LatLng({
+            lat: busStop.stop_lat,
+            lng: busStop.stop_lon,
+          })
+          bounds.extend(myLatLng)
+
+          return bounds
+        })
+        map.fitBounds(bounds)
+      }
     }
   }, [map, busStopsCollection])
 
