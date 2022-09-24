@@ -27,27 +27,13 @@ const BusRouteSelectionPanel = (props) => {
     busRoutesCollection: PropTypes.array,
   }
 
-  // Fudge
-  const routeVisibleTrue = true
-
   return (
     <div>
       <TitleContainer>
         <Title>Available Bus Routes</Title>
       </TitleContainer>
       <BusRouteSelectionPanelListContainer>
-        {busRoutesCollection
-          ? busRoutesCollection.map((busRoute) => (
-              <BusRouteSelectionList
-                key={busRoute.routeId}
-                routeVisible={routeVisibleTrue}
-                routeColor={busRoute.routeColor}
-                routeNumber={busRoute.routeShortName}
-                routeName={busRoute.routeLongName}
-                routeVia={busRoute.routeShortName}
-              />
-            ))
-          : null}
+        <BusRouteSelectionList busRoutesCollection={busRoutesCollection} />
       </BusRouteSelectionPanelListContainer>
     </div>
   )

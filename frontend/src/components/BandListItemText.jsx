@@ -3,13 +3,13 @@ import PropTypes from "prop-types"
 import { makeStyles, ListItemText, Typography } from "@material-ui/core"
 
 const useStyles = makeStyles({
-  routeNameId: () => ({
+  routeName: () => ({
     paddingLeft: "10px",
     fontSize: "14px",
     fontWeight: "400",
     variant: "caption",
   }),
-  routeViaId: () => ({
+  routeVia: () => ({
     paddingLeft: "10px",
     fontSize: "12px",
     fontWeight: "50",
@@ -17,22 +17,22 @@ const useStyles = makeStyles({
 })
 
 const BandListItemText = (props) => {
-  const { routeNameId, routeVia } = props
+  const { routeName, routeVia } = props
 
   const classes = useStyles(props)
 
   BandListItemText.propTypes = {
-    routeNameId: PropTypes.string,
+    routeName: PropTypes.string,
     routeVia: PropTypes.string,
   }
 
   return (
     <ListItemText
       primary={
-        <Typography className={classes.routeNameId}>{routeNameId}</Typography>
+        <Typography className={classes.routeName}>{routeName}</Typography>
       }
       secondary={
-        <Typography className={classes.routeViaId}>{routeVia}</Typography>
+        <Typography className={classes.routeVia}>{routeVia}</Typography>
       }
     />
   )

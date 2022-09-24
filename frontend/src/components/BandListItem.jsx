@@ -17,13 +17,17 @@ const BandListContainer = styled.div`
 `
 
 const BandListItem = (props) => {
-  const { routeVisible, routeNumber, routeName, routeColor } = props
+  const { routeId, routeColor, routeNumber, routeName, routeVia } = props
+
+  const routeVisible = true
 
   BandListItem.propTypes = {
-    routeVisible: PropTypes.bool,
-    routeNumber: PropTypes.number,
-    routeName: PropTypes.string,
+    routeId: PropTypes.string,
     routeColor: PropTypes.string,
+    routeNumber: PropTypes.string,
+    routeName: PropTypes.string,
+    routeVia: PropTypes.string,
+    // routeVisible: { routeVisible },
   }
 
   // const [routeVisibleCheckbox, setRouteVisibleCheckbox] = useState(routeVisible)

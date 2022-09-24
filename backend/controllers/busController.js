@@ -168,14 +168,11 @@ export var getAllRoutes = (req, res) => {
 
   if (db !== null) {
     try {
-      let sql = `SELECT * FROM routes ORDER BY route_short_name`
+      let sql = `SELECT route_id AS routeId, agency_id AS agencyId, route_short_name AS routeShortName, route_long_name AS routeLongName, route_desc AS routeDesc, route_url AS routeUrl, route_color AS routeColor, route_text_color AS routeTextColor, route_sort_order AS routeSortOrder, continuous_pickup as continuousPickup, continuous_drop_off AS continuousDropOff FROM routes ORDER BY route_short_name`
       db.all(sql, [], (err, results) => {
         if (err) {
           return console.error(err.message)
         }
-
-        // NEED TO CHANGE FIELDNAMES TO CAMEL CASE
-        console.log(results)
 
         res.send(results)
       })

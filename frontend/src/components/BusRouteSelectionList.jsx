@@ -10,25 +10,25 @@ const RouteSelectionListContainer = styled.div`
 `
 
 const RouteSelectionList = (props) => {
-  const { routeVisible, routeColor, routeNumber, routeName, routeVia } = props
+  const { busRoutesCollection } = props
 
   RouteSelectionList.propTypes = {
-    routeVisible: PropTypes.bool,
-    routeColor: PropTypes.string,
-    routeNumber: PropTypes.number,
-    routeName: PropTypes.string,
-    routeVia: PropTypes.string,
+    busRoutesCollection: PropTypes.array,
   }
 
   return (
     <RouteSelectionListContainer>
-      <BandListItem
-        routeVisible={routeVisible}
-        routeColor={routeColor}
-        routeNumber={routeNumber}
-        routeName={routeName}
-        routeVia={routeVia}
-      />
+      {busRoutesCollection
+        ? busRoutesCollection.map((busRoute) => (
+            <BandListItem
+              key={busRoute.routeId}
+              routeColor={busRoute.routeColor}
+              routeNumber={busRoute.routeShortName}
+              routeName={busRoute.routeLongName}
+              routeVia={busRoute.routeVia}
+            />
+          ))
+        : null}
     </RouteSelectionListContainer>
   )
 }
