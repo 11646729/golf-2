@@ -37,6 +37,7 @@ const CruisesPage = () => {
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   }
 
+  // This routine gets Port Arrivals data
   useEffect(() => {
     let isSubscribed = true
 
@@ -45,7 +46,6 @@ const CruisesPage = () => {
         isSubscribed ? setPortArrivals(returnedData) : null
       )
       .catch((err) => (isSubscribed ? setLoadingError(err) : null))
-    // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
 
     return () => (isSubscribed = false)
   }, [])
@@ -60,7 +60,6 @@ const CruisesPage = () => {
           isSubscribed ? setVesselPositions(returnedData) : null
         )
         .catch((err) => (isSubscribed ? setLoadingError(err) : null))
-      // .then((returnedData) => (isSubscribed ? console.log(returnedData) : null))
     }
 
     return () => (isSubscribed = false)
