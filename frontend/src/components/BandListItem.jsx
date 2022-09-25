@@ -17,12 +17,13 @@ const BandListContainer = styled.div`
 `
 
 const BandListItem = (props) => {
-  const { routeId, routeColor, routeNumber, routeName, routeVia } = props
+  // const { routeId, routeColor, routeNumber, routeName, routeVia } = props
+  const { routeColor, routeNumber, routeName, routeVia } = props
 
   const routeVisible = true
 
   BandListItem.propTypes = {
-    routeId: PropTypes.string,
+    // routeId: PropTypes.string,
     routeColor: PropTypes.string,
     routeNumber: PropTypes.string,
     routeName: PropTypes.string,
