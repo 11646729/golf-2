@@ -11,7 +11,7 @@ import CopyRight from "./CopyRight"
 import RawDataLoadCard from "../cards/RawDataLoadCard"
 import TemperaturesCard from "../cards/TemperaturesCard"
 import GolfCoursesCard from "../cards/GolfCoursesCard"
-import CrimesCard from "../cards/CrimesCard"
+import NearbyCrimesCard from "../cards/NearbyCrimesCard"
 import CruiseCard from "../cards/CruiseCard"
 import BusRoutesCard from "../cards/BusRoutesCard"
 
@@ -111,7 +111,7 @@ const Album = () => {
               <GolfCoursesCard />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
-              <CrimesCard />
+              <NearbyCrimesCard />
             </Grid>
             <Grid item sm={4} style={{ padding: 20 }}>
               <CruiseCard />

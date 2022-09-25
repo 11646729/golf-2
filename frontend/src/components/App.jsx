@@ -1,14 +1,14 @@
 import React, { memo } from "react"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
+import Album from "./Album"
+import TopBar from "./TopBar"
 import RawDataPage from "../pages/RawDataPage"
 import TemperaturesPage from "../pages/TemperaturesPage"
 import GolfCoursesPage from "../pages/GolfCoursesPage"
+import NearbyCrimesPage from "../pages/NearbyCrimesPage"
 import CruisesPage from "../pages/CruisesPage"
 import BusRoutesPage from "../pages/BusRoutesPage"
-import Album from "./Album"
-import TopBar from "./TopBar"
-import CrimesMap from "./crimesmap/CrimesMap"
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           <Route path="rawdatapage" element={<RawDataPageLink />} />
           <Route path="temperaturespage" element={<TemperaturesPageLink />} />
           <Route path="golfcoursespage" element={<GolfCoursesPageLink />} />
-          <Route path="crimespage" element={<CrimesPageLink />} />
+          <Route path="nearbycrimespage" element={<NearbyCrimesPageLink />} />
           <Route path="cruisespage" element={<CruisesPageLink />} />
           <Route path="busroutespage" element={<BusRoutesPageLink />} />
           <Route path="*" element={<NotFound />} />
@@ -51,8 +51,8 @@ function CruisesPageLink() {
   return <CruisesPage />
 }
 
-function CrimesPageLink() {
-  return <CrimesMap />
+function NearbyCrimesPageLink() {
+  return <NearbyCrimesPage />
 }
 
 function BusRoutesPageLink() {

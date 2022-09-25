@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, memo } from "react"
+import PropTypes from "prop-types"
 import axios from "axios"
 import GoogleMapReact from "google-map-react"
 import useSupercluster from "use-supercluster"
@@ -9,11 +10,17 @@ import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
 import Title from "../Title"
 import LoadingTitle from "../LoadingTitle"
 
-import "./CrimesMap.css"
+import "./NearbyCrimesMap.css"
 
 const Marker = ({ children }) => children
 
-const CrimesMapContainer = () => {
+const NearbyCrimesMap = (props) => {
+  const { nearbyCrimesMapTitle } = props
+
+  NearbyCrimesMap.propTypes = {
+    nearbyCrimesMapTitle: PropTypes.string,
+  }
+
   // State
   const mapRef = useRef()
   const [mapBounds, setBounds] = useState(null)
@@ -199,7 +206,7 @@ const CrimesMapContainer = () => {
       <Grid container spacing={1}>
         <Container maxWidth="xl">
           <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
-            <Title>Nearby Crimes</Title>
+            <Title>{nearbyCrimesMapTitle}</Title>
             {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
             {errorLoading ? (
               <LoadingTitle>Error Loading...</LoadingTitle>
@@ -362,4 +369,4 @@ const CrimesMapContainer = () => {
   )
 }
 
-export default memo(CrimesMapContainer)
+export default memo(NearbyCrimesMap)

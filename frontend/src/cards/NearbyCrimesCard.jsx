@@ -45,7 +45,12 @@ const NearbyCrimesCard = () => {
         <Typography>This shows Crimes in the Province</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary" component={Link} to="/crimespage">
+        <Button
+          size="small"
+          color="primary"
+          component={Link}
+          to="/nearbycrimespage"
+        >
           View
         </Button>
       </CardActions>
