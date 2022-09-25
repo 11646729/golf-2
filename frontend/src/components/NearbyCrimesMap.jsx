@@ -5,13 +5,55 @@ import GoogleMapReact from "google-map-react"
 import useSupercluster from "use-supercluster"
 import moment from "moment"
 import MomentUtils from "@date-io/moment"
-import { Checkbox, Container, FormControlLabel, Grid } from "@material-ui/core"
+import {
+  Checkbox,
+  Container,
+  FormControlLabel,
+  Grid,
+  // styled,
+} from "@material-ui/core"
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
-import Title from "../Title"
-import LoadingTitle from "../LoadingTitle"
+import styled from "styled-components"
 
-import "./NearbyCrimesMap.css"
+import Title from "./Title"
+import LoadingTitle from "./LoadingTitle"
 
+// const NearbyCrimesMapContainer = styled.div`
+//   font-size: 20px;
+//   font-weight: 600;
+//   padding-left: 20px;
+//   padding-top: 30px;
+// `
+
+const ClusterMarker = styled.div`
+  color: #fff;
+  background: #1978c8;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+const ClusterInfoWindow = styled.div`
+  background-color: white;
+  padding: 10px;
+  width: 220px;
+  bottom: 150px;
+  left: -45px;
+  box-shadow: "0 2px 7px 1px rgba(0, 0, 0, 0.3)";
+  position: relative;
+  font-size: 14;
+  z-index: 100;
+`
+
+const CrimeMarker = styled.button`
+  background: none;
+  border: none;
+`
+
+const CrimeMarkerImage = styled.img`
+  width: 25px;
+`
 const Marker = ({ children }) => children
 
 const NearbyCrimesMap = (props) => {
@@ -31,6 +73,7 @@ const NearbyCrimesMap = (props) => {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
+
   const [homeCheckbox, setHomeCheckbox] = useState(true)
   const [latestDataCheckbox, setLatestDataCheckbox] = useState(true)
   const [latestDataCheckboxEnabled, setLatestDataCheckboxEnabled] =
@@ -113,31 +156,6 @@ const NearbyCrimesMap = (props) => {
   // build Crimes Url - set dateInfo to "" to fetch most recent data
   const url = `${process.env.REACT_APP_CRIMES_ENDPOINT}?lat=${mapCenter.lat}&lng=${mapCenter.lng}${dateInfo}`
 
-  // THIS THROWS ERROR WHEREAS ONE BELOW DOES NOT
-  // --------------------------------------------
-  // const getAllData = async () => {
-  //   const source = axios.CancelToken.source()
-  //   setLoadingData(true)
-  //   await axios
-  //     .get(url, {
-  //       cancelToken: source.token,
-  //     })
-  //     .then((response) => {
-  //       setData(response.data)
-  //       setLoadingData(false)
-  //     })
-  //     .catch((error) => {
-  //       if (axios.isCancel(error)) {
-  //         console.log(error) // Component unmounted, request is cancelled
-  //       } else {
-  //         setLoadingError(error)
-  //       }
-  //     })
-  //   return () => {
-  //     source.cancel("Component unmounted, request is cancelled")
-  //   }
-  // }
-
   // Now fetch crimes data
   useEffect(() => {
     const getAllData = async () => {
@@ -163,7 +181,7 @@ const NearbyCrimesMap = (props) => {
       }
     }
     getAllData()
-  }, [homeCheckbox, latestDataCheckbox, dateInfo, url])
+  }, [dateInfo, url])
 
   // Now reformat relevant crimes data to use with supercluster
   const reformattedCrimes = crimes.map((crime) => ({
@@ -295,10 +313,10 @@ const NearbyCrimesMap = (props) => {
                         lat={latitude}
                         lng={longitude}
                       >
-                        <div
+                        <ClusterMarker
                           role="button"
                           tabIndex="0"
-                          className="cluster-marker"
+                          // className="cluster-marker"
                           style={{
                             width: `${
                               10 + (pointCount / reformattedCrimes.length) * 20
@@ -331,7 +349,7 @@ const NearbyCrimesMap = (props) => {
                           }}
                         >
                           {pointCount}
-                        </div>
+                        </ClusterMarker>
                       </Marker>
                     )
                   }
@@ -343,19 +361,18 @@ const NearbyCrimesMap = (props) => {
                         lat={latitude}
                         lng={longitude}
                       >
-                        <button
+                        <CrimeMarker
                           type="button"
-                          className="crime-marker"
                           // onClick={() => markerClicked(cluster)}
                         >
-                          <img
+                          <CrimeMarkerImage
                             src="/static/images/Custody.svg"
                             alt="crime doesn't pay"
                           />
-                        </button>
-                        {/* <div className="cluster-infowindow">
+                        </CrimeMarker>
+                        <ClusterInfoWindow>
                           Category: {cluster.properties.category}
-                        </div> */}
+                        </ClusterInfoWindow>
                       </Marker>
                     </div>
                   )
