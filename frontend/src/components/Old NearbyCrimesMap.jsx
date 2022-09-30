@@ -1,24 +1,21 @@
 import React, { useState, useRef, memo } from "react"
 import PropTypes from "prop-types"
+// import axios from "axios"
 import GoogleMapReact from "google-map-react"
 import useSupercluster from "use-supercluster"
 import moment from "moment"
 // import MomentUtils from "@date-io/moment"
-import // Container,
-// Grid,
-// styled,
-"@material-ui/core"
+import {
+  // Checkbox,
+  Container,
+  // FormControlLabel,
+  Grid,
+  // styled,
+} from "@material-ui/core"
 // import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
 import styled from "styled-components"
 
-import Title from "./Title"
-
-const NearbyCrimesMapContainer = styled.div`
-  font-size: 20px;
-  font-weight: 600;
-  padding-left: 20px;
-  padding-top: 30px;
-`
+// import LoadingTitle from "./LoadingTitle"
 
 const ClusterMarker = styled.div`
   color: #fff;
@@ -52,17 +49,15 @@ const CrimeMarkerImage = styled.img`
 const Marker = ({ children }) => children
 
 const NearbyCrimesMap = (props) => {
-  const { crimesData, nearbyCrimesMapTitle } = props
+  const { crimesData } = props
 
   NearbyCrimesMap.propTypes = {
     crimesData: PropTypes.array,
-    nearbyCrimesMapTitle: PropTypes.string,
   }
 
   // State
   const mapRef = useRef()
   const [mapBounds, setBounds] = useState(null)
-
   const [mapZoom, setZoom] = useState(
     parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
   )
@@ -71,29 +66,83 @@ const NearbyCrimesMap = (props) => {
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   })
 
+  // const [homeCheckbox, setHomeCheckbox] = useState(true)
+  // const [latestDataCheckbox, setLatestDataCheckbox] = useState(true)
+  // const [latestDataCheckboxEnabled, setLatestDataCheckboxEnabled] =
+  //   useState(true)
+  // dateInfo e.g. &date=2020-05 is the date string to be appended to the coordinates for downloading data
+  // const [dateInfo, setDateInfo] = useState("")
+  // selectedDate e.g. 2020-04 is the date chosen by the user to obtain data
   const [selectedDate, setDateChange] = useState("")
+  // latestDateInfoAvailable e.g. 2020-05 is the date of the latest available data ready for download
+  // const [latestDateInfoAvailable, setLatestDateInfoAvailable] = useState("")
+  // const [crimes, setData] = useState([])
+  // const [dataLoading, setLoadingData] = useState(true)
+  // const [errorLoading, setLoadingError] = useState("")
 
-  // // Event Handlers
-  // const handleHomeCheckboxChange = (event) => {
-  //   // setHomeCheckbox(event.target.checked)
-  //   setZoom(parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM))
+  // Event Handlers
+  const handleHomeCheckboxChange = (event) => {
+    // setHomeCheckbox(event.target.checked)
+    setZoom(parseFloat(process.env.REACT_APP_CRIMES_DEFAULT_ZOOM))
 
-  //   if (event.target.checked === true) {
-  //     setMapCenter({
-  //       lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-  //       lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-  //     })
+    if (event.target.checked === true) {
+      setMapCenter({
+        lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+        lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+      })
+    } else {
+      setMapCenter({
+        lat: parseFloat(process.env.REACT_APP_ANDREA_HOME_LATITUDE),
+        lng: parseFloat(process.env.REACT_APP_ANDREA_HOME_LONGITUDE),
+      })
+    }
+  }
+
+  // const handleLatestDataCheckboxChange = (event) => {
+  //   setLatestDataCheckbox(event.target.checked)
+  //   setLatestDataCheckboxEnabled(event.target.checked)
+
+  //   if (event.target.checked === false) {
+  //     setDateInfo(
+  //       `&date=${moment(selectedDate).format("YYYY")}-${moment(
+  //         selectedDate
+  //       ).format("MM")}`
+  //     )
   //   } else {
-  //     setMapCenter({
-  //       lat: parseFloat(process.env.REACT_APP_ANDREA_HOME_LATITUDE),
-  //       lng: parseFloat(process.env.REACT_APP_ANDREA_HOME_LONGITUDE),
-  //     })
+  //     setDateInfo("")
+  //     setDateChange(latestDateInfoAvailable)
   //   }
+  // }
+
+  // const handleDateInfoChange = (val) => {
+  //   setDateInfo(
+  //     `&date=${moment(val._d).format("YYYY")}-${moment(val._d).format("MM")}`
+  //   )
   // }
 
   // const markerClicked = (marker) => {
   //   console.log("clicked...")
   //   console.log("The marker that was clicked is", marker)
+  // }
+
+  // const styles = {
+  //   displayHomeLocationCheckBox: {
+  //     marginTop: "0px",
+  //     marginLeft: "100px",
+  //   },
+  //   displayLatestDataCheckBox: {
+  //     marginTop: "0px",
+  //     marginLeft: "100px",
+  //   },
+  //   displayDatePicker: {
+  //     marginTop: "0px",
+  //     marginLeft: "40px",
+  //   },
+  //   latestDateText: {
+  //     display: "inline-block",
+  //     marginTop: "-20px",
+  //     marginLeft: "580px",
+  //   },
   // }
 
   // Now reformat relevant crimes data to use with supercluster
@@ -132,11 +181,20 @@ const NearbyCrimesMap = (props) => {
     options: { radius: 75, maxZoom: 20 },
   })
 
-  // return isLoaded ? (
   return (
-    <NearbyCrimesMapContainer>
-      <Title>{nearbyCrimesMapTitle}</Title>
-      {/* <div> */}
+    <div>
+      {/* <Grid container spacing={1}> */}
+      {/* <Container maxWidth="xl">
+          <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
+            {dataLoading ? <LoadingTitle>Loading...</LoadingTitle> : null}
+            {errorLoading ? (
+              <LoadingTitle>Error Loading...</LoadingTitle>
+            ) : null}
+          </Grid>
+        </Container> */}
+
+      {/* <Container maxWidth="xl">
+        <Grid item xs={12} sm={12}> */}
       <div style={{ height: "580px", width: "100%", marginTop: 20 }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
@@ -147,6 +205,7 @@ const NearbyCrimesMap = (props) => {
             mapRef.current = map
           }}
           onClick={(event) => {
+            // setHomeCheckbox(false)
             setMapCenter({
               lat: event.lat,
               lng: event.lng,
@@ -240,9 +299,11 @@ const NearbyCrimesMap = (props) => {
           })}
         </GoogleMapReact>
       </div>
-    </NearbyCrimesMapContainer>
+      {/* </Grid>
+      </Container> */}
+      {/* </Grid> */}
+    </div>
   )
-  // ) : null
 }
 
 export default memo(NearbyCrimesMap)

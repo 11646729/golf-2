@@ -1,11 +1,21 @@
-import React, { useState, useEffect, memo } from "react"
-import axios from "axios"
+import React, { useState, useEffect, useCallback, memo } from "react"
 import styled from "styled-components"
 
+import { getCrimesData } from "../functionHandlers/loadCrimesDataHandler"
+
+import NearbyCrimesInputPanel from "../components/NearbyCrimesInputPanel"
 import NearbyCrimesMap from "../components/NearbyCrimesMap"
 
 const NearbyCrimesContainer = styled.div`
   display: flex;
+  flex-direction: column;
+`
+
+const NearbyCrimesInputPanelContainer = styled.div`
+  flex: 2;
+  -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+  min-height: 150px;
 `
 
 const NearbyCrimesMapContainer = styled.div`
@@ -19,66 +29,55 @@ const NearbyCrimesMapContainer = styled.div`
 // React Controller component
 // -------------------------------------------------------
 const NearbyCrimesPage = () => {
-  const [crimesData, setCrimesData] = useState([])
+  const [rawCrimesData, setCrimesData] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
+  // Required for location of crimes data to fetch
   const mapCenter = {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   }
 
+  // Required output from DataPicker
   const dateInfo = "&date=2022-06"
 
   // build Crimes Url - set dateInfo to "" to fetch most recent data
-  const url = `${process.env.REACT_APP_CRIMES_ENDPOINT}?lat=${mapCenter.lat}&lng=${mapCenter.lng}${dateInfo}`
+  const crimesUrl = `${process.env.REACT_APP_CRIMES_ENDPOINT}?lat=${mapCenter.lat}&lng=${mapCenter.lng}${dateInfo}`
 
-  console.log(url)
-
-  // -------------------------------------------------------
-  // const [mapCenter, setMapCenter] = useState({
-  //   lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-  //   lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-  // })
-
-  // setMapCenter({
-  //   lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-  //   lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-  // })
-  // -------------------------------------------------------
+  const fetchCrimesData = useCallback(() => {
+    getCrimesData(crimesUrl)
+      .then((returnedCrimesData) => {
+        setCrimesData(returnedCrimesData)
+        // Check the crimes data
+        // console.log(returnedCrimesData)
+        setIsLoading(false)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [crimesUrl])
 
   // Fetch crimes data
   useEffect(() => {
-    const getAllData = async () => {
-      const source = axios.CancelToken.source()
-      // setLoadingData(true)
-      await axios
-        .get(url, {
-          cancelToken: source.token,
-        })
-        .then((response) => {
-          setCrimesData(response.data)
-          // setLoadingData(false)
-        })
-        .catch((error) => {
-          if (axios.isCancel(error)) {
-            console.log(error) // Component unmounted, request is cancelled
-          } else {
-            // setLoadingError(error)
-          }
-        })
-      return () => {
-        source.cancel("Component unmounted, request is cancelled")
-      }
-    }
-    getAllData()
-  }, [url, dateInfo])
-  // }, [homeCheckbox, latestDataCheckbox, dateInfo, url])
-
-  console.log(crimesData)
+    fetchCrimesData()
+  }, [fetchCrimesData])
 
   return (
     <NearbyCrimesContainer>
+      <NearbyCrimesInputPanelContainer>
+        <NearbyCrimesInputPanel
+          nearbyCrimesPanelTitle="Nearby Crimes"
+          homeCheckboxLabel="Home Location"
+          homeCheckboxStatus // Leaving it blank means true, "={false} otherwise"
+          latestCheckboxLabel="Latest Available Data"
+          latestCheckboxStatus
+        />
+      </NearbyCrimesInputPanelContainer>
       <NearbyCrimesMapContainer>
-        <NearbyCrimesMap nearbyCrimesMapTitle="Nearby Crimes" />
+        <NearbyCrimesMap
+          nearbyCrimesMapTitle="Crimes Location Map"
+          crimesData={rawCrimesData}
+        />
       </NearbyCrimesMapContainer>
     </NearbyCrimesContainer>
   )
