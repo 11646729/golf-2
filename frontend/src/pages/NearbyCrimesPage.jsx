@@ -49,7 +49,7 @@ const NearbyCrimesPage = () => {
       .then((returnedCrimesData) => {
         setCrimesData(returnedCrimesData)
         // Check the crimes data
-        // console.log(returnedCrimesData)
+        console.log(returnedCrimesData)
         setIsLoading(false)
       })
       .catch((err) => {
@@ -66,6 +66,7 @@ const NearbyCrimesPage = () => {
     <NearbyCrimesContainer>
       <NearbyCrimesInputPanelContainer>
         <NearbyCrimesInputPanel
+          isLoading
           nearbyCrimesPanelTitle="Nearby Crimes"
           homeCheckboxLabel="Home Location"
           homeCheckboxStatus // Leaving it blank means true, "={false} otherwise"
