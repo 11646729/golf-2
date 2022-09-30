@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useCallback, memo } from "react"
 import styled from "styled-components"
 
-import { getCrimesData } from "../functionHandlers/loadCrimesDataHandler"
-
 import NearbyCrimesInputPanel from "../components/NearbyCrimesInputPanel"
-import NearbyCrimesMap from "../components/NearbyCrimesMap"
+// import NearbyCrimesMap from "../components/NearbyCrimesMap"
+import NearbyCrimesMap from "../components/TestCrimesMap"
+
+import { getCrimesData } from "../functionHandlers/loadCrimesDataHandler"
 
 const NearbyCrimesContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
 `
 
 const NearbyCrimesInputPanelContainer = styled.div`
@@ -49,7 +50,7 @@ const NearbyCrimesPage = () => {
       .then((returnedCrimesData) => {
         setCrimesData(returnedCrimesData)
         // Check the crimes data
-        console.log(returnedCrimesData)
+        // console.log(returnedCrimesData)
         setIsLoading(false)
       })
       .catch((err) => {
