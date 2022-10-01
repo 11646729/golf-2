@@ -61,14 +61,10 @@ const NearbyCrimesMap = (props) => {
   })
 
   // Store a reference to the google map instance in state
-  const onLoadHandler = useCallback((Mymap) => {
-    setMap(Mymap)
-  }, [])
+  const onLoadHandler = useCallback((Mymap) => setMap(Mymap), [])
 
   // Clear the reference to the google map instance
-  const onUnmountHandler = useCallback(() => {
-    setMap(null)
-  }, [])
+  const onUnmountHandler = useCallback(() => setMap(null), [])
 
   // Now reformat relevant crimes data to use with supercluster
   useEffect(() => {
@@ -111,9 +107,10 @@ const NearbyCrimesMap = (props) => {
         map.fitBounds(mapBounds)
       }
     }
+    // console.log(reformattedCrimesData)
   }, [map, reformattedCrimesData])
 
-  if (reformattedCrimesData.length > 0) console.log(reformattedCrimesData)
+  // if (reformattedCrimesData.length > 0) console.log(reformattedCrimesData)
 
   // Now use supercluster via useSupercluster hook
   // const { clusters, supercluster } = useSupercluster({
@@ -157,52 +154,54 @@ const NearbyCrimesMap = (props) => {
                 }}
                 icon={iconPin}
                 onClick={() => {
-                  setSelected(crime)
+                  // setSelected(crime)
+                  console.log(crime)
                 }}
               />
             ))
           : null}
 
-        {selected
-          ? console.log(selected)
-          : // <InfoWindow
-            //   position={{
-            //     lat: selected.lat,
-            //     lng: selected.lng,
-            //   }}
-            //   onCloseClick={() => {
-            //     setSelected(null)
-            //   }}
-            // >
-            //   <Card>
-            //     <CardMedia
-            //       style={{
-            //         height: 0,
-            //         paddingTop: "40%",
-            //         marginTop: "30",
-            //       }}
-            //       image={selected.photourl}
-            //       title={selected.phototitle}
-            //     />
-            //     <CardContent>
-            //       <Typography gutterBottom variant="h5" component="h2">
-            //         {selected.name}
-            //       </Typography>
-            //       <Typography component="p">{selected.description}</Typography>
-            //     </CardContent>
-            //     <CardActions>
-            //       <Button
-            //         size="small"
-            //         color="primary"
-            //         component={Link}
-            //         // to="/golfcoursespage"
-            //       >
-            //         View
-            //       </Button>
-            //     </CardActions>
-            //   </Card>
-            // </InfoWindow>
-            null}
+        {/* {selected ? console.log(selected.geometry.coordinates) : null} */}
+
+        {/* {selected ? (
+          <InfoWindow
+            position={{
+              lat: selected.geometry.coordinates[1],
+              lng: selected.geometry.coordinates[0],
+            }}
+            onCloseClick={() => {
+              setSelected(null)
+            }}
+          >
+            <Card>
+              <CardMedia
+                style={{
+                  height: 0,
+                  paddingTop: "40%",
+                  marginTop: "30",
+                }}
+                // image={selected.photourl}
+                // title={selected.phototitle}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {selected.name}
+                </Typography>
+                <Typography component="p">{selected.description}</Typography>
+              </CardContent>
+              <CardActions>
+                <Button
+                  size="small"
+                  color="primary"
+                  // component={Link}
+                  // to="/golfcoursespage"
+                >
+                  View
+                </Button>
+              </CardActions>
+            </Card>
+          </InfoWindow>
+        ) : null} */}
       </GoogleMap>
     </NearbyCrimesMapContainer>
   ) : null

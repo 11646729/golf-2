@@ -59,30 +59,22 @@ const GolfCoursesMap = (props) => {
   })
 
   // Store a reference to the google map instance in state
-  const onLoadHandler = useCallback((Mymap) => {
-    setMap(Mymap)
-  }, [])
+  const onLoadHandler = useCallback((Mymap) => setMap(Mymap), [])
 
   // Clear the reference to the google map instance
-  const onUnmountHandler = useCallback(() => {
-    setMap(null)
-  }, [])
+  const onUnmountHandler = useCallback(() => setMap(null), [])
 
   useEffect(() => {
     if (map) {
       if (golfCourses.length > 0) {
         const bounds = new window.google.maps.LatLngBounds()
 
-        golfCourses.map((golfcourse) => {
-          const myLatLng = new window.google.maps.LatLng({
+        golfCourses.map((golfcourse) =>
+          bounds.extend({
             lat: golfcourse.lat,
             lng: golfcourse.lng,
           })
-          bounds.extend(myLatLng)
-
-          return bounds
-        })
-
+        )
         map.fitBounds(bounds)
       }
     }
