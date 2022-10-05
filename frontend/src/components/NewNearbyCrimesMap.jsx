@@ -1,5 +1,5 @@
-// import React, { useState, memo } from "react"
-import React, { memo } from "react"
+// import React, { useState, useMemo, memo } from "react"
+import React, { useMemo, memo } from "react"
 import PropTypes from "prop-types"
 import {
   GoogleMap,
@@ -18,22 +18,6 @@ const NearbyCrimesMapContainer = styled.div`
   padding-top: 30px;
 `
 
-const mapContainerStyle = {
-  height: "750px",
-  width: "750px",
-  border: "1px solid #ccc",
-  marginLeft: 20,
-  marginRight: 10,
-  marginBottom: 20,
-}
-
-const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
-
-const mapCenter = {
-  lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-  lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-}
-
 const options = {
   imagePath: "../../static/images/m", // so you must have m1.png, m2.png, m3.png, m4.png, m5.png and m6.png in that folder
 }
@@ -47,6 +31,25 @@ const NearbyCrimesMap = (props) => {
     crimesData: PropTypes.array,
     nearbyCrimesMapTitle: PropTypes.string,
   }
+
+  const mapContainerStyle = {
+    height: "750px",
+    width: "750px",
+    border: "1px solid #ccc",
+    marginLeft: 20,
+    marginRight: 10,
+    marginBottom: 20,
+  }
+
+  const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
+
+  const mapCenter = useMemo(
+    () => ({
+      lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+      lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+    }),
+    []
+  )
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",

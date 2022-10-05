@@ -37,16 +37,6 @@ const GolfCoursesMap = (props) => {
   const [map, setMap] = useState(null)
   const [selected, setSelected] = useState(null)
 
-  const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
-
-  //  const slider1 = useMemo(() => [], []);
-  const mapCenter1 = useMemo(() => [], [])
-
-  const mapCenter = {
-    lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
-    lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
-  }
-
   const mapContainerStyle = {
     height: "750px",
     width: "750px",
@@ -55,6 +45,16 @@ const GolfCoursesMap = (props) => {
     marginRight: 10,
     marginBottom: 20,
   }
+
+  const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
+
+  const mapCenter = useMemo(
+    () => ({
+      lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
+      lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
+    }),
+    []
+  )
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
