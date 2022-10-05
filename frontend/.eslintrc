@@ -8,6 +8,9 @@
     "ecmaFeatures": {
       "impliedStrict": true,
       "classes": true
+    },
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
     }
   },
   "env": {

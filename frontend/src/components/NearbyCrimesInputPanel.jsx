@@ -8,7 +8,6 @@ import {
 } from "@material-ui/core"
 
 import Title from "./Title"
-import LoadingTitle from "./LoadingTitle"
 
 const NearbyCrimesTitleContainer = styled.div`
   margin-top: 35px;
@@ -22,7 +21,6 @@ const NearbyCrimesTitleContainer = styled.div`
 // -------------------------------------------------------
 const NearbyCrimesInputPanel = (props) => {
   const {
-    isLoading,
     nearbyCrimesPanelTitle,
     homeCheckboxLabel,
     homeCheckboxStatus,
@@ -31,7 +29,6 @@ const NearbyCrimesInputPanel = (props) => {
   } = props
 
   NearbyCrimesInputPanel.propTypes = {
-    isLoading: PropTypes.bool,
     nearbyCrimesPanelTitle: PropTypes.string,
     homeCheckboxLabel: PropTypes.string,
     homeCheckboxStatus: PropTypes.bool,
@@ -43,7 +40,6 @@ const NearbyCrimesInputPanel = (props) => {
     <div>
       <NearbyCrimesTitleContainer>
         <Title>{nearbyCrimesPanelTitle}</Title>
-        {/* <LoadingTitle>Loading...{isLoading}</LoadingTitle> */}
       </NearbyCrimesTitleContainer>
 
       <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>

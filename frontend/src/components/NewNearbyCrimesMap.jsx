@@ -1,4 +1,5 @@
-import React, { useState, memo } from "react"
+// import React, { useState, memo } from "react"
+import React, { memo } from "react"
 import PropTypes from "prop-types"
 import {
   GoogleMap,
@@ -38,7 +39,7 @@ const options = {
 }
 
 const NearbyCrimesMap = (props) => {
-  const [selected, setSelected] = useState(null)
+  // const [selected, setSelected] = useState(null)
 
   const { crimesData, nearbyCrimesMapTitle } = props
 
@@ -52,14 +53,14 @@ const NearbyCrimesMap = (props) => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
 
-  const iconPin = {
-    path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
-    fillColor: "#78a32e",
-    fillOpacity: 0.7,
-    scale: 0.03, // to reduce the size of icons
-    strokeColor: "#2f4024",
-    strokeWeight: 1,
-  }
+  // const iconPin = {
+  //   path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
+  //   fillColor: "#78a32e",
+  //   fillOpacity: 0.7,
+  //   scale: 0.03, // to reduce the size of icons
+  //   strokeColor: "#2f4024",
+  //   strokeWeight: 1,
+  // }
 
   return isLoaded ? (
     <NearbyCrimesMapContainer>

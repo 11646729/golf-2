@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, memo } from "react"
+import React, { useState, useEffect, useCallback, useMemo, memo } from "react"
 import PropTypes from "prop-types"
 import {
   GoogleMap,
@@ -40,6 +40,8 @@ const GolfCoursesMap = (props) => {
   const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
 
   //  const slider1 = useMemo(() => [], []);
+  const mapCenter1 = useMemo(() => [], [])
+
   const mapCenter = {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),

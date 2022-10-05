@@ -89,7 +89,7 @@ const NearbyCrimesPage = () => {
     <NearbyCrimesContainer>
       <NearbyCrimesInputPanelContainer>
         <NearbyCrimesInputPanel
-          isLoading
+          isLoading={isLoading}
           nearbyCrimesPanelTitle="Nearby Crimes"
           homeCheckboxLabel="Home Location"
           homeCheckboxStatus // Leaving it blank means true, "={false} otherwise"
