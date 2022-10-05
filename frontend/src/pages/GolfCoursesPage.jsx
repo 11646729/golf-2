@@ -28,18 +28,18 @@ const GolfCoursesMapContainer = styled.div`
 // -------------------------------------------------------
 const GolfCoursesPage = () => {
   const [golfCourses, setGolfCoursesData] = useState([])
-  const [loadingError, setLoadingError] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    let isSubscribed = true
-
     getGolfCoursesData()
-      .then((returnedData) =>
-        isSubscribed ? setGolfCoursesData(returnedData) : null
-      )
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+      .then((returnedData) => {
+        setGolfCoursesData(returnedData)
 
-    return () => (isSubscribed = false)
+        setIsLoading(false)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }, [])
 
   return (
@@ -49,9 +49,9 @@ const GolfCoursesPage = () => {
       </GolfCoursesTableContainer>
       <GolfCoursesMapContainer>
         <GolfCoursesMap
+          isLoading={isLoading}
           golfCoursesMapTitle="Golf Course Locations"
           golfCourses={golfCourses}
-          loadingError={loadingError}
         />
       </GolfCoursesMapContainer>
     </GolfCoursesContainer>

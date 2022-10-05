@@ -30,7 +30,7 @@ const CruisesMapContainer = styled.div`
 const CruisesPage = () => {
   const [portArrivals, setPortArrivals] = useState([])
   const [vesselPositions, setVesselPositions] = useState([])
-  const [loadingError, setLoadingError] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
 
   const homePosition = {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
@@ -39,30 +39,32 @@ const CruisesPage = () => {
 
   // This routine gets Port Arrivals data
   useEffect(() => {
-    let isSubscribed = true
-
     getPortArrivalsData()
-      .then((returnedData) =>
-        isSubscribed ? setPortArrivals(returnedData) : null
-      )
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+      .then((returnedData) => {
+        setPortArrivals(returnedData)
 
-    return () => (isSubscribed = false)
+        setIsLoading(false)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }, [])
 
   // This routine gets Cruise Vessel position data - after portArrivals array has been filled
   useEffect(() => {
-    let isSubscribed = true
+    setIsLoading(true)
 
     if (portArrivals.length !== 0) {
       getCruiseVesselPositionData(portArrivals)
-        .then((returnedData) =>
-          isSubscribed ? setVesselPositions(returnedData) : null
-        )
-        .catch((err) => (isSubscribed ? setLoadingError(err) : null))
-    }
+        .then((returnedData) => {
+          setVesselPositions(returnedData)
 
-    return () => (isSubscribed = false)
+          setIsLoading(false)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
   }, [portArrivals])
 
   return (
@@ -71,11 +73,11 @@ const CruisesPage = () => {
         <CruisesTable
           cruisesTableTitle="Cruise Ships Arriving Soon"
           data={portArrivals}
-          loadingError={loadingError}
         />
       </CruisesTableContainer>
       <CruisesMapContainer>
         <CruisesMap
+          isLoading={isLoading}
           cruisesMapTitle="Cruise Ship Positions"
           cruisesHomePosition={homePosition}
           vesselPositions={vesselPositions}
