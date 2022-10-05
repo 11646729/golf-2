@@ -25,15 +25,9 @@ const prepareTemperaturesTable = async () => {
 // -------------------------------------------------------
 // Function to fetch all Temperature data
 // -------------------------------------------------------
-export const getTemperatureData = async (url) => {
-  // Guard clause
-  if (url == null) {
-    console.log("Error: url == null in getTemperatureData in utilities.js")
-    return
-  }
-
+export const getTemperatureData = async () => {
   const resultData = await axios({
-    url: { url },
+    url: "http://localhost:4000/api/weather/getTemperatures",
     method: "GET",
     timeout: 8000,
     headers: {

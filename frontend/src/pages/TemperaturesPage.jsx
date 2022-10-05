@@ -29,18 +29,18 @@ const socket = io(process.env.REACT_APP_SOCKET_ENDPOINT)
 
 const TemperaturesPage = () => {
   const [temperatureData, setTemperatureData] = useState([])
-  const [loadingError, setLoadingError] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    let isSubscribed = true
+    getTemperatureData()
+      .then((returnedData) => {
+        setTemperatureData(returnedData)
 
-    getTemperatureData("http://localhost:4000/api/weather/getTemperatures")
-      .then((returnedData) =>
-        isSubscribed ? setTemperatureData(returnedData) : null
-      )
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
-
-    return () => (isSubscribed = false)
+        setIsLoading(false)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }, [])
 
   // Now delete all except the last 20 readings
@@ -77,8 +77,8 @@ const TemperaturesPage = () => {
       </TemperaturesTableContainer>
       <TemperaturesChartContainer>
         <TemperaturesChart
+          isLoading={isLoading}
           temperatureData={temperatureData}
-          loadingError={loadingError}
         />
       </TemperaturesChartContainer>
     </TemperaturesContainer>
