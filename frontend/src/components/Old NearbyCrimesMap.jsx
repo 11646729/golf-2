@@ -1,8 +1,8 @@
 import React, { useState, useRef, memo } from "react"
 import PropTypes from "prop-types"
 // import axios from "axios"
-import GoogleMapReact from "google-map-react"
-import useSupercluster from "use-supercluster"
+// import GoogleMapReact from "google-map-react"
+// import useSupercluster from "use-supercluster"
 import moment from "moment"
 // import MomentUtils from "@date-io/moment"
 import {

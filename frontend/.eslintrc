@@ -1,9 +1,10 @@
 // TODO: Update 2020/7/19
 {
   "extends": ["airbnb", "prettier", "prettier/react"],
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 2020,
+    "requireConfigFile": false,
     "ecmaFeatures": {
       "impliedStrict": true,
       "classes": true
