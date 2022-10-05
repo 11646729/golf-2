@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useCallback, memo } from "react"
+import React, { useState, useEffect, memo } from "react"
 import styled from "styled-components"
 
 import NearbyCrimesInputPanel from "../components/NearbyCrimesInputPanel"
-// import NearbyCrimesMap from "../components/NearbyCrimesMap"
-import NearbyCrimesMap from "../components/TestCrimesMap"
+import NearbyCrimesMap from "../components/NewNearbyCrimesMap"
 
 import { getCrimesData } from "../functionHandlers/loadCrimesDataHandler"
 
@@ -23,7 +22,7 @@ const NearbyCrimesMapContainer = styled.div`
   flex: 2;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-  min-height: 500px;
+  min-height: 800px;
 `
 
 // -------------------------------------------------------
@@ -31,6 +30,7 @@ const NearbyCrimesMapContainer = styled.div`
 // -------------------------------------------------------
 const NearbyCrimesPage = () => {
   const [rawCrimesData, setCrimesData] = useState([])
+  const [reformattedCrimesData, setReformattedCrimesData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   // Required for location of crimes data to fetch
@@ -45,12 +45,12 @@ const NearbyCrimesPage = () => {
   // build Crimes Url - set dateInfo to "" to fetch most recent data
   const crimesUrl = `${process.env.REACT_APP_CRIMES_ENDPOINT}?lat=${mapCenter.lat}&lng=${mapCenter.lng}${dateInfo}`
 
-  const fetchCrimesData = useCallback(() => {
+  // Download crimes data
+  useEffect(() => {
     getCrimesData(crimesUrl)
       .then((returnedCrimesData) => {
         setCrimesData(returnedCrimesData)
-        // Check the crimes data
-        // console.log(returnedCrimesData)
+
         setIsLoading(false)
       })
       .catch((err) => {
@@ -58,10 +58,32 @@ const NearbyCrimesPage = () => {
       })
   }, [crimesUrl])
 
-  // Fetch crimes data
+  // Convert crimes data into suitable format to use with supercluster
   useEffect(() => {
-    fetchCrimesData()
-  }, [fetchCrimesData])
+    if (rawCrimesData.length !== 0) {
+      const changedCrimesData = rawCrimesData.map((crime) => ({
+        type: "Feature",
+        properties: {
+          cluster: false,
+          crimeId: crime.id,
+          category: crime.category,
+          month: crime.month,
+        },
+        geometry: {
+          type: "Point",
+          coordinates: [
+            parseFloat(crime.location.longitude),
+            parseFloat(crime.location.latitude),
+          ],
+        },
+      }))
+
+      setReformattedCrimesData(changedCrimesData)
+    }
+  }, [rawCrimesData])
+
+  if (rawCrimesData.length > 0) console.log(rawCrimesData)
+  if (reformattedCrimesData.length > 0) console.log(reformattedCrimesData)
 
   return (
     <NearbyCrimesContainer>
@@ -78,7 +100,7 @@ const NearbyCrimesPage = () => {
       <NearbyCrimesMapContainer>
         <NearbyCrimesMap
           nearbyCrimesMapTitle="Crimes Location Map"
-          crimesData={rawCrimesData}
+          crimesData={reformattedCrimesData}
         />
       </NearbyCrimesMapContainer>
     </NearbyCrimesContainer>

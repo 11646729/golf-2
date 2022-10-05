@@ -43,7 +43,7 @@ const NearbyCrimesInputPanel = (props) => {
     <div>
       <NearbyCrimesTitleContainer>
         <Title>{nearbyCrimesPanelTitle}</Title>
-        <LoadingTitle>Loading...{isLoading}</LoadingTitle>
+        {/* <LoadingTitle>Loading...{isLoading}</LoadingTitle> */}
       </NearbyCrimesTitleContainer>
 
       <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>

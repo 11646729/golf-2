@@ -39,14 +39,15 @@ const GolfCoursesMap = (props) => {
 
   const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
 
+  //  const slider1 = useMemo(() => [], []);
   const mapCenter = {
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   }
 
   const mapContainerStyle = {
-    height: "450px",
-    width: "94%",
+    height: "750px",
+    width: "750px",
     border: "1px solid #ccc",
     marginLeft: 20,
     marginRight: 10,
@@ -67,7 +68,7 @@ const GolfCoursesMap = (props) => {
   useEffect(() => {
     if (map) {
       if (golfCourses.length > 0) {
-        const bounds = new window.google.maps.LatLngBounds()
+        const bounds = new window.google.maps.LatLngBounds(mapCenter)
 
         golfCourses.map((golfcourse) =>
           bounds.extend({
@@ -78,7 +79,7 @@ const GolfCoursesMap = (props) => {
         map.fitBounds(bounds)
       }
     }
-  }, [map, golfCourses])
+  }, [map, golfCourses, mapCenter])
 
   const iconPin = {
     path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
