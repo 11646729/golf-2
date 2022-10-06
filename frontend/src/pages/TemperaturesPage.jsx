@@ -76,7 +76,7 @@ const TemperaturesPage = () => {
 
   return (
     <TemperaturesContainer>
-      {/* <TemperaturesTableContainer>
+      <TemperaturesTableContainer>
         <TemperaturesTable temperaturesTableTitle="Temperatures Table" />
       </TemperaturesTableContainer>
       <TemperaturesChartContainer>
@@ -84,7 +84,7 @@ const TemperaturesPage = () => {
           isLoading={isLoading}
           temperatureData={temperatureData}
         />
-      </TemperaturesChartContainer> */}
+      </TemperaturesChartContainer>
     </TemperaturesContainer>
   )
 }

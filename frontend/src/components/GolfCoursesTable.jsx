@@ -19,11 +19,14 @@ const GolfCourseTableTitleContainer = styled.div`
 `
 
 const GolfCoursesTable = (props) => {
-  const { golfCoursesTableTitle } = props
+  const { golfCoursesTableTitle, golfCourses } = props
 
   GolfCoursesTable.propTypes = {
     golfCoursesTableTitle: PropTypes.string,
+    golfCourses: PropTypes.array,
   }
+
+  console.log(golfCourses)
 
   return (
     <div>

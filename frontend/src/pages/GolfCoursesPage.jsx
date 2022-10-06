@@ -45,7 +45,10 @@ const GolfCoursesPage = () => {
   return (
     <GolfCoursesContainer>
       <GolfCoursesTableContainer>
-        <GolfCoursesTable golfCoursesTableTitle="Golf Courses Table" />
+        <GolfCoursesTable
+          golfCoursesTableTitle="Golf Courses Table"
+          golfCourses={golfCourses}
+        />
       </GolfCoursesTableContainer>
       <GolfCoursesMapContainer>
         <GolfCoursesMap

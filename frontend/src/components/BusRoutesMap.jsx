@@ -73,15 +73,12 @@ const BusRoutesMap = (props) => {
       if (busStopsCollection.length > 0) {
         const bounds = new window.google.maps.LatLngBounds()
 
-        busStopsCollection.map((busStop) => {
-          const myLatLng = new window.google.maps.LatLng({
+        busStopsCollection.map((busStop) =>
+          bounds.extend({
             lat: busStop.stop_lat,
             lng: busStop.stop_lon,
           })
-          bounds.extend(myLatLng)
-
-          return bounds
-        })
+        )
         map.fitBounds(bounds)
       }
     }
