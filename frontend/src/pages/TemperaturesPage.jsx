@@ -1,10 +1,9 @@
 import React, { useState, useEffect, memo } from "react"
-import io from "socket.io-client"
 import styled from "styled-components"
+import io from "socket.io-client"
 
 import TemperaturesTable from "../components/TemperaturesTable"
 import TemperaturesChart from "../components/TemperaturesChart"
-
 import { getTemperatureData } from "../functionHandlers/loadTemperaturesDataHandler"
 
 const TemperaturesContainer = styled.div`
@@ -27,6 +26,9 @@ const TemperaturesChartContainer = styled.div`
 
 const socket = io(process.env.REACT_APP_SOCKET_ENDPOINT)
 
+// -------------------------------------------------------
+// React Controller component
+// -------------------------------------------------------
 const TemperaturesPage = () => {
   const [temperatureData, setTemperatureData] = useState([])
   const [isLoading, setIsLoading] = useState(true)

@@ -3,7 +3,6 @@ import styled from "styled-components"
 
 import CruisesTable from "../components/CruisesTable"
 import CruisesMap from "../components/CruisesMap"
-
 import {
   getPortArrivalsData,
   getCruiseVesselPositionData,
@@ -27,6 +26,9 @@ const CruisesMapContainer = styled.div`
   min-height: 500px;
 `
 
+// -------------------------------------------------------
+// React Controller component
+// -------------------------------------------------------
 const CruisesPage = () => {
   const [portArrivals, setPortArrivals] = useState([])
   const [vesselPositions, setVesselPositions] = useState([])

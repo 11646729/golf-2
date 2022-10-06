@@ -29,6 +29,9 @@ const BusRoutesMapContainer = styled.div`
   min-height: 500px;
 `
 
+// -------------------------------------------------------
+// React Controller component
+// -------------------------------------------------------
 const BusRoutesPage = () => {
   const [busAgencyName, setBusAgencyName] = useState()
   const [busShapesCollection, setBusShapesCollection] = useState([])

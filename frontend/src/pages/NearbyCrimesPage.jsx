@@ -3,12 +3,10 @@ import styled from "styled-components"
 
 import NearbyCrimesInputPanel from "../components/NearbyCrimesInputPanel"
 import NearbyCrimesMap from "../components/NewNearbyCrimesMap"
-
 import { getCrimesData } from "../functionHandlers/loadCrimesDataHandler"
 
 const NearbyCrimesContainer = styled.div`
   display: flex;
-  // flex-direction: column;
 `
 
 const NearbyCrimesInputPanelContainer = styled.div`
