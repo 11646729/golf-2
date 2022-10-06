@@ -219,6 +219,8 @@ export const getAndSaveDarkSkiesData = async () => {
     // fetch data from the url endpoint and return it
     const data = await axios.get(darkSkiesUrl)
 
+    console.log(darkSkiesUrl)
+
     // Reformat data into Transient object
     const temperatureReading = [
       process.env.DATABASE_VERSION,

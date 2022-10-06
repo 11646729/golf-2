@@ -75,22 +75,18 @@ const CruisesMap = (props) => {
   useEffect(() => {
     if (map) {
       if (vesselPositions.length > 0) {
-        const bounds = new window.google.maps.LatLngBounds()
+        const bounds = new window.google.maps.LatLngBounds(mapCenter)
 
-        vesselPositions.map((vesselPosition) => {
-          const myLatLng = new window.google.maps.LatLng({
+        vesselPositions.map((vesselPosition) =>
+          bounds.extend({
             lat: vesselPosition.lat,
             lng: vesselPosition.lng,
           })
-          bounds.extend(myLatLng)
-
-          return bounds
-        })
-
+        )
         map.fitBounds(bounds)
       }
     }
-  }, [map, vesselPositions])
+  }, [map, vesselPositions, mapCenter])
 
   const iconPin = {
     path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",

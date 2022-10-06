@@ -72,10 +72,10 @@ const GolfCoursesMap = (props) => {
       if (golfCourses.length > 0) {
         const bounds = new window.google.maps.LatLngBounds(mapCenter)
 
-        golfCourses.map((golfcourse) =>
+        golfCourses.map((golfCourse) =>
           bounds.extend({
-            lat: golfcourse.lat,
-            lng: golfcourse.lng,
+            lat: golfCourse.lat,
+            lng: golfCourse.lng,
           })
         )
         map.fitBounds(bounds)
