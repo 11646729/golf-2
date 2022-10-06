@@ -30,7 +30,6 @@ const NearbyCrimesMapContainer = styled.div`
 // -------------------------------------------------------
 const NearbyCrimesPage = () => {
   const [rawCrimesData, setCrimesData] = useState([])
-  // const [reformattedCrimesData, setReformattedCrimesData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   // Required for location of crimes data to fetch
@@ -58,33 +57,6 @@ const NearbyCrimesPage = () => {
       })
   }, [crimesUrl])
 
-  // Convert crimes data into suitable format to use with supercluster
-  // useEffect(() => {
-  //   if (rawCrimesData.length !== 0) {
-  //     const changedCrimesData = rawCrimesData.map((crime) => ({
-  //       type: "Feature",
-  //       properties: {
-  //         cluster: false,
-  //         crimeId: crime.id,
-  //         category: crime.category,
-  //         month: crime.month,
-  //       },
-  //       geometry: {
-  //         type: "Point",
-  //         coordinates: [
-  //           parseFloat(crime.location.longitude),
-  //           parseFloat(crime.location.latitude),
-  //         ],
-  //       },
-  //     }))
-
-  //     setReformattedCrimesData(changedCrimesData)
-  //   }
-  // }, [rawCrimesData])
-
-  // if (rawCrimesData.length > 0) console.log(rawCrimesData)
-  // if (reformattedCrimesData.length > 0) console.log(reformattedCrimesData)
-
   return (
     <NearbyCrimesContainer>
       <NearbyCrimesInputPanelContainer>
@@ -100,7 +72,6 @@ const NearbyCrimesPage = () => {
       <NearbyCrimesMapContainer>
         <NearbyCrimesMap
           nearbyCrimesMapTitle="Crimes Location Map"
-          // crimesData={reformattedCrimesData}
           crimesData={rawCrimesData}
         />
       </NearbyCrimesMapContainer>
