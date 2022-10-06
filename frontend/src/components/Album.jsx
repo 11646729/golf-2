@@ -83,7 +83,7 @@ const Album = () => {
               Something short and leading about ...
             </Typography>
             <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
+              <Grid container spacing={2} justifyContent="center">
                 <Grid item>
                   <Button variant="contained" color="primary">
                     Main call to action
