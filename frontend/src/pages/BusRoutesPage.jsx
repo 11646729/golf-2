@@ -37,7 +37,7 @@ const BusRoutesPage = () => {
   // const [displayBusRoutesCollection, setDisplayBusRoutesCollection] = useState(
   //   []
   // )
-  const [loadingError, setLoadingError] = useState("")
+  const [isLoading, setIsLoading] = useState(true)
 
   const saveToHooks = (array) => {
     setBusRoutesCollection(array)
@@ -45,32 +45,40 @@ const BusRoutesPage = () => {
   }
 
   useEffect(() => {
-    let isSubscribed = true
-
     getAgencyName()
-      .then((returnedData) =>
-        isSubscribed ? setBusAgencyName(returnedData[0].agency_name) : null
-      )
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+      .then((returnedData) => {
+        setBusAgencyName(returnedData[0].agency_name)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
 
     // This function does some reduction & reformatting
     getAllShapes()
-      .then((returnedData) =>
-        isSubscribed ? setBusShapesCollection(returnedData) : null
-      )
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+      .then((returnedData) => {
+        setBusShapesCollection(returnedData)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
 
     getAllStops()
-      .then((returnedData) =>
-        isSubscribed ? setBusStopsCollection(returnedData) : null
-      )
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+      .then((returnedData) => {
+        setBusStopsCollection(returnedData)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
 
     getAllRoutes()
-      .then((returnedData) => (isSubscribed ? saveToHooks(returnedData) : null))
-      .catch((err) => (isSubscribed ? setLoadingError(err) : null))
+      .then((returnedData) => {
+        saveToHooks(returnedData)
 
-    return () => (isSubscribed = false)
+        setIsLoading(false)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }, [])
 
   return (
@@ -83,12 +91,12 @@ const BusRoutesPage = () => {
       </BusRoutesTableContainer>
       <BusRoutesMapContainer>
         <BusRoutesMap
+          isLoading={isLoading}
           busAgencyName={busAgencyName}
           busShapesCollection={busShapesCollection}
           busStopsCollection={busStopsCollection}
           busRoutesCollection={busRoutesCollection}
           // displayBusRoutesCollection={displayBusRoutesCollection}
-          loadingError={loadingError}
         />
       </BusRoutesMapContainer>
     </BusRoutesContainer>
