@@ -56,15 +56,6 @@ const NearbyCrimesMap = (props) => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
 
-  // const iconPin = {
-  //   path: "M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z",
-  //   fillColor: "#78a32e",
-  //   fillOpacity: 0.7,
-  //   scale: 0.03, // to reduce the size of icons
-  //   strokeColor: "#2f4024",
-  //   strokeWeight: 1,
-  // }
-
   return isLoaded ? (
     <NearbyCrimesMapContainer>
       <Title>{nearbyCrimesMapTitle}</Title>
@@ -84,10 +75,10 @@ const NearbyCrimesMap = (props) => {
           {(clusterer) =>
             crimesData.map((crime) => (
               <Marker
-                key={`crime-${crime.properties.crimeId}`}
+                key={`crime-${crime.id}`}
                 position={{
-                  lat: crime.geometry.coordinates[1],
-                  lng: crime.geometry.coordinates[0],
+                  lat: parseFloat(crime.location.latitude),
+                  lng: parseFloat(crime.location.longitude),
                 }}
                 onClick={() => {
                   // setSelected(crime)

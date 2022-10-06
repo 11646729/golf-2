@@ -32,8 +32,10 @@ const CruisesMap = (props) => {
   CruisesMap.propTypes = {
     cruisesMapTitle: PropTypes.string,
     cruisesHomePosition: PropTypes.object,
-    vesselPositions: PropTypes.object,
+    vesselPositions: PropTypes.array,
   }
+
+  // console.log(cruisesHomePosition)
 
   const [map, setMap] = useState(null)
   const [selected, setSelected] = useState(null)

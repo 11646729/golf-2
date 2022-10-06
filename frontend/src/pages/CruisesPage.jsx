@@ -41,6 +41,9 @@ const CruisesPage = () => {
   useEffect(() => {
     getPortArrivalsData()
       .then((returnedData) => {
+        // Sort by date becaause returnedData is not always in timestamp order
+        returnedData.sort((a, b) => (a.timestamp > b.timestamp ? 1 : -1))
+
         setPortArrivals(returnedData)
 
         setIsLoading(false)
@@ -57,6 +60,7 @@ const CruisesPage = () => {
     if (portArrivals.length !== 0) {
       getCruiseVesselPositionData(portArrivals)
         .then((returnedData) => {
+          // console.log(returnedData)
           setVesselPositions(returnedData)
 
           setIsLoading(false)
