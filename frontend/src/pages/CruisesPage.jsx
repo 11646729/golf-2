@@ -44,8 +44,9 @@ const CruisesPage = () => {
     getPortArrivalsData()
       .then((returnedData) => {
         // Sort by date becaause returnedData is not always in timestamp order
-        returnedData.sort((a, b) => (a.timestamp > b.timestamp ? 1 : -1))
+        returnedData.sort((a, b) => (a.vesseleta > b.vesseleta ? 1 : -1))
 
+        console.log(returnedData)
         setPortArrivals(returnedData)
 
         setIsLoading(false)
