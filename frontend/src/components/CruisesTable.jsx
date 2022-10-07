@@ -122,11 +122,11 @@ const Button = styled.button`
 `
 
 const CruisesTable = (props) => {
-  const { cruisesTableTitle, data } = props
+  const { cruisesTableTitle, portArrivals } = props
 
   CruisesTable.propTypes = {
     cruisesTableTitle: PropTypes.string,
-    data: PropTypes.array,
+    portArrivals: PropTypes.array,
   }
 
   return (
@@ -147,28 +147,30 @@ const CruisesTable = (props) => {
             </TableRow>
           </CruisesTableHeaderStyle>
           <CruisesTableBodyStyle>
-            {data.map((row) => (
-              <TableRow key={row.portarrivalid}>
+            {portArrivals.map((portArrival) => (
+              <TableRow key={portArrival.portarrivalid}>
                 <TableDataCell>
                   <CruiseShipArrivalTime>
-                    <DateOfArrival>{row.arrivalDate}</DateOfArrival>
-                    <DayOfTheWeek>{row.weekday}</DayOfTheWeek>
+                    <DateOfArrival>{portArrival.arrivalDate}</DateOfArrival>
+                    <DayOfTheWeek>{portArrival.weekday}</DayOfTheWeek>
                   </CruiseShipArrivalTime>
                 </TableDataCell>
                 <TableDataCellCenter>
                   <CruiseShip>
                     <CruiseLineLogo
-                      src={row.cruiselinelogo}
+                      src={portArrival.cruiselinelogo}
                       alt="Cruise Line Logo"
                     />
-                    <CruiseShipName>{row.vesselshortcruisename}</CruiseShipName>
+                    <CruiseShipName>
+                      {portArrival.vesselshortcruisename}
+                    </CruiseShipName>
                   </CruiseShip>
                 </TableDataCellCenter>
                 <TableDataCell>
-                  <ArrivalTime>{row.vesseletatime}</ArrivalTime>
+                  <ArrivalTime>{portArrival.vesseletatime}</ArrivalTime>
                 </TableDataCell>
                 <TableDataCell>
-                  <DepartureTime>{row.vesseletdtime}</DepartureTime>
+                  <DepartureTime>{portArrival.vesseletdtime}</DepartureTime>
                 </TableDataCell>
                 <TableDataCell>
                   <Button>Show</Button>

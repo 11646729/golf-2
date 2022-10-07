@@ -62,7 +62,6 @@ const CruisesPage = () => {
     if (portArrivals.length !== 0) {
       getCruiseVesselPositionData(portArrivals)
         .then((returnedData) => {
-          // console.log(returnedData)
           setVesselPositions(returnedData)
 
           setIsLoading(false)
@@ -78,7 +77,7 @@ const CruisesPage = () => {
       <CruisesTableContainer>
         <CruisesTable
           cruisesTableTitle="Cruise Ships Arriving Soon"
-          data={portArrivals}
+          portArrivals={portArrivals}
         />
       </CruisesTableContainer>
       <CruisesMapContainer>
