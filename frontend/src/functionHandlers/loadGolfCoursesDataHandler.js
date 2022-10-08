@@ -3,60 +3,29 @@ import axios from "axios"
 // -------------------------------------------------------
 // Function to prepare the golfcourses table in the SQL database
 // -------------------------------------------------------
-const prepareGolfCoursesTable = async () => {
-  const params = {}
-  const config = {
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }
-
-  await axios
-    .post(
-      "http://localhost:4000/api/golf/prepareGolfCoursesTable",
-      params,
-      config
-    )
-    //    .then((returnedData) => console.log(returnedData))
-    .then(() => alert("Empty golfcourses table prepared"))
+export const prepareGolfCoursesTable = () =>
+  axios
+    .post("http://localhost:4000/api/golf/prepareGolfCoursesTable")
+    .then(() => console.log("Empty golfcourses table prepared"))
     .catch((err) => console.log(err))
-}
 
 // -------------------------------------------------------
 // Function to instruct backend to load Golf Club Data into the database
 // -------------------------------------------------------
-const initialImportOfGolfCoursesData = async () => {
-  const params = {}
-  const config = {
-    timeout: 20000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }
-
-  await axios
-    .get("http://localhost:4000/api/golf/importGolfCoursesData", params, config)
-    //    .then((returnedData) => console.log(returnedData))
+export const initialImportOfGolfCoursesData = () =>
+  axios
+    .get("http://localhost:4000/api/golf/importGolfCoursesData")
     .then(() => console.log("Golf Course data loaded into the SQL database"))
     .catch((err) => console.log(err))
-}
 
 // -------------------------------------------------------
 // Function to fetch all Golf Course data - DON'T TRY TO REFACTOR THIS
 // -------------------------------------------------------
-export const getGolfCoursesData = async () => {
-  const resultData = await axios({
-    url: "http://localhost:4000/api/golf/getGolfCourses",
-    method: "GET",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-
-  return resultData.data
-}
+export const getGolfCoursesData = () =>
+  axios
+    .get("http://localhost:4000/api/golf/getGolfCourses")
+    .then((response) => response.data)
+    .catch((err) => console.log(err))
 
 // -------------------------------------------------------
 // Function to fetch all Golf Courses data into the SQL database

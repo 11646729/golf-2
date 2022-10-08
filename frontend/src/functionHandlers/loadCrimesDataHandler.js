@@ -8,4 +8,7 @@ export const loadCrimesDataHandler = () => {
 // Function to fetch all Crimes data
 // -------------------------------------------------------
 export const getCrimesData = (url) =>
-  axios.get(url).then((response) => response.data)
+  axios
+    .get(url)
+    .then((response) => response.data)
+    .catch((err) => console.log(err))
