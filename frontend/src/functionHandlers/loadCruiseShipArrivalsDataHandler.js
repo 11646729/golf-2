@@ -1,24 +1,11 @@
 import axios from "axios"
-// import moment from "moment"
 
 // -------------------------------------------------------
 // Function to prepare the portarrivals table in the SQL database
 // -------------------------------------------------------
 const preparePortArrivalsTable = () => {
-  const params = {}
-  const config = {
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }
-
   axios
-    .post(
-      "http://localhost:4000/api/cruise/preparePortArrivalsTable",
-      params,
-      config
-    )
+    .post("http://localhost:4000/api/cruise/preparePortArrivalsTable")
     .then(() => console.log("Empty portarrivals table prepared"))
     .catch((err) => console.log(err))
 }
@@ -27,20 +14,8 @@ const preparePortArrivalsTable = () => {
 // Function to prepare the vessels table in the SQL database
 // -------------------------------------------------------
 const prepareVesselsTable = () => {
-  const params = {}
-  const config = {
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }
-
   axios
-    .post(
-      "http://localhost:4000/api/cruise/prepareVesselsTable",
-      params,
-      config
-    )
+    .post("http://localhost:4000/api/cruise/prepareVesselsTable")
     .then(() => console.log("Empty vessels table prepared"))
     .catch((err) => console.log(err))
 }
@@ -72,21 +47,6 @@ const importPortArrivalsAndVesselsData = () => {
 // -------------------------------------------------------
 // Function to fetch all Cruise Vessel data
 // -------------------------------------------------------
-// export const getPortArrivalsData = async () => {
-//   const resultData = await axios({
-//     url: "http://localhost:4000/api/cruise/portArrivals",
-//     method: "GET",
-//     timeout: 8000,
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   })
-
-//   // console.log(resultData.data)
-
-//   return resultData.data
-// }
-
 export const getPortArrivalsData = () =>
   axios
     .get("http://localhost:4000/api/cruise/portArrivals")
