@@ -86,7 +86,7 @@ const CruisesPage = () => {
           cruisesMapTitle="Cruise Ship Positions"
           cruisesHomePosition={homePosition}
           vesselPositions={vesselPositions}
-          // vesselDetails={portArrivals}
+          vesselDetails={portArrivals}
         />
       </CruisesMapContainer>
     </CruisesContainer>

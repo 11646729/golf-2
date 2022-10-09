@@ -4,7 +4,7 @@ import axios from "axios"
 // -------------------------------------------------------
 // Function to prepare the portarrivals table in the SQL database
 // -------------------------------------------------------
-const preparePortArrivalsTable = async () => {
+const preparePortArrivalsTable = () => {
   const params = {}
   const config = {
     timeout: 8000,
@@ -13,21 +13,20 @@ const preparePortArrivalsTable = async () => {
     },
   }
 
-  await axios
+  axios
     .post(
       "http://localhost:4000/api/cruise/preparePortArrivalsTable",
       params,
       config
     )
-    //    .then((returnedData) => console.log(returnedData))
-    .then(() => alert("Empty portarrivals table prepared"))
+    .then(() => console.log("Empty portarrivals table prepared"))
     .catch((err) => console.log(err))
 }
 
 // -------------------------------------------------------
 // Function to prepare the vessels table in the SQL database
 // -------------------------------------------------------
-const prepareVesselsTable = async () => {
+const prepareVesselsTable = () => {
   const params = {}
   const config = {
     timeout: 8000,
@@ -36,21 +35,20 @@ const prepareVesselsTable = async () => {
     },
   }
 
-  await axios
+  axios
     .post(
       "http://localhost:4000/api/cruise/prepareVesselsTable",
       params,
       config
     )
-    //    .then((returnedData) => console.log(returnedData))
-    .then(() => alert("Empty vessels table prepared"))
+    .then(() => console.log("Empty vessels table prepared"))
     .catch((err) => console.log(err))
 }
 
 // -------------------------------------------------------
 // Function to fetch all Cruise PortArrivals & Vessel data
 // -------------------------------------------------------
-const importPortArrivalsAndVesselsData = async () => {
+const importPortArrivalsAndVesselsData = () => {
   const params = {
     portName: "Belfast",
   }
@@ -61,32 +59,39 @@ const importPortArrivalsAndVesselsData = async () => {
     },
   }
 
-  await axios
+  axios
     .post(
       "http://localhost:4000/api/cruise/importPortArrivalsAndVesselsData",
       params,
       config
     )
-    //    .then((returnedData) => console.log(returnedData))
-    .then(() => alert("Loading scraped vessel and port arrivals data"))
+    .then(() => console.log("Loading scraped vessel and port arrivals data"))
     .catch((err) => console.log(err))
 }
 
 // -------------------------------------------------------
 // Function to fetch all Cruise Vessel data
 // -------------------------------------------------------
-export const getPortArrivalsData = async () => {
-  const resultData = await axios({
-    url: "http://localhost:4000/api/cruise/portArrivals",
-    method: "GET",
-    timeout: 8000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+// export const getPortArrivalsData = async () => {
+//   const resultData = await axios({
+//     url: "http://localhost:4000/api/cruise/portArrivals",
+//     method: "GET",
+//     timeout: 8000,
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   })
 
-  return resultData.data
-}
+//   // console.log(resultData.data)
+
+//   return resultData.data
+// }
+
+export const getPortArrivalsData = () =>
+  axios
+    .get("http://localhost:4000/api/cruise/portArrivals")
+    .then((response) => response.data)
+    .catch((err) => console.log(err))
 
 // -------------------------------------------------------
 // Function to fetch Cruise Vessel Position data
@@ -111,7 +116,7 @@ export const getCruiseVesselPositionData = async (portArrivals) => {
 
   let resultData = []
 
-  // Fetch the initial data
+  // Fetch the initial data - DO NOT CHANGE
   resultData = await axios({
     url: "http://localhost:4000/api/cruise/vesselPositions",
     params: {
