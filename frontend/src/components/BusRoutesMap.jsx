@@ -44,8 +44,8 @@ const BusRoutesMap = (props) => {
   })
 
   const mapContainerStyle = {
-    height: "450px",
-    width: "94%",
+    height: "750px",
+    width: "750px",
     border: "1px solid #ccc",
     marginLeft: 20,
     marginRight: 10,
@@ -83,6 +83,8 @@ const BusRoutesMap = (props) => {
       }
     }
   }, [map, busStopsCollection])
+
+  console.log(busStopsCollection)
 
   // const handleBusStopClick = (event) => {
   //   console.log(event)
