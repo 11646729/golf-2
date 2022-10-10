@@ -32,7 +32,10 @@ const RawDataPage = () => (
       <RawDataTable rawDataTableTitle="Raw Data Import" />
     </RawDataTableContainer>
     <RawDataMessagesContainer>
-      <RawDataMessageBox rawDataMessageBoxTitle="Messages Here" />
+      <RawDataMessageBox
+        rawDataMessageBoxTitle="Messages Here"
+        messageString="Here is the first message."
+      />
     </RawDataMessagesContainer>
   </RawDataContainer>
 )

@@ -12,16 +12,18 @@ const RawDataMessageBoxTitleContainer = styled.div`
 `
 
 const RawDataMessageBox = (props) => {
-  const { rawDataMessageBoxTitle } = props
+  const { rawDataMessageBoxTitle, messageString } = props
 
   RawDataMessageBox.propTypes = {
     rawDataMessageBoxTitle: PropTypes.string,
+    messageString: PropTypes.string,
   }
 
   return (
     <div>
       <RawDataMessageBoxTitleContainer>
         <Title>{rawDataMessageBoxTitle}</Title>
+        {messageString}
       </RawDataMessageBoxTitleContainer>
     </div>
   )
