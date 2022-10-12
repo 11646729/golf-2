@@ -87,10 +87,7 @@ const BusRoutesPage = () => {
   return (
     <BusRoutesContainer>
       <BusRoutesTableContainer>
-        <BusRouteSelectionPanel
-          routesTableTitle="Bus Routes Table"
-          busRoutesCollection={busRoutesCollection}
-        />
+        <BusRouteSelectionPanel busRoutesCollection={busRoutesCollection} />
       </BusRoutesTableContainer>
       <BusRoutesMapContainer>
         <BusRoutesMap

@@ -19,6 +19,8 @@ import styled from "styled-components"
 
 import Title from "./Title"
 
+const GolfCoursesMapTitle = "Golf Course Locations"
+
 const GolfCoursesMapContainer = styled.div`
   font-size: 20px;
   font-weight: 600;
@@ -27,10 +29,9 @@ const GolfCoursesMapContainer = styled.div`
 `
 
 const GolfCoursesMap = (props) => {
-  const { golfCourses, golfCoursesMapTitle } = props
+  const { golfCourses } = props
 
   GolfCoursesMap.propTypes = {
-    golfCoursesMapTitle: PropTypes.string,
     golfCourses: PropTypes.array,
   }
 
@@ -94,7 +95,7 @@ const GolfCoursesMap = (props) => {
 
   return isLoaded ? (
     <GolfCoursesMapContainer>
-      <Title>{golfCoursesMapTitle}</Title>
+      <Title>{GolfCoursesMapTitle}</Title>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={mapCenter}

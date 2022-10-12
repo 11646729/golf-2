@@ -13,6 +13,8 @@ import styled from "styled-components"
 
 import Title from "./Title"
 
+const NearbyCrimesMapTitle = "Crimes Location Map"
+
 const NearbyCrimesMapContainer = styled.div`
   font-size: 20px;
   font-weight: 600;
@@ -52,11 +54,10 @@ const CrimeMarkerImage = styled.img`
 const Marker = ({ children }) => children
 
 const NearbyCrimesMap = (props) => {
-  const { crimesData, nearbyCrimesMapTitle } = props
+  const { crimesData } = props
 
   NearbyCrimesMap.propTypes = {
     crimesData: PropTypes.array,
-    nearbyCrimesMapTitle: PropTypes.string,
   }
 
   // State
@@ -135,7 +136,7 @@ const NearbyCrimesMap = (props) => {
   // return isLoaded ? (
   return (
     <NearbyCrimesMapContainer>
-      <Title>{nearbyCrimesMapTitle}</Title>
+      <Title>{NearbyCrimesMapTitle}</Title>
       {/* <div> */}
       <div style={{ height: "580px", width: "100%", marginTop: 20 }}>
         <GoogleMapReact

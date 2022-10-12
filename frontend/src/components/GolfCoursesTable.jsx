@@ -1,8 +1,10 @@
 import React, { memo } from "react"
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import Title from "./Title"
+
+const GolfCoursesTableTitle = "Golf Courses Table"
 
 const GolfCourseTableContainer = styled.div`
   min-width: 200px;
@@ -19,19 +21,16 @@ const GolfCourseTableTitleContainer = styled.div`
 `
 
 const GolfCoursesTable = (props) => {
-  const { golfCoursesTableTitle, golfCourses } = props
+  // const { golfCourses } = props
 
-  GolfCoursesTable.propTypes = {
-    golfCoursesTableTitle: PropTypes.string,
-    golfCourses: PropTypes.array,
-  }
-
-  console.log(golfCourses)
+  // GolfCoursesTable.propTypes = {
+  //   golfCourses: PropTypes.array,
+  // }
 
   return (
     <div>
       <GolfCourseTableTitleContainer>
-        <Title>{golfCoursesTableTitle}</Title>
+        <Title>{GolfCoursesTableTitle}</Title>
       </GolfCourseTableTitleContainer>
       <GolfCourseTableContainer>
         golf courses selection

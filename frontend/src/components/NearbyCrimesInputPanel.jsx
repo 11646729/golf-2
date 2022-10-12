@@ -9,6 +9,10 @@ import {
 
 import Title from "./Title"
 
+const NearbyCrimesPanelTitle = "Nearby Crimes"
+const HomeCheckboxLabel = "Home Location"
+const LatestCheckboxLabel = "Latest Available Data"
+
 const NearbyCrimesTitleContainer = styled.div`
   margin-top: 35px;
   margin-left: 20px;
@@ -20,26 +24,17 @@ const NearbyCrimesTitleContainer = styled.div`
 // React Controller component
 // -------------------------------------------------------
 const NearbyCrimesInputPanel = (props) => {
-  const {
-    nearbyCrimesPanelTitle,
-    homeCheckboxLabel,
-    homeCheckboxStatus,
-    latestCheckboxLabel,
-    latestCheckboxStatus,
-  } = props
+  const { homeCheckboxStatus, latestCheckboxStatus } = props
 
   NearbyCrimesInputPanel.propTypes = {
-    nearbyCrimesPanelTitle: PropTypes.string,
-    homeCheckboxLabel: PropTypes.string,
     homeCheckboxStatus: PropTypes.bool,
-    latestCheckboxLabel: PropTypes.string,
     latestCheckboxStatus: PropTypes.bool,
   }
 
   return (
     <div>
       <NearbyCrimesTitleContainer>
-        <Title>{nearbyCrimesPanelTitle}</Title>
+        <Title>{NearbyCrimesPanelTitle}</Title>
       </NearbyCrimesTitleContainer>
 
       <Grid item xs={12} sm={12} style={{ marginTop: 50 }}>
@@ -49,7 +44,7 @@ const NearbyCrimesInputPanel = (props) => {
           defaultChecked={homeCheckboxStatus}
           value="Boat"
         />
-        <label htmlFor="homeCheckbox">{homeCheckboxLabel}</label>
+        <label htmlFor="homeCheckbox">{HomeCheckboxLabel}</label>
 
         <input
           type="checkbox"
@@ -57,7 +52,7 @@ const NearbyCrimesInputPanel = (props) => {
           defaultChecked={latestCheckboxStatus}
           value="Boat"
         />
-        <label htmlFor="latestCheckbox">{latestCheckboxLabel}</label>
+        <label htmlFor="latestCheckbox">{LatestCheckboxLabel}</label>
 
         {/* <FormControlLabel
           style={styles.displayHomeLocationCheckBox}

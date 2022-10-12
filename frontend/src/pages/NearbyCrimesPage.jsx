@@ -60,18 +60,12 @@ const NearbyCrimesPage = () => {
       <NearbyCrimesInputPanelContainer>
         <NearbyCrimesInputPanel
           isLoading={isLoading}
-          nearbyCrimesPanelTitle="Nearby Crimes"
-          homeCheckboxLabel="Home Location"
           homeCheckboxStatus // Leaving it blank means true, "={false} otherwise"
-          latestCheckboxLabel="Latest Available Data"
           latestCheckboxStatus
         />
       </NearbyCrimesInputPanelContainer>
       <NearbyCrimesMapContainer>
-        <NearbyCrimesMap
-          nearbyCrimesMapTitle="Crimes Location Map"
-          crimesData={rawCrimesData}
-        />
+        <NearbyCrimesMap crimesData={rawCrimesData} />
       </NearbyCrimesMapContainer>
     </NearbyCrimesContainer>
   )

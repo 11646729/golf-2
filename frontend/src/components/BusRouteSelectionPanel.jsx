@@ -5,7 +5,9 @@ import styled from "styled-components"
 import Title from "./Title"
 import BusRouteSelectionList from "./BusRouteSelectionList"
 
-const TitleContainer = styled.div`
+const BusRoutesPanelTitle = "Bus Routes Table"
+
+const BusRoutesPanelContainer = styled.div`
   margin-top: 35px;
   margin-left: 20px;
   margin-right: 20px;
@@ -29,9 +31,9 @@ const BusRouteSelectionPanel = (props) => {
 
   return (
     <div>
-      <TitleContainer>
-        <Title>Available Bus Routes</Title>
-      </TitleContainer>
+      <BusRoutesPanelContainer>
+        <Title>{BusRoutesPanelTitle}</Title>
+      </BusRoutesPanelContainer>
       <BusRouteSelectionPanelListContainer>
         <BusRouteSelectionList busRoutesCollection={busRoutesCollection} />
       </BusRouteSelectionPanelListContainer>

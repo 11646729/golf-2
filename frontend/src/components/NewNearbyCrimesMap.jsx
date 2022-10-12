@@ -11,6 +11,8 @@ import styled from "styled-components"
 
 import Title from "./Title"
 
+const NearbyCrimesMapTitle = "Crimes Location Map"
+
 const NearbyCrimesMapContainer = styled.div`
   font-size: 20px;
   font-weight: 600;
@@ -25,11 +27,10 @@ const options = {
 const NearbyCrimesMap = (props) => {
   // const [selected, setSelected] = useState(null)
 
-  const { crimesData, nearbyCrimesMapTitle } = props
+  const { crimesData } = props
 
   NearbyCrimesMap.propTypes = {
     crimesData: PropTypes.array,
-    nearbyCrimesMapTitle: PropTypes.string,
   }
 
   const mapContainerStyle = {
@@ -58,7 +59,7 @@ const NearbyCrimesMap = (props) => {
 
   return isLoaded ? (
     <NearbyCrimesMapContainer>
-      <Title>{nearbyCrimesMapTitle}</Title>
+      <Title>{NearbyCrimesMapTitle}</Title>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={mapZoom}
