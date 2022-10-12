@@ -108,7 +108,7 @@ const RawDataTable = () => {
       <RawDataTableContainer>
         <RawDataTableStyle>
           <RawDataTableHeaderStyle>
-            <RawDataTableRow className="rawdatatableTh">
+            <RawDataTableRow>
               <RawDataTableHeader>Import Raw Data Types</RawDataTableHeader>
               <RawDataTableHeader>Status</RawDataTableHeader>
               <RawDataTableHeader>Select</RawDataTableHeader>
