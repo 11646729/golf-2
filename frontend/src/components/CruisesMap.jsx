@@ -26,16 +26,15 @@ const CruisesMapContainer = styled.div`
   padding-top: 30px;
 `
 
+const CruiseMapTitle = "Cruise Ship Positions Now"
+
 const CruisesMap = (props) => {
-  const { cruisesMapTitle, cruisesHomePosition, vesselPositions } = props
+  const { cruisesHomePosition, vesselPositions } = props
 
   CruisesMap.propTypes = {
-    cruisesMapTitle: PropTypes.string,
     cruisesHomePosition: PropTypes.object,
     vesselPositions: PropTypes.array,
   }
-
-  // console.log(cruisesHomePosition)
 
   const [map, setMap] = useState(null)
   const [selected, setSelected] = useState(null)
@@ -99,7 +98,7 @@ const CruisesMap = (props) => {
 
   return isLoaded ? (
     <CruisesMapContainer>
-      <Title>{cruisesMapTitle}</Title>
+      <Title>{CruiseMapTitle}</Title>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={mapCenter}
@@ -116,8 +115,6 @@ const CruisesMap = (props) => {
 
         {vesselPositions
           ? vesselPositions.map((vesselPosition) => (
-              //                console.log(vesselPosition.index),
-              //                (
               <Marker
                 key={vesselPosition.index}
                 position={{
@@ -129,7 +126,6 @@ const CruisesMap = (props) => {
                   setSelected(vesselPosition)
                 }}
               />
-              //                )
             ))
           : null}
 

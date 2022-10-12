@@ -120,6 +120,7 @@ const Button = styled.button`
     cursor: pointer;
   }
 `
+const CruisesTableTitle = "Cruise Ships Arriving Soon"
 
 const CruisesTable = (props) => {
   const { cruisesTableTitle, portArrivals } = props
@@ -132,7 +133,7 @@ const CruisesTable = (props) => {
   return (
     <div>
       <CruisesTableTitleContainer>
-        <Title>{cruisesTableTitle}</Title>
+        <Title>{CruisesTableTitle}</Title>
       </CruisesTableTitleContainer>
 
       <CruisesTableContainer>

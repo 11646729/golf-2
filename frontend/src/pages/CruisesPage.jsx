@@ -75,15 +75,11 @@ const CruisesPage = () => {
   return (
     <CruisesContainer>
       <CruisesTableContainer>
-        <CruisesTable
-          cruisesTableTitle="Cruise Ships Arriving Soon"
-          portArrivals={portArrivals}
-        />
+        <CruisesTable portArrivals={portArrivals} />
       </CruisesTableContainer>
       <CruisesMapContainer>
         <CruisesMap
           isLoading={isLoading}
-          cruisesMapTitle="Cruise Ship Positions"
           cruisesHomePosition={homePosition}
           vesselPositions={vesselPositions}
           vesselDetails={portArrivals}

@@ -20,24 +20,32 @@ const RawDataMessagesContainer = styled.div`
   flex: 1;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
-  min-height: 100px;
+  min-height: 200px;
 `
 
 // -------------------------------------------------------
 // React Controller component
 // -------------------------------------------------------
-const RawDataPage = () => (
-  <RawDataContainer>
-    <RawDataTableContainer>
-      <RawDataTable rawDataTableTitle="Raw Data Import" />
-    </RawDataTableContainer>
-    <RawDataMessagesContainer>
-      <RawDataMessageBox
-        rawDataMessageBoxTitle="Messages Here"
-        messageString="Here is the first message."
-      />
-    </RawDataMessagesContainer>
-  </RawDataContainer>
-)
+const RawDataPage = () => {
+  // const { messageString } = props
+
+  // RawDataPage.propTypes = {
+  //   messageString: PropTypes.string,
+  // }
+
+  return (
+    <RawDataContainer>
+      <RawDataTableContainer>
+        <RawDataTable />
+      </RawDataTableContainer>
+      <RawDataMessagesContainer>
+        <RawDataMessageBox
+          rawDataMessageBoxTitle="Status Messages"
+          messageString="Here is the first message."
+        />
+      </RawDataMessagesContainer>
+    </RawDataContainer>
+  )
+}
 
 export default memo(RawDataPage)
