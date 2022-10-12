@@ -27,22 +27,13 @@ const RawDataMessagesContainer = styled.div`
 // React Controller component
 // -------------------------------------------------------
 const RawDataPage = () => {
-  // const { messageString } = props
-
-  // RawDataPage.propTypes = {
-  //   messageString: PropTypes.string,
-  // }
-
   return (
     <RawDataContainer>
       <RawDataTableContainer>
         <RawDataTable />
       </RawDataTableContainer>
       <RawDataMessagesContainer>
-        <RawDataMessageBox
-          rawDataMessageBoxTitle="Status Messages"
-          messageString="Here is the first message."
-        />
+        <RawDataMessageBox />
       </RawDataMessagesContainer>
     </RawDataContainer>
   )

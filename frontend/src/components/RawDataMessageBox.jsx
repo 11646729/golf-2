@@ -1,10 +1,11 @@
 import React, { memo } from "react"
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import Title from "./Title"
 
-const RawDataMessageBoxTitle = "Raw Data Import"
+const RawDataMessageBoxTitle = "Status Messages"
+const RawDataMessageString = "Here is the first message"
 
 const RawDataMessageBoxTitleContainer = styled.div`
   margin-top: 35px;
@@ -14,17 +15,17 @@ const RawDataMessageBoxTitleContainer = styled.div`
 `
 
 const RawDataMessageBox = (props) => {
-  const { messageString } = props
+  //   const { messageString } = props
 
-  RawDataMessageBox.propTypes = {
-    messageString: PropTypes.string,
-  }
+  //   RawDataMessageBox.propTypes = {
+  //     messageString: PropTypes.string,
+  //   }
 
   return (
     <div>
       <RawDataMessageBoxTitleContainer>
         <Title>{RawDataMessageBoxTitle}</Title>
-        {messageString}
+        {RawDataMessageString}
       </RawDataMessageBoxTitleContainer>
     </div>
   )

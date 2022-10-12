@@ -123,10 +123,9 @@ const Button = styled.button`
 const CruisesTableTitle = "Cruise Ships Arriving Soon"
 
 const CruisesTable = (props) => {
-  const { cruisesTableTitle, portArrivals } = props
+  const { portArrivals } = props
 
   CruisesTable.propTypes = {
-    cruisesTableTitle: PropTypes.string,
     portArrivals: PropTypes.array,
   }
 

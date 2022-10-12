@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import Title from "./Title"
@@ -18,17 +18,19 @@ const TemperaturesTableTitleContainer = styled.div`
   width: "97%";
 `
 
-const TemperaturesTable = (props) => {
-  const { temperaturesTableTitle } = props
+const TemperaturesTableTitle = "Temperatures Table"
 
-  TemperaturesTable.propTypes = {
-    temperaturesTableTitle: PropTypes.string,
-  }
+const TemperaturesTable = (props) => {
+  // const { temperaturesTableTitle } = props
+
+  // TemperaturesTable.propTypes = {
+  //   temperaturesTableTitle: PropTypes.string,
+  // }
 
   return (
     <div>
       <TemperaturesTableTitleContainer>
-        <Title>{temperaturesTableTitle}</Title>
+        <Title>{TemperaturesTableTitle}</Title>
       </TemperaturesTableTitleContainer>
       <TemperaturesTableContainer>
         temperatures selection
