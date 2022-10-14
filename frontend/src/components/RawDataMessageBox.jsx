@@ -4,18 +4,25 @@ import styled from "styled-components"
 
 import Title from "./Title"
 
-const RawDataMessageBoxTitle = "Status Messages"
+const RawDataTitleText = "Status Messages"
 
-const RawDataMessageBoxContainer = styled.div`
-  font-size: 20px;
-  font-weight: 600;
-  padding-left: 20px;
-  padding-top: 30px;
+const RawDataTitleContainer = styled.div`
+  margin-top: 35px;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: "97%";
 `
 
-const RawDataMessageBoxStyle = styled.textarea`
-  margin-left: 30px;
-  width: 92%;
+const RawDataTextAreaContainer = styled.div`
+  min-width: 200px;
+  margin-left: 20px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+`
+
+const RawDataTextArea = styled.textarea`
+  margin-left: 20px;
+  width: 94%;
   height: 90%;
   border: 1px solid lightgray;
   font-size: 13px;
@@ -29,10 +36,15 @@ const RawDataMessageBox = (props) => {
   }
 
   return (
-    <RawDataMessageBoxContainer>
-      <Title>{RawDataMessageBoxTitle}</Title>
-      <RawDataMessageBoxStyle rows="6">{messageString}</RawDataMessageBoxStyle>
-    </RawDataMessageBoxContainer>
+    <div>
+      <RawDataTitleContainer>
+        <Title>{RawDataTitleText}</Title>
+      </RawDataTitleContainer>
+
+      <RawDataTextAreaContainer>
+        <RawDataTextArea rows="6">{messageString}</RawDataTextArea>
+      </RawDataTextAreaContainer>
+    </div>
   )
 }
 
