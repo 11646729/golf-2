@@ -1,11 +1,10 @@
 import React, { memo } from "react"
-// import PropTypes from "prop-types"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import Title from "./Title"
 
 const RawDataMessageBoxTitle = "Status Messages"
-const RawDataMessageString = "Here is the first message"
 
 const RawDataMessageBoxContainer = styled.div`
   font-size: 20px;
@@ -23,18 +22,16 @@ const RawDataMessageBoxStyle = styled.textarea`
 `
 
 const RawDataMessageBox = (props) => {
-  // const { messageString } = props
+  const { messageString } = props
 
-  // RawDataMessageBox.propTypes = {
-  //   messageString: PropTypes.string,
-  // }
+  RawDataMessageBox.propTypes = {
+    messageString: PropTypes.string,
+  }
 
   return (
     <RawDataMessageBoxContainer>
       <Title>{RawDataMessageBoxTitle}</Title>
-      <RawDataMessageBoxStyle rows="6">
-        {RawDataMessageString}
-      </RawDataMessageBoxStyle>
+      <RawDataMessageBoxStyle rows="6">{messageString}</RawDataMessageBoxStyle>
     </RawDataMessageBoxContainer>
   )
 }

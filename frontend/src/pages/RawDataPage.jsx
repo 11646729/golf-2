@@ -33,7 +33,7 @@ const RawDataPage = () => {
         <RawDataTable />
       </RawDataTableContainer>
       <RawDataMessagesContainer>
-        <RawDataMessageBox />
+        <RawDataMessageBox messageString="Here is the second message" />
       </RawDataMessagesContainer>
     </RawDataContainer>
   )
