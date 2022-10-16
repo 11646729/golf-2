@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const TemperaturesCard = () => {
+const WeatherCard = () => {
   const classes = useStyles()
 
   return (
@@ -45,12 +45,7 @@ const TemperaturesCard = () => {
         <Typography>This shows the Outside Temperature at Home</Typography>
       </CardContent>
       <CardActions>
-        <Button
-          size="small"
-          color="primary"
-          component={Link}
-          to="/temperaturespage"
-        >
+        <Button size="small" color="primary" component={Link} to="/weatherpage">
           View
         </Button>
       </CardActions>
@@ -58,4 +53,4 @@ const TemperaturesCard = () => {
   )
 }
 
-export default memo(TemperaturesCard)
+export default memo(WeatherCard)

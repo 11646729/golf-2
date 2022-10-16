@@ -29,7 +29,7 @@ const socket = io(process.env.REACT_APP_SOCKET_ENDPOINT)
 // -------------------------------------------------------
 // React Controller component
 // -------------------------------------------------------
-const TemperaturesPage = () => {
+const WeatherPage = () => {
   const [temperatureData, setTemperatureData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -89,4 +89,4 @@ const TemperaturesPage = () => {
   )
 }
 
-export default memo(TemperaturesPage)
+export default memo(WeatherPage)
