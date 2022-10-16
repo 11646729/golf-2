@@ -34,7 +34,7 @@ const TemperaturesPage = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    getTemperatureData()
+    getTemperatureData("http://localhost:4000/api/weather/getTemperatures")
       .then((returnedData) => {
         console.log(returnedData)
 

@@ -42,7 +42,9 @@ const RawDataMessageBox = (props) => {
       </RawDataTitleContainer>
 
       <RawDataTextAreaContainer>
-        <RawDataTextArea rows="6">{messageString}</RawDataTextArea>
+        <RawDataTextArea rows="6" defaultValue={messageString}>
+          {/* {messageString} */}
+        </RawDataTextArea>
       </RawDataTextAreaContainer>
     </div>
   )
