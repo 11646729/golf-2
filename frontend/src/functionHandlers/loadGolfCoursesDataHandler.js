@@ -21,9 +21,10 @@ export const initialImportOfGolfCoursesData = () =>
 // -------------------------------------------------------
 // Function to fetch all Golf Course data - DON'T TRY TO REFACTOR THIS
 // -------------------------------------------------------
-export const getGolfCoursesData = () =>
+export const getGolfCoursesData = (url) =>
   axios
-    .get("http://localhost:4000/api/golf/getGolfCourses")
+    .get(url)
+    // .get("http://localhost:4000/api/golf/getGolfCourses")
     .then((response) => response.data)
     .catch((err) => console.log(err))
 
