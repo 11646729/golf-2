@@ -77,7 +77,7 @@ const WeatherPage = () => {
   return (
     <TemperaturesContainer>
       <TemperaturesTableContainer>
-        <TemperaturesTable />
+        <TemperaturesTable temperaturesTableTitle="Temperatures Table" />
       </TemperaturesTableContainer>
       <TemperaturesChartContainer>
         <TemperaturesChart

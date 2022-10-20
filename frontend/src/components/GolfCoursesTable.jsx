@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-// import PropTypes from "prop-types"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import Title from "./Title"
@@ -21,11 +21,11 @@ const GolfCourseTableTitleContainer = styled.div`
 `
 
 const GolfCoursesTable = (props) => {
-  // const { golfCourses } = props
+  const { golfCourses } = props
 
-  // GolfCoursesTable.propTypes = {
-  //   golfCourses: PropTypes.array,
-  // }
+  GolfCoursesTable.propTypes = {
+    golfCourses: PropTypes.array,
+  }
 
   return (
     <div>

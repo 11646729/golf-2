@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-// import PropTypes from "prop-types"
+import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import Title from "./Title"
@@ -90,19 +90,17 @@ const Button = styled.button`
   }
 `
 
-const RawDataTableTitle = "Raw Data Importing Operations"
+const RawDataTable = (props) => {
+  const { rawDataTableTitle } = props
 
-const RawDataTable = () => {
-  // const { rawDataTableTitle } = props
-
-  // RawDataTable.propTypes = {
-  //   rawDataTableTitle: PropTypes.string,
-  // }
+  RawDataTable.propTypes = {
+    rawDataTableTitle: PropTypes.string,
+  }
 
   return (
     <div>
       <RawDataTableTitleContainer>
-        <Title>{RawDataTableTitle}</Title>
+        <Title>{rawDataTableTitle}</Title>
       </RawDataTableTitleContainer>
 
       <RawDataTableContainer>
