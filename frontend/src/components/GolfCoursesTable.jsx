@@ -32,7 +32,7 @@ const GolfCoursesTable = (props) => {
       <GolfCourseTableTitleContainer>
         <Title>{GolfCoursesTableTitle}</Title>
       </GolfCourseTableTitleContainer>
-      <GolfCourseTableContainer>
+      <GolfCourseTableContainer golfCourses={golfCourses}>
         golf courses selection
       </GolfCourseTableContainer>
     </div>
