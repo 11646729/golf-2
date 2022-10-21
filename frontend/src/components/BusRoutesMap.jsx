@@ -37,7 +37,9 @@ const BusRoutesMap = (props) => {
   }
 
   const [map, setMap] = useState(null)
-  const [mapZoom] = useState(parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM))
+  const [mapZoom] = useState(
+    parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
+  )
   const [mapCenter] = useState({
     lat: parseFloat(process.env.REACT_APP_HOME_LATITUDE),
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),

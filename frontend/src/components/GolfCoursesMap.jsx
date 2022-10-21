@@ -47,7 +47,7 @@ const GolfCoursesMap = (props) => {
     marginBottom: 20,
   }
 
-  const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
+  const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
 
   const mapCenter = useMemo(
     () => ({

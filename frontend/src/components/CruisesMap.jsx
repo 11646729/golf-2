@@ -39,7 +39,7 @@ const CruisesMap = (props) => {
   const [map, setMap] = useState(null)
   const [selected, setSelected] = useState(null)
 
-  const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM)
+  const mapZoom = parseInt(process.env.REACT_APP_MAP_DEFAULT_ZOOM, 10)
 
   const mapCenter = {
     lat: parseFloat(process.env.REACT_APP_BELFAST_PORT_LATITUDE),
