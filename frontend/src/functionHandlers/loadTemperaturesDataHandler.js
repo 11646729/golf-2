@@ -1,30 +1,21 @@
-import axios from "axios"
+import { getCommonData, postCommonData } from "./axios-common"
 
 // -------------------------------------------------------
 // Function to prepare the temperatures table in the SQL database
 // -------------------------------------------------------
-export const prepareTemperaturesTable = () =>
-  axios
-    .post("http://localhost:4000/api/weather/prepareTemperaturesTable")
-    .then(() => console.log("Empty temperatures table prepared"))
-    .catch((err) => console.log(err))
+const prepareTemperaturesTable = (url) => postCommonData(url)
 
 // -------------------------------------------------------
-// Function to fetch all Temperature data
+// Function to fetch all Temperatures data
 // -------------------------------------------------------
-export const getTemperatureData = (url) =>
-  axios
-    .get(url)
-    // .get("http://localhost:4000/api/weather/getTemperatures")
-    .then((response) => response.data)
-    .catch((err) => console.log(err))
+export const getTemperaturesData = (url) => getCommonData(url)
 
 // -------------------------------------------------------
 // Function to fetch all Temperatures data into the SQL database
 // -------------------------------------------------------
 export const loadTemperaturesDataHandler = () => {
   // Prepare empty temperatures table in the database & show result
-  prepareTemperaturesTable()
+  prepareTemperaturesTable("http://localhost:4000/api/weather/getTemperatures")
 }
 
-export { getTemperatureData as default }
+export { getTemperaturesData as default }
