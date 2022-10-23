@@ -49,9 +49,14 @@ app.use("/api/weather", weatherRouter)
 app.use("/api/cruise", cruiseRouter)
 app.use("/api/bus", busRouter)
 
+// Added on 23-10-2022
+// This returns a default response for any other request
+app.use((req, res) => {
+  res.status(404)
+})
+
 // Enable Realtime data sources (true = enable, false = disable)
 var resultReturned = switchOnRealtimeTemperatureData(io, false)
-
 console.log(resultReturned)
 
 // Start Express server
