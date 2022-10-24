@@ -1,29 +1,20 @@
 import axios from "axios"
+import { getCommonData, postCommonData } from "./axios-common"
 
 // -------------------------------------------------------
 // Function to prepare the portarrivals table in the SQL database
 // -------------------------------------------------------
-const preparePortArrivalsTable = () => {
-  axios
-    .post("http://localhost:4000/api/cruise/preparePortArrivalsTable")
-    .then(() => console.log("Empty portarrivals table prepared"))
-    .catch((err) => console.log(err))
-}
+const preparePortArrivalsTable = (url) => postCommonData(url)
 
 // -------------------------------------------------------
 // Function to prepare the vessels table in the SQL database
 // -------------------------------------------------------
-const prepareVesselsTable = () => {
-  axios
-    .post("http://localhost:4000/api/cruise/prepareVesselsTable")
-    .then(() => console.log("Empty vessels table prepared"))
-    .catch((err) => console.log(err))
-}
+const prepareVesselsTable = (url) => postCommonData(url)
 
 // -------------------------------------------------------
 // Function to fetch all Cruise PortArrivals & Vessel data
 // -------------------------------------------------------
-const importPortArrivalsAndVesselsData = () => {
+const importPortArrivalsAndVesselsData = (url) => {
   const params = {
     portName: "Belfast",
   }
@@ -35,11 +26,7 @@ const importPortArrivalsAndVesselsData = () => {
   }
 
   axios
-    .post(
-      "http://localhost:4000/api/cruise/importPortArrivalsAndVesselsData",
-      params,
-      config
-    )
+    .post(url, params, config)
     .then(() => console.log("Loading scraped vessel and port arrivals data"))
     .catch((err) => console.log(err))
 }
@@ -47,11 +34,7 @@ const importPortArrivalsAndVesselsData = () => {
 // -------------------------------------------------------
 // Function to fetch all Cruise Vessel data
 // -------------------------------------------------------
-export const getPortArrivalsData = () =>
-  axios
-    .get("http://localhost:4000/api/cruise/portArrivals")
-    .then((response) => response.data)
-    .catch((err) => console.log(err))
+export const getPortArrivalsData = (url) => getCommonData(url)
 
 // -------------------------------------------------------
 // Function to fetch Cruise Vessel Position data
@@ -97,11 +80,17 @@ export const getCruiseVesselPositionData = async (portArrivals) => {
 // -------------------------------------------------------
 export const loadCruiseShipArrivalsDataHandler = () => {
   // Prepare empty port arrivals table in the database & show result
-  preparePortArrivalsTable()
+  preparePortArrivalsTable(
+    "http://localhost:4000/api/cruise/preparePortArrivalsTable"
+  )
 
   // Prepare empty vessels table in the database & show result
-  prepareVesselsTable()
+  prepareVesselsTable("http://localhost:4000/api/cruise/prepareVesselsTable")
 
   // Import the scraped data into the database & show result
-  importPortArrivalsAndVesselsData()
+  importPortArrivalsAndVesselsData(
+    "http://localhost:4000/api/cruise/importPortArrivalsAndVesselsData"
+  )
 }
+
+export { getPortArrivalsData as default }

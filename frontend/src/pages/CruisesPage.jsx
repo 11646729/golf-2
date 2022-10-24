@@ -39,9 +39,12 @@ const CruisesPage = () => {
     lng: parseFloat(process.env.REACT_APP_HOME_LONGITUDE),
   }
 
+  // build portArrivalsData Url
+  const portArrivalsDataUrl = "http://localhost:4000/api/cruise/portArrivals"
+
   // This routine gets Port Arrivals data
   useEffect(() => {
-    getPortArrivalsData()
+    getPortArrivalsData(portArrivalsDataUrl)
       .then((returnedData) => {
         // Sort by date becaause returnedData is not always in timestamp order
         returnedData.sort((a, b) => (a.vesseleta > b.vesseleta ? 1 : -1))
