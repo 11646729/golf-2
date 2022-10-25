@@ -21,14 +21,3 @@ export const postCommonData = (url, params, config) =>
     .catch((err) => console.log(err))
 
 export { getCommonData as default }
-
-// axios.post('/user', {
-//   firstName: 'Fred',
-//   lastName: 'Flintstone'
-// })
-// .then(function (response) {
-//   console.log(response);
-// })
-// .catch(function (error) {
-//   console.log(error);
-// });
