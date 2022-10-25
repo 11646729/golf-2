@@ -14,10 +14,10 @@ const prepareVesselsTable = (url) => postCommonData(url)
 // -------------------------------------------------------
 // Function to fetch all Cruise PortArrivals & Vessel data
 // -------------------------------------------------------
-const importPortArrivalsAndVesselsData = (url) => {
-  const params = {
-    portName: "Belfast",
-  }
+const importPortArrivalsAndVesselsData = (url, params) => {
+  // const params = {
+  //   portName: "Belfast",
+  // }
   const config = {
     timeout: 20000,
     headers: {
@@ -89,7 +89,10 @@ export const loadCruiseShipArrivalsDataHandler = () => {
 
   // Import the scraped data into the database & show result
   importPortArrivalsAndVesselsData(
-    "http://localhost:4000/api/cruise/importPortArrivalsAndVesselsData"
+    "http://localhost:4000/api/cruise/importPortArrivalsAndVesselsData",
+    {
+      portName: "Belfast",
+    }
   )
 }
 
