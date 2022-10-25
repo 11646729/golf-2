@@ -14,22 +14,25 @@ const prepareVesselsTable = (url) => postCommonData(url)
 // -------------------------------------------------------
 // Function to fetch all Cruise PortArrivals & Vessel data
 // -------------------------------------------------------
-const importPortArrivalsAndVesselsData = (url, params) => {
-  // const params = {
-  //   portName: "Belfast",
-  // }
-  const config = {
-    timeout: 20000,
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }
+const importPortArrivalsAndVesselsData = (url, params, config) =>
+  postCommonData(url, params, config)
 
-  axios
-    .post(url, params, config)
-    .then(() => console.log("Loading scraped vessel and port arrivals data"))
-    .catch((err) => console.log(err))
-}
+// const importPortArrivalsAndVesselsData = (url, params) => {
+//   // const params = {
+//   //   portName: "Belfast",
+//   // }
+//   const config = {
+//     timeout: 20000,
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   }
+
+//   axios
+//     .post(url, params, config)
+//     .then(() => console.log("Loading scraped vessel and port arrivals data"))
+//     .catch((err) => console.log(err))
+// }
 
 // -------------------------------------------------------
 // Function to fetch all Cruise Vessel data
@@ -92,6 +95,12 @@ export const loadCruiseShipArrivalsDataHandler = () => {
     "http://localhost:4000/api/cruise/importPortArrivalsAndVesselsData",
     {
       portName: "Belfast",
+    },
+    {
+      timeout: 20000,
+      headers: {
+        "Content-Type": "application/json",
+      },
     }
   )
 }
