@@ -1,19 +1,34 @@
-import { getCommonData, postCommonData } from "./axios-common"
+import axios from "axios"
 
 // -------------------------------------------------------
 // Function to prepare the golfcourses table in the SQL database
 // -------------------------------------------------------
-const prepareGolfCoursesTable = (url) => postCommonData(url)
+const prepareGolfCoursesTable = async (url) => {
+  return await axios
+    .post(url)
+    .then((response) => response.data)
+    .catch((err) => console.log(err))
+}
 
 // -------------------------------------------------------
 // Function to instruct backend to load Golf Club Data into the database
 // -------------------------------------------------------
-const initialImportOfGolfCoursesData = (url) => getCommonData(url)
+const initialImportOfGolfCoursesData = async (url) => {
+  return await axios
+    .get(url)
+    .then((response) => response.data)
+    .catch((err) => console.log(err))
+}
 
 // -------------------------------------------------------
 // Function to fetch all Golf Course data - DON'T TRY TO REFACTOR THIS
 // -------------------------------------------------------
-export const getGolfCoursesData = (url) => getCommonData(url)
+export const getGolfCoursesData = async (url) => {
+  return await axios
+    .get(url)
+    .then((response) => response.data)
+    .catch((err) => console.log(err))
+}
 
 // -------------------------------------------------------
 // Function to fetch all Golf Courses data into the SQL database

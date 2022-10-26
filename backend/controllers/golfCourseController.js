@@ -53,15 +53,16 @@ export const prepareEmptyGolfCoursesTable = (req, res) => {
 // Create golfcourses Table in the SQLite database
 // -------------------------------------------------------
 const createGolfCoursesTable = (db) => {
+  // IF NOT EXISTS isn't really necessary in next line
+  const sql =
+    "CREATE TABLE IF NOT EXISTS golfcourses (courseid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, type TEXT NOT NULL, crsurn TEXT NOT NULL, name TEXT NOT NULL, phonenumber TEXT NOT NULL, phototitle TEXT NOT NULL, photourl TEXT NOT NULL, description TEXT, lng REAL CHECK( lng >= -180 AND lng <= 180 ), lat REAL CHECK( lat >= -90 AND lat <= 90 ))"
+  let params = []
+
   // Guard clause for null Database Connection
   if (db === null) return
 
   try {
-    // IF NOT EXISTS isn't really necessary in next line
-    const sql =
-      "CREATE TABLE IF NOT EXISTS golfcourses (courseid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, type TEXT NOT NULL, crsurn TEXT NOT NULL, name TEXT NOT NULL, phonenumber TEXT NOT NULL, phototitle TEXT NOT NULL, photourl TEXT NOT NULL, description TEXT, lng REAL CHECK( lng >= -180 AND lng <= 180 ), lat REAL CHECK( lat >= -90 AND lat <= 90 ))"
-
-    db.run(sql, [], (err) => {
+    db.run(sql, params, (err) => {
       if (err) {
         console.error(err.message)
       }
@@ -209,19 +210,24 @@ const populateGolfCourses = (courses) => {
 // Path: localhost:4000/api/golf/getGolfCourses
 // -------------------------------------------------------
 export const getGolfCourses = (req, res) => {
+  let sql = "SELECT * FROM golfcourses ORDER BY courseid"
+  let params = []
+
   // Open a Database Connection
   let db = null
   db = openSqlDbConnection(process.env.SQL_URI)
 
   if (db !== null) {
     try {
-      let sql = "SELECT * FROM golfcourses ORDER BY courseid"
-
-      db.all(sql, [], (err, results) => {
+      db.all(sql, params, (err, results) => {
         if (err) {
-          return console.error(err.message)
+          res.status(400).json({ error: err.message })
+          return
         }
-
+        // res.json({
+        //   message: "success",
+        //   data: results,
+        // })
         res.send(results)
       })
 

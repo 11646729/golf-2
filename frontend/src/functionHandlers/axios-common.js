@@ -3,11 +3,12 @@ import axios from "axios"
 // -------------------------------------------------------
 // Common function to get data from the SQL database
 // -------------------------------------------------------
-export const getCommonData = (url, params, config) =>
+export const getCommonData = (url, params, config) => {
   axios
     .get(url, params, config)
     .then((response) => response.data)
     .catch((err) => console.log(err))
+}
 
 // -------------------------------------------------------
 // Common function to post data to the SQL database

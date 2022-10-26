@@ -1,9 +1,14 @@
-import { getCommonData } from "./axios-common"
+import axios from "axios"
 
 // -------------------------------------------------------
 // Function to fetch all Crimes data
 // -------------------------------------------------------
-export const getCrimesData = (url) => getCommonData(url)
+export const getCrimesData = async (url) => {
+  return await axios
+    .get(url)
+    .then((response) => response.data)
+    .catch((err) => console.log(err))
+}
 
 // -------------------------------------------------------
 // Function to fetch all Crimes data into the SQL database

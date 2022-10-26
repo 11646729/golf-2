@@ -1,43 +1,60 @@
 import axios from "axios"
-import { getCommonData, postCommonData } from "./axios-common"
 
 // -------------------------------------------------------
 // Function to prepare the portarrivals table in the SQL database
 // -------------------------------------------------------
-const preparePortArrivalsTable = (url) => postCommonData(url)
+const preparePortArrivalsTable = async (url) => {
+  return await axios
+    .post(url)
+    .then((response) => response.data)
+    .catch((err) => console.log(err))
+}
 
 // -------------------------------------------------------
 // Function to prepare the vessels table in the SQL database
 // -------------------------------------------------------
-const prepareVesselsTable = (url) => postCommonData(url)
+const prepareVesselsTable = async (url) => {
+  return await axios
+    .post(url)
+    .then((response) => response.data)
+    .catch((err) => console.log(err))
+}
 
 // -------------------------------------------------------
 // Function to fetch all Cruise PortArrivals & Vessel data
 // -------------------------------------------------------
-const importPortArrivalsAndVesselsData = (url, params, config) =>
-  postCommonData(url, params, config)
+const importPortArrivalsAndVesselsData = async (url) => {
+  const params = { portName: "Belfast" }
+  const config = {
+    timeout: 20000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }
 
-// const importPortArrivalsAndVesselsData = (url, params) => {
-//   // const params = {
-//   //   portName: "Belfast",
-//   // }
-//   const config = {
-//     timeout: 20000,
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   }
-
-//   axios
-//     .post(url, params, config)
-//     .then(() => console.log("Loading scraped vessel and port arrivals data"))
-//     .catch((err) => console.log(err))
-// }
+  return await axios
+    .post(url, params, config)
+    .then((returnedData) => returnedData.data)
+    .catch((err) => console.log(err))
+}
 
 // -------------------------------------------------------
 // Function to fetch all Cruise Vessel data
 // -------------------------------------------------------
-export const getPortArrivalsData = (url) => getCommonData(url)
+export const getPortArrivalsData = async (url) => {
+  const params = { portName: "Belfast" }
+  const config = {
+    timeout: 20000,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }
+
+  return await axios
+    .get(url, params, config)
+    .then((returnedData) => returnedData.data)
+    .catch((err) => console.log(err))
+}
 
 // -------------------------------------------------------
 // Function to fetch Cruise Vessel Position data
@@ -92,16 +109,7 @@ export const loadCruiseShipArrivalsDataHandler = () => {
 
   // Import the scraped data into the database & show result
   importPortArrivalsAndVesselsData(
-    "http://localhost:4000/api/cruise/importPortArrivalsAndVesselsData",
-    {
-      portName: "Belfast",
-    },
-    {
-      timeout: 20000,
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
+    "http://localhost:4000/api/cruise/importPortArrivalsAndVesselsData"
   )
 }
 

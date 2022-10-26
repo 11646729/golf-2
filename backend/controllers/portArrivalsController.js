@@ -123,23 +123,29 @@ export const deletePortArrivals = (db) => {
 // Get all Port Arrivals from SQLite database
 // Path: localhost:4000/api/cruise/allPortArrivals
 // -------------------------------------------------------
-export const getPortArrivals = (req, res) => {
+export const getPortArrivals = (req, res, next) => {
+  const sql =
+    "SELECT * FROM portarrivals WHERE vesseleta >= DATE('now', '-1 day') AND vesseleta < DATE('now', '+6 month') AND vesseletd != 'Not Known'"
+  let params = []
+
   // Open a Database Connection
   let db = null
   db = openSqlDbConnection(process.env.SQL_URI)
 
   if (db !== null) {
     try {
-      const sql =
-        "SELECT * FROM portarrivals WHERE vesseleta >= DATE('now', '-1 day') AND vesseleta < DATE('now', '+6 month') AND vesseletd != 'Not Known'"
-
-      db.all(sql, (err, results) => {
+      db.all(sql, params, (err, results) => {
         if (err) {
-          return console.error(err.message)
+          res.status(400).json({ error: err.message })
+          // return console.error(err.message)
+          return
         }
 
-        // console.log(results)
-        res.send(results)
+        res.json({
+          message: "success",
+          data: results,
+        })
+        // res.send(results)
       })
 
       // Close the Database Connection
