@@ -4,7 +4,7 @@ import io from "socket.io-client"
 
 import TemperaturesTable from "../components/TemperaturesTable"
 import TemperaturesChart from "../components/TemperaturesChart"
-import { getTemperatureData } from "../functionHandlers/loadTemperaturesDataHandler"
+import { getTemperaturesData } from "../functionHandlers/loadTemperaturesDataHandler"
 
 const TemperaturesContainer = styled.div`
   display: flex;
@@ -33,11 +33,11 @@ const WeatherPage = () => {
   const [temperatureData, setTemperatureData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  useEffect(() => {
-    getTemperatureData("http://localhost:4000/api/weather/getTemperatures")
-      .then((returnedData) => {
-        console.log(returnedData)
+  const weatherDataUrl = "http://localhost:4000/api/weather/getTemperatures"
 
+  useEffect(() => {
+    getTemperaturesData(weatherDataUrl)
+      .then((returnedData) => {
         setTemperatureData(returnedData)
 
         setIsLoading(false)
@@ -48,30 +48,25 @@ const WeatherPage = () => {
   }, [])
 
   // Now delete all except the last 20 readings
-  temperatureData.splice(0, temperatureData.length - 20)
+  // temperatureData.splice(0, temperatureData.length - 20)
 
-  const fetchRTTemperatureData = (temperatures) => {
-    socket.on("DataFromDarkSkiesAPI", (currentData) => {
-      console.log(currentData)
-      // Need to cancel the Promise here to stop errors
-      // setTemperatureData((temps) => [...temps, currentData.temperature])
-    })
-    // Only display data for the last 20 values
-    // temperatureValues.splice(0, temperatureValues.length - 20)
-  }
-
-  // socket.on("connect", () => {
-  //   console.log(socket.id) // x8WIv7-mJelg7on_ALbx
+  // const fetchRTTemperatureData = (temperatures) => {
+  // socket.on("DataFromDarkSkiesAPI", (currentData) => {
+  // console.log(currentData)
+  // Need to cancel the Promise here to stop errors
+  // setTemperatureData((temps) => [...temps, currentData.temperature])
   // })
+  // Only display data for the last 20 values
+  // temperatureValues.splice(0, temperatureValues.length - 20)
+  // }
+
+  socket.on("connect", () => {
+    console.log(socket.id) // x8WIv7-mJelg7on_ALbx
+  })
 
   // Listen for realtime temperature data and update the state
-  if (temperatureData.length > 0) {
-    fetchRTTemperatureData(temperatureData)
-  }
-
-  // const clearDataArray = () => {
-  //   // Error here
-  //   setTemperatureData(() => [])
+  // if (temperatureData.length > 0) {
+  //   fetchRTTemperatureData(temperatureData)
   // }
 
   return (
