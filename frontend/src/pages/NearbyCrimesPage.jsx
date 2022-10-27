@@ -2,7 +2,7 @@ import React, { useState, useEffect, memo } from "react"
 import styled from "styled-components"
 
 import NearbyCrimesInputPanel from "../components/NearbyCrimesInputPanel"
-import NearbyCrimesMap from "../components/NewNearbyCrimesMap"
+import NearbyCrimesMap from "../components/NearbyCrimesMap"
 import { getCrimesData } from "../functionHandlers/loadCrimesDataHandler"
 
 const NearbyCrimesContainer = styled.div`
