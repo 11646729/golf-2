@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-import moment from "moment"
+// import moment from "moment"
 import PropTypes from "prop-types"
 import {
   useTheme,
@@ -30,7 +30,8 @@ const TemperaturesChart = (props) => {
 
   const theme = useTheme()
 
-  const formatXAxis = (tickItem) => moment(tickItem).format("HH:mm MMM Do")
+  //  const formatXAxis = (tickItem) => moment(tickItem).format("HH:mm MMM Do")
+  const formatXAxis = (tickItem) => +tickItem // Temporary Code
   const formatYAxis = (tickItem) => +tickItem.toFixed(2)
 
   return (
