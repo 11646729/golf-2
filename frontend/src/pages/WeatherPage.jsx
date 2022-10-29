@@ -4,7 +4,10 @@ import io from "socket.io-client"
 
 import TemperaturesTable from "../components/TemperaturesTable"
 import TemperaturesChart from "../components/TemperaturesChart"
-import { getTemperaturesData } from "../functionHandlers/loadTemperaturesDataHandler"
+import {
+  getTemperaturesData,
+  getOpenWeatherData,
+} from "../functionHandlers/loadTemperaturesDataHandler"
 
 const TemperaturesContainer = styled.div`
   display: flex;
@@ -34,9 +37,12 @@ const WeatherPage = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   const weatherDataUrl = "http://localhost:4000/api/weather/getTemperatures"
+  // const weatherDataUrl =
+  //   "https://api.openweathermap.org/data/2.5/weather?lat=54.665577&lon=-5.766897&exclude=alerts&units=imperial&appid=3019d0290b25010fadc5e8763fc2d526"
 
   useEffect(() => {
     getTemperaturesData(weatherDataUrl)
+      // getOpenWeatherData(weatherDataUrl)
       .then((returnedData) => {
         setTemperatureData(returnedData)
 
@@ -69,10 +75,18 @@ const WeatherPage = () => {
   //   fetchRTTemperatureData(temperatureData)
   // }
 
+  const onClick = () => {
+    getOpenWeatherData()
+  }
+
   return (
     <TemperaturesContainer>
       <TemperaturesTableContainer>
-        <TemperaturesTable temperaturesTableTitle="Temperatures Table" />
+        {/* <TemperaturesTable temperaturesTableTitle="Temperatures Table"> */}
+        <button onClick={onClick} type="button">
+          Fetch Open Weather Data from API
+        </button>
+        {/* </TemperaturesTable> */}
       </TemperaturesTableContainer>
       <TemperaturesChartContainer>
         <TemperaturesChart

@@ -19,6 +19,16 @@ export const getTemperaturesData = async (url) => {
     .then((response) => response.data)
     .catch((err) => console.log(err))
 }
+// -------------------------------------------------------
+// Function to fetch Open Weather data
+// -------------------------------------------------------
+export const getOpenWeatherData = async (url) => {
+  return await axios
+    .get(url)
+    // .then((response) => console.log(response.data.main.temp)) // Temperature Data
+    .then((response) => console.log(response.data))
+    .catch((err) => console.log(err))
+}
 
 // -------------------------------------------------------
 // Function to fetch all Temperatures data into the SQL database

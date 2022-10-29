@@ -55,9 +55,11 @@ app.use((req, res) => {
   res.status(404)
 })
 
-// Enable Realtime data sources (true = enable, false = disable)
-var resultReturned = switchOnRealtimeTemperatureData(io, false)
-console.log(resultReturned)
+// Enable Realtime data sources
+var resultReturned = switchOnRealtimeTemperatureData(
+  io,
+  process.env.REALTIME_TEMPERATURES_ENABLED
+)
 
 // Start Express server
 httpServer.listen(port, (err) => {
