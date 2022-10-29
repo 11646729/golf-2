@@ -36,12 +36,11 @@ const WeatherPage = () => {
   const [temperatureData, setTemperatureData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const weatherDataUrl = "http://localhost:4000/api/weather/getTemperatures"
-  // const weatherDataUrl =
-  //   "https://api.openweathermap.org/data/2.5/weather?lat=54.665577&lon=-5.766897&exclude=alerts&units=imperial&appid=3019d0290b25010fadc5e8763fc2d526"
+  const temperatureDataUrl = "http://localhost:4000/api/weather/getTemperatures"
+  const weatherDataUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${process.env.REACT_APP_CGC_LATITUDE}&lon=${process.env.REACT_APP_CGC_LONGITUDE}&exclude=alerts&units=imperial&appid=${process.env.REACT_APP_OPEN_WEATHER_KEY}`
 
   useEffect(() => {
-    getTemperaturesData(weatherDataUrl)
+    getTemperaturesData(temperatureDataUrl)
       // getOpenWeatherData(weatherDataUrl)
       .then((returnedData) => {
         setTemperatureData(returnedData)
@@ -52,6 +51,8 @@ const WeatherPage = () => {
         console.log(err)
       })
   }, [])
+
+  getOpenWeatherData(weatherDataUrl)
 
   // Now delete all except the last 20 readings
   // temperatureData.splice(0, temperatureData.length - 20)

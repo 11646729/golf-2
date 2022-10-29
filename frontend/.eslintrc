@@ -120,7 +120,7 @@
   "plugins": ["html", "prettier", "react-hooks"],
   "settings": {
     "react": {
-      "version": "latest"
+      "version": "detect"
     }
   }
 }
