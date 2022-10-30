@@ -158,13 +158,6 @@ export const getTemperaturesFromDatabase = (req, res) => {
 }
 
 // -------------------------------------------------------
-// Get all temperatures
-// -------------------------------------------------------
-export const getOpenWeatherFromDatabase = (req, res) => {
-  console.log("In getOpenWeather function")
-}
-
-// -------------------------------------------------------
 // Save temperatures to SQLite database
 // -------------------------------------------------------
 const saveTemperature = (temperatureReading) => {
@@ -212,44 +205,6 @@ const saveTemperature = (temperatureReading) => {
 // -------------------------------------------------------
 // Fetch weather data from the Dark Skies website
 // -------------------------------------------------------
-export const getAndSaveDarkSkiesData = async () => {
-  // build Dark Skies Url
-  const darkSkiesUrl =
-    process.env.DARK_SKY_URL +
-    process.env.DARK_SKY_WEATHER_API_KEY +
-    "/" +
-    process.env.HOME_LATITUDE +
-    "," +
-    process.env.HOME_LONGITUDE
-
-  try {
-    // fetch data from the url endpoint and return it
-    const data = await axios.get(darkSkiesUrl)
-
-    console.log(darkSkiesUrl)
-
-    // Reformat data into Transient object
-    const temperatureReading = [
-      process.env.DATABASE_VERSION,
-      unixToUtc(data.data.currently.time),
-      "Home",
-      data.data.currently.temperature,
-      process.env.HOME_LATITUDE,
-      process.env.HOME_LONGITUDE,
-    ]
-
-    // Save data in the Database
-    saveTemperature(temperatureReading)
-
-    return temperatureReading
-  } catch (err) {
-    console.log("Error in getAndSaveDarkSkiesData: ", err)
-  }
-}
-
-// -------------------------------------------------------
-// Fetch weather data from the Dark Skies website
-// -------------------------------------------------------
 export const getAndSaveOpenWeatherData = async () => {
   const weatherDataUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${process.env.CGC_LATITUDE}&lon=${process.env.CGC_LONGITUDE}&exclude=alerts&units=imperial&appid=${process.env.OPEN_WEATHER_KEY}`
 
@@ -277,24 +232,24 @@ export const getAndSaveOpenWeatherData = async () => {
 }
 
 // -------------------------------------------------------
-// Socket Emit weather data to be consumed by the client
+// Socket Emit temperature data to be consumed by the client
 // -------------------------------------------------------
-export const emitDarkSkiesData = async (socket, darkSkiesData) => {
+export const emitTemperatureData = async (socket, weatherData) => {
   // Guard clauses
   if (socket == null) return
-  if (darkSkiesData == null) return
+  if (weatherData == null) return
 
   try {
-    await socket.emit("DataFromDarkSkiesAPI", darkSkiesData)
+    await socket.emit("DataFromOpenWeatherAPI", weatherData)
   } catch (err) {
-    console.log("Error in emitDarkSkiesData: ", err)
+    console.log("Error in emitTemperatureData: ", err)
   }
 }
 
 // -------------------------------------------------------
 // Function to convert Unix timestamp to UTC
 // -------------------------------------------------------
-function unixToUtc(timestamp) {
+const unixToUtc = (timestamp) => {
   return new Date(timestamp * 1000).toJSON()
 }
 

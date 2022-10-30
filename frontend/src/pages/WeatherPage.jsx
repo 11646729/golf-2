@@ -4,10 +4,7 @@ import io from "socket.io-client"
 
 import TemperaturesTable from "../components/TemperaturesTable"
 import TemperaturesChart from "../components/TemperaturesChart"
-import {
-  getTemperaturesData,
-  getOpenWeatherData,
-} from "../functionHandlers/loadTemperaturesDataHandler"
+import { getTemperaturesData } from "../functionHandlers/loadTemperaturesDataHandler"
 
 const TemperaturesContainer = styled.div`
   display: flex;
@@ -36,12 +33,11 @@ const WeatherPage = () => {
   const [temperatureData, setTemperatureData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
-  const temperatureDataUrl = "http://localhost:4000/api/weather/getTemperatures"
-  const weatherDataUrl = "http://localhost:4000/api/weather/getOpenWeather"
+  const temperatureDataUrl =
+    "http://localhost:4000/api/weather/getTemperaturesData"
 
   useEffect(() => {
     getTemperaturesData(temperatureDataUrl)
-      // getOpenWeatherData(weatherDataUrl)
       .then((returnedData) => {
         setTemperatureData(returnedData)
 
@@ -52,7 +48,7 @@ const WeatherPage = () => {
       })
   }, [])
 
-  getOpenWeatherData(weatherDataUrl)
+  console.log(temperatureData)
 
   // Now delete all except the last 20 readings
   // temperatureData.splice(0, temperatureData.length - 20)
@@ -76,18 +72,10 @@ const WeatherPage = () => {
   //   fetchRTTemperatureData(temperatureData)
   // }
 
-  const onClick = () => {
-    getOpenWeatherData()
-  }
-
   return (
     <TemperaturesContainer>
       <TemperaturesTableContainer>
-        {/* <TemperaturesTable temperaturesTableTitle="Temperatures Table"> */}
-        <button onClick={onClick} type="button">
-          Fetch Open Weather Data from API
-        </button>
-        {/* </TemperaturesTable> */}
+        <TemperaturesTable temperaturesTableTitle="Temperatures Table" />
       </TemperaturesTableContainer>
       <TemperaturesChartContainer>
         <TemperaturesChart
