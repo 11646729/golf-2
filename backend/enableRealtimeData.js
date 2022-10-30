@@ -1,7 +1,7 @@
 import cron from "node-cron"
 import {
-  getAndSaveDarkSkiesData,
   emitDarkSkiesData,
+  getAndSaveOpenWeatherData,
 } from "./controllers/weatherController.js"
 
 // -------------------------------------------------------
@@ -28,16 +28,15 @@ export var switchOnRealtimeTemperatureData = (io, switchOn) => {
       // Fetch data every Minute
       cron.schedule("*/1 * * * *", () => {
         // -----------------------------
-        getAndSaveDarkSkiesData().then((result) => {
-          console.log("Send temperature: " + result)
+        getAndSaveOpenWeatherData().then((result) => {
+          console.log("Send OpenWeather temperature: " + result)
           emitDarkSkiesData(socket, result)
         })
-      })
-
-      socket.on("disconnect", () => {
-        // Leave the room
-        socket.leave("room-" + roomno)
-        console.log("Left Room & Client Disconnected")
+        socket.on("disconnect", () => {
+          // Leave the room
+          socket.leave("room-" + roomno)
+          console.log("Left Room & Client Disconnected")
+        })
       })
     })
   } else {

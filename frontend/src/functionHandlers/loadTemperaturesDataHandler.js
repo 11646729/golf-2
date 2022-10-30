@@ -25,7 +25,6 @@ export const getTemperaturesData = async (url) => {
 export const getOpenWeatherData = async (url) => {
   return await axios
     .get(url)
-    // .then((response) => console.log(response.data.main.temp)) // Temperature Data
     .then((response) => console.log(response.data))
     .catch((err) => console.log(err))
 }

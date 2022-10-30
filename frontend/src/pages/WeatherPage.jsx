@@ -37,7 +37,7 @@ const WeatherPage = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   const temperatureDataUrl = "http://localhost:4000/api/weather/getTemperatures"
-  const weatherDataUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${process.env.REACT_APP_CGC_LATITUDE}&lon=${process.env.REACT_APP_CGC_LONGITUDE}&exclude=alerts&units=imperial&appid=${process.env.REACT_APP_OPEN_WEATHER_KEY}`
+  const weatherDataUrl = "http://localhost:4000/api/weather/getOpenWeather"
 
   useEffect(() => {
     getTemperaturesData(temperatureDataUrl)

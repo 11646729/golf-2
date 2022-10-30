@@ -130,7 +130,7 @@ const deleteTemperatures = (db) => {
 // -------------------------------------------------------
 // Get all temperatures
 // -------------------------------------------------------
-export const getTemperatures = (req, res) => {
+export const getTemperaturesFromDatabase = (req, res) => {
   // Open a Database Connection
   let db = null
   db = openSqlDbConnection(process.env.SQL_URI)
@@ -155,6 +155,13 @@ export const getTemperatures = (req, res) => {
   } else {
     console.error("Cannot connect to database")
   }
+}
+
+// -------------------------------------------------------
+// Get all temperatures
+// -------------------------------------------------------
+export const getOpenWeatherFromDatabase = (req, res) => {
+  console.log("In getOpenWeather function")
 }
 
 // -------------------------------------------------------
@@ -241,6 +248,35 @@ export const getAndSaveDarkSkiesData = async () => {
 }
 
 // -------------------------------------------------------
+// Fetch weather data from the Dark Skies website
+// -------------------------------------------------------
+export const getAndSaveOpenWeatherData = async () => {
+  const weatherDataUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${process.env.CGC_LATITUDE}&lon=${process.env.CGC_LONGITUDE}&exclude=alerts&units=imperial&appid=${process.env.OPEN_WEATHER_KEY}`
+
+  try {
+    // fetch data from the url endpoint and return it
+    const response = await axios.get(weatherDataUrl)
+
+    // Reformat data into Transient object
+    const temperatureReading = [
+      process.env.DATABASE_VERSION,
+      unixToUtc(response.data.dt),
+      "Clandeboye Golf Course",
+      response.data.main.temp,
+      process.env.HOME_LATITUDE,
+      process.env.HOME_LONGITUDE,
+    ]
+
+    // Save data in the Database
+    saveTemperature(temperatureReading)
+
+    return temperatureReading
+  } catch (err) {
+    console.log("Error in getAndSaveOpenWeatherData: ", err)
+  }
+}
+
+// -------------------------------------------------------
 // Socket Emit weather data to be consumed by the client
 // -------------------------------------------------------
 export const emitDarkSkiesData = async (socket, darkSkiesData) => {
@@ -262,4 +298,4 @@ function unixToUtc(timestamp) {
   return new Date(timestamp * 1000).toJSON()
 }
 
-export default getTemperatures
+export default getTemperaturesFromDatabase

@@ -2,7 +2,8 @@ import express from "express"
 import {
   index,
   prepareEmptyTemperaturesTable,
-  getTemperatures,
+  getTemperaturesFromDatabase,
+  getOpenWeatherFromDatabase,
 } from "../controllers/weatherController.js"
 
 var weatherRouter = express.Router()
@@ -17,6 +18,9 @@ weatherRouter.get("/", index)
 weatherRouter.post("/prepareTemperaturesTable", prepareEmptyTemperaturesTable)
 
 // GET all temperature readings from the database
-weatherRouter.get("/getTemperatures", getTemperatures)
+weatherRouter.get("/getTemperatures", getTemperaturesFromDatabase)
+
+// GET all temperature readings from the database
+weatherRouter.get("/getOpenWeather", getOpenWeatherFromDatabase)
 
 export default weatherRouter
