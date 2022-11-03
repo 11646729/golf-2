@@ -29,7 +29,7 @@ export var switchOnRealtimeTemperatureData = (io, switchOn) => {
       cron.schedule("*/1 * * * *", () => {
         // -----------------------------
         getAndSaveOpenWeatherData().then((result) => {
-          console.log("Send OpenWeather temperature: " + result)
+          // console.log("Send OpenWeather temperature: " + result)
           emitTemperatureData(socket, result)
         })
         socket.on("disconnect", () => {

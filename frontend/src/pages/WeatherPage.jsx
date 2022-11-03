@@ -39,7 +39,10 @@ const WeatherPage = () => {
   useEffect(() => {
     getTemperaturesData(temperatureDataUrl)
       .then((returnedData) => {
+        // setTemperatureData((returnedData) => [...temperatureData, returnedData])
         setTemperatureData(returnedData)
+
+        // console.log(temperatureData)
 
         setIsLoading(false)
       })
@@ -48,19 +51,24 @@ const WeatherPage = () => {
       })
   }, [])
 
-  console.log(temperatureData)
+  // useEffect(() => {
+  socket.on("DataFromOpenWeatherAPI", (currentData) => {
+    // console.log(currentData)
+  })
+  // }, [])
 
   // Now delete all except the last 20 readings
   // temperatureData.splice(0, temperatureData.length - 20)
 
   // const fetchRTTemperatureData = (temperatures) => {
-  // socket.on("DataFromDarkSkiesAPI", (currentData) => {
-  // console.log(currentData)
+  // socket.on("DataFromOpenWeatherAPI", (currentData) => {
+  // console.log(currentData.length)
+
   // Need to cancel the Promise here to stop errors
-  // setTemperatureData((temps) => [...temps, currentData.temperature])
+  // setTemperatureData((temps) => [...temps, currentData])
   // })
   // Only display data for the last 20 values
-  // temperatureValues.splice(0, temperatureValues.length - 20)
+  // temperatureData.splice(0, temperatureData.length - 20)
   // }
 
   socket.on("connect", () => {

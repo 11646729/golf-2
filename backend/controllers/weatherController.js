@@ -60,7 +60,7 @@ const createTemperaturesTable = (req, res) => {
   if (db !== null) {
     try {
       const sql =
-        "CREATE TABLE IF NOT EXISTS temperatures (temperatureid INTEGER PRIMARY KEY AUTOINCREMENT, databaseversion INTEGER, timeofmeasurement TEXT NOT NULL, locationname TEXT NOT NULL, locationtemperature REAL, lng REAL CHECK( lng >= -180 AND lng <= 180 ), lat REAL CHECK( lat >= -90 AND lat <= 90 ))"
+        "CREATE TABLE IF NOT EXISTS temperatures (temperatureid INTEGER PRIMARY KEY AUTOINCREMENT, timenow TEXT NOT NULL, databaseversion INTEGER, timeofmeasurement TEXT NOT NULL, locationname TEXT NOT NULL, locationtemperature REAL, lng REAL CHECK( lng >= -180 AND lng <= 180 ), lat REAL CHECK( lat >= -90 AND lat <= 90 ))"
 
       db.all(sql, [], (err) => {
         if (err) {
@@ -178,12 +178,12 @@ const saveTemperature = (temperatureReading) => {
         if (err) {
           return console.error(err.message)
         }
-        console.log("Record Count Before Insertion: ", results.count)
+        // console.log("Record Count Before Insertion: ", results.count)
       })
 
       // Don't change the routine below
       const sql1 =
-        "INSERT INTO temperatures (databaseversion, timeofmeasurement, locationname, locationtemperature, lng, lat) VALUES ($1, $2, $3, $4, $5, $6)"
+        "INSERT INTO temperatures (timenow, databaseversion, timeofmeasurement, locationname, locationtemperature, lng, lat) VALUES ($1, $2, $3, $4, $5, $6, $7)"
 
       db.run(sql1, temperatureReading, function (err) {
         if (err) {
@@ -207,6 +207,7 @@ const saveTemperature = (temperatureReading) => {
 // -------------------------------------------------------
 export const getAndSaveOpenWeatherData = async () => {
   const weatherDataUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${process.env.CGC_LATITUDE}&lon=${process.env.CGC_LONGITUDE}&exclude=alerts&units=imperial&appid=${process.env.OPEN_WEATHER_KEY}`
+  const timeNow = new Date().toISOString()
 
   try {
     // fetch data from the url endpoint and return it
@@ -214,6 +215,7 @@ export const getAndSaveOpenWeatherData = async () => {
 
     // Reformat data into Transient object
     const temperatureReading = [
+      timeNow,
       process.env.DATABASE_VERSION,
       unixToUtc(response.data.dt),
       "Clandeboye Golf Course",
@@ -221,6 +223,8 @@ export const getAndSaveOpenWeatherData = async () => {
       process.env.HOME_LATITUDE,
       process.env.HOME_LONGITUDE,
     ]
+
+    console.log(new Date().toISOString())
 
     // Save data in the Database
     saveTemperature(temperatureReading)
@@ -234,13 +238,15 @@ export const getAndSaveOpenWeatherData = async () => {
 // -------------------------------------------------------
 // Socket Emit temperature data to be consumed by the client
 // -------------------------------------------------------
-export const emitTemperatureData = async (socket, weatherData) => {
+export const emitTemperatureData = (socket, weatherData) => {
   // Guard clauses
   if (socket == null) return
   if (weatherData == null) return
 
+  // console.log("Ready to emit temperature: " + weatherData)
+
   try {
-    await socket.emit("DataFromOpenWeatherAPI", weatherData)
+    socket.emit("DataFromOpenWeatherAPI", weatherData)
   } catch (err) {
     console.log("Error in emitTemperatureData: ", err)
   }
