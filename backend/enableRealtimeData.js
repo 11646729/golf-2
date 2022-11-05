@@ -7,16 +7,14 @@ import {
 // -------------------------------------------------------
 // TO WORK PROPERLY FRONTEND MUST BE SWITCH ON BEFORE BACKEND
 // -------------------------------------------------------
-export var switchOnRealtimeTemperatureData = (io, switchOn) => {
+export var switchOnRealtimeData = (io, switchOn) => {
   if (switchOn) {
     // Using socket.io for realtime data transmission
     var roomno = 1
     io.on("connection", (socket) => {
-      console.log("Client Connected")
-
       // Join a room
       socket.join("room-" + roomno)
-      console.log("Joined Room No: " + roomno)
+      console.log("Room No: " + roomno + " Joined & Client Connected")
 
       // -----------------------------
       // Fetch data every Day at 07:00
@@ -29,14 +27,15 @@ export var switchOnRealtimeTemperatureData = (io, switchOn) => {
       cron.schedule("*/1 * * * *", () => {
         // -----------------------------
         getAndSaveOpenWeatherData().then((result) => {
-          // console.log("Send OpenWeather temperature: " + result)
-          emitTemperatureData(socket, result)
+          console.log("Send OpenWeather temperature: " + result)
+          // emitTemperatureData(socket, result)
         })
-        socket.on("disconnect", () => {
-          // Leave the room
-          socket.leave("room-" + roomno)
-          console.log("Left Room & Client Disconnected")
-        })
+      })
+
+      socket.on("disconnect", () => {
+        // Leave the room
+        socket.leave("room-" + roomno)
+        console.log("Left Room No: " + roomno + " & Client Disconnected")
       })
     })
   } else {

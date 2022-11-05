@@ -5,27 +5,29 @@ import path from "path"
 import { createServer } from "http"
 import { Server } from "socket.io"
 
-import { switchOnRealtimeTemperatureData } from "./enableRealtimeData.js"
+// const cookieParser = require("cookie-parser")
+// const logger = require("morgan")
+// const createError = require("http-errors")
+
+import { switchOnRealtimeData } from "./enableRealtimeData.js"
+
+const port = process.env.EXPRESS_SERVER_PORT || 4000
 
 const app = express()
+
 const httpServer = createServer(app)
 const io = new Server(httpServer, { cors: { origin: "*" } })
 
 const __dirname = path.resolve()
-
-// const cookieParser = require("cookie-parser")
-// const logger = require("morgan")
-// const createError = require("http-errors")
 
 // Routers use Controllers as per Express Tutorial
 import golfRouter from "./routes/golfRouteCatalog.js"
 import weatherRouter from "./routes/weatherRouteCatalog.js"
 import cruiseRouter from "./routes/cruiseRouteCatalog.js"
 import busRouter from "./routes/busRouteCatalog.js"
+// import realtimeRouter from "./routes/realtimeRouteCatalog.js"
 
 dotenv.config()
-
-const port = process.env.EXPRESS_SERVER_PORT || 4000
 
 // cors settings from https://blog.jscrambler.com/setting-up-5-useful-middlewares-for-an-express-api/
 app.use(
@@ -55,11 +57,8 @@ app.use((req, res) => {
   res.status(404)
 })
 
-// Enable Realtime data sources
-var resultReturned = switchOnRealtimeTemperatureData(
-  io,
-  process.env.REALTIME_TEMPERATURES_ENABLED
-)
+// Enable Realtime data sending system
+switchOnRealtimeData(io, process.env.REALTIME_TEMPERATURES_ENABLED)
 
 // Start Express server
 httpServer.listen(port, (err) => {
