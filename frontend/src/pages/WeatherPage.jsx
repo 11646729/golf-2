@@ -49,13 +49,14 @@ const WeatherPage = () => {
       .catch((err) => {
         console.log(err)
       })
+    return () => socket.disconnect()
   }, [])
 
-  // useEffect(() => {
-  socket.on("DataFromOpenWeatherAPI", (currentData) => {
-    // console.log(currentData)
-  })
-  // }, [])
+  useEffect(() => {
+    socket.on("DataFromOpenWeatherAPI", (currentData) => {
+      console.log(currentData)
+    })
+  }, [])
 
   // Now delete all except the last 20 readings
   // temperatureData.splice(0, temperatureData.length - 20)

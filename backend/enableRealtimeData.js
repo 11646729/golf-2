@@ -11,6 +11,7 @@ export var switchOnRealtimeData = (io, switchOn) => {
   if (switchOn) {
     // Using socket.io for realtime data transmission
     var roomno = 1
+
     io.on("connection", (socket) => {
       // Join a room
       socket.join("room-" + roomno)
@@ -27,7 +28,7 @@ export var switchOnRealtimeData = (io, switchOn) => {
       cron.schedule("*/1 * * * *", () => {
         // -----------------------------
         getAndSaveOpenWeatherData().then((result) => {
-          console.log("Send OpenWeather temperature: " + result)
+          console.log("OpenWeather temperature: " + result)
           // emitTemperatureData(socket, result)
         })
       })
