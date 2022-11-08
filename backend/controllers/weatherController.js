@@ -224,8 +224,6 @@ export const getAndSaveOpenWeatherData = async () => {
       process.env.HOME_LONGITUDE,
     ]
 
-    // console.log(new Date().toISOString())
-
     // Save data in the Database
     saveTemperature(temperatureReading)
 

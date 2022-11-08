@@ -28,10 +28,10 @@ const RawDataTextArea = styled.textarea`
   font-size: 13px;
 `
 
-const RawDataMessageBox = (props) => {
+const RawDataStatusBox = (props) => {
   const { messageString } = props
 
-  RawDataMessageBox.propTypes = {
+  RawDataStatusBox.propTypes = {
     messageString: PropTypes.string,
   }
 
@@ -42,12 +42,13 @@ const RawDataMessageBox = (props) => {
       </RawDataTitleContainer>
 
       <RawDataTextAreaContainer>
-        <RawDataTextArea rows="6" defaultValue={messageString}>
-          {/* {messageString} */}
-        </RawDataTextArea>
+        <RawDataTextArea
+          rows="6"
+          defaultValue={messageString}
+        ></RawDataTextArea>
       </RawDataTextAreaContainer>
     </div>
   )
 }
 
-export default memo(RawDataMessageBox)
+export default memo(RawDataStatusBox)

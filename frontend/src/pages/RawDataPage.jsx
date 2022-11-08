@@ -2,7 +2,7 @@ import React, { memo } from "react"
 import styled from "styled-components"
 
 import RawDataTable from "../components/RawDataTable"
-import RawDataMessageBox from "../components/RawDataMessageBox"
+import RawDataStatusBox from "../components/RawDataStatusBox"
 
 const RawDataContainer = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ const RawDataTableContainer = styled.div`
   min-height: 500px;
 `
 
-const RawDataMessagesContainer = styled.div`
+const RawDataStatusBoxContainer = styled.div`
   flex: 1;
   -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
@@ -31,9 +31,9 @@ const RawDataPage = () => (
     <RawDataTableContainer>
       <RawDataTable rawDataTableTitle="Raw Data Importing Operations" />
     </RawDataTableContainer>
-    <RawDataMessagesContainer>
-      <RawDataMessageBox messageString="Here is the second message" />
-    </RawDataMessagesContainer>
+    <RawDataStatusBoxContainer>
+      <RawDataStatusBox messageString="Here is the status message" />
+    </RawDataStatusBoxContainer>
   </RawDataContainer>
 )
 
