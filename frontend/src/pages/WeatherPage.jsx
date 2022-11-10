@@ -42,7 +42,7 @@ const WeatherPage = () => {
         // setTemperatureData((returnedData) => [...temperatureData, returnedData])
         setTemperatureData(returnedData)
 
-        // console.log(temperatureData)
+        console.log(returnedData)
 
         setIsLoading(false)
       })
@@ -54,7 +54,7 @@ const WeatherPage = () => {
 
   useEffect(() => {
     socket.on("DataFromOpenWeatherAPI", (currentData) => {
-      console.log(currentData)
+      // console.log(currentData)
     })
   }, [])
 

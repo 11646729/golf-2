@@ -4,11 +4,6 @@ import dotenv from "dotenv"
 import path from "path"
 import { createServer } from "http"
 import { Server } from "socket.io"
-
-// const cookieParser = require("cookie-parser")
-// const logger = require("morgan")
-// const createError = require("http-errors")
-
 import { switchOnRealtimeData } from "./enableRealtimeData.js"
 
 const port = process.env.EXPRESS_SERVER_PORT || 4000
