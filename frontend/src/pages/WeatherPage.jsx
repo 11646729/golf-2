@@ -1,6 +1,6 @@
 import React, { useState, useEffect, memo } from "react"
 import styled from "styled-components"
-import io from "socket.io-client"
+import { io } from "socket.io-client"
 
 import TemperaturesTable from "../components/TemperaturesTable"
 import TemperaturesChart from "../components/TemperaturesChart"
