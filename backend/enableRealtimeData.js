@@ -12,10 +12,21 @@ export var switchOnRealtimeData = (io, switchOn) => {
     // Using socket.io for realtime data transmission
     var roomno = 1
 
+    // var clients = {}
+    // sockets.on('connection', function(socket) {
+    //   clients[socket.id] = socket;
+
+    //   socket.on('disconnect', function() {
+    //     delete clients[socket.id];
+    //   });
+    // });
+
     io.on("connection", (socket) => {
       // Join a room
       socket.join("room-" + roomno)
       console.log("Room No: " + roomno + " Joined & Client Connected")
+
+      console.log(socket.id)
 
       // -----------------------------
       // Fetch data every Day at 07:00
@@ -28,7 +39,7 @@ export var switchOnRealtimeData = (io, switchOn) => {
       cron.schedule("*/1 * * * *", () => {
         // -----------------------------
         getAndSaveOpenWeatherData().then((result) => {
-          console.log("OpenWeather temperature: " + result)
+          // console.log("OpenWeather temperature: " + result)
           // emitTemperatureData(socket, result)
         })
       })

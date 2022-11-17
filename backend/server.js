@@ -9,7 +9,6 @@ import { switchOnRealtimeData } from "./enableRealtimeData.js"
 const port = process.env.EXPRESS_SERVER_PORT || 4000
 
 const app = express()
-
 const httpServer = createServer(app)
 const io = new Server(httpServer, { cors: { origin: "*" } })
 

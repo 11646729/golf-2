@@ -24,7 +24,9 @@ const TemperaturesChartContainer = styled.div`
   min-height: 500px;
 `
 
-const socket = io(process.env.REACT_APP_SOCKET_ENDPOINT)
+const socket = io(process.env.REACT_APP_SOCKET_ENDPOINT_URL, {
+  // autoConnect: false,
+})
 
 // -------------------------------------------------------
 // React Controller component

@@ -14,8 +14,7 @@ export var index = async (req, res) => {
 // -------------------------------------------------------
 export const prepareEmptyTemperaturesTable = (req, res) => {
   // Open a Database Connection
-  let db = null
-  db = openSqlDbConnection(process.env.SQL_URI)
+  let db = openSqlDbConnection(process.env.SQL_URI)
 
   if (db !== null) {
     // Firstly read the sqlite_schema table to check if temperatures table exists
@@ -54,8 +53,7 @@ export const prepareEmptyTemperaturesTable = (req, res) => {
 // -------------------------------------------------------
 const createTemperaturesTable = (req, res) => {
   // Open a Database Connection
-  let db = null
-  db = openSqlDbConnection(process.env.SQL_URI)
+  let db = openSqlDbConnection(process.env.SQL_URI)
 
   if (db !== null) {
     try {
@@ -132,18 +130,22 @@ const deleteTemperatures = (db) => {
 // -------------------------------------------------------
 export const getTemperaturesFromDatabase = (req, res) => {
   // Open a Database Connection
-  let db = null
-  db = openSqlDbConnection(process.env.SQL_URI)
+  let db = openSqlDbConnection(process.env.SQL_URI)
 
   if (db !== null) {
     try {
-      const sql = "SELECT * FROM temperatures ORDER BY temperatureid"
+      // const sql = "SELECT * FROM temperatures ORDER BY temperatureid"
+
+      // Only fetch <= the last 20 readings
+      const sql =
+        "SELECT * FROM temperatures ORDER BY temperatureid DESC LIMIT 20"
 
       db.all(sql, [], (err, results) => {
         if (err) {
           return console.error(err.message)
         }
-        // console.log("Record Count Before: ", results.count)
+        console.log("Results: ", results.length)
+
         res.send(results)
       })
 
@@ -165,22 +167,10 @@ const saveTemperature = (temperatureReading) => {
   if (temperatureReading == null) return
 
   // Open a Database Connection
-  let db = null
-  db = openSqlDbConnection(process.env.SQL_URI)
+  let db = openSqlDbConnection(process.env.SQL_URI)
 
   if (db !== null) {
     try {
-      // Count the records in the database
-      let sql = "SELECT COUNT(temperatureid) AS count FROM temperatures"
-
-      // Must be get to work - db.all doesn't work
-      db.get(sql, [], (err, results) => {
-        if (err) {
-          return console.error(err.message)
-        }
-        // console.log("Record Count Before Insertion: ", results.count)
-      })
-
       // Don't change the routine below
       const sql1 =
         "INSERT INTO temperatures (timenow, databaseversion, timeofmeasurement, locationname, locationtemperature, lng, lat) VALUES ($1, $2, $3, $4, $5, $6, $7)"
@@ -189,13 +179,13 @@ const saveTemperature = (temperatureReading) => {
         if (err) {
           return console.error(err.message)
         }
-        console.warn("New id of inserted temperature reading:", this.lastID)
+        console.log("New id of inserted temperature reading:", this.lastID)
       })
 
       // Close the Database Connection
       closeSqlDbConnection(db)
     } catch (err) {
-      console.error("Error in saveDarkSkiesData: ", err)
+      console.error("Error in saveTemperature: ", err)
     }
   } else {
     console.error("Cannot connect to database")
