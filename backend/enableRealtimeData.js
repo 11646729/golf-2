@@ -12,15 +12,6 @@ export var switchOnRealtimeData = (io, switchOn) => {
     // Using socket.io for realtime data transmission
     var roomno = 1
 
-    // var clients = {}
-    // sockets.on('connection', function(socket) {
-    //   clients[socket.id] = socket;
-
-    //   socket.on('disconnect', function() {
-    //     delete clients[socket.id];
-    //   });
-    // });
-
     io.on("connection", (socket) => {
       // Join a room
       socket.join("room-" + roomno)
