@@ -1,34 +1,25 @@
 import React, { memo } from "react"
-import styled from "styled-components"
-// import PropTypes from "prop-types"
+import PropTypes from "prop-types"
 
-const StatusIcon = () => {
-  // const { connected } = props
+export const StatusIcon = (props) => {
+  const { fillColor } = props
 
-  // MyIcon.propTypes = {
-  //   connected: PropTypes.bool,
-  // }
+  StatusIcon.propTypes = {
+    fillColor: PropTypes.string,
+  }
 
   return (
-    <div
-      height="8px"
-      width="8px"
-      border-radius="50%"
-      display="inline-block"
-      // background-color: #e38968;
-      background-color="#86bb71"
-      margin-right="6px"
-    />
+    <svg height="10" width="10">
+      <circle
+        cx="5"
+        cy="5"
+        r="4"
+        // stroke="black"
+        // stroke-width="1"
+        fill={fillColor}
+      />
+    </svg>
   )
 }
-
-// function Profile() {
-//   return (
-//     <img
-//       src="https://i.imgur.com/MK3eW3As.jpg"
-//       alt="Katherine Johnson"
-//     />
-//   );
-// }
 
 export default memo(StatusIcon)

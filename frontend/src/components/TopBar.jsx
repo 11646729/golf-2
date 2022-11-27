@@ -1,7 +1,7 @@
 import React, { memo } from "react"
 import styled from "styled-components"
 import { NotificationsNone, Language, Settings } from "@material-ui/icons"
-// import { StatusIcon } from "./StatusIcon"
+import { StatusIcon } from "./StatusIcon"
 
 const Container = styled.div`
   width: 100%;
@@ -63,24 +63,6 @@ const TopAvatar = styled.img`
   cursor: pointer;
 `
 
-const GreenStatusIcon = styled.div`
-  height: 8px;
-  width: 8px;
-  border-radius: 50%;
-  display: inline-block;
-  background-color: #86bb71;
-  margin-right: 6px;
-`
-
-const RedStatusIcon = styled.div`
-  height: 8px;
-  width: 8px;
-  border-radius: 50%;
-  display: inline-block;
-  background-color: #ff3300;
-  margin-right: 6px;
-`
-
 const TopBar = () => (
   <Container>
     <TopBarWrapper>
@@ -91,8 +73,8 @@ const TopBar = () => (
           <TopIconBadge>1</TopIconBadge>
         </TopBarIconContainer>
         <TopBarIconContainer>
-          <GreenStatusIcon />
-          <RedStatusIcon />
+          <StatusIcon fillColor="#3ebc22" />
+          <StatusIcon fillColor="#e38968" />
           <Language />
           <TopIconBadge>2</TopIconBadge>
         </TopBarIconContainer>
