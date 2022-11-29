@@ -73,8 +73,8 @@ const TopBar = () => (
           <TopIconBadge>1</TopIconBadge>
         </TopBarIconContainer>
         <TopBarIconContainer>
-          <StatusIcon size="10" fillColor="#3ebc22" />
-          <StatusIcon size="10" fillColor="#e38968" />
+          <StatusIcon size={10} fillColor="#008000" />
+          <StatusIcon size={10} fillColor="#ff0000" />
           <Language />
           <TopIconBadge>2</TopIconBadge>
         </TopBarIconContainer>

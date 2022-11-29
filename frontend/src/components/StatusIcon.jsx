@@ -14,16 +14,8 @@ export const StatusIcon = (props) => {
   }
 
   return (
-    // <svg height="10" width="10">
     <svg height={`${size}px`} width={`${size}px`}>
-      <circle
-        cx="5"
-        cy="5"
-        r="4"
-        // stroke="black"
-        // stroke-width="1"
-        fill={fillColor}
-      />
+      <circle cx={`${size / 2}`} cy={`${size / 2}`} r="4" fill={fillColor} />
     </svg>
   )
 }
