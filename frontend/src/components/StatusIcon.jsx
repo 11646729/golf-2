@@ -1,12 +1,11 @@
-import React, { memo, useState } from "react"
+import React, { memo } from "react"
 import PropTypes from "prop-types"
 
-export const StatusIcon = ({ size = 10, initialStatus = true }) => {
-  const [circleStatus, setCircleStatus] = useState(initialStatus)
-
+export const StatusIcon = ({ size, circleStatus, onShow }) => {
   StatusIcon.propTypes = {
     size: PropTypes.number.isRequired,
-    status: PropTypes.bool,
+    circleStatus: PropTypes.bool.isRequired,
+    onShow: PropTypes.func.isRequired,
   }
 
   return (
@@ -16,7 +15,7 @@ export const StatusIcon = ({ size = 10, initialStatus = true }) => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       height={`${size}px`}
       width={`${size}px`}
-      onClick={() => setCircleStatus(!circleStatus)}
+      onClick={onShow}
     >
       {circleStatus ? (
         //  if true then Green

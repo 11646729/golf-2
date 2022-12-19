@@ -1,4 +1,4 @@
-import React, { memo } from "react"
+import React, { memo, useState } from "react"
 import styled from "styled-components"
 import { NotificationsNone, Language, Settings } from "@material-ui/icons"
 import { StatusIcon } from "./StatusIcon"
@@ -63,28 +63,41 @@ const TopAvatar = styled.img`
   cursor: pointer;
 `
 
-const TopBar = () => (
-  <Container>
-    <TopBarWrapper>
-      <Logo>My Website</Logo>
-      <TopRight>
-        <TopBarIconContainer>
-          <NotificationsNone />
-          <TopIconBadge>1</TopIconBadge>
-        </TopBarIconContainer>
-        <TopBarIconContainer>
-          <StatusIcon size={10} initialStatus={true} />
-          <StatusIcon size={10} initialStatus={false} />
-          <Language />
-          <TopIconBadge>2</TopIconBadge>
-        </TopBarIconContainer>
-        <TopBarIconContainer>
-          <Settings />
-        </TopBarIconContainer>
-        <TopAvatar src="/static/images/brian.jpeg" alt="" />
-      </TopRight>
-    </TopBarWrapper>
-  </Container>
-)
+const TopBar = () => {
+  const [isActiveStatus1, setIsActiveStatus1] = useState(1)
+  const [isActiveStatus2, setIsActiveStatus2] = useState(0)
+
+  return (
+    <Container>
+      <TopBarWrapper>
+        <Logo>My Website</Logo>
+        <TopRight>
+          <TopBarIconContainer>
+            <NotificationsNone />
+            <TopIconBadge>1</TopIconBadge>
+          </TopBarIconContainer>
+          <TopBarIconContainer>
+            <StatusIcon
+              size={10}
+              circleStatus={isActiveStatus1}
+              onShow={() => setIsActiveStatus1(!isActiveStatus1)}
+            />
+            <StatusIcon
+              size={10}
+              circleStatus={isActiveStatus2}
+              onShow={() => setIsActiveStatus2(!isActiveStatus2)}
+            />
+            <Language />
+            <TopIconBadge>2</TopIconBadge>
+          </TopBarIconContainer>
+          <TopBarIconContainer>
+            <Settings />
+          </TopBarIconContainer>
+          <TopAvatar src="/static/images/brian.jpeg" alt="" />
+        </TopRight>
+      </TopBarWrapper>
+    </Container>
+  )
+}
 
 export default memo(TopBar)
