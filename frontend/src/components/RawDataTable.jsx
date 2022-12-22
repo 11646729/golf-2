@@ -4,12 +4,12 @@ import styled from "styled-components"
 
 import Title from "./Title"
 
+import { loadTemperaturesDataHandler } from "../functionHandlers/loadTemperaturesDataHandler"
 import { loadGolfCoursesDataHandler } from "../functionHandlers/loadGolfCoursesDataHandler"
 import { loadCruiseShipArrivalsDataHandler } from "../functionHandlers/loadCruiseShipArrivalsDataHandler"
 import { loadBusTransportDataHandler } from "../functionHandlers/loadBusTransportDataHandler"
 import { loadCrimesDataHandler } from "../functionHandlers/loadCrimesDataHandler"
 import { startRealtimeDataHandler } from "../functionHandlers/startRealtimeDataHandler"
-import { loadTemperaturesDataHandler } from "../functionHandlers/loadTemperaturesDataHandler"
 
 const RawDataTableTitleContainer = styled.div`
   margin-top: 35px;
@@ -90,6 +90,22 @@ const Button = styled.button`
   }
 `
 
+const Button1 = styled.button`
+  padding: 5px 7px;
+  border: none;
+  border-radius: 10px;
+  background-color: lightgreen;
+  color: darkgreen;
+  margin: auto;
+  display: block;
+
+  &:hover {
+    background-color: #105b72c2;
+    color: white;
+    cursor: pointer;
+  }
+`
+
 const RawDataTable = (props) => {
   const { rawDataTableTitle } = props
 
@@ -119,7 +135,7 @@ const RawDataTable = (props) => {
               </RawDataTableDataCellLeft>
               <RawDataTableDataCell>Ready</RawDataTableDataCell>
               <RawDataTableDataCell>
-                <Button onClick={loadTemperaturesDataHandler}>Fetch</Button>
+                <Button1 onClick={loadTemperaturesDataHandler}>Fetch</Button1>
               </RawDataTableDataCell>
             </RawDataTableRow>
             <RawDataTableRow>

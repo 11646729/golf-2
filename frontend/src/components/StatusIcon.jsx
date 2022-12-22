@@ -13,16 +13,16 @@ export const StatusIcon = ({ size, circleStatus, onShow }) => {
       viewBox="0 0 10 10"
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      height={`${size}px`}
-      width={`${size}px`}
+      height={`${2 * size}px`}
+      width={`${2 * size}px`}
       onClick={onShow}
     >
       {circleStatus ? (
         //  if true then Green
-        <circle cx={`${size / 2}`} cy={`${size / 2}`} r="4" fill="#008000" />
+        <circle cx={`${size}`} cy={`${size}`} r="4" fill="#008000" />
       ) : (
         // if false then Red
-        <circle cx={`${size / 2}`} cy={`${size / 2}`} r="4" fill="#ff0000" />
+        <circle cx={`${size}`} cy={`${size}`} r="4" fill="#ff0000" />
       )}
     </svg>
   )
