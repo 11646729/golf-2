@@ -1,8 +1,9 @@
-import React, { memo } from "react"
+import React, { memo, useState } from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
 
 import Title from "./Title"
+import StatusButton from "./StatusButton"
 
 import { loadTemperaturesDataHandler } from "../functionHandlers/loadTemperaturesDataHandler"
 import { loadGolfCoursesDataHandler } from "../functionHandlers/loadGolfCoursesDataHandler"
@@ -74,44 +75,15 @@ const RawDataTableDataCell = styled.td`
   text-align: center;
 `
 
-const Button = styled.button`
-  padding: 5px 7px;
-  border: none;
-  border-radius: 10px;
-  background-color: lightgreen;
-  color: darkgreen;
-  margin: auto;
-  display: block;
-
-  &:hover {
-    background-color: #105b72c2;
-    color: white;
-    cursor: pointer;
-  }
-`
-
-const Button1 = styled.button`
-  padding: 5px 7px;
-  border: none;
-  border-radius: 10px;
-  background-color: lightgreen;
-  color: darkgreen;
-  margin: auto;
-  display: block;
-
-  &:hover {
-    background-color: #105b72c2;
-    color: white;
-    cursor: pointer;
-  }
-`
-
 const RawDataTable = (props) => {
-  const { rawDataTableTitle } = props
+  const { rawDataTableTitle, onShow } = props
 
   RawDataTable.propTypes = {
     rawDataTableTitle: PropTypes.string,
+    onShow: PropTypes.func.isRequired,
   }
+
+  const [isActiveStatus1, setIsActiveStatus1] = useState(1)
 
   return (
     <div>
@@ -135,7 +107,12 @@ const RawDataTable = (props) => {
               </RawDataTableDataCellLeft>
               <RawDataTableDataCell>Ready</RawDataTableDataCell>
               <RawDataTableDataCell>
-                <Button1 onClick={loadTemperaturesDataHandler}>Fetch</Button1>
+                <StatusButton
+                  bgcolor="lightgreen"
+                  text="Fetch Temperatures"
+                  // onShow={() => loadTemperaturesDataHandler()}
+                  onShow={() => setIsActiveStatus1(!isActiveStatus1)}
+                />
               </RawDataTableDataCell>
             </RawDataTableRow>
             <RawDataTableRow>
@@ -144,7 +121,11 @@ const RawDataTable = (props) => {
               </RawDataTableDataCellLeft>
               <RawDataTableDataCell>Ready</RawDataTableDataCell>
               <RawDataTableDataCell>
-                <Button onClick={loadGolfCoursesDataHandler}>Fetch</Button>
+                <StatusButton
+                  bgcolor="lightgreen"
+                  text="Fetch Golf Courses"
+                  // onShow={() => loadGolfCoursesDataHandler()}
+                />
               </RawDataTableDataCell>
             </RawDataTableRow>
             <RawDataTableRow>
@@ -153,9 +134,11 @@ const RawDataTable = (props) => {
               </RawDataTableDataCellLeft>
               <RawDataTableDataCell>Ready</RawDataTableDataCell>
               <RawDataTableDataCell>
-                <Button onClick={loadCruiseShipArrivalsDataHandler}>
-                  Fetch
-                </Button>
+                <StatusButton
+                  bgcolor="lightgreen"
+                  text="Fetch Cruise Ships"
+                  // onShow={() => loadCruiseShipArrivalsDataHandler()}
+                />
               </RawDataTableDataCell>
             </RawDataTableRow>
             <RawDataTableRow>
@@ -164,21 +147,33 @@ const RawDataTable = (props) => {
               </RawDataTableDataCellLeft>
               <RawDataTableDataCell>Ready</RawDataTableDataCell>
               <RawDataTableDataCell>
-                <Button onClick={loadBusTransportDataHandler}>Fetch</Button>
+                <StatusButton
+                  bgcolor="lightgreen"
+                  text="Fetch Bus Data"
+                  // onShow={() => loadBusTransportDataHandler()}
+                />
               </RawDataTableDataCell>
             </RawDataTableRow>
             <RawDataTableRow>
               <RawDataTableDataCellLeft>Crime Data</RawDataTableDataCellLeft>
               <RawDataTableDataCell>Ready</RawDataTableDataCell>
               <RawDataTableDataCell>
-                <Button onClick={loadCrimesDataHandler}>Fetch</Button>
+                <StatusButton
+                  bgcolor="lightgreen"
+                  text="Fetch Crime Data"
+                  // onShow={() => loadCrimesDataHandler()}
+                />
               </RawDataTableDataCell>
             </RawDataTableRow>
             <RawDataTableRow>
               <RawDataTableDataCellLeft>Realtime Data</RawDataTableDataCellLeft>
               <RawDataTableDataCell>Currently: Off</RawDataTableDataCell>
               <RawDataTableDataCell>
-                <Button onClick={startRealtimeDataHandler}>Fetch</Button>
+                <StatusButton
+                  bgcolor="lightgreen"
+                  text="Start Realtime Data"
+                  onShow={() => startRealtimeDataHandler()}
+                />
               </RawDataTableDataCell>
             </RawDataTableRow>
           </RawDataTableBodyStyle>

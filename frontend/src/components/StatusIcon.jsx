@@ -1,7 +1,9 @@
 import React, { memo } from "react"
 import PropTypes from "prop-types"
 
-export const StatusIcon = ({ size, circleStatus, onShow }) => {
+export const StatusIcon = (props) => {
+  const { size, circleStatus, onShow } = props
+
   StatusIcon.propTypes = {
     size: PropTypes.number.isRequired,
     circleStatus: PropTypes.bool.isRequired,

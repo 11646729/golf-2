@@ -1,4 +1,4 @@
-import React, { memo } from "react"
+import React, { memo, useState } from "react"
 import styled from "styled-components"
 
 import RawDataTable from "../components/RawDataTable"
@@ -26,15 +26,19 @@ const RawDataStatusBoxContainer = styled.div`
 // -------------------------------------------------------
 // React Controller component
 // -------------------------------------------------------
-const RawDataPage = () => (
-  <RawDataContainer>
-    <RawDataTableContainer>
-      <RawDataTable rawDataTableTitle="Raw Data Importing Operations" />
-    </RawDataTableContainer>
-    <RawDataStatusBoxContainer>
-      <RawDataStatusBox messageString="Here is the status message" />
-    </RawDataStatusBoxContainer>
-  </RawDataContainer>
-)
+const RawDataPage = () => {
+  const [isActiveStatus1, setIsActiveStatus1] = useState(1)
+
+  return (
+    <RawDataContainer>
+      <RawDataTableContainer>
+        <RawDataTable rawDataTableTitle="Raw Data Importing Operations" />
+      </RawDataTableContainer>
+      <RawDataStatusBoxContainer>
+        <RawDataStatusBox messageString="Here is the status message" />
+      </RawDataStatusBoxContainer>
+    </RawDataContainer>
+  )
+}
 
 export default memo(RawDataPage)
