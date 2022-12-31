@@ -79,12 +79,12 @@ const TopBar = () => {
           <TopBarIconContainer>
             <StatusIcon
               size={5}
-              circleStatus={isActiveStatus1}
+              status={isActiveStatus1}
               onShow={() => setIsActiveStatus1(!isActiveStatus1)}
             />
             <StatusIcon
               size={5}
-              circleStatus={isActiveStatus2}
+              status={isActiveStatus2}
               onShow={() => setIsActiveStatus2(!isActiveStatus2)}
             />
             <Language />

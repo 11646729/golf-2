@@ -2,11 +2,11 @@ import React, { memo } from "react"
 import PropTypes from "prop-types"
 
 export const StatusIcon = (props) => {
-  const { size, circleStatus, onShow } = props
+  const { size, status, onShow } = props
 
   StatusIcon.propTypes = {
     size: PropTypes.number.isRequired,
-    circleStatus: PropTypes.bool.isRequired,
+    status: PropTypes.bool.isRequired,
     onShow: PropTypes.func.isRequired,
   }
 
@@ -19,7 +19,7 @@ export const StatusIcon = (props) => {
       width={`${2 * size}px`}
       onClick={onShow}
     >
-      {circleStatus ? (
+      {status ? (
         //  if true then Green
         <circle cx={`${size}`} cy={`${size}`} r="4" fill="#008000" />
       ) : (
