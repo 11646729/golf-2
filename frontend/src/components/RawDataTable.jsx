@@ -76,14 +76,18 @@ const RawDataTableDataCell = styled.td`
 `
 
 const RawDataTable = (props) => {
-  const { rawDataTableTitle, onShow } = props
+  const { rawDataTableTitle } = props
 
   RawDataTable.propTypes = {
     rawDataTableTitle: PropTypes.string,
-    onShow: PropTypes.func.isRequired,
+    // onShow: PropTypes.func.isRequired,
   }
 
-  const [isActiveStatus1, setIsActiveStatus1] = useState(1)
+  const [isActiveStatus1, setIsActiveStatus1] = useState(false)
+  const [isActiveStatus2, setIsActiveStatus2] = useState(false)
+  const [isActiveStatus3, setIsActiveStatus3] = useState(false)
+
+  console.log(isActiveStatus1)
 
   return (
     <div>
@@ -108,10 +112,13 @@ const RawDataTable = (props) => {
               <RawDataTableDataCell>Ready</RawDataTableDataCell>
               <RawDataTableDataCell>
                 <StatusButton
-                  bgcolor="lightgreen"
+                  bgcolor="salmon"
                   text="Fetch Temperatures"
-                  // onShow={() => loadTemperaturesDataHandler()}
-                  onShow={() => setIsActiveStatus1(!isActiveStatus1)}
+                  status={isActiveStatus1}
+                  onShow={() => {
+                    setIsActiveStatus1(!isActiveStatus1)
+                    // loadTemperaturesDataHandler()
+                  }}
                 />
               </RawDataTableDataCell>
             </RawDataTableRow>
@@ -124,7 +131,11 @@ const RawDataTable = (props) => {
                 <StatusButton
                   bgcolor="lightgreen"
                   text="Fetch Golf Courses"
-                  // onShow={() => loadGolfCoursesDataHandler()}
+                  status={isActiveStatus2}
+                  onShow={() => {
+                    setIsActiveStatus2(!isActiveStatus2)
+                    // loadGolfCoursesDataHandler()
+                  }}
                 />
               </RawDataTableDataCell>
             </RawDataTableRow>
@@ -137,7 +148,11 @@ const RawDataTable = (props) => {
                 <StatusButton
                   bgcolor="lightgreen"
                   text="Fetch Cruise Ships"
-                  // onShow={() => loadCruiseShipArrivalsDataHandler()}
+                  status={isActiveStatus3}
+                  onShow={() => {
+                    setIsActiveStatus3(!isActiveStatus3)
+                    // loadCruiseShipArrivalsDataHandler()
+                  }}
                 />
               </RawDataTableDataCell>
             </RawDataTableRow>
@@ -147,33 +162,33 @@ const RawDataTable = (props) => {
               </RawDataTableDataCellLeft>
               <RawDataTableDataCell>Ready</RawDataTableDataCell>
               <RawDataTableDataCell>
-                <StatusButton
+                {/* <StatusButton
                   bgcolor="lightgreen"
                   text="Fetch Bus Data"
                   // onShow={() => loadBusTransportDataHandler()}
-                />
+                /> */}
               </RawDataTableDataCell>
             </RawDataTableRow>
             <RawDataTableRow>
               <RawDataTableDataCellLeft>Crime Data</RawDataTableDataCellLeft>
               <RawDataTableDataCell>Ready</RawDataTableDataCell>
               <RawDataTableDataCell>
-                <StatusButton
+                {/* <StatusButton
                   bgcolor="lightgreen"
                   text="Fetch Crime Data"
                   // onShow={() => loadCrimesDataHandler()}
-                />
+                /> */}
               </RawDataTableDataCell>
             </RawDataTableRow>
             <RawDataTableRow>
               <RawDataTableDataCellLeft>Realtime Data</RawDataTableDataCellLeft>
               <RawDataTableDataCell>Currently: Off</RawDataTableDataCell>
               <RawDataTableDataCell>
-                <StatusButton
+                {/* <StatusButton
                   bgcolor="lightgreen"
                   text="Start Realtime Data"
                   onShow={() => startRealtimeDataHandler()}
-                />
+                /> */}
               </RawDataTableDataCell>
             </RawDataTableRow>
           </RawDataTableBodyStyle>

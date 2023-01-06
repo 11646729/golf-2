@@ -12,7 +12,7 @@ const StyledButton = styled.button`
 
   /* The resulting background color will be based on the bg props. */
   background-color: ${(props) =>
-    props.bg === "lightgreen" ? "lightgreen" : "red"};
+    props.bg === "salmon" ? "salmon" : "lightgreen"};
 
   &:hover {
     background-color: #105b72c2;
@@ -22,18 +22,29 @@ const StyledButton = styled.button`
 `
 
 const StatusButton = (props) => {
-  const { bgcolor, text, onShow } = props
+  const { text, status, onShow } = props
 
   StatusButton.propTypes = {
-    bgcolor: PropTypes.string,
     text: PropTypes.string,
+    status: PropTypes.bool.isRequired,
     onShow: PropTypes.func.isRequired,
   }
 
+  console.log("Status: " + status)
+
   return (
-    <StyledButton bg={bgcolor} onClick={onShow}>
-      {text}
-    </StyledButton>
+    <div>
+      {status ? (
+        <StyledButton bg="salmon" onClick={onShow}>
+          {/* {text} */}
+          Fetching Data ...
+        </StyledButton>
+      ) : (
+        <StyledButton bg="lightgreen" onClick={onShow}>
+          {text}
+        </StyledButton>
+      )}
+    </div>
   )
 }
 
