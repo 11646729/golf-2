@@ -1,7 +1,7 @@
 import React, { memo } from "react"
 import PropTypes from "prop-types"
 
-export const StatusIcon = (props) => {
+const StatusIcon = (props) => {
   const { size, status, onShow } = props
 
   StatusIcon.propTypes = {

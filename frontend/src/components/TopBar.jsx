@@ -1,7 +1,7 @@
 import React, { memo, useState } from "react"
 import styled from "styled-components"
 import { NotificationsNone, Language, Settings } from "@material-ui/icons"
-import { StatusIcon } from "./StatusIcon"
+import StatusIcon from "./StatusIcon"
 
 const Container = styled.div`
   width: 100%;

@@ -80,12 +80,14 @@ const RawDataTable = (props) => {
 
   RawDataTable.propTypes = {
     rawDataTableTitle: PropTypes.string,
-    // onShow: PropTypes.func.isRequired,
   }
 
   const [isActiveStatus1, setIsActiveStatus1] = useState(false)
   const [isActiveStatus2, setIsActiveStatus2] = useState(false)
   const [isActiveStatus3, setIsActiveStatus3] = useState(false)
+  const [isActiveStatus4, setIsActiveStatus4] = useState(false)
+  const [isActiveStatus5, setIsActiveStatus5] = useState(false)
+  const [isActiveStatus6, setIsActiveStatus6] = useState(false)
 
   console.log(isActiveStatus1)
 
@@ -100,7 +102,6 @@ const RawDataTable = (props) => {
           <RawDataTableHeaderStyle>
             <RawDataTableRow>
               <RawDataTableHeader>Import Raw Data Types</RawDataTableHeader>
-              <RawDataTableHeader>Status</RawDataTableHeader>
               <RawDataTableHeader>Select</RawDataTableHeader>
             </RawDataTableRow>
           </RawDataTableHeaderStyle>
@@ -109,7 +110,6 @@ const RawDataTable = (props) => {
               <RawDataTableDataCellLeft>
                 Temperatures Data
               </RawDataTableDataCellLeft>
-              <RawDataTableDataCell>Ready</RawDataTableDataCell>
               <RawDataTableDataCell>
                 <StatusButton
                   bgcolor="salmon"
@@ -126,7 +126,6 @@ const RawDataTable = (props) => {
               <RawDataTableDataCellLeft>
                 Golf Course Data
               </RawDataTableDataCellLeft>
-              <RawDataTableDataCell>Ready</RawDataTableDataCell>
               <RawDataTableDataCell>
                 <StatusButton
                   bgcolor="lightgreen"
@@ -143,7 +142,6 @@ const RawDataTable = (props) => {
               <RawDataTableDataCellLeft>
                 Cruise Ship Arrivals Data
               </RawDataTableDataCellLeft>
-              <RawDataTableDataCell>Ready</RawDataTableDataCell>
               <RawDataTableDataCell>
                 <StatusButton
                   bgcolor="lightgreen"
@@ -160,35 +158,44 @@ const RawDataTable = (props) => {
               <RawDataTableDataCellLeft>
                 Bus Transport Data
               </RawDataTableDataCellLeft>
-              <RawDataTableDataCell>Ready</RawDataTableDataCell>
               <RawDataTableDataCell>
-                {/* <StatusButton
+                <StatusButton
                   bgcolor="lightgreen"
                   text="Fetch Bus Data"
-                  // onShow={() => loadBusTransportDataHandler()}
-                /> */}
+                  status={isActiveStatus4}
+                  onShow={() => {
+                    setIsActiveStatus4(!isActiveStatus4)
+                    // loadBusTransportDataHandler()
+                  }}
+                />
               </RawDataTableDataCell>
             </RawDataTableRow>
             <RawDataTableRow>
               <RawDataTableDataCellLeft>Crime Data</RawDataTableDataCellLeft>
-              <RawDataTableDataCell>Ready</RawDataTableDataCell>
               <RawDataTableDataCell>
-                {/* <StatusButton
+                <StatusButton
                   bgcolor="lightgreen"
                   text="Fetch Crime Data"
-                  // onShow={() => loadCrimesDataHandler()}
-                /> */}
+                  status={isActiveStatus5}
+                  onShow={() => {
+                    setIsActiveStatus5(!isActiveStatus5)
+                    // loadCrimesDataHandler()
+                  }}
+                />
               </RawDataTableDataCell>
             </RawDataTableRow>
             <RawDataTableRow>
               <RawDataTableDataCellLeft>Realtime Data</RawDataTableDataCellLeft>
-              <RawDataTableDataCell>Currently: Off</RawDataTableDataCell>
               <RawDataTableDataCell>
-                {/* <StatusButton
+                <StatusButton
                   bgcolor="lightgreen"
                   text="Start Realtime Data"
-                  onShow={() => startRealtimeDataHandler()}
-                /> */}
+                  status={isActiveStatus6}
+                  onShow={() => {
+                    setIsActiveStatus6(!isActiveStatus6)
+                    // startRealtimeDataHandler()
+                  }}
+                />
               </RawDataTableDataCell>
             </RawDataTableRow>
           </RawDataTableBodyStyle>
