@@ -64,8 +64,8 @@ const TopAvatar = styled.img`
 `
 
 const TopBar = () => {
-  const [isActiveStatus1, setIsActiveStatus1] = useState(1)
-  const [isActiveStatus2, setIsActiveStatus2] = useState(0)
+  const [isActiveStatus1, setIsActiveStatus1] = useState(true)
+  const [isActiveStatus2, setIsActiveStatus2] = useState(false)
 
   return (
     <Container>

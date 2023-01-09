@@ -36,7 +36,7 @@ const RawDataTableStyle = styled.table`
   font-size: 13px;
 `
 
-const RawDataTableHeaderStyle = styled.thead`
+const RawDataTableHeader = styled.thead`
   /* text-align: left; */
   font-size: 14px;
 `
@@ -47,7 +47,7 @@ const RawDataTableRow = styled.tr`
   }
 `
 
-const RawDataTableHeader = styled.th`
+const RawDataTableHead = styled.th`
   height: 34px;
   margin: 0;
   padding: 0.5rem;
@@ -55,7 +55,7 @@ const RawDataTableHeader = styled.th`
   border-right: 1px solid lightgray;
 `
 
-const RawDataTableBodyStyle = styled.tbody``
+const RawDataTableBody = styled.tbody``
 
 const RawDataTableDataCellLeft = styled.td`
   height: 34px;
@@ -89,6 +89,13 @@ const RawDataTable = (props) => {
   const [isActiveStatus5, setIsActiveStatus5] = useState(false)
   const [isActiveStatus6, setIsActiveStatus6] = useState(false)
 
+  const [statusMessage1, setStatusMessage1] = useState("Waiting")
+  const [statusMessage2, setStatusMessage2] = useState("Waiting")
+  const [statusMessage3, setStatusMessage3] = useState("Waiting")
+  const [statusMessage4, setStatusMessage4] = useState("Waiting")
+  const [statusMessage5, setStatusMessage5] = useState("Waiting")
+  const [statusMessage6, setStatusMessage6] = useState("Waiting")
+
   console.log(isActiveStatus1)
 
   return (
@@ -99,24 +106,30 @@ const RawDataTable = (props) => {
 
       <RawDataTableContainer>
         <RawDataTableStyle>
-          <RawDataTableHeaderStyle>
+          <RawDataTableHeader>
             <RawDataTableRow>
-              <RawDataTableHeader>Import Raw Data Types</RawDataTableHeader>
-              <RawDataTableHeader>Select</RawDataTableHeader>
+              <RawDataTableHead>Import Raw Data Types</RawDataTableHead>
+              <RawDataTableHead>Status</RawDataTableHead>
+              <RawDataTableHead>Actions</RawDataTableHead>
             </RawDataTableRow>
-          </RawDataTableHeaderStyle>
-          <RawDataTableBodyStyle>
+          </RawDataTableHeader>
+          <RawDataTableBody>
             <RawDataTableRow>
               <RawDataTableDataCellLeft>
                 Temperatures Data
               </RawDataTableDataCellLeft>
+              <RawDataTableDataCell>{statusMessage1}</RawDataTableDataCell>
               <RawDataTableDataCell>
                 <StatusButton
-                  bgcolor="salmon"
-                  text="Fetch Temperatures"
+                  buttonText="Fetch Temperatures"
                   status={isActiveStatus1}
                   onShow={() => {
                     setIsActiveStatus1(!isActiveStatus1)
+                    {
+                      statusMessage1 === "Waiting"
+                        ? setStatusMessage1("Button Pressed")
+                        : setStatusMessage1("Waiting")
+                    }
                     // loadTemperaturesDataHandler()
                   }}
                 />
@@ -126,13 +139,18 @@ const RawDataTable = (props) => {
               <RawDataTableDataCellLeft>
                 Golf Course Data
               </RawDataTableDataCellLeft>
+              <RawDataTableDataCell>{statusMessage2}</RawDataTableDataCell>
               <RawDataTableDataCell>
                 <StatusButton
-                  bgcolor="lightgreen"
-                  text="Fetch Golf Courses"
+                  buttonText="Fetch Golf Courses"
                   status={isActiveStatus2}
                   onShow={() => {
                     setIsActiveStatus2(!isActiveStatus2)
+                    {
+                      statusMessage2 === "Waiting"
+                        ? setStatusMessage2("Button Pressed")
+                        : setStatusMessage2("Waiting")
+                    }
                     // loadGolfCoursesDataHandler()
                   }}
                 />
@@ -142,13 +160,18 @@ const RawDataTable = (props) => {
               <RawDataTableDataCellLeft>
                 Cruise Ship Arrivals Data
               </RawDataTableDataCellLeft>
+              <RawDataTableDataCell>{statusMessage3}</RawDataTableDataCell>
               <RawDataTableDataCell>
                 <StatusButton
-                  bgcolor="lightgreen"
-                  text="Fetch Cruise Ships"
+                  buttonText="Fetch Cruise Ships"
                   status={isActiveStatus3}
                   onShow={() => {
                     setIsActiveStatus3(!isActiveStatus3)
+                    {
+                      statusMessage3 === "Waiting"
+                        ? setStatusMessage3("Button Pressed")
+                        : setStatusMessage3("Waiting")
+                    }
                     // loadCruiseShipArrivalsDataHandler()
                   }}
                 />
@@ -158,13 +181,18 @@ const RawDataTable = (props) => {
               <RawDataTableDataCellLeft>
                 Bus Transport Data
               </RawDataTableDataCellLeft>
+              <RawDataTableDataCell>{statusMessage4}</RawDataTableDataCell>
               <RawDataTableDataCell>
                 <StatusButton
-                  bgcolor="lightgreen"
-                  text="Fetch Bus Data"
+                  buttonText="Fetch Bus Data"
                   status={isActiveStatus4}
                   onShow={() => {
                     setIsActiveStatus4(!isActiveStatus4)
+                    {
+                      statusMessage4 === "Waiting"
+                        ? setStatusMessage4("Button Pressed")
+                        : setStatusMessage4("Waiting")
+                    }
                     // loadBusTransportDataHandler()
                   }}
                 />
@@ -172,13 +200,18 @@ const RawDataTable = (props) => {
             </RawDataTableRow>
             <RawDataTableRow>
               <RawDataTableDataCellLeft>Crime Data</RawDataTableDataCellLeft>
+              <RawDataTableDataCell>{statusMessage5}</RawDataTableDataCell>
               <RawDataTableDataCell>
                 <StatusButton
-                  bgcolor="lightgreen"
-                  text="Fetch Crime Data"
+                  buttonText="Fetch Crime Data"
                   status={isActiveStatus5}
                   onShow={() => {
                     setIsActiveStatus5(!isActiveStatus5)
+                    {
+                      statusMessage5 === "Waiting"
+                        ? setStatusMessage5("Button Pressed")
+                        : setStatusMessage5("Waiting")
+                    }
                     // loadCrimesDataHandler()
                   }}
                 />
@@ -186,19 +219,24 @@ const RawDataTable = (props) => {
             </RawDataTableRow>
             <RawDataTableRow>
               <RawDataTableDataCellLeft>Realtime Data</RawDataTableDataCellLeft>
+              <RawDataTableDataCell>{statusMessage6}</RawDataTableDataCell>
               <RawDataTableDataCell>
                 <StatusButton
-                  bgcolor="lightgreen"
-                  text="Start Realtime Data"
+                  buttonText="Start Realtime Data"
                   status={isActiveStatus6}
                   onShow={() => {
                     setIsActiveStatus6(!isActiveStatus6)
+                    {
+                      statusMessage6 === "Waiting"
+                        ? setStatusMessage6("Button Pressed")
+                        : setStatusMessage6("Waiting")
+                    }
                     // startRealtimeDataHandler()
                   }}
                 />
               </RawDataTableDataCell>
             </RawDataTableRow>
-          </RawDataTableBodyStyle>
+          </RawDataTableBody>
         </RawDataTableStyle>
       </RawDataTableContainer>
     </div>

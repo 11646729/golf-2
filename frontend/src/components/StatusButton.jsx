@@ -22,11 +22,10 @@ const StyledButton = styled.button`
 `
 
 const StatusButton = (props) => {
-  const { bgcolor, text, status, onShow } = props
+  const { buttonText, status, onShow } = props
 
   StatusButton.propTypes = {
-    bgcolor: PropTypes.string,
-    text: PropTypes.string,
+    buttonText: PropTypes.string,
     status: PropTypes.bool.isRequired,
     onShow: PropTypes.func.isRequired,
   }
@@ -37,14 +36,12 @@ const StatusButton = (props) => {
     <div>
       {status ? (
         <StyledButton bg="salmon" onClick={onShow}>
-          {/* <StyledButton bg={bgcolor} onClick={onShow}> */}
-          {/* {text} */}
+          {/* {buttonText} */}
           Fetching Data ...
         </StyledButton>
       ) : (
         <StyledButton bg="lightgreen" onClick={onShow}>
-          {/* <StyledButton bg={bgcolor} onClick={onShow}> */}
-          {text}
+          {buttonText}
         </StyledButton>
       )}
     </div>
