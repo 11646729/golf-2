@@ -5,12 +5,12 @@ import styled from "styled-components"
 import Title from "./Title"
 import StatusButton from "./StatusButton"
 
-import { loadTemperaturesDataHandler } from "../functionHandlers/loadTemperaturesDataHandler"
-import { loadGolfCoursesDataHandler } from "../functionHandlers/loadGolfCoursesDataHandler"
-import { loadCruiseShipArrivalsDataHandler } from "../functionHandlers/loadCruiseShipArrivalsDataHandler"
-import { loadBusTransportDataHandler } from "../functionHandlers/loadBusTransportDataHandler"
-import { loadCrimesDataHandler } from "../functionHandlers/loadCrimesDataHandler"
-import { startRealtimeDataHandler } from "../functionHandlers/startRealtimeDataHandler"
+// import { loadTemperaturesDataHandler } from "../functionHandlers/loadTemperaturesDataHandler"
+// import { loadGolfCoursesDataHandler } from "../functionHandlers/loadGolfCoursesDataHandler"
+// import { loadCruiseShipArrivalsDataHandler } from "../functionHandlers/loadCruiseShipArrivalsDataHandler"
+// import { loadBusTransportDataHandler } from "../functionHandlers/loadBusTransportDataHandler"
+// import { loadCrimesDataHandler } from "../functionHandlers/loadCrimesDataHandler"
+// import { startRealtimeDataHandler } from "../functionHandlers/startRealtimeDataHandler"
 
 const RawDataTableTitleContainer = styled.div`
   margin-top: 35px;

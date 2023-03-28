@@ -102,11 +102,11 @@ const StatusButton = (props) => {
         </StyledButtonTrue>
       )}
 
-      {/* {status === true ? (
+      {status === true ? (
         <StyledButtonFalse onClick={onShow}>{stateText}</StyledButtonFalse>
       ) : (
         <StyledButtonTrue onClick={onShow}>{stateText}</StyledButtonTrue>
-      )} */}
+      )}
     </div>
   )
 }
