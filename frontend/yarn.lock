@@ -1425,6 +1425,13 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.5.tgz#5f19d2b85a98e9558036f6a3cacc8819420f05cf"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
+"@types/react-reconciler@^0.28.0", "@types/react-reconciler@^0.28.2":
+  version "0.28.2"
+  resolved "https://registry.yarnpkg.com/@types/react-reconciler/-/react-reconciler-0.28.2.tgz#f16b0e8cc4748af70ca975eaaace0d79582c71fa"
+  integrity sha512-8tu6lHzEgYPlfDf/J6GOQdIc+gs+S2yAqlby3zTsB3SP2svlqTYe5fwZNtZyfactP74ShooP2vvi1BOp9ZemWw==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-transition-group@^4.2.0":
   version "4.4.5"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-4.4.5.tgz#aae20dcf773c5aa275d5b9f7cdbca638abc5e416"
@@ -6383,6 +6390,13 @@ istanbul-reports@^1.5.1:
   dependencies:
     handlebars "^4.0.3"
 
+its-fine@^1.0.6:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/its-fine/-/its-fine-1.1.0.tgz#9ea0022c5e7a123e46bdc72a18b48d766ee4679f"
+  integrity sha512-nEoEt5EYSed1mmvwCRv3l1+6T7pyu4ltyBihzPjUtaSWhFhUPU/c7xkPDIutTh8FeIv0F1F5wOFYI8a2s5rlBA==
+  dependencies:
+    "@types/react-reconciler" "^0.28.0"
+
 jest-changed-files@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-17.0.2.tgz#f5657758736996f590a51b87e5c9369d904ba7b7"
@@ -6922,6 +6936,11 @@ klaw@^1.0.0:
   integrity sha512-TED5xi9gGQjGpNnvRWknrwAB1eL5GciPfVFOt3Vk1OJCVDQbzuSfrF3hkUQKlsgKrG1F+0t5W0m+Fje1jIt8rw==
   optionalDependencies:
     graceful-fs "^4.1.9"
+
+konva@^8.4.3:
+  version "8.4.3"
+  resolved "https://registry.yarnpkg.com/konva/-/konva-8.4.3.tgz#d6754fdb53e69295c24dbdfe967a27f92da51e47"
+  integrity sha512-ARqdgAbdNIougRlOKvkQwHlGhXPRBV4KvhCP+qoPpGoVQwwiJe4Hkdu4HHdRPb9rGUp04jDTAxBzEwBsE272pg==
 
 lazy-cache@^1.0.3:
   version "1.0.4"
@@ -9143,10 +9162,28 @@ react-is@^18.0.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
   integrity sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==
 
+react-konva@^18.2.5:
+  version "18.2.5"
+  resolved "https://registry.yarnpkg.com/react-konva/-/react-konva-18.2.5.tgz#592692619c5f4a9c14726e146574ddc8bc468a7c"
+  integrity sha512-lTqJStcHnpGSXB9RlV7p5at3MpRML/TujzbuUDZRIInsLocJ/I4Nhhg3w6yJm9UV05kcwr88OY6LO+2zRyzXog==
+  dependencies:
+    "@types/react-reconciler" "^0.28.2"
+    its-fine "^1.0.6"
+    react-reconciler "~0.29.0"
+    scheduler "^0.23.0"
+
 react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-reconciler@~0.29.0:
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.29.0.tgz#ee769bd362915076753f3845822f2d1046603de7"
+  integrity sha512-wa0fGj7Zht1EYMRhKWwoo1H9GApxYLBuhoAuXN0TlltESAjDssB+Apf0T/DngVqaMyPypDmabL37vw/2aRM98Q==
+  dependencies:
+    loose-envify "^1.1.0"
+    scheduler "^0.23.0"
 
 react-resize-detector@^7.1.2:
   version "7.1.2"
