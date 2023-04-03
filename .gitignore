@@ -23,17 +23,10 @@ yarn-debug.log*
 yarn-error.log*
 
 # Added by BDS 12-12-19
+# /frontend
+
 /backend/node_modules
+/backend/gtfs_data/
 /frontend/node_modules
 .env
-google_maps.js
-
-# Added by BDS 12-03-21
-# /backend/gtfs data/Dublin TFI/shapes.txt
-# /backend/gtfs data/Dublin TFI/stop_times.txt
-/backend/sqlite3 data/general.db
-/backend/gtfs data/
-/backend/gtfs data/Hamilton Ontario Street Railway/gtfs.db
-/backend/gtfs data/Dublin TFI/gtfs.db
-/backend/geojson/
 
