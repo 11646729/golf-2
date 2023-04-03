@@ -25,6 +25,9 @@ const TopBarWrapper = styled.div`
 const Logo = styled.span`
   font-weight: bold;
   font-size: 30px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   color: darkblue;
   cursor: pointer;
 `
