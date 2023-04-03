@@ -23,8 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # Added by BDS 12-12-19
-# /frontend
-
 /backend/node_modules
 /backend/gtfs_data/
 /frontend/node_modules
