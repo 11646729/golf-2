@@ -26,15 +26,17 @@ const RawDataStatusBoxContainer = styled.div`
 // -------------------------------------------------------
 // React Controller component
 // -------------------------------------------------------
-const RawDataPage = () => (
-  <RawDataContainer>
-    <RawDataTableContainer>
-      <RawDataTable rawDataTableTitle="Raw Data Importing Operations" />
-    </RawDataTableContainer>
-    <RawDataStatusBoxContainer>
-      <RawDataStatusBox messageString="Here is the status message" />
-    </RawDataStatusBoxContainer>
-  </RawDataContainer>
-)
+const RawDataPage = () => {
+  return (
+    <RawDataContainer>
+      <RawDataTableContainer>
+        <RawDataTable rawDataTableTitle="Raw Data Importing Operations" />
+      </RawDataTableContainer>
+      <RawDataStatusBoxContainer>
+        <RawDataStatusBox messageString="Here is the status message" />
+      </RawDataStatusBoxContainer>
+    </RawDataContainer>
+  )
+}
 
 export default memo(RawDataPage)
