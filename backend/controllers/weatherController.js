@@ -134,8 +134,6 @@ export const getTemperaturesFromDatabase = (req, res) => {
 
   if (db !== null) {
     try {
-      // const sql = "SELECT * FROM temperatures ORDER BY temperatureid"
-
       // Only fetch <= the last 20 readings
       const sql =
         "SELECT * FROM temperatures ORDER BY temperatureid DESC LIMIT 20"
@@ -144,7 +142,7 @@ export const getTemperaturesFromDatabase = (req, res) => {
         if (err) {
           return console.error(err.message)
         }
-        console.log("Results: ", results.length)
+        // console.log("Results: ", results.length)
 
         res.send(results)
       })

@@ -5,7 +5,7 @@ import {
   useJsApiLoader,
   Marker,
   InfoWindow,
-  OverlayView,
+  // OverlayView,
 } from "@react-google-maps/api"
 import {
   Card,
@@ -94,15 +94,15 @@ const GolfCoursesMap = (props) => {
     strokeWeight: 1,
   }
 
-  const onClick = () => {
-    console.info("I have been clicked!")
-  }
+  // const onClick = () => {
+  //   console.info("I have been clicked!")
+  // }
 
-  const divStyle = {
-    background: "white",
-    border: "1px solid #ccc",
-    padding: 15,
-  }
+  // const divStyle = {
+  //   background: "white",
+  //   border: "1px solid #ccc",
+  //   padding: 15,
+  // }
 
   return isLoaded ? (
     <GolfCoursesMapContainer>
@@ -135,7 +135,7 @@ const GolfCoursesMap = (props) => {
             ))
           : null}
 
-        <OverlayView
+        {/* <OverlayView
           position={mapCenter}
           mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
         >
@@ -146,7 +146,7 @@ const GolfCoursesMap = (props) => {
               Click me
             </button>
           </div>
-        </OverlayView>
+        </OverlayView> */}
         {selected ? (
           <InfoWindow
             position={{

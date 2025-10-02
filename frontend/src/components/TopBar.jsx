@@ -1,7 +1,7 @@
-import React, { memo } from "react"
+import React, { memo, useState } from "react"
 import styled from "styled-components"
 import { NotificationsNone, Language, Settings } from "@material-ui/icons"
-import { StatusIcon } from "./StatusIcon"
+import StatusIcon from "./StatusIcon"
 
 const Container = styled.div`
   width: 100%;
@@ -25,6 +25,9 @@ const TopBarWrapper = styled.div`
 const Logo = styled.span`
   font-weight: bold;
   font-size: 30px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   color: darkblue;
   cursor: pointer;
 `
@@ -63,28 +66,41 @@ const TopAvatar = styled.img`
   cursor: pointer;
 `
 
-const TopBar = () => (
-  <Container>
-    <TopBarWrapper>
-      <Logo>My Website</Logo>
-      <TopRight>
-        <TopBarIconContainer>
-          <NotificationsNone />
-          <TopIconBadge>1</TopIconBadge>
-        </TopBarIconContainer>
-        <TopBarIconContainer>
-          <StatusIcon size={10} initialStatus={true} />
-          <StatusIcon size={10} initialStatus={false} />
-          <Language />
-          <TopIconBadge>2</TopIconBadge>
-        </TopBarIconContainer>
-        <TopBarIconContainer>
-          <Settings />
-        </TopBarIconContainer>
-        <TopAvatar src="/static/images/brian.jpeg" alt="" />
-      </TopRight>
-    </TopBarWrapper>
-  </Container>
-)
+const TopBar = () => {
+  const [isActiveStatus1, setIsActiveStatus1] = useState(true)
+  const [isActiveStatus2, setIsActiveStatus2] = useState(false)
+
+  return (
+    <Container>
+      <TopBarWrapper>
+        <Logo>My Website</Logo>
+        <TopRight>
+          <TopBarIconContainer>
+            <NotificationsNone />
+            <TopIconBadge>1</TopIconBadge>
+          </TopBarIconContainer>
+          <TopBarIconContainer>
+            <StatusIcon
+              size={5}
+              status={isActiveStatus1}
+              onShow={() => setIsActiveStatus1(!isActiveStatus1)}
+            />
+            <StatusIcon
+              size={5}
+              status={isActiveStatus2}
+              onShow={() => setIsActiveStatus2(!isActiveStatus2)}
+            />
+            <Language />
+            <TopIconBadge>2</TopIconBadge>
+          </TopBarIconContainer>
+          <TopBarIconContainer>
+            <Settings />
+          </TopBarIconContainer>
+          <TopAvatar src="/static/images/brian.jpeg" alt="" />
+        </TopRight>
+      </TopBarWrapper>
+    </Container>
+  )
+}
 
 export default memo(TopBar)
