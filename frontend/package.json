@@ -12,7 +12,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^11.1.0",
     "antd": "^4.6.4",
-    "axios": "^0.21.1",
+    "axios": "^0.30.2",
     "bufferutil": "^4.0.1",
     "css-what": "^5.0.1",
     "dotenv": "^8.2.0",
