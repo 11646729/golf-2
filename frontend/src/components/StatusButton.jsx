@@ -82,30 +82,23 @@ StyledButtonFalse.defaultProps = {
 // StateText: Local Variable ?
 
 const StatusButton = (props) => {
-  const { stateText, onShow } = props
+  const { stateText } = props
   const [isActive, setIsActive] = useState(false)
 
   StatusButton.propTypes = {
     stateText: PropTypes.string,
-    onShow: PropTypes.func.isRequired,
   }
 
   return (
     <div>
       {isActive ? (
-        <StyledButtonFalse onClick={() => setIsActive(true)}>
+        <StyledButtonFalse onClick={() => setIsActive(false)}>
           {stateText}
         </StyledButtonFalse>
       ) : (
-        <StyledButtonTrue onClick={() => setIsActive(false)}>
+        <StyledButtonTrue onClick={() => setIsActive(true)}>
           {stateText}
         </StyledButtonTrue>
-      )}
-
-      {status === true ? (
-        <StyledButtonFalse onClick={onShow}>{stateText}</StyledButtonFalse>
-      ) : (
-        <StyledButtonTrue onClick={onShow}>{stateText}</StyledButtonTrue>
       )}
     </div>
   )

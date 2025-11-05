@@ -118,9 +118,12 @@ const RawDataTable = (props) => {
                 <StatusButton
                   stateText="Fetch Temperatures"
                   onShow={() => {
-                    btnState1 < 3
-                      ? setBtnState1(btnState1 + 1)
-                      : setBtnState1(0)
+                    // eslint-disable-next-line no-unused-expressions
+                    if (btnState1 < 3) {
+                      setBtnState1(btnState1 + 1)
+                    } else {
+                      setBtnState1(0)
+                    }
 
                     // loadTemperaturesDataHandler()
                   }}
@@ -138,9 +141,11 @@ const RawDataTable = (props) => {
                 <StatusButton
                   stateText="Fetch Golf Courses"
                   onShow={() => {
-                    btnState2 < 3
-                      ? setBtnState2(btnState2 + 1)
-                      : setBtnState2(0)
+                    if (btnState2 < 3) {
+                      setBtnState2(btnState2 + 1)
+                    } else {
+                      setBtnState2(0)
+                    }
 
                     // loadGolfCoursesDataHandler()
                   }}
@@ -158,9 +163,11 @@ const RawDataTable = (props) => {
                 <StatusButton
                   stateText="Fetch Cruise Ships"
                   onShow={() => {
-                    btnState3 < 3
-                      ? setBtnState3(btnState3 + 1)
-                      : setBtnState3(0)
+                    if (btnState3 < 3) {
+                      setBtnState3(btnState3 + 1)
+                    } else {
+                      setBtnState3(0)
+                    }
                     // loadCruiseShipArrivalsDataHandler()
                   }}
                 />
@@ -177,9 +184,11 @@ const RawDataTable = (props) => {
                 <StatusButton
                   stateText="Fetch Bus Data"
                   onShow={() => {
-                    btnState4 < 3
-                      ? setBtnState4(btnState4 + 1)
-                      : setBtnState4(0)
+                    if (btnState4 < 3) {
+                      setBtnState4(btnState4 + 1)
+                    } else {
+                      setBtnState4(0)
+                    }
 
                     // loadBusTransportDataHandler()
                   }}
@@ -195,9 +204,11 @@ const RawDataTable = (props) => {
                 <StatusButton
                   stateText="Fetch Crime Data"
                   onShow={() => {
-                    btnState5 < 3
-                      ? setBtnState5(btnState5 + 1)
-                      : setBtnState5(0)
+                    if (btnState5 < 3) {
+                      setBtnState5(btnState5 + 1)
+                    } else {
+                      setBtnState5(0)
+                    }
 
                     // loadCrimesDataHandler()
                   }}
@@ -213,9 +224,11 @@ const RawDataTable = (props) => {
                 <StatusButton
                   stateText="Start Realtime Data"
                   onShow={() => {
-                    btnState6 < 3
-                      ? setBtnState6(btnState6 + 1)
-                      : setBtnState6(0)
+                    if (btnState6 < 3) {
+                      setBtnState6(btnState6 + 1)
+                    } else {
+                      setBtnState6(0)
+                    }
 
                     // startRealtimeDataHandler()
                   }}

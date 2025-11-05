@@ -56,6 +56,24 @@ const NearbyCrimesMap = (props) => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   })
 
+  const shouldShowClusters = false
+
+  const renderCrimeMarkers = (clusterer) =>
+    crimesData.map((crime) => (
+      <Marker
+        key={`crime-${crime.id}`}
+        position={{
+          lat: parseFloat(crime.location.latitude),
+          lng: parseFloat(crime.location.longitude),
+        }}
+        onClick={() => {
+          // setSelected(crime)
+          console.log(crime)
+        }}
+        clusterer={clusterer}
+      />
+    ))
+
   return isLoaded ? (
     <NearbyCrimesMapContainer>
       <Title>{NearbyCrimesMapTitle}</Title>
@@ -71,24 +89,11 @@ const NearbyCrimesMap = (props) => {
       >
         {/* <Marker position={mapCenter} icon={iconPin} /> */}
 
-        <MarkerClusterer options={options}>
-          {(clusterer) =>
-            crimesData.map((crime) => (
-              <Marker
-                key={`crime-${crime.id}`}
-                position={{
-                  lat: parseFloat(crime.location.latitude),
-                  lng: parseFloat(crime.location.longitude),
-                }}
-                onClick={() => {
-                  // setSelected(crime)
-                  console.log(crime)
-                }}
-                clusterer={clusterer}
-              />
-            ))
-          }
-        </MarkerClusterer>
+        {shouldShowClusters && (
+          <MarkerClusterer options={options}>
+            {(clusterer) => renderCrimeMarkers(clusterer)}
+          </MarkerClusterer>
+        )}
       </GoogleMap>
     </NearbyCrimesMapContainer>
   ) : null
