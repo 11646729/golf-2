@@ -17,7 +17,7 @@ const Canvas = (props) => {
     let frameCount = 0
     let animationFrameId
 
-    //Our draw came here
+    // Our draw came here
     const render = () => {
       frameCount++
       draw(context, frameCount)

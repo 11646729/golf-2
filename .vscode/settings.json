@@ -1,3 +1,10 @@
 {
-  "eslint.workingDirectories": ["golf-2/backend", "golf-2/frontend"]
+  "eslint.workingDirectories": [
+    {
+      "directory": "backend"
+    },
+    {
+      "directory": "frontend"
+    }
+  ]
 }

@@ -3,27 +3,25 @@ import axios from "axios"
 // -------------------------------------------------------
 // Function to prepare the portarrivals table in the SQL database
 // -------------------------------------------------------
-const preparePortArrivalsTable = async (url) => {
-  return await axios
+const preparePortArrivalsTable = (url) =>
+  axios
     .post(url)
     .then((response) => response.data)
     .catch((err) => console.log(err))
-}
 
 // -------------------------------------------------------
 // Function to prepare the vessels table in the SQL database
 // -------------------------------------------------------
-const prepareVesselsTable = async (url) => {
-  return await axios
+const prepareVesselsTable = async (url) =>
+  axios
     .post(url)
     .then((response) => response.data)
     .catch((err) => console.log(err))
-}
 
 // -------------------------------------------------------
 // Function to fetch all Cruise PortArrivals & Vessel data
 // -------------------------------------------------------
-const importPortArrivalsAndVesselsData = async (url) => {
+const importPortArrivalsAndVesselsData = (url) => {
   const params = { portName: "Belfast" }
   const config = {
     timeout: 20000,
@@ -32,7 +30,7 @@ const importPortArrivalsAndVesselsData = async (url) => {
     },
   }
 
-  return await axios
+  return axios
     .post(url, params, config)
     .then((returnedData) => returnedData.data)
     .catch((err) => console.log(err))
@@ -41,7 +39,7 @@ const importPortArrivalsAndVesselsData = async (url) => {
 // -------------------------------------------------------
 // Function to fetch all Cruise Vessel data
 // -------------------------------------------------------
-export const getPortArrivalsData = async (url) => {
+export const getPortArrivalsData = (url) => {
   const params = { portName: "Belfast" }
   const config = {
     timeout: 20000,
@@ -50,7 +48,7 @@ export const getPortArrivalsData = async (url) => {
     },
   }
 
-  return await axios
+  return axios
     .get(url, params, config)
     .then((returnedData) => returnedData.data)
     .catch((err) => console.log(err))

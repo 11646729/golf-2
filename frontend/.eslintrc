@@ -7,10 +7,11 @@
     "requireConfigFile": false,
     "ecmaFeatures": {
       "impliedStrict": true,
-      "classes": true
+      "classes": true,
+      "jsx": true
     },
     "babelOptions": {
-      "presets": ["@babel/preset-react"]
+      "presets": [["@babel/preset-react", { "runtime": "automatic" }]]
     }
   },
   "env": {
@@ -115,7 +116,10 @@
       }
     ],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-indent": "off",
+    "react/jsx-indent-props": "off",
+    "indent": "off"
   },
   "plugins": ["html", "prettier", "react-hooks"],
   "settings": {

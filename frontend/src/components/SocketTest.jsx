@@ -59,8 +59,14 @@ const SocketTest = () => {
 
   return (
     <div>
-      <p>Connected: {"" + isConnected}</p>
-      <p>Last pong: {lastPong || "-"}</p>
+      <p>
+        Connected:
+        {`${isConnected}`}
+      </p>
+      <p>
+        Last pong:
+        {lastPong || "-"}
+      </p>
       <button onClick={sendPing}>Send ping</button>
     </div>
   )

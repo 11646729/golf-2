@@ -3,32 +3,29 @@ import axios from "axios"
 // -------------------------------------------------------
 // Function to prepare the golfcourses table in the SQL database
 // -------------------------------------------------------
-const prepareGolfCoursesTable = async (url) => {
-  return await axios
+const prepareGolfCoursesTable = (url) =>
+  axios
     .post(url)
     .then((response) => response.data)
     .catch((err) => console.log(err))
-}
 
 // -------------------------------------------------------
 // Function to instruct backend to load Golf Club Data into the database
 // -------------------------------------------------------
-const initialImportOfGolfCoursesData = async (url) => {
-  return await axios
+const initialImportOfGolfCoursesData = (url) =>
+  axios
     .get(url)
     .then((response) => response.data)
     .catch((err) => console.log(err))
-}
 
 // -------------------------------------------------------
 // Function to fetch all Golf Course data - DON'T TRY TO REFACTOR THIS
 // -------------------------------------------------------
-export const getGolfCoursesData = async (url) => {
-  return await axios
+export const getGolfCoursesData = (url) =>
+  axios
     .get(url)
     .then((response) => response.data)
     .catch((err) => console.log(err))
-}
 
 // -------------------------------------------------------
 // Function to fetch all Golf Courses data into the SQL database

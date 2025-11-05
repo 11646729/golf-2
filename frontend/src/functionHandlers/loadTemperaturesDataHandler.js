@@ -3,22 +3,20 @@ import axios from "axios"
 // -------------------------------------------------------
 // Function to prepare the temperatures table in the SQL database
 // -------------------------------------------------------
-const prepareTemperaturesTable = async (url) => {
-  return await axios
+const prepareTemperaturesTable = (url) =>
+  axios
     .post(url)
     .then((response) => response.data)
     .catch((err) => console.log(err))
-}
 
 // -------------------------------------------------------
 // Function to fetch all Temperatures data
 // -------------------------------------------------------
-export const getTemperaturesData = async (url) => {
-  return await axios
+export const getTemperaturesData = (url) =>
+  axios
     .get(url)
     .then((response) => response.data)
     .catch((err) => console.log(err))
-}
 
 // -------------------------------------------------------
 // Function to fetch all Temperatures data into the SQL database
@@ -29,5 +27,3 @@ export const loadTemperaturesDataHandler = () => {
     "http://localhost:4000/api/weather/prepareTemperaturesTable"
   )
 }
-
-export { getTemperaturesData as default }

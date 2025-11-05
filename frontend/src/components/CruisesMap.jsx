@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, memo } from "react"
+import { useState, useEffect, useCallback, memo, useMemo } from "react"
 import PropTypes from "prop-types"
 import {
   GoogleMap,
@@ -157,7 +157,8 @@ const CruisesMap = (props) => {
                 <Typography component="p">{selected.vesselName}</Typography>
                 <Typography component="p">{selected.timestamp}</Typography>
                 <Typography component="p">
-                  En Route to {selected.destination}
+                  En Route to
+                  {selected.destination}
                 </Typography>
               </CardContent>
               <CardActions>

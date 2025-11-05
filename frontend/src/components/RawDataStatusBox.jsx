@@ -42,10 +42,7 @@ const RawDataStatusBox = (props) => {
       </RawDataTitleContainer>
 
       <RawDataTextAreaContainer>
-        <RawDataTextArea
-          rows="6"
-          defaultValue={messageString}
-        ></RawDataTextArea>
+        <RawDataTextArea rows="6" defaultValue={messageString} />
       </RawDataTextAreaContainer>
     </div>
   )

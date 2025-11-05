@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo } from "react"
+import { useState, useEffect, memo } from "react"
 import styled from "styled-components"
 import { io } from "socket.io-client"
 
@@ -56,7 +56,7 @@ const WeatherPage = () => {
 
   useEffect(() => {
     socket.on("DataFromOpenWeatherAPI", (currentData) => {
-      // console.log(currentData)
+      console.log(currentData)
     })
   }, [])
 

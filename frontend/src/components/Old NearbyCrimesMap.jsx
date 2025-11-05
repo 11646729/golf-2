@@ -1,17 +1,11 @@
-import React, { useState, useRef, memo } from "react"
+import { useState, useRef, memo } from "react"
 import PropTypes from "prop-types"
 // import axios from "axios"
 // import GoogleMapReact from "google-map-react"
 // import useSupercluster from "use-supercluster"
 import moment from "moment"
 // import MomentUtils from "@date-io/moment"
-import {
-  // Checkbox,
-  Container,
-  // FormControlLabel,
-  Grid,
-  // styled,
-} from "@material-ui/core"
+// import { Checkbox, FormControlLabel, Container, Grid } from "@material-ui/core"
 // import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
 import styled from "styled-components"
 
@@ -174,12 +168,12 @@ const NearbyCrimesMap = (props) => {
   }
 
   // Now use supercluster via useSupercluster hook
-  const { clusters, supercluster } = useSupercluster({
-    points: reformattedCrimes,
-    bounds: mapBounds,
-    zoom: mapZoom,
-    options: { radius: 75, maxZoom: 20 },
-  })
+  // const { clusters, supercluster } = useSupercluster({
+  //   points: reformattedCrimes,
+  //   bounds: mapBounds,
+  //   zoom: mapZoom,
+  //   options: { radius: 75, maxZoom: 20 },
+  // })
 
   return (
     <div>
@@ -196,7 +190,7 @@ const NearbyCrimesMap = (props) => {
       {/* <Container maxWidth="xl">
         <Grid item xs={12} sm={12}> */}
       <div style={{ height: "580px", width: "100%", marginTop: 20 }}>
-        <GoogleMapReact
+        {/* <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
           center={mapCenter}
           zoom={mapZoom}
@@ -297,7 +291,7 @@ const NearbyCrimesMap = (props) => {
               </div>
             )
           })}
-        </GoogleMapReact>
+        </GoogleMapReact> */}
       </div>
       {/* </Grid>
       </Container> */}

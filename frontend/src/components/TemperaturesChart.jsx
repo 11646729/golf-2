@@ -44,7 +44,8 @@ const TemperaturesChart = (props) => {
             ) : (
               <Title>
                 Home Temperature is: &nbsp;
-                {Object.values(temperatureData[0])[4]} °F
+                {Object.values(temperatureData[0])[4]}
+                °F
               </Title>
             )}
             {/* {props.loadingError ? (
