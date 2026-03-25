@@ -23,14 +23,14 @@
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^5.2.0",
-    "gtfs": "^3.0.4",
+    "gtfs": "^3.8.0",
     "moment": "^2.29.1",
     "morgan": "^1.10.1",
     "node-cron": "^2.0.3",
     "normalize-url": "^7.0.0",
     "socket.io": "^4.8.1",
     "sqlite": "^4.0.21",
-    "sqlite3": "^5.1.7",
+    "sqlite3": "^6.0.1",
     "xmlhttprequest-ssl": "^1.6.3"
   },
   "devDependencies": {
