@@ -49,7 +49,7 @@
     "body-parser": "2.2.1",
     "follow-redirects": "^1.16.0",
     "qs": "^6.15.2",
-    "protobufjs": "^8.4.2",
+    "protobufjs": "^8.6.3",
     "@protobufjs/utf8": "^1.1.1",
     "ws": "^8.20.1"
   }
