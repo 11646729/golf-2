@@ -61,7 +61,7 @@
   "license": "ISC",
   "main": "index.js",
   "devDependencies": {
-    "@babel/core": "^7.19.3",
+    "@babel/core": "^7.29.6",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/preset-env": "^7.19.4",
     "@babel/preset-react": "^7.28.5",
