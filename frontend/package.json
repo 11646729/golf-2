@@ -98,6 +98,7 @@
     "follow-redirects": "^1.16.0",
     "uuid": "^14.0.0",
     "shell-quote": "^1.8.4",
+    "launch-editor": "^2.14.1",
     "qs": "^6.15.2",
     "protobufjs": "^8.4.2",
     "@protobufjs/utf8": "^1.1.1",
