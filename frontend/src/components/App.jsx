@@ -1,5 +1,5 @@
 import React, { memo } from "react"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router"
 
 import Album from "./Album"
 import TopBar from "./TopBar"
