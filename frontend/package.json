@@ -27,7 +27,7 @@
     "prop-types": "^15.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router": "^8.3.0",
+    "react-router": "~7.18.2",
     "react-scripts": "^5.0.1",
     "recharts": "^2.15.4",
     "sass": "^1.93.3",
