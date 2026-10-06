@@ -53,6 +53,7 @@
     "protobufjs": "^8.7.1",
     "@protobufjs/utf8": "^1.1.1",
     "ws": "^8.20.1",
-    "undici": "^7.30.0"
+    "undici": "^7.30.0",
+    "http-cache-semantics": "^4.3.0"
   }
 }
