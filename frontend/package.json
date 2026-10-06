@@ -20,7 +20,7 @@
     "history": "^5.0.0",
     "jquery": "^3.5.1",
     "minimatch": "^5.1.9",
-    "moment": "^2.27.0",
+    "moment": "^2.31.0",
     "normalize-url": "7.0.0",
     "open": "^8.4.0",
     "prettier": "^2.1.2",
