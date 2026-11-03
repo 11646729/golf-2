@@ -96,7 +96,7 @@
     "path-to-regexp": "^0.1.13",
     "brace-expansion": "^5.0.12",
     "body-parser": "^1.20.6",
-    "fast-uri": "^3.1.8",
+    "fast-uri": "^3.1.9",
     "immutable": "^5.1.9",
     "websocket-driver": "^0.7.5",
     "follow-redirects": "^1.16.1",
